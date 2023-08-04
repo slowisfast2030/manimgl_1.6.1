@@ -186,7 +186,6 @@ class ShadowScene(ThreeDScene):
 
         plane = Rectangle()
         plane.replace(grid, stretch=True)
-        # 这一行会报错，可能版本更新了
         plane.set_style(**self.plane_style)
         plane.set_stroke(width=0)
         if self.limited_plane_extension > 0:
@@ -205,8 +204,7 @@ class ShadowScene(ThreeDScene):
         cube = VCube()
         cube.deactivate_depth_test()
         cube.set_height(2)
-        # 又报错
-        #cube.set_style(**self.object_style)
+        cube.set_style(**self.object_style)
         # Wrap in group so that strokes and fills
         # are rendered in separate passes
         cube = self.cube = Group(*cube)
