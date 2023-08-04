@@ -9,7 +9,7 @@ class colorme(Scene):
 		#self.wait(3)
 		self.play(FadeOut(text))
 
-		title = Text("Color Functions I: set_color, set_opacity, set_gloss, set_shadow").shift(UP*3.5).scale(0.6)
+		title = Text("Color Functions I: set_color, set_opacity, set_gloss, set_shadow").shift(UP*3.5).scale(0.75)
 		self.play(FadeIn(title))
 
 		stuff = []
