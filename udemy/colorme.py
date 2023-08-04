@@ -4,7 +4,7 @@ import random
 
 class colorme(Scene):
 	def construct(self): 
-		text = Text("Color Functions I: set_color, set_opacity, set_gloss, set_shadow").scale(0.6)
+		text = Text("Color Functions I: set_color, set_opacity, set_gloss, set_shadow")
 		self.play(FadeIn(text))
 		#self.wait(3)
 		self.play(FadeOut(text))
