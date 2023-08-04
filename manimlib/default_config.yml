@@ -4,7 +4,7 @@ directories:
   # sourcecode generating that video
   mirror_module_path: False
   # Where should manim output video and image files?
-  output: ""
+  output: "/Users/linus/Desktop"
   # If you want to use images, manim will look to these folders to find them
   raster_images: ""
   vector_images: ""
@@ -27,7 +27,7 @@ tex:
   # intermediate_filetype: "xdv"
 universal_import_line: "from manimlib import *"
 style:
-  font: "Consolas"
+  font: "Times New Roman"
   background_color: "#333333"
 # Set the position of preview window, you can use directions, e.g. UL/DR/OL/OO/...
 # also, you can also specify the position(pixel) of the upper left corner of 
