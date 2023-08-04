@@ -914,6 +914,9 @@ class Mobject(object):
         index_of_submobject_to_align: int | slice | None = None,
         coor_mask: np.ndarray = np.array([1, 1, 1]),
     ):
+        '''
+        放到 ``mobject_or_point`` 旁边
+        '''
         if isinstance(mobject_or_point, Mobject):
             mob = mobject_or_point
             if index_of_submobject_to_align is not None:
