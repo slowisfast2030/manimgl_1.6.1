@@ -48,6 +48,7 @@ ManimColor = Union[str, colour.Color, Sequence[float]]
 class Mobject(object):
     """
     Mathematical Object
+    数学对象（屏幕上所有物体的超类）
     """
     CONFIG = {
         "color": WHITE,
@@ -61,7 +62,7 @@ class Mobject(object):
         "shadow": 0.0,
         # Makes parts bright where light gets reflected toward the camera
         "gloss": 0.0,
-        # For shaders
+        # For shaders 对于着色器知之甚少
         "shader_folder": "",
         "render_primitive": moderngl.TRIANGLE_STRIP,
         "texture_paths": None,
@@ -77,9 +78,9 @@ class Mobject(object):
     def __init__(self, **kwargs):
         digest_config(self, kwargs)
         self.submobjects: list[Mobject] = []
-        self.parents: list[Mobject] = []
+        self.parents: list[Mobject] = [] # self.parents和self.family是什么关系？
         self.family: list[Mobject] = [self]
-        self.locked_data_keys: set[str] = set()
+        self.locked_data_keys: set[str] = set() # 什么是self.locked_data_keys？
         self.needs_new_bounding_box: bool = True
 
         self.init_data()
@@ -105,13 +106,20 @@ class Mobject(object):
         return self.replicate(other)
 
     def init_data(self):
+        """
+        这里需要拓展认知：
+        每一个mob的data不仅仅包括points，还包括bounding_box和rgbas
+        """
         self.data: dict[str, np.ndarray] = {
-            "points": np.zeros((0, 3)),
-            "bounding_box": np.zeros((3, 3)),
-            "rgbas": np.zeros((1, 4)),
+            "points": np.zeros((0, 3)), # 数列，3个元素
+            "bounding_box": np.zeros((3, 3)), # 矩阵，3行3列
+            "rgbas": np.zeros((1, 4)), # 矩阵，1行4列
         }
 
     def init_uniforms(self):
+        """
+        这里的uniforms应该怎么翻译？
+        """
         self.uniforms: dict[str, float] = {
             "is_fixed_in_frame": float(self.is_fixed_in_frame),
             "gloss": self.gloss,
@@ -120,6 +128,9 @@ class Mobject(object):
         }
 
     def init_colors(self):
+        """
+        color和opacity属性来源于CONFIG字典
+        """
         self.set_color(self.color, self.opacity)
 
     def init_points(self):
@@ -127,11 +138,13 @@ class Mobject(object):
         pass
 
     def set_data(self, data: dict):
+        '''设置成员数据，以字典形式传入'''
         for key in data:
             self.data[key] = data[key].copy()
         return self
 
     def set_uniforms(self, uniforms: dict):
+        '''设置 uniform 变量，以字典形式传入'''
         for key in uniforms:
             self.uniforms[key] = uniforms[key]  # Copy?
         return self
@@ -148,12 +161,18 @@ class Mobject(object):
         new_length: int,
         resize_func: Callable[[np.ndarray, int], np.ndarray] = resize_array
     ):
+        '''
+        重置锚点数组大小
+        '''
         if new_length != len(self.data["points"]):
             self.data["points"] = resize_func(self.data["points"], new_length)
         self.refresh_bounding_box()
         return self
 
     def set_points(self, points: npt.ArrayLike):
+        '''
+        设置锚点
+        '''
         if len(points) == len(self.data["points"]):
             self.data["points"][:] = points
         elif isinstance(points, np.ndarray):
@@ -163,7 +182,13 @@ class Mobject(object):
         self.refresh_bounding_box()
         return self
 
+    """
+    The np.vstack function is used to stack or concatenate the sequence of input arrays vertically (row-wise) and make them a single array.
+    """
     def append_points(self, new_points: npt.ArrayLike):
+        '''
+        添加锚点
+        '''
         self.data["points"] = np.vstack([self.data["points"], new_points])
         self.refresh_bounding_box()
         return self
