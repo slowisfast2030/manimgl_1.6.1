@@ -735,6 +735,9 @@ class Mobject(object):
     # Transforming operations
 
     def shift(self, vector: np.ndarray):
+        '''
+        相对移动 vector 向量
+        '''
         self.apply_points_function(
             lambda points: points + vector,
             about_edge=None,
@@ -758,6 +761,9 @@ class Mobject(object):
         Otherwise, if about_point is given a value, scaling is done with
         respect to that point.
         """
+        """
+        放大 (缩小) 到原来的 ``scale_factor`` 倍，可以传入 ``about_point/about_edge``
+        """
         if isinstance(scale_factor, Iterable):
             scale_factor = np.array(scale_factor).clip(min=min_scale_factor)
         else:
@@ -778,6 +784,9 @@ class Mobject(object):
         pass
 
     def stretch(self, factor: float, dim: int, **kwargs):
+        '''
+        把 ``dim`` 维度伸缩到原来的 ``factor`` 倍
+        '''
         def func(points):
             points[:, dim] *= factor
             return points
@@ -785,6 +794,9 @@ class Mobject(object):
         return self
 
     def rotate_about_origin(self, angle: float, axis: np.ndarray = OUT):
+        '''
+        绕原点旋转 ``angle`` 弧度
+        '''
         return self.rotate(angle, axis, about_point=ORIGIN)
 
     def rotate(
@@ -794,6 +806,9 @@ class Mobject(object):
         about_point: np.ndarray | None = None,
         **kwargs
     ):
+        '''
+        以 ``axis`` 为方向，``angle`` 为角度旋转，``kwargs`` 中可传入 ``about_point``
+        '''
         rot_matrix_T = rotation_matrix_transpose(angle, axis)
         self.apply_points_function(
             lambda points: np.dot(points, rot_matrix_T),
@@ -803,9 +818,15 @@ class Mobject(object):
         return self
 
     def flip(self, axis: np.ndarray = UP, **kwargs):
+        '''
+        绕 ``axis`` 轴翻转
+        '''
         return self.rotate(TAU / 2, axis, **kwargs)
 
     def apply_function(self, function: Callable[[np.ndarray], np.ndarray], **kwargs):
+        '''
+        把 ``function`` 作用到所有锚点上
+        '''
         # Default to applying matrix about the origin, not mobjects center
         if len(kwargs) == 0:
             kwargs["about_point"] = ORIGIN
@@ -816,6 +837,9 @@ class Mobject(object):
         return self
 
     def apply_function_to_position(self, function: Callable[[np.ndarray], np.ndarray]):
+        '''
+        给物体所在的位置执行 ``function``
+        '''
         self.move_to(function(self.get_center()))
         return self
 
@@ -823,12 +847,18 @@ class Mobject(object):
         self,
         function: Callable[[np.ndarray], np.ndarray]
     ):
+        '''
+        给所有子物体所在的位置执行 ``function``
+        '''
         for submob in self.submobjects:
             submob.apply_function_to_position(function)
         return self
 
     def apply_matrix(self, matrix: npt.ArrayLike, **kwargs):
         # Default to applying matrix about the origin, not mobjects center
+        '''
+        把 ``matrix`` 矩阵作用到所有点上
+        '''
         if ("about_point" not in kwargs) and ("about_edge" not in kwargs):
             kwargs["about_point"] = ORIGIN
         full_matrix = np.identity(self.dim)
@@ -841,6 +871,9 @@ class Mobject(object):
         return self
 
     def apply_complex_function(self, function: Callable[[complex], complex], **kwargs):
+        '''
+        施加一个复变函数
+        '''
         def R3_func(point):
             x, y, z = point
             xy_complex = function(complex(x, y))
@@ -857,6 +890,9 @@ class Mobject(object):
         axis: np.ndarray = DOWN,
         wag_factor: float = 1.0
     ):
+        '''
+        沿 ``axis`` 轴 ``direction`` 方向摇摆 ``wag_factor``
+        '''
         for mob in self.family_members_with_points():
             alphas = np.dot(mob.get_points(), np.transpose(axis))
             alphas -= min(alphas)
@@ -871,6 +907,9 @@ class Mobject(object):
     # Positioning methods
 
     def center(self):
+        '''
+        放到画面中心
+        '''
         self.shift(-self.get_center())
         return self
 
@@ -882,6 +921,9 @@ class Mobject(object):
         """
         Direction just needs to be a vector pointing towards side or
         corner in the 2d plane.
+        """
+        """
+        以 ``direction`` 这个边界对齐
         """
         target_point = np.sign(direction) * (FRAME_X_RADIUS, FRAME_Y_RADIUS, 0)
         point_to_align = self.get_bounding_box_point(direction)
@@ -895,6 +937,9 @@ class Mobject(object):
         corner: np.ndarray = LEFT + DOWN,
         buff: float = DEFAULT_MOBJECT_TO_EDGE_BUFFER
     ):
+        '''
+        和 ``corner`` 这个角落对齐
+        '''
         return self.align_on_border(corner, buff)
 
     def to_edge(
@@ -902,6 +947,9 @@ class Mobject(object):
         edge: np.ndarray = LEFT,
         buff: float = DEFAULT_MOBJECT_TO_EDGE_BUFFER
     ):
+        '''
+        和 ``edge`` 这个边对齐
+        '''
         return self.align_on_border(edge, buff)
 
     def next_to(
@@ -939,6 +987,9 @@ class Mobject(object):
         return self
 
     def shift_onto_screen(self, **kwargs):
+        '''
+        确保在画面中
+        '''
         space_lengths = [FRAME_X_RADIUS, FRAME_Y_RADIUS]
         for vect in UP, DOWN, LEFT, RIGHT:
             dim = np.argmax(np.abs(vect))
@@ -950,6 +1001,9 @@ class Mobject(object):
         return self
 
     def is_off_screen(self):
+        '''
+        判断是否在画面外
+        '''
         if self.get_left()[0] > FRAME_X_RADIUS:
             return True
         if self.get_right()[0] < -FRAME_X_RADIUS:
@@ -978,34 +1032,43 @@ class Mobject(object):
         return self
 
     def stretch_to_fit_width(self, width: float, **kwargs):
+        '''拉伸以适应宽度'''
         return self.rescale_to_fit(width, 0, stretch=True, **kwargs)
 
     def stretch_to_fit_height(self, height: float, **kwargs):
+        '''拉伸以适应高度'''
         return self.rescale_to_fit(height, 1, stretch=True, **kwargs)
 
     def stretch_to_fit_depth(self, depth: float, **kwargs):
+        '''拉伸以适应深度'''
         return self.rescale_to_fit(depth, 2, stretch=True, **kwargs)
 
     def set_width(self, width: float, stretch: bool = False, **kwargs):
+        '''保持原比例设置宽度'''
         return self.rescale_to_fit(width, 0, stretch=stretch, **kwargs)
 
     def set_height(self, height: float, stretch: bool = False, **kwargs):
+        '''保持原比例设置高度'''
         return self.rescale_to_fit(height, 1, stretch=stretch, **kwargs)
 
     def set_depth(self, depth: float, stretch: bool = False, **kwargs):
+        '''保持原比例设置深度'''
         return self.rescale_to_fit(depth, 2, stretch=stretch, **kwargs)
 
     def set_max_width(self, max_width: float, **kwargs):
+        '''设置最大宽度'''
         if self.get_width() > max_width:
             self.set_width(max_width, **kwargs)
         return self
 
     def set_max_height(self, max_height: float, **kwargs):
+        '''设置最大高度'''
         if self.get_height() > max_height:
             self.set_height(max_height, **kwargs)
         return self
 
     def set_max_depth(self, max_depth: float, **kwargs):
+        '''设置最大深度'''
         if self.get_depth() > max_depth:
             self.set_depth(max_depth, **kwargs)
         return self
@@ -1026,6 +1089,7 @@ class Mobject(object):
         return self
 
     def set_coord(self, value: float, dim: int, direction: np.ndarray = ORIGIN):
+        '''移动到 ``dim`` 维度的 ``value`` 位置'''
         curr = self.get_coord(dim, direction)
         shift_vect = np.zeros(self.dim)
         shift_vect[dim] = value - curr
@@ -1033,15 +1097,19 @@ class Mobject(object):
         return self
 
     def set_x(self, x: float, direction: np.ndarray = ORIGIN):
+        '''将 x 轴坐标设置为 x'''
         return self.set_coord(x, 0, direction)
 
     def set_y(self, y: float, direction: np.ndarray = ORIGIN):
+        '''将 y 轴坐标设置为 y'''
         return self.set_coord(y, 1, direction)
 
     def set_z(self, z: float, direction: np.ndarray = ORIGIN):
+        '''将 z 轴坐标设置为 z'''
         return self.set_coord(z, 2, direction)
 
     def space_out_submobjects(self, factor: float = 1.5, **kwargs):
+        '''调整子物件的间距为 ``factor`` 倍'''
         self.scale(factor, **kwargs)
         for submob in self.submobjects:
             submob.scale(1. / factor)
@@ -1053,6 +1121,7 @@ class Mobject(object):
         aligned_edge: np.ndarray = ORIGIN,
         coor_mask: np.ndarray = np.array([1, 1, 1])
     ):
+        '''移动到 ``point_or_mobject`` 的位置'''
         if isinstance(point_or_mobject, Mobject):
             target = point_or_mobject.get_bounding_box_point(aligned_edge)
         else:
@@ -1062,6 +1131,7 @@ class Mobject(object):
         return self
 
     def replace(self, mobject: Mobject, dim_to_match: int = 0, stretch: bool = False):
+        '''放到和 ``mobject`` 的位置，并且大小相同'''
         if not mobject.get_num_points() and not mobject.submobjects:
             self.scale(0)
             return self
@@ -1084,12 +1154,14 @@ class Mobject(object):
         stretch: bool = False,
         buff: float = MED_SMALL_BUFF
     ):
+        '''环绕着 mobject'''
         self.replace(mobject, dim_to_match, stretch)
         length = mobject.length_over_dim(dim_to_match)
         self.scale((length + buff) / length)
         return self
 
     def put_start_and_end_on(self, start: np.ndarray, end: np.ndarray):
+        '''把物体的起点和终点通过旋转缩放放在 ``start`` 和 ``end``'''
         curr_start, curr_end = self.get_start_and_end()
         curr_vect = curr_end - curr_start
         if np.all(curr_vect == 0):
@@ -1117,6 +1189,7 @@ class Mobject(object):
         name: str = "rgbas",
         recurse: bool = False
     ):
+        '''将 rgbas 成员变量设置为指定的值'''
         for mob in self.get_family(recurse):
             mob.data[name] = np.array(rgba_array)
         return self
@@ -1128,6 +1201,9 @@ class Mobject(object):
     ):
         """
         Func should take in a point in R3 and output an rgba value
+        """
+        """
+        传入一个函数，这个函数接受一个三维坐标，将物件按照这个函数的方法设置颜色，包含透明度
         """
         for mob in self.get_family(recurse):
             rgba_array = [func(point) for point in mob.get_points()]
@@ -1143,6 +1219,9 @@ class Mobject(object):
         """
         Func should take in a point in R3 and output an rgb value
         """
+        """
+        传入一个函数，这个函数接受一个三维坐标，将物件按照这个函数的方法设置颜色
+        """
         for mob in self.get_family(recurse):
             rgba_array = [[*func(point), opacity] for point in mob.get_points()]
             mob.set_rgba_array(rgba_array)
@@ -1155,6 +1234,7 @@ class Mobject(object):
         name: str = "rgbas",
         recurse: bool = True
     ):
+        '''通过颜色设置 rgba_array 成员以染色'''
         max_len = 0
         if color is not None:
             rgbs = np.array([color_to_rgb(c) for c in listify(color)])
@@ -1174,6 +1254,7 @@ class Mobject(object):
         return self
 
     def set_color(self, color: ManimColor, opacity: float | None = None, recurse: bool = True):
+        '''设置颜色'''
         self.set_rgba_array_by_color(color, opacity, recurse=False)
         # Recurse to submobjects differently from how set_rgba_array_by_color
         # in case they implement set_color differently
@@ -1183,6 +1264,7 @@ class Mobject(object):
         return self
 
     def set_opacity(self, opacity: float, recurse: bool = True):
+        '''设置透明度'''
         self.set_rgba_array_by_color(color=None, opacity=opacity, recurse=False)
         if recurse:
             for submob in self.submobjects:
@@ -1196,6 +1278,7 @@ class Mobject(object):
         return self.data["rgbas"][0, 3]
 
     def set_color_by_gradient(self, *colors: ManimColor):
+        '''渐变染色'''
         self.set_submobject_colors_by_gradient(*colors)
         return self
 
@@ -1596,6 +1679,9 @@ class Mobject(object):
         Inputs 0 <= a < b <= 1 determine what portion
         of mobject to become.
         """
+        """
+        生成一个路径百分比从 a 到 b 的物件
+        """
         pass  # To implement in subclass
 
     def become(self, mobject: Mobject):
@@ -1619,6 +1705,10 @@ class Mobject(object):
         won't change during the animation so that calls to
         interpolate can skip this, and so that it's not
         read into the shader_wrapper objects needlessly
+        """
+        """
+        为了加速一些动画，尤其是 Transform，它可以很方便地确认哪些数据片段不会在动画期间改变，
+        以便调用插值可以跳过这一点，这样它就不会被不必要地读入 shader_wrapper 对象
         """
         if self.has_updaters:
             return
@@ -1652,12 +1742,14 @@ class Mobject(object):
 
     @affects_shader_info_id
     def fix_in_frame(self):
+        '''将物件锁定在屏幕上，常用于 3D 场景需要旋转镜头的情况'''
         self.uniforms["is_fixed_in_frame"] = 1.0
         self.is_fixed_in_frame = True
         return self
 
     @affects_shader_info_id
     def unfix_from_frame(self):
+        '''将锁定在屏幕上的物件解锁'''
         self.uniforms["is_fixed_in_frame"] = 0.0
         self.is_fixed_in_frame = False
         return self
@@ -1689,6 +1781,20 @@ class Mobject(object):
         vec4 color, vec3 point, vec3 unit_normal.
         The code should change the color variable
         """
+        """
+        传入一段 ``glsl`` 代码，用这段代码来给物件上色
+
+        代码中包含以下变量：
+
+        - ``vec4 color``
+        - ``vec3 point``
+        - ``vec3 unit_normal``
+        - ``vec3 light_coords``
+        - ``float gloss``
+        - ``float shadow``
+
+        如果想要学习如何用 glsl 上色，推荐去 `<https://thebookofshaders/>`_ 和 `<https://shadertoy.com/>`_ 学习一番`
+        """
         self.replace_shader_code(
             "///// INSERT COLOR FUNCTION HERE /////",
             glsl_code
@@ -1705,6 +1811,12 @@ class Mobject(object):
         """
         Pass in a glsl expression in terms of x, y and z which returns
         a float.
+        """
+        """
+        传入一个关于 ``x, y, z`` 的字符串表达式，这个表达式应当返回一个 float 值
+
+        这个方法不是非常智能，因为会把所有匹配到的 ``x, y, z`` 都认为是变量，
+        所以如果有特殊必要的话请查看该方法的源码，进行一些更改，取消字符串的匹配和替换
         """
         # TODO, add a version of this which changes the point data instead
         # of the shader code
@@ -1740,6 +1852,7 @@ class Mobject(object):
         return self
 
     def get_shader_wrapper(self):
+        '''获取 shader 包装'''
         self.shader_wrapper.vert_data = self.get_shader_data()
         self.shader_wrapper.vert_indices = self.get_shader_vert_indices()
         self.shader_wrapper.uniforms = self.get_shader_uniforms()
@@ -1747,6 +1860,7 @@ class Mobject(object):
         return self.shader_wrapper
 
     def get_shader_wrapper_list(self) -> list[ShaderWrapper]:
+        '''获取 shader 包装列表'''
         shader_wrappers = it.chain(
             [self.get_shader_wrapper()],
             *[sm.get_shader_wrapper_list() for sm in self.submobjects]
@@ -1793,6 +1907,7 @@ class Mobject(object):
         shader_data[shader_data_key] = self.data[data_key]
 
     def get_shader_data(self):
+        '''获取 shader 数据'''
         shader_data = self.get_resized_shader_data_array(self.get_num_points())
         self.read_data_to_shader(shader_data, "point", "points")
         return shader_data
@@ -1913,7 +2028,9 @@ class Mobject(object):
 
 
 class Group(Mobject):
+    '''数学物件组合'''
     def __init__(self, *mobjects: Mobject, **kwargs):
+        '''传入一系列 ``mobjects`` 作为子物件，可以用 ``[]`` 索引'''
         if not all([isinstance(m, Mobject) for m in mobjects]):
             raise Exception("All submobjects must be of type Mobject")
         Mobject.__init__(self, **kwargs)
@@ -1925,12 +2042,14 @@ class Group(Mobject):
 
 
 class Point(Mobject):
+    '''点'''
     CONFIG = {
         "artificial_width": 1e-6,
         "artificial_height": 1e-6,
     }
 
     def __init__(self, location: npt.ArrayLike = ORIGIN, **kwargs):
+        '''似乎仅用于表示坐标'''
         Mobject.__init__(self, **kwargs)
         self.set_location(location)
 
@@ -1941,17 +2060,32 @@ class Point(Mobject):
         return self.artificial_height
 
     def get_location(self) -> np.ndarray:
+        '''获取坐标位置'''
         return self.get_points()[0].copy()
 
     def get_bounding_box_point(self, *args, **kwargs) -> np.ndarray:
         return self.get_location()
 
     def set_location(self, new_loc: npt.ArrayLike):
+        '''设置坐标位置'''
         self.set_points(np.array(new_loc, ndmin=2, dtype=float))
 
 
 class _AnimationBuilder:
+    '''动画编译器'''
     def __init__(self, mobject: Mobject):
+        '''用于场景类 ``Scene`` 的 ``play`` 中，用法如下：
+
+        .. code:: python
+
+            self.play(mob.animate.shift(UP).scale(2).rotate(PI))
+
+        该示例中，会使 mob 生成一个 **向上移动 2 个单位，放大至 2 倍，旋转 180 度** 的目标，并使用 
+        ``MoveToTarget`` 进行转变
+
+        这个方法可以采用 **链式操作**，即像样例中给的那样连续施加 3 个方法。这得益于 Mobject 的这些方法都返回自身，
+        也就是 ``return self``，有兴趣的读者可以仔细研究一下源码
+        '''
         self.mobject = mobject
         self.overridden_animation = None
         self.mobject.generate_target()
@@ -1982,6 +2116,28 @@ class _AnimationBuilder:
         return update_target
 
     def build(self):
+        '''
+        在动画播放之前，:func:`~manimlib.animation.animation.prepare_animation` 
+        会先自动调用 ``build()`` 方法，将方法编译为 **动画实例**
+
+        将一系列在 ``.animate`` 之后的方法合并为一个 ``MoveToTarget``，并返回这个 
+        ``MoveToTraget`` 的动画实例。也就是说，可以用下面的代码来播放动画，也可以将动画转变为更新
+
+        .. code:: python
+
+            # 直接用 play 方法播放
+            self.play(mob.animate.shift(UP).scale(2).rotate(PI/2))
+            
+            # 播放动画
+            anim = mob.animate.shift(UP).scale(2).rotate(PI/2).build() # 此处有无 .build() 均可
+            self.play(anim)
+    
+            # 将动画实例用一个变量保存，并将动画转变为更新
+            anim = mob.animate.shift(UP).scale(2).rotate(PI/2).build()
+            turn_animation_into_updater(anim)
+            self.add(mob)
+            self.wait(2)
+        '''
         from manimlib.animation.transform import _MethodAnimation
 
         if self.overridden_animation:
