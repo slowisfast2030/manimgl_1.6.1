@@ -183,7 +183,25 @@ class Mobject(object):
         return self
 
     """
-    The np.vstack function is used to stack or concatenate the sequence of input arrays vertically (row-wise) and make them a single array.
+    The np.vstack function is used to stack or concatenate the sequence of input arrays 
+    vertically (row-wise) and make them a single array.
+
+    # Import numpy module
+    import numpy as np
+
+    # Create two input arrays
+    a = np.array([1, 2, 3])
+    b = np.array([4, 5, 6])
+
+    # Stack them vertically using np.vstack
+    c = np.vstack((a, b))
+
+    # Print the output array
+    print(c)
+
+    [[1 2 3]
+    [4 5 6]]
+
     """
     def append_points(self, new_points: npt.ArrayLike):
         '''
@@ -194,6 +212,11 @@ class Mobject(object):
         return self
 
     def reverse_points(self):
+        '''
+        反转锚点
+
+        锚点的顺序影响曲线的绘制顺序
+        '''
         for mob in self.get_family():
             for key in mob.data:
                 mob.data[key] = mob.data[key][::-1]
@@ -207,6 +230,9 @@ class Mobject(object):
         about_edge: np.ndarray = ORIGIN,
         works_on_bounding_box: bool = False
     ):
+        """
+        以 ``about_point`` 为不变基准点，或以 ``about_edge`` 为不变基准边，对所有点执行 ``func``
+        """
         if about_point is None and about_edge is not None:
             about_point = self.get_bounding_box_point(about_edge)
 
@@ -233,34 +259,60 @@ class Mobject(object):
     # Others related to points
 
     def match_points(self, mobject: Mobject):
+        '''
+        将自身锚点与 ``mobject`` 的锚点匹配
+        '''
         self.set_points(mobject.get_points())
         return self
 
     def get_points(self) -> np.ndarray:
+        '''
+        获取物件锚点
+        '''
         return self.data["points"]
 
     def clear_points(self) -> None:
+        '''
+        清空物件锚点
+        '''
         self.resize_points(0)
 
     def get_num_points(self) -> int:
+        '''
+        获取锚点数量
+        '''
         return len(self.data["points"])
 
     def get_all_points(self) -> np.ndarray:
+        '''
+        获取物件所有锚点
+        '''
         if self.submobjects:
             return np.vstack([sm.get_points() for sm in self.get_family()])
         else:
             return self.get_points()
 
     def has_points(self) -> bool:
+        '''
+        判断是否有锚点
+        '''
         return self.get_num_points() > 0
 
     def get_bounding_box(self) -> np.ndarray:
+        '''
+        获取物件的矩形包围框（碰撞箱）
+        
+        包含三个元素，分别为左下，中心，右上
+        '''
         if self.needs_new_bounding_box:
             self.data["bounding_box"] = self.compute_bounding_box()
             self.needs_new_bounding_box = False
         return self.data["bounding_box"]
 
     def compute_bounding_box(self) -> np.ndarray:
+        '''
+        计算包围框
+        '''
         all_points = np.vstack([
             self.get_points(),
             *(
@@ -283,6 +335,9 @@ class Mobject(object):
         recurse_down: bool = False,
         recurse_up: bool = True
     ):
+        '''
+        更新包围框
+        '''
         for mob in self.get_family(recurse_down):
             mob.needs_new_bounding_box = True
         if recurse_up:
@@ -295,6 +350,9 @@ class Mobject(object):
         point: np.ndarray,
         buff: float = MED_SMALL_BUFF
     ) -> bool:
+        '''
+        判断某一点是否在本物件的包围框范围内
+        '''
         bb = self.get_bounding_box()
         mins = (bb[0] - buff)
         maxs = (bb[2] + buff)
@@ -336,6 +394,9 @@ class Mobject(object):
         return [m for m in self.get_family() if m.has_points()]
 
     def add(self, *mobjects: Mobject):
+        '''
+        将 ``mobjects`` 添加到子物体中
+        '''
         if self in mobjects:
             raise Exception("Mobject cannot contain self")
         for mobject in mobjects:
@@ -347,6 +408,9 @@ class Mobject(object):
         return self
 
     def remove(self, *mobjects: Mobject):
+        '''
+        将 ``mobjects`` 从子物体中移除
+        '''
         for mobject in mobjects:
             if mobject in self.submobjects:
                 self.submobjects.remove(mobject)
@@ -356,10 +420,16 @@ class Mobject(object):
         return self
 
     def add_to_back(self, *mobjects: Mobject):
+        '''
+        将 ``mobjects`` 添加到子物体前面（覆盖关系在下）
+        '''
         self.set_submobjects(list_update(mobjects, self.submobjects))
         return self
 
     def replace_submobject(self, index: int, new_submob: Mobject):
+        '''
+        用新的子物件代替指定索引处的旧子物件
+        '''
         old_submob = self.submobjects[index]
         if self in old_submob.parents:
             old_submob.parents.remove(self)
@@ -373,6 +443,9 @@ class Mobject(object):
         return self
 
     def set_submobjects(self, submobject_list: list[Mobject]):
+        '''
+        重新设置子物件
+        '''
         self.remove(*self.submobjects)
         self.add(*submobject_list)
         return self
@@ -381,6 +454,8 @@ class Mobject(object):
         """
         Ensures all attributes which are mobjects are included
         in the submobjects list.
+
+        确保所有对象属性都包含在子对象列表中
         """
         mobject_attrs = [x for x in list(self.__dict__.values()) if isinstance(x, Mobject)]
         self.set_submobjects(list_update(self.submobjects, mobject_attrs))
@@ -394,6 +469,9 @@ class Mobject(object):
         center: bool = True,
         **kwargs
     ):
+        '''
+        将子物件按照 ``direction`` 方向排列
+        '''
         for m1, m2 in zip(self.submobjects, self.submobjects[1:]):
             m2.next_to(m1, direction, **kwargs)
         if center:
@@ -413,6 +491,12 @@ class Mobject(object):
         aligned_edge: np.ndarray = ORIGIN,
         fill_rows_first: bool = True
     ):
+        '''将子物件按表格方式排列
+
+        - ``n_rows``, ``n_cols`` : 行数、列数
+        - ``v_buff``, ``h_buff`` : 行距、列距
+        - ``aligned_edge`` : 对齐边缘
+        '''
         submobs = self.submobjects
         if n_rows is None and n_cols is None:
             n_rows = int(np.sqrt(len(submobs)))
