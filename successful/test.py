@@ -130,3 +130,22 @@ class test7(Scene):
             self.add(Dot(p).set_color(YELLOW_E))
 
         self.wait(1)
+
+class test8(Scene):
+    def construct(self):
+        c = Circle()
+        self.add(c)
+
+        for p in c.get_points():
+            self.add(Dot(p).set_color(YELLOW_E).set_opacity(0.5))
+
+        self.wait(1)
+
+        cc = c.copy()
+        cc.resize_points(10)
+        self.add(cc)
+
+        for p in cc.get_points():
+            self.add(Dot(p).set_color(RED))
+        
+        self.wait(1)
