@@ -940,6 +940,7 @@ class Mobject(object):
         buff是边缘和mob的距离
         """
         # 哇！点睛之笔
+        # 和`next_to`方法有异曲同工之妙
         target_point = np.sign(direction) * (FRAME_X_RADIUS, FRAME_Y_RADIUS, 0)
         point_to_align = self.get_bounding_box_point(direction)
         shift_val = target_point - point_to_align - buff * np.array(direction)
