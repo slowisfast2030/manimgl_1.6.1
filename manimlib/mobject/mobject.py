@@ -1380,6 +1380,10 @@ class Mobject(object):
         '''
         获取某一边缘的中心
         
+        direction: 
+        LEFT
+        RIGHT
+        ...
         '''
         return self.get_bounding_box_point(direction)
 
@@ -1387,6 +1391,10 @@ class Mobject(object):
         '''
         获取某一个角落
         
+        direction:
+        LEFT+UP
+        LEFT+DOWN
+        ...
         '''
         return self.get_bounding_box_point(direction)
 
