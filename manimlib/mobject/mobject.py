@@ -1390,6 +1390,7 @@ class Mobject(object):
         indices = (np.sign(direction) + 1).astype(int)
         # 这样做的原理是什么？
         # 在这里，不要把bb理解成矩阵，理解成三个点构成的列表更好
+        # direction上的点都可以由bb上既有的点拼接得到
         return np.array([
             bb[indices[i]][i]
             for i in range(3)
