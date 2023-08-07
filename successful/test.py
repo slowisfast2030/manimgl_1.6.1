@@ -37,5 +37,47 @@ class test1(Scene):
         self.add(d1_target_point, d2_point_to_align)
         self.add(cc)
 
+        print("&"*100)
+        print(c.get_bounding_box())
+        print(s.get_bounding_box())
 
 
+
+class test2(Scene):
+    def construct(self):
+        c = Square()
+        print("&"*100)
+        print(c.get_bounding_box())
+
+        self.add(c)
+        self.wait(1)
+
+        l = c.get_bounding_box_point(LEFT)
+        d_left = Dot(l).set_color(RED)
+
+        r = c.get_bounding_box_point(RIGHT)
+        d_right = Dot(r).set_color(TEAL)
+
+        u = c.get_bounding_box_point(UP)
+        d_up = Dot(u).set_color(YELLOW)
+
+        d = c.get_bounding_box_point(DOWN)
+        d_down = Dot(d).set_color(BLUE)
+
+        self.add(d_left, d_right, d_up, d_down)
+
+
+class test3(Scene):
+    def construct(self):
+        c = Square()
+        print("&"*100)
+        print(c.get_bounding_box())
+
+        self.add(c)
+        self.wait(1)
+
+        l = c.get_bounding_box_point(RIGHT)
+        d = Dot(l).set_color(RED)
+
+        self.add(d)
+        self.wait()

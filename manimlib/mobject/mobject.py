@@ -1360,8 +1360,6 @@ class Mobject(object):
     def get_bounding_box_point(self, direction: np.ndarray) -> np.ndarray:
         bb = self.get_bounding_box()
         indices = (np.sign(direction) + 1).astype(int)
-        # print("\n")
-        # print("indices", indices)
         return np.array([
             bb[indices[i]][i]
             for i in range(3)
