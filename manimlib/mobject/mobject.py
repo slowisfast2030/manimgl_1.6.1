@@ -1030,6 +1030,8 @@ class Mobject(object):
         '''
         判断是否在画面外
         '''
+        # 思维模型：两个框
+        # bounding box是一个框，frame是另一个框
         if self.get_left()[0] > FRAME_X_RADIUS:
             return True
         if self.get_right()[0] < -FRAME_X_RADIUS:
@@ -1461,39 +1463,53 @@ class Mobject(object):
         )))
 
     def get_top(self) -> np.ndarray:
+        '''获取上边缘中心'''
         return self.get_edge_center(UP)
 
     def get_bottom(self) -> np.ndarray:
+        '''获取下边缘中心'''
         return self.get_edge_center(DOWN)
 
     def get_right(self) -> np.ndarray:
+        '''获取右边缘中心'''
         return self.get_edge_center(RIGHT)
 
     def get_left(self) -> np.ndarray:
+        '''获取左边缘中心'''
         return self.get_edge_center(LEFT)
 
     def get_zenith(self) -> np.ndarray:
+        '''获取外边缘中心（这里的外，指垂直于屏幕向外的平面）'''
         return self.get_edge_center(OUT)
 
     def get_nadir(self) -> np.ndarray:
+        '''获取内边缘中心（这里的内，指垂直于屏幕向内的平面）'''
         return self.get_edge_center(IN)
 
     def length_over_dim(self, dim: int) -> float:
+        '''在 ``dim`` 维度的长度'''
         bb = self.get_bounding_box()
         return abs((bb[2] - bb[0])[dim])
 
     def get_width(self) -> float:
+        '''获取物件宽度'''
         return self.length_over_dim(0)
 
     def get_height(self) -> float:
+        '''获取物件高度'''
         return self.length_over_dim(1)
 
     def get_depth(self) -> float:
+        '''获取物件深度（即 z 轴方向的宽度）'''
         return self.length_over_dim(2)
 
     def get_coord(self, dim: int, direction: np.ndarray = ORIGIN) -> float:
         """
         Meant to generalize get_x, get_y, get_z
+        获取物件在 ``dim`` 维度上的坐标
+
+        当direction为ORIGIN的时候
+        获取的是中心
         """
         return self.get_bounding_box_point(direction)[dim]
 

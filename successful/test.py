@@ -62,6 +62,7 @@ class test2(Scene):
         d_up = Dot(u).set_color(YELLOW)
 
         d = c.get_bounding_box_point(DOWN)
+        d = c.get_bounding_box_point(ORIGIN)
         d_down = Dot(d).set_color(BLUE)
 
         self.add(d_left, d_right, d_up, d_down)
@@ -76,7 +77,7 @@ class test3(Scene):
             phi=70*DEGREES)
 
         c = Cube()
-        c.set_shadow(0.8)
+        c.set_opacity(0.5)
         print("&"*100)
         print(c.get_bounding_box())
 
@@ -84,6 +85,7 @@ class test3(Scene):
         self.wait(1)
 
         l = c.get_bounding_box_point(DOWN+RIGHT+IN)
+        l = c.get_bounding_box_point(ORIGIN)
         s = Sphere(radius=0.1).move_to(l).set_color(RED)
 
         self.add(s)
