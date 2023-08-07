@@ -1368,6 +1368,10 @@ class Mobject(object):
         例如：
         给定RIGHT，获取包围框右边的点
         给定RIGHT+UP，获取包围框右上角的点
+
+        延伸：
+        知道了包围框的三个点，我们就可以计算出包围框上的一些关键点
+        如果mob是正方体的，我们可以计算出六个面和12条边的中心点以及顶点
         """
         bb = self.get_bounding_box()
         indices = (np.sign(direction) + 1).astype(int)
