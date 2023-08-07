@@ -1384,6 +1384,9 @@ class Mobject(object):
         """
         bb = self.get_bounding_box()
         # 没有理解indices的作用
+        # bb有3个点，我们依次对其编号：0,1,2
+        # 对于RIGHT，indices = [2,1,1]
+        # 代表着最终返回的点是由bb的第1个点和第2个点计算得出的
         indices = (np.sign(direction) + 1).astype(int)
         # 这样做的原理是什么？
         return np.array([
