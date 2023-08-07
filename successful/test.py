@@ -108,3 +108,12 @@ class test5(Scene):
 
         self.add(c)
         self.wait(1)
+
+class test6(Scene):
+    def construct(self):
+        c = Square()
+        for d in c.get_boundary_point(RIGHT):
+            self.add(Dot(d).set_color(RED))
+
+        self.add(c)
+        self.wait(1)
