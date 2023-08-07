@@ -69,15 +69,22 @@ class test2(Scene):
 
 class test3(Scene):
     def construct(self):
-        c = Square()
+
+        frame = self.camera.frame
+        frame.set_euler_angles(
+            theta=30*DEGREES, 
+            phi=70*DEGREES)
+
+        c = Cube()
+        c.set_shadow(0.8)
         print("&"*100)
         print(c.get_bounding_box())
 
         self.add(c)
         self.wait(1)
 
-        l = c.get_bounding_box_point(RIGHT)
-        d = Dot(l).set_color(RED)
+        l = c.get_bounding_box_point(DOWN+RIGHT+IN)
+        s = Sphere(radius=0.1).move_to(l).set_color(RED)
 
-        self.add(d)
+        self.add(s)
         self.wait()
