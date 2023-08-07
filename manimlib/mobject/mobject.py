@@ -1021,6 +1021,7 @@ class Mobject(object):
             buff = kwargs.get("buff", DEFAULT_MOBJECT_TO_EDGE_BUFFER)
             max_val = space_lengths[dim] - buff
             edge_center = self.get_edge_center(vect)
+            # vect是单位向量，下面的点积计算的是edge_center在vect方向上的投影
             if np.dot(edge_center, vect) > max_val:
                 self.to_edge(vect, **kwargs)
         return self

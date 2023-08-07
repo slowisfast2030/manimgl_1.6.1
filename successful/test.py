@@ -97,3 +97,12 @@ class test4(Scene):
 
         self.add(c)
         self.wait(1)
+
+
+class test5(Scene):
+    def construct(self):
+        c = Square().move_to([1,1,0])
+        c.shift_onto_screen(buff=0)
+
+        self.add(c)
+        self.wait(1)
