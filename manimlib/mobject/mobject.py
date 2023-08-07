@@ -964,6 +964,9 @@ class Mobject(object):
     ):
         '''
         放到 ``mobject_or_point`` 旁边
+
+        任何复杂问题都可以分解为若干个简单的问题
+        对于这段源码，简单问题之一：搞清楚`get_bounding_box_point`函数的作用
         '''
         if isinstance(mobject_or_point, Mobject):
             mob = mobject_or_point
@@ -983,9 +986,6 @@ class Mobject(object):
         else:
             aligner = self
         point_to_align = aligner.get_bounding_box_point(aligned_edge - direction)
-        print("\n")
-        print("target_point", target_point)
-        print("point_to_align", point_to_align)
         self.shift((target_point - point_to_align + buff * direction) * coor_mask)
         return self
 
