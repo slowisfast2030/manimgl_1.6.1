@@ -1389,6 +1389,7 @@ class Mobject(object):
         # 代表着最终返回的点是由bb的第1个点和第2个点计算得出的
         indices = (np.sign(direction) + 1).astype(int)
         # 这样做的原理是什么？
+        # 在这里，不要把bb理解成矩阵，理解成三个点构成的列表更好
         return np.array([
             bb[indices[i]][i]
             for i in range(3)
