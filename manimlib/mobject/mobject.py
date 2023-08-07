@@ -939,6 +939,7 @@ class Mobject(object):
         将mob移到frame的边缘
         buff是边缘和mob的距离
         """
+        # 哇！点睛之笔
         target_point = np.sign(direction) * (FRAME_X_RADIUS, FRAME_Y_RADIUS, 0)
         point_to_align = self.get_bounding_box_point(direction)
         shift_val = target_point - point_to_align - buff * np.array(direction)
