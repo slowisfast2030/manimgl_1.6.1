@@ -286,6 +286,9 @@ class Mobject(object):
     def get_all_points(self) -> np.ndarray:
         '''
         获取物件所有锚点
+
+        这个函数就可以看出submobjects属性和self.get_family()的区别了
+        submobjects属性只包含直接子物件，而get_family()还包含自身
         '''
         if self.submobjects:
             return np.vstack([sm.get_points() for sm in self.get_family()])
