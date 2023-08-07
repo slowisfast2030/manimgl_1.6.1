@@ -1377,9 +1377,15 @@ class Mobject(object):
         ])
 
     def get_edge_center(self, direction: np.ndarray) -> np.ndarray:
+        '''
+        获取某一边缘的中心
+        
+        
+        '''
         return self.get_bounding_box_point(direction)
 
     def get_corner(self, direction: np.ndarray) -> np.ndarray:
+        '''获取某一个角落'''
         return self.get_bounding_box_point(direction)
 
     def get_center(self) -> np.ndarray:
