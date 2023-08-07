@@ -88,3 +88,12 @@ class test3(Scene):
 
         self.add(s)
         self.wait()
+
+
+class test4(Scene):
+    def construct(self):
+        c = Square()
+        c.align_on_border(LEFT, buff=0)
+
+        self.add(c)
+        self.wait(1)
