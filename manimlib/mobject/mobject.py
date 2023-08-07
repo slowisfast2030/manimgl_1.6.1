@@ -1523,21 +1523,32 @@ class Mobject(object):
         return self.get_coord(2, direction)
 
     def get_start(self) -> np.ndarray:
+        '''获取起始点'''
         self.throw_error_if_no_points()
         return self.get_points()[0].copy()
 
     def get_end(self) -> np.ndarray:
+        '''获取终止点'''
         self.throw_error_if_no_points()
         return self.get_points()[-1].copy()
 
     def get_start_and_end(self) -> tuple(np.ndarray, np.ndarray):
+        '''获取起始点和终止点'''
         self.throw_error_if_no_points()
         points = self.get_points()
         return (points[0].copy(), points[-1].copy())
 
+    # 这个函数的用处很多
     def point_from_proportion(self, alpha: float) -> np.ndarray:
+        '''
+        在整条路径上占比为 ``alpha`` 处的点
+
+        真是漂亮啊！
+        '''
         points = self.get_points()
+        # 第一次插值
         i, subalpha = integer_interpolate(0, len(points) - 1, alpha)
+        # 第二次插值
         return interpolate(points[i], points[i + 1], subalpha)
 
     def pfp(self, alpha):

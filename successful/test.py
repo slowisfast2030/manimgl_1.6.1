@@ -117,3 +117,11 @@ class test6(Scene):
 
         self.add(c)
         self.wait(1)
+
+class test7(Scene):
+    def construct(self):
+        c = Circle()
+        p = c.point_from_proportion(0.75)
+        d = Dot(p).set_color(TEAL)
+        self.add(c, d)
+        self.wait(1)
