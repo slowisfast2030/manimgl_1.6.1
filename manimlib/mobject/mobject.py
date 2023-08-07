@@ -974,6 +974,7 @@ class Mobject(object):
                 target_aligner = mob[index_of_submobject_to_align]
             else:
                 target_aligner = mob
+            # 在target的bounding box上找到一个点
             target_point = target_aligner.get_bounding_box_point(
                 aligned_edge + direction
             )
@@ -985,7 +986,10 @@ class Mobject(object):
             aligner = self[index_of_submobject_to_align]
         else:
             aligner = self
+        # 在aligner的bounding box上找到一个点
         point_to_align = aligner.get_bounding_box_point(aligned_edge - direction)
+        # mobject的移动就是把这两个点重合
+        # shift函数是作用于所有点的，那么解决问题的思路就是找到两个mob的可以对其的点，从而计算出shift vector
         self.shift((target_point - point_to_align + buff * direction) * coor_mask)
         return self
 
@@ -1358,6 +1362,13 @@ class Mobject(object):
     # Getters
 
     def get_bounding_box_point(self, direction: np.ndarray) -> np.ndarray:
+        """
+        给定direction，获取包围框上的点
+
+        例如：
+        给定RIGHT，获取包围框右边的点
+        给定RIGHT+UP，获取包围框右上角的点
+        """
         bb = self.get_bounding_box()
         indices = (np.sign(direction) + 1).astype(int)
         return np.array([
