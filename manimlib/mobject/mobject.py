@@ -941,6 +941,7 @@ class Mobject(object):
         """
         # 哇！点睛之笔
         # 和`next_to`方法有异曲同工之妙
+        # 同时，强化对frame的概念
         target_point = np.sign(direction) * (FRAME_X_RADIUS, FRAME_Y_RADIUS, 0)
         point_to_align = self.get_bounding_box_point(direction)
         shift_val = target_point - point_to_align - buff * np.array(direction)
