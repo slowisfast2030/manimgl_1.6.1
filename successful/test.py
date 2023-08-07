@@ -93,7 +93,7 @@ class test3(Scene):
 class test4(Scene):
     def construct(self):
         c = Square()
-        c.align_on_border(LEFT, buff=0)
+        c.align_on_border(LEFT+UP, buff=0)
 
         self.add(c)
         self.wait(1)
