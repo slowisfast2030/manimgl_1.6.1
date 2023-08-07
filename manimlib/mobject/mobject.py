@@ -1381,7 +1381,7 @@ class Mobject(object):
         return self
 
     # Getters
-
+    # get_bounding_box_point函数是核心，其他的很多函数都是基于这个函数
     def get_bounding_box_point(self, direction: np.ndarray) -> np.ndarray:
         """
         给定direction，获取包围框上的点
