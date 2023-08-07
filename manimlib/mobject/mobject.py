@@ -1376,8 +1376,14 @@ class Mobject(object):
         c = Cube()
         l = c.get_bounding_box_point(DOWN+RIGHT+IN)
         s = Sphere(radius=0.1).move_to(l).set_color(RED)
+
+        延伸2：
+        通过包围框上的点
+        我们可以计算出构成mob的边框上的任何一点
+        也可以计算出构成mob的面上的任何一点
         """
         bb = self.get_bounding_box()
+        # 没有理解indices的作用
         indices = (np.sign(direction) + 1).astype(int)
         # 这样做的原理是什么？
         return np.array([
