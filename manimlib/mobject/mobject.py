@@ -912,6 +912,9 @@ class Mobject(object):
     def center(self):
         '''
         放到画面中心
+
+        shift操作的核心是找到target_point和align_point
+        然后计算shift vector
         '''
         self.shift(-self.get_center())
         return self
