@@ -915,6 +915,11 @@ class Mobject(object):
 
         shift操作的核心是找到target_point和align_point
         然后计算shift vector
+
+        target_point: ORIGIN = [0, 0, 0]
+        align_point: self.get_center()
+
+        shift vector = target_point - align_point = -self.get_center()
         '''
         self.shift(-self.get_center())
         return self
