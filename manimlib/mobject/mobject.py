@@ -1372,9 +1372,14 @@ class Mobject(object):
         延伸：
         知道了包围框的三个点，我们就可以计算出包围框上的一些关键点
         如果mob是正方体的，我们可以计算出六个面和12条边的中心点以及顶点
+
+        c = Cube()
+        l = c.get_bounding_box_point(DOWN+RIGHT+IN)
+        s = Sphere(radius=0.1).move_to(l).set_color(RED)
         """
         bb = self.get_bounding_box()
         indices = (np.sign(direction) + 1).astype(int)
+        # 这样做的原理是什么？
         return np.array([
             bb[indices[i]][i]
             for i in range(3)
