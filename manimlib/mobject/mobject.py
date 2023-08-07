@@ -983,6 +983,9 @@ class Mobject(object):
         else:
             aligner = self
         point_to_align = aligner.get_bounding_box_point(aligned_edge - direction)
+        print("\n")
+        print("target_point", target_point)
+        print("point_to_align", point_to_align)
         self.shift((target_point - point_to_align + buff * direction) * coor_mask)
         return self
 
@@ -1357,6 +1360,8 @@ class Mobject(object):
     def get_bounding_box_point(self, direction: np.ndarray) -> np.ndarray:
         bb = self.get_bounding_box()
         indices = (np.sign(direction) + 1).astype(int)
+        # print("\n")
+        # print("indices", indices)
         return np.array([
             bb[indices[i]][i]
             for i in range(3)

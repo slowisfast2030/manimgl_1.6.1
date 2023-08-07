@@ -25,8 +25,15 @@ class test(Scene):
 class test1(Scene):
     def construct(self):
         c = Circle()
-        s = Square()
+        s = Square().center()
 
-        c.next_to(s, LEFT)
+        c.next_to(s, LEFT, buff=0)
         self.add(c, s)
         self.wait(1)
+
+        d1 = Dot(np.array([-1., 0., 0.])).set_color(RED)
+        d2 = Dot(np.array([1., 0., 0.])).set_color(BLUE)
+        self.add(d1, d2)
+
+
+
