@@ -1557,6 +1557,7 @@ class Mobject(object):
         return self.point_from_proportion(alpha)
 
     def get_pieces(self, n_pieces: int) -> Group:
+        '''将物体拆成 ``n_pieces`` 个部分，便于部分解决 3D 中透视问题'''
         template = self.copy()
         template.set_submobjects([])
         alphas = np.linspace(0, 1, n_pieces + 1)
@@ -1575,6 +1576,7 @@ class Mobject(object):
     # Match other mobject properties
 
     def match_color(self, mobject: Mobject):
+        '''将自己的颜色与 ``mobject`` 匹配'''
         return self.set_color(mobject.get_color())
 
     def match_dim_size(self, mobject: Mobject, dim: int, **kwargs):
@@ -1584,12 +1586,15 @@ class Mobject(object):
         )
 
     def match_width(self, mobject: Mobject, **kwargs):
+        '''将自己的宽度与 ``mobject`` 匹配'''
         return self.match_dim_size(mobject, 0, **kwargs)
 
     def match_height(self, mobject: Mobject, **kwargs):
+        '''将自己的高度与 ``mobject`` 匹配'''
         return self.match_dim_size(mobject, 1, **kwargs)
 
     def match_depth(self, mobject: Mobject, **kwargs):
+        '''将自己的深度与 ``mobject`` 匹配（这里的深度指 z 轴方向的宽度）'''
         return self.match_dim_size(mobject, 2, **kwargs)
 
     def match_coord(
@@ -1609,6 +1614,7 @@ class Mobject(object):
         mobject_or_point: Mobject | np.ndarray,
         direction: np.ndarray = ORIGIN
     ):
+        '''移动到与 ``mobject`` 相同的 x 轴坐标'''
         return self.match_coord(mobject_or_point, 0, direction)
 
     def match_y(
@@ -1616,6 +1622,7 @@ class Mobject(object):
         mobject_or_point: Mobject | np.ndarray,
         direction: np.ndarray = ORIGIN
     ):
+        '''移动到与 ``mobject`` 相同的 y 轴坐标'''
         return self.match_coord(mobject_or_point, 1, direction)
 
     def match_z(
@@ -1623,6 +1630,7 @@ class Mobject(object):
         mobject_or_point: Mobject | np.ndarray,
         direction: np.ndarray = ORIGIN
     ):
+        '''移动到与 ``mobject`` 相同的 z 轴坐标'''
         return self.match_coord(mobject_or_point, 2, direction)
 
     def align_to(
@@ -1638,6 +1646,12 @@ class Mobject(object):
         mob1.align_to(mob2, alignment_vect = RIGHT) moves mob1
         horizontally so that it's center is directly above/below
         the center of mob2
+        """
+        """
+        对齐
+        
+        例子：
+        ``mob1.align_to(mob2, UP)`` 会将 ``mob1`` 垂直移动，顶部与 ``mob2`` 的上边缘对齐
         """
         if isinstance(mobject_or_point, Mobject):
             point = mobject_or_point.get_bounding_box_point(direction)
