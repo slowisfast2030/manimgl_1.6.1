@@ -635,6 +635,7 @@ class VMobject(Mobject):
         在整条路径上占比为 alpha 处的点
 
         不得不说，这个函数的实现比mobject中的函数实现的要更加准确
+        直接获取了第i段贝塞尔曲线的表达式，然后计算出曲线上的点
         """
         if alpha <= 0:
             return self.get_start()
