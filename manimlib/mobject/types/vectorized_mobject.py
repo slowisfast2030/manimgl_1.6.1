@@ -617,6 +617,7 @@ class VMobject(Mobject):
         return self.get_points()[nppc * n:nppc * (n + 1)]
 
     def get_nth_curve_function(self, n: int) -> Callable[[float], np.ndarray]:
+        '''获取组成曲线的第 n 条贝塞尔曲线函数'''
         return bezier(self.get_nth_curve_points(n))
 
     def get_num_curves(self) -> int:
@@ -630,6 +631,11 @@ class VMobject(Mobject):
         return curve_func(residue)
 
     def point_from_proportion(self, alpha: float) -> np.ndarray:
+        """
+        在整条路径上占比为 alpha 处的点
+
+        不得不说，这个函数的实现比mobject中的函数实现的要更加准确
+        """
         if alpha <= 0:
             return self.get_start()
         elif alpha >= 1:

@@ -1543,8 +1543,9 @@ class Mobject(object):
         '''
         在整条路径上占比为 ``alpha`` 处的点
 
-        真是漂亮啊！
+        在vmobject上重新定义了这个函数
         '''
+        # 这里的points并不全是曲线上的点，anchor + handle
         points = self.get_points()
         # 第一次插值
         i, subalpha = integer_interpolate(0, len(points) - 1, alpha)
