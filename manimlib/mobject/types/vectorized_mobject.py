@@ -884,6 +884,17 @@ class VMobject(Mobject):
                 new_points += partial_quadratic_bezier_points(group, a1, a2)
         return np.vstack(new_points)
 
+    """
+    c = Circle().set_color(RED)
+    s = Square().set_color(TEAL)
+    c.align_points(s)
+
+    vm = c.copy()
+    vm.interpolate(c, s, 0.2)
+    vm.shift(UP*2)
+    self.add(c, s, vm)
+    self.wait(1)
+    """
     def interpolate(
         self,
         mobject1: VMobject,
@@ -891,6 +902,7 @@ class VMobject(Mobject):
         alpha: float,
         *args, **kwargs
     ):
+        '''mobject1 到 mobject2 百分比为 alpha 的补间'''
         super().interpolate(mobject1, mobject2, alpha, *args, **kwargs)
         if self.has_fill():
             tri1 = mobject1.get_triangulation()

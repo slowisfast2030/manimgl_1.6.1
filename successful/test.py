@@ -184,3 +184,15 @@ class test10(Scene):
 
         self.add(s, ss)
         self.wait(1)
+
+class test11(Scene):
+    def construct(self):
+        c = Circle().set_color(RED)
+        s = Square().set_color(TEAL)
+        c.align_points(s)
+
+        vm = c.copy()
+        vm.interpolate(c, s, 0.2)
+        vm.shift(UP*2)
+        self.add(c, s, vm)
+        self.wait(1)

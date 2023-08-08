@@ -1757,6 +1757,9 @@ class Mobject(object):
         alpha: float,
         path_func: Callable[[np.ndarray, np.ndarray, float], np.ndarray] = straight_path
     ):
+        """
+        需要先对齐两个物件的数据
+        """
         for key in self.data:
             if key in self.locked_data_keys:
                 continue
