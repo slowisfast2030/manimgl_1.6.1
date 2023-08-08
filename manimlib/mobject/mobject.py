@@ -156,6 +156,8 @@ class Mobject(object):
     def init_colors(self):
         """
         color和opacity属性来源于CONFIG字典
+
+        这是不是就是argb?
         """
         self.set_color(self.color, self.opacity)
 
@@ -182,6 +184,17 @@ class Mobject(object):
 
     # Only these methods should directly affect points
 
+    """
+    当new_length小于mob的锚点数量时
+    resize_points函数会将mob的锚点数量缩减到new_length
+
+    当new_length大于mob的锚点数量时
+    resize_points函数会将mob的锚点数量扩充到new_length
+
+    后面主要有两个使用场景:
+    1.清空锚点
+    2.对齐锚点
+    """
     def resize_points(
         self,
         new_length: int,
