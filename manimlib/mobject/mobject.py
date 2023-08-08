@@ -636,6 +636,9 @@ class Mobject(object):
         return self
 
     def replicate(self, n: int) -> Group:
+        """
+        和arrange_in_grid()函数配合使用
+        """
         return self.get_group_class()(
             *(self.copy() for x in range(n))
         )

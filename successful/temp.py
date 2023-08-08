@@ -17,3 +17,13 @@ class test(Scene):
         # cc = Circle().set_points(c.get_points())
         # self.add(cc)
         self.wait(1)    
+
+
+class test1(Scene):
+    def construct(self):
+
+        c = Circle().scale(0.2)
+        cg = c.replicate(100)
+        cg.arrange_in_grid()
+        self.add(cg)
+        self.wait(1)
