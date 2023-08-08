@@ -477,6 +477,10 @@ class Mobject(object):
         return self.submobjects
 
     def assemble_family(self):
+        """
+        To assemble something means to collect it together or 
+        to fit the different parts of it together.
+        """
         sub_families = (sm.get_family() for sm in self.submobjects)
         self.family = [self, *it.chain(*sub_families)]
         self.refresh_has_updater_status()
