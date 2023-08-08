@@ -934,6 +934,11 @@ class Mobject(object):
     ):
         '''
         以 ``axis`` 为方向，``angle`` 为角度旋转，``kwargs`` 中可传入 ``about_point``
+
+        result = np.dot(x, y)
+        x为mxn阶矩阵
+        y为nxp阶矩阵
+        则相乘的结果result为mxp阶矩阵
         '''
         rot_matrix_T = rotation_matrix_transpose(angle, axis)
         #print("*"*100, rot_matrix_T)
