@@ -99,7 +99,7 @@ class Mobject(object):
     """
     The __str__ function is used to return a human-readable, or informal, string representation 
     of an object. This function is called by the built-in print(), str(), and format() functions. 
-    If you don’t define a str function for a class, then the built-in object implementation calls 
+    If you don't define a str function for a class, then the built-in object implementation calls 
     the repr function instead.
     """
     def __str__(self):
