@@ -1001,6 +1001,11 @@ class Mobject(object):
         '''
         if ("about_point" not in kwargs) and ("about_edge" not in kwargs):
             kwargs["about_point"] = ORIGIN
+        """
+        The np.identity function in Python is part of the NumPy library and is used to 
+        create an identity matrix. An identity matrix is a square matrix with ones on 
+        the main diagonal and zeros elsewhere. 
+        """
         full_matrix = np.identity(self.dim)
         matrix = np.array(matrix)
         full_matrix[:matrix.shape[0], :matrix.shape[1]] = matrix
