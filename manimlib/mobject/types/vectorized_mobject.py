@@ -685,6 +685,9 @@ class VMobject(Mobject):
         will be three points defining a quadratic bezier curve
         for any i in range(0, len(anchors1))
         """
+        """
+        获取二阶贝塞尔曲线的锚点和手柄
+        """
         nppc = self.n_points_per_curve
         points = self.get_points()
         return [
@@ -693,13 +696,22 @@ class VMobject(Mobject):
         ]
 
     def get_start_anchors(self) -> np.ndarray:
+        """
+        所有贝塞尔曲线的第一个锚点的集合
+        """
         return self.get_points()[0::self.n_points_per_curve]
 
     def get_end_anchors(self) -> np.ndarray:
+        """
+        所有贝塞尔曲线的最后一个锚点的集合
+        """
         nppc = self.n_points_per_curve
         return self.get_points()[nppc - 1::nppc]
 
     def get_anchors(self) -> np.ndarray:
+        """
+        获取所有的锚点
+        """
         points = self.get_points()
         if len(points) == 1:
             return points
@@ -729,6 +741,7 @@ class VMobject(Mobject):
         return norms.sum()
 
     def get_area_vector(self) -> np.ndarray:
+        '''返回一个向量，其长度为锚点形成的多边形所围成的面积，根据右手定则指向垂直于该多边形的方向。'''
         # Returns a vector whose length is the area bound by
         # the polygon formed by the anchor points, pointing
         # in a direction perpendicular to the polygon according
@@ -738,8 +751,11 @@ class VMobject(Mobject):
 
         nppc = self.n_points_per_curve
         points = self.get_points()
+        # 第一个锚点的集合
         p0 = points[0::nppc]
+        # 最后一个锚点的集合
         p1 = points[nppc - 1::nppc]
+        # 并没有handle的参与，所以这里的面积是由anchor点形成的多边形的面积
 
         # Each term goes through all edges [(x1, y1, z1), (x2, y2, z2)]
         return 0.5 * np.array([
@@ -749,12 +765,19 @@ class VMobject(Mobject):
         ])
 
     def get_unit_normal(self, recompute: bool = False) -> np.ndarray:
+        '''
+        获取单位法向量
+        
+        这个函数的使用场景是啥？
+        '''
         if not recompute:
             return self.data["unit_normal"][0]
 
         if self.get_num_points() < 3:
             return OUT
 
+        # 这里的area_vect是多边形的面积向量，不是原始图形的面积向量
+        # 然而，这里计算的是法向量，所以不影响结果
         area_vect = self.get_area_vector()
         area = get_norm(area_vect)
         if area > 0:
@@ -775,6 +798,7 @@ class VMobject(Mobject):
 
     # Alignment
     def align_points(self, vmobject: VMobject):
+        '''对齐锚点，主要用于 Transform 的内部实现'''
         if self.get_num_points() == len(vmobject.get_points()):
             return
 
