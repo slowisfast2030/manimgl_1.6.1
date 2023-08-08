@@ -22,7 +22,7 @@ class test(Scene):
 class test1(Scene):
     def construct(self):
 
-        c = Circle().scale(0.2)
+        c = Tex(r"\pi").scale(0.2).set_color(TEAL)
         cg = c.get_grid(10, 10, 5)
         self.add(cg)
         self.wait(1)
