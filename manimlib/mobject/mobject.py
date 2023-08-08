@@ -910,6 +910,8 @@ class Mobject(object):
     def stretch(self, factor: float, dim: int, **kwargs):
         '''
         把 ``dim`` 维度伸缩到原来的 ``factor`` 倍
+
+        自己的思维方式中并没有建立一个array数组的第dim维的概念
         '''
         def func(points):
             points[:, dim] *= factor
