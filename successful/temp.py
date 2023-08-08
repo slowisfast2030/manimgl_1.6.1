@@ -23,7 +23,6 @@ class test1(Scene):
     def construct(self):
 
         c = Circle().scale(0.2)
-        cg = c.replicate(100)
-        cg.arrange_in_grid()
+        cg = c.get_grid(10, 10, 5)
         self.add(cg)
         self.wait(1)

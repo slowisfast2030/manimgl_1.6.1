@@ -647,6 +647,8 @@ class Mobject(object):
         """
         Returns a new mobject containing multiple copies of this one
         arranged in a grid
+
+        这个函数很有视觉表现力
         """
         grid = self.replicate(n_rows * n_cols)
         grid.arrange_in_grid(n_rows, n_cols, **kwargs)
@@ -659,6 +661,7 @@ class Mobject(object):
         point_to_num_func: Callable[[np.ndarray], float] = lambda p: p[0],
         submob_func: Callable[[Mobject]] | None = None
     ):
+        '''对子物件进行排序'''
         if submob_func is not None:
             self.submobjects.sort(key=submob_func)
         else:
@@ -667,6 +670,7 @@ class Mobject(object):
         return self
 
     def shuffle(self, recurse: bool = False):
+        '''随机打乱子物件的顺序'''
         if recurse:
             for submob in self.submobjects:
                 submob.shuffle(recurse=True)
@@ -720,6 +724,7 @@ class Mobject(object):
         return result
 
     def generate_target(self, use_deepcopy: bool = False):
+        '''通过复制自身作为自己的 target, 生成一个 target 属性'''
         self.target = None  # Prevent exponential explosion
         if use_deepcopy:
             self.target = self.deepcopy()
@@ -728,6 +733,7 @@ class Mobject(object):
         return self.target
 
     def save_state(self, use_deepcopy: bool = False):
+        '''保留状态，即复制一份作为 ``saved_state`` 属性'''
         if hasattr(self, "saved_state"):
             # Prevent exponential growth of data
             self.saved_state = None
@@ -738,6 +744,7 @@ class Mobject(object):
         return self
 
     def restore(self):
+        '''恢复为 ``saved_state`` 的状态'''
         if not hasattr(self, "saved_state") or self.save_state is None:
             raise Exception("Trying to restore without having saved")
         self.become(self.saved_state)
@@ -752,6 +759,7 @@ class Mobject(object):
         self.updating_suspended: bool = False
 
     def update(self, dt: float = 0, recurse: bool = True):
+        '''更新物件状态，为 **动画 (Animation)** 、 **更新 (updater)** 调用'''
         if not self.has_updaters or self.updating_suspended:
             return self
         for updater in self.time_based_updaters:
@@ -781,6 +789,7 @@ class Mobject(object):
         index: int | None = None,
         call_updater: bool = True
     ):
+        '''添加 ``updater`` 函数'''
         if "dt" in get_parameters(update_function):
             updater_list = self.time_based_updaters
         else:
@@ -797,6 +806,7 @@ class Mobject(object):
         return self
 
     def remove_updater(self, update_function: Updater):
+        '''移除指定的 ``updater`` 函数'''
         for updater_list in [self.time_based_updaters, self.non_time_updaters]:
             while update_function in updater_list:
                 updater_list.remove(update_function)
@@ -804,6 +814,7 @@ class Mobject(object):
         return self
 
     def clear_updaters(self, recurse: bool = True):
+        '''清空所有的 ``updater`` 函数'''
         self.time_based_updaters = []
         self.non_time_updaters = []
         self.refresh_has_updater_status()
@@ -813,12 +824,14 @@ class Mobject(object):
         return self
 
     def match_updaters(self, mobject: Mobject):
+        '''将自己的 ``updater`` 函数与 ``mobject`` 匹配'''
         self.clear_updaters()
         for updater in mobject.get_updaters():
             self.add_updater(updater)
         return self
 
     def suspend_updating(self, recurse: bool = True):
+        '''停止物件更新'''
         self.updating_suspended = True
         if recurse:
             for submob in self.submobjects:
@@ -826,6 +839,7 @@ class Mobject(object):
         return self
 
     def resume_updating(self, recurse: bool = True, call_updater: bool = True):
+        '''恢复物件更新'''
         self.updating_suspended = False
         if recurse:
             for submob in self.submobjects:
