@@ -965,6 +965,7 @@ class Mobject(object):
         这个函数的功能和apply_points_function()函数一样
         为何定义这个函数
 
+        需要极高的想象力！
         self.play(
             grid.animate.apply_function(
                 lambda p: [
