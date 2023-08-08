@@ -961,6 +961,8 @@ class Mobject(object):
     def apply_function(self, function: Callable[[np.ndarray], np.ndarray], **kwargs):
         '''
         把 ``function`` 作用到所有锚点上
+
+        这个函数用的很少
         '''
         # Default to applying matrix about the origin, not mobjects center
         if len(kwargs) == 0:
