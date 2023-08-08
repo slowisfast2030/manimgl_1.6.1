@@ -251,3 +251,13 @@ class test16(Scene):
 
         self.add(s, plane)
         self.wait(1)
+
+class test17(Scene):
+    def construct(self):
+        s = Square().set_fill(WHITE).shift(RIGHT*3)
+        ss = s.copy().set_color(TEAL).shift(LEFT*3)
+
+        s.resize_points(10)
+
+        self.add(s, ss)
+        self.wait(1)
