@@ -1803,6 +1803,9 @@ class Mobject(object):
         Edit all data and submobjects to be idential
         to another mobject
         """
+        """
+        重构物件数据并将它变成传入的 ``mobject``
+        """
         self.align_family(mobject)
         for sm1, sm2 in zip(self.get_family(), mobject.get_family()):
             sm1.set_data(sm2.data)
