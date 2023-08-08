@@ -233,6 +233,8 @@ class Mobject(object):
         """
         以 ``about_point`` 为不变基准点，或以 ``about_edge`` 为不变基准边，对所有点执行 ``func``
         """
+        # about_point是主要的
+        # 如果about_point为None，就用about_edge
         if about_point is None and about_edge is not None:
             about_point = self.get_bounding_box_point(about_edge)
 
