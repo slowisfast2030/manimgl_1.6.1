@@ -106,6 +106,9 @@ def rotation_matrix_from_quaternion(quat: Iterable) -> np.ndarray:
     return np.transpose(rotation_matrix_transpose_from_quaternion(quat))
 
 
+"""
+获取旋转矩阵
+"""
 def rotation_matrix(angle: float, axis: np.ndarray) -> np.ndarray:
     """
     Rotation in R^3 about a specified axis of rotation.
@@ -113,6 +116,9 @@ def rotation_matrix(angle: float, axis: np.ndarray) -> np.ndarray:
     return Rotation.from_rotvec(angle * normalize(axis)).as_matrix()
 
 
+"""
+获取旋转矩阵的转置
+"""
 def rotation_matrix_transpose(angle: float, axis: np.ndarray) -> np.ndarray:
     return rotation_matrix(angle, axis).T
 
