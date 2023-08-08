@@ -742,6 +742,8 @@ class Mobject(object):
     def shift(self, vector: np.ndarray):
         '''
         相对移动 vector 向量
+
+        不是很理解about_edge = None的意思
         '''
         self.apply_points_function(
             lambda points: points + vector,

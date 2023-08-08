@@ -205,3 +205,15 @@ class test12(Scene):
         vm.pointwise_become_partial(c, 0.5, 0.75).shift(LEFT*4)
         self.add(c, vm)
         self.wait(1)
+
+class test13(Scene):
+    def construct(self):
+        c = Circle().set_color(RED)
+        cc = c.copy().set_color(TEAL)
+        cc.apply_points_function(
+            lambda point: point + RIGHT*3,
+            about_point=ORIGIN
+        )
+
+        self.add(c, cc)
+        self.wait(1)
