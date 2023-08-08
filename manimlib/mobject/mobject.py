@@ -314,6 +314,7 @@ class Mobject(object):
                 if about_point is None:
                     arr[:] = func(arr)
                 else:
+                    # 这种计算方式的几何意义是什么？当about_point不是mob上的点和原点的时候
                     arr[:] = func(arr - about_point) + about_point
 
         if not works_on_bounding_box:
