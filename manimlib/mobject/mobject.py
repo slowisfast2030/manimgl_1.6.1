@@ -302,6 +302,7 @@ class Mobject(object):
         if about_point is None and about_edge is not None:
             about_point = self.get_bounding_box_point(about_edge)
 
+        # family是有自身的，submobjects没有
         for mob in self.get_family():
             arrs = []
             if mob.has_points():
