@@ -941,7 +941,6 @@ class Mobject(object):
         则相乘的结果result为mxp阶矩阵
         '''
         rot_matrix_T = rotation_matrix_transpose(angle, axis)
-        #print("*"*100, rot_matrix_T)
         self.apply_points_function(
             lambda points: np.dot(points, rot_matrix_T),
             about_point,
