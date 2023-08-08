@@ -149,3 +149,13 @@ class test8(Scene):
             self.add(Dot(p).set_color(RED))
         
         self.wait(1)
+
+class test9(Scene):
+    def construct(self):
+        c = Circle()
+        points = c.get_bezier_tuples()
+        for point in points:
+            print(point)
+
+        self.add(c)
+        self.wait(1)

@@ -577,7 +577,9 @@ class VMobject(Mobject):
 
     # Information about the curve
     def get_bezier_tuples_from_points(self, points: Sequence[np.ndarray]):
+        # 二阶贝塞尔曲线，每一段由3个点组成
         nppc = self.n_points_per_curve
+        # 保证points的长度是nppc的整数倍
         remainder = len(points) % nppc
         points = points[:len(points) - remainder]
         return (
@@ -643,6 +645,7 @@ class VMobject(Mobject):
             return self.get_end()
 
         partials = [0]
+        # 遍历每一小段贝塞尔曲线
         for tup in self.get_bezier_tuples():
             # Approximate length with straight line from start to end
             arclen = get_norm(tup[0] - tup[-1])
