@@ -128,6 +128,14 @@ class Mobject(object):
         这里需要拓展认知：
         每一个mob的data不仅仅包括points，还包括bounding_box和rgbas
         """
+        """
+        RGBA stands for red, green, blue, and alpha. It is a color model that describes 
+        how colors are represented and mixed in computer graphics. Each color component 
+        (red, green, and blue) has a value ranging from 0 to 255, where 0 means no color 
+        and 255 means full color. The alpha component represents the opacity or transparency 
+        of the color, with a value ranging from 0 to 255, where 0 means fully transparent 
+        and 255 means fully opaque1
+        """
         self.data: dict[str, np.ndarray] = {
             "points": np.zeros((0, 3)), # 数列，3个元素
             "bounding_box": np.zeros((3, 3)), # 矩阵，3行3列
