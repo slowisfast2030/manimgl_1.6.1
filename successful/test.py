@@ -196,3 +196,12 @@ class test11(Scene):
         vm.shift(UP*2)
         self.add(c, s, vm)
         self.wait(1)
+
+
+class test12(Scene):
+    def construct(self):
+        c = Circle().set_color(RED)
+        vm = c.copy()
+        vm.pointwise_become_partial(c, 0.5, 0.75).shift(LEFT*4)
+        self.add(c, vm)
+        self.wait(1)

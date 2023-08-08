@@ -912,6 +912,7 @@ class VMobject(Mobject):
         return self
 
     def pointwise_become_partial(self, vmobject: VMobject, a: float, b: float):
+        '''返回 vmobject 上百分比从 a 到 b 的部分曲线的拷贝'''
         assert(isinstance(vmobject, VMobject))
         if a <= 0 and b >= 1:
             self.become(vmobject)
