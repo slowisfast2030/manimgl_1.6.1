@@ -614,6 +614,7 @@ class VMobject(Mobject):
         return self.get_subpaths_from_points(self.get_points())
 
     def get_nth_curve_points(self, n: int) -> np.ndarray:
+        '''获取组成曲线的第 n 条贝塞尔曲线的锚点'''
         assert(n < self.get_num_curves())
         nppc = self.n_points_per_curve
         return self.get_points()[nppc * n:nppc * (n + 1)]
@@ -623,9 +624,15 @@ class VMobject(Mobject):
         return bezier(self.get_nth_curve_points(n))
 
     def get_num_curves(self) -> int:
+        '''获取组成曲线的贝塞尔曲线数量'''
         return self.get_num_points() // self.n_points_per_curve
 
     def quick_point_from_proportion(self, alpha: float) -> np.ndarray:
+        """
+        在整条路径上占比为 alpha 处的点
+
+        这个方法建立在假设所有弧线长度相同的条件下，因此可能有一些误差，但是性能更好
+        """
         # Assumes all curves have the same length, so is inaccurate
         num_curves = self.get_num_curves()
         n, residue = integer_interpolate(0, num_curves, alpha)
@@ -654,10 +661,20 @@ class VMobject(Mobject):
         if full == 0:
             return self.get_start()
         # First index where the partial lenth is more alpha times the full length
+        """
+        next(iterator, default)
+
+        其中，iterator是要传入的迭代器，default是可选的第二个参数，它表示当迭代器耗尽时返回的默认值。
+        如果不指定default，那么当迭代器耗尽时，next函数会抛出一个StopIteration异常，表示迭代结束。
+        """
         i = next(
             (i for i, x in enumerate(partials) if x >= full * alpha),
             len(partials)  # Default
         )
+        """
+        partials[i - 1] / full < alpha < partials[i] / full
+        计算出 alpha 在第 i - 1 条贝塞尔曲线上的占比
+        """
         residue = inverse_interpolate(partials[i - 1] / full, partials[i] / full, alpha)
         return self.get_nth_curve_function(i - 1)(residue)
 
