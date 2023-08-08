@@ -1008,6 +1008,14 @@ class Mobject(object):
         """
         full_matrix = np.identity(self.dim)
         matrix = np.array(matrix)
+        """
+        点睛之笔
+
+        assigning the values of a matrix to a larger matrix. The larger matrix is called 
+        full_matrix and it has a size that is greater than or equal to the size of the 
+        original matrix. The matrix variable is the original matrix that we want to assign 
+        to the larger matrix.
+        """
         full_matrix[:matrix.shape[0], :matrix.shape[1]] = matrix
         self.apply_points_function(
             lambda points: np.dot(points, full_matrix.T),
