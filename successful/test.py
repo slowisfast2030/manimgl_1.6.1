@@ -159,3 +159,28 @@ class test9(Scene):
 
         self.add(c)
         self.wait(1)
+
+
+class test10(Scene):
+    def construct(self):
+        c = Circle()
+        s = Square()
+        print(c.get_all_points())
+        print("-"*100)
+        print(s.get_all_points())
+
+        for point in s.get_all_points():
+            self.add(Dot(point).set_color(RED))
+
+        ss = s.copy().shift(LEFT*4)
+        print("&"*100)
+        c.align_points(ss)
+        print(c.get_all_points())
+        print("-"*100)
+        print(ss.get_all_points())
+
+        for point in ss.get_all_points():
+            self.add(Dot(point).set_color(TEAL))
+
+        self.add(s, ss)
+        self.wait(1)
