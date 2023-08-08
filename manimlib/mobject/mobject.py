@@ -953,6 +953,8 @@ class Mobject(object):
         绕 ``axis`` 轴翻转
 
         没想到flip是rotate的特例
+
+        可以尝试将mob沿着y=x直线进行翻转
         '''
         return self.rotate(TAU / 2, axis, **kwargs)
 
