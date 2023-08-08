@@ -86,6 +86,9 @@ def listify(obj) -> list:
 
 
 def resize_array(nparray: np.ndarray, length: int) -> np.ndarray:
+    """
+    np.resize函数会复制或者截断原数组，使得新数组的长度为length
+    """
     if len(nparray) == length:
         return nparray
     return np.resize(nparray, (length, *nparray.shape[1:]))
