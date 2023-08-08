@@ -208,12 +208,13 @@ class test12(Scene):
 
 class test13(Scene):
     def construct(self):
+        plane = NumberPlane()
         c = Circle().set_color(RED)
         cc = c.copy().set_color(TEAL)
         cc.apply_points_function(
-            lambda point: point + RIGHT*3,
-            about_point=ORIGIN
+            lambda point: 2*point,
+            about_point=c.point_from_proportion(0.125+0.25)
         )
 
-        self.add(c, cc)
+        self.add(c, cc, plane)
         self.wait(1)

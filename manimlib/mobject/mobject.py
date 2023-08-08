@@ -223,6 +223,23 @@ class Mobject(object):
         self.refresh_unit_normal()
         return self
 
+
+    """
+    plane = NumberPlane()
+    c = Circle().set_color(RED)
+    cc = c.copy().set_color(TEAL)
+    cc.apply_points_function(
+        lambda point: 2*point,
+        about_point=c.point_from_proportion(0.125+0.25)
+    )
+
+    self.add(c, cc, plane)
+    self.wait(1)
+
+    经过测试后，有一个发现：
+    这里的about_point最好是self上的点
+    这样，整个图形才会以self上的点为中心进行缩放
+    """
     def apply_points_function(
         self,
         func: Callable[[np.ndarray], np.ndarray],
