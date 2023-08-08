@@ -213,7 +213,8 @@ class test13(Scene):
         cc = c.copy().set_color(TEAL)
         cc.apply_points_function(
             lambda point: 2*point,
-            about_point=c.point_from_proportion(0.125+0.25)
+            #about_point=c.point_from_proportion(0.125+0.25)
+            about_point=[3,0,0]
         )
 
         self.add(c, cc, plane)

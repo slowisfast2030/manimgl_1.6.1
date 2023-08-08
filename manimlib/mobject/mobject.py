@@ -315,6 +315,21 @@ class Mobject(object):
                     arr[:] = func(arr)
                 else:
                     # 这种计算方式的几何意义是什么？当about_point不是mob上的点和原点的时候
+                    # 如何理解这里的arr - about_point？
+                    # 看成从about_point指向arr的向量，且起始点为原点
+                    """
+                    如果这里的func是伸缩变换：
+                    1.从about_point指向arr的向量，且起始点为原点
+                    2.伸缩变换
+                    3.将起始点移到about_point
+
+                    可以简化为：
+                    1.从about_point指向arr的向量，且起始点为about_point
+                    2.伸缩变换
+
+                    形象化理解：
+                    从abount_point向mob上的每一点做向量，并伸缩变换，连接变换后的向量的终点，就是变换后的mob
+                    """
                     arr[:] = func(arr - about_point) + about_point
 
         if not works_on_bounding_box:
