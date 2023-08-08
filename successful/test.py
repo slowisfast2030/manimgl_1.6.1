@@ -223,10 +223,10 @@ class test13(Scene):
 class test14(Scene):
     def construct(self):
         plane = NumberPlane()
-        s = Square().set_color(WHITE)
+        s = Square().set_color(WHITE).shift(RIGHT*2)
 
         ss = s.copy().set_color(TEAL)
-        ss.rotate(PI/4)
+        ss.rotate(PI/4, about_point=ORIGIN)
 
         self.add(s, ss, plane)
         self.wait(1)
