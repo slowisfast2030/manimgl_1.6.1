@@ -255,6 +255,10 @@ class Mobject(object):
         反转锚点
 
         锚点的顺序影响曲线的绘制顺序
+
+        pointwise_become_partial()
+        point_from_proportion()
+        等函数都和点集的顺序有关系
         '''
         for mob in self.get_family():
             for key in mob.data:
