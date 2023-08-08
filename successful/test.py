@@ -236,8 +236,9 @@ class test15(Scene):
         plane = NumberPlane()
         s = Square().set_color(WHITE).shift(RIGHT*2)
 
-        ss = s.copy().set_color(RED)
-        ss.flip()
+        s.apply_points_function(
+            lambda points: np.dot(points, rotation_about_z(PI/8))
+        )
 
-        self.add(s, ss)
+        self.add(s, plane)
         self.wait(1)

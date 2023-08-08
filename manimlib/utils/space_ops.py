@@ -117,6 +117,12 @@ def rotation_matrix_transpose(angle: float, axis: np.ndarray) -> np.ndarray:
     return rotation_matrix(angle, axis).T
 
 
+"""
+s = Square().set_color(WHITE).shift(RIGHT*2)
+s.apply_points_function(
+    lambda points: np.dot(points, rotation_about_z(PI/8))
+)
+"""
 def rotation_about_z(angle: float) -> list[list[float]]:
     return [
         [math.cos(angle), -math.sin(angle), 0],
