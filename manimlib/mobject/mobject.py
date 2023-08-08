@@ -293,6 +293,9 @@ class Mobject(object):
     ):
         """
         以 ``about_point`` 为不变基准点，或以 ``about_edge`` 为不变基准边，对所有点执行 ``func``
+
+        这个注释不是很准确
+        about_edge是为了计算about_point而存在的，核心还是about_point
         """
         # about_point是主要的
         # 如果about_point为None，就用about_edge
