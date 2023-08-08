@@ -279,10 +279,6 @@ class Mobject(object):
 
     self.add(c, cc, plane)
     self.wait(1)
-
-    经过测试后，有一个发现：
-    这里的about_point最好是self上的点
-    这样，整个图形才会以self上的点为中心进行缩放
     """
     def apply_points_function(
         self,
