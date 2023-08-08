@@ -1358,7 +1358,11 @@ class Mobject(object):
         return self
 
     def put_start_and_end_on(self, start: np.ndarray, end: np.ndarray):
-        '''把物体的起点和终点通过旋转缩放放在 ``start`` 和 ``end``'''
+        '''
+        把物体的起点和终点通过旋转缩放放在 ``start`` 和 ``end``
+        
+        这个函数可以作为一个练习题，自己实现一遍
+        '''
         curr_start, curr_end = self.get_start_and_end()
         curr_vect = curr_end - curr_start
         if np.all(curr_vect == 0):
