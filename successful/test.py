@@ -218,3 +218,15 @@ class test13(Scene):
 
         self.add(c, cc, plane)
         self.wait(1)
+
+
+class test14(Scene):
+    def construct(self):
+        plane = NumberPlane()
+        s = Square().set_color(WHITE)
+
+        ss = s.copy().set_color(TEAL)
+        ss.rotate(PI/4)
+
+        self.add(s, ss, plane)
+        self.wait(1)

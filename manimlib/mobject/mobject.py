@@ -834,6 +834,7 @@ class Mobject(object):
         以 ``axis`` 为方向，``angle`` 为角度旋转，``kwargs`` 中可传入 ``about_point``
         '''
         rot_matrix_T = rotation_matrix_transpose(angle, axis)
+        #print("*"*100, rot_matrix_T)
         self.apply_points_function(
             lambda points: np.dot(points, rot_matrix_T),
             about_point,
