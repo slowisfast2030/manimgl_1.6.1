@@ -955,6 +955,7 @@ class VMobject(Mobject):
         return self
 
     def get_subcurve(self, a: float, b: float) -> VMobject:
+        '''获取路径上百分比为 a 到 b 的部分'''
         vmob = self.copy()
         vmob.pointwise_become_partial(self, a, b)
         return vmob
@@ -962,6 +963,7 @@ class VMobject(Mobject):
     # Related to triangulation
 
     def refresh_triangulation(self):
+        '''重置三角剖分'''
         for mob in self.get_family():
             mob.needs_new_triangulation = True
         return self
