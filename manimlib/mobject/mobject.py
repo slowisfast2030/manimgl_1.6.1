@@ -996,6 +996,8 @@ class Mobject(object):
         # Default to applying matrix about the origin, not mobjects center
         '''
         把 ``matrix`` 矩阵作用到所有点上
+
+        参考rotate()函数的实现方式
         '''
         if ("about_point" not in kwargs) and ("about_edge" not in kwargs):
             kwargs["about_point"] = ORIGIN
