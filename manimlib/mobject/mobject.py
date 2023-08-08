@@ -446,16 +446,30 @@ class Mobject(object):
         return (point >= mins).all() and (point <= maxs).all()
 
     # Family matters
-
+    """
+    The getitem function is used to implement the indexing or slicing operator ([ ]) 
+    for custom objects. This function takes an object and a key as arguments and is 
+    expected to return the value associated with that key.
+    """
     def __getitem__(self, value):
         if isinstance(value, slice):
             GroupClass = self.get_group_class()
             return GroupClass(*self.split().__getitem__(value))
         return self.split().__getitem__(value)
 
+    """
+    The iter function is used to implement the iteration protocol for custom objects. 
+    This function takes an object as an argument and is expected to return an iterator 
+    object that can traverse the elements of the object. 
+    """
     def __iter__(self):
         return iter(self.split())
 
+    """
+    The len function is used to implement the len() built-in function for custom objects. 
+    This function takes an object as an argument and is expected to return an integer 
+    representing the length or size of the object.
+    """
     def __len__(self):
         return len(self.split())
 
