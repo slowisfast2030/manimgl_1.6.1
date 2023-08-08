@@ -407,6 +407,11 @@ class Mobject(object):
             return np.zeros((3, self.dim))
         else:
             # Lower left and upper right corners
+            """
+            为了更加形象的理解，我们可以假设mob为circle
+            将circle的所有锚点放在一个平面上
+            那么这个平面的左下角和右上角就是circle的包围框
+            """
             mins = all_points.min(0)
             maxs = all_points.max(0)
             mids = (mins + maxs) / 2
