@@ -1015,6 +1015,11 @@ class Mobject(object):
         full_matrix and it has a size that is greater than or equal to the size of the 
         original matrix. The matrix variable is the original matrix that we want to assign 
         to the larger matrix.
+
+        这里的matrix是二阶方阵
+        比如旋转矩阵
+        由于mob是三维对象
+        所以需要将matrix扩展为三阶方阵
         """
         full_matrix[:matrix.shape[0], :matrix.shape[1]] = matrix
         self.apply_points_function(
