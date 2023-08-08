@@ -242,3 +242,12 @@ class test15(Scene):
 
         self.add(s, plane)
         self.wait(1)
+
+class test16(Scene):
+    def construct(self):
+        plane = Axes()
+        s = Square().set_fill(WHITE).shift(RIGHT*2)
+        s.flip()
+
+        self.add(s, plane)
+        self.wait(1)
