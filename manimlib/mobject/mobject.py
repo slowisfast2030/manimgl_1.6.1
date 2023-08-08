@@ -964,6 +964,17 @@ class Mobject(object):
 
         这个函数的功能和apply_points_function()函数一样
         为何定义这个函数
+
+        self.play(
+            grid.animate.apply_function(
+                lambda p: [
+                    p[0] + 0.5 * math.sin(p[1]),
+                    p[1] + 0.5 * math.sin(p[0]),
+                    p[2]
+                ]
+            ),
+            run_time=5,
+        )
         '''
         # Default to applying matrix about the origin, not mobjects center
         if len(kwargs) == 0:
