@@ -845,6 +845,8 @@ class Mobject(object):
     def flip(self, axis: np.ndarray = UP, **kwargs):
         '''
         绕 ``axis`` 轴翻转
+
+        没想到flip是rotate的特例
         '''
         return self.rotate(TAU / 2, axis, **kwargs)
 

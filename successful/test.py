@@ -230,3 +230,14 @@ class test14(Scene):
 
         self.add(s, ss, plane)
         self.wait(1)
+
+class test15(Scene):
+    def construct(self):
+        plane = NumberPlane()
+        s = Square().set_color(WHITE).shift(RIGHT*2)
+
+        ss = s.copy().set_color(RED)
+        ss.flip()
+
+        self.add(s, ss)
+        self.wait(1)
