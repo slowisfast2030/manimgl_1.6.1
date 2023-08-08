@@ -1005,6 +1005,8 @@ class Mobject(object):
         The np.identity function in Python is part of the NumPy library and is used to 
         create an identity matrix. An identity matrix is a square matrix with ones on 
         the main diagonal and zeros elsewhere. 
+
+        这里取对角线元素为1, 有深意
         """
         full_matrix = np.identity(self.dim)
         matrix = np.array(matrix)
