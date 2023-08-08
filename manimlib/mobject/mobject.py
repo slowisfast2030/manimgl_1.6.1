@@ -62,8 +62,9 @@ class Mobject(object):
         "shadow": 0.0,
         # Makes parts bright where light gets reflected toward the camera
         "gloss": 0.0,
-        # For shaders 对于着色器知之甚少
+        # For shaders 对于着色器知之甚少，可以查看对应的wiki: https://en.wikipedia.org/wiki/Shader
         "shader_folder": "",
+        # 可以查看对应词条的wiki: https://en.wikipedia.org/wiki/Triangle_strip
         "render_primitive": moderngl.TRIANGLE_STRIP,
         "texture_paths": None,
         "depth_test": False,
@@ -80,6 +81,7 @@ class Mobject(object):
         self.submobjects: list[Mobject] = []
         self.parents: list[Mobject] = [] # self.parents和self.family是什么关系？
         self.family: list[Mobject] = [self]
+        # self.data是字典，有一些key对应的value被锁定了，不能修改
         self.locked_data_keys: set[str] = set() # 什么是self.locked_data_keys？
         self.needs_new_bounding_box: bool = True
 
@@ -94,13 +96,29 @@ class Mobject(object):
         if self.depth_test:
             self.apply_depth_test()
 
+    """
+    The __str__ function is used to return a human-readable, or informal, string representation 
+    of an object. This function is called by the built-in print(), str(), and format() functions. 
+    If you don’t define a str function for a class, then the built-in object implementation calls 
+    the repr function instead.
+    """
     def __str__(self):
         return self.__class__.__name__
 
+    """
+    The add function is used to implement the addition operator (+) for custom objects. 
+    This function takes two objects (the operands of +) as arguments and is expected to 
+    return the result of the computation.
+    """
     def __add__(self, other: Mobject) -> Mobject:
         assert(isinstance(other, Mobject))
         return self.get_group_class()(self, other)
 
+    """
+    The mul function is used to implement the multiplication operator (*) for custom objects. 
+    This function takes two objects (the operands of *) as arguments and is expected to return 
+    the result of the computation.
+    """
     def __mul__(self, other: int) -> Mobject:
         assert(isinstance(other, int))
         return self.replicate(other)
