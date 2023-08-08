@@ -962,7 +962,8 @@ class Mobject(object):
         '''
         把 ``function`` 作用到所有锚点上
 
-        这个函数用的很少
+        这个函数的功能和apply_points_function()函数一样
+        为何定义这个函数
         '''
         # Default to applying matrix about the origin, not mobjects center
         if len(kwargs) == 0:
