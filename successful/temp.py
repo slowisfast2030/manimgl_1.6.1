@@ -26,3 +26,11 @@ class test1(Scene):
         cg = c.get_grid(10, 10, 5)
         self.add(cg)
         self.wait(1)
+
+class test2(Scene):
+    def construct(self):
+        c = Circle()
+        print(c.data)
+
+        self.add(c)
+        self.wait(1)
