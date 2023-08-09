@@ -1395,7 +1395,12 @@ class Mobject(object):
         name: str = "rgbas",
         recurse: bool = False
     ):
-        '''将 rgbas 成员变量设置为指定的值'''
+        '''
+        将 rgbas 成员变量设置为指定的值
+        
+        在vmobject对象中, 会删除rgbas
+        添加fill_rgba和stroke_rgba
+        '''
         for mob in self.get_family(recurse):
             mob.data[name] = np.array(rgba_array)
         return self
