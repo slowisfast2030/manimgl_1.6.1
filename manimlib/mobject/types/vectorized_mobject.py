@@ -87,6 +87,10 @@ class VMobject(Mobject):
     def get_group_class(self):
         return VGroup
 
+    """
+    'fill_rgba': array([[0.98823529, 0.38431373, 0.33333333, 0.        ]])
+    'stroke_rgba': array([[0.98823529, 0.38431373, 0.33333333, 1.        ]])
+    """
     def init_data(self):
         super().init_data()
         self.data.pop("rgbas")

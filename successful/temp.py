@@ -34,5 +34,6 @@ class test2(Scene):
         print("-"*100)
         print(c.uniforms)
 
+        c.data["fill_rgba"] = np.array([[0, 0.5, 0., 0.5        ]])
         self.add(c)
         self.wait(1)
