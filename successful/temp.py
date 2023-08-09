@@ -29,11 +29,32 @@ class test1(Scene):
 
 class test2(Scene):
     def construct(self):
-        c = Circle()
+        c = Circle().set_color([RED, GREEN, BLUE]).set_opacity(0.5)
+        c.set_color_by_gradient([RED, GREEN, BLUE])
         print(c.data)
         print("-"*100)
         print(c.uniforms)
 
-        c.data["fill_rgba"] = np.array([[0, 0.5, 0., 0.5        ]])
+        # c.data["fill_rgba"] = np.array([[0, 1, 0., 1     ],
+        #                                 [1, 0, 0., 1     ],
+        #                                 [0, 0, 1., 1     ],
+        #                                 [0, 1, 0., 1     ],
+        #                                 [1, 0, 0., 1     ],
+        #                                 [0, 0, 1., 1     ]])
+        
+        d = Mobject()
+        d.set_rgba_array_by_color(color=[RED, GREEN, BLUE], opacity=0.5)
+        print('+'*100)
+        print(d.data['rgbas'])
+        
+
+
         self.add(c)
         self.wait(1)
+
+        print(color_to_rgb(RED))
+        print(color_to_rgb(GREEN))
+        print(color_to_rgb(BLUE))
+
+        print(color_gradient([RED, GREEN, BLUE],3))
+        

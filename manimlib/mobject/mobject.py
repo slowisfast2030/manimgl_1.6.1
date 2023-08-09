@@ -1417,6 +1417,7 @@ class Mobject(object):
         传入一个函数，这个函数接受一个三维坐标，将物件按照这个函数的方法设置颜色，包含透明度
         """
         for mob in self.get_family(recurse):
+            #rgba_arrayg维度n*4
             rgba_array = [func(point) for point in mob.get_points()]
             mob.set_rgba_array(rgba_array)
         return self
@@ -1438,6 +1439,24 @@ class Mobject(object):
             mob.set_rgba_array(rgba_array)
         return self
 
+    """
+    d = Mobject()
+    d.set_rgba_array_by_color(color=[RED, GREEN, BLUE], opacity=0.5)
+    print(d.data['rgbas'])
+
+    [[0.98823529 0.38431373 0.33333333 0.5       ]
+    [0.51372549  0.75686275 0.40392157 0.5       ]
+    [0.34509804  0.76862745 0.86666667 0.5       ]]
+
+       
+    print(color_to_rgb(RED))
+    print(color_to_rgb(GREEN))
+    print(color_to_rgb(BLUE))
+
+    [0.98823529 0.38431373 0.33333333]
+    [0.51372549 0.75686275 0.40392157]
+    [0.34509804 0.76862745 0.86666667]
+    """
     def set_rgba_array_by_color(
         self,
         color: ManimColor | None = None,
@@ -1508,9 +1527,11 @@ class Mobject(object):
         return self
 
     def fade(self, darkness: float = 0.5, recurse: bool = True):
+        '''变暗'''
         self.set_opacity(1.0 - darkness, recurse=recurse)
 
     def get_reflectiveness(self) -> float:
+        '''获取反光度'''
         return self.uniforms["reflectiveness"]
 
     def set_reflectiveness(self, reflectiveness: float, recurse: bool = True):

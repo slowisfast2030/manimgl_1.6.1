@@ -9,6 +9,10 @@ from manimlib.utils.bezier import interpolate
 from manimlib.utils.iterables import resize_with_interpolation
 
 
+"""
+color_to_rgb(RED)
+[0.98823529 0.38431373 0.33333333]
+"""
 def color_to_rgb(color):
     if isinstance(color, str):
         return hex_to_rgb(color)
