@@ -31,6 +31,8 @@ class test2(Scene):
     def construct(self):
         c = Circle()
         print(c.data)
+        print("-"*100)
+        print(c.uniforms)
 
         self.add(c)
         self.wait(1)

@@ -123,6 +123,10 @@ class Mobject(object):
         assert(isinstance(other, int))
         return self.replicate(other)
 
+    """
+    'fill_rgba': array([[0.98823529, 0.38431373, 0.33333333, 0.        ]])
+    'stroke_rgba': array([[0.98823529, 0.38431373, 0.33333333, 1.        ]])
+    """
     def init_data(self):
         """
         这里需要拓展认知：
