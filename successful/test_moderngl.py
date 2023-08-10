@@ -27,11 +27,45 @@ void main() {
 prog = ctx.program(vertex_shader=vertex_shader, fragment_shader=fragment_shader)
 
 # Define the vertices of a triangle
-vertices = np.array([
-    -0.6, -0.6,
-    0.6, -0.6,
-    0.0, 0.6
-], dtype=np.float32)
+# 一个三角形
+# vertices = np.array([
+#     -0.6, -0.6,
+#     0.6, -0.6,
+#     0.0, 0.6,
+# ], dtype=np.float32)
+
+# 两个三角形
+# vertices = np.array([
+#     -0.6, -0.6,
+#     0.6, -0.6,
+#     0.0, 0.6,
+#     -0.6, 0.6,
+#     0.6, -0.6,
+#     0.6, 0.6,
+# ], dtype=np.float32)
+
+# 正方形
+# vertices = np.array([
+#     -0.5, -0.5,
+#     0.5, -0.5,
+#     0.5, 0.5,
+#     -0.5, 0.5,
+# ], dtype=np.float32)
+
+# 圆
+import math
+
+num_segments = 12
+radius = 0.5
+
+vertices = [0.0, 0.0]
+for i in range(num_segments + 1):
+    angle = 2.0 * math.pi * i / num_segments
+    x = radius * math.cos(angle)
+    y = radius * math.sin(angle)
+    vertices.extend([x, y])
+
+vertices = np.array(vertices, dtype=np.float32)
 
 # Create a vertex buffer object (VBO)
 vbo = ctx.buffer(vertices)
@@ -48,10 +82,16 @@ ctx.clear()
 
 # Render the triangle
 """
-what is difference between vao.render(moderngl.TRIANGLE) 
+what is difference between vao.render(moderngl.TRIANGLES) 
 and vao.render(moderngl.TRIANGLE_STRIP)?
+
+In general, moderngl.TRIANGLES is used when you want to render 
+a set of disconnected triangles, while moderngl.TRIANGLE_STRIP 
+is used when you want to render a continuous strip of triangles.
 """
-vao.render(moderngl.TRIANGLE_STRIP)
+#vao.render(moderngl.TRIANGLE_STRIP)
+#vao.render(moderngl.TRIANGLES)
+vao.render(moderngl.TRIANGLE_FAN)
 
 # Read the rendered image from the FBO
 image = fbo.read(components=3)
