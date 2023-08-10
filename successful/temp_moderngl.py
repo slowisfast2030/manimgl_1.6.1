@@ -9,20 +9,17 @@ ctx = moderngl.create_standalone_context()
 vertex_shader = """
 #version 330
 in vec2 in_vert;
-out vec4 v_color;
 void main() {
     gl_Position = vec4(in_vert, 0.0, 1.0);
-    v_color = vec4(0.5, 0.0, 0.0, 1.0);
 }
 """
 
 # Define the fragment shader code
 fragment_shader = """
 #version 330
-in vec4 v_color;
 out vec4 fragColor;
 void main() {
-    fragColor = v_color;
+    fragColor = vec4(0.0, 0.5, 0.0, 1.0);
 }
 """
 
