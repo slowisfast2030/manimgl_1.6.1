@@ -81,14 +81,15 @@ fbo.use()
 ctx.clear()
 
 # Render the triangle
-#vao.render(moderngl.TRIANGLE_STRIP)
-#vao.render(moderngl.TRIANGLES)
-vao.render(moderngl.TRIANGLE_FAN)
+render_modes = [moderngl.TRIANGLES, moderngl.TRIANGLE_STRIP, moderngl.TRIANGLE_FAN]
+for mode in render_modes:
+    vao.render(mode)
 
-# Read the rendered image from the FBO
-image = fbo.read(components=3)
+    # Read the rendered image from the FBO
+    image = fbo.read(components=3)
 
-# Save the image to a file
-Image.frombytes('RGB', (512, 512), image).save('output.png')
+    name = str(mode) + ".png"
+    # Save the image to a file
+    Image.frombytes('RGB', (512, 512), image).save(name)
 
 print("all is well")
