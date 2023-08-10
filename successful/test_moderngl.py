@@ -81,14 +81,6 @@ fbo.use()
 ctx.clear()
 
 # Render the triangle
-"""
-what is difference between vao.render(moderngl.TRIANGLES) 
-and vao.render(moderngl.TRIANGLE_STRIP)?
-
-In general, moderngl.TRIANGLES is used when you want to render 
-a set of disconnected triangles, while moderngl.TRIANGLE_STRIP 
-is used when you want to render a continuous strip of triangles.
-"""
 #vao.render(moderngl.TRIANGLE_STRIP)
 #vao.render(moderngl.TRIANGLES)
 vao.render(moderngl.TRIANGLE_FAN)
