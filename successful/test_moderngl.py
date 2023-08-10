@@ -47,7 +47,11 @@ fbo.use()
 ctx.clear()
 
 # Render the triangle
-vao.render(moderngl.TRIANGLES)
+"""
+what is difference between vao.render(moderngl.TRIANGLE) 
+and vao.render(moderngl.TRIANGLE_STRIP)?
+"""
+vao.render(moderngl.TRIANGLE_STRIP)
 
 # Read the rendered image from the FBO
 image = fbo.read(components=3)
