@@ -1,68 +1,82 @@
 import moderngl
 import numpy as np
-import imageio # You can also use Pillow or other libraries
+from PIL import Image
 
-# Create a context
+# Initialize ModernGL context
 ctx = moderngl.create_standalone_context()
 
-# Create a shader program
-prog = ctx.program(
-    vertex_shader='''
-        #version 330
+# Vertex shader code
+vertex_shader = """
+#version 330
+in vec2 in_position;
 
-        in vec2 in_ctrl_point;
-        out vec2 ctrl_point;
+void main() {
+    gl_Position = vec4(in_position, 0.0, 1.0);
+}
+"""
 
-        void main() {
-            ctrl_point = in_ctrl_point;
-        }
-    ''',
-    geometry_shader='''
-        #version 330
+# Geometry shader code
+geometry_shader = """
+#version 330
+layout(points) in;
+layout(line_strip, max_vertices = 100) out;
 
-        layout (points) in;
-        layout (line_strip, max_vertices = 100) out;
+uniform int num_segments;
 
-        in vec2 ctrl_point[];
-        out vec2 pos;
+void main() {
+    for (int i = 0; i <= num_segments; ++i) {
+        float t = float(i) / float(num_segments);
+        
+        vec2 p0 = gl_in[0].gl_Position.xy;
+        vec2 p1 = vec2(-0.6, 0.6);
+        vec2 p2 = vec2(0.6, -0.6);
+        vec2 p3 = gl_in[0].gl_Position.xy;
+        
+        vec2 position = p0 * pow(1.0 - t, 3.0)
+                      + p1 * 3.0 * t * pow(1.0 - t, 2.0)
+                      + p2 * 3.0 * t * t * (1.0 - t)
+                      + p3 * pow(t, 3.0);
+        
+        gl_Position = vec4(position, 0.0, 1.0);
+        EmitVertex();
+    }
+    
+    EndPrimitive();
+}
+"""
 
-        uniform float t;
+# Fragment shader code
+fragment_shader = """
+#version 330
+out vec4 out_color;
 
-        void main() {
-            // Calculate the position of the curve point using Bernstein polynomials
-            pos = pow(1 - t, 3) * ctrl_point[0] +
-                  3 * pow(1 - t, 2) * t * ctrl_point[1] +
-                  3 * (1 - t) * pow(t, 2) * ctrl_point[2] +
-                  pow(t, 3) * ctrl_point[3];
-            gl_Position = vec4(pos, 0.0, 1.0);
-            EmitVertex();
-            EndPrimitive();
-        }
-    ''',
-)
+void main() {
+    out_color = vec4(1.0, 0.0, 0.0, 1.0); // Red color
+}
+"""
 
-# Create a vertex array with the control points
-ctrl_points = np.array([
-    [-0.8, -0.8],
-    [-0.4, 0.8],
-    [0.4, -0.8],
-    [0.8, 0.8],
-], dtype='f4')
+# Compile shaders
+program = ctx.program(vertex_shader=vertex_shader, geometry_shader=geometry_shader, fragment_shader=fragment_shader)
+
+# Set up vertex buffer object
+ctrl_points = np.array([[-0.8, -0.8], [-0.4, 0.4], [0.4, -0.4], [0.8, 0.8]], dtype=np.float32)
 vbo = ctx.buffer(ctrl_points)
-vao = ctx.simple_vertex_array(prog, vbo, 'in_ctrl_point')
+vao = ctx.simple_vertex_array(program, vbo, 'in_position')
 
-# Create a texture object to render to
-tex = ctx.texture((512, 512), 4)
-fbo = ctx.framebuffer(color_attachments=[tex])
+# Set uniform values
+program['num_segments'].value = 100
 
-# Render the curve by varying t from 0 to 1
+# Create framebuffer
+fbo = ctx.framebuffer(color_attachments=[ctx.texture((800, 600), 4)])
+
+# Bind the FBO and clear the color buffer
 fbo.use()
-ctx.clear(1.0, 1.0, 1.0)
-for i in range(100):
-    t = i / 99
-    prog['t'].value = t
-    vao.render(moderngl.POINTS)
+ctx.clear()
 
-# Read the texture data and save it as an image file
-data = tex.read()
-imageio.imwrite('bezier_curve_shader.png', np.flipud(np.frombuffer(data, dtype=np.uint8).reshape(512, 512, 4)))
+vao.render(moderngl.LINE_STRIP)
+
+# Read the framebuffer contents
+image = fbo.read(components=3)
+image = Image.frombytes('RGB', fbo.size, image).save("hello.png")
+
+
