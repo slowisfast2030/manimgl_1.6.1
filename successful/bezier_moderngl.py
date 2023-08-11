@@ -12,7 +12,7 @@ in vec2 in_vert;
 out vec4 v_color;
 void main() {
     gl_Position = vec4(in_vert, 0.0, 1.0);
-    v_color = vec4(0.5, 0.0, 0.0, 1.0);
+    v_color = vec4(0.5, 0.0, 0.0, 1);
 }
 """
 
@@ -28,32 +28,6 @@ void main() {
 
 # Create a shader program
 prog = ctx.program(vertex_shader=vertex_shader, fragment_shader=fragment_shader)
-
-# Define the vertices of a triangle
-# 一个三角形
-# vertices = np.array([
-#     -0.6, -0.6,
-#     0.6, -0.6,
-#     0.0, 0.6,
-# ], dtype=np.float32)
-
-# 两个三角形
-# vertices = np.array([
-#     -0.6, -0.6,
-#     0.6, -0.6,
-#     0.0, 0.6,
-#     -0.6, 0.6,
-#     0.6, -0.6,
-#     0.6, 0.6,
-# ], dtype=np.float32)
-
-# 正方形
-# vertices = np.array([
-#     -0.5, -0.5,
-#     0.5, -0.5,
-#     0.5, 0.5,
-#     -0.5, 0.5,
-# ], dtype=np.float32)
 
 # 计算贝塞尔曲线上的点
 def bezier_curve(points, num_segments):
