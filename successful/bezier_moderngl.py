@@ -87,8 +87,6 @@ ctx.clear()
 # Render the triangle
 render_modes = [moderngl.POINTS, moderngl.LINES, moderngl.LINE_STRIP, moderngl.LINE_LOOP]
 image_names = ["points.png", "lines.png", "line_strip.png", "line_loop.png"]
-# render_modes = [moderngl.LINE_STRIP]
-# image_names = ["line_strip.png"]
 
 for mode, name in zip(render_modes, image_names):
     vao.render(mode)
