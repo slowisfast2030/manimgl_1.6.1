@@ -29,6 +29,7 @@ class ShaderWrapper(object):
         depth_test: bool = False,
         render_primitive: int = moderngl.TRIANGLE_STRIP,
     ):
+        # 这里的顶点数据应该是贝塞尔曲线的anchor和handle。具体绘制曲线的时候是不是调用几何着色器生成了曲线的点?
         self.vert_data = vert_data
         self.vert_indices = vert_indices
         self.vert_attributes = vert_data.dtype.names
