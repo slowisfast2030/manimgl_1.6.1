@@ -231,6 +231,7 @@ class SceneFileWriter(object):
             self.scene.update_frame(ignore_skipping=True)
             self.save_final_image(self.scene.get_image())
         if self.should_open_file():
+            # 打开视频文件
             self.open_file()
 
     def open_movie_pipe(self, file_path: str) -> None:
