@@ -1,6 +1,6 @@
 from manimlib import *
 
-class test(Scene):
+class test_demo(Scene):
     def construct(self):
         c = Circle()
         s = Square()
