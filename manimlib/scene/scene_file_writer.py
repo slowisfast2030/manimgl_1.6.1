@@ -224,6 +224,7 @@ class SceneFileWriter(object):
                 self.close_movie_pipe()
             if self.includes_sound:
                 self.add_sound_to_video()
+            # 打印视频文件已生成
             self.print_file_ready_message(self.get_movie_file_path())
         if self.save_last_frame:
             #print("save_last_frame")
@@ -234,6 +235,8 @@ class SceneFileWriter(object):
 
     def open_movie_pipe(self, file_path: str) -> None:
         """
+        打开movie pipe
+
         file_path: /Users/linus/Desktop/videos/test_demo.mp4
         """
         # stem: /Users/linus/Desktop/videos/test_demo
