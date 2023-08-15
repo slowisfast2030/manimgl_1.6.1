@@ -306,6 +306,9 @@ class SceneFileWriter(object):
                 self.progress_display.update()
 
     def close_movie_pipe(self) -> None:
+        """
+        关闭movie pipe
+        """
         self.writing_process.stdin.close()
         self.writing_process.wait()
         self.writing_process.terminate()
