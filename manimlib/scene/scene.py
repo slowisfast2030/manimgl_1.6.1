@@ -346,6 +346,9 @@ class Scene(object):
         desc: str = "",
         override_skip_animations: bool = False
     ) -> list[float] | np.ndarray | ProgressDisplay:
+        """
+        将动画或者等待的时间封装成一个新的类
+        """
         if self.skip_animations and not override_skip_animations:
             return [run_time]
         else:
