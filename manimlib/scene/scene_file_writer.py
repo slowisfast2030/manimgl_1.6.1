@@ -131,6 +131,9 @@ class SceneFileWriter(object):
         return self.image_file_path
 
     def get_next_partial_movie_path(self) -> str:
+        """
+        返回的是生成的partial movie文件的路径
+        """
         result = os.path.join(
             self.partial_movie_directory,
             "{:05}{}".format(
