@@ -117,6 +117,10 @@ class SceneFileWriter(object):
         return result
 
     def get_movie_file_path(self) -> str:
+        """
+        返回的是生成的视频文件的路径
+        比如：/Users/linus/Desktop/videos/test_demo.mp4
+        """
         return self.movie_file_path
 
     # Sound
@@ -171,8 +175,8 @@ class SceneFileWriter(object):
     # Writers
     def begin(self) -> None:
         if not self.break_into_partial_movies and self.write_to_movie:
-            print("-"*100)
-            print(self.get_movie_file_path())
+            #print("-"*100)
+            #print(self.get_movie_file_path())
             self.open_movie_pipe(self.get_movie_file_path())
 
     def begin_animation(self) -> None:
