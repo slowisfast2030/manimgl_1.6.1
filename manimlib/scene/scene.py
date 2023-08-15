@@ -481,14 +481,21 @@ class Scene(object):
                 self.add(animation.mobject)
 
     def progress_through_animations(self, animations: Iterable[Animation]) -> None:
+        """
+        在执行动画的时候会被执行
+        比如: self.play(Transform(c, s), run_time=3)
+
+        """
         last_t = 0
         for t in self.get_animation_time_progression(animations):
             dt = t - last_t
             last_t = t
             for animation in animations:
                 animation.update_mobjects(dt)
+                # 动画已经执行的时间 / 动画总时间 = alpha
                 alpha = t / animation.run_time
                 animation.interpolate(alpha)
+            # update_frame函数的参数是dt，说明每次执行后都会记住执行后的状态
             self.update_frame(dt)
             self.emit_frame()
 
