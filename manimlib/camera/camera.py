@@ -473,6 +473,10 @@ class Camera(object):
                 pass
 
     def refresh_perspective_uniforms(self) -> None:
+        """
+        着色器的顶点着色器代码中传入了很多uniform
+        来源于此
+        """
         frame = self.frame
         pw, ph = self.get_pixel_shape()
         fw, fh = frame.get_shape()
