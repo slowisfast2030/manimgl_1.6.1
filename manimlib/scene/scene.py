@@ -197,6 +197,9 @@ class Scene(object):
 
     # Related to updating
     def update_mobjects(self, dt: float) -> None:
+        """
+        调用和mob绑定的updater, 更新mob的状态
+        """
         for mobject in self.mobjects:
             mobject.update(dt)
 
