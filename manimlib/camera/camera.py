@@ -151,6 +151,11 @@ class CameraFrame(Mobject):
         return self.get_center() + dist * to_camera
 
 
+"""
+思考:
+Camera类中有与着色器相关的代码
+可以打print, 看看哪些被调用了以及是怎样的调用顺序
+"""
 class Camera(object):
     CONFIG = {
         "background_image": None,
