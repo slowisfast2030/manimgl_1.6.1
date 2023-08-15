@@ -206,7 +206,11 @@ class SceneFileWriter(object):
             self.close_movie_pipe()
 
     def finish(self) -> None:
+        """
+        果然, write_to_movie和save_last_frame都被执行了
+        """
         if self.write_to_movie:
+            #print("write_to_movie")
             if self.break_into_partial_movies:
                 self.combine_movie_files()
             else:
@@ -215,6 +219,7 @@ class SceneFileWriter(object):
                 self.add_sound_to_video()
             self.print_file_ready_message(self.get_movie_file_path())
         if self.save_last_frame:
+            #print("save_last_frame")
             self.scene.update_frame(ignore_skipping=True)
             self.save_final_image(self.scene.get_image())
         if self.should_open_file():
@@ -223,7 +228,6 @@ class SceneFileWriter(object):
     def open_movie_pipe(self, file_path: str) -> None:
         """
         file_path: /Users/linus/Desktop/videos/test_demo.mp4
-
         """
         # stem: /Users/linus/Desktop/videos/test_demo
         # ext: .mp4
