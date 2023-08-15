@@ -569,6 +569,9 @@ class Scene(object):
 
     @handle_play_like_call
     def play(self, *args, **kwargs) -> None:
+        """
+        播放动画
+        """
         if len(args) == 0:
             log.warning("Called Scene.play with no animations")
             return
@@ -588,6 +591,7 @@ class Scene(object):
         ignore_presenter_mode: bool = False
     ):
         """
+        等待一段时间
         执行self.wait()的时候会被执行
         """
         if note:
