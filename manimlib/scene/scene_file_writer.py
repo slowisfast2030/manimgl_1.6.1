@@ -60,20 +60,30 @@ class SceneFileWriter(object):
 
     # Output directories and files
     def init_output_directories(self) -> None:
+        #print("-"*100)
         out_dir = self.output_directory
         if self.mirror_module_path:
             module_dir = self.get_default_module_directory()
             out_dir = os.path.join(out_dir, module_dir)
+            # print("out_dir:", out_dir) 没有打印
 
         scene_name = self.file_name or self.get_default_scene_name()
+        # print("scene_name:", scene_name)
+        # scene_name: test_demo
+
         if self.save_last_frame:
             image_dir = guarantee_existence(os.path.join(out_dir, "images"))
             image_file = add_extension_if_not_present(scene_name, ".png")
             self.image_file_path = os.path.join(image_dir, image_file)
+            # print("image_file_path:", self.image_file_path)
+            # image_file_path: /Users/linus/Desktop/images/test_demo.png
+
         if self.write_to_movie:
             movie_dir = guarantee_existence(os.path.join(out_dir, "videos"))
             movie_file = add_extension_if_not_present(scene_name, self.movie_file_extension)
             self.movie_file_path = os.path.join(movie_dir, movie_file)
+            # print("movie_file_path:", self.movie_file_path)
+            # movie_file_path: /Users/linus/Desktop/videos/test_demo.mp4
             if self.break_into_partial_movies:
                 self.partial_movie_directory = guarantee_existence(os.path.join(
                     movie_dir, "partial_movie_files", scene_name,
