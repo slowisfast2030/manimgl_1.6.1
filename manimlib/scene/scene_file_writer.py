@@ -33,6 +33,8 @@ if TYPE_CHECKING:
 
 open_movie_pipe是开启一个进程, 可以接收原始图片数据 (通过ffmpeg命令可以将一系列图片数据生成视频)
 write_to_movie是将原始图片数据写入到进程中
+
+在scene.py文件中会不断调用write_to_movie函数
 """
 class SceneFileWriter(object):
     CONFIG = {
