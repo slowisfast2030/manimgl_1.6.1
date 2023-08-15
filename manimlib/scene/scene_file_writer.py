@@ -310,6 +310,9 @@ class SceneFileWriter(object):
         shutil.move(self.temp_file_path, self.final_file_path)
 
     def combine_movie_files(self) -> None:
+        """
+        将多个paitial movies合并成一个完整的movie
+        """
         kwargs = {
             "remove_non_integer_files": True,
             "extension": self.movie_file_extension,
