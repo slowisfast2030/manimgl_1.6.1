@@ -221,10 +221,18 @@ class SceneFileWriter(object):
             self.open_file()
 
     def open_movie_pipe(self, file_path: str) -> None:
+        """
+        file_path: /Users/linus/Desktop/videos/test_demo.mp4
+
+        """
+        # stem: /Users/linus/Desktop/videos/test_demo
+        # ext: .mp4
         stem, ext = os.path.splitext(file_path)
         self.final_file_path = file_path
         self.temp_file_path = stem + "_temp" + ext
 
+        # fps, width和height都是随着命令行参数的变化而变化
+        # -l -m --uhd
         fps = self.scene.camera.frame_rate
         width, height = self.scene.camera.get_pixel_shape()
 
