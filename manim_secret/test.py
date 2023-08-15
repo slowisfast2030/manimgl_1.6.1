@@ -5,5 +5,5 @@ class test_demo(Scene):
         c = Circle()
         s = Square()
         self.play(Transform(c, s), run_time=3)
-        #self.wait(1)
+        self.wait(1)
                   

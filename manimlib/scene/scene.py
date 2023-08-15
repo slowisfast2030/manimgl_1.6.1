@@ -546,6 +546,9 @@ class Scene(object):
         note: str = None,
         ignore_presenter_mode: bool = False
     ):
+        """
+        执行self.wait()的时候会被执行
+        """
         if note:
             log.info(note)
         self.update_mobjects(dt=0)  # Any problems with this?
@@ -599,6 +602,7 @@ class Scene(object):
 
     # Helpers for interactive development
     def save_state(self) -> None:
+        '''保存场景当前状态'''
         self.saved_state = {
             "mobjects": self.mobjects,
             "mobject_states": [
