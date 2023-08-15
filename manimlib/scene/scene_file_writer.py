@@ -59,6 +59,15 @@ class SceneFileWriter(object):
         self.init_audio()
 
     # Output directories and files
+    """
+    执行一个非常简单的test_demo场景，经过打印发现
+    下面这个函数执行了两次
+    一次打印了image_file_path
+    一次打印了movie_file_path
+    难怪，每次执行场景都会自动生成一个图片和一个视频
+
+    那么，生成文件的命令是哪里来的？
+    """
     def init_output_directories(self) -> None:
         #print("-"*100)
         out_dir = self.output_directory
