@@ -67,6 +67,7 @@ class SceneFileWriter(object):
     难怪，每次执行场景都会自动生成一个图片和一个视频
 
     那么，生成文件的命令是哪里来的？
+    初步猜测：write_to_movie和save_last_frame都是对命令行参数的解析
     """
     def init_output_directories(self) -> None:
         #print("-"*100)
