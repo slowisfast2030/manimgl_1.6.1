@@ -24,6 +24,11 @@ if TYPE_CHECKING:
     from manimlib.shader_wrapper import ShaderWrapper
 
 
+"""
+核心函数: capture
+在scene.py的update_frame函数中被调用
+这个函数将着色器有关的部分链接了进来
+"""
 class CameraFrame(Mobject):
     CONFIG = {
         "frame_shape": (FRAME_WIDTH, FRAME_HEIGHT),
@@ -358,8 +363,7 @@ class Camera(object):
     # Rendering
     def capture(self, *mobjects: Mobject, **kwargs) -> None:
         """
-        核心函数
-        在scene.py中被调用
+        核心函数, 在scene.py中被调用
         """
         self.refresh_perspective_uniforms()
         for mobject in mobjects:

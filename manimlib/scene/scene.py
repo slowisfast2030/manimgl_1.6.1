@@ -188,6 +188,7 @@ class Scene(object):
         self.camera.clear()
         """
         一个被忽略但极其重要的函数
+        和着色器有关
         """
         self.camera.capture(*self.mobjects)
 
