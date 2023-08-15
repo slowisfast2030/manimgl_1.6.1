@@ -343,6 +343,7 @@ class Scene(object):
         self,
         animations: Iterable[Animation]
     ) -> list[float] | np.ndarray | ProgressDisplay:
+        '''获取动画进度条，在此过程中播放动画'''
         run_time = self.get_run_time(animations)
         description = f"{self.num_plays} {animations[0]}"
         if len(animations) > 1:
@@ -355,6 +356,7 @@ class Scene(object):
         duration: float,
         stop_condition: Callable[[], bool] | None = None
     ) -> list[float] | np.ndarray | ProgressDisplay:
+        '''获取等待进度条，在此过程中播放等待动画'''
         kw = {"desc": f"{self.num_plays} Waiting"}
         if stop_condition is not None:
             kw["n_iterations"] = -1  # So it doesn't show % progress
@@ -371,6 +373,21 @@ class Scene(object):
         s hit, a MoveToTarget animation is built using the args that
         follow up until either another animation is hit, another method
         is hit, or the args list runs out.
+        """
+        """
+        每个 arg 可以是一个 **动画的实例**，也可以是一个 **mobject 的方法**，后面的 kwargs 
+        即为这个方法所包含的参数，可以以字典的形式给出
+
+        这一系列动画会通过参数列表 args 编译
+
+        - 如果是 **动画实例**，则会直接添加到 **动画列表** 中
+        - 如果是一个 **mobject 的方法**，则会将它包装成 ``MoveToTarget`` 实例，其中的参数即为后面的字典或参数
+            - 直至读取到下一个动画实例，或是下一个 mobject 的方法之前，都是上面一个 ``MoveToTarget`` 的参数
+        - 或者采用 `ManimCommunity <https://manim.community>`_ 编写的 ``Mobject.animate`` 
+          方法，采用链式操作，将一连串方法编译成一个 ``MoveToTarget``，详见 :class:`manimlib.mobject.mobject._AnimationBuilder`
+
+        一般我们采用 ``Scene.play`` 方法，而不是这个，因为 ``play`` 方法包装得更全面，而 
+        ``anims_from_play_args`` 这个方法只是 ``play`` 中的一部分
         """
         animations = []
         state = {
