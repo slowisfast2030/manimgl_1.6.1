@@ -168,6 +168,9 @@ class Scene(object):
         self.get_image().show()
 
     def update_frame(self, dt: float = 0, ignore_skipping: bool = False) -> None:
+        """
+        经过dt时间后, 更新场景中的所有物体
+        """
         self.increment_time(dt)
         self.update_mobjects(dt)
         if self.skip_animations and not ignore_skipping:
