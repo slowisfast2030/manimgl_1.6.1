@@ -265,28 +265,40 @@ class Scene(object):
         return self
 
     def remove(self, *mobjects_to_remove: Mobject):
+        """
+        从场景中移除所有给定的 mobject ，如果传入的 mobject 在一个 Group 中，那么这个物件会被移除，
+        同在该 Group 的其他成员会重新被加载到场景中（但不会重新加载到 Group 中）。
+
+        例如我们有 ``Group(m1, m2, m3)`` ，当场景调用了 ``scene.remove(m1)`` ，那么得到的结果为
+        场景中剩余的是未组合的 ``m2`` 和 ``m3``
+        """
         self.mobjects = restructure_list_to_exclude_certain_family_members(
             self.mobjects, mobjects_to_remove
         )
         return self
 
     def bring_to_front(self, *mobjects: Mobject):
+        '''移动到最上层'''
         self.add(*mobjects)
         return self
 
     def bring_to_back(self, *mobjects: Mobject):
+        '''移动到下层'''
         self.remove(*mobjects)
         self.mobjects = list(mobjects) + self.mobjects
         return self
 
     def clear(self):
+        '''清空场景'''
         self.mobjects = []
         return self
 
     def get_mobjects(self) -> list[Mobject]:
+        '''获取场景中的物件'''
         return list(self.mobjects)
 
     def get_mobject_copies(self) -> list[Mobject]:
+        '''获取场景中物件的拷贝'''
         return [m.copy() for m in self.mobjects]
 
     def point_to_mobject(
