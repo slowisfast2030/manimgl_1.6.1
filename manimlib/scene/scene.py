@@ -489,6 +489,7 @@ class Scene(object):
 
         return animations
 
+    # 装饰器
     def handle_play_like_call(func):
         @wraps(func)
         def wrapper(self, *args, **kwargs):
