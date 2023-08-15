@@ -280,6 +280,8 @@ class Scene(object):
 
     def bring_to_front(self, *mobjects: Mobject):
         '''移动到最上层'''
+        # 这里需要注意，参数中的mob按照字面意思，已经在场景中了
+        # 结合add源码，先remove再add，很合逻辑
         self.add(*mobjects)
         return self
 
