@@ -359,6 +359,7 @@ class Camera(object):
     def capture(self, *mobjects: Mobject, **kwargs) -> None:
         """
         核心函数
+        在scene.py中被调用
         """
         self.refresh_perspective_uniforms()
         for mobject in mobjects:
