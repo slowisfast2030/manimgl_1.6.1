@@ -262,6 +262,9 @@ class SceneFileWriter(object):
                 '-pix_fmt', 'yuv420p',
             ]
         command += [self.temp_file_path]
+        # 创建一个新进程，执行command命令，从sp.PIPE读取数据
+        # 也就是说，这个进程会从sp.PIPE读取数据，然后写入到temp_file_path文件中
+        # 那么，这个进程的输入数据是从哪里来的呢？
         self.writing_process = sp.Popen(command, stdin=sp.PIPE)
 
         if self.total_frames > 0:
