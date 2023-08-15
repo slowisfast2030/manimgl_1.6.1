@@ -8,4 +8,3 @@ class test_demo(Scene):
         self.play(Transform(c, s), run_time=1)
         self.wait(1)
         
-                  
