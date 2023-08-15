@@ -366,6 +366,9 @@ class Scene(object):
         )
 
     def get_run_time(self, animations: Iterable[Animation]) -> float:
+        """
+        一系列动画的持续时间取决于最长的动画时间
+        """
         return np.max([animation.run_time for animation in animations])
 
     def get_animation_time_progression(
