@@ -186,6 +186,9 @@ class Scene(object):
         if self.window:
             self.window.clear()
         self.camera.clear()
+        """
+        一个被忽略但极其重要的函数
+        """
         self.camera.capture(*self.mobjects)
 
         if self.window:

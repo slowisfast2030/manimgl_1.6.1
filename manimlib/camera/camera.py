@@ -357,6 +357,9 @@ class Camera(object):
 
     # Rendering
     def capture(self, *mobjects: Mobject, **kwargs) -> None:
+        """
+        核心函数
+        """
         self.refresh_perspective_uniforms()
         for mobject in mobjects:
             for render_group in self.get_render_group_list(mobject):
