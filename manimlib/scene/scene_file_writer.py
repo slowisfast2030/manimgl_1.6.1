@@ -288,6 +288,13 @@ class SceneFileWriter(object):
         self.progress_display.set_description(full_desc)
 
     def write_frame(self, camera: Camera) -> None:
+        '''
+        写入视频帧
+
+        这个函数会被多次调用, 将raw_bytes写入ffmpeg的sp.PIPE
+        在scene.py文件中, 有一个emit_frame函数, 会调用这个函数
+        而emit_frame函数又在一个循环中, 会被多次调用
+        '''
         if self.write_to_movie:
             raw_bytes = camera.get_raw_fbo_data()
             self.writing_process.stdin.write(raw_bytes)
