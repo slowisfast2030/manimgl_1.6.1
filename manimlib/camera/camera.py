@@ -260,6 +260,13 @@ class Camera(object):
 
     def get_raw_fbo_data(self, dtype: str = 'f1') -> bytes:
         # Copy blocks from the fbo_msaa to the drawn fbo using Blit
+        """
+        这里的fbo数据
+        1.用来生成图片, 比如scene_file_writer.py中的get_image函数
+        2.用来生成视频, 比如scene_file_writer.py中的write_frame函数
+
+        这里的fbo数据, 就是视频的每一帧的数据。至于是生成图片还是视频，
+        """
         pw, ph = (self.pixel_width, self.pixel_height)
         gl.glBindFramebuffer(gl.GL_READ_FRAMEBUFFER, self.fbo_msaa.glo)
         gl.glBindFramebuffer(gl.GL_DRAW_FRAMEBUFFER, self.fbo.glo)
