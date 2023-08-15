@@ -550,9 +550,11 @@ class Scene(object):
             dt = t - last_t
             last_t = t
             for animation in animations:
+                # 处理updater
                 animation.update_mobjects(dt)
                 # 动画已经执行的时间 / 动画总时间 = alpha
                 alpha = t / animation.run_time
+                # 处理animation
                 animation.interpolate(alpha)
             # update_frame函数的参数是dt，说明每次执行后都会记住执行后的状态
             self.update_frame(dt)
