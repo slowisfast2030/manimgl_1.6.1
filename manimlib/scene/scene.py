@@ -82,6 +82,7 @@ class Scene(object):
             np.random.seed(self.random_seed)
 
     def run(self) -> None:
+        # 虚拟和实际的时间有何深意？
         self.virtual_animation_start_time: float = 0
         self.real_animation_start_time: float = time.time()
         self.file_writer.begin()
