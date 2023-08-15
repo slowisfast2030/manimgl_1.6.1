@@ -26,6 +26,14 @@ if TYPE_CHECKING:
     from PIL.Image import Image
 
 
+"""
+这个类最重要的两个函数:
+1.open_movie_pipe
+2.write_to_movie
+
+open_movie_pipe是开启一个进程, 可以接收原始图片数据 (通过ffmpeg命令可以将一系列图片数据生成视频)
+write_to_movie是将原始图片数据写入到进程中
+"""
 class SceneFileWriter(object):
     CONFIG = {
         "write_to_movie": False,
