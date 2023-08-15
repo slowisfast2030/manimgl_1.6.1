@@ -285,6 +285,8 @@ class Scene(object):
 
     def bring_to_back(self, *mobjects: Mobject):
         '''移动到下层'''
+        # 不是很理解，既然remove了, 为何还要在self.mobjects后面添加?
+        # 得进一步搞清楚mob显示的原理
         self.remove(*mobjects)
         self.mobjects = list(mobjects) + self.mobjects
         return self
