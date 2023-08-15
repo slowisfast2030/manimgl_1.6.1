@@ -247,6 +247,7 @@ class Scene(object):
         Mobjects will be displayed, from background to
         foreground in the order with which they are added.
         """
+        """将 Mobject 添加到场景中，后添加的会覆盖在上层"""
         self.remove(*new_mobjects)
         self.mobjects += new_mobjects
         return self
