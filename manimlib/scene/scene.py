@@ -69,7 +69,7 @@ class Scene(object):
         self.skip_time: float = 0
         self.original_skipping_status: bool = self.skip_animations
         if self.start_at_animation_number is not None:
-            self.skip_animations = True
+            self.skip_animations = True # 测试一下这个属性的作用
 
         # Items associated with interaction
         self.mouse_point = Point()
