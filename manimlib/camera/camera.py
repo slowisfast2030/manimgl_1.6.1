@@ -278,6 +278,9 @@ class Camera(object):
         )
 
     def get_image(self) -> Image.Image:
+        """
+        由fbo数据生成图片
+        """
         return Image.frombytes(
             'RGBA',
             self.get_pixel_shape(),
