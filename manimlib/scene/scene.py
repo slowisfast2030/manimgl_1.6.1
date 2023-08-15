@@ -349,6 +349,7 @@ class Scene(object):
         if self.skip_animations and not override_skip_animations:
             return [run_time]
         else:
+            # 这里的step是每一帧的时间间隔
             step = 1 / self.camera.frame_rate
             times = np.arange(0, run_time, step)
 
