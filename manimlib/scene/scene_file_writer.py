@@ -195,8 +195,6 @@ class SceneFileWriter(object):
     # Writers
     def begin(self) -> None:
         if not self.break_into_partial_movies and self.write_to_movie:
-            #print("-"*100)
-            #print(self.get_movie_file_path())
             self.open_movie_pipe(self.get_movie_file_path())
 
     def begin_animation(self) -> None:
