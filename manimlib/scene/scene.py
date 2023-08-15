@@ -343,7 +343,10 @@ class Scene(object):
         self,
         animations: Iterable[Animation]
     ) -> list[float] | np.ndarray | ProgressDisplay:
-        '''获取动画进度条，在此过程中播放动画'''
+        '''
+        获取动画进度条，在此过程中播放动画
+        动画的持续时间
+        '''
         run_time = self.get_run_time(animations)
         description = f"{self.num_plays} {animations[0]}"
         if len(animations) > 1:
@@ -356,7 +359,10 @@ class Scene(object):
         duration: float,
         stop_condition: Callable[[], bool] | None = None
     ) -> list[float] | np.ndarray | ProgressDisplay:
-        '''获取等待进度条，在此过程中播放等待动画'''
+        '''
+        获取等待进度条，在此过程中播放等待动画
+        等待的持续时间
+        '''
         kw = {"desc": f"{self.num_plays} Waiting"}
         if stop_condition is not None:
             kw["n_iterations"] = -1  # So it doesn't show % progress
