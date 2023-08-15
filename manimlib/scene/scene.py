@@ -189,6 +189,9 @@ class Scene(object):
                 self.update_frame(0)
 
     def emit_frame(self) -> None:
+        """
+        生成每一帧, 写入ffmpeg的输入管道
+        """
         if not self.skip_animations:
             self.file_writer.write_frame(self.camera)
 
