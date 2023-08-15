@@ -124,6 +124,10 @@ class SceneFileWriter(object):
 
     # Directory getters
     def get_image_file_path(self) -> str:
+        """
+        返回的是生成的图片文件的路径
+        比如：/Users/linus/Desktop/images/test_demo.png
+        """
         return self.image_file_path
 
     def get_next_partial_movie_path(self) -> str:
