@@ -373,6 +373,7 @@ class Camera(object):
     def render(self, render_group: dict[str]) -> None:
         shader_wrapper = render_group["shader_wrapper"]
         shader_program = render_group["prog"]
+        # 设置传入shader的uniform变量
         self.set_shader_uniforms(shader_program, shader_wrapper)
         self.set_ctx_depth_test(shader_wrapper.depth_test)
         render_group["vao"].render(int(shader_wrapper.render_primitive))
