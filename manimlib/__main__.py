@@ -25,6 +25,17 @@ def main():
     print(f"ManimGL \033[32mv{__version__}\033[0m")
 
     args = manimlib.config.parse_cli()
+    """
+    执行 manimgl test.py test_demo -ol 
+
+    args: Namespace(color=None, config=False, config_file=None, embed=None, 
+    file='test.py', file_name=None, finder=False, frame_rate=None, full_screen=False, 
+    gif=False, hd=False, leave_progress_bars=False, log_level=None, low_quality=True, 
+    medium_quality=False, open=True, presenter_mode=False, quiet=False, resolution=None, 
+    save_pngs=False, scene_names=['test_demo'], skip_animations=False, 
+    start_at_animation_number=None, transparent=False, uhd=False, version=False, 
+    video_dir=None, write_all=False, write_file=False)
+    """
     if args.version and args.file is None:
         return
     if args.log_level:
