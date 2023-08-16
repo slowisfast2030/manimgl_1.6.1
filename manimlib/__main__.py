@@ -14,6 +14,12 @@ from manimlib import __version__
 """
 python -m manimlib test.py test_demo -ol
 manimgl test.py test_demo -ol
+
+manimgl是一个命令的别名, 可以在setup.cfg文件中找到定义
+manimgl = manimlib.__main__:main
+manim-render = manimlib.__main__:main
+
+同理可知, manim-render也是一个命令的别名
 """
 def main():
     print(f"ManimGL \033[32mv{__version__}\033[0m")
