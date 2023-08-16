@@ -46,7 +46,8 @@ def main():
     else:
         config = manimlib.config.get_configuration(args)
         """
-        {'module': <module 'test' from 'test.py'>, 'scene_names': ['test_demo'], 
+        {
+        'module': <module 'test' from 'test.py'>, 'scene_names': ['test_demo'], 
         'file_writer_config': 
             {'write_to_movie': True, 'break_into_partial_movies': False, 
             'save_last_frame': False, 'save_pngs': False, 'png_mode': 'RGB', 
@@ -60,7 +61,8 @@ def main():
         'camera_config': 
             {'pixel_width': 854, 'pixel_height': 480, 'frame_rate': 15, 
             'background_color': <Color #333>}, 
-        'window_config': {'size': (720, 405)}}
+        'window_config': {'size': (720, 405)}
+        }
         """
         scenes = manimlib.extract_scene.main(config)
         """
