@@ -25,6 +25,7 @@ def main():
     print(f"ManimGL \033[32mv{__version__}\033[0m")
 
     args = manimlib.config.parse_cli()
+    print(args)
     """
     执行 manimgl test.py test_demo -ol 
 
