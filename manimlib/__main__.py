@@ -13,7 +13,6 @@ from manimlib import __version__
 
 """
 python -m manimlib test.py test_demo -ol
-==
 manimgl test.py test_demo -ol
 """
 def main():
