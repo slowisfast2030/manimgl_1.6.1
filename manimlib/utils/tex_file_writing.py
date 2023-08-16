@@ -23,6 +23,20 @@ def get_tex_config():
         "tex_body": "..."
     }
     """
+    """
+    在default_config.yaml中的tex有这么一段配置:
+    text_to_replace: "[tex_expression]"
+
+    在tex模版中有这么一段:
+    \begin{document}
+
+    [tex_expression]
+
+    \end{document}
+
+    在manim中使用latex, 会将tex_expression替换成实际的latex表达式
+    然后编译成dvi文件, 再转成svg文件
+    """
     # Only load once, then save thereafter
     if not SAVED_TEX_CONFIG:
         custom_config = get_custom_config()
@@ -70,6 +84,9 @@ def tex_to_svg(tex_file_content, svg_file):
 
 
 def tex_to_dvi(tex_file):
+    """
+    将tex模版转成dvi文件
+    """
     tex_config = get_tex_config()
     program = tex_config["executable"]
     file_type = tex_config["intermediate_filetype"]
@@ -102,6 +119,9 @@ def dvi_to_svg(dvi_file, regen_if_exists=False):
     directory full of enumerated pngs corresponding with these slides.
     Returns a list of PIL Image objects for these images sorted as they
     where in the dvi
+    """
+    """
+    将dvi文件转成svg文件
     """
     file_type = get_tex_config()["intermediate_filetype"]
     result = dvi_file.replace("." + file_type, ".svg")
