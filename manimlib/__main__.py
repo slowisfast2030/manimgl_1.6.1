@@ -5,7 +5,11 @@ import manimlib.extract_scene
 import manimlib.utils.init_config
 from manimlib import __version__
 
-
+"""
+python -m manimlib test.py test_demo -ol
+==
+manimgl test.py test_demo -ol
+"""
 def main():
     print(f"ManimGL \033[32mv{__version__}\033[0m")
 
