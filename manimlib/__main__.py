@@ -4,6 +4,12 @@ import manimlib.logger
 import manimlib.extract_scene
 import manimlib.utils.init_config
 from manimlib import __version__
+"""
+这里的import语句可以进一步分析
+前四行是把manimlib当做了一个普通的文件夹
+第五行是把manimlib当做了一个包
+执行到第五行的时候会进入manimlib文件夹下的__init__.py文件, 找到__version__变量
+"""
 
 """
 python -m manimlib test.py test_demo -ol
