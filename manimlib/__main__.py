@@ -61,7 +61,8 @@ def main():
         'camera_config': 
             {'pixel_width': 854, 'pixel_height': 480, 'frame_rate': 15, 
             'background_color': <Color #333>}, 
-        'window_config': {'size': (720, 405)}
+        'window_config': 
+            {'size': (720, 405)}
         }
         """
         scenes = manimlib.extract_scene.main(config)
