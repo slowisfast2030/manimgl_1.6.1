@@ -262,6 +262,7 @@ def get_configuration(args):
         init_customization()
 
     elif not os.path.exists(__config_file__):
+        # 使用默认配置文件
         log.info(f"Using the default configuration file, which you can modify in `{global_defaults_file}`")
         log.info(
             "If you want to create a local configuration file, you can create a file named"
