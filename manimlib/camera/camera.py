@@ -49,6 +49,11 @@ class CameraFrame(Mobject):
         self.set_height(self.frame_shape[1], stretch=True)
         self.move_to(self.center_point)
 
+    """
+    Euler angles and quaternions are both ways of representing the orientation 
+    of a rigid body in three-dimensional space. They have different advantages 
+    and disadvantages, and they can be converted from one to another. 
+    """
     def set_orientation(self, rotation: Rotation):
         '''
         设置相机旋转（使用四元数）
