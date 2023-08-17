@@ -20,6 +20,7 @@ def calc_linenum(file):
 
 if __name__ == '__main__':
     base_path = './manimlib'  # 代码目录
+    base_path = './'  # 代码目录
     files = collect_files(base_path)
     total_code_num = 0
     for file in files:
