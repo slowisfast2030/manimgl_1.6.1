@@ -12,15 +12,13 @@ class cam(ThreeDScene):
 
 		#Camera
 		frame = self.camera.frame
-
 		
-
-		frame4 = frame.copy()
-		frame4.set_width(15)
-		frame4.set_euler_angles(theta=-10*DEGREES, phi=70*DEGREES)
-		self.play(Transform(frame, frame4))
+		frame2 = frame.copy()
+		frame2.set_width(15)
+		frame2.set_euler_angles(theta=-30*DEGREES, phi=70*DEGREES)
+		self.play(Transform(frame, frame2))
 		#Rotating Camera (without updaters)
-		for i in range(100):
+		for i in range(200):
 			frame.increment_theta(0.01)
 			self.wait(0.001)
 
