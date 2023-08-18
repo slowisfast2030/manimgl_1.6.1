@@ -1,12 +1,14 @@
 from manimlib import *
 import numpy as np
 
-class cam(Scene):
+class cam(ThreeDScene):
 	def construct(self): 
 		#Scene Material
+		axes = ThreeDAxes()
+		self.add(axes)
 		title = Text("Camera").shift(UP*3.5)
 		self.play(FadeIn(title))
-		self.play(FadeIn(Square(fill_opacity=1).set_color(YELLOW)))
+		self.play(FadeIn(Square(fill_opacity=1).set_color(TEAL)))
 
 		#Camera
 		frame = self.camera.frame
