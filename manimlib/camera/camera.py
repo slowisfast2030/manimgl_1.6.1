@@ -29,6 +29,25 @@ if TYPE_CHECKING:
 在scene.py的update_frame函数中被调用
 这个函数将着色器有关的部分链接了进来
 """
+
+"""
+frame = self.camera.frame
+frame2 = frame.copy()
+
+# 从实际效果来看
+# theta是绕z轴旋转
+# phi是绕y轴旋转
+
+# 假设camera距离世界坐标系的原点的距离是r
+# 那么camera运动的轨迹是一个以世界坐标系原点为圆心, 半径为r的圆
+
+frame2.set_euler_angles(theta=-30*DEGREES, phi=70*DEGREES)
+self.play(Transform(frame, frame2))
+
+for i in range(200):
+    frame.increment_theta(0.01)
+    self.wait(0.001)
+"""
 class CameraFrame(Mobject):
     '''相机所拍摄到的帧'''
     CONFIG = {
