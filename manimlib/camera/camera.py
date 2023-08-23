@@ -388,6 +388,7 @@ class Camera(object):
 
         这里的fbo数据, 就是视频的每一帧的数据。至于是生成图片还是视频，
         """
+        # 为什么在这里设置像素宽度和像素高度？个人感觉应该在viewport变化的时候指定啊
         pw, ph = (self.pixel_width, self.pixel_height)
         gl.glBindFramebuffer(gl.GL_READ_FRAMEBUFFER, self.fbo_msaa.glo)
         gl.glBindFramebuffer(gl.GL_DRAW_FRAMEBUFFER, self.fbo.glo)
