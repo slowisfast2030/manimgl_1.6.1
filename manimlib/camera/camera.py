@@ -393,6 +393,7 @@ class Camera(object):
         gl.glBindFramebuffer(gl.GL_READ_FRAMEBUFFER, self.fbo_msaa.glo)
         gl.glBindFramebuffer(gl.GL_DRAW_FRAMEBUFFER, self.fbo.glo)
         gl.glBlitFramebuffer(0, 0, pw, ph, 0, 0, pw, ph, gl.GL_COLOR_BUFFER_BIT, gl.GL_LINEAR)
+        # 没想到viewport在这里！
         return self.fbo.read(
             viewport=self.fbo.viewport,
             components=self.n_channels,
