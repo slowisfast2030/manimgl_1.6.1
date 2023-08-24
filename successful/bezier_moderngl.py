@@ -52,7 +52,7 @@ vbo = ctx.buffer(vertices)
 vao = ctx.simple_vertex_array(prog, vbo, 'in_vert')
 
 # Create a framebuffer object (FBO)
-fbo = ctx.framebuffer(color_attachments=[ctx.texture((512, 512), 4)])
+fbo = ctx.framebuffer(color_attachments=[ctx.texture((400, 500), 4)])
 
 # Bind the FBO and clear the color buffer
 fbo.use()
@@ -69,6 +69,8 @@ for mode, name in zip(render_modes, image_names):
     image = fbo.read(components=3)
 
     # Save the image to a file
-    Image.frombytes('RGB', (512, 512), image).save(name)
+    Image.frombytes('RGB', fbo.size, image).save(name)
 
 print("all is well")
+print(fbo.size)
+print(fbo.viewport)

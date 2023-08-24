@@ -355,6 +355,7 @@ class Camera(object):
         '''获取帧缓冲'''
         pw = self.pixel_width
         ph = self.pixel_height
+        # 一旦返回了framebuffer，viewport也就定下来了
         return ctx.framebuffer(
             color_attachments=ctx.texture(
                 (pw, ph),
@@ -386,7 +387,7 @@ class Camera(object):
         1.用来生成图片, 比如scene_file_writer.py中的get_image函数
         2.用来生成视频, 比如scene_file_writer.py中的write_frame函数
 
-        这里的fbo数据, 就是视频的每一帧的数据。至于是生成图片还是视频，
+        这里的fbo数据, 就是视频的每一帧的数据。至于是生成图片还是视频, 取决于调用的函数
         """
         # 为什么在这里设置像素宽度和像素高度？个人感觉应该在viewport变化的时候指定啊
         pw, ph = (self.pixel_width, self.pixel_height)

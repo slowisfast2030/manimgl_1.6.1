@@ -79,4 +79,4 @@ vao.render(moderngl.LINE_STRIP)
 image = fbo.read(components=3)
 image = Image.frombytes('RGB', fbo.size, image).save("hello.png")
 
-
+print("这个例子有问题，我不知道怎么解决")
