@@ -33,7 +33,7 @@ vec4 add_light(vec4 color,
     // 漫反射光照模型
     float bright_factor = max(light_to_normal, 0) * reflectiveness;
     // For glossy surface, add extra shine if light beam go towards camera
-    // 镜面反射光照模型
+    // 镜面反射光照模型（还不确定具体是哪个）
     vec3 light_reflection = -to_light + 2 * unit_normal * dot(to_light, unit_normal);
     float light_to_cam = dot(light_reflection, to_camera);
     float shine = gloss * exp(-3 * pow(1 - light_to_cam, 2));
