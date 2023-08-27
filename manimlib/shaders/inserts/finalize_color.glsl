@@ -36,6 +36,9 @@ vec4 add_light(vec4 color,
     // 镜面反射
     vec3 light_reflection = -to_light + 2 * unit_normal * dot(to_light, unit_normal);
     float light_to_cam = dot(light_reflection, to_camera);
+    // 最让人难以理解的就是这个公式，不过可以尝试从实际效果来理解
+    // 当反射光和相机光线越接近时，镜面反射越强
+    // 符合镜面反射的特性
     float shine = gloss * exp(-3 * pow(1 - light_to_cam, 2));
     // 漫反射 + 镜面反射
     bright_factor += shine;
