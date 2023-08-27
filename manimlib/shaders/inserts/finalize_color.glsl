@@ -30,14 +30,14 @@ vec4 add_light(vec4 color,
 
     float light_to_normal = dot(to_light, unit_normal);
     // When unit normal points towards light, brighten
-    // 漫反射光照模型
+    // 漫反射
     float bright_factor = max(light_to_normal, 0) * reflectiveness;
     // For glossy surface, add extra shine if light beam go towards camera
-    // 高光光照模型
+    // 镜面反射
     vec3 light_reflection = -to_light + 2 * unit_normal * dot(to_light, unit_normal);
     float light_to_cam = dot(light_reflection, to_camera);
     float shine = gloss * exp(-3 * pow(1 - light_to_cam, 2));
-    // 漫反射 + 高光
+    // 漫反射 + 镜面反射
     bright_factor += shine;
 
     result.rgb = mix(result.rgb, vec3(1.0), bright_factor);
