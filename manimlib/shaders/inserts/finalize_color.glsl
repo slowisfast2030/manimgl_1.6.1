@@ -37,6 +37,7 @@ vec4 add_light(vec4 color,
     vec3 light_reflection = -to_light + 2 * unit_normal * dot(to_light, unit_normal);
     float light_to_cam = dot(light_reflection, to_camera);
     float shine = gloss * exp(-3 * pow(1 - light_to_cam, 2));
+    // 漫反射 + 高光
     bright_factor += shine;
 
     result.rgb = mix(result.rgb, vec3(1.0), bright_factor);
