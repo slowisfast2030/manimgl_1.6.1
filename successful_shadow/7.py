@@ -3,10 +3,23 @@ import scipy.spatial
 
 
 # Helpers
+"""
+Draw a line from source to p1 to p2.  Where does it
+intersect the xy plane?
+"""
 def project_to_xy_plane(p1, p2):
     """
-    Draw a line from source to p1 to p2.  Where does it
-    intersect the xy plane?
+    如何理解这个函数？
+    函数目的: 求出从p1到p2的直线与xy平面的交点
+
+    为了方便讨论, 假设p1和p2在xoy平面的上方, 且p1在p2之上
+    vect是一条从p1指向p2的向量
+    (z2 / vect[2]) * vect也就是
+    (z1 / (z2-z1)) * vect, 就是把vect向量延长z1/(z1-z2)倍, 且取反方向
+    从几何角度来看, 延长后的向量的起点(因为取反)恰好在xoy平面上
+    假设起点为p3
+    那么延长后的向量(z1 / (z1-z2)) * vect = p1 - p3
+    进而: p3 = p1 - (p1 - p3)
     """
     x1, y1, z1 = p1
     x2, y2, z2 = p2
