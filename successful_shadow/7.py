@@ -61,6 +61,7 @@ def get_pre_shadow(mobject, opacity):
 
 
 def update_shadow(shadow, mobject, light_source):
+    # 获取光源的中心坐标
     lp = light_source.get_center() if light_source is not None else None
 
     def project(point):
