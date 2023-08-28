@@ -479,18 +479,18 @@ class IntroduceShadow(ShadowScene):
         self.play(
             ShowCreation(light_lines, lag_ratio=0.01, run_time=3),
         )
-        # self.play(
-        #     light.animate.shift(1.0 * IN),
-        #     rate_func=there_and_back,
-        #     run_time=3
-        # )
-        # self.play(
-        #     light.animate.shift(4 * RIGHT),
-        #     run_time=5
-        # )
-        # self.play(
-        #     Rotate(light, PI, about_point=light.get_z() * OUT),
-        #     run_time=8,
-        # )
-        # self.play(light.animate.shift(4 * RIGHT), run_time=5)
+        self.play(
+            light.animate.shift(1.0 * IN),
+            rate_func=there_and_back,
+            run_time=3
+        )
+        self.play(
+            light.animate.shift(4 * RIGHT),
+            run_time=5
+        )
+        self.play(
+            Rotate(light, PI, about_point=light.get_z() * OUT),
+            run_time=8,
+        )
+        self.play(light.animate.shift(4 * RIGHT), run_time=5)
         self.wait()
