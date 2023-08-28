@@ -2,6 +2,13 @@ from manimlib import *
 import scipy.spatial
 
 
+"""
+黑箱学习法：对于一个函数，只关心输入和输出，不关心内部的实现细节
+
+很困惑light_source和self.light是不是一个对象
+根据黑箱学习法, 这个不是重点
+从效果上看,light_source和self.light是同一个对象
+"""
 # Helpers
 """
 Draw a line from source to p1 to p2.  Where does it
