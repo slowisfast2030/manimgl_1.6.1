@@ -344,6 +344,7 @@ class Camera(object):
             self.ctx.disable(moderngl.DEPTH_TEST)
 
     def init_light_source(self) -> None:
+        # "light_source_position": [-10, 10, 10]
         self.light_source = Point(self.light_source_position)
 
     # Methods associated with the frame buffer
