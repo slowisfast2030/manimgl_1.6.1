@@ -75,7 +75,7 @@ def update_shadow(shadow, mobject, light_source):
         The np.apply_along_axis function in NumPy is used to apply a function along 
         a specified axis of a NumPy array. This function is particularly useful when 
         you want to apply a custom function to each slice of the array along a specific 
-        axis, rather than applying it element-wise.
+        axis, rather than applying it element-wise. (0 for columns, 1 for rows)
         """
         sm.set_points(np.apply_along_axis(project, 1, mm.get_points()))
         if isinstance(sm, VMobject) and sm.get_unit_normal()[2] < 0:
