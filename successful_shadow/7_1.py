@@ -221,6 +221,7 @@ class ShadowScene(ThreeDScene):
         "gloss": 0.1,
         "shadow": 0.5,
     }
+    # 无穷远光源
     inf_light = False
     glow_radius = 10
     glow_factor = 10
