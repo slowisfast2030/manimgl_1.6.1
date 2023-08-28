@@ -355,6 +355,9 @@ class ShadowScene(ThreeDScene):
         return light_lines
 
     def random_toss(self, mobject=None, angle=TAU, about_point=None, meta_speed=5, **kwargs):
+        """
+        随机投掷mobject
+        """
         if mobject is None:
             mobject = self.solid
 
