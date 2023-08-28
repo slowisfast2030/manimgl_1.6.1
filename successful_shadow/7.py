@@ -6,6 +6,8 @@ import scipy.spatial
 """
 Draw a line from source to p1 to p2.  Where does it
 intersect the xy plane?
+
+注释不准确
 """
 def project_to_xy_plane(p1, p2):
     """
