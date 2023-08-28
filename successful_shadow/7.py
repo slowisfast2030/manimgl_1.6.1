@@ -108,6 +108,10 @@ def get_shadow(mobject, light_source=None, opacity=0.7):
 
 
 def get_area(shadow):
+    """
+    不是很理解这个函数的作用
+    对area_vector取模长, 然后乘以0.5?
+    """
     return 0.5 * sum(
         get_norm(sm.get_area_vector())
         for sm in shadow.get_family()
@@ -115,6 +119,11 @@ def get_area(shadow):
 
 
 def get_convex_hull(mobject):
+    """
+    The convex hull of a set of points is the smallest convex polygon 
+    or polyhedron that contains all the points.
+    一组点的凸包是包含所有点的最小凸多边形或凸多面体。
+    """
     points = mobject.get_all_points()
     hull = scipy.spatial.ConvexHull(points[:, :2])
     return points[hull.vertices]
