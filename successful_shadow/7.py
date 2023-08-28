@@ -130,7 +130,7 @@ def get_convex_hull(mobject):
 
 
 def sort_to_camera(mobject, camera_frame):
-    # 获取相机的位置
+    # 获取相机的位置（个人猜测，是在世界坐标系）
     cl = camera_frame.get_implied_camera_location()
     # 对子物件进行排序
     mobject.sort(lambda p: -get_norm(p - cl))
