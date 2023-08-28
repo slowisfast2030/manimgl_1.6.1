@@ -422,7 +422,7 @@ class ShadowScene(ThreeDScene):
         return frame
 
 
-class test(ShadowScene):
+class test1(ShadowScene):
     area_label_center = [-2.5, -2, 0]
     plane_dims = (28, 20)
 
@@ -459,6 +459,8 @@ class test(ShadowScene):
         # Introductory animations
         # 疑问：整个场景一开始只有一个plane，然而之前已经添加了cube和shadow，为何一开始不显示呢
         # cube和shadow是以下面动画的形式添加到场景中的
+        
+        # 这一行如果注释掉，一开始的阴影会有一些奇怪的效果
         self.shadow.update() # 更新shadow的形状。一开始的shadow并不是cube的投影
         self.play(
             FadeIn(question, UP),
