@@ -398,6 +398,7 @@ class ShadowScene(ThreeDScene):
         )
         return solid
 
+    # 没用到这个函数
     def init_frame_rotation(self, factor=0.0025, max_speed=0.01):
         frame = self.camera.frame
         frame.d_theta = 0
