@@ -221,7 +221,11 @@ class ShadowScene(ThreeDScene):
     unit_size = 2
 
     def setup(self):
+        # 改变了相机的欧拉角
         self.camera.frame.reorient(-30, 75)
+        # 困惑: 这里的效果应该是改变了相机的位置
+        # 改变了欧拉角的相机，空间位置应该也发生了变化
+        # 但这里的frame_center是[0, 0, 2]？
         self.camera.frame.move_to(self.frame_center)
         self.add_plane()
         self.add_solid()
