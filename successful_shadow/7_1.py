@@ -66,8 +66,8 @@ def get_pre_shadow(mobject, opacity):
 
 def update_shadow(shadow, mobject, light_source):
     """
-    随着mobject的变化
-    更新shadow的属性
+    随着mobject和light_source的变化
+    更新shadow的属性(主要是形状)
     """
     # 获取光源的中心坐标
     lp = light_source.get_center() if light_source is not None else None
@@ -410,6 +410,8 @@ class IntroduceShadow(ShadowScene):
 
     def construct(self):
         # Setup
+        # light是一个点，没有视觉效果。glow是点云，有视觉效果
+        # glow和light的位置进行了绑定。移动light，glow也会移动
         light = self.light
         light.move_to([0, 0, 20])
         self.add(light)
