@@ -102,6 +102,8 @@ def update_shadow(shadow, mobject, light_source):
 
 
 def get_shadow(mobject, light_source=None, opacity=0.7):
+    # 注意，这里的shadow并不是mobject的投影
+    # get_pre_shadow()函数的参数都没有光源，压根不能计算阴影
     shadow = get_pre_shadow(mobject, opacity)
     """
     updater的本质:
@@ -450,7 +452,9 @@ class test(ShadowScene):
         subquestion.set_backstroke()
 
         # Introductory animations
-        self.shadow.update()
+        # 疑问：整个场景一开始只有一个plane，然而之前已经添加了cube和shadow，为何一开始不显示呢
+        # cube和shadow是以下面动画的形式添加到场景中的
+        self.shadow.update() # 更新shadow的形状。一开始的shadow并不是cube的投影
         self.play(
             FadeIn(question, UP),
             *(
