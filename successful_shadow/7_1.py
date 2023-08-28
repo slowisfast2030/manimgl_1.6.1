@@ -414,7 +414,7 @@ class ShadowScene(ThreeDScene):
         return frame
 
 
-class IntroduceShadow(ShadowScene):
+class test(ShadowScene):
     area_label_center = [-2.5, -2, 0]
     plane_dims = (28, 20)
 
