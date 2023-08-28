@@ -112,6 +112,11 @@ def get_shadow(mobject, light_source=None, opacity=0.7):
     比较明显的是location
     比较隐晦的是points set(shape)
     """
+    """
+    为了在一开始的时候就获得正确的shadow
+    因为已经为shadow添加了updater
+    可以主动执行一次updater: shadow.update()
+    """
     shadow.add_updater(lambda s: update_shadow(s, mobject, light_source))
     return shadow
 
