@@ -412,4 +412,80 @@ class IntroduceShadow(ShadowScene):
         frame.add_updater(lambda f, dt: f.increment_theta(0.01 * dt))  # Ambient rotation
         area_label = self.get_shadow_area_label()
         light_lines = self.get_light_lines(outline)
-        self.wait(1)
+        
+        # Question
+        question = Text(
+            "Puzzle: Find the average area of a cube's shadow",
+            font_size=48,
+        )
+        question.to_corner(UL)
+        question.fix_in_frame()
+        subquestion = Text("(Averaged over all orientations)")
+        subquestion.match_width(question)
+        subquestion.next_to(question, DOWN, MED_LARGE_BUFF)
+        subquestion.set_fill(BLUE_D)
+        subquestion.fix_in_frame()
+        subquestion.set_backstroke()
+
+        # Introductory animations
+        self.shadow.update()
+        self.play(
+            FadeIn(question, UP),
+            *(
+                LaggedStartMap(DrawBorderThenFill, mob, lag_ratio=0.1, run_time=3)
+                for mob in (cube, shadow)
+            )
+        )
+        self.random_toss(run_time=3, angle=TAU)
+
+        # Change size and orientation
+        outline.update()
+        area_label.update()
+        self.play(
+            FadeIn(area_label),
+            ShowCreation(outline),
+        )
+        self.play(
+            cube.animate.scale(0.5),
+            run_time=2,
+            rate_func=there_and_back,
+        )
+        self.random_toss(run_time=2, angle=PI)
+        self.wait()
+        self.begin_ambient_rotation(cube)
+        self.play(FadeIn(subquestion, 0.5 * DOWN))
+        self.wait(7)
+
+        # Where is the light?
+        light_comment = Text("Where is the light?")
+        light_comment.set_color(YELLOW)
+        light_comment.to_corner(UR)
+        light_comment.set_backstroke()
+        light_comment.fix_in_frame()
+
+        cube.clear_updaters()
+        cube.add_updater(lambda m: self.sort_to_camera(cube))
+        self.play(
+            FadeIn(light_comment, 0.5 * UP),
+            light.animate.next_to(cube, OUT, buff=1.5),
+            run_time=2,
+        )
+        light_lines.update()
+        self.play(
+            ShowCreation(light_lines, lag_ratio=0.01, run_time=3),
+        )
+        # self.play(
+        #     light.animate.shift(1.0 * IN),
+        #     rate_func=there_and_back,
+        #     run_time=3
+        # )
+        # self.play(
+        #     light.animate.shift(4 * RIGHT),
+        #     run_time=5
+        # )
+        # self.play(
+        #     Rotate(light, PI, about_point=light.get_z() * OUT),
+        #     run_time=8,
+        # )
+        # self.play(light.animate.shift(4 * RIGHT), run_time=5)
+        self.wait()
