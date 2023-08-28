@@ -339,11 +339,13 @@ class ShadowScene(ThreeDScene):
             if only_vertices:
                 points = outline.get_vertices()
             else:
+                # 在outline上均匀取n_lines个点
                 points = [outline.pfp(a) for a in np.linspace(0, 1, n_lines)]
             for line, point in zip(lines, points):
                 if self.inf_light:
                     line.set_points_as_corners([point + 10 * OUT, point])
                 else:
+                    # 将line的起点设置为lp, 终点设置为point
                     line.set_points_as_corners([lp, point])
 
         line = Line(IN, OUT)

@@ -495,6 +495,7 @@ class VMobject(Mobject):
         return points
 
     def set_points_as_corners(self, points: Iterable[np.ndarray]):
+        '''传入一个 Nx3 的数组，绘制顺序连接的折线'''
         nppc = self.n_points_per_curve
         points = np.array(points)
         self.set_anchors_and_handles(*[
