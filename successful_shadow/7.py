@@ -329,58 +329,6 @@ class ShadowScene(ThreeDScene):
         return frame
 
 
-class SimpleWriting(Scene):
-    text = ""
-    font = "Better Grade"
-    color = WHITE
-    font_size = 48
-
-    def construct(self):
-        words = Text(self.text, font=self.font, font_size=self.font_size)
-        words.set_color(self.color)
-        self.play(Write(words))
-        self.wait()
-
-
-class AliceName(SimpleWriting):
-    text = "Alice"
-    font_size = 72
-
-
-class BobName(SimpleWriting):
-    text = "Bob"
-    font = "Kalam"
-
-
-class BobWords(SimpleWriting):
-    font = "Kalam"
-    font_size = 24
-    words1 = "Embraces calculations"
-    words2 = "Loves specifics"
-
-    def construct(self):
-        words = VGroup(*(
-            Text(text, font=self.font, font_size=self.font_size)
-            for text in (self.words1, self.words2)
-        ))
-        words.arrange(DOWN)
-
-        for word in words:
-            self.play(Write(word))
-            self.wait()
-
-
-class AliceWords(BobWords):
-    font = "Better Grade"
-    words1 = "Procrastinates calculations"
-    words2 = "Seeks generality"
-    font_size = 48
-
-
-class AskAboutConditions(SimpleWriting):
-    text = "Which properties matter?"
-
-
 class IntroduceShadow(ShadowScene):
     area_label_center = [-2.5, -2, 0]
     plane_dims = (28, 20)
