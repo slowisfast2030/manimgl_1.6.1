@@ -138,6 +138,16 @@ def sort_to_camera(mobject, camera_frame):
 
 
 def cube_sdf(point, cube):
+    """
+    The key idea behind signed distance is that each point in space is 
+    associated with a distance value, and this value is signed to indicate 
+    whether the point is inside or outside the object. 
+    
+    If the point is inside the object, the signed distance is negative; 
+    if the point is outside, the signed distance is positive. 
+    This allows for an efficient representation of the geometry while also 
+    capturing information about the object's interior and exterior.
+    """
     c = cube.get_center()
     vect = point - c
     face_vects = [face.get_center() - c for face in cube]
