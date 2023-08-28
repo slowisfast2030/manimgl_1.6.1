@@ -31,6 +31,10 @@ def project_to_xy_plane(p1, p2):
 
 def flat_project(point):
     # return [*point[:2], 0]
+    """
+    垂直投影?
+    为何要对z坐标乘以0.05?
+    """
     return [*point[:2], 0.05 * point[2]]  # TODO
 
 
