@@ -285,15 +285,19 @@ class ShadowScene(ThreeDScene):
         self.shadow = shadow
 
     def setup_light_source(self):
+        # 这里的self.light是一个Dot
         self.light = self.camera.light_source
         if self.inf_light:
             self.light.move_to(100 * OUT)
         else:
+            # glow是一个TrueDot（点云）
             glow = self.glow = TrueDot(
                 radius=self.glow_radius,
                 glow_factor=self.glow_factor,
             )
+            # 这里的颜色竟然用了插值
             glow.set_color(interpolate_color(YELLOW, WHITE, 0.5))
+            # 这里给glow添加了一个updater，暗示self.light的位置会发生变化（animation）
             glow.add_updater(lambda m: m.move_to(self.light))
             self.add(glow)
 
