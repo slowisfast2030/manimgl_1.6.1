@@ -41,6 +41,10 @@ def flat_project(point):
 
 
 def get_pre_shadow(mobject, opacity):
+    """
+    这里的pre shadow并没有对mobject进行投影
+    主要是做了一些属性的修改
+    """
     result = mobject.deepcopy()
     if isinstance(result, Group) and all((isinstance(sm, VMobject) for sm in mobject)):
         result = VGroup(*result)
