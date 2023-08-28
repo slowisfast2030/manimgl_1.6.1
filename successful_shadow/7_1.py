@@ -278,6 +278,8 @@ class ShadowScene(ThreeDScene):
         return cube
 
     def add_shadow(self):
+        # 问题：这里的light_source和self.light是不是一个对象，只是有不同的别名？
+        # 应该是同一个对象，否则shadow随着self.light的变化而变化就讲不通
         light_source = None if self.inf_light else self.camera.light_source
         shadow = get_shadow(self.solid, light_source)
 
