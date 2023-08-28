@@ -88,6 +88,13 @@ def update_shadow(shadow, mobject, light_source):
 
 def get_shadow(mobject, light_source=None, opacity=0.7):
     shadow = get_pre_shadow(mobject, opacity)
+    """
+    updater的本质:
+    每一帧都会调用update_shadow(s, mobject, light_source)函数
+    调用的结果是会更新shadow的属性
+    比较明显的是location
+    比较隐晦的是points set(shape)
+    """
     shadow.add_updater(lambda s: update_shadow(s, mobject, light_source))
     return shadow
 
