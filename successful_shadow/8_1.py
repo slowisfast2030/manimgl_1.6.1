@@ -1006,9 +1006,9 @@ class AllPossibleOrientations(ShadowScene):
         #########################################
         square, normal_vect = self.solid
         normal_vect.set_flat_stroke()
-        self.solid = square
+        self.solid = square # 这一行不能删除。执行self.add_shadow()时，会用到self.solid
         self.remove(self.shadow, cube)
-        self.add(normal_vect)
+        self.add(normal_vect, square)
         self.add_shadow()
         self.shadow.deactivate_depth_test()
         fc = square.get_center().copy()
