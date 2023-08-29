@@ -343,16 +343,6 @@ class SimpleWriting(Scene):
         self.wait()
 
 
-class AliceName(SimpleWriting):
-    text = "Alice"
-    font_size = 72
-
-
-class BobName(SimpleWriting):
-    text = "Bob"
-    font = "Kalam"
-
-
 class BobWords(SimpleWriting):
     font = "Kalam"
     font_size = 24
@@ -376,10 +366,6 @@ class AliceWords(BobWords):
     words1 = "Procrastinates calculations"
     words2 = "Seeks generality"
     font_size = 48
-
-
-class AskAboutConditions(SimpleWriting):
-    text = "Which properties matter?"
 
 
 class IntroduceShadow(ShadowScene):
