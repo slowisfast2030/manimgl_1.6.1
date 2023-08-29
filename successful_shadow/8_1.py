@@ -963,6 +963,8 @@ class AllPossibleOrientations(ShadowScene):
         print(frame.get_center())                    #[1, 0, 2]
         print(frame.get_focal_distance())            #16
         
+        # 对height的设置, 意味着camera所拍摄的世界空间的大小
+        
         # 相机的位置
         # 投影面的位置
         # 焦距
@@ -973,21 +975,6 @@ class AllPossibleOrientations(ShadowScene):
         """
 
         frame.reorient(-20, 80) # theta=-20, phi=80
-        """
-        frame的默认height=8
-        frame的高度是camera拍摄的世界空间的高度
-        当把frame的高度设置为8时, camera拍摄的世界空间的高度为8
-        当把frame的高度设置为5时, camera拍摄的世界空间的高度为5(需要把camera拉进物体)
-        当把frame的高度设置为10时,camera拍摄的世界空间的高度为10(需要把camera拉远物体)
-        对frame的属性设置, 本质上会影响camera的空间位置
-
-        frame.move_to(point)是将camera移动到指定的点point
-
-        camera自带一个视锥, 
-        一开始camera在z轴上(我好像还不知道camera在z轴具体哪个点)
-
-
-        """
         frame.set_height(5)
         frame.d_theta = 0
 
