@@ -710,6 +710,7 @@ class IntroduceShadow(ShadowScene):
             self.wait()
 
 
+# 这个场景很大可能是3b1b为了完成一些场景写的demo
 class MeanCalculation(Scene):
     def construct(self):
         values = [1.55, 1.33, 1.46, 1.34, 1.50, 1.26, 1.42, 1.54, 1.51]
