@@ -747,7 +747,7 @@ class MeanCalculation(Scene):
         # Embed
         self.embed()
 
-
+# 各个不同方向的cube多行多列
 class DescribeSO3(ShadowScene):
     def construct(self):
         frame = self.camera.frame
@@ -849,7 +849,7 @@ class DescribeSO3(ShadowScene):
         self.add(cube_field)
         self.wait()
 
-
+# 从cude拆出了一个face
 class StartSimple(Scene):
     def construct(self):
         # Words
