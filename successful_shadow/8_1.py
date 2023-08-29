@@ -957,9 +957,15 @@ class AllPossibleOrientations(ShadowScene):
         print(frame.get_center())                    #[0, 0, 2]
         print(frame.get_focal_distance())            #20
         
-        相机的位置
-        投影面的位置
-        焦距
+        frame.set_height(8)
+        frame.shift(RIGHT)
+        print(frame.get_implied_camera_location())   #[1, 0, 18]
+        print(frame.get_center())                    #[1, 0, 2]
+        print(frame.get_focal_distance())            #16
+        
+        # 相机的位置
+        # 投影面的位置
+        # 焦距
         """
 
         frame.reorient(-20, 80) # theta=-20, phi=80
