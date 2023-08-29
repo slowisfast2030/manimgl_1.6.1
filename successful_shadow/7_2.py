@@ -357,7 +357,9 @@ class ShadowScene(ThreeDScene):
         可以试想下, 我们确实可以在添加updater之前就将outline的形状设置为shadow的凸包
         但是, 接下来的add_updater函数又会再一遍执行类似的操作, 代码上很冗余
 
-        2.
+        2.self.shadow是xoy平面的一个多边形, 为了获取shadow的outline, 我们可以自己写函数
+        但是, 作者很善于使用开源库, 这里使用了scipy.spatial.ConvexHull
+        这种意识真牛逼
         """
         outline = VMobject()
         outline.set_stroke(WHITE, stroke_width)
