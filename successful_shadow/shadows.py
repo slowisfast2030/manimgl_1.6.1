@@ -2259,11 +2259,6 @@ class AverageCatShadow(AverageFaceShadow):
         return SVGMobject("cat_outline")
 
 
-class AveragePentagonShadow(AverageCatShadow):
-    def get_shape(self):
-        return RegularPolygon(5)
-
-
 class AverageShadowAnnotation(Scene):
     def construct(self):
         # Many shadows
@@ -5964,7 +5959,7 @@ class AmbientHourglass(ShadowScene):
         frame = self.camera.frame
         frame.set_z(3)
 
-        self.init_frame_rotation()
+        #self.init_frame_rotation()
         self.remove(self.solid, self.shadow)
 
         qint_func = bezier([0, 1, -1.25, 1, 0])
