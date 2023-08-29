@@ -336,6 +336,7 @@ class ShadowScene(ThreeDScene):
         label.arrange(RIGHT)
         label.move_to(self.area_label_center - decimal.get_center())
         label.fix_in_frame()
+        # 下面这行要是注释掉, plane上会投影出数字的阴影，很奇怪
         label.set_backstroke()
         decimal.add_updater(lambda d: d.set_value(
             get_area(self.shadow) / (self.unit_size**2)
