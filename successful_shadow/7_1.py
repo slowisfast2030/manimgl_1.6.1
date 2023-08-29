@@ -469,6 +469,7 @@ class test2(ShadowScene):
         )
         question.to_corner(UL)
         question.fix_in_frame()
+        question.set_backstroke() # 添加这一行, 似乎没什么特别明显的效果。3b1b很喜欢为文字添加这种效果
         subquestion = Text("(Averaged over all orientations)")
         subquestion.match_width(question)
         subquestion.next_to(question, DOWN, MED_LARGE_BUFF)
