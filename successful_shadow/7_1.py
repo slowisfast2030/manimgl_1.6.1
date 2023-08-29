@@ -458,6 +458,7 @@ class test2(ShadowScene):
         shadow = self.shadow
         outline = self.get_shadow_outline()
         frame = self.camera.frame
+        # 为frame添加updater, 因为增加的theta比较小，所以看上去不明显。但这么做我觉得很有必要，否则画面太呆板
         frame.add_updater(lambda f, dt: f.increment_theta(0.01 * dt))  # Ambient rotation
         area_label = self.get_shadow_area_label()
         light_lines = self.get_light_lines(outline)
