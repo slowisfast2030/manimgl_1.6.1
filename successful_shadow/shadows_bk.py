@@ -724,6 +724,65 @@ class IntroduceShadow(ShadowScene):
             self.wait()
 
 
+class AskAboutAveraging(TeacherStudentsScene):
+    def construct(self):
+        self.remove(self.background)
+        sts = self.students
+        tch = self.teacher
+
+        self.play_student_changes(
+            "maybe", "thinking", "erm",
+            look_at=self.screen,
+            added_anims=[self.teacher.change("raise_right_hand", self.screen)]
+        )
+        self.wait(3)
+        self.play(
+            PiCreatureBubbleIntroduction(
+                sts[2], Text("What does that\\\\mean, exactly?"),
+                target_mode="hesitant",
+                look_at=self.screen,
+                bubble_config={"direction": LEFT}
+            ),
+            LaggedStart(
+                sts[0].change("confused", self.screen),
+                sts[1].change("pondering", self.screen),
+                tch.change("tease", sts[2].eyes),
+            )
+        )
+        self.wait(4)
+        self.student_says(
+            "Can we do an experiment?",
+            target_mode="raise_left_hand",
+            index=1,
+        )
+        self.wait(4)
+        self.student_says(
+            Text("But what defines a\\\\``random'' toss?"),
+            look_at=self.screen,
+            target_mode="hesitant",
+            index=2,
+            added_anims=[
+                self.teacher.change("guilty"),
+                self.students[0].change("erm"),
+            ]
+        )
+        self.wait(4)
+        self.play(LaggedStart(
+            self.students[0].change("pondering", self.screen),
+            self.students[1].change("maybe", self.screen),
+            self.teacher.change("tease", self.screen),
+        ))
+        self.wait(2)
+        self.teacher_says(Text("Hold off until\\\\the end"))
+        self.wait(3)
+        self.play_student_changes(
+            "thinking", "tease", "pondering",
+            look_at=self.screen,
+            added_anims=[self.teacher.change("tease", self.students)]
+        )
+        self.wait(4)
+
+
 class MeanCalculation(Scene):
     def construct(self):
         values = [1.55, 1.33, 1.46, 1.34, 1.50, 1.26, 1.42, 1.54, 1.51]
@@ -862,6 +921,48 @@ class DescribeSO3(ShadowScene):
         )
         self.add(cube_field)
         self.wait()
+
+
+class PauseAndPonder(TeacherStudentsScene):
+    def construct(self):
+        self.remove(self.background)
+
+        self.teacher_says(
+            Text("The goal is\\\\not speed."),
+            added_anims=[self.change_students(
+                "tease", "well", "pondering",
+                look_at=self.screen
+            )]
+        )
+        self.wait(2)
+        self.play(
+            RemovePiCreatureBubble(self.teacher, target_mode="tease"),
+            PiCreatureBubbleIntroduction(
+                self.students[2],
+                Lightbulb(),
+                bubble_type=ThoughtBubble,
+                bubble_creation_class=lambda m: FadeIn(m, lag_ratio=0.1),
+                bubble_config=dict(
+                    height=3,
+                    width=3,
+                    direction=LEFT,
+                ),
+                target_mode="thinking",
+                look_at=self.screen,
+            )
+        )
+        self.wait(3)
+        self.teacher_says(
+            "Pause and ponder!",
+            target_mode="well",
+            added_anims=[self.change_students(
+                "pondering", "tease", "thinking"
+            )],
+            run_time=1
+        )
+        self.wait(5)
+
+        self.embed()
 
 
 class StartSimple(Scene):
@@ -1475,6 +1576,23 @@ class FocusOnOneFace(ShadowScene):
         self.wait(10)
 
 
+class NotQuiteRight(TeacherStudentsScene):
+    def construct(self):
+        self.remove(self.background)
+        self.teacher_says(
+            "Not quite right...",
+            target_mode="hesitant",
+            bubble_config={"height": 3, "width": 4},
+            added_anims=[
+                self.change_students(
+                    "pondering", "thinking", "erm",
+                    look_at=self.screen,
+                )
+            ]
+        )
+        self.wait(4)
+
+
 class DiscussLinearity(Scene):
     def construct(self):
         # Set background
@@ -2074,6 +2192,31 @@ class AmbientShapeRotationShadowOnly(AmbientShapeRotationPreimage):
     display_mode = "shadow_only"
 
 
+class IsntThatObvious(TeacherStudentsScene):
+    def construct(self):
+        self.remove(self.background)
+        self.student_says(
+            Text("Isn't that obvious?"),
+            bubble_config={
+                "height": 3,
+                "width": 4,
+                "direction": LEFT,
+            },
+            target_mode="angry",
+            look_at=self.screen,
+            added_anims=[LaggedStart(
+                self.teacher.change("guilty"),
+                self.students[0].change("pondering", self.screen),
+                self.students[1].change("erm", self.screen),
+            )]
+        )
+        self.wait(2)
+        self.play(
+            self.students[0].change("hesitant"),
+        )
+        self.wait(2)
+
+
 class StretchLabel(Scene):
     def construct(self):
         label = VGroup(
@@ -2089,6 +2232,21 @@ class StretchLabel(Scene):
             Write(label[1]),
         )
         self.wait()
+
+
+class WonderAboutAverage(Scene):
+    def construct(self):
+        randy = Randolph()
+        randy.to_edge(DOWN)
+        randy.look(RIGHT)
+        self.play(PiCreatureBubbleIntroduction(
+            randy, Text("How do you think\\\\about this average"),
+            target_mode="confused",
+            run_time=2
+        ))
+        for x in range(2):
+            self.play(Blink(randy))
+            self.wait(2)
 
 
 class SingleFaceRandomRotation(ShadowScene):
@@ -6433,6 +6591,10 @@ class ByLine(Scene):
 
         lines.arrange(DOWN, buff=1.5)
         self.add(lines)
+
+
+class EndScreen(PatreonEndScreen):
+    pass
 
 
 class ThumbnailBackground(ShadowScene):
