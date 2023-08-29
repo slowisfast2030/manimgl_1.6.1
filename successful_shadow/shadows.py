@@ -738,7 +738,7 @@ class AskAboutAveraging(TeacherStudentsScene):
         self.wait(3)
         self.play(
             PiCreatureBubbleIntroduction(
-                sts[2], OldTexText("What does that\\\\mean, exactly?"),
+                sts[2], Text("What does that\\\\mean, exactly?"),
                 target_mode="hesitant",
                 look_at=self.screen,
                 bubble_config={"direction": LEFT}
@@ -757,7 +757,7 @@ class AskAboutAveraging(TeacherStudentsScene):
         )
         self.wait(4)
         self.student_says(
-            OldTexText("But what defines a\\\\``random'' toss?"),
+            Text("But what defines a\\\\``random'' toss?"),
             look_at=self.screen,
             target_mode="hesitant",
             index=2,
@@ -773,7 +773,7 @@ class AskAboutAveraging(TeacherStudentsScene):
             self.teacher.change("tease", self.screen),
         ))
         self.wait(2)
-        self.teacher_says(OldTexText("Hold off until\\\\the end"))
+        self.teacher_says(Text("Hold off until\\\\the end"))
         self.wait(3)
         self.play_student_changes(
             "thinking", "tease", "pondering",
@@ -872,7 +872,7 @@ class DescribeSO3(ShadowScene):
         question = Text("What is the space of all orientations?")
         question.to_corner(UR)
         question.fix_in_frame()
-        SO3 = OldTex("SO(3)")
+        SO3 = Tex("SO(3)")
         SO3.next_to(question, DOWN)
         SO3.set_color(BLUE)
         SO3.fix_in_frame()
@@ -928,7 +928,7 @@ class PauseAndPonder(TeacherStudentsScene):
         self.remove(self.background)
 
         self.teacher_says(
-            OldTexText("The goal is\\\\not speed."),
+            Text("The goal is\\\\not speed."),
             added_anims=[self.change_students(
                 "tease", "well", "pondering",
                 look_at=self.screen
@@ -1153,7 +1153,7 @@ class FocusOnOneFace(ShadowScene):
             radius=0.5,
             stroke_width=2,
         ).rotate(PI / 2, RIGHT, about_point=ORIGIN).shift(get_fc()))
-        theta = OldTex("\\theta", font_size=30)
+        theta = Tex("\\theta", font_size=30)
         theta.set_backstroke()
         theta.rotate(PI / 2, RIGHT)
         theta.add_updater(lambda m: m.move_to(
@@ -1191,10 +1191,10 @@ class FocusOnOneFace(ShadowScene):
         )
         axes.to_corner(UR, buff=MED_SMALL_BUFF)
         axes.x_axis.add_numbers([0, 45, 90, 135, 180], unit="^\\circ")
-        y_label = OldTexText("Shadow's area", font_size=24)
+        y_label = Text("Shadow's area", font_size=24)
         y_label.next_to(axes.y_axis.get_top(), RIGHT, MED_SMALL_BUFF)
         y_label.set_backstroke()
-        ly_label = OldTex("s^2", font_size=24)
+        ly_label = Tex("s^2", font_size=24)
         ly_label.next_to(axes.y_axis.get_top(), LEFT, SMALL_BUFF)
         ly_label.shift(0.05 * UP)
         axes.add(y_label, ly_label)
@@ -1363,7 +1363,7 @@ class FocusOnOneFace(ShadowScene):
             angle=-(PI / 2 - get_theta())
         )
         ul_arc.match_style(elbow)
-        supl = OldTex("90^\\circ - \\theta", font_size=24)
+        supl = Tex("90^\\circ - \\theta", font_size=24)
         supl.next_to(ul_arc, DOWN, SMALL_BUFF, aligned_edge=LEFT)
         supl.set_backstroke()
         supl[0][:3].shift(SMALL_BUFF * RIGHT / 2)
@@ -1380,7 +1380,7 @@ class FocusOnOneFace(ShadowScene):
         dr_arc.match_style(ul_arc)
         dr_arc.rotate(PI / 2, RIGHT, about_point=ORIGIN)
         dr_arc.shift(line.get_end())
-        dr_theta = OldTex("\\theta", font_size=24)
+        dr_theta = Tex("\\theta", font_size=24)
         dr_theta.rotate(PI / 2, RIGHT)
         dr_theta.next_to(dr_arc, LEFT, SMALL_BUFF)
         dr_theta.shift(SMALL_BUFF * OUT / 2)
@@ -1410,7 +1410,7 @@ class FocusOnOneFace(ShadowScene):
         self.wait()
 
         # Show cosine
-        cos_formula = OldTex(
+        cos_formula = Tex(
             "\\cos(\\theta)", "=",
             "{\\text{Length of }", "\\text{shadow}",
             "\\over",
@@ -1421,7 +1421,7 @@ class FocusOnOneFace(ShadowScene):
         cos_formula.to_corner(UR)
         cos_formula.fix_in_frame()
 
-        lower_formula = OldTex(
+        lower_formula = Tex(
             "\\text{shadow}", "=",
             "\\cos(\\theta)", "\\cdot", "\\text{slice}"
         )
@@ -1494,7 +1494,7 @@ class FocusOnOneFace(ShadowScene):
         self.play(Rotate(face, 20 * DEGREES, UP), run_time=2)
 
         # Give final area formula
-        final_formula = OldTex(
+        final_formula = Tex(
             "\\text{Area}(", "\\text{shadow}", ")",
             "=",
             "|", "\\cos(\\theta)", "|", "s^2"
@@ -1682,8 +1682,8 @@ class DiscussLinearity(Scene):
             Text("Area(shadow)", t2c={"shadow": BLUE_E}),
         )
         area_exprs = VGroup(
-            OldTex("A").set_color(BLUE),
-            OldTex("(\\text{some factor})", "\\cdot ", "A"),
+            Tex("A").set_color(BLUE),
+            Tex("(\\text{some factor})", "\\cdot ", "A"),
         )
         area_exprs[1][2].set_color(BLUE)
         area_exprs[1][0].set_color(GREY_C)
@@ -1691,7 +1691,7 @@ class DiscussLinearity(Scene):
         for label, expr, panel in zip(area_labels, area_exprs, panels[0::2]):
             label.match_x(panel)
             label.to_edge(UP, buff=MED_SMALL_BUFF)
-            eq = OldTex("=")
+            eq = Tex("=")
             eq.rotate(PI / 2)
             eq.next_to(label, DOWN, buff=0.15)
             equals.add(eq)
@@ -1707,7 +1707,7 @@ class DiscussLinearity(Scene):
         )
         self.wait()
 
-        f_rot = OldTex("f(\\text{Rot})")
+        f_rot = Tex("f(\\text{Rot})")
         f_rot.set_color(GREY_B)
         times_A = area_exprs[1][1:]
         f_rot.next_to(times_A, LEFT, buff=0.2)
@@ -1732,7 +1732,7 @@ class DiscussLinearity(Scene):
         prod = VGroup(proj, rot)
         prod.arrange(RIGHT, buff=SMALL_BUFF)
         prod.set_height(0.8)
-        det = OldTex(
+        det = Tex(
             "\\text{det}", "\\Big(", "\\Big)",
             tex_to_color_map={
                 "\\text{det}": YELLOW,
@@ -1877,7 +1877,7 @@ class DefineDeterminant(Scene):
         square.set_stroke(YELLOW, 2)
         square.set_fill(YELLOW, 0.5)
         square.replace(Line(planes[0].c2p(-1, -1), planes[0].c2p(1, 1)))
-        area_label = OldTexText("Area", "=", "$A$")
+        area_label = Text("Area", "=", "$A$")
         area_label.set_color_by_tex("$A$", YELLOW)
         area_label.next_to(square, UP)
         area_label.add_background_rectangle()
@@ -1919,7 +1919,7 @@ class DefineDeterminant(Scene):
         self.wait()
 
         # New area
-        new_area_label = OldTex(
+        new_area_label = Tex(
             "\\text{Area} = ", "{c}", "\\cdot", "{A}",
             tex_to_color_map={
                 "{c}": RED,
@@ -1936,7 +1936,7 @@ class DefineDeterminant(Scene):
         det.set_height(new_area_label.get_height() * 1.2)
         det.move_to(new_area_label.get_part_by_tex("c"), RIGHT)
         det.match_y(new_area_label[-1])
-        det_name = OldTexText("``Determinant''", font_size=36)
+        det_name = Text("``Determinant''", font_size=36)
         det_name.next_to(det, UP, MED_LARGE_BUFF)
         det_name.set_color(RED)
         det_name.add_background_rectangle()
@@ -2196,7 +2196,7 @@ class IsntThatObvious(TeacherStudentsScene):
     def construct(self):
         self.remove(self.background)
         self.student_says(
-            OldTexText("Isn't that obvious?"),
+            Text("Isn't that obvious?"),
             bubble_config={
                 "height": 3,
                 "width": 4,
@@ -2221,7 +2221,7 @@ class StretchLabel(Scene):
     def construct(self):
         label = VGroup(
             Vector(0.5 * LEFT),
-            OldTex("1.5 \\times"),
+            Tex("1.5 \\times"),
             Vector(0.5 * RIGHT)
         )
         label.set_color(YELLOW)
@@ -2240,7 +2240,7 @@ class WonderAboutAverage(Scene):
         randy.to_edge(DOWN)
         randy.look(RIGHT)
         self.play(PiCreatureBubbleIntroduction(
-            randy, OldTexText("How do you think\\\\about this average"),
+            randy, Text("How do you think\\\\about this average"),
             target_mode="confused",
             run_time=2
         ))
@@ -2466,12 +2466,12 @@ class AverageShadowAnnotation(Scene):
             "$c$": RED,
         }
         formula = VGroup(
-            OldTexText(
+            Text(
                 f"Area(Shadow({shape_name}))",
                 tex_to_color_map=t2c,
             ),
-            OldTex("=").rotate(PI / 2),
-            OldTexText(
+            Tex("=").rotate(PI / 2),
+            Text(
                 "$c$", " $\\cdot$", f"(Area({shape_name}))",
                 tex_to_color_map=t2c
             )
@@ -2498,7 +2498,7 @@ class AverageShadowAnnotation(Scene):
         self.wait()
 
         # Append half
-        half = OldTex("\\frac{1}{2}")
+        half = Tex("\\frac{1}{2}")
         half.set_color(RED)
         c = formula[2].get_part_by_tex("$c$")
         half.move_to(c, RIGHT)
@@ -2519,7 +2519,7 @@ class AlicesFaceAverage(Scene):
         panels = Rectangle(2, 2.5).replicate(5)
         panels.set_stroke(WHITE, 1)
         panels.set_fill(BLACK, 1)
-        dots = OldTex("\\dots")
+        dots = Tex("\\dots")
         panels.replace_submobject(3, dots)
         panels.arrange(RIGHT, buff=0.25)
         panels.set_width(FRAME_WIDTH - 1)
@@ -2530,7 +2530,7 @@ class AlicesFaceAverage(Scene):
         # Label the rotations
         indices = ["1", "2", "3", "n"]
         rot_labels = VGroup(*(
-            OldTex(f"R_{i}") for i in indices
+            Tex(f"R_{i}") for i in indices
         ))
         for label, panel in zip(rot_labels, panels):
             label.set_height(0.3)
@@ -2551,7 +2551,7 @@ class AlicesFaceAverage(Scene):
         # Show the shadow areas
         font_size = 30
         fra_labels = VGroup(*(
-            OldTex(
+            Tex(
                 f"f(R_{i})", "\\cdot ", "A",
                 tex_to_color_map={"A": BLUE},
                 font_size=font_size
@@ -2561,7 +2561,7 @@ class AlicesFaceAverage(Scene):
 
         DARK_BLUE = interpolate_color(BLUE_D, BLUE_E, 0.5)
         area_shadow_labels = VGroup(*(
-            OldTex(
+            Tex(
                 "\\text{Area}(", "\\text{Shadow}_" + i, ")",
                 tex_to_color_map={"\\text{Shadow}_" + i: DARK_BLUE},
                 font_size=font_size
@@ -2569,7 +2569,7 @@ class AlicesFaceAverage(Scene):
             for i in indices
         ))
         s_labels = VGroup(*(
-            OldTex(
+            Tex(
                 f"S_{i}", "=",
                 tex_to_color_map={f"S_{i}": DARK_BLUE},
                 font_size=font_size
@@ -2610,7 +2610,7 @@ class AlicesFaceAverage(Scene):
         )
 
         # Show average
-        sample_average = OldTex(
+        sample_average = Tex(
             "\\text{Sample average}", "=",
             "\\frac{1}{n}", "\\left(",
             "f(R_1)", "\\cdot ", "A", "+",
@@ -2673,7 +2673,7 @@ class AlicesFaceAverage(Scene):
 
         # True average
         brace = Brace(new_pieces[4:], DOWN, buff=SMALL_BUFF, font_size=30)
-        lim = OldTex("n \\to \\infty", font_size=30)
+        lim = Tex("n \\to \\infty", font_size=30)
         lim.next_to(brace, DOWN)
         VGroup(brace, lim).set_color(YELLOW)
         sample = sample_average[0][:len("Sample")]
@@ -2748,7 +2748,7 @@ class ManyShadows(SingleFaceRandomRotation):
             plane.set_gloss(0)
             plane.add_to_back(sc)
             area = DecimalNumber(get_norm(sc.get_area_vector() / 4.0), font_size=56)
-            label = VGroup(OldTex(f"f(R_{n}) = "), area)
+            label = VGroup(Tex(f"f(R_{n}) = "), area)
             label.arrange(RIGHT)
             label.set_width(0.8 * plane.get_width())
             label.next_to(plane, UP, SMALL_BUFF)
@@ -2839,8 +2839,8 @@ class AllPossibleOrientations(ShadowScene):
         ))
         sphere_lines.set_stroke(WHITE, 1, 0.05)
 
-        sphere_words = OldTexText("All normal vectors = Sphere")
-        uniform_words = OldTexText("All points equally likely")
+        sphere_words = Text("All normal vectors = Sphere")
+        uniform_words = Text("All points equally likely")
         for words in [sphere_words, uniform_words]:
             words.fix_in_frame()
             words.to_edge(UP)
@@ -3020,7 +3020,7 @@ class AllPossibleOrientations(ShadowScene):
 
         arc = always_redraw(get_arc)
 
-        theta = OldTex("\\theta", font_size=20)
+        theta = Tex("\\theta", font_size=20)
         theta.rotate(PI / 2, RIGHT)
         theta.set_backstroke(width=2)
         theta.add_updater(lambda m: m.next_to(arc.pfp(0.5), OUT + RIGHT, buff=0.05))
@@ -3038,7 +3038,7 @@ class AllPossibleOrientations(ShadowScene):
         self.wait()
 
         # Show shadow area
-        shadow_area = OldTexText("Shadow area =", "$|\\cos(\\theta)|s^2$")
+        shadow_area = Text("Shadow area =", "$|\\cos(\\theta)|s^2$")
         shadow_area.fix_in_frame()
         shadow_area.to_edge(RIGHT)
         shadow_area.set_y(-3)
@@ -3054,7 +3054,7 @@ class AllPossibleOrientations(ShadowScene):
         shadow_area[1].target.to_corner(UR, buff=MED_LARGE_BUFF)
         shadow_area[1].target.shift(LEFT)
         brace = Brace(shadow_area[1].target, DOWN)
-        brace_text = OldTexText("How do you average this\\\\over the sphere?", font_size=36)
+        brace_text = Text("How do you average this\\\\over the sphere?", font_size=36)
         brace_text.next_to(brace, DOWN, SMALL_BUFF)
         brace.fix_in_frame()
         brace_text.fix_in_frame()
@@ -3090,7 +3090,7 @@ class AllPossibleOrientations(ShadowScene):
         theta_ring.apply_depth_test()
         theta_ring.uniforms["anti_alias_width"] = 0
 
-        loose_sum = OldTex(
+        loose_sum = Tex(
             "\\sum_{\\theta \\in [0, \\pi]}",
             "P(\\theta)",
             "\\cdot ",
@@ -3099,7 +3099,7 @@ class AllPossibleOrientations(ShadowScene):
         loose_sum.fix_in_frame()
         loose_sum.next_to(brace_text, DOWN, LARGE_BUFF)
         loose_sum.to_edge(RIGHT)
-        prob_words = OldTexText("How likely is a given value of $\\theta$?", font_size=36)
+        prob_words = Text("How likely is a given value of $\\theta$?", font_size=36)
         prob_words.fix_in_frame()
         prob_words.next_to(loose_sum[1], DOWN)
         prob_words.to_edge(RIGHT, buff=MED_SMALL_BUFF)
@@ -3145,9 +3145,9 @@ class AllPossibleOrientations(ShadowScene):
 
         # Continuous
         sum_brace = Brace(loose_sum[0], DOWN, buff=SMALL_BUFF)
-        continuum = OldTexText("Continuum\\\\(uncountably infinite)", font_size=36)
+        continuum = Text("Continuum\\\\(uncountably infinite)", font_size=36)
         continuum.next_to(sum_brace, DOWN, SMALL_BUFF)
-        zero = OldTex('0')
+        zero = Tex('0')
         zero.next_to(loose_sum[1], DOWN, buff=1.5)
         zero.shift(1.5 * RIGHT)
         zero_arrow = Arrow(loose_sum[1], zero, buff=SMALL_BUFF)
@@ -3198,7 +3198,7 @@ class AllPossibleOrientations(ShadowScene):
         self.wait(10)
 
         # Swap for an integral
-        integral = OldTex(
+        integral = Tex(
             "\\int_0^\\pi ",
             "p(\\theta)",
             "\\cdot ",
@@ -3292,7 +3292,7 @@ class AllPossibleOrientations(ShadowScene):
         dt_brace.rotate(theta_samples[tsi], UP)
         dt_brace.move_to(dt_line)
         dt_brace.shift(SMALL_BUFF * normalize(dt_line.get_center() - fc))
-        dt_label = OldTex("\\Delta\\theta", font_size=24)
+        dt_label = Tex("\\Delta\\theta", font_size=24)
         dt_label.rotate(PI / 2, RIGHT)
         dt_label.next_to(dt_brace, OUT + RIGHT, buff=0.05)
 
@@ -3371,7 +3371,7 @@ class AllPossibleOrientations(ShadowScene):
             band.animate.set_opacity(0.2),
         )
 
-        one = OldTex("1", font_size=24)
+        one = Tex("1", font_size=24)
         one.rotate(PI / 2, RIGHT)
         one.next_to(normal_vect.get_center(), IN + RIGHT, buff=0.05)
         radial_line = Line(
@@ -3379,8 +3379,8 @@ class AllPossibleOrientations(ShadowScene):
             normal_vect.get_end()
         )
         radial_line.set_stroke(BLUE, 2)
-        r_label = OldTex("r", font_size=20)
-        sin_label = OldTex("\\sin(\\theta)", font_size=16)
+        r_label = Tex("r", font_size=20)
+        sin_label = Tex("\\sin(\\theta)", font_size=16)
         for label in r_label, sin_label:
             label.rotate(PI / 2, RIGHT)
             label.next_to(radial_line, OUT, buff=0.05)
@@ -3397,14 +3397,14 @@ class AllPossibleOrientations(ShadowScene):
         self.play(FadeTransform(r_label, sin_label))
         self.wait()
 
-        band_area = OldTex("2\\pi \\sin(\\theta)", "\\Delta\\theta")
+        band_area = Tex("2\\pi \\sin(\\theta)", "\\Delta\\theta")
         band_area.next_to(area_question, DOWN, LARGE_BUFF)
         band_area.set_backstroke()
         band_area.fix_in_frame()
         circ_label, dt_copy = band_area
         circ_brace = Brace(circ_label, DOWN, buff=SMALL_BUFF)
         circ_words = circ_brace.get_text("Circumference")
-        approx = OldTex("\\approx")
+        approx = Tex("\\approx")
         approx.rotate(PI / 2)
         approx.move_to(midpoint(band_area.get_top(), area_question.get_bottom()))
         VGroup(circ_brace, circ_words, approx).set_backstroke().fix_in_frame()
@@ -3429,7 +3429,7 @@ class AllPossibleOrientations(ShadowScene):
         self.wait(3)
 
         # Probability of falling in band
-        prob = OldTex(
+        prob = Tex(
             "P(\\text{Vector} \\text{ in } \\text{Band})", "=",
             "{2\\pi \\sin(\\theta) \\Delta\\theta", "\\over", " 4\\pi}",
             tex_to_color_map={
@@ -3451,7 +3451,7 @@ class AllPossibleOrientations(ShadowScene):
         denom_rect = SurroundingRectangle(prob.get_part_by_tex("4\\pi"), buff=0.05)
         denom_rect.set_stroke(BLUE, 2)
         denom_rect.fix_in_frame()
-        denom_label = OldTexText("Surface area of\\\\a unit sphere")
+        denom_label = Text("Surface area of\\\\a unit sphere")
         denom_label.scale(area_question.target[0].get_height() / denom_label[0][0].get_height())
         denom_label.set_color(BLUE)
         denom_label.next_to(denom_rect, DOWN, SMALL_BUFF)
@@ -3487,7 +3487,7 @@ class AllPossibleOrientations(ShadowScene):
             dt_brace, dt_label,
         )
 
-        average_eq = OldTex(
+        average_eq = Tex(
             "\\text{Average shadow} \\\\",
             "\\sum_{\\theta}",
             "{2\\pi", "\\sin(\\theta)", " \\Delta\\theta", "\\over", " 4\\pi}",
@@ -3538,7 +3538,7 @@ class AllPossibleOrientations(ShadowScene):
         )
 
         # Simplify
-        average2 = OldTex(
+        average2 = Tex(
             "{2\\pi", "\\over", "4\\pi}", "s^2",
             "\\sum_{\\theta}",
             "\\sin(\\theta)", "\\Delta\\theta",
@@ -3546,7 +3546,7 @@ class AllPossibleOrientations(ShadowScene):
         )
         average2.fix_in_frame()
         average2.move_to(average_eq[1:], RIGHT)
-        half = OldTex("1 \\over 2")
+        half = Tex("1 \\over 2")
         pre_half = average2[:3]
         half.move_to(pre_half, RIGHT)
         half_rect = SurroundingRectangle(pre_half, buff=SMALL_BUFF)
@@ -3588,10 +3588,10 @@ class AllPossibleOrientations(ShadowScene):
         )
         self.wait(2)
 
-        integral = OldTex("\\int_0^\\pi ")
+        integral = Tex("\\int_0^\\pi ")
         integral.next_to(tail, LEFT, SMALL_BUFF)
         integral.fix_in_frame()
-        dtheta = OldTex("d\\theta").fix_in_frame()
+        dtheta = Tex("d\\theta").fix_in_frame()
         dtheta.move_to(tail[-1], LEFT)
 
         average_copy = VGroup(half, average2[3:]).copy()
@@ -5198,7 +5198,7 @@ class FromRowsToColumns(Scene):
         row_rects.set_color(BLUE)
         col_rects.set_color(YELLOW)
 
-        # plus_template = OldTex("+")
+        # plus_template = Tex("+")
         # plus_template.match_height(grids[0][0])
         # for grid in grids:
         #     plusses = VGroup()
@@ -6227,7 +6227,7 @@ class CleverProofExample(Scene):
 
         rhs = VGroup(frac.copy(), sum_tri, parens_copy)
         rhs.next_to(lhs, DOWN, LARGE_BUFF, aligned_edge=LEFT)
-        # eq = OldTex("=")
+        # eq = Tex("=")
         # eq.next_to(rhs, LEFT)
 
         return VGroup(lhs, rhs)
