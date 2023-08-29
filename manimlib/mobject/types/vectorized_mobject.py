@@ -432,6 +432,7 @@ class VMobject(Mobject):
         return self
 
     def add_smooth_curve_to(self, point: np.ndarray):
+        '''添加一条平滑的曲线'''
         if self.has_new_path_started():
             self.add_line_to(point)
         else:
@@ -441,6 +442,12 @@ class VMobject(Mobject):
         return self
 
     def add_smooth_cubic_curve_to(self, handle: np.ndarray, point: np.ndarray):
+        """
+        这里用三阶贝塞尔曲线生成曲线
+        三阶曲线需要两个handle
+        这里只给出了一个
+        需要计算出另一个
+        """
         self.throw_error_if_no_points()
         if self.get_num_points() == 1:
             new_handle = self.get_points()[-1]
@@ -452,6 +459,7 @@ class VMobject(Mobject):
         return self.get_num_points() % self.n_points_per_curve == 1
 
     def get_last_point(self) -> np.ndarray:
+        '''获取路径最后一个锚点'''
         return self.get_points()[-1]
 
     def get_reflection_of_last_handle(self) -> np.ndarray:
@@ -459,10 +467,15 @@ class VMobject(Mobject):
         return 2 * points[-1] - points[-2]
 
     def close_path(self):
+        '''用直线闭合该曲线'''
         if not self.is_closed():
             self.add_line_to(self.get_subpaths()[-1][0])
 
     def is_closed(self) -> bool:
+        '''判断曲线是否闭合'''
+        # 这里就凸显了工程的特点了
+        # 第一个点和最后一个点的距离是否小于阈值
+        # 并不需要完全重合
         return self.consider_points_equals(
             self.get_points()[0], self.get_points()[-1]
         )
