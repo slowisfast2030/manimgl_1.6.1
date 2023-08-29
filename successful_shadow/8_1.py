@@ -954,15 +954,55 @@ class AllPossibleOrientations(ShadowScene):
 
         frame.add_updater(update_frame)
         # 这里的self.solid还是cube
-        face = self.solid
-        square, normal_vect = face
+        """
+        需要补充几行代码, 为self.solid正确的赋值
+        cube = self.solid
+        index = np.argmax([f.get_z() for f in cube])
+        face = cube[index]
+
+        normal_vect = Vector()
+        get_fc = face.get_center
+
+        def get_un():
+            return face.get_unit_normal(recompute=True)
+
+        normal_vect.add_updater(lambda v: v.put_start_and_end_on(
+            get_fc(), get_fc() + get_un(),
+        ))
+
+        normal_vect.update()
+
+        self.solid = (face, normal_vect)
+        """
+        #########################################
+        cube = self.solid
+        face = cube[0].shift(np.array([0,0,-1]))
+
+        normal_vect = Vector()
+        get_fc = face.get_center
+
+        def get_un():
+            return face.get_unit_normal(recompute=True)
+
+        normal_vect.add_updater(lambda v: v.put_start_and_end_on(
+            get_fc(), get_fc() + get_un(),
+        ))
+
+        normal_vect.update()
+
+        self.solid = (face, normal_vect)
+        #########################################
+
+        #face = self.solid
+        square, normal_vect = self.solid
         
         normal_vect.set_flat_stroke()
         self.solid = square
-        self.remove(self.shadow)
+        self.remove(self.shadow, cube)
+        self.add(normal_vect)
         self.add_shadow()
         self.shadow.deactivate_depth_test()
-        self.solid = face
+        #self.solid = face
         fc = square.get_center().copy()
 
         # Sphere points
@@ -996,6 +1036,7 @@ class AllPossibleOrientations(ShadowScene):
             for p in sphere_dots.get_points()
         ))
         sphere_lines.set_stroke(WHITE, 1, 0.05)
+        self.add(sphere_lines, sphere_dots)
 
         sphere_words = Text("All normal vectors = Sphere")
         uniform_words = Text("All points equally likely")
@@ -1003,7 +1044,7 @@ class AllPossibleOrientations(ShadowScene):
             words.fix_in_frame()
             words.to_edge(UP)
 
-        # Trace sphere
+        #Trace sphere
         N = len(original_sphere_points)
         self.play(FadeIn(sphere_words))
         self.play(
