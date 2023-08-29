@@ -390,6 +390,9 @@ class ShadowScene(ThreeDScene):
                     line.set_points_as_corners([lp, point])
 
         line = Line(IN, OUT)
+        # 这里的light_lines一开始并没有设置合适的初值
+        # 为了获得合适的初值, 需要主动执行一次updater
+        # 感觉这几乎成为了一个惯例
         light_lines = line.replicate(n_lines)
         light_lines.set_stroke(YELLOW, 0.5, 0.1)
         light_lines.add_updater(update_lines)
