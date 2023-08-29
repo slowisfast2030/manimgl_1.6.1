@@ -371,7 +371,7 @@ class ShadowScene(ThreeDScene):
         outline.add_updater(lambda m: m.set_points_as_corners(get_convex_hull(self.shadow)).close_path())
         return outline
 
-    def get_light_lines(self, outline=None, n_lines=100, only_vertices=False):
+    def get_light_lines(self, outline=None, n_lines=1000, only_vertices=False):
         if outline is None:
             outline = self.get_shadow_outline()
 
