@@ -2616,12 +2616,6 @@ class ManyShadows(SingleFaceRandomRotation):
         self.embed()
 
 
-class ComingUp(VideoWrapper):
-    title = "Bob will compute this directly"
-    wait_time = 10
-    animate_boundary = False
-
-
 class AllPossibleOrientations(ShadowScene):
     inf_light = True
     limited_plane_extension = 6
@@ -3657,96 +3651,6 @@ class AskAboutAverageCosValue(AllPossibleOrientations):
 
             self.add(values, lhss)
             self.wait(0.5)
-
-
-class ThreeCamps(TeacherStudentsScene):
-    def construct(self):
-        self.remove(self.background)
-        # Setup
-        teacher = self.teacher
-        students = self.students
-
-        image = ImageMobject("Shadows_Integral_Intro")
-        image.center().set_height(FRAME_HEIGHT)
-        image.generate_target()
-        image.target.replace(self.screen)
-        self.screen.set_stroke(WHITE, 1)
-        self.screen.save_state()
-        self.screen.replace(image).set_stroke(width=0)
-
-        self.play(
-            LaggedStart(*(
-                student.change("pondering", image.target)
-                for student in students
-            ), run_time=2, lag_ratio=0.2),
-            teacher.change("tease")
-        )
-        self.wait()
-
-        # Reactions
-        phrases = [
-            Text("How fun!", font_size=40),
-            Text("Wait, what?", font_size=40),
-            Text("Okay give\nme a sec...", font_size=35),
-        ]
-        modes = ["hooray", "erm", "confused"]
-        heights = np.linspace(2.0, 2.5, 3)
-        for student, phrase, mode, height in zip(reversed(students), phrases, modes, heights):
-            self.play(
-                PiCreatureSays(
-                    student, phrase, target_mode=mode,
-                    look_at=image,
-                    bubble_config={
-                        "direction": LEFT,
-                        "width": 3,
-                        "height": height,
-                    },
-                    bubble_type=ThoughtBubble,
-                    run_time=2
-                )
-            )
-        self.wait(4)
-
-        # Let's go over the definition
-        integral = Tex("\\int_0^\\pi \\dots d\\theta")
-        integral.move_to(self.hold_up_spot, DOWN)
-        brace = Brace(integral, UP)
-        words = Text("Let's go over the definition", font_size=36)
-        words.next_to(brace, UP, SMALL_BUFF)
-        words2 = Text("It can't hurt, right?", font_size=36)
-        words2.move_to(words)
-        VGroup(brace, words, words2).set_color(YELLOW)
-
-        self.play(
-            LaggedStart(*(
-                FadeOut(VGroup(student.bubble, student.bubble.content))
-                for student in reversed(students)
-            )),
-            LaggedStart(*(
-                student.change("pondering", integral)
-                for student in students
-            )),
-            FadeIn(integral, UP),
-            teacher.change("raise_right_hand", integral),
-        )
-        self.play(
-            GrowFromCenter(brace),
-            Write(words)
-        )
-        self.wait(2)
-        self.play(
-            words.animate.shift(0.75 * UP).set_opacity(0.5),
-            FadeIn(words2, 0.2 * UP),
-            LaggedStart(
-                self.teacher.change("shruggie"),
-                self.students[0].change("sassy", words2),
-                self.students[1].change("thinking", words2),
-                self.students[2].change("well", words2),
-            )
-        )
-        self.wait(2)
-        self.play(self.teacher.change("speaking", words2))
-        self.wait(3)
 
 
 class ParticularValuesUnhelpfulOverlay(Scene):
@@ -5064,20 +4968,6 @@ class FromRowsToColumns(Scene):
         self.wait()
 
 
-class ComplainAboutProgress(TeacherStudentsScene):
-    def construct(self):
-        self.student_says(
-            Text("Wait, is that all\\\\we've accomplished?"),
-            target_mode="angry",
-        )
-        self.play_student_changes(
-            "guilty", "erm",
-            look_at=self.students[2].eyes,
-            added_anims=[self.teacher.change("guilty")],
-        )
-        self.wait(4)
-
-
 class SupposedlyObviousProportionality(ShadowScene):
     solid_name = "Cube"
 
@@ -5215,12 +5105,6 @@ class SupposedlyObviousProportionality(ShadowScene):
             run_time=3,
         )
         self.wait(33)
-
-
-class LurkingAssumption(VideoWrapper):
-    title = "There's a subtle hidden assumption..."
-    wait_time = 4
-    animate_boundary = False
 
 
 class WhatIsC(Scene):
@@ -5672,21 +5556,6 @@ class SwapConstantForFourth(Scene):
         self.wait()
 
 
-class ButSpheresAreSmooth(TeacherStudentsScene):
-    def construct(self):
-        self.student_says(
-            Text("But spheres don't\\\\have flat faces!"),
-            target_mode="angry",
-            index=2,
-            added_anims=[self.teacher.change("guilty")]
-        )
-        self.play_student_changes(
-            "erm", "hesitant", "angry",
-            look_at=self.screen,
-        )
-        self.wait(6)
-
-
 class RepeatedRelation(Scene):
     def construct(self):
         # Relations
@@ -5746,12 +5615,6 @@ class SimpleCross(Scene):
         )
         self.play(ShowCreation(lines, lag_ratio=0.5))
         self.wait()
-
-
-# Not needed?
-class AmbientCubeTurningIntoNewShapes(Scene):
-    def construct(self):
-        pass
 
 
 class PopularizaitonVsDoing(Scene):
@@ -5818,102 +5681,6 @@ class PopularizaitonVsDoing(Scene):
 
         # Embed
         self.embed()
-
-
-class MultipleMathematicalBackgrounds(TeacherStudentsScene):
-    def construct(self):
-        self.remove(self.background)
-        labels = VGroup(
-            Text("$\\le$ High school"),
-            Text("$\\approx$ Undergrad"),
-            Text("$\\ge$ Ph.D."),
-        )
-        for student, label in zip(self.students, labels):
-            label.scale(0.7)
-            label.next_to(student, UP)
-
-        words = Text("Explanation doesn't vary\\\\with backgrounds")
-        words.to_edge(UP)
-
-        lines = VGroup(*(
-            DashedLine(words, label, buff=0.5)
-            for label in labels
-        ))
-        lines.set_stroke(WHITE, 2)
-
-        self.add(words)
-        self.play(
-            self.teacher.change("raise_right_hand"),
-            self.change_students(
-                "pondering", "thinking", "pondering",
-                look_at=self.teacher.eyes,
-            ),
-        )
-        self.play(
-            LaggedStartMap(ShowCreation, lines, lag_ratio=0.5),
-            LaggedStartMap(FadeIn, labels, lag_ratio=0.5),
-        )
-        self.wait(3)
-        self.play(
-            self.teacher.change("dejected").look(UP),
-            self.change_students("hesitant", "well", "thinking"),
-            LaggedStartMap(FadeOut, lines, scale=0.5),
-            FadeOut(words, DOWN),
-        )
-        self.wait(4)
-
-        # Different levels
-        kw = {"font_size": 30}
-        methods = VGroup(
-            Text("Calculus\\\\primer", **kw),
-            Text("Quickly show\\\\key steps", **kw),
-            Text("Describe as a\\\\measure on SO(3)", **kw),
-        )
-        new_lines = VGroup()
-        colors = [GREEN_B, GREEN_C, GREEN_D]
-        for method, label, color in zip(methods, labels, colors):
-            method.move_to(label)
-            method.shift(2.5 * UP)
-            method.set_color(color)
-            line = DashedLine(method, label, buff=0.25)
-            line.set_stroke(color, 2)
-            new_lines.add(line)
-
-        self.play(
-            self.teacher.change("raise_right_hand"),
-            self.change_students(
-                "erm", "pondering", "thinking",
-                look_at=self.students.get_center() + 4 * UP
-            ),
-            LaggedStartMap(FadeIn, methods, lag_ratio=0.5),
-            LaggedStartMap(ShowCreation, new_lines, lag_ratio=0.5),
-        )
-        self.wait(4)
-
-
-class WatchingAVideo(Scene):
-    def construct(self):
-        self.add(FullScreenRectangle())
-        randy = Randolph()
-        randy.to_corner(DL)
-        screen = ScreenRectangle(height=5)
-        screen.set_fill(BLACK, 1)
-        screen.to_corner(UR)
-
-        def blink_wait(n=1):
-            for x in range(n):
-                self.wait()
-                self.play(Blink(randy))
-                self.wait()
-
-        self.add(screen)
-        self.add(randy)
-        self.play(randy.change("pondering", screen))
-        blink_wait()
-        self.play(randy.change("thinking", screen))
-        blink_wait()
-        self.play(randy.change("hesitant", screen))
-        blink_wait(2)
 
 
 class CleverProofExample(Scene):
@@ -6075,13 +5842,6 @@ class CleverProofExample(Scene):
         return VGroup(lhs, rhs)
 
 
-class BlendOfMindsets(Scene):
-    def construct(self):
-        Text("Calculate specifics")
-        Text("Understand generalities")
-        Text("You need both")
-
-
 class ListernerEmail(Scene):
     def construct(self):
         # Letter
@@ -6223,11 +5983,6 @@ class FamousMathematicians(Scene):
         # Papers (do in editor)
 
 
-class InventingMath(Scene):
-    def construct(self):
-        pass
-
-
 class AmbientHourglass(ShadowScene):
     inf_light = True
 
@@ -6363,61 +6118,6 @@ class QuantifyConvexity(Scene):
         self.wait()
         self.play(dot.animate.move_to(interval.n2p(0.6)), run_time=2)
         self.wait()
-
-
-class GoalsOfMath(TeacherStudentsScene):
-    def construct(self):
-        words = Text("The goal of math\nis to answer questions")
-        words.move_to(self.hold_up_spot, DOWN)
-        words.to_edge(RIGHT, buff=2.0)
-        aq = words.get_part_by_text("answer questions")
-        aq.set_color(BLUE)
-        dni = Text(
-            "develop new ideas",
-            t2c={"new ideas": YELLOW},
-            t2s={"new ideas": ITALIC},
-        )
-        dni.move_to(aq, LEFT)
-
-        self.play(
-            self.teacher.change("raise_right_hand", words),
-            self.change_students(*3 * ["pondering"], look_at=words),
-            Write(words)
-        )
-        self.wait(2)
-        self.add(aq, self.teacher)
-        self.play(
-            aq.animate.shift(0.5 * DOWN).set_opacity(0.2),
-            Write(dni),
-            self.teacher.change("well", words),
-            self.change_students(*3 * ["thinking"], look_at=words)
-        )
-        self.wait(3)
-
-
-class InfatuationWithGenerality(TeacherStudentsScene):
-    def construct(self):
-        self.student_says(
-            Text("Why are mathematicians\\\\obsessed with abstractions?"),
-            index=0,
-            added_anims=[
-                self.students[1].change("tease"),
-                self.students[2].change("pondering"),
-            ]
-        )
-        self.play(
-            self.teacher.change("well"),
-        )
-        self.wait(6)
-
-
-class NumberphileFrame(VideoWrapper):
-    animate_boundary = True
-    title = "Bertrand's Paradox (with Numberphile)"
-    title_config = {
-        "font_size": 48
-    }
-    wait_time = 16
 
 
 class ByLine(Scene):
