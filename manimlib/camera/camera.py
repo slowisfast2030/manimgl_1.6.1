@@ -205,6 +205,9 @@ class CameraFrame(Mobject):
         '''
         设置相机的焦距
         '''
+        """
+        这里并不是设置焦距, 而是计算焦距与高度的比值
+        """
         self.uniforms["focal_dist_to_height"] = focal_distance / self.get_height()
         return self
 
@@ -212,6 +215,9 @@ class CameraFrame(Mobject):
         '''
         设置相机的视野
         '''
+        """
+        这里是不是写错了, 应该是height_to_focal_dist
+        """
         self.uniforms["focal_dist_to_height"] = 2 * math.tan(field_of_view / 2)
         return self
 
