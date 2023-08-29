@@ -170,6 +170,7 @@ class VMobject(Mobject):
         width: float | npt.ArrayLike = 3,
         background: bool = True
     ):
+        """设置背景轮廓线（轮廓线衬于填充色下方）"""
         self.set_stroke(color, width, background=background)
         return self
 
