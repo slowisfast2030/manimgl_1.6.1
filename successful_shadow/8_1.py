@@ -992,17 +992,13 @@ class AllPossibleOrientations(ShadowScene):
 
         self.solid = (face, normal_vect)
         #########################################
-
-        #face = self.solid
         square, normal_vect = self.solid
-        
         normal_vect.set_flat_stroke()
         self.solid = square
         self.remove(self.shadow, cube)
         self.add(normal_vect)
         self.add_shadow()
         self.shadow.deactivate_depth_test()
-        #self.solid = face
         fc = square.get_center().copy()
 
         # Sphere points
@@ -1139,3 +1135,49 @@ class AllPossibleOrientations(ShadowScene):
             frame.animate.reorient(10, 75),
             run_time=2,
         )
+
+        # Probability expression
+        patch_copy = patch.deepcopy()
+        sphere_copy = sphere.deepcopy()
+        sphere_copy.set_color(GREY_D, 0.7)
+        for mob in patch_copy, sphere_copy:
+            mob.apply_matrix(frame.get_inverse_camera_rotation_matrix())
+            mob.fix_in_frame()
+            mob.center()
+        patch_copy2 = patch_copy.copy()
+
+        prob = Group(*Tex(
+            "P(", "0.", ")", "=", "{Num ", "\\over ", "Den}",
+            font_size=60
+        ))
+        prob.fix_in_frame()
+        prob.to_corner(UR)
+        prob.shift(DOWN)
+        for i, mob in [(1, patch_copy), (4, patch_copy2), (6, sphere_copy)]:
+            mob.replace(prob[i], dim_to_match=1)
+            prob.replace_submobject(i, mob)
+        sphere_copy.scale(3, about_edge=UP)
+
+        self.play(FadeIn(prob, lag_ratio=0.1))
+        self.wait()
+        for i in (4, 6):
+            self.play(ShowCreationThenFadeOut(
+                SurroundingRectangle(prob[i], stroke_width=2).fix_in_frame()
+            ))
+            self.wait()
+        
+        # Many patches
+        patches = Group(
+            get_patch(0.65, 0.5),
+            get_patch(0.55, 0.8),
+            get_patch(0.85, 0.8),
+            get_patch(0.75, 0.4, 0.1, 0.2),
+        )
+
+        patch.deactivate_depth_test()
+        self.add(sphere, patch)
+        for new_patch in patches:
+            self.play(
+                Transform(patch, new_patch),
+            )
+            self.wait()
