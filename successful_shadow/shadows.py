@@ -3665,11 +3665,11 @@ class AllPossibleOrientations(ShadowScene):
 
         # Computation
         new_lines = VGroup(
-            OldTex("{1 \\over 2} s^2 \\cdot 2 \\int_0^{\\pi / 2} \\cos(\\theta)\\sin(\\theta)\\,d\\theta"),
-            OldTex("{1 \\over 2} s^2 \\cdot \\int_0^{\\pi / 2} \\sin(2\\theta)\\,d\\theta"),
-            OldTex("{1 \\over 2} s^2 \\cdot \\left[ -\\frac{1}{2} \\cos(2\\theta) \\right]_0^{\\pi / 2}"),
-            OldTex("{1 \\over 2} s^2 \\cdot \\left(-\\left(-\\frac{1}{2}\\right) - \\left(-\\frac{1}{2}\\right)\\right)"),
-            OldTex("{1 \\over 2} s^2"),
+            Tex("{1 \\over 2} s^2 \\cdot 2 \\int_0^{\\pi / 2} \\cos(\\theta)\\sin(\\theta)\\,d\\theta"),
+            Tex("{1 \\over 2} s^2 \\cdot \\int_0^{\\pi / 2} \\sin(2\\theta)\\,d\\theta"),
+            Tex("{1 \\over 2} s^2 \\cdot \\left[ -\\frac{1}{2} \\cos(2\\theta) \\right]_0^{\\pi / 2}"),
+            Tex("{1 \\over 2} s^2 \\cdot \\left(-\\left(-\\frac{1}{2}\\right) - \\left(-\\frac{1}{2}\\right)\\right)"),
+            Tex("{1 \\over 2} s^2"),
         )
         new_lines.scale(top_line.get_height() / new_lines[0].get_height())
         kw = {"buff": 0.35, "aligned_edge": LEFT}
@@ -3678,11 +3678,11 @@ class AllPossibleOrientations(ShadowScene):
         new_lines.fix_in_frame()
 
         annotations = VGroup(
-            OldTexText("To avoid the annoying absolute value, just\\\\cover the northern hemisphere and double it."),
-            OldTexText("Trig identity: $\\sin(2\\theta) = 2\\cos(\\theta)\\sin(\\theta)$"),
-            OldTexText("Antiderivative"),
-            OldTexText("Try not to get lost in\\\\the sea of negatives..."),
-            OldTexText("Whoa, that turned out nice!"),
+            Text("To avoid the annoying absolute value, just\\\\cover the northern hemisphere and double it."),
+            Text("Trig identity: $\\sin(2\\theta) = 2\\cos(\\theta)\\sin(\\theta)$"),
+            Text("Antiderivative"),
+            Text("Try not to get lost in\\\\the sea of negatives..."),
+            Text("Whoa, that turned out nice!"),
         )
         annotations.fix_in_frame()
         annotations.set_color(YELLOW)
@@ -3773,7 +3773,7 @@ class AskAboutAverageCosValue(AllPossibleOrientations):
 
         arc = always_redraw(get_arc)
 
-        theta = OldTex("\\theta", font_size=20)
+        theta = Tex("\\theta", font_size=20)
         theta.rotate(PI / 2, RIGHT)
         theta.set_backstroke(width=2)
         theta.add_updater(lambda m: m.next_to(
@@ -3788,7 +3788,7 @@ class AskAboutAverageCosValue(AllPossibleOrientations):
         self.add(sphere_mesh, sphere)
 
         # Show random samples
-        question = OldTexText("What's the mean?")
+        question = Text("What's the mean?")
         question.to_corner(UR)
         question.to_edge(UP, buff=MED_SMALL_BUFF)
         question.fix_in_frame()
