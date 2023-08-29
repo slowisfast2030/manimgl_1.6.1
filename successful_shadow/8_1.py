@@ -966,6 +966,10 @@ class AllPossibleOrientations(ShadowScene):
         # 相机的位置
         # 投影面的位置
         # 焦距
+
+        有一个猜测：
+        相机的位置是世界坐标系
+        投影面的w位置是相机坐标系
         """
 
         frame.reorient(-20, 80) # theta=-20, phi=80
