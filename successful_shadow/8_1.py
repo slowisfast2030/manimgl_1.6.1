@@ -948,10 +948,12 @@ class AllPossibleOrientations(ShadowScene):
         frame.set_height(5)
         frame.d_theta = 0
 
+        # 思考：frame并没有定义d_theta属性。也可以将d_theta定义成普通变量
         def update_frame(frame, dt):
             frame.d_theta += -0.0025 * frame.get_theta()
             frame.increment_theta(clip(0.0025 * frame.d_theta, -0.01 * dt, 0.01 * dt))
 
+        # 每隔dt时间，frame的theta角度增加0.0025 * frame.d_theta
         frame.add_updater(update_frame)
         # 这里的self.solid还是cube
         """
