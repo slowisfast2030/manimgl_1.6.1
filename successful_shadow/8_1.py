@@ -985,28 +985,8 @@ class AllPossibleOrientations(ShadowScene):
 
         # 每隔dt时间，frame的theta角度增加0.0025 * frame.d_theta
         frame.add_updater(update_frame)
+        
         # 这里的self.solid还是cube
-        """
-        需要补充几行代码, 为self.solid正确的赋值
-        cube = self.solid
-        index = np.argmax([f.get_z() for f in cube])
-        face = cube[index]
-
-        normal_vect = Vector()
-        get_fc = face.get_center
-
-        def get_un():
-            return face.get_unit_normal(recompute=True)
-
-        normal_vect.add_updater(lambda v: v.put_start_and_end_on(
-            get_fc(), get_fc() + get_un(),
-        ))
-
-        normal_vect.update()
-
-        self.solid = (face, normal_vect)
-        """
-        #########################################
         cube = self.solid
         face = cube[0].shift(np.array([0,0,-1]))
 
