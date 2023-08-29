@@ -915,7 +915,7 @@ class StartSimple(Scene):
         )
         self.wait(3)
 
-
+# 取一个face旋转
 class FocusOnOneFace(ShadowScene):
     inf_light = True
     limited_plane_extension = 10
@@ -1460,7 +1460,7 @@ class FocusOnOneFace(ShadowScene):
         self.play(Rotate(face, -PI / 2, UP), run_time=5)
         self.wait(10)
 
-
+# 三个框
 class DiscussLinearity(Scene):
     def construct(self):
         # Set background
@@ -1662,7 +1662,7 @@ class DiscussLinearity(Scene):
         self.play(ShowCreation(cross))
         self.wait(3)
 
-
+# 演示了两个矩阵和向量的乘积
 class Matrices(Scene):
     def construct(self):
         self.add(FullScreenRectangle())
@@ -1718,7 +1718,7 @@ class Matrices(Scene):
             FadeOut(vectors[1], scale=0),
         )
 
-
+# 尽管报错，但是演示了线性变换对面积的影响，很有用
 class DefineDeterminant(Scene):
     def construct(self):
         # Planes
@@ -1745,8 +1745,11 @@ class DefineDeterminant(Scene):
         square.set_stroke(YELLOW, 2)
         square.set_fill(YELLOW, 0.5)
         square.replace(Line(planes[0].c2p(-1, -1), planes[0].c2p(1, 1)))
-        area_label = Text("Area", "=", "$A$")
-        area_label.set_color_by_tex("$A$", YELLOW)
+        # 这一行报错
+        #area_label = Text("Area", "=", "$A$")
+        area_label = Text("$A$")
+        # 这一行报错
+        #area_label.set_color_by_tex("$A$", YELLOW)
         area_label.next_to(square, UP)
         area_label.add_background_rectangle()
         self.play(
@@ -1818,7 +1821,7 @@ class DefineDeterminant(Scene):
         )
         self.wait()
 
-
+# 报错，里面有cat和dog的svg图片
 class AmbientShapeRotationPreimage(ShadowScene):
     inf_light = False
     display_mode = "preimage_only"  # Or "full_3d" or "shadow_only"
@@ -2059,24 +2062,7 @@ class AmbientShapeRotationFull3d(AmbientShapeRotationPreimage):
 class AmbientShapeRotationShadowOnly(AmbientShapeRotationPreimage):
     display_mode = "shadow_only"
 
-
-class StretchLabel(Scene):
-    def construct(self):
-        label = VGroup(
-            Vector(0.5 * LEFT),
-            Tex("1.5 \\times"),
-            Vector(0.5 * RIGHT)
-        )
-        label.set_color(YELLOW)
-        label.arrange(RIGHT, buff=SMALL_BUFF)
-
-        self.play(
-            *map(ShowCreation, label[::2]),
-            Write(label[1]),
-        )
-        self.wait()
-
-
+# 单个face的旋转
 class SingleFaceRandomRotation(ShadowScene):
     initial_wait_time = 0
     inf_light = True
@@ -2129,13 +2115,15 @@ class SingleFaceRandomRotation(ShadowScene):
     def construct(self):
         frame = self.camera.frame
         face = self.face
+        # 下面的fc变量缺失，这里补充了定义。但效果上似乎差了一点
+        fc = face.get_center()
 
         frame.add_updater(lambda f, dt: f.increment_theta(self.frame_rot_speed * dt))
         self.wait(self.initial_wait_time)
         for x in range(self.n_rotations):
             self.random_toss(
                 face,
-                about_point=fc,
+                about_point=fc, 
                 angle=3 * PI,
                 # run_time=1.5,
                 run_time=8,
@@ -2175,7 +2163,7 @@ class RandomRotations4(SingleFaceRandomRotation):
     theta0 = -15 * DEGREES
     CONFIG = {"random_seed": 6}
 
-
+# self.init_frame_rotation()函数报错
 class AverageFaceShadow(SingleFaceRandomRotation):
     inf_light = True
     plane_dims = (16, 8)
