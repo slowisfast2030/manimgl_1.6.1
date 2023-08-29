@@ -2584,7 +2584,7 @@ class ManyShadows(SingleFaceRandomRotation):
 
         self.embed()
 
-
+# 球
 class AllPossibleOrientations(ShadowScene):
     inf_light = True
     limited_plane_extension = 6
