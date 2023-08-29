@@ -390,7 +390,552 @@ class ShadowScene(ThreeDScene):
         frame.add_updater(update_frame)
         return frame
 
+# 取一个face旋转
+class FocusOnOneFace(ShadowScene):
+    inf_light = True
+    limited_plane_extension = 10
 
+    def construct(self):
+        # Some random tumbling
+        cube = self.solid
+        shadow = self.shadow
+        frame = self.camera.frame
+
+        words = VGroup(
+            Text("Just one orientation"),
+            Text("Just one face"),
+        )
+        words.fix_in_frame()
+        words.arrange(DOWN, buff=MED_LARGE_BUFF, aligned_edge=LEFT)
+        words.to_corner(UL)
+        average_words = Text("Average over all orientations")
+        average_words.move_to(words[0], LEFT)
+        average_words.fix_in_frame()
+        self.add(average_words)
+
+        self.random_toss(run_time=3, rate_func=linear)
+        self.play(
+            FadeIn(words[0], 0.75 * UP),
+            FadeOut(average_words, 0.75 * UP),
+            run_time=0.5,
+        )
+        self.wait()
+
+        # Just one face
+        cube.update()
+        index = np.argmax([f.get_z() for f in cube])
+        face = cube[index]
+        prev_opacity = face.get_fill_opacity()
+        cube.generate_target(use_deepcopy=True)
+        cube.target.clear_updaters()
+        cube.target.space_out_submobjects(2, about_point=face.get_center())
+        cube.target.set_opacity(0)
+        cube.target[index].set_opacity(prev_opacity)
+
+        self.shadow.set_stroke(width=0)
+        self.play(
+            MoveToTarget(cube),
+            FadeIn(words[1]),
+        )
+        self.play(
+            frame.animate.reorient(-10, 65),
+            FlashAround(words[1], rate_func=squish_rate_func(smooth, 0.2, 0.5)),
+            FlashAround(words[0], rate_func=squish_rate_func(smooth, 0.5, 0.8)),
+            run_time=5,
+        )
+        frame.add_updater(lambda f, dt: f.increment_theta(0.01 * dt))
+
+        self.solid = face
+        self.remove(shadow)
+        self.add_shadow()
+        shadow = self.shadow
+
+        # Ask about area
+        area_q = Text("Area?")
+        area_q.add_updater(lambda m: m.move_to(shadow))
+        self.play(Write(area_q))
+        self.wait()
+
+        # Orient straight up
+        unit_normal = face.get_unit_normal()
+        axis = rotate_vector(normalize([*unit_normal[:2], 0]), PI / 2, OUT)
+        angle = np.arccos(unit_normal[2])
+        face.generate_target()
+        face.target.rotate(-angle, axis)
+        face.target.move_to(3 * OUT)
+        face.target.rotate(-PI / 4, OUT)
+        self.play(MoveToTarget(face))
+
+        light_lines = self.get_light_lines(n_lines=4, outline=shadow, only_vertices=True)
+        light_lines.set_stroke(YELLOW, 1, 0.5)
+
+        self.play(
+            frame.animate.set_phi(70 * DEGREES),
+            FadeIn(light_lines, lag_ratio=0.5),
+            TransformFromCopy(face, face.deepcopy().set_opacity(0).set_z(0), remover=True),
+            run_time=3,
+        )
+        self.wait(3)
+        self.play(
+            Rotate(face, PI / 2, UP),
+            FadeOut(area_q, scale=0),
+            run_time=3,
+        )
+        self.wait(3)
+        self.play(
+            Rotate(face, -PI / 3, UP),
+            UpdateFromAlphaFunc(light_lines, lambda m, a: m.set_opacity(0.5 * (1 - a)), remover=True),
+            run_time=2,
+        )
+
+        # Show normal vector
+        z_axis = VGroup(
+            Line(ORIGIN, face.get_center()),
+            Line(face.get_center(), 10 * OUT),
+        )
+        z_axis.set_stroke(WHITE, 1)
+
+        normal_vect = Vector()
+        get_fc = face.get_center
+
+        def get_un():
+            return face.get_unit_normal(recompute=True)
+
+        def get_theta():
+            return np.arccos(get_un()[2])
+
+        normal_vect.add_updater(lambda v: v.put_start_and_end_on(
+            get_fc(), get_fc() + get_un(),
+        ))
+        arc = always_redraw(lambda: Arc(
+            start_angle=PI / 2,
+            angle=-get_theta(),
+            radius=0.5,
+            stroke_width=2,
+        ).rotate(PI / 2, RIGHT, about_point=ORIGIN).shift(get_fc()))
+        theta = Tex("\\theta", font_size=30)
+        theta.set_backstroke()
+        theta.rotate(PI / 2, RIGHT)
+        theta.add_updater(lambda m: m.move_to(
+            get_fc() + 1.3 * (arc.pfp(0.5) - get_fc())
+        ))
+        theta.add_updater(lambda m: m.set_width(min(0.123, max(0.01, arc.get_width()))))
+
+        self.play(ShowCreation(normal_vect))
+        self.wait()
+        self.add(z_axis[0], face, z_axis[1], normal_vect)
+        self.play(*map(FadeIn, z_axis))
+        self.play(
+            FadeIn(theta, 0.5 * OUT), ShowCreation(arc),
+        )
+
+        # Vary Theta
+        frame.reorient(2)
+        face.rotate(-35 * DEGREES, get_un(), about_point=face.get_center())
+        self.play(
+            Rotate(face, 50 * DEGREES, UP),
+            rate_func=there_and_back,
+            run_time=8,
+        )
+
+        # Show shadow area in the corner
+        axes = Axes(
+            (0, 180, 22.5), (0, 1, 0.25),
+            width=5,
+            height=2,
+            axis_config={
+                "include_tip": False,
+                "tick_size": 0.05,
+                "numbers_to_exclude": [],
+            },
+        )
+        axes.to_corner(UR, buff=MED_SMALL_BUFF)
+        axes.x_axis.add_numbers([0, 45, 90, 135, 180], unit="^\\circ")
+        y_label = Text("Shadow's area", font_size=24)
+        y_label.next_to(axes.y_axis.get_top(), RIGHT, MED_SMALL_BUFF)
+        y_label.set_backstroke()
+        ly_label = Tex("s^2", font_size=24)
+        ly_label.next_to(axes.y_axis.get_top(), LEFT, SMALL_BUFF)
+        ly_label.shift(0.05 * UP)
+        axes.add(y_label, ly_label)
+        axes.fix_in_frame()
+
+        graph = axes.get_graph(
+            lambda x: math.cos(x * DEGREES),
+            x_range=(0, 90),
+        )
+        graph.set_stroke(RED, 3)
+        graph.fix_in_frame()
+
+        question = Text("Can you guess?", font_size=36)
+        question.to_corner(UR)
+        question.set_color(RED)
+
+        dot = Dot(color=RED)
+        dot.scale(0.5)
+        dot.move_to(axes.c2p(0, 1))
+        dot.fix_in_frame()
+
+        self.play(
+            FadeIn(axes),
+            Rotate(face, -get_theta(), UP, run_time=2),
+        )
+        self.play(FadeIn(dot, shift=2 * UP + RIGHT))
+        self.wait(2)
+        self.add(graph, axes)
+        self.play(
+            UpdateFromFunc(dot, lambda d: d.move_to(graph.get_end())),
+            ShowCreation(graph),
+            Rotate(face, PI / 2, UP),
+            run_time=5
+        )
+        self.play(frame.animate.reorient(45), run_time=2)
+        self.play(frame.animate.reorient(5), run_time=4)
+
+        # Show vertical plane
+        plane = Rectangle(width=self.plane.get_width(), height=5)
+        plane.insert_n_curves(100)
+        plane.set_fill(WHITE, 0.25)
+        plane.set_stroke(width=0)
+        plane.apply_depth_test()
+
+        plane.rotate(PI / 2, RIGHT)
+        plane.move_to(ORIGIN, IN)
+        plane.save_state()
+        plane.stretch(0, 2, about_edge=IN)
+
+        face.apply_depth_test()
+        z_axis.apply_depth_test()
+        self.shadow.apply_depth_test()
+
+        self.play(
+            LaggedStartMap(FadeOut, VGroup(*words, graph, axes, dot)),
+            Restore(plane, run_time=3)
+        )
+        self.play(Rotate(face, -60 * DEGREES, UP, run_time=2))
+
+        # Slice up face
+        face_copy = face.deepcopy()
+        face_copy.rotate(-get_theta(), UP)
+        face_copy.move_to(ORIGIN)
+
+        n_slices = 25
+        rects = Rectangle().replicate(n_slices)
+        rects.arrange(DOWN, buff=0)
+        rects.replace(face_copy, stretch=True)
+        slices = VGroup(*(Intersection(face_copy, rect) for rect in rects))
+        slices.match_style(face_copy)
+        slices.set_stroke(width=0)
+        slices.rotate(get_theta(), UP)
+        slices.move_to(face)
+        slices.apply_depth_test()
+        slices.save_state()
+        slice_outlines = slices.copy()
+        slice_outlines.set_stroke(RED, 1)
+        slice_outlines.set_fill(opacity=0)
+        slice_outlines.deactivate_depth_test()
+
+        frame.clear_updaters()
+        self.play(
+            frame.animate.set_euler_angles(PI / 2, get_theta()),
+            FadeOut(VGroup(theta, arc)),
+            run_time=2
+        )
+        self.play(ShowCreation(slice_outlines, lag_ratio=0.05))
+
+        self.remove(face)
+        self.add(slices)
+        self.remove(self.shadow)
+        self.solid = slices
+        self.add_shadow()
+        self.shadow.set_stroke(width=0)
+        self.add(normal_vect, plane, slice_outlines)
+
+        slices.insert_n_curves(10)
+        slices.generate_target()
+        for sm in slices.target:
+            sm.stretch(0.5, 1)
+        self.play(
+            MoveToTarget(slices),
+            FadeOut(slice_outlines),
+            run_time=2
+        )
+        self.wait(2)
+
+        # Focus on one slice
+        long_slice = slices[len(slices) // 2].deepcopy()
+        line = Line(long_slice.get_corner(LEFT + OUT), long_slice.get_corner(RIGHT + IN))
+        line.scale(0.97)
+        line.set_stroke(BLUE, 3)
+
+        frame.generate_target()
+        frame.target.reorient(0, 90)
+        frame.target.set_height(6)
+        frame.target.move_to(2.5 * OUT)
+        self.shadow.clear_updaters()
+        self.play(
+            MoveToTarget(frame),
+            *map(FadeIn, (theta, arc)),
+            FadeOut(plane),
+            FadeOut(slices),
+            FadeOut(self.shadow),
+            FadeIn(line),
+            run_time=2,
+        )
+        self.wait()
+
+        # Analyze slice
+        shadow = line.copy()
+        shadow.stretch(0, 2, about_edge=IN)
+        shadow.set_stroke(BLUE_E)
+        vert_line = Line(line.get_start(), shadow.get_start())
+        vert_line.set_stroke(GREY_B, 3)
+
+        shadow_label = Text("Shadow")
+        shadow_label.set_fill(BLUE_E)
+        shadow_label.set_backstroke()
+        shadow_label.rotate(PI / 2, RIGHT)
+        shadow_label.next_to(shadow, IN, SMALL_BUFF)
+
+        self.play(
+            TransformFromCopy(line, shadow),
+            FadeIn(shadow_label, 0.5 * IN),
+        )
+        self.wait()
+        self.play(ShowCreation(vert_line))
+        self.wait()
+
+        top_theta_group = VGroup(
+            z_axis[1].copy(),
+            arc.copy().clear_updaters(),
+            theta.copy().clear_updaters(),
+            Line(*normal_vect.get_start_and_end()).match_style(z_axis[1].copy()),
+        )
+        self.play(
+            top_theta_group.animate.move_to(line.get_start(), LEFT + IN)
+        )
+
+        elbow = Elbow(angle=-get_theta())
+        elbow.set_stroke(WHITE, 2)
+        ul_arc = Arc(
+            radius=0.4,
+            start_angle=-get_theta(),
+            angle=-(PI / 2 - get_theta())
+        )
+        ul_arc.match_style(elbow)
+        supl = Tex("90^\\circ - \\theta", font_size=24)
+        supl.next_to(ul_arc, DOWN, SMALL_BUFF, aligned_edge=LEFT)
+        supl.set_backstroke()
+        supl[0][:3].shift(SMALL_BUFF * RIGHT / 2)
+
+        ul_angle_group = VGroup(elbow, ul_arc, supl)
+        ul_angle_group.rotate(PI / 2, RIGHT, about_point=ORIGIN)
+        ul_angle_group.shift(line.get_start())
+
+        dr_arc = Arc(
+            radius=0.4,
+            start_angle=PI,
+            angle=-get_theta(),
+        )
+        dr_arc.match_style(ul_arc)
+        dr_arc.rotate(PI / 2, RIGHT, about_point=ORIGIN)
+        dr_arc.shift(line.get_end())
+        dr_theta = Tex("\\theta", font_size=24)
+        dr_theta.rotate(PI / 2, RIGHT)
+        dr_theta.next_to(dr_arc, LEFT, SMALL_BUFF)
+        dr_theta.shift(SMALL_BUFF * OUT / 2)
+
+        self.play(ShowCreation(elbow))
+        self.play(
+            ShowCreation(ul_arc),
+            FadeTransform(top_theta_group[2].copy(), supl),
+        )
+        self.play(
+            TransformFromCopy(ul_arc, dr_arc),
+            TransformFromCopy(supl[0][4].copy().set_stroke(width=0), dr_theta[0][0]),
+        )
+        self.wait()
+
+        # Highlight lower right
+        rect = Rectangle(0.8, 0.5)
+        rect.set_stroke(YELLOW, 2)
+        rect.rotate(PI / 2, RIGHT)
+        rect.move_to(dr_theta, LEFT).shift(SMALL_BUFF * LEFT)
+
+        self.play(
+            ShowCreation(rect),
+            top_theta_group.animate.fade(0.8),
+            ul_angle_group.animate.fade(0.8),
+        )
+        self.wait()
+
+        # Show cosine
+        cos_formula = Tex(
+            "\\cos(\\theta)", "=",
+            "{\\text{Length of }", "\\text{shadow}",
+            "\\over",
+            "\\text{Length of }", "\\text{slice}"
+            "}",
+        )
+        cos_formula[2:].scale(0.75, about_edge=LEFT)
+        cos_formula.to_corner(UR)
+        cos_formula.fix_in_frame()
+
+        lower_formula = Tex(
+            "\\text{shadow}", "=",
+            "\\cos(\\theta)", "\\cdot", "\\text{slice}"
+        )
+        lower_formula.match_width(cos_formula)
+        lower_formula.next_to(cos_formula, DOWN, MED_LARGE_BUFF)
+        lower_formula.fix_in_frame()
+
+        for tex in cos_formula, lower_formula:
+            tex.set_color_by_tex("shadow", BLUE_D)
+            tex.set_color_by_tex("slice", BLUE_B)
+
+        self.play(Write(cos_formula))
+        self.wait()
+        self.play(TransformMatchingTex(
+            VGroup(*(cos_formula[i].copy() for i in [0, 1, 3, 6])),
+            lower_formula,
+            path_arc=PI / 4,
+        ))
+        self.wait()
+
+        # Bring full face back
+        frame.generate_target()
+        frame.target.reorient(20, 75)
+        frame.target.set_height(6)
+        frame.target.set_z(2)
+
+        line_shadow = get_shadow(line)
+        line_shadow.set_stroke(BLUE_E, opacity=0.5)
+
+        self.solid = face
+        self.add_shadow()
+        self.add(z_axis[0], face, z_axis[1], line, normal_vect, theta, arc)
+        self.play(
+            MoveToTarget(frame, run_time=5),
+            FadeIn(face, run_time=3),
+            FadeIn(self.shadow, run_time=3),
+            FadeIn(line_shadow, run_time=3),
+            LaggedStart(*map(FadeOut, [
+                top_theta_group, ul_angle_group, rect,
+                dr_theta, dr_arc,
+                vert_line, shadow, shadow_label,
+            ]), run_time=4),
+        )
+        frame.add_updater(lambda f, dt: f.increment_theta(0.01 * dt))
+        self.wait(2)
+
+        # Show perpendicular
+        perp = Line(
+            face.pfp(binary_search(
+                lambda a: face.pfp(a)[2],
+                face.get_center()[2], 0, 0.5,
+            )),
+            face.pfp(binary_search(
+                lambda a: face.pfp(a)[2],
+                face.get_center()[2], 0.5, 1.0,
+            )),
+        )
+        perp.set_stroke(RED, 3)
+        perp_shadow = get_shadow(perp)
+        perp_shadow.set_stroke(RED_E, 3, opacity=0.2)
+
+        self.add(perp, normal_vect, arc)
+        self.play(
+            ShowCreation(perp),
+            ShowCreation(perp_shadow),
+        )
+        face.add(line)
+        self.play(Rotate(face, 45 * DEGREES, UP), run_time=3)
+        self.play(Rotate(face, -55 * DEGREES, UP), run_time=3)
+        self.play(Rotate(face, 20 * DEGREES, UP), run_time=2)
+
+        # Give final area formula
+        final_formula = Tex(
+            "\\text{Area}(", "\\text{shadow}", ")",
+            "=",
+            "|", "\\cos(\\theta)", "|", "s^2"
+        )
+        final_formula.set_color_by_tex("shadow", BLUE_D)
+        final_formula.match_width(lower_formula)
+        final_formula.next_to(lower_formula, DOWN, MED_LARGE_BUFF)
+        final_formula.fix_in_frame()
+        final_formula.get_parts_by_tex("|").set_opacity(0)
+        final_formula.set_stroke(BLACK, 3, background=True)
+        rect = SurroundingRectangle(final_formula)
+        rect.set_stroke(YELLOW, 2)
+        rect.fix_in_frame()
+
+        self.play(Write(final_formula))
+        self.play(ShowCreation(rect))
+        final_formula.add(rect)
+        self.wait(10)
+
+        # Absolute value
+        face.remove(line)
+        self.play(
+            frame.animate.shift(0.5 * DOWN + RIGHT).reorient(10),
+            LaggedStart(*map(FadeOut, [cos_formula, lower_formula])),
+            FadeIn(graph),
+            FadeIn(axes),
+            FadeOut(line),
+            FadeOut(line_shadow),
+            FadeOut(perp),
+            FadeOut(perp_shadow),
+            final_formula.animate.shift(2 * DOWN),
+            run_time=2
+        )
+        self.play(
+            Rotate(face, PI / 2 - get_theta(), UP),
+            run_time=2
+        )
+
+        new_graph = axes.get_graph(
+            lambda x: math.cos(x * DEGREES),
+            (90, 180),
+        )
+        new_graph.match_style(graph)
+        new_graph.fix_in_frame()
+        self.play(
+            Rotate(face, PI / 2, UP),
+            ShowCreation(new_graph),
+            run_time=5,
+        )
+        self.play(
+            Rotate(face, -PI / 4, UP),
+            run_time=2,
+        )
+        self.wait(3)
+
+        alt_normal = normal_vect.copy()
+        alt_normal.clear_updaters()
+        alt_normal.rotate(PI, UP, about_point=face.get_center())
+        alt_normal.set_color(YELLOW)
+
+        self.add(alt_normal, face, normal_vect, arc, theta)
+        self.play(ShowCreation(alt_normal))
+        self.wait()
+        self.play(FadeOut(alt_normal))
+
+        new_graph.generate_target()
+        new_graph.target.flip(RIGHT)
+        new_graph.target.move_to(graph.get_end(), DL)
+
+        self.play(
+            MoveToTarget(new_graph),
+            final_formula.get_parts_by_tex("|").animate.set_opacity(1),
+        )
+        self.play(
+            final_formula.animate.next_to(axes, DOWN)
+        )
+        self.wait()
+        self.play(Rotate(face, -PI / 2, UP), run_time=5)
+        self.wait(10)
+
+# 代码报错的部分，可以结合FocusOnOneFace类进行修改
 class AllPossibleOrientations(ShadowScene):
     inf_light = True
     limited_plane_extension = 6
@@ -408,8 +953,10 @@ class AllPossibleOrientations(ShadowScene):
             frame.increment_theta(clip(0.0025 * frame.d_theta, -0.01 * dt, 0.01 * dt))
 
         frame.add_updater(update_frame)
+        # 这里的self.solid还是cube
         face = self.solid
         square, normal_vect = face
+        
         normal_vect.set_flat_stroke()
         self.solid = square
         self.remove(self.shadow)
