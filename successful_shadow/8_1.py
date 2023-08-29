@@ -944,7 +944,7 @@ class AllPossibleOrientations(ShadowScene):
     def construct(self):
         # Setup
         frame = self.camera.frame
-        frame.reorient(-20, 80)
+        frame.reorient(-20, 80) # theta=-20, phi=80
         frame.set_height(5)
         frame.d_theta = 0
 
