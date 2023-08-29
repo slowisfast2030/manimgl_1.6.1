@@ -5997,7 +5997,7 @@ class AmbientHourglass(ShadowScene):
         self.add(solid_group, shadow)
         
         # 一开始是30
-        for x in range(5):
+        for x in range(3):
             self.random_toss(solid_group)
             self.wait()
 
@@ -6006,7 +6006,7 @@ class AmbientHourglass(ShadowScene):
             speed=0.5,
             initial_axis=[1, 0, 1],
         )
-        self.wait(35)
+        self.wait(3)
 
 
 class QuantifyConvexity(Scene):
