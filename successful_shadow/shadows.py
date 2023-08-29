@@ -5959,6 +5959,7 @@ class AmbientHourglass(ShadowScene):
         frame = self.camera.frame
         frame.set_z(3)
 
+        # 报错，直接注释
         #self.init_frame_rotation()
         self.remove(self.solid, self.shadow)
 
