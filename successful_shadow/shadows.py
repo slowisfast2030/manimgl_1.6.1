@@ -709,7 +709,6 @@ class IntroduceShadow(ShadowScene):
             self.random_toss()
             self.wait()
 
-
 # 这个场景很大可能是3b1b为了完成一些场景写的demo
 class MeanCalculation(Scene):
     def construct(self):
