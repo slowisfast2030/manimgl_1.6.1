@@ -494,6 +494,11 @@ class test2(ShadowScene):
         self.random_toss(run_time=3, angle=TAU)
 
         # Change size and orientation
+        """
+        outline和area_label都添加了updater
+        outline和area_label的初始值都是错误的
+        需要主动执行一次updater, 以获得正确的初始值
+        """
         outline.update()
         area_label.update()
         self.play(
@@ -519,6 +524,7 @@ class test2(ShadowScene):
         light_comment.fix_in_frame()
 
         cube.clear_updaters()
+        # 下面这一行干嘛的？
         cube.add_updater(lambda m: self.sort_to_camera(cube))
         self.play(
             FadeIn(light_comment, 0.5 * UP),
