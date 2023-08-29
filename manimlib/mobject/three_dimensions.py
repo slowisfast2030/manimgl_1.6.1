@@ -78,6 +78,18 @@ class Sphere(Surface):
         "v_range": (0, PI),
     }
 
+    """
+    圆的参数方程：
+    x = r * sin(v)* cos(u) 
+    y = r * sin(v)* sin(u) 
+    z = -r * cos(v)
+
+    0 <= u <= 2π
+    0 <= v <= π
+
+    通过对u,v的遍历, 可以得到球体的点
+    疑问: 给出几何体的参数方程后, manim是如何绘制的呢?
+    """
     def uv_func(self, u: float, v: float) -> np.ndarray:
         return self.radius * np.array([
             np.cos(u) * np.sin(v),

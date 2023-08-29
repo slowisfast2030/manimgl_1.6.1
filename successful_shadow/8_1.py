@@ -1131,6 +1131,14 @@ class AllPossibleOrientations(ShadowScene):
 
         # Show patch
         def get_patch(u, v, delta_u=0.05, delta_v=0.1):
+            """
+            原来patch是一个ParametricSurface对象
+            只要对u_range和v_range进行设置就可以
+
+            启发:
+            1.对于空间中的一条曲线，只要得到曲线上的点就可以
+            2.对于空间中的一个曲面，只要得到曲面上的点就可以，可以通过设置曲面的参数方程和参数范围来实现
+            """
             patch = ParametricSurface(
                 sphere.uv_func,
                 u_range=(u * TAU, (u + delta_u) * TAU),
@@ -1167,6 +1175,9 @@ class AllPossibleOrientations(ShadowScene):
         prob.fix_in_frame()
         prob.to_corner(UR)
         prob.shift(DOWN)
+        """
+        叹为观止
+        """
         for i, mob in [(1, patch_copy), (4, patch_copy2), (6, sphere_copy)]:
             mob.replace(prob[i], dim_to_match=1)
             prob.replace_submobject(i, mob)
