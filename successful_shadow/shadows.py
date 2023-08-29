@@ -3802,7 +3802,7 @@ class AskAboutAverageCosValue(AllPossibleOrientations):
 
         for n in range(15):
             randomly_place_vect()
-            lhs = OldTex("|\\cos(\\theta_{" + str(n + 1) + "})| = ", font_size=30)
+            lhs = Tex("|\\cos(\\theta_{" + str(n + 1) + "})| = ", font_size=30)
             value = DecimalNumber(abs(math.cos(get_theta())), font_size=30)
             value.next_to(values, DOWN)
             for mob in lhs, value:
@@ -3866,12 +3866,12 @@ class ThreeCamps(TeacherStudentsScene):
         self.wait(4)
 
         # Let's go over the definition
-        integral = OldTex("\\int_0^\\pi \\dots d\\theta")
+        integral = Tex("\\int_0^\\pi \\dots d\\theta")
         integral.move_to(self.hold_up_spot, DOWN)
         brace = Brace(integral, UP)
-        words = OldTexText("Let's go over the definition", font_size=36)
+        words = Text("Let's go over the definition", font_size=36)
         words.next_to(brace, UP, SMALL_BUFF)
-        words2 = OldTexText("It can't hurt, right?", font_size=36)
+        words2 = Text("It can't hurt, right?", font_size=36)
         words2.move_to(words)
         VGroup(brace, words, words2).set_color(YELLOW)
 
@@ -3910,7 +3910,7 @@ class ThreeCamps(TeacherStudentsScene):
 class ParticularValuesUnhelpfulOverlay(Scene):
     def construct(self):
         # Particular value
-        expr = OldTex("P(\\theta =", "\\pi / 4", ")", "=", "0")
+        expr = Tex("P(\\theta =", "\\pi / 4", ")", "=", "0")
         expr.set_color_by_tex("\\pi / 4", YELLOW)
         brace = Brace(expr.get_part_by_tex("\\pi / 4"), UP, buff=SMALL_BUFF)
         brace.stretch(0.5, 1, about_edge=DOWN)
@@ -3927,7 +3927,7 @@ class ParticularValuesUnhelpfulOverlay(Scene):
         self.wait()
 
         # Unhelpful
-        question = OldTexText("What are you going\\\\to do with that?", font_size=24)
+        question = Text("What are you going\\\\to do with that?", font_size=24)
         question.next_to(expr, DOWN, LARGE_BUFF)
         arrow = Arrow(question, expr.get_part_by_tex("0"), buff=SMALL_BUFF)
 
@@ -3938,7 +3938,7 @@ class ParticularValuesUnhelpfulOverlay(Scene):
         self.wait()
 
         # New expr
-        range_expr = OldTex(
+        range_expr = Tex(
             "P(\\pi / 4 < \\theta < \\pi / 4 + \\Delta\\theta) > 0",
             tex_to_color_map={
                 "\\pi / 4": YELLOW,
@@ -3974,7 +3974,7 @@ class SurfaceAreaOfSphere(Scene):
         sphere_mesh = SurfaceMesh(sphere)
         sphere_mesh.set_stroke(WHITE, 0.5, 0.5)
 
-        equation = OldTex(
+        equation = Tex(
             "\\text{Surface area} = 4\\pi R^2",
             tex_to_color_map={
                 "R": YELLOW,
@@ -3994,7 +3994,7 @@ class SurfaceAreaOfSphere(Scene):
 
 class IntegralOverlay(Scene):
     def construct(self):
-        integral = OldTex("\\int_0^\\pi")
+        integral = Tex("\\int_0^\\pi")
         integral.set_color(YELLOW)
 
         self.play(Write(integral, run_time=2))
@@ -4008,7 +4008,7 @@ class IntegralOverlay(Scene):
 
 class AlicesInsights(Scene):
     def construct(self):
-        title = OldTexText("Alice's insights", font_size=72)
+        title = Text("Alice's insights", font_size=72)
         title.to_edge(UP)
         title.set_backstroke()
         underline = Underline(title, buff=-0.05)
@@ -4452,7 +4452,7 @@ class TwoToOneCover(ShadowScene):
             "Cube": BLUE_D,
             "Face$_j$": YELLOW,
         }
-        ineq = OldTexText(
+        ineq = Text(
             "Area(Shadow(Cube))",
             *mid_tex,
             " $\\displaystyle \\sum_{j=1}^" + f"{{{n_faces}}}" + "$ ",
@@ -4489,7 +4489,7 @@ class ConvexityPrelude(Scene):
 
         beam.set_stroke(YELLOW)
 
-        words = OldTexText("2 intersections\\\\", "(almost always)")
+        words = Text("2 intersections\\\\", "(almost always)")
         words[1].scale(0.7, about_edge=UP).set_color(GREY_B)
         words.to_edge(LEFT)
         arrows = VGroup(*(
@@ -4568,10 +4568,10 @@ class ConvexityPrelude(Scene):
         self.wait()
 
         # Non-convex shapes
-        pi = OldTex("\\pi").family_members_with_points()[0]
+        pi = Tex("\\pi").family_members_with_points()[0]
         pent = RegularPolygon(5)
         pent.set_points_as_corners([ORIGIN, *pent.get_vertices()[1:], ORIGIN])
-        n_mob = OldTex("N").family_members_with_points()[0]
+        n_mob = Tex("N").family_members_with_points()[0]
         nc_shapes = VGroup(pi, pent, n_mob)
         nc_shapes.set_fill(opacity=0)
         nc_shapes.set_stroke(width=2)
@@ -4660,7 +4660,7 @@ class DefineConvexity(Scene):
 
         # Letter π
         def tex_to_shape(tex):
-            result = OldTex(tex).family_members_with_points()[0]
+            result = Tex(tex).family_members_with_points()[0]
             result.match_style(shape)
             result.match_height(shape)
             result.move_to(shape)
@@ -4710,7 +4710,7 @@ class DefineConvexity(Scene):
         self.wait()
 
         # Polygon
-        convex_label = OldTexText("Convex \\ding{51}")
+        convex_label = Text("Convex \\ding{51}")
         convex_label.set_color(YELLOW)
         convex_label.move_to(not_convex_label)
         polygon = RegularPolygon(7)
@@ -4826,14 +4826,14 @@ class ShowGridSum(TwoToOneCover):
         kw = {
             "tex_to_color_map": t2c
         }
-        lhs.alt1 = OldTex(f"S(\\text{{{shape_name}}})", **kw)
-        summand.alt1 = OldTex("S(\\text{F}_j)", **kw)
+        lhs.alt1 = Tex(f"S(\\text{{{shape_name}}})", **kw)
+        summand.alt1 = Tex("S(\\text{F}_j)", **kw)
 
         def get_s_cube_term(i="i"):
-            return OldTex(f"S\\big(R_{{{i}}}", f"(\\text{{{shape_name}}})\\big)", **kw)
+            return Tex(f"S\\big(R_{{{i}}}", f"(\\text{{{shape_name}}})\\big)", **kw)
 
         def get_s_f_term(i="i", j="j"):
-            result = OldTex(
+            result = Tex(
                 f"S\\big(R_{{{i}}}",
                 "(", "\\text{F}_{" + str(j) + "}", ")",
                 "\\big)",
@@ -4870,7 +4870,7 @@ class ShowGridSum(TwoToOneCover):
             get_s_cube_term(1),
             get_s_cube_term(2),
             get_s_cube_term(3),
-            OldTex("\\vdots"),
+            Tex("\\vdots"),
             get_s_cube_term("n"),
         )
         buff = 0.6
@@ -4891,7 +4891,7 @@ class ShowGridSum(TwoToOneCover):
         h_line = Line(LEFT, RIGHT)
         h_line.set_width(lhss.get_width() + 0.75)
         h_line.next_to(lhss, DOWN, MED_SMALL_BUFF, aligned_edge=RIGHT)
-        plus = OldTex("+")
+        plus = Tex("+")
         plus.align_to(h_line, LEFT).shift(0.1 * RIGHT)
         plus.match_y(lhss[-1])
         total = Text("Total", font_size=60)
@@ -4899,7 +4899,7 @@ class ShowGridSum(TwoToOneCover):
         total.next_to(h_line, DOWN, buff=0.35)
         total.match_x(lhss)
 
-        mean_sa = OldTex(
+        mean_sa = Tex(
             f"S(\\text{{{shape_name}}})", "=", "\\frac{1}{n}",
             "\\sum_{i=1}^n S\\big(R_i(" + f"\\text{{{shape_name}}})\\big)",
             **kw,
@@ -4947,30 +4947,30 @@ class ShowGridSum(TwoToOneCover):
         # Create grid
         sf = get_s_f_term
         grid_terms = [
-            [sf(1, 1), sf(1, 2), OldTex("\\dots"), sf(1, n_faces)],
-            [sf(2, 1), sf(2, 2), OldTex("\\dots"), sf(2, n_faces)],
-            [sf(3, 1), sf(3, 2), OldTex("\\dots"), sf(3, n_faces)],
-            [Tex("\\vdots"), OldTex("\\vdots"), OldTex("\\ddots"), OldTex("\\vdots")],
-            [sf("n", 1), sf("n", 2), OldTex("\\dots"), sf("n", n_faces)],
+            [sf(1, 1), sf(1, 2), Tex("\\dots"), sf(1, n_faces)],
+            [sf(2, 1), sf(2, 2), Tex("\\dots"), sf(2, n_faces)],
+            [sf(3, 1), sf(3, 2), Tex("\\dots"), sf(3, n_faces)],
+            [Tex("\\vdots"), Tex("\\vdots"), Tex("\\ddots"), Tex("\\vdots")],
+            [sf("n", 1), sf("n", 2), Tex("\\dots"), sf("n", n_faces)],
         ]
         grid = VGroup(*(VGroup(*row) for row in grid_terms))
         for lhs, row in zip(lhss, grid):
             for i in range(len(row) - 1, 0, -1):
                 is_dots = "dots" in row[0].get_tex()
-                sym = VectorizedPoint() if is_dots else OldTex("+")
+                sym = VectorizedPoint() if is_dots else Tex("+")
                 row.insert_submobject(i, sym)
             row.arrange(RIGHT, buff=MED_SMALL_BUFF)
             for m1, m2 in zip(row, grid[0]):
                 m1.match_x(m2)
                 m1.match_y(lhs)
             if not is_dots:
-                parens = OldTex("[]", font_size=72)[0]
+                parens = Tex("[]", font_size=72)[0]
                 parens.set_stroke(width=2)
                 parens.set_color(BLUE_B)
                 parens[0].next_to(row, LEFT, buff=SMALL_BUFF)
                 parens[1].next_to(row, RIGHT, buff=SMALL_BUFF)
                 row.add(*parens)
-                eq_half = OldTex("=", "\\frac{1}{2}")
+                eq_half = Tex("=", "\\frac{1}{2}")
                 eq_half[1].match_height(parens)
                 eq_half.next_to(parens[0], LEFT, MED_SMALL_BUFF)
                 row.add(*eq_half)
@@ -5011,17 +5011,17 @@ class ShowGridSum(TwoToOneCover):
         ))
         col_rects.set_stroke(YELLOW, 1)
 
-        mean_face = OldTex("S(\\text{Face})", **kw)
+        mean_face = Tex("S(\\text{Face})", **kw)
         mean_face.add_to_back(get_overline(mean_face))
         mean_face.next_to(grid, DOWN, buff=2)
-        mean_face_words = OldTexText("Average shadow\\\\of one face")
+        mean_face_words = Text("Average shadow\\\\of one face")
         mean_face_words.move_to(mean_face, UP)
 
         arrows = VGroup(*(
             Arrow(rect.get_bottom(), mean_face)
             for rect in col_rects
         ))
-        arrow_labels = OldTex("\\frac{1}{n} \\sum \\cdots", font_size=30).replicate(3)
+        arrow_labels = Tex("\\frac{1}{n} \\sum \\cdots", font_size=30).replicate(3)
         for arrow, label in zip(arrows, arrow_labels):
             vect = rotate_vector(normalize(arrow.get_vector()), PI / 2)
             label.next_to(arrow.pfp(0.5), vect, SMALL_BUFF)
@@ -5080,9 +5080,9 @@ class ShowGridSum(TwoToOneCover):
 
         # Show final result
         rhss = VGroup(
-            OldTex("=", "\\frac{1}{2}", "\\sum_{j=1}^" + f"{{{n_faces}}}", " S(\\text{F}_j})", **kw),
-            OldTex("=", "\\frac{1}{2}", "\\sum_{j=1}^" + f"{{{n_faces}}}", " {c}", "\\cdot ", "A(\\text{F}_j)", **kw),
-            OldTex("=", "\\frac{1}{2}", "{c}", "\\cdot ", "(\\text{Surface area})", **kw),
+            Tex("=", "\\frac{1}{2}", "\\sum_{j=1}^" + f"{{{n_faces}}}", " S(\\text{F}_j})", **kw),
+            Tex("=", "\\frac{1}{2}", "\\sum_{j=1}^" + f"{{{n_faces}}}", " {c}", "\\cdot ", "A(\\text{F}_j)", **kw),
+            Tex("=", "\\frac{1}{2}", "{c}", "\\cdot ", "(\\text{Surface area})", **kw),
         )
         rhss[0].add(get_overline(rhss[0].slice_by_tex("S")))
         rhss[2][-2].set_color(WHITE)
