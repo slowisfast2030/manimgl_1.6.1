@@ -326,6 +326,10 @@ class ShadowScene(ThreeDScene):
 
     def get_shadow_area_label(self):
         text = Text("Shadow area: ")
+        """
+        一开始随便付一个值
+        添加了updater之后, 主动调用一次updater
+        """
         decimal = DecimalNumber(100)
 
         label = VGroup(text, decimal)
@@ -349,6 +353,18 @@ class ShadowScene(ThreeDScene):
         return mobject
 
     def get_shadow_outline(self, stroke_width=1):
+        """
+        启发：
+        1.我们知道shadow的outline是一个VMobject, 随着shadow的变化而变化
+        那么在初始化outline的时候, 只需要将outline设置为空的VMobject即可
+        紧接着, 为outline添加一个updater, 这个updater的作用是将outline的形状设置为shadow的凸包
+        可以试想下, 我们确实可以在添加updater之前就将outline的形状设置为shadow的凸包
+        但是, 接下来的add_updater函数又会再一遍执行类似的操作, 代码上很冗余
+
+        2.self.shadow是xoy平面的一个多边形, 为了获取shadow的outline, 我们可以自己写函数
+        但是, 作者很善于使用开源库, 这里使用了scipy.spatial.ConvexHull
+        这种意识真牛逼
+        """
         outline = VMobject()
         outline.set_stroke(WHITE, stroke_width)
         outline.add_updater(lambda m: m.set_points_as_corners(get_convex_hull(self.shadow)).close_path())
