@@ -442,7 +442,7 @@ class ShadowScene(ThreeDScene):
         return frame
 
 
-class test1(ShadowScene):
+class test2(ShadowScene):
     area_label_center = [-2.5, -2, 0]
     plane_dims = (28, 20)
 
@@ -474,6 +474,7 @@ class test1(ShadowScene):
         subquestion.next_to(question, DOWN, MED_LARGE_BUFF)
         subquestion.set_fill(BLUE_D)
         subquestion.fix_in_frame()
+        # 好像字体的边框颜色靠后一点
         subquestion.set_backstroke()
 
         # Introductory animations
