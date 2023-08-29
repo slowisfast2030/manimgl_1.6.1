@@ -533,6 +533,7 @@ class test2(ShadowScene):
         light_comment.set_backstroke()
         light_comment.fix_in_frame()
 
+        # 之前的random_toss和begin_ambient_rotation都为cube添加了updater
         cube.clear_updaters()
         # 下面这一行干嘛的？
         cube.add_updater(lambda m: self.sort_to_camera(cube))
