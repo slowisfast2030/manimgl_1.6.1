@@ -964,7 +964,7 @@ class AllPossibleOrientations(ShadowScene):
         print(frame.get_focal_distance())            #16
         
         # 对height的设置, 意味着camera所拍摄的世界空间的大小
-        
+
         # 相机的位置
         # 投影面的位置
         # 焦距
@@ -975,7 +975,7 @@ class AllPossibleOrientations(ShadowScene):
         """
 
         frame.reorient(-20, 80) # theta=-20, phi=80
-        frame.set_height(5)
+        frame.set_height(5) # frame的高度由8到5, 意味着相机所拍摄的世界空间变小了，进而camera的位置变远了
         frame.d_theta = 0
 
         # 思考：frame并没有定义d_theta属性。也可以将d_theta定义成普通变量
