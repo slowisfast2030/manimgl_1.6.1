@@ -100,6 +100,27 @@ class CameraFrame(Mobject):
         '''
         return self.get_orientation().as_euler("zxz")[::-1]
 
+    """
+    下面三个欧拉角的获取是为了方便使用，这个版本的代码没有
+    """
+    def get_theta(self):
+        '''
+        获取相机的欧拉角的 theta 值
+        '''
+        return self.get_euler_angles()[0]
+
+    def get_phi(self):
+        '''
+        获取相机的欧拉角的 phi 值
+        '''
+        return self.get_euler_angles()[1]
+
+    def get_gamma(self):
+        '''
+        获取相机的欧拉角的 gamma 值
+        '''
+        return self.get_euler_angles()[2]
+
     def get_inverse_camera_rotation_matrix(self):
         return self.get_orientation().as_matrix().T
 
