@@ -457,6 +457,11 @@ class test2(ShadowScene):
         cube.scale(0.945)  # Hack to make the appropriate area 1
         shadow = self.shadow
         outline = self.get_shadow_outline()
+        """
+        这里需要特别注意, 再一次获取了self.camera.frame
+        在setup函数中, 已经获取了self.camera.frame, 并且设置了欧拉角和location
+        这里需要区分python中对象和别名的概念
+        """
         frame = self.camera.frame
         # 为frame添加updater, 因为增加的theta比较小，所以看上去不明显。但这么做我觉得很有必要，否则画面太呆板
         frame.add_updater(lambda f, dt: f.increment_theta(0.01 * dt))  # Ambient rotation
