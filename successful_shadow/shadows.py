@@ -5995,8 +5995,9 @@ class AmbientHourglass(ShadowScene):
         shadow[1].always_sort_to_camera(self.camera)
 
         self.add(solid_group, shadow)
-
-        for x in range(30):
+        
+        # 一开始是30
+        for x in range(5):
             self.random_toss(solid_group)
             self.wait()
 
