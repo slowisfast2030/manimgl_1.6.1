@@ -986,6 +986,8 @@ class AllPossibleOrientations(ShadowScene):
         # 每隔dt时间，frame的theta角度增加0.0025 * frame.d_theta
         frame.add_updater(update_frame)
         
+        # 从场景中移除shadow和solid
+        self.remove(self.shadow, self.solid)
         # 这里的self.solid还是cube
         cube = self.solid
         face = cube[0].shift(np.array([0,0,-1]))
@@ -1007,8 +1009,8 @@ class AllPossibleOrientations(ShadowScene):
         square, normal_vect = self.solid
         normal_vect.set_flat_stroke()
         self.solid = square # 这一行不能删除。执行self.add_shadow()时，会用到self.solid
-        self.remove(self.shadow, cube)
-        self.add(normal_vect, square)
+        
+        self.add(normal_vect) # 在self.add_shadow()之中已经添加了self.solid
         self.add_shadow()
         self.shadow.deactivate_depth_test()
         fc = square.get_center().copy()
