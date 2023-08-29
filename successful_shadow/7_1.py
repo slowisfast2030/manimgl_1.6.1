@@ -382,6 +382,7 @@ class ShadowScene(ThreeDScene):
             else:
                 # 在outline上均匀取n_lines个点
                 points = [outline.pfp(a) for a in np.linspace(0, 1, n_lines)]
+            # 深度思考：这里的line是lines里对象的别名
             for line, point in zip(lines, points):
                 if self.inf_light:
                     line.set_points_as_corners([point + 10 * OUT, point])
