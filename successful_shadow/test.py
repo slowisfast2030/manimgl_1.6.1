@@ -134,7 +134,12 @@ class frame_test(ThreeDScene):
 
         print("="*100)
 
-        frame.reorient(0, 0)
+        frame.reorient(20, 70)
+        def update_frame(frame, dt):
+            frame.increment_theta(-0.2 * dt)
+
+        frame.add_updater(update_frame)
+
         print(frame.get_implied_camera_location())   #[0, 0, 16]
         print(frame.get_center())                    #[0, 0, 0]
         print(frame.get_focal_distance())            #16
@@ -155,4 +160,4 @@ class frame_test(ThreeDScene):
         # print(frame.get_focal_distance())            #16
         # print(frame.get_shape())
 
-        self.wait(1)
+        self.wait(7)
