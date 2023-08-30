@@ -120,6 +120,11 @@ class frame_test(ThreeDScene):
             cube = Group(*cube)
             cube.move_to(self.object_center)
             self.add(cube)
+
+            sp = Sphere().set_color(BLUE_E).set_opacity(0.8).set_shadow(0.5)
+            sp.move_to([-3,0,1])
+            #sp = sp.space_out_submobjects(1.3)
+            self.add(sp)
         
         add_plane()
         add_solid()
