@@ -93,7 +93,7 @@ class tri_surface(ThreeDScene):
         p2 = [2, -2, 0]
         p3 = [-2, -2, 0]
         p4 = [-2, 2, 0]
-        p = Polygon(p1, p2, p3, p4)
+        p = Polygon(p1, p2, p3, p4).apply_depth_test()
 
         self.add(p.set_color(BLUE_E).set_opacity(0.3).set_stroke(width=0))
         self.wait(8)
