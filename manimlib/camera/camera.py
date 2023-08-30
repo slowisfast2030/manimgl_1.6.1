@@ -227,7 +227,7 @@ class CameraFrame(Mobject):
 
     def get_center(self) -> np.ndarray:
         '''
-        获取相机的中心坐标
+        获取frame的中心坐标(相机坐标系)
         '''
         # Assumes first point is at the center
         return self.get_points()[0]
@@ -260,7 +260,7 @@ class CameraFrame(Mobject):
 
     def get_implied_camera_location(self) -> np.ndarray:
         '''
-        获取相机的位置
+        获取相机的位置(世界坐标系)
         '''
         to_camera = self.get_inverse_camera_rotation_matrix()[2]
         dist = self.get_focal_distance()

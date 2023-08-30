@@ -128,8 +128,7 @@ class frame_test(ThreeDScene):
 
         print("="*100)
 
-        #frame.reorient(0, 0)
-        frame.reorient(20, 70)
+        frame.reorient(0, 0)
         print(frame.get_implied_camera_location())   #[0, 0, 16]
         print(frame.get_center())                    #[0, 0, 0]
         print(frame.get_focal_distance())            #16
