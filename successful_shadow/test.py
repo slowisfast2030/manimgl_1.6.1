@@ -59,7 +59,7 @@ class test1(ThreeDScene):
         self.wait(8)
 
 class frame_test(ThreeDScene):
-    object_center = [1, 0, 0]
+    object_center = [0, 0, 1]
     plane_dims = (20, 20)
     plane_style = {
         "stroke_width": 0,
@@ -107,7 +107,7 @@ class frame_test(ThreeDScene):
             self.plane = plane
 
             plane.add(grid)
-            self.add(plane.shift(RIGHT))
+            self.add(plane)
 
         def add_solid():
             cube = VCube()
@@ -124,6 +124,12 @@ class frame_test(ThreeDScene):
         add_solid()
  
     def construct(self):
+        point1 = Sphere(radius=0.05).move_to([1,1,0]).set_color(GREEN)
+        self.add(point1)
+
+        point2 = Sphere(radius=0.05).move_to([0,0,0]).set_color(RED)
+        self.add(point2)
+
         frame = self.camera.frame
 
         print("="*100)
@@ -132,18 +138,18 @@ class frame_test(ThreeDScene):
         print(frame.get_implied_camera_location())   #[0, 0, 16]
         print(frame.get_center())                    #[0, 0, 0]
         print(frame.get_focal_distance())            #16
-
-        print("\n")
-        frame.set_height(10)
-        print(frame.get_implied_camera_location())   #[0, 0, 20]
-        print(frame.get_center())                    #[0, 0, 0]
-        print(frame.get_focal_distance())            #20
+        print(frame.get_shape())
+        # print("\n")
+        # frame.set_height(10)
+        # print(frame.get_implied_camera_location())   #[0, 0, 20]
+        # print(frame.get_center())                    #[0, 0, 0]
+        # print(frame.get_focal_distance())            #20
         
-        print("\n")
-        frame.set_height(8)
-        frame.shift(RIGHT)
-        print(frame.get_implied_camera_location())   #[1, 0, 16]
-        print(frame.get_center())                    #[1, 0, 0]
-        print(frame.get_focal_distance())            #16
+        # print("\n")
+        # frame.set_height(8)
+        # frame.shift(RIGHT)
+        # print(frame.get_implied_camera_location())   #[1, 0, 16]
+        # print(frame.get_center())                    #[1, 0, 0]
+        # print(frame.get_focal_distance())            #16
 
         self.wait(1)
