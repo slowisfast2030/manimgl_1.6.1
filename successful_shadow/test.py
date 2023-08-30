@@ -258,8 +258,22 @@ class surface_test(ThreeDScene):
 
         frame.add_updater(update_frame)
 
-        face = self.cube[0]
-        face.set_color(TEAL)
-        self.add(face)
+        face0 = self.cube[0]
+        face0.set_color(TEAL)
+
+        face1 = self.cube[1]
+        face1.set_color(GREEN_C)
+
+        face2 = self.cube[2]
+        face2.set_color(RED_E).set_opacity(1)
+
+        face3 = self.cube[3]
+        face3.set_color(TEAL_D)
+
+        face5 = self.cube[5]
+        face5.set_color(TEAL).set_opacity(1)
+
+        self.add(face0, face1, face2, face3, face5)
+        
 
         self.wait(7)
