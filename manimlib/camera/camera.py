@@ -48,6 +48,20 @@ for i in range(200):
     frame.increment_theta(0.01)
     self.wait(0.001)
 """
+"""
+深度思考:
+默认情况下,
+camera的位置(0, 0, 16)
+tan(vfov/2) = 1/2
+aspect_ratio = 16:9
+focal_distance = 16
+frame.height = 8
+投影面z=0
+视锥的范围(-inf, 16)
+在此范围内, 
+离camera越近, object会放大
+离camera越远, object会缩小
+"""
 class CameraFrame(Mobject):
     '''相机所拍摄到的帧'''
     CONFIG = {
