@@ -258,7 +258,7 @@ class surface_test(ThreeDScene):
 
         frame.add_updater(update_frame)
 
-        face0 = self.cube[0].move_to((0, 0, 3))
+        face0 = self.cube[0].move_to((0, 0, 0))
         self.remove(self.cube)
         self.add(face0)
         
