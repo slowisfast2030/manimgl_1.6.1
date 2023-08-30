@@ -69,6 +69,16 @@ class Surface(Mobject):
         point_lists = []
         for (du, dv) in [(0, 0), (self.epsilon, 0), (0, self.epsilon)]:
             uv_grid = np.array([[[u + du, v + dv] for v in v_range] for u in u_range])
+            
+            # uv_grid是一个矩形的范围，可以修改成三角形范围。有锯齿
+            # uv_grid = np.array([[[u + du, v + dv] for v in v_range] for u in u_range])
+            # for i in range(len(uv_grid)):
+            #     for j in range(len(uv_grid[i])):
+            #         u = uv_grid[i][j][0]
+            #         v = uv_grid[i][j][1]
+            #         if u - v > 2:
+            #             uv_grid[i][j] = [1,-1]
+
             point_grid = np.apply_along_axis(lambda p: self.uv_func(*p), 2, uv_grid)
             point_lists.append(point_grid.reshape((nu * nv, dim)))
         # Rather than tracking normal vectors, the points list will hold on to the

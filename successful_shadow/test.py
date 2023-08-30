@@ -45,7 +45,7 @@ class test1(ThreeDScene):
         s = ParametricSurface(uv_func,
                               u_range=(0,2),
                               v_range=(-2,0),
-                              resolution=(10,10)
+                              resolution=(200,200)
                               )
         self.add(s.set_color(BLUE_E).set_opacity(0.5))
         l1 = Line(start=(0,-2,0), end=(0,0,2))
@@ -81,14 +81,14 @@ class test2(ThreeDScene):
         s = ParametricSurface(uv_func,
                               u_range=(0,5),
                               v_range=(-5,0),
-                              resolution=(5,5)
+                              resolution=(200,200)
                               )
         self.add(s.set_color(BLUE_E).set_opacity(0.5))
         
-        for point in s.get_all_points():
-            dot = Dot(point)
-            #print(point)
-            self.add(dot)
+        # for point in s.get_all_points():
+        #     dot = Dot(point)
+        #     #print(point)
+        #     self.add(dot)
         
 
 
