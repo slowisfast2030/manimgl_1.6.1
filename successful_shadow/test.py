@@ -167,3 +167,99 @@ class frame_test1(ThreeDScene):
         # print(frame.get_shape())
 
         self.wait(7)
+
+
+class surface_test(ThreeDScene):
+    object_center = [0, 0, 1]
+    plane_dims = (20, 20)
+    plane_style = {
+        "stroke_width": 0,
+        "fill_color": GREY_A,
+        "fill_opacity": 0.5,
+        "gloss": 0.5,
+        "shadow": 0.2,
+    }
+    limited_plane_extension = 0
+    object_style = {
+        "stroke_color": WHITE,
+        "stroke_width": 0.5,
+        "fill_color": BLUE_E,
+        "fill_opacity": 0.7,
+        "reflectiveness": 0.3,
+        "gloss": 0.1,
+        "shadow": 0.5,
+    }
+    def setup(self):
+        
+        def add_plane():
+            width, height = self.plane_dims
+
+            grid = NumberPlane(
+                x_range=(-width // 2, width // 2, 2),
+                y_range=(-height // 2, height // 2, 2),
+                background_line_style={
+                    "stroke_color": GREY_B,
+                    "stroke_width": 1,
+                },
+                faded_line_ratio=4,
+            )
+            grid.shift(-grid.get_origin())
+            grid.set_width(width)
+            grid.axes.match_style(grid.background_lines)
+            grid.set_flat_stroke(True)
+            grid.insert_n_curves(3)
+
+            plane = Rectangle()
+            plane.replace(grid, stretch=True)
+            plane.set_style(**self.plane_style)
+            plane.set_stroke(width=0)
+            if self.limited_plane_extension > 0:
+                plane.set_height(height // 2 + self.limited_plane_extension, about_edge=UP, stretch=True)
+            self.plane = plane
+
+            plane.add(grid)
+            self.add(plane)
+
+        def add_solid():
+            cube = VCube()
+            cube.deactivate_depth_test()
+            cube.set_height(2)
+            cube.set_style(**self.object_style)
+            cube.space_out_submobjects(1.3)
+            # Wrap in group so that strokes and fills
+            # are rendered in separate passes
+            cube = Group(*cube)
+            cube.move_to(self.object_center)
+            self.add(cube.deactivate_depth_test())
+
+            sp = Sphere().set_color(BLUE_E).set_opacity(0.8).set_shadow(0.5)
+            sp.move_to([-3,0,1])
+            #sp = sp.space_out_submobjects(1.3)
+            #self.add(sp)
+        
+        add_plane()
+        add_solid()
+ 
+    def construct(self):
+        point1 = Sphere(radius=0.05).move_to([1,1,0]).set_color(GREEN)
+        self.add(point1)
+
+        point2 = Sphere(radius=0.05).move_to([0,0,0]).set_color(RED)
+        self.add(point2)
+
+        frame = self.camera.frame
+
+        print("="*100)
+
+        frame.reorient(30, 70)
+        def update_frame(frame, dt):
+            frame.increment_theta(-0.2 * dt)
+
+        frame.add_updater(update_frame)
+
+        print(frame.get_implied_camera_location())   #[0, 0, 16]
+        print(frame.get_center())                    #[0, 0, 0]
+        print(frame.get_focal_distance())            #16
+        print(frame.get_shape())
+
+        self.wait(7)
