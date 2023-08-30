@@ -114,6 +114,7 @@ class frame_test(ThreeDScene):
             cube.deactivate_depth_test()
             cube.set_height(2)
             cube.set_style(**self.object_style)
+            cube.space_out_submobjects(1.3)
             # Wrap in group so that strokes and fills
             # are rendered in separate passes
             cube = Group(*cube)
@@ -134,7 +135,7 @@ class frame_test(ThreeDScene):
 
         print("="*100)
 
-        frame.reorient(20, 70)
+        frame.reorient(30, 70)
         def update_frame(frame, dt):
             frame.increment_theta(-0.2 * dt)
 
