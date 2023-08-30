@@ -269,8 +269,6 @@ class surface_test(ThreeDScene):
 
         frame = self.camera.frame
 
-        print("="*100)
-
         frame.reorient(20, 70)
         def update_frame(frame, dt):
             frame.increment_theta(-0.2 * dt)
