@@ -45,7 +45,7 @@ class test1(ThreeDScene):
         s = ParametricSurface(uv_func,
                               u_range=(0,2),
                               v_range=(-2,0),
-                              resolution=(200,200)
+                              resolution=(100, 100)
                               )
         self.add(s.set_color(BLUE_E).set_opacity(0.5))
         l1 = Line(start=(0,-2,0), end=(0,0,2))
@@ -54,5 +54,5 @@ class test1(ThreeDScene):
         vg = VGroup(l1, l2, l3)
         #self.add(vg.set_color(TEAL))
 
-        print(len(s.get_all_points()))
+        #print(len(s.get_all_points()))
         self.wait(5)

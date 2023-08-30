@@ -81,6 +81,7 @@ class Surface(Mobject):
 
             point_grid = np.apply_along_axis(lambda p: self.uv_func(*p), 2, uv_grid)
             point_lists.append(point_grid.reshape((nu * nv, dim)))
+            
         # Rather than tracking normal vectors, the points list will hold on to the
         # infinitesimal nudged values alongside the original values.  This way, one
         # can perform all the manipulations they'd like to the surface, and normals
