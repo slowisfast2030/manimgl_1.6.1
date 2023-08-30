@@ -22,6 +22,7 @@ DEFAULT_FRAME_RATE = 30
 # DEFAULT_PIXEL_WIDTH = 1080
 # DEFAULT_FRAME_RATE = 30
 # 还需要改camera.py文件的Camera类
+# 或者，更简单的方法是改default_config.yaml文件的分辨率
 #####
 
 
