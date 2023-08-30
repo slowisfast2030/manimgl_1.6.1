@@ -274,6 +274,8 @@ class surface_test(ThreeDScene):
             frame.increment_theta(-0.2 * dt)
 
         frame.add_updater(update_frame)
+        frame.set_height(10)
+        frame.move_to([0,0,1])
 
         face0 = self.cube[0].move_to((0, 0, 0))
         self.remove(self.cube)
@@ -285,7 +287,7 @@ class surface_test(ThreeDScene):
         sphere_mesh.set_stroke(BLUE_E, 1, 1)
         self.add(sphere, sphere_mesh)
 
-        n_lat_lines = 10
+        n_lat_lines = 15
         theta_step = PI / n_lat_lines
         sphere_points = 2.5*np.array([
             sphere.uv_func(phi, theta + theta_step * (phi / TAU))
@@ -317,4 +319,4 @@ class surface_test(ThreeDScene):
         patch = get_patch(0.85, 0.6)
         self.add(patch)
 
-        self.wait(7)
+        self.wait(8)
