@@ -21,7 +21,7 @@ class test(ThreeDScene):
         self.add(s.set_color(BLUE_E))
         self.wait()
 
-class test1(ThreeDScene):
+class tri_test(ThreeDScene):
     def construct(self):
         frame = self.camera.frame
         frame.reorient(20, 70)
@@ -56,6 +56,46 @@ class test1(ThreeDScene):
         p = Polygon(p1, p2, p3)
 
         self.add(p.set_color(BLUE_E).set_opacity(0.5).set_stroke(width=0))
+        self.wait(8)
+
+class tri_surface(ThreeDScene):
+    def construct(self):
+        frame = self.camera.frame
+        frame.reorient(20, 70)
+        def update_frame(frame, dt):
+            frame.increment_theta(-0.2 * dt)
+
+        frame.add_updater(update_frame)
+
+        axes = ThreeDAxes(x_range=[-3,3], 
+                          y_range=[-3,3],
+                          z_range=[-3,3])
+        self.add(axes)
+
+        def uv_func(u: float, v: float) -> np.ndarray:
+            if u-v<=2:
+                return np.array([
+                    u,
+                    v,
+                    2-u+v
+                ])
+            else:
+                return np.array([u,v,0])
+            
+        s = ParametricSurface(uv_func,
+                              u_range=(0,2),
+                              v_range=(-2,0),
+                              resolution=(100, 100)
+                              )
+        self.add(s.set_color(BLUE_E).set_opacity(0.5))
+        
+        p1 = [2, 2, 0]
+        p2 = [2, -2, 0]
+        p3 = [-2, -2, 0]
+        p4 = [-2, 2, 0]
+        p = Polygon(p1, p2, p3, p4)
+
+        self.add(p.set_color(BLUE_E).set_opacity(0.3).set_stroke(width=0))
         self.wait(8)
 
 class frame_test1(ThreeDScene):
