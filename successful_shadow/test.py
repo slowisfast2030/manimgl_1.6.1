@@ -231,9 +231,10 @@ class surface_test(ThreeDScene):
             cube = Group(*cube)
             cube.move_to(self.object_center)
             self.add(cube.deactivate_depth_test())
+            self.cube = cube
 
-            sp = Sphere().set_color(BLUE_E).set_opacity(0.8).set_shadow(0.5)
-            sp.move_to([-3,0,1])
+            # sp = Sphere().set_color(BLUE_E).set_opacity(0.8).set_shadow(0.5)
+            # sp.move_to([-3,0,1])
             #sp = sp.space_out_submobjects(1.3)
             #self.add(sp)
         
@@ -257,9 +258,8 @@ class surface_test(ThreeDScene):
 
         frame.add_updater(update_frame)
 
-        print(frame.get_implied_camera_location())   #[0, 0, 16]
-        print(frame.get_center())                    #[0, 0, 0]
-        print(frame.get_focal_distance())            #16
-        print(frame.get_shape())
+        face = self.cube[0]
+        face.set_color(TEAL)
+        self.add(face)
 
         self.wait(7)
