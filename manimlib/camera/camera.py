@@ -62,6 +62,11 @@ frame.height = 8
 离camera越近, object会放大
 离camera越远, object会缩小
 投影面的object保持不变
+
+frame.set_height
+frame.move_to
+frame.reorient
+等函数会改变camera的位置
 """
 class CameraFrame(Mobject):
     '''相机所拍摄到的帧'''
