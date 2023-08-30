@@ -140,19 +140,19 @@ class frame_test(ThreeDScene):
         print(frame.get_focal_distance())            #16
         print(frame.get_shape())
 
-        print("\n")
-        frame.set_height(10)
-        print(frame.get_implied_camera_location())   #[0, 0, 20]
-        print(frame.get_center())                    #[0, 0, 0]
-        print(frame.get_focal_distance())            #20
-        print(frame.get_shape())
-        
         # print("\n")
-        # frame.set_height(8)
-        # frame.shift(RIGHT)
-        # print(frame.get_implied_camera_location())   #[1, 0, 16]
-        # print(frame.get_center())                    #[1, 0, 0]
-        # print(frame.get_focal_distance())            #16
-        #print(frame.get_shape())
+        # frame.set_height(10)
+        # print(frame.get_implied_camera_location())   #[0, 0, 20]
+        # print(frame.get_center())                    #[0, 0, 0]
+        # print(frame.get_focal_distance())            #20
+        # print(frame.get_shape())
+        
+        print("\n")
+        frame.set_height(8)
+        frame.shift(RIGHT)
+        print(frame.get_implied_camera_location())   #[1, 0, 16]
+        print(frame.get_center())                    #[1, 0, 0]
+        print(frame.get_focal_distance())            #16
+        print(frame.get_shape())
 
         self.wait(1)
