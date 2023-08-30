@@ -44,7 +44,8 @@ class test1(ThreeDScene):
             
         s = ParametricSurface(uv_func,
                               u_range=(0,2),
-                              v_range=(-2,0)
+                              v_range=(-2,0),
+                              resolution=(10,10)
                               )
         self.add(s.set_color(BLUE_E).set_opacity(0.5))
         l1 = Line(start=(0,-2,0), end=(0,0,2))
@@ -52,6 +53,8 @@ class test1(ThreeDScene):
         l3 = Line(start=(2,0,0), end=(0,0,2))
         vg = VGroup(l1, l2, l3)
         #self.add(vg.set_color(TEAL))
+
+        print(len(s.get_all_points()))
         self.wait(5)
 
 class test2(ThreeDScene):
@@ -63,9 +66,9 @@ class test2(ThreeDScene):
 
         frame.add_updater(update_frame)
 
-        axes = ThreeDAxes(x_range=[-3,3], 
-                          y_range=[-3,3],
-                          z_range=[-3,3])
+        axes = ThreeDAxes(x_range=[-5,5], 
+                          y_range=[-5,5],
+                          z_range=[-5,5])
         self.add(axes)
 
         def uv_func(u: float, v: float) -> np.ndarray:
@@ -76,21 +79,29 @@ class test2(ThreeDScene):
             ])
             
         s = ParametricSurface(uv_func,
-                              u_range=(0,2),
-                              v_range=(-2,0)
+                              u_range=(0,5),
+                              v_range=(-5,0),
+                              resolution=(5,5)
                               )
-        #self.add(s.set_color(BLUE_E).set_opacity(0.5))
+        self.add(s.set_color(BLUE_E).set_opacity(0.5))
         
-        new_points = []
         for point in s.get_all_points():
-            x = point[0]
-            y = point[1]
-            if x - y <= 2:
-                new_points.append(point)
-        print(len(s.get_all_points()))
-        print(len(new_points))
+            dot = Dot(point)
+            #print(point)
+            self.add(dot)
+        
 
-        ss = VMobject()
-        ss.set_points(new_points)
-        self.add(ss.set_color(RED))
+
+        # new_points = []
+        # for point in s.get_all_points():
+        #     x = point[0]
+        #     y = point[1]
+        #     if x - y <= 5:
+        #         new_points.append(point)
+        # print(len(s.get_all_points()))
+        # print(len(new_points))
+
+        # ss = VMobject()
+        # ss.set_points(new_points)
+        # self.add(ss.set_color(RED))
         self.wait(5)
