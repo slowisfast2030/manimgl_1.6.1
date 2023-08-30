@@ -59,7 +59,7 @@ class test1(ThreeDScene):
         self.wait(8)
 
 class frame_test(ThreeDScene):
-    object_center = [0, 0, 1]
+    object_center = [1, 0, 0]
     plane_dims = (20, 20)
     plane_style = {
         "stroke_width": 0,
@@ -125,11 +125,11 @@ class frame_test(ThreeDScene):
  
     def construct(self):
         frame = self.camera.frame
-        frame.reorient(20, 70)
 
         print("="*100)
 
-        frame.reorient(0, 0)
+        #frame.reorient(0, 0)
+        frame.reorient(0, 90)
         print(frame.get_implied_camera_location())   #[0, 0, 16]
         print(frame.get_center())                    #[0, 0, 0]
         print(frame.get_focal_distance())            #16
