@@ -61,6 +61,7 @@ frame.height = 8
 在此范围内, 
 离camera越近, object会放大
 离camera越远, object会缩小
+投影面的object保持不变
 """
 class CameraFrame(Mobject):
     '''相机所拍摄到的帧'''
