@@ -332,9 +332,13 @@ class Camera(object):
         - ``light_source_position`` : 光源位置
         - ``anti_alias_width`` : 抗锯齿
         '''
+        # 为何不能正确解析pw和ph参数呢？
         digest_config(self, kwargs, locals())
-        print(self.pixel_width, self.pixel_height)
-        
+        # 在好几个地方尝试修改pw和ph，这里是源头
+        # self.pixel_width = 1080
+        # self.pixel_height = 1920
+        # print(self.pixel_width, self.pixel_height)
+
         self.rgb_max_val: float = np.iinfo(self.pixel_array_dtype).max
         self.background_rgba: list[float] = [
             *Color(self.background_color).get_rgb(),
@@ -347,10 +351,7 @@ class Camera(object):
         self.init_light_source()
         self.refresh_perspective_uniforms()
         self.static_mobject_to_render_group_list = {}
-        ########################
-        #self.pixel_width = 1080
-        #self.pixel_height = 1920
-        #print(self.pixel_width, self.pixel_height)
+
 
     def init_frame(self) -> None:
         '''
