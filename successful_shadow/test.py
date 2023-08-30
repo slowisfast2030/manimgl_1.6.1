@@ -107,7 +107,7 @@ class frame_test(ThreeDScene):
             self.plane = plane
 
             plane.add(grid)
-            self.add(plane)
+            self.add(plane.shift(RIGHT))
 
         def add_solid():
             cube = VCube()
@@ -129,7 +129,7 @@ class frame_test(ThreeDScene):
         print("="*100)
 
         #frame.reorient(0, 0)
-        frame.reorient(0, 90)
+        frame.reorient(0, 0)
         print(frame.get_implied_camera_location())   #[0, 0, 16]
         print(frame.get_center())                    #[0, 0, 0]
         print(frame.get_focal_distance())            #16
