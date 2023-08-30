@@ -25,6 +25,11 @@ class test1(ThreeDScene):
     def construct(self):
         frame = self.camera.frame
         frame.reorient(20, 70)
+        def update_frame(frame, dt):
+            frame.increment_theta(-0.2 * dt)
+
+        frame.add_updater(update_frame)
+
         axes = ThreeDAxes(x_range=[-3,3], 
                           y_range=[-3,3],
                           z_range=[-3,3])
@@ -46,5 +51,5 @@ class test1(ThreeDScene):
         l2 = Line(start=(0,-2,0), end=(2,0,0))
         l3 = Line(start=(2,0,0), end=(0,0,2))
         vg = VGroup(l1, l2, l3)
-        self.add(vg.set_color(TEAL))
-        self.wait()
+        #self.add(vg.set_color(TEAL))
+        self.wait(5)
