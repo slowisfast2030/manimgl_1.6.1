@@ -124,7 +124,7 @@ class frame_test(ThreeDScene):
             sp = Sphere().set_color(BLUE_E).set_opacity(0.8).set_shadow(0.5)
             sp.move_to([-3,0,1])
             #sp = sp.space_out_submobjects(1.3)
-            self.add(sp)
+            #self.add(sp)
         
         add_plane()
         add_solid()
@@ -140,7 +140,7 @@ class frame_test(ThreeDScene):
 
         print("="*100)
 
-        frame.reorient(0, 0)
+        frame.reorient(30, 70)
         def update_frame(frame, dt):
             frame.increment_theta(-0.2 * dt)
 
