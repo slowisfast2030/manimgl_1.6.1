@@ -263,7 +263,7 @@ class surface_test(ThreeDScene):
         self.add(face0)
         
         sphere = Sphere(radius=1).move_to([0,0,1])
-        sphere.set_color(GREY_E, 0.7)
+        sphere.set_color(BLUE_C, 0.8)
         self.add(sphere)
 
 
