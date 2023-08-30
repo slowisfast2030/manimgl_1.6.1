@@ -80,8 +80,6 @@ class frame_test(ThreeDScene):
     }
     def setup(self):
         
-
-
         def add_plane():
             width, height = self.plane_dims
 
@@ -125,8 +123,28 @@ class frame_test(ThreeDScene):
         add_plane()
         add_solid()
  
-
     def construct(self):
         frame = self.camera.frame
         frame.reorient(20, 70)
+
+        print("="*100)
+
+        frame.reorient(0, 0)
+        print(frame.get_implied_camera_location())   #[0, 0, 16]
+        print(frame.get_center())                    #[0, 0, 0]
+        print(frame.get_focal_distance())            #16
+
+        print("\n")
+        frame.set_height(10)
+        print(frame.get_implied_camera_location())   #[0, 0, 20]
+        print(frame.get_center())                    #[0, 0, 0]
+        print(frame.get_focal_distance())            #20
+        
+        print("\n")
+        frame.set_height(8)
+        frame.shift(RIGHT)
+        print(frame.get_implied_camera_location())   #[1, 0, 16]
+        print(frame.get_center())                    #[1, 0, 0]
+        print(frame.get_focal_distance())            #16
+
         self.wait(1)
