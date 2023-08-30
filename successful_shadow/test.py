@@ -98,7 +98,7 @@ class tri_surface(ThreeDScene):
         self.add(p.set_color(BLUE_E).set_opacity(0.3).set_stroke(width=0))
         self.wait(8)
 
-class frame_test1(ThreeDScene):
+class frame_test(ThreeDScene):
     object_center = [0, 0, 1]
     plane_dims = (20, 20)
     plane_style = {
