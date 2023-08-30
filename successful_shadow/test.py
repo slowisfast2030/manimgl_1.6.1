@@ -25,14 +25,16 @@ class test1(ThreeDScene):
     def construct(self):
         frame = self.camera.frame
         frame.reorient(20, 70)
-        axes = ThreeDAxes(x_range=[-2,2], y_range=[-3,3])
+        axes = ThreeDAxes(x_range=[-3,3], 
+                          y_range=[-3,3],
+                          z_range=[-3,3])
         self.add(axes)
 
         def uv_func(u: float, v: float) -> np.ndarray:
             return np.array([
                 u,
                 v,
-                2-u+v
+                2-u+v if u-v <=2 else 0
             ])
             
         s = ParametricSurface(uv_func,
