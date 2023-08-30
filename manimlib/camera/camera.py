@@ -348,7 +348,7 @@ class Camera(object):
         ########################
         #self.pixel_width = 1080
         #self.pixel_height = 1920
-        print(self.pixel_width, self.pixel_height)
+        #print(self.pixel_width, self.pixel_height)
 
     def init_frame(self) -> None:
         '''
@@ -410,7 +410,7 @@ class Camera(object):
         pw = self.pixel_width
         ph = self.pixel_height
         
-        print(pw, ph)
+        #print(pw, ph)
         # 一旦返回了framebuffer，viewport也就定下来了
         return ctx.framebuffer(
             color_attachments=ctx.texture(
