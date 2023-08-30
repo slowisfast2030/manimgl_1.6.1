@@ -279,9 +279,11 @@ class surface_test(ThreeDScene):
         self.remove(self.cube)
         self.add(face0)
         
-        sphere = Sphere(radius=1).move_to([0,0,1])
+        sphere = Sphere(radius=1, u_range=(3*TAU/4, TAU), v_range=(PI/2, PI)).move_to([0,0,1])
         sphere.set_color(BLUE_C, 0.8)
-        self.add(sphere)
+        sphere_mesh = SurfaceMesh(sphere, resolution=(21, 11))
+        sphere_mesh.set_stroke(BLUE_E, 1, 1)
+        self.add(sphere, sphere_mesh)
 
         n_lat_lines = 10
         theta_step = PI / n_lat_lines
