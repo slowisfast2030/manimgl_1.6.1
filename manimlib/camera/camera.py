@@ -67,6 +67,8 @@ frame.set_height
 frame.move_to
 frame.reorient
 等函数会改变camera的位置
+
+疑惑: 上述frame的函数为何会改变camera呢?
 """
 class CameraFrame(Mobject):
     '''相机所拍摄到的帧'''
@@ -261,7 +263,7 @@ class CameraFrame(Mobject):
 
     def get_height(self) -> float:
         '''
-        获取相机的高度
+        获取frame的高度
         '''
         points = self.get_points()
         return points[4, 1] - points[3, 1]
