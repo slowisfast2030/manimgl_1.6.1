@@ -285,7 +285,7 @@ class surface_test(ThreeDScene):
         sphere.set_color(BLUE_C, 0.8)
         self.add(sphere)
 
-        n_lat_lines = 20
+        n_lat_lines = 10
         theta_step = PI / n_lat_lines
         sphere_points = 2.5*np.array([
             sphere.uv_func(phi, theta + theta_step * (phi / TAU))
