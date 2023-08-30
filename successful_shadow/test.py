@@ -48,11 +48,11 @@ class test1(ThreeDScene):
                               resolution=(100, 100)
                               )
         self.add(s.set_color(BLUE_E).set_opacity(0.5))
-        l1 = Line(start=(0,-2,0), end=(0,0,2))
-        l2 = Line(start=(0,-2,0), end=(2,0,0))
-        l3 = Line(start=(2,0,0), end=(0,0,2))
-        vg = VGroup(l1, l2, l3)
-        #self.add(vg.set_color(TEAL))
+        
+        p1 = [0, -2, 0]
+        p2 = [2, 0, 0]
+        p3 = [0, 0, -2]
+        p = Polygon(p1, p2, p3)
 
-        #print(len(s.get_all_points()))
-        self.wait(5)
+        self.add(p.set_color(BLUE_E).set_opacity(0.5).set_stroke(width=0))
+        self.wait(8)
