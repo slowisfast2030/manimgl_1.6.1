@@ -39,6 +39,7 @@ class test1(ThreeDScene):
             return np.array([
                 u,
                 v,
+                #2
                 2-u+v if u-v <=2 else 0
             ])
             
