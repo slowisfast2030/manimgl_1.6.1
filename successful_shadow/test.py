@@ -252,28 +252,19 @@ class surface_test(ThreeDScene):
 
         print("="*100)
 
-        frame.reorient(30, 70)
-        def update_frame(frame, dt):
-            frame.increment_theta(-0.2 * dt)
+        frame.reorient(20, 70)
+        # def update_frame(frame, dt):
+        #     frame.increment_theta(-0.2 * dt)
 
-        frame.add_updater(update_frame)
+        # frame.add_updater(update_frame)
 
-        face0 = self.cube[0]
-        face0.set_color(TEAL)
-
-        face1 = self.cube[1]
-        face1.set_color(GREEN_C)
-
-        face2 = self.cube[2]
-        face2.set_color(RED_E).set_opacity(1)
-
-        face3 = self.cube[3]
-        face3.set_color(TEAL_D)
-
-        face5 = self.cube[5]
-        face5.set_color(TEAL).set_opacity(1)
-
-        self.add(face0, face1, face2, face3, face5)
+        face0 = self.cube[0].move_to((0, 0, 3))
+        self.remove(self.cube)
+        self.add(face0)
         
+        sphere = Sphere(radius=1).move_to([0,0,1])
+        sphere.set_color(GREY_E, 0.7)
+        self.add(sphere)
+
 
         self.wait(7)
