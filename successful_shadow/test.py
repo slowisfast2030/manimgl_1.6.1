@@ -119,7 +119,7 @@ class frame_test(ThreeDScene):
             # are rendered in separate passes
             cube = Group(*cube)
             cube.move_to(self.object_center)
-            self.add(cube)
+            self.add(cube.deactivate_depth_test())
 
             sp = Sphere().set_color(BLUE_E).set_opacity(0.8).set_shadow(0.5)
             sp.move_to([-3,0,1])
@@ -140,7 +140,7 @@ class frame_test(ThreeDScene):
 
         print("="*100)
 
-        frame.reorient(30, 70)
+        frame.reorient(0, 0)
         def update_frame(frame, dt):
             frame.increment_theta(-0.2 * dt)
 
