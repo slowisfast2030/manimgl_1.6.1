@@ -333,6 +333,8 @@ class Camera(object):
         - ``anti_alias_width`` : 抗锯齿
         '''
         digest_config(self, kwargs, locals())
+        print(self.pixel_width, self.pixel_height)
+        
         self.rgb_max_val: float = np.iinfo(self.pixel_array_dtype).max
         self.background_rgba: list[float] = [
             *Color(self.background_color).get_rgb(),
@@ -363,6 +365,7 @@ class Camera(object):
         if ctx is None:
             ctx = moderngl.create_standalone_context()
             fbo = self.get_fbo(ctx, 0)
+            #print(fbo.viewport)
         else:
             fbo = ctx.detect_framebuffer()
         self.ctx = ctx
