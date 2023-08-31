@@ -298,6 +298,11 @@ class Surface(Mobject):
         return points.reshape((nu * nv, *resolution[2:]))
 
     def sort_faces_back_to_front(self, vect: np.ndarray = OUT):
+        """
+        目前还没明白这个函数的作用，但是能够看出:
+        points和indices对于渲染出最终的图形来说
+        两者一样重要
+        """
         tri_is = self.triangle_indices
         indices = list(range(len(tri_is) // 3))
         points = self.get_points()
