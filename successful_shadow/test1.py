@@ -138,6 +138,11 @@ class surface_test(ThreeDScene):
         self.add(sphere_dots, dot_first, dot_last)
 
         # Show patch
+        # 这里的patch之所以看上去和mesh网格十分契合
+        # 主要是作者巧妙的设计
+        # mesh的resolution=(21, 11)，意味着mesh有20条经线和10条纬线
+        # 那么经线的delta_u = 1/20 = 0.05
+        # 纬线的delta_v = 1/10 = 0.1
         def get_patch(u, v, delta_u=0.05, delta_v=0.1):
             patch = ParametricSurface(
                 sphere.uv_func,
