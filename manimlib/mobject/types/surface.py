@@ -463,6 +463,14 @@ class TexturedSurface(Surface):
     def init_points(self):
         nu, nv = self.uv_surface.resolution
         self.set_points(self.uv_surface.get_points())
+        """
+        data["im_coords"]是纹理坐标
+        nu和nv是surface的分辨率
+        也就是说, 在u方向采样了nu个点, 在v方向采样了nv个点
+        本质上, surface是nu * nv规模的矩阵
+
+        所谓的纹理坐标, 就是为nu * nv的采样点设置对应的Texture的坐标
+        """
         self.data["im_coords"] = np.array([
             [u, v]
             for u in np.linspace(0, 1, nu)
@@ -471,6 +479,7 @@ class TexturedSurface(Surface):
 
     def init_uniforms(self):
         super().init_uniforms()
+        # 纹理的数目
         self.uniforms["num_textures"] = self.num_textures
 
     def init_colors(self):
