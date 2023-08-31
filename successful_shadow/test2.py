@@ -87,8 +87,8 @@ class mesh_test(ThreeDScene):
         sphere.set_color(BLUE_C, 0.8)
 
         # 101*51个分割面的法向量
-        unit_normals = sphere.get_unit_normals()
-        print(len(unit_normals))
+        # unit_normals = sphere.get_unit_normals()
+        # print(len(unit_normals))
 
         # mesh需要研究下，可以进一步加深对曲面和曲线的理解
         sphere_mesh = SurfaceMesh(sphere, resolution=(21, 11))
