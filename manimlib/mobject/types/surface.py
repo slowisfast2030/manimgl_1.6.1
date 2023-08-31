@@ -365,6 +365,16 @@ class Surface(Mobject):
 
 
 class ParametricSurface(Surface):
+    """
+    需要注意, Surface类的父类是Mobject, 而不是VMobject
+    一开始看源码的时候, 确实感到很奇怪
+
+    注意观察mobject/types文件夹
+    文件夹下的每一个python文件都对应shaders文件夹下的一份着色器代码
+    surface.py和vectorized_mobject.py是并列的类型, 使用不同的着色器代码
+
+    要将多个参数曲面打包在一起, 应该使用SGroup, 而不是VGroup
+    """
     def __init__(
         self,
         uv_func: Callable[[float, float], Iterable[float]],
