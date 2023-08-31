@@ -373,6 +373,11 @@ class ParametricSurface(Surface):
     文件夹下的每一个python文件都对应shaders文件夹下的一份着色器代码
     surface.py和vectorized_mobject.py是并列的类型, 使用不同的着色器代码
 
+    以前总是以为空间曲面和贝塞尔曲面有什么关系
+    从这里的继承关系可以看出, Surface和贝塞尔曲面没有关系
+    manim渲染曲面的思想很简单
+    在曲面上采点, 将这些点发给着色器, 由着色器渲染
+
     要将多个参数曲面打包在一起, 应该使用SGroup, 而不是VGroup
     """
     def __init__(
