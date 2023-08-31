@@ -89,7 +89,7 @@ class surface_test(ThreeDScene):
         frame.set_height(10)
         frame.move_to([0,0,1])
 
-        face0 = self.cube[0].move_to((0, 0, 0))
+        face0 = self.cube[0].move_to((0, 0, 0)).scale(3)
         self.remove(self.cube)
         self.add(face0)
         
@@ -98,7 +98,7 @@ class surface_test(ThreeDScene):
         
         self.add(sphere)
 
-        n_lat_lines = 15
+        n_lat_lines = 20
         theta_step = PI / n_lat_lines
         sphere_points = 2.5*np.array([
             sphere.uv_func(phi, theta + theta_step * (phi / TAU))
@@ -107,6 +107,13 @@ class surface_test(ThreeDScene):
                 0, TAU, int(2 * n_lat_lines * math.sin(theta)) + 1
             )
         ])
+        # sphere_points = 2.5*np.array([
+        #     sphere.uv_func(phi, theta)
+        #     for theta in np.arange(0, PI, theta_step)
+        #     for phi in np.linspace(
+        #         0, TAU, int(2 * n_lat_lines * math.sin(theta)) + 1
+        #     )
+        # ])
         sphere_points[:, 2] *= -1
         sphere_points += [0,0,1]
         sphere_dots = DotCloud(sphere_points).set_color(RED)
