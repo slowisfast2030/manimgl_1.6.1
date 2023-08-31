@@ -369,6 +369,10 @@ class ParametricSurface(Surface):
     需要注意, Surface类的父类是Mobject, 而不是VMobject
     一开始看源码的时候, 确实感到很奇怪
 
+                Mobject
+                |    |
+         Vmobject    Surface
+
     注意观察mobject/types文件夹
     文件夹下的每一个python文件都对应shaders文件夹下的一份着色器代码
     surface.py和vectorized_mobject.py是并列的类型, 使用不同的着色器代码
