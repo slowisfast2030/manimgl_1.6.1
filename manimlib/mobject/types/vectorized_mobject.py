@@ -57,8 +57,8 @@ class VMobject(Mobject):
         "n_points_per_curve": 3,
         "long_lines": False,
         # For shaders
-        "stroke_shader_folder": "quadratic_bezier_stroke",
-        "fill_shader_folder": "quadratic_bezier_fill",
+        "stroke_shader_folder": "quadratic_bezier_stroke", # 原来在这里
+        "fill_shader_folder": "quadratic_bezier_fill",     # 原来在这里
         # Could also be "bevel", "miter", "round"
         "joint_type": "auto",
         "flat_stroke": False,
