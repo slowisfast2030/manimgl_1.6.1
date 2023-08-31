@@ -81,10 +81,10 @@ class Surface(Mobject):
         du = self.epsilon
         dv = self.epsilon
         for point in uv_grid_filter:
-                u, v = point
-                all_points.append(self.uv_func(u, v))
-                all_points.append(self.uv_func(u+du, v))
-                all_points.append(self.uv_func(u, v+dv))
+            u, v = point
+            all_points.append(self.uv_func(u, v))
+            all_points.append(self.uv_func(u+du, v))
+            all_points.append(self.uv_func(u, v+dv))
 
         self.set_points(all_points)
 
