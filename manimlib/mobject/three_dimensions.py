@@ -166,6 +166,9 @@ class Cylinder(Surface):
         return self
 
     def uv_func(self, u: float, v: float) -> np.ndarray:
+        """
+        柱坐标系下的(u, v) --> (x, y, z)空间映射
+        """
         return np.array([np.cos(u), np.sin(u), v])
 
 
