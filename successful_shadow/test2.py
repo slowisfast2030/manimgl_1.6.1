@@ -81,7 +81,7 @@ class mesh_test(ThreeDScene):
 
         frame = self.camera.frame
 
-        frame.reorient(50, 70)
+        frame.reorient(70, 70)
         def update_frame(frame, dt):
             frame.increment_theta(-0.2 * dt)
 
