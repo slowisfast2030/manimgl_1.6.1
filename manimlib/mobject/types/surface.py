@@ -50,6 +50,7 @@ class Surface(Mobject):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # 和着色器有关
         self.compute_triangle_indices()
 
     def uv_func(self, u: float, v: float) -> tuple[float, float, float]:
@@ -271,6 +272,28 @@ class Surface(Mobject):
 
     # For shaders
     def get_shader_data(self) -> np.ndarray:
+        """
+        之前一直好奇du_points和dv_points的作用
+        除了在这个类中计算每个分割面的法向量get_unit_normals()
+        在shader/surface/vert.glsl下也用到了:
+        v_normal = get_rotated_surface_unit_normal_vector(point, du_point, dv_point);
+
+        vec3 get_rotated_surface_unit_normal_vector(vec3 point, vec3 du_point, vec3 dv_point){
+            vec3 cp = cross(
+                (du_point - point),
+                (dv_point - point)
+            );
+            if(length(cp) == 0){
+                // Instead choose a normal to just dv_point - point in the direction of point
+                vec3 v2 = dv_point - point;
+                cp = cross(cross(v2, point), v2);
+            }
+            return normalize(rotate_point_into_frame(cp));
+        }
+        传入point, du_point和dv_point
+        计算法向量cp
+        再通过rotate_point_into_frame函数, 将cp转换到相机坐标系
+        """
         s_points, du_points, dv_points = self.get_surface_points_and_nudged_points()
         shader_data = self.get_resized_shader_data_array(len(s_points))
         if "points" not in self.locked_data_keys:
