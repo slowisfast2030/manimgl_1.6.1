@@ -54,6 +54,9 @@ class Surface(Mobject):
     the depth of a fragment with the existing depth at the same pixel location. 
     If the fragment is closer to the camera than the previous fragment, it passes 
     the depth test and is rendered; otherwise, it is discarded and not rendered.
+
+    It ensures that only the closest visible objects are rendered on the screen, 
+    simulating the occlusion that occurs in the real world.
     """
 
     def __init__(self, **kwargs):
