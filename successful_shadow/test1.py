@@ -92,13 +92,15 @@ class surface_test(ThreeDScene):
         face0 = self.cube[0].move_to((0, 0, 0)).scale(3)
         self.remove(self.cube)
         self.add(face0)
+        self.remove(face0)
         
-        sphere = Sphere(radius=1, u_range=(0, TAU), v_range=(0, PI)).move_to([0,0,1])
+        sphere = Sphere(radius=3, u_range=(0, TAU), v_range=(0, PI)).move_to([0,0,1])
         sphere.set_color(BLUE_C, 0.8)
-        
-        self.add(sphere)
+        sphere_mesh = SurfaceMesh(sphere, resolution=(21, 11))
+        sphere_mesh.set_stroke(BLUE_E, 1, 1)
+        self.add(sphere, sphere_mesh)
 
-        n_lat_lines = 20
+        n_lat_lines = 40
         theta_step = PI / n_lat_lines
         # sphere_points = 2.5*np.array([
         #     sphere.uv_func(phi, theta + theta_step * (phi / TAU))
@@ -127,11 +129,12 @@ class surface_test(ThreeDScene):
         
         # 为第一个点设置颜色
         dot_first = Sphere(radius=0.1).move_to(sphere_points[0]).set_color(GREEN).set_opacity(1)
+        dot_last = Sphere(radius=0.1).move_to(sphere_points[-1]).set_color(YELLOW).set_opacity(1)
 
         #sphere_dots.set_glow_factor(0.5)
         sphere_dots.make_3d()
 
-        self.add(sphere_dots, dot_first)
+        self.add(sphere_dots, dot_first, dot_last)
 
         
 
