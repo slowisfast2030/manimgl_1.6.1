@@ -66,6 +66,11 @@ class Surface(Mobject):
 
     def uv_func(self, u: float, v: float) -> tuple[float, float, float]:
         # To be implemented in subclasses
+        """
+        完成(u, v) --> (x, y, z)空间变换
+
+        (x, y, z)世界坐标系
+        """
         return (u, v, 0.0)
 
     def init_points_temp(self):
