@@ -73,12 +73,6 @@ class mesh_test(ThreeDScene):
         add_solid()
  
     def construct(self):
-        point1 = Sphere(radius=0.05).move_to([1,1,0]).set_color(GREEN)
-        self.add(point1)
-
-        point2 = Sphere(radius=0.05).move_to([0,0,0]).set_color(RED)
-        self.add(point2)
-
         frame = self.camera.frame
 
         frame.reorient(70, 70)
@@ -101,37 +95,7 @@ class mesh_test(ThreeDScene):
         sphere_mesh.set_stroke(BLUE_E, 1, 1)
         self.add(sphere, sphere_mesh)
 
-        n_lat_lines = 40
-        theta_step = PI / n_lat_lines
-        # 非常巧妙的让两层的点无缝衔接
-        theta = PI/3
-        sphere_points = 2.5*np.array([
-            sphere.uv_func(phi, theta + theta_step * (phi / TAU))
-            for theta in [theta, theta+theta_step]
-            for phi in np.linspace(
-                0, TAU, int(2 * n_lat_lines * math.sin(theta)) + 1
-            )
-        ])
-
-        sphere_points[:, 2] *= -1
-        sphere_points += [0,0,1]
-        sphere_dots = DotCloud(sphere_points).set_color(RED)
-        
-        # 为第一个和最后一个点设置颜色
-        # dot_first = Sphere(radius=0.1).move_to(sphere_points[0]).set_color(GREEN).set_opacity(1)
-        # dot_last = Sphere(radius=0.1).move_to(sphere_points[-1]).set_color(YELLOW).set_opacity(1)
-        # sphere_dots.set_glow_factor(0.5)
-        # sphere_dots.make_3d()
-        # self.add(dot_first, dot_last)
-
-        self.add(sphere_dots)
-
         # Show patch
-        # 这里的patch之所以看上去和mesh网格十分契合
-        # 主要是作者巧妙的设计
-        # mesh的resolution=(21, 11)，意味着mesh有20条经线和10条纬线
-        # 那么经线的delta_u = 1/20 = 0.05
-        # 纬线的delta_v = 1/10 = 0.1
         def get_patch(u, v, delta_u=0.05, delta_v=0.1):
             patch = ParametricSurface(
                 sphere.uv_func,

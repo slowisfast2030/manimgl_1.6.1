@@ -60,7 +60,7 @@ class Surface(Mobject):
         dim = self.dim
         nu, nv = self.resolution
         print("="*100)
-        print(nu. nv)
+        print(nu, nv)
         u_range = np.linspace(*self.u_range, nu)
         v_range = np.linspace(*self.v_range, nv)
 
