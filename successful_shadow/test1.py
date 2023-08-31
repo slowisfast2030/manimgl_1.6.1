@@ -150,11 +150,19 @@ class surface_test(ThreeDScene):
                 v_range=(v * PI, (v + delta_v) * PI),
             )
             patch.shift([0,0,1])
-            patch.set_color(YELLOW, 0.75)
+            patch.set_color(RED, 0.75)
             patch.always_sort_to_camera(self.camera)
             return patch
 
         patch = get_patch(0.85, 0.6)
         self.add(patch)
 
-        self.wait(3)
+        all_patchs = []
+        for u in range(5, 105, 5):
+            for v in range(50, 60, 10):
+                all_patchs.append(get_patch(u/100, v/100).set_color(YELLOW_C))
+        all_patchs_sg = SGroup(*all_patchs)
+        all_patchs_sg.space_out_submobjects(2)
+        self.add(all_patchs_sg)
+
+        self.wait(5)
