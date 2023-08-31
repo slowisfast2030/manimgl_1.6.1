@@ -121,9 +121,9 @@ class surface_test(ThreeDScene):
         sphere_points += [0,0,1]
         print(len(sphere_points))
         sphere_dots = DotCloud(sphere_points).set_color(RED)
+        
         # 为第一个点设置颜色
         dot_first = Sphere(radius=0.1).move_to(sphere_points[0]).set_color(GREEN)
-
 
         #sphere_dots.set_glow_factor(0.5)
         sphere_dots.make_3d()
