@@ -131,6 +131,14 @@ class Surface(Mobject):
     def get_surface_points_and_nudged_points(
         self
     ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+        """
+        在init_points方法中可以看到
+        前1/3是平面上的点
+        后2/3是辅助的点
+
+        一个平面点 + 两个辅助点 = 三角面
+        可以用来确定每一个分割面的法向量
+        """
         points = self.get_points()
         k = len(points) // 3
         return points[:k], points[k:2 * k], points[2 * k:]
