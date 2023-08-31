@@ -60,7 +60,9 @@ class Surface(Mobject):
         dim = self.dim
         # 对于sphere的默认配置nu, nv = (101, 51)
         nu, nv = self.resolution
+        # 在u_range = [start, end]范围内，等间隔抽取nu个点，包含start和end
         u_range = np.linspace(*self.u_range, nu)
+        # 在v_range = [start, end]范围内，等间隔抽取nv个点，包含start和end
         v_range = np.linspace(*self.v_range, nv)
 
         # Get three lists:
