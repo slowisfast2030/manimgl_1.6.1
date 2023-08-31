@@ -109,7 +109,7 @@ class surface_test(ThreeDScene):
         # ])
 
         # 固定theta，单层for循环
-        theta = PI/2
+        theta = PI/6
         sphere_points = 2.5*np.array([
             sphere.uv_func(phi, theta)
             #for theta in np.arange(0, PI, theta_step)
@@ -123,7 +123,7 @@ class surface_test(ThreeDScene):
         sphere_dots = DotCloud(sphere_points).set_color(RED)
         
         # 为第一个点设置颜色
-        dot_first = Sphere(radius=0.1).move_to(sphere_points[0]).set_color(GREEN)
+        dot_first = Sphere(radius=0.1).move_to(sphere_points[0]).set_color(GREEN).set_opacity(1)
 
         #sphere_dots.set_glow_factor(0.5)
         sphere_dots.make_3d()
