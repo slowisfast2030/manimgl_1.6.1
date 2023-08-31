@@ -109,12 +109,12 @@ class surface_test(ThreeDScene):
         # ])
 
         # 固定theta，单层for循环
+        # 非常巧妙的让两层的点无缝衔接
         theta = PI/3
         sphere_points = 2.5*np.array([
             #sphere.uv_func(phi, theta)
             sphere.uv_func(phi, theta + theta_step * (phi / TAU))
-            #for theta in np.arange(0, PI, theta_step)
-            for theta in [theta, theta+theta_step, theta+2*theta_step]
+            for theta in [theta, theta+theta_step]
             for phi in np.linspace(
                 0, TAU, int(2 * n_lat_lines * math.sin(theta)) + 1
             )
