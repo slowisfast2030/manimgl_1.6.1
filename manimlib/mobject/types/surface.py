@@ -39,7 +39,7 @@ class Surface(Mobject):
         "epsilon": 1e-5,
         "render_primitive": moderngl.TRIANGLES,
         "depth_test": True,
-        "shader_folder": "surface",
+        "shader_folder": "surface", # 原来在这里，指定了着色器文件夹
         "shader_dtype": [
             ('point', np.float32, (3,)),
             ('du_point', np.float32, (3,)),
