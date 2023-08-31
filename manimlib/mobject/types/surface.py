@@ -160,6 +160,25 @@ class Surface(Mobject):
         # TODO, if there is an event which changes
         # the resolution of the surface, make sure
         # this is called.
+        """
+        目前manim所支持的surface的(u, v)空间是一个矩形空间
+        比如:
+        Surface
+        "u_range": (0, 1),
+        "v_range": (0, 1),
+
+        Sphere
+        "u_range": (0, TAU),
+        "v_range": (0, PI),
+
+        Torus
+        "u_range": (0, TAU),
+        "v_range": (0, TAU),
+
+        Cylinder
+        "u_range": (0, TAU),
+        "v_range": (-1, 1),
+        """
         nu, nv = self.resolution
         if nu == 0 or nv == 0:
             self.triangle_indices = np.zeros(0, dtype=int)
