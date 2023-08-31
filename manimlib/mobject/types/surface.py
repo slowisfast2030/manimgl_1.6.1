@@ -217,6 +217,12 @@ class Surface(Mobject):
 
     def get_unit_normals(self) -> np.ndarray:
         '''获取每个分割面的法向量'''
+        """
+        严格来讲, 这里计算的是s_points处的法向量, 而且仅仅是近似(和计算切线的思想一样)
+
+        s_points处真正的法向量是连接球心和s_points的向量
+        3b1b为何不这么做呢?
+        """
         #print("=="*200)
         s_points, du_points, dv_points = self.get_surface_points_and_nudged_points()
         normals = np.cross(
