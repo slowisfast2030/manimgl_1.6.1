@@ -95,19 +95,4 @@ class mesh_test(ThreeDScene):
         sphere_mesh.set_stroke(BLUE_E, 1, 1)
         self.add(sphere, sphere_mesh)
 
-        # Show patch
-        def get_patch(u, v, delta_u=0.05, delta_v=0.1):
-            patch = ParametricSurface(
-                sphere.uv_func,
-                u_range=(u * TAU, (u + delta_u) * TAU),
-                v_range=(v * PI, (v + delta_v) * PI),
-            )
-            patch.shift([0,0,1])
-            patch.set_color(RED, 0.75)
-            patch.always_sort_to_camera(self.camera)
-            return patch
-
-        patch = get_patch(0.85, 0.6)
-        self.add(patch)
-
         self.wait(3)
