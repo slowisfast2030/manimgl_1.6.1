@@ -47,6 +47,14 @@ class Surface(Mobject):
             ('color', np.float32, (4,)),
         ]
     }
+    """
+    Depth test is a technique that determines which fragments are visible and 
+    which are occluded by other objects in a 3D scene. It uses a depth buffer, 
+    which is an image that stores the depth values of each fragment, to compare 
+    the depth of a fragment with the existing depth at the same pixel location. 
+    If the fragment is closer to the camera than the previous fragment, it passes 
+    the depth test and is rendered; otherwise, it is discarded and not rendered.
+    """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
