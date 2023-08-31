@@ -96,6 +96,8 @@ class Surface(Mobject):
             # print(len(point_grid[0]))    # 51
             # print(len(point_grid[0][0])) # 3
 
+            # 将二维矩阵压缩成列表
+            # 可视化想象: 以前101*51的矩阵，现在5151的列表
             point_lists.append(point_grid.reshape((nu * nv, dim)))
             
         # Rather than tracking normal vectors, the points list will hold on to the
