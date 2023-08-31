@@ -285,6 +285,10 @@ class Surface(Mobject):
         return shader_data
 
     def get_shader_vert_indices(self) -> np.ndarray:
+        """
+        三角形索引果然和着色器相关
+        需要进一步研究
+        """
         return self.get_triangle_indices()
 
 
