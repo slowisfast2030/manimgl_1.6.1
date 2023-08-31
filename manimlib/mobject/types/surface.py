@@ -377,6 +377,10 @@ class ParametricSurface(Surface):
     从这里的继承关系可以看出, Surface和贝塞尔曲面没有关系
     manim渲染曲面的思想很简单
     在曲面上采点, 将这些点发给着色器, 由着色器渲染
+    
+    尽管Surface类和Vmobject类有区别, 但是它们享有巨大的相似性: 
+    它们都是点集
+    所以, 玩好manim, 就是玩好点集, 就是玩好矩阵
 
     要将多个参数曲面打包在一起, 应该使用SGroup, 而不是VGroup
     """
