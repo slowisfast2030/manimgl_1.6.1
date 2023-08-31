@@ -77,7 +77,7 @@ class Surface(Mobject):
         """
         效果很差
         这里改了points的规模, 以前是3*nu*nv
-        为了达到理想的效果，需要进一步修改compute_triangle_indices函数
+        为了达到理想的效果, 需要进一步修改compute_triangle_indices函数
         """
         nu, nv = self.resolution
 
