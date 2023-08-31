@@ -103,7 +103,6 @@ class mesh_test(ThreeDScene):
 
         n_lat_lines = 40
         theta_step = PI / n_lat_lines
-        # 固定theta，单层for循环
         # 非常巧妙的让两层的点无缝衔接
         theta = PI/3
         sphere_points = 2.5*np.array([
@@ -119,7 +118,7 @@ class mesh_test(ThreeDScene):
         print(len(sphere_points))
         sphere_dots = DotCloud(sphere_points).set_color(RED)
         
-        # 为第一个点设置颜色
+        # 为第一个和最后一个点设置颜色
         dot_first = Sphere(radius=0.1).move_to(sphere_points[0]).set_color(GREEN).set_opacity(1)
         dot_last = Sphere(radius=0.1).move_to(sphere_points[-1]).set_color(YELLOW).set_opacity(1)
         #sphere_dots.set_glow_factor(0.5)
