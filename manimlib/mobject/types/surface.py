@@ -57,6 +57,9 @@ class Surface(Mobject):
         return (u, v, 0.0)
 
     def init_points_temp(self):
+        """
+        效果很差
+        """
         nu, nv = self.resolution
 
         u_range = np.linspace(*self.u_range, nu)
@@ -77,9 +80,9 @@ class Surface(Mobject):
         dv = self.epsilon
         for point in uv_grid_filter:
                 u, v = point
-                all_points.append((self.uv_func(u, v)))
-                all_points.append((self.uv_func(u+du, v)))
-                all_points.append((self.uv_func(u, v+dv)))
+                all_points.append(self.uv_func(u, v))
+                all_points.append(self.uv_func(u+du, v))
+                all_points.append(self.uv_func(u, v+dv))
 
         self.set_points(all_points)
 
