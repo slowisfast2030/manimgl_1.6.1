@@ -115,7 +115,6 @@ class mesh_test(ThreeDScene):
 
         sphere_points[:, 2] *= -1
         sphere_points += [0,0,1]
-        print(len(sphere_points))
         sphere_dots = DotCloud(sphere_points).set_color(RED)
         
         # 为第一个和最后一个点设置颜色

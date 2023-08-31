@@ -52,6 +52,7 @@ class SurfaceMesh(VGroup):
 
         points, du_points, dv_points = uv_surface.get_surface_points_and_nudged_points()
         normals = uv_surface.get_unit_normals()
+        # nudge是什么？定义在类的CONFIG中
         nudge = self.normal_nudge
         nudged_points = points + nudge * normals
 
