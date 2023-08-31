@@ -211,6 +211,7 @@ class Surface(Mobject):
         可以用来确定每一个分割面的法向量
         """
         points = self.get_points()
+        # 地板除(floor division)，返回整数部分，舍弃小数部分
         k = len(points) // 3
         return points[:k], points[k:2 * k], points[2 * k:]
 
