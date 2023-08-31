@@ -165,4 +165,8 @@ class surface_test(ThreeDScene):
         # all_patchs_sg.space_out_submobjects(2)
         # self.add(all_patchs_sg)
 
+        s = sphere.copy()
+        s.pointwise_become_partial(sphere, 0, 2/4).move_to(LEFT*7).scale(0.5)
+        self.add(s)
+
         self.wait(4)

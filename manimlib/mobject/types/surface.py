@@ -192,6 +192,11 @@ class Surface(Mobject):
         b: float,
         axis: np.ndarray | None = None
     ):
+        """
+        这个函数竟然正确的返回了结果
+        难道不需要设置三角形索引吗？
+        还是说，之前计算的索引，在这里也能用？
+        """
         assert(isinstance(smobject, Surface))
         if axis is None:
             axis = self.prefered_creation_axis
