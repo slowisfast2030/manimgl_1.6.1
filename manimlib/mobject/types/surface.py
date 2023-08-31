@@ -59,6 +59,8 @@ class Surface(Mobject):
     def init_points(self):
         dim = self.dim
         nu, nv = self.resolution
+        print("="*100)
+        print(nu. nv)
         u_range = np.linspace(*self.u_range, nu)
         v_range = np.linspace(*self.v_range, nv)
 
