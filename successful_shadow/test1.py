@@ -165,4 +165,4 @@ class surface_test(ThreeDScene):
         # all_patchs_sg.space_out_submobjects(2)
         # self.add(all_patchs_sg)
 
-        self.wait(5)
+        self.wait(4)
