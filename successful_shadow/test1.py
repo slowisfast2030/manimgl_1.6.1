@@ -109,7 +109,7 @@ class surface_test(ThreeDScene):
         # ])
 
         # 固定theta，单层for循环
-        theta = PI/4
+        theta = PI/2
         sphere_points = 2.5*np.array([
             sphere.uv_func(phi, theta)
             #for theta in np.arange(0, PI, theta_step)
