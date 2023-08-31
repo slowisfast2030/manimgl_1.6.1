@@ -178,6 +178,9 @@ class Surface(Mobject):
         Cylinder
         "u_range": (0, TAU),
         "v_range": (-1, 1),
+
+        如果想把(u, v)空间修改成任意形状，比如三角形
+        需要对这个函数进行修改
         """
         nu, nv = self.resolution
         if nu == 0 or nv == 0:
