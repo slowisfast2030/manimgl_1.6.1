@@ -35,11 +35,18 @@ class SurfaceMesh(VGroup):
     def init_points(self) -> None:
         uv_surface = self.uv_surface
 
+        # 曲面在u方向和v方向的采样点数
         full_nu, full_nv = uv_surface.resolution
+        # mesh在u方向和v方向的采样点数
         part_nu, part_nv = self.resolution
         # 'indices' are treated as floats. Later, there will be
         # an interpolation between the floor and ceiling of these
         # indices
+        """
+        numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None, axis=0)
+        在start和stop之间均匀采取num个值
+        包含start和end
+        """
         u_indices = np.linspace(0, full_nu - 1, part_nu)
         v_indices = np.linspace(0, full_nv - 1, part_nv)
 
