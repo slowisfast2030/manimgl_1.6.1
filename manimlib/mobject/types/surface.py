@@ -117,6 +117,7 @@ class Surface(Mobject):
         return points[:k], points[k:2 * k], points[2 * k:]
 
     def get_unit_normals(self) -> np.ndarray:
+        '''获取每个分割面的法向量'''
         s_points, du_points, dv_points = self.get_surface_points_and_nudged_points()
         normals = np.cross(
             (du_points - s_points) / self.epsilon,

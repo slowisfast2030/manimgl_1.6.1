@@ -54,6 +54,7 @@ class SurfaceMesh(VGroup):
         normals = uv_surface.get_unit_normals()
         # nudge是什么？定义在类的CONFIG中
         nudge = self.normal_nudge
+        # 给平面上每个点添加少许分割面的法向量。有什么用吗？
         nudged_points = points + nudge * normals
 
         for ui in u_indices:
