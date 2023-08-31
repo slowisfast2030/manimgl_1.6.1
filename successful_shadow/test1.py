@@ -93,11 +93,10 @@ class surface_test(ThreeDScene):
         self.remove(self.cube)
         self.add(face0)
         
-        sphere = Sphere(radius=1, u_range=(3*TAU/4, TAU), v_range=(PI/2, PI)).move_to([0,0,1])
+        sphere = Sphere(radius=1, u_range=(0, TAU), v_range=(0, PI)).move_to([0,0,1])
         sphere.set_color(BLUE_C, 0.8)
-        sphere_mesh = SurfaceMesh(sphere, resolution=(21, 11))
-        sphere_mesh.set_stroke(BLUE_E, 1, 1)
-        self.add(sphere, sphere_mesh)
+        
+        self.add(sphere)
 
         n_lat_lines = 15
         theta_step = PI / n_lat_lines
@@ -116,19 +115,6 @@ class surface_test(ThreeDScene):
 
         self.add(sphere_dots)
 
-        # Show patch
-        def get_patch(u, v, delta_u=0.05, delta_v=0.1):
-            patch = ParametricSurface(
-                sphere.uv_func,
-                u_range=(u * TAU, (u + delta_u) * TAU),
-                v_range=(v * PI, (v + delta_v) * PI),
-            )
-            patch.shift([0,0,1])
-            patch.set_color(YELLOW, 0.75)
-            patch.always_sort_to_camera(self.camera)
-            return patch
-
-        patch = get_patch(0.85, 0.6)
-        self.add(patch)
+        
 
         self.wait(8)
