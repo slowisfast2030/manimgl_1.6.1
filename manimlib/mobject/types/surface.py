@@ -290,8 +290,7 @@ class Surface(Mobject):
             }
             return normalize(rotate_point_into_frame(cp));
         }
-        传入point, du_point和dv_point
-        计算法向量cp
+        传入point, du_point和dv_point, 计算法向量cp
         再通过rotate_point_into_frame函数, 将cp转换到相机坐标系
         """
         s_points, du_points, dv_points = self.get_surface_points_and_nudged_points()
