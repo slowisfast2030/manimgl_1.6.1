@@ -81,7 +81,7 @@ class surface_test(ThreeDScene):
 
         frame = self.camera.frame
 
-        frame.reorient(40, 70)
+        frame.reorient(50, 70)
         def update_frame(frame, dt):
             frame.increment_theta(-0.2 * dt)
 
@@ -152,4 +152,4 @@ class surface_test(ThreeDScene):
         patch = get_patch(0.85, 0.6)
         self.add(patch)
 
-        self.wait(4)
+        self.wait(3)
