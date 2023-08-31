@@ -125,7 +125,7 @@ class surface_test(ThreeDScene):
 
         sphere_points[:, 2] *= -1
         sphere_points += [0,0,1]
-        print(len(sphere_points))
+        #print(len(sphere_points))
         sphere_dots = DotCloud(sphere_points).set_color(RED)
         
         # 为第一个点设置颜色
@@ -157,12 +157,12 @@ class surface_test(ThreeDScene):
         patch = get_patch(0.85, 0.6)
         self.add(patch)
 
-        all_patchs = []
-        for u in range(5, 105, 5):
-            for v in range(50, 60, 10):
-                all_patchs.append(get_patch(u/100, v/100).set_color(YELLOW_C))
-        all_patchs_sg = SGroup(*all_patchs)
-        all_patchs_sg.space_out_submobjects(2)
-        self.add(all_patchs_sg)
+        # all_patchs = []
+        # for u in range(5, 105, 5):
+        #     for v in range(50, 60, 10):
+        #         all_patchs.append(get_patch(u/100, v/100).set_color(YELLOW_C))
+        # all_patchs_sg = SGroup(*all_patchs)
+        # all_patchs_sg.space_out_submobjects(2)
+        # self.add(all_patchs_sg)
 
         self.wait(5)
