@@ -56,6 +56,7 @@ class SurfaceMesh(VGroup):
         # [ 0.  5. 10. 15. 20. 25. 30. 35. 40. 45. 50.]
 
         points, du_points, dv_points = uv_surface.get_surface_points_and_nudged_points()
+        #print(points.shape)
         normals = uv_surface.get_unit_normals()
         # nudge是什么？定义在类的CONFIG中
         nudge = self.normal_nudge
@@ -72,6 +73,11 @@ class SurfaceMesh(VGroup):
                 ui % 1
             ))
             self.add(path)
+        # v_indices = [ 0.  5. 10. 15. 20. 25. 30. 35. 40. 45. 50.]
+        # nudged_points: 5151列表（是101*51矩阵reshape而成，特别注意是一行一行的拼接）
+        # nudged_points[0::51]对应于101*51矩阵的第0列数据
+        # nudged_points[5::51]对应于101*51矩阵的第5列数据
+        # 依此类推 
         for vi in v_indices:
             path = VMobject()
             path.set_points_smoothly(interpolate(
