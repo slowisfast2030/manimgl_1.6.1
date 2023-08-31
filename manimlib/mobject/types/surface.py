@@ -59,6 +59,7 @@ class Surface(Mobject):
     def init_points(self):
         dim = self.dim
         # 对于sphere的默认配置nu, nv = (101, 51)
+        # 疑问：为何将nu和nv都设置为奇数？
         nu, nv = self.resolution
         # 在u_range = [start, end]范围内，等间隔抽取nu个点，包含start和end
         u_range = np.linspace(*self.u_range, nu)
