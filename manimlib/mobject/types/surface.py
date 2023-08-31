@@ -177,7 +177,7 @@ class Surface(Mobject):
 
     def get_unit_normals(self) -> np.ndarray:
         '''获取每个分割面的法向量'''
-        print("=="*200)
+        #print("=="*200)
         s_points, du_points, dv_points = self.get_surface_points_and_nudged_points()
         normals = np.cross(
             (du_points - s_points) / self.epsilon,
