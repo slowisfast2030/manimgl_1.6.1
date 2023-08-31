@@ -82,14 +82,14 @@ class mesh_test(ThreeDScene):
         frame.add_updater(update_frame)
         frame.set_height(10)
         frame.move_to([0,0,1])
-
-        face0 = self.cube[0].move_to((0, 0, 0)).scale(3)
-        self.remove(self.cube)
-        self.add(face0)
-        self.remove(face0)
         
         sphere = Sphere(radius=3, u_range=(0, TAU), v_range=(0, PI)).move_to([0,0,1])
         sphere.set_color(BLUE_C, 0.8)
+
+        # 101*51个分割面的法向量
+        unit_normals = sphere.get_unit_normals()
+        print(len(unit_normals))
+
         # mesh需要研究下，可以进一步加深对曲面和曲线的理解
         sphere_mesh = SurfaceMesh(sphere, resolution=(21, 11))
         sphere_mesh.set_stroke(BLUE_E, 1, 1)
