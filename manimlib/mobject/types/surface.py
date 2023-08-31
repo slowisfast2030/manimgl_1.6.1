@@ -58,9 +58,8 @@ class Surface(Mobject):
 
     def init_points(self):
         dim = self.dim
+        # 对于sphere的默认配置nu, nv = (101, 51)
         nu, nv = self.resolution
-        print("="*100)
-        print(nu, nv)
         u_range = np.linspace(*self.u_range, nu)
         v_range = np.linspace(*self.v_range, nv)
 
