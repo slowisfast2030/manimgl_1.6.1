@@ -111,12 +111,14 @@ class surface_test(ThreeDScene):
         # 固定theta，单层for循环
         theta = PI/2
         sphere_points = 2.5*np.array([
-            sphere.uv_func(phi, theta)
+            #sphere.uv_func(phi, theta)
+            sphere.uv_func(phi, theta + theta_step * (phi / TAU))
             #for theta in np.arange(0, PI, theta_step)
             for phi in np.linspace(
                 0, TAU, int(2 * n_lat_lines * math.sin(theta)) + 1
             )
         ])
+
         sphere_points[:, 2] *= -1
         sphere_points += [0,0,1]
         print(len(sphere_points))
