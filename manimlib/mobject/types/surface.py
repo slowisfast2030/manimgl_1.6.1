@@ -56,6 +56,33 @@ class Surface(Mobject):
         # To be implemented in subclasses
         return (u, v, 0.0)
 
+    def init_points_temp(self):
+        nu, nv = self.resolution
+
+        u_range = np.linspace(*self.u_range, nu)
+        v_range = np.linspace(*self.v_range, nv)
+
+        all_points = []
+        uv_grid_filter = []
+        
+        uv_grid = np.array([[[u, v] for v in v_range] for u in u_range])
+        for i in range(len(uv_grid)):
+            for j in range(len(uv_grid[i])):
+                u = uv_grid[i][j][0]
+                v = uv_grid[i][j][1]
+                if u - v <= 2:
+                    uv_grid_filter.append([u, v])
+
+        du = self.epsilon
+        dv = self.epsilon
+        for point in uv_grid_filter:
+                u, v = point
+                all_points.append((self.uv_func(u, v)))
+                all_points.append((self.uv_func(u+du, v)))
+                all_points.append((self.uv_func(u, v+dv)))
+
+        self.set_points(all_points)
+
     def init_points(self):
         dim = self.dim
         # 对于sphere的默认配置nu, nv = (101, 51)
