@@ -96,6 +96,7 @@ class surface_test(ThreeDScene):
         
         sphere = Sphere(radius=3, u_range=(0, TAU), v_range=(0, PI)).move_to([0,0,1])
         sphere.set_color(BLUE_C, 0.8)
+        # mesh需要研究下，可以进一步加深对曲面和曲线的理解
         sphere_mesh = SurfaceMesh(sphere, resolution=(21, 11))
         sphere_mesh.set_stroke(BLUE_E, 1, 1)
         self.add(sphere, sphere_mesh)
