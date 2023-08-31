@@ -150,7 +150,7 @@ class surface_test(ThreeDScene):
                 v_range=(v * PI, (v + delta_v) * PI),
             )
             patch.shift([0,0,1])
-            patch.set_color(RED, 0.75)
+            patch.set_color(YELLOW, 0.75)
             patch.always_sort_to_camera(self.camera)
             return patch
 
