@@ -81,7 +81,7 @@ class surface_test(ThreeDScene):
 
         frame = self.camera.frame
 
-        frame.reorient(20, 70)
+        frame.reorient(40, 70)
         def update_frame(frame, dt):
             frame.increment_theta(-0.2 * dt)
 
@@ -137,6 +137,19 @@ class surface_test(ThreeDScene):
 
         self.add(sphere_dots, dot_first, dot_last)
 
-        
+        # Show patch
+        def get_patch(u, v, delta_u=0.05, delta_v=0.1):
+            patch = ParametricSurface(
+                sphere.uv_func,
+                u_range=(u * TAU, (u + delta_u) * TAU),
+                v_range=(v * PI, (v + delta_v) * PI),
+            )
+            patch.shift([0,0,1])
+            patch.set_color(YELLOW, 0.75)
+            patch.always_sort_to_camera(self.camera)
+            return patch
 
-        self.wait(8)
+        patch = get_patch(0.85, 0.6)
+        self.add(patch)
+
+        self.wait(4)
