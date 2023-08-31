@@ -33,6 +33,9 @@ class SurfaceMesh(VGroup):
         super().__init__(**kwargs)
 
     def init_points(self) -> None:
+        """
+        对uv_surface的point进行采样
+        """
         uv_surface = self.uv_surface
 
         # 曲面在u方向和v方向的采样点数
@@ -110,6 +113,15 @@ class Sphere(Surface):
     通过对u,v的遍历, 可以得到球体的点
     疑问: 给出几何体的参数方程后, manim是如何绘制的呢?
     """
+    """
+    曲面的参数方程完成的是(u, v)空间到(x, y, z)空间的映射
+    是一个函数关系
+
+    以球体为例
+    在平面直角坐标系下, 球体的图像不是函数
+    但是在球坐标系下, 球体的图像是函数
+
+    """
     def uv_func(self, u: float, v: float) -> np.ndarray:
         return self.radius * np.array([
             np.cos(u) * np.sin(v),
@@ -127,6 +139,11 @@ class Torus(Surface):
     }
 
     def uv_func(self, u: float, v: float) -> np.ndarray:
+        """
+        尽管数学公式比较复杂
+        但本质上仍然是(u, v) --> (x, y, z)
+        两个空间的映射
+        """
         P = np.array([math.cos(u), math.sin(u), 0])
         return (self.r1 - self.r2 * math.cos(v)) * P - math.sin(v) * OUT
 
