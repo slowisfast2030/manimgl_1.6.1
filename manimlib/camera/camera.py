@@ -91,6 +91,10 @@ class CameraFrame(Mobject):
         self.frame对象并不是一个具体的mob, 而是对所有的mob进行的一个拍摄
         self.frame对象存在的目的是为这些mob提供统一的uniform
         从这个角度来说, 似乎并不需要set points
+
+        从后面的代码来看, 这里设置points
+        主要是为了方便获取frame的中心、宽度和高度
+        不过感觉没什么必要
         """
         self.set_points([ORIGIN, LEFT, RIGHT, DOWN, UP])
         """
@@ -247,10 +251,12 @@ class CameraFrame(Mobject):
 
     def set_field_of_view(self, field_of_view: float):
         '''
-        设置相机的视野
+        设置相机的视野vfov(垂直视野)
         '''
         """
-        这里是不是写错了, 应该是height_to_focal_dist
+        这里绝对写错了！
+        按照公式, 这里应该是
+        self.uniforms["height_to_focal_dist"] = 2 * math.tan(field_of_view / 2)
         """
         self.uniforms["focal_dist_to_height"] = 2 * math.tan(field_of_view / 2)
         return self
@@ -288,8 +294,12 @@ class CameraFrame(Mobject):
 
     def get_field_of_view(self) -> float:
         '''
-        获取相机的视野
+        获取相机的视野(vfov)
         '''
+        """
+        写错了。换成下面的就很合理:
+        return 2 * math.atan(self.uniforms["height_to_focal_dist"] / 2)
+        """
         return 2 * math.atan(self.uniforms["focal_dist_to_height"] / 2)
 
     def get_implied_camera_location(self) -> np.ndarray:
