@@ -143,7 +143,6 @@ class Surface(Mobject):
             
         self.set_points(np.vstack(point_lists))
 
-
     def init_points(self):
         dim = self.dim
         # 对于sphere的默认配置nu, nv = (101, 51)
