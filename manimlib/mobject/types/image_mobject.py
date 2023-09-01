@@ -61,6 +61,10 @@ class ImageMobject(Mobject):
         }
 
     def init_points(self) -> None:
+        """
+        并没有初始化点集
+        设置了矩形框的大小
+        """
         size = self.image.size
         self.set_width(2 * size[0] / size[1], stretch=True)
         self.set_height(self.height)
