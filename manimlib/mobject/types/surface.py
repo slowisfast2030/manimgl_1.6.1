@@ -180,7 +180,7 @@ class Surface(Mobject):
         "v_range": (-1, 1),
 
         如果想把(u, v)空间修改成任意形状，比如三角形
-        需要对这个函数进行修改
+        需要对这个函数进行修改。修改不容易啊        
         """
         nu, nv = self.resolution
         #print(nu, nv)
