@@ -685,7 +685,17 @@ class Camera(object):
         '''更新透视uniform'''
         """
         着色器的顶点着色器代码中传入了很多uniform
-        来源于此
+        
+        以前一直好奇, self.frame继承至Mobject
+        在frame中执行
+        self.frame.set_height
+        self.move_to
+        self.reorient
+        等函数, 为何会影响计算机视角呢？
+        原来, self.frame对象设置了这些属性并不是直接对frame起作用
+        而是对着色器的uniform变量进行了赋值
+        frame --> shader --> frame
+        总结来说: 对frame的属性设置, 直接改变uniform, 间接改变frame
         """
         frame = self.frame
         pw, ph = self.get_pixel_shape()
