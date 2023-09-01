@@ -32,6 +32,21 @@ class ImageMobject(Mobject):
         self.texture_paths = {"Texture": path}
 
     def init_data(self) -> None:
+        """
+        对比下TexturedSurface类的纹理坐标
+        self.data["im_coords"] = np.array([
+            [u, v]
+            for u in np.linspace(0, 1, nu)
+            for v in np.linspace(1, 0, nv)  # Reverse y-direction
+        ])
+        纹理的规模: nu * nv
+
+        而这里
+        self.data["im_coords"] = np.array([(0, 0), (0, 1), (1, 0), (1, 1)])
+        也就是说, 传入image文件夹下的顶点着色器的顶点只有4个
+        顶点的颜色就是对应的纹理的颜色
+        到了片段着色器部分, 全靠插值
+        """
         self.data = {
             "points": np.array([UL, DL, UR, DR]),
             "im_coords": np.array([(0, 0), (0, 1), (1, 0), (1, 1)]),
