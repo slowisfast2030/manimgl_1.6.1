@@ -26,7 +26,7 @@ class tri_test(ThreeDScene):
         s = ParametricSurface(uv_func,
                               u_range=(0,2),
                               v_range=(-2,0),
-                              resolution=(1001, 1001) # 分辨率越高, 边缘的锯齿感越弱
+                              resolution=(101, 101) # 分辨率越高, 边缘的锯齿感越弱
                               )
         self.add(s.set_color(BLUE_E).set_opacity(0.5))
         
