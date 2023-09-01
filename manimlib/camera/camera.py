@@ -93,6 +93,11 @@ class CameraFrame(Mobject):
         从这个角度来说, 似乎并不需要set points
         """
         self.set_points([ORIGIN, LEFT, RIGHT, DOWN, UP])
+        """
+        set_width、set_height和move_to函数
+        表面上看是为了给frame设置属性
+        实质上是给uniform准备属性
+        """
         self.set_width(self.frame_shape[0], stretch=True)
         self.set_height(self.frame_shape[1], stretch=True)
         self.move_to(self.center_point)
