@@ -183,6 +183,7 @@ class Surface(Mobject):
         需要对这个函数进行修改
         """
         nu, nv = self.resolution
+        print(nu, nv)
         if nu == 0 or nv == 0:
             self.triangle_indices = np.zeros(0, dtype=int)
             return
