@@ -20,21 +20,22 @@ class tri_test(ThreeDScene):
                 v,
                 #2
                 2-u+v if u-v <=2 else 0
+                #2-u+v
             ])
             
         s = ParametricSurface(uv_func,
                               u_range=(0,2),
                               v_range=(-2,0),
-                              resolution=(100, 100)
+                              resolution=(1001, 1001) # 分辨率越高, 边缘的锯齿感越弱
                               )
         self.add(s.set_color(BLUE_E).set_opacity(0.5))
         
-        p1 = [0, -2, 0]
-        p2 = [2, 0, 0]
-        p3 = [0, 0, -2]
-        p = Polygon(p1, p2, p3)
+        # p1 = [0, -2, 0]
+        # p2 = [2, 0, 0]
+        # p3 = [0, 0, -2]
+        # p = Polygon(p1, p2, p3)
 
-        self.add(p.set_color(BLUE_E).set_opacity(0.5).set_stroke(width=0))
+        # self.add(p.set_color(BLUE_E).set_opacity(0.5).set_stroke(width=0))
         self.wait(8)
 
 class tri_surface(ThreeDScene):

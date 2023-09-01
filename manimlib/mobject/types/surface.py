@@ -73,7 +73,7 @@ class Surface(Mobject):
         """
         return (u, v, 0.0)
 
-    def init_points_temp(self):
+    def init_points_linus(self):
         """
         效果很差
         这里改了points的规模, 以前是3*nu*nv
@@ -104,6 +104,41 @@ class Surface(Mobject):
             all_points.append(self.uv_func(u, v+dv))
 
         self.set_points(all_points)
+
+    def init_points_turing(self):
+        """
+        def uv_func(u: float, v: float) -> np.ndarray:
+            return np.array([
+                u,
+                v,
+                2-u+v if u-v <=2 else 0
+            ])
+        """
+        dim = self.dim
+        nu, nv = self.resolution
+
+        u_range = np.linspace(*self.u_range, nu)
+        v_range = np.linspace(*self.v_range, nv)
+
+        point_lists = []
+        for (du, dv) in [(0, 0), (self.epsilon, 0), (0, self.epsilon)]:
+            
+            # uv_grid是一个矩形的范围，可以修改成三角形范围
+            uv_grid = np.array([[[u + du, v + dv] for v in v_range] for u in u_range])
+            for i in range(len(uv_grid)):
+                for j in range(len(uv_grid[i])):
+                    u = uv_grid[i][j][0]
+                    v = uv_grid[i][j][1]
+                    if u - v > 2:
+                        uv_grid[i][j] = uv_grid[j][i] # 效果不错。边缘有微小锯齿感，可以通过提高resolution解决
+                        #uv_grid[i][j] = (0, 0) # 效果比较差
+
+            point_grid = np.apply_along_axis(lambda p: self.uv_func(*p), 2, uv_grid)
+
+            point_lists.append(point_grid.reshape((nu * nv, dim)))
+            
+        self.set_points(np.vstack(point_lists))
+
 
     def init_points(self):
         dim = self.dim
