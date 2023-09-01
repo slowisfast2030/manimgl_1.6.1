@@ -3,6 +3,7 @@
 // uniform float focal_distance;
 // uniform float is_fixed_in_frame;
 
+// 这里有隐患，竟然写死了
 const vec2 DEFAULT_FRAME_SHAPE = vec2(8.0 * 16.0 / 9.0, 8.0);
 
 float perspective_scale_factor(float z, float focal_distance){
