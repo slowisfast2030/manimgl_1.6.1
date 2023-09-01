@@ -550,7 +550,7 @@ class Camera(object):
 
     def get_location(self) -> tuple[float, float, float]:
         '''
-        获取相机位置
+        获取相机位置(世界坐标系)
         '''
         return self.frame.get_implied_camera_location()
 
