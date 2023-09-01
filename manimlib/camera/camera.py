@@ -86,6 +86,12 @@ class CameraFrame(Mobject):
         self.uniforms["focal_dist_to_height"] = self.focal_dist_to_height
 
     def init_points(self) -> None:
+        """
+        这里设置points很有趣
+        self.frame对象并不是一个具体的mob, 而是对所有的mob进行的一个拍摄
+        self.frame对象存在的目的是为这些mob提供统一的uniform
+        从这个角度来说, 似乎并不需要set points
+        """
         self.set_points([ORIGIN, LEFT, RIGHT, DOWN, UP])
         self.set_width(self.frame_shape[0], stretch=True)
         self.set_height(self.frame_shape[1], stretch=True)
