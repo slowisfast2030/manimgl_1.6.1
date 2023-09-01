@@ -130,8 +130,12 @@ class Surface(Mobject):
                     u = uv_grid[i][j][0]
                     v = uv_grid[i][j][1]
                     if u - v > 2:
-                        uv_grid[i][j] = uv_grid[j][i] # 效果不错。边缘有微小锯齿感，可以通过提高resolution解决
-                        #uv_grid[i][j] = (0, 0) # 效果比较差
+                        # 思想: 将直线y = x - 2下方的点映射到直线的对称位置
+                        # 这样就可以不用修改triangle_indices了
+                        # 效果不错。边缘有微小锯齿感，可以通过提高resolution解决
+                        uv_grid[i][j] = uv_grid[j][i] 
+                        # 下面是最原始的思路，效果比较差
+                        #uv_grid[i][j] = (0, 0)
 
             point_grid = np.apply_along_axis(lambda p: self.uv_func(*p), 2, uv_grid)
 
