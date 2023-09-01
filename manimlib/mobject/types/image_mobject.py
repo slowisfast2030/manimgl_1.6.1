@@ -11,6 +11,13 @@ from manimlib.utils.iterables import listify
 
 
 class ImageMobject(Mobject):
+    """
+    以前也好奇, image是如何被显示出来的
+    image的点集的概念不是很明显
+
+    image在数学本质上是一个矩形, 包含四个点
+    点的颜色由纹理决定
+    """
     CONFIG = {
         "height": 4,
         "opacity": 1,
