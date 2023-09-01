@@ -333,6 +333,8 @@ class Camera(object):
         - ``anti_alias_width`` : 抗锯齿
         '''
         # 为何不能正确解析pw和ph参数呢？
+        # 因为命令行参数优先级更高
+        # 除了修改constants.py文件, 还需要修改default_config.yml文件
         digest_config(self, kwargs, locals())
         # 在好几个地方尝试修改pw和ph，这里是源头
         # self.pixel_width = 1080
