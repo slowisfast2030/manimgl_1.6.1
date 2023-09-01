@@ -187,6 +187,15 @@ class Surface(Mobject):
         if nu == 0 or nv == 0:
             self.triangle_indices = np.zeros(0, dtype=int)
             return
+        """
+        array([[   0,    1,    2, ...,   48,   49,   50],
+              [  51,   52,   53, ...,   99,  100,  101],
+              [ 102,  103,  104, ...,  150,  151,  152],
+              ...,
+              [4998, 4999, 5000, ..., 5046, 5047, 5048],
+              [5049, 5050, 5051, ..., 5097, 5098, 5099],
+              [5100, 5101, 5102, ..., 5148, 5149, 5150]])
+        """
         index_grid = np.arange(nu * nv).reshape((nu, nv))
         indices = np.zeros(6 * (nu - 1) * (nv - 1), dtype=int)
         indices[0::6] = index_grid[:-1, :-1].flatten()  # Top left
