@@ -113,6 +113,8 @@ class Surface(Mobject):
                 v,
                 2-u+v if u-v <=2 else 0
             ])
+
+        只画出三角形范围
         """
         dim = self.dim
         nu, nv = self.resolution
