@@ -17,6 +17,9 @@ class ImageMobject(Mobject):
 
     image在数学本质上是一个矩形, 包含四个点
     点的颜色由纹理决定
+
+    ImageMobject继承至Mobject
+    Mobject的"render_primitive": moderngl.TRIANGLE_STRIP 
     """
     CONFIG = {
         "height": 4,
