@@ -471,6 +471,13 @@ class rotate_test(ShadowScene):
         self.wait()
 
         # Orient straight up
+        """
+        对MoveToTarget的深度思考:
+        target的颜色属性我们可以简单的一次性设定
+        但target的位置属性, 我们可能需要进行多次设定
+
+        脑海中可以自动补充动画效果        
+        """
         unit_normal = face.get_unit_normal()
         axis = rotate_vector(normalize([*unit_normal[:2], 0]), PI / 2, OUT)
         angle = np.arccos(unit_normal[2])
