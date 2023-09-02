@@ -425,7 +425,7 @@ class FocusOnOneFace(ShadowScene):
         cube.update()
         # 获取z坐标最大的face的索引
         index = np.argmax([f.get_z() for f in cube])
-        face = cube[index]
+        face : VMobject = cube[index]
         prev_opacity = face.get_fill_opacity()
         
         # cube变换的目标设置
