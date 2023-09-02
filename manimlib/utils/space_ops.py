@@ -159,10 +159,12 @@ def rotation_matrix(angle: float, axis: np.ndarray) -> np.ndarray:
     1.angle, axis
     2.quaternion
     3.matrix
+    4.欧拉角
 
     Rotation.from_quat(quat).as_rotvec()
     Rotation.from_rotvec(angle * normalize(axis)).as_quat()
-    Rotation.from_rotvec(angle * normalize(axis)).as_matrix() 
+    Rotation.from_rotvec(angle * normalize(axis)).as_matrix()
+    Rotation.from_euler("zxz", eulers[::-1]) 
     """
     return Rotation.from_rotvec(angle * normalize(axis)).as_matrix()
 
