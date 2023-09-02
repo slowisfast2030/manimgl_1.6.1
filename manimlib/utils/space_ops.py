@@ -88,6 +88,9 @@ def rotate_vector(
     angle: float,
     axis: np.ndarray = OUT
 ) -> np.ndarray | list[float]:
+    """
+    这里默认axis过原点
+    """
     rot = Rotation.from_rotvec(angle * normalize(axis))
     return np.dot(vector, rot.as_matrix().T)
 
