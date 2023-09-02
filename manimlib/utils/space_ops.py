@@ -55,6 +55,9 @@ def normalize(vect: np.ndarray, fall_back: np.ndarray | None = None) -> np.ndarr
 
 def quaternion_mult(*quats: Sequence[float]) -> list[float]:
     # Real part is last entry, which is bizzare, but fits scipy Rotation convention
+    """
+    多个四元数相乘
+    """
     if len(quats) == 0:
         return [0, 0, 0, 1]
     result = quats[0]
