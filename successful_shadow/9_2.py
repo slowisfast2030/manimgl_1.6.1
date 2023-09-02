@@ -426,7 +426,7 @@ class rotate_test(ShadowScene):
         # 获取z坐标最大的face的索引
         index = np.argmax([f.get_z() for f in cube])
         # 小技巧: 可以为对象申明一下类型, 方便函数跳转
-        face : VMobject = cube[index].move_to([0, 0, 4])
+        face : VMobject = cube[index].move_to([1, 0, 4])
         prev_opacity = face.get_fill_opacity()
         
         # cube变换的目标设置
@@ -490,7 +490,8 @@ class rotate_test(ShadowScene):
 
         face.generate_target()
         # 将倾斜的平面旋转到和xoy平面平行
-        face.target.rotate(-angle, axis, about_point=(0,0,4))
+        #face.target.rotate(-angle, axis, about_point=(1,0,4))
+        face.target.rotate(-angle, axis)
         unit_normal_target = face.target.get_unit_normal()
         print("unit_normal_target: ", unit_normal_target)
         print("target face center: ", face.target.get_center())
