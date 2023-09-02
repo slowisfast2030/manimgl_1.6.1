@@ -96,6 +96,15 @@ def quaternion_from_angle_axis(
 
 
 def angle_axis_from_quaternion(quat: Sequence[float]) -> tuple[float, np.ndarray]:
+    """
+    给定四元数，返回angle和axis
+
+    quat = [0, 0, 0.3826834323650898, 0.9238795325112867]
+    angle, axis = angle_axis_from_quaternion(quat)
+    print(angle, axis)
+
+    0.7853981633974484 [0. 0. 1.]
+    """
     rot_vec = Rotation.from_quat(quat).as_rotvec()
     norm = get_norm(rot_vec)
     return norm, rot_vec / norm
@@ -145,6 +154,15 @@ def rotation_matrix(angle: float, axis: np.ndarray) -> np.ndarray:
     Rotation in R^3 about a specified axis of rotation.
 
     特别注意: 这里默认axis过原点
+
+    表达旋转的三种方法:
+    1.angle, axis
+    2.quaternion
+    3.matrix
+
+    Rotation.from_quat(quat).as_rotvec()
+    Rotation.from_rotvec(angle * normalize(axis)).as_quat()
+    Rotation.from_rotvec(angle * normalize(axis)).as_matrix() 
     """
     return Rotation.from_rotvec(angle * normalize(axis)).as_matrix()
 
