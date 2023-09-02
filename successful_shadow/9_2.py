@@ -426,7 +426,7 @@ class rotate_test(ShadowScene):
         # 获取z坐标最大的face的索引
         index = np.argmax([f.get_z() for f in cube])
         # 小技巧: 可以为对象申明一下类型, 方便函数跳转
-        face : VMobject = cube[index].move_to([1, 0, 4])
+        face: VMobject = cube[index].move_to([1, 0, 4])
         prev_opacity = face.get_fill_opacity()
         
         # cube变换的目标设置
