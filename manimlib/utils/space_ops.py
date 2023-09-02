@@ -112,6 +112,8 @@ def rotation_matrix_from_quaternion(quat: Iterable) -> np.ndarray:
 def rotation_matrix(angle: float, axis: np.ndarray) -> np.ndarray:
     """
     Rotation in R^3 about a specified axis of rotation.
+
+    特别注意: 这里默认axis过原点
     """
     return Rotation.from_rotvec(angle * normalize(axis)).as_matrix()
 
