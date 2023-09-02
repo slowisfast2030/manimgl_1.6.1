@@ -481,6 +481,10 @@ class rotate_test(ShadowScene):
         unit_normal = face.get_unit_normal()
         axis = rotate_vector(normalize([*unit_normal[:2], 0]), PI / 2, OUT)
         angle = np.arccos(unit_normal[2])
+        print("unit_normal: ", unit_normal)
+        print("axis: ", axis)
+        print("angle: ", angle)
+
         face.generate_target()
         # 将倾斜的平面旋转到和xoy平面平行
         face.target.rotate(-angle, axis)
