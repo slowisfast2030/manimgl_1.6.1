@@ -397,7 +397,7 @@ class FocusOnOneFace(ShadowScene):
 
     def construct(self):
         # Some random tumbling
-        cube = self.solid
+        cube  = self.solid
         shadow = self.shadow
         frame = self.camera.frame
 
