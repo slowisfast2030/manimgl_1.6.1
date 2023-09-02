@@ -483,6 +483,13 @@ class FocusOnOneFace(ShadowScene):
         light_lines = self.get_light_lines(n_lines=4, outline=shadow, only_vertices=True)
         light_lines.set_stroke(YELLOW, 1, 0.5)
 
+        """
+        这个动画真是绝了
+        启发：
+        1.light_lines同时添加了updater和animation
+        2.lag_ratio参数的应用
+        3.TransformFromCopy的使用超出想象
+        """
         self.play(
             frame.animate.set_phi(70 * DEGREES),
             FadeIn(light_lines, lag_ratio=0.5),
