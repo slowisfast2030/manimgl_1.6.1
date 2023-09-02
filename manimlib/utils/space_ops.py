@@ -135,7 +135,7 @@ def rotate_vector(
 def rotate_vector_2d(vector: Iterable, angle: float):
     # Use complex numbers...because why not
     """
-    帅气
+    使用复数完成2d vector的旋转
     """
     z = complex(*vector) * np.exp(complex(0, angle))
     return np.array([z.real, z.imag])
@@ -195,8 +195,16 @@ def rotation_about_z(angle: float) -> list[list[float]]:
         [0, 0, 1]
     ]
 
-
+"""
+单位阵 identity(unit) matrix
+This code creates a 3x3 identity matrix using the identity function 
+from the NumPy library. An identity matrix is a square matrix where 
+all elements on the main diagonal are 1, and all other elements are 0. 
+"""
 def rotation_between_vectors(v1, v2) -> np.ndarray:
+    """
+    从v1到v2的旋转矩阵
+    """
     if np.all(np.isclose(v1, v2)):
         return np.identity(3)
     return rotation_matrix(
