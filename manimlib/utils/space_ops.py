@@ -22,6 +22,13 @@ from manimlib.utils.simple_functions import clip
 
 
 def cross(v1: np.ndarray, v2: np.ndarray) -> list[np.ndarray]:
+    """
+    |   i     j     k   |
+    | v1[0] v1[1] v1[2] |
+    | v2[0] v2[1] v2[2] |
+
+    计算v1和v2的叉乘
+    """
     return [
         v1[1] * v2[2] - v1[2] * v2[1],
         v1[2] * v2[0] - v1[0] * v2[2],
