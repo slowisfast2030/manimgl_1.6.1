@@ -1718,12 +1718,15 @@ class Mobject(object):
         return self.get_bounding_box_point(direction)[dim]
 
     def get_x(self, direction=ORIGIN) -> float:
+        '''获取 x 坐标'''
         return self.get_coord(0, direction)
 
     def get_y(self, direction=ORIGIN) -> float:
+        '''获取 y 坐标'''
         return self.get_coord(1, direction)
 
     def get_z(self, direction=ORIGIN) -> float:
+        '''获取 z 坐标'''
         return self.get_coord(2, direction)
 
     def get_start(self) -> np.ndarray:
