@@ -10,7 +10,7 @@ vec3 rotate_point_into_frame(vec3 point){
     return camera_rotation * point;
 }
 
-// 相机坐标系
+// 世界坐标系 --> 相机坐标系
 vec3 position_point_into_frame(vec3 point){
     if(bool(is_fixed_in_frame)){
         return point;
