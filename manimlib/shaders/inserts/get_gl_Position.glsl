@@ -10,7 +10,7 @@ float perspective_scale_factor(float z, float focal_distance){
     return max(0.0, focal_distance / (focal_distance - z));
 }
 
-
+// 相机空间 --> 裁剪空间 
 vec4 get_gl_Position(vec3 point){
     vec4 result = vec4(point, 1.0);
     if(!bool(is_fixed_in_frame)){
