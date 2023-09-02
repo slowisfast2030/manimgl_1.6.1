@@ -183,6 +183,9 @@ s.apply_points_function(
 )
 """
 def rotation_about_z(angle: float) -> list[list[float]]:
+    """
+    可用rotation_matrix函数代替
+    """
     return [
         [math.cos(angle), -math.sin(angle), 0],
         [math.sin(angle), math.cos(angle), 0],
