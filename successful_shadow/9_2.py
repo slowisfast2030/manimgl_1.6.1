@@ -413,7 +413,7 @@ class rotate_test(ShadowScene):
         average_words.fix_in_frame()
         self.add(average_words)
 
-        self.random_toss(run_time=1, rate_func=linear)
+        self.random_toss(run_time=1.5, rate_func=linear)
         self.play(
             FadeIn(words[0], 0.75 * UP),
             FadeOut(average_words, 0.75 * UP),
@@ -475,7 +475,11 @@ class rotate_test(ShadowScene):
         axis = rotate_vector(normalize([*unit_normal[:2], 0]), PI / 2, OUT)
         angle = np.arccos(unit_normal[2])
         face.generate_target()
+        # 将倾斜的平面旋转到和xoy平面平行
         face.target.rotate(-angle, axis)
+        # 平行后移到z=3的平面
         face.target.move_to(3 * OUT)
+        # 垂直向上为轴，顺时针旋转45度
         face.target.rotate(-PI / 4, OUT)
         self.play(MoveToTarget(face))
+        self.wait()
