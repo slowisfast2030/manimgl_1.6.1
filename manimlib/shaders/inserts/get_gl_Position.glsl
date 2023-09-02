@@ -22,6 +22,7 @@ float perspective_scale_factor(float z, float focal_distance){
 vec4 get_gl_Position(vec3 point){
     vec4 result = vec4(point, 1.0);
     if(!bool(is_fixed_in_frame)){
+        // 缩放到[-1, 1]的范围
         result.x *= 2.0 / frame_shape.x;
         result.y *= 2.0 / frame_shape.y;
         float psf = perspective_scale_factor(result.z, focal_distance);
