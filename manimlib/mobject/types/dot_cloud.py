@@ -17,6 +17,10 @@ DEFAULT_GRID_HEIGHT = 6
 DEFAULT_BUFF_RATIO = 0.5
 
 
+"""
+DotCloud有一个单独的着色器
+需要研究下着色器代码
+"""
 class DotCloud(PMobject):
     CONFIG = {
         "color": GREY_C,
