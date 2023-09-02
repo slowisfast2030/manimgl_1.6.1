@@ -3,9 +3,17 @@
 // uniform float focal_distance;
 // uniform float is_fixed_in_frame;
 
-// 这里有隐患，竟然写死了
+// 这里有隐患。如果想把屏幕的输出比例改为16: 9
+// 如果不是固定的obj，没有影响
+// 如果是固定的obj, 缩放比例有误
 const vec2 DEFAULT_FRAME_SHAPE = vec2(8.0 * 16.0 / 9.0, 8.0);
 
+// 定义了视锥, 当 -inf < z < focal_distance可见
+// 假设focal_distance = 16
+// 如果z = -16, focal_distance / (focal_distance - z) = 1/2 缩小2倍
+// 如果z = 0,   focal_distance / (focal_distance - z) = 1   保持不变
+// 如果z = 8,   focal_distance / (focal_distance - z) = 2   放大2倍
+// 意味着, 在xoy平面的物体保持大小不变, xoy平面之下的缩小, xoy平面之上(小于焦距)的物体放大
 float perspective_scale_factor(float z, float focal_distance){
     return max(0.0, focal_distance / (focal_distance - z));
 }
