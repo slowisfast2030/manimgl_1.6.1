@@ -490,7 +490,7 @@ class rotate_test(ShadowScene):
 
         face.generate_target()
         # 将倾斜的平面旋转到和xoy平面平行
-        face.target.rotate(-angle, axis)
+        face.target.rotate(-angle, axis, about_point=(0,0,4))
         unit_normal_target = face.target.get_unit_normal()
         print("unit_normal_target: ", unit_normal_target)
         print("target face center: ", face.target.get_center())
