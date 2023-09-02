@@ -97,6 +97,9 @@ def rotate_vector(
 
 def rotate_vector_2d(vector: Iterable, angle: float):
     # Use complex numbers...because why not
+    """
+    帅气
+    """
     z = complex(*vector) * np.exp(complex(0, angle))
     return np.array([z.real, z.imag])
 
