@@ -136,6 +136,9 @@ def rotate_vector_2d(vector: Iterable, angle: float):
     # Use complex numbers...because why not
     """
     使用复数完成2d vector的旋转
+    令vector为(x,y)
+    z = (x+i*y)*e^(i*angle)
+    完美的使用了复数的两种表达形式
     """
     z = complex(*vector) * np.exp(complex(0, angle))
     return np.array([z.real, z.imag])
