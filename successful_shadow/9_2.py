@@ -485,8 +485,8 @@ class rotate_test(ShadowScene):
         # 将倾斜的平面旋转到和xoy平面平行
         face.target.rotate(-angle, axis)
         # 平行后移到z=3的平面
-        face.target.move_to(3 * OUT)
+        #face.target.move_to(3 * OUT)
         # 垂直向上为轴，顺时针旋转45度
-        face.target.rotate(-PI / 4, OUT)
+        #face.target.rotate(-PI / 4, OUT)
         self.play(MoveToTarget(face))
         self.wait()
