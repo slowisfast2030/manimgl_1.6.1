@@ -442,6 +442,7 @@ class FocusOnOneFace(ShadowScene):
             FadeIn(words[1]),
         )
         # 3b1b经常使用的技巧: 并行执行多个动画
+        # 如果我们想突出某个text的时候，如果仅仅只有文字的动画，会显得很呆
         self.play(
             frame.animate.reorient(-10, 65),
             FlashAround(words[1], rate_func=squish_rate_func(smooth, 0.2, 0.5)),
