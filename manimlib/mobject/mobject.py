@@ -296,6 +296,14 @@ class Mobject(object):
 
         这个注释不是很准确
         about_edge是为了计算about_point而存在的，核心还是about_point
+
+        灵魂发问：为何about_point是核心？
+        这里的func基本上是矩阵
+        矩阵的几何意义是旋转+伸缩(平移需要扩充维度)
+        如果规定伸缩比例为1
+        那么就是正交矩阵
+        那么，正交矩阵的几何意义就是旋转
+        这里的about_point就是旋转轴通过的点
         """
         # about_point是主要的
         # 如果about_point为None，就用about_edge
