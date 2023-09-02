@@ -452,7 +452,9 @@ class FocusOnOneFace(ShadowScene):
         frame.add_updater(lambda f, dt: f.increment_theta(0.01 * dt))
 
         self.solid = face
+        # 移除旧的shadow，再添加新的shadow
         self.remove(shadow)
+        # 添加新的shadow需要提前设置新的self.solid
         self.add_shadow()
         shadow = self.shadow
 
