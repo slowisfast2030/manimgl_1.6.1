@@ -497,12 +497,17 @@ class FocusOnOneFace(ShadowScene):
             run_time=3,
         )
         self.wait(3)
+        
+        # face垂直
         self.play(
             Rotate(face, PI / 2, UP),
             FadeOut(area_q, scale=0),
             run_time=3,
         )
         self.wait(3)
+
+        # face倾斜
+        # 同时，光线慢慢消失
         self.play(
             Rotate(face, -PI / 3, UP),
             UpdateFromAlphaFunc(light_lines, lambda m, a: m.set_opacity(0.5 * (1 - a)), remover=True),
