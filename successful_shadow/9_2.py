@@ -481,6 +481,7 @@ class rotate_test(ShadowScene):
         unit_normal = face.get_unit_normal()
         axis = rotate_vector(normalize([*unit_normal[:2], 0]), PI / 2, OUT)
         angle = np.arccos(unit_normal[2])
+        print("="*100)
         print("unit_normal: ", unit_normal)
         print("axis: ", axis)
         print("angle: ", angle)
