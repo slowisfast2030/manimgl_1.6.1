@@ -571,3 +571,4 @@ class FocusOnOneFace(ShadowScene):
             rate_func=there_and_back,
             run_time=8,
         )
+        
