@@ -441,6 +441,7 @@ class FocusOnOneFace(ShadowScene):
             MoveToTarget(cube),
             FadeIn(words[1]),
         )
+        # 3b1b经常使用的技巧: 并行执行多个动画
         self.play(
             frame.animate.reorient(-10, 65),
             FlashAround(words[1], rate_func=squish_rate_func(smooth, 0.2, 0.5)),
