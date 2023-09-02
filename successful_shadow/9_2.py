@@ -355,7 +355,7 @@ class ShadowScene(ThreeDScene):
         mobject.rot_axis = normalize(np.random.random(3))
         mobject.rot_time = 0
 
-        def update(mob, time):
+        def update(mob: Mobject, time):
             dt = time - mob.rot_time
             mob.rot_time = time
             mob.rot_axis = rotate_vector(mob.rot_axis, meta_speed * dt, normalize(np.random.random(3)))
