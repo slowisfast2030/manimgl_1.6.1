@@ -463,6 +463,7 @@ class FocusOnOneFace(ShadowScene):
         """
         这是一个经典的例子: 为一个对象同时添加了updater和animation
         疑问: 在执行animation的时候会同时执行updater吗?
+        area_q的位置是何时移动的?
         """
         area_q.add_updater(lambda m: m.move_to(shadow))
         self.play(Write(area_q))
