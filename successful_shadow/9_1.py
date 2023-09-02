@@ -553,7 +553,7 @@ class FocusOnOneFace(ShadowScene):
         """
         这里一直有一个困惑:
         对于z_axis来说, 既add又play
-        
+        这两者之间是什么关系?似乎不用add, 只需要play就可以了
         """
         self.add(z_axis[0], face, z_axis[1], normal_vect)
         self.play(*map(FadeIn, z_axis))
@@ -562,7 +562,9 @@ class FocusOnOneFace(ShadowScene):
         )
 
         # Vary Theta
+        # 这里是干嘛的?
         frame.reorient(2)
+        # 这里有一个很突兀的旋转
         face.rotate(-35 * DEGREES, get_un(), about_point=face.get_center())
         self.play(
             Rotate(face, 50 * DEGREES, UP),
