@@ -427,8 +427,11 @@ class FocusOnOneFace(ShadowScene):
         index = np.argmax([f.get_z() for f in cube])
         face = cube[index]
         prev_opacity = face.get_fill_opacity()
+        
+        # cube变换的目标设置
         cube.generate_target(use_deepcopy=True)
         cube.target.clear_updaters()
+        # face保持不动，其他的面远离
         cube.target.space_out_submobjects(2, about_point=face.get_center())
         cube.target.set_opacity(0)
         cube.target[index].set_opacity(prev_opacity)
