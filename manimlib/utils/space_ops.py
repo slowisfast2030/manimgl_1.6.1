@@ -74,6 +74,24 @@ def quaternion_from_angle_axis(
     angle: float,
     axis: np.ndarray,
 ) -> list[float]:
+    """
+    给定angle和axis, 返回四元数
+    sin(angle/2)axis[0]
+    sin(angle/2)axis[1]
+    sin(angle/2)axis[2]
+    cos(angle/2)
+
+    最后一个数是实部
+
+    举例:
+    angle = np.pi / 4 
+    axis = np.array([0, 0, 1]) 
+    quaternion = quaternion_from_angle_axis(angle, axis) 
+    返回结果[0, 0, 0.38268343, 0.92387953]
+
+    math.sin(np.pi/8) --> 0.3826834323650898
+    math.cos(np.pi/8) --> 0.9238795325112867
+    """
     return Rotation.from_rotvec(angle * normalize(axis)).as_quat()
 
 
