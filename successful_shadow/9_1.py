@@ -547,8 +547,14 @@ class FocusOnOneFace(ShadowScene):
         ))
         theta.add_updater(lambda m: m.set_width(min(0.123, max(0.01, arc.get_width()))))
 
+        # 这里的normal_vect又同时具有updater和animation
         self.play(ShowCreation(normal_vect))
         self.wait()
+        """
+        这里一直有一个困惑:
+        对于z_axis来说, 既add又play
+        
+        """
         self.add(z_axis[0], face, z_axis[1], normal_vect)
         self.play(*map(FadeIn, z_axis))
         self.play(
