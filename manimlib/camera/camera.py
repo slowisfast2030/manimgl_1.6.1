@@ -733,10 +733,6 @@ class Camera(object):
             rotation, self.light_source.get_location() + offset
         )
         cam_pos = self.frame.get_implied_camera_location()  # TODO
-        print("~"*100)
-        print("rotation: \n", rotation)
-        print("light_pos: ", light_pos)
-        print("cam_pos: ", cam_pos)
         """
         一个疑问:
         这里的camera_rotation是列表
@@ -752,6 +748,12 @@ class Camera(object):
             "light_source_position": tuple(light_pos),
             "focal_distance": frame.get_focal_distance(),
         }
+        print("~"*100)
+        for name, value in self.perspective_uniforms.items():
+            if name == "camera_rotation":
+                print("rotation: \n", rotation)
+                continue 
+            print("{}={}".format(name, value))
 
     def init_textures(self) -> None:
         self.n_textures: int = 0
