@@ -729,6 +729,10 @@ class Camera(object):
         # Orient light
         rotation = frame.get_inverse_camera_rotation_matrix()
         offset = frame.get_center()
+        # 这里使用rotation对世界坐标系的light_source进行了坐标变换
+        # 那么，可以猜测：在顶点着色器中，也会使用rotation对世界坐标系
+        # 的点进行坐标变换
+        # 需要进一步理解这里的rotation究竟是什么
         light_pos = np.dot(
             rotation, self.light_source.get_location() + offset
         )
