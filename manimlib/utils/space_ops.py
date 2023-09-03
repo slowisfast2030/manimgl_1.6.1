@@ -459,6 +459,12 @@ def earclip_triangulation(verts: np.ndarray, ring_ends: list[int]) -> list:
     - ring_ends is a list of indices indicating where
     the ends of new paths are
     """
+    """
+    Earclipping is a technique used in polygon triangulation, which is the 
+    process of decomposing a polygon into a set of non-overlapping triangles. 
+    Triangulation is commonly used in computer graphics, computational geometry, 
+    and various other applications. 
+    """
 
     rings = [
         list(range(e0, e1))
