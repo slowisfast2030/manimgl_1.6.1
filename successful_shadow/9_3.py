@@ -221,8 +221,9 @@ class ShadowScene(ThreeDScene):
     unit_size = 2
 
     def setup(self):
-        self.camera.frame.reorient(-30, 75)
-        self.camera.frame.move_to(self.frame_center)
+        #self.camera.frame.reorient(-30, 75)
+        self.camera.frame.reorient(0, 0, 0)
+        #self.camera.frame.move_to(self.frame_center)
         self.add_plane()
         self.add_solid()
         self.add_shadow()
@@ -445,12 +446,12 @@ class uniform_test(ShadowScene):
         # 3b1b经常使用的技巧: 并行执行多个动画
         # 如果我们想突出某个text的时候，如果仅仅只有文字的动画，会显得很呆
         self.play(
-            frame.animate.reorient(-10, 65),
+            #frame.animate.reorient(-10, 65),
             FlashAround(words[1], rate_func=squish_rate_func(smooth, 0.2, 0.5)),
             FlashAround(words[0], rate_func=squish_rate_func(smooth, 0.5, 0.8)),
             run_time=1,
         )
-        frame.add_updater(lambda f, dt: f.increment_theta(0.01 * dt))
+        #frame.add_updater(lambda f, dt: f.increment_theta(0.01 * dt))
 
         self.solid = face
         # 移除旧的shadow，再添加新的shadow
