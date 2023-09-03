@@ -733,7 +733,10 @@ class Camera(object):
             rotation, self.light_source.get_location() + offset
         )
         cam_pos = self.frame.get_implied_camera_location()  # TODO
-
+        print("~"*100)
+        print("rotation: ", rotation)
+        print("light_pos: ", light_pos)
+        print("cam_pos: ", cam_pos)
         """
         一个疑问:
         这里的camera_rotation是列表
