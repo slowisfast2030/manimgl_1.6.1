@@ -356,6 +356,10 @@ def find_intersection(
     from arrays of such points/directions).
     For 3d values, it returns the point on the ray p0 + v0 * t closest to the
     ray p1 + v1 * t
+
+    对于2d or 3d空间的直线, 计算交点
+    对于3d空间的直线, 可能是异面直线, 那么返回line1上距离line2最近的点
+    (交换下line1和line2的顺序, 就可以返回line2上距离line1最近的点)
     """
     p0 = np.array(p0, ndmin=2)
     v0 = np.array(v0, ndmin=2)
