@@ -402,7 +402,7 @@ class uniform_test(ShadowScene):
         cube.move_to([0,0,2])
         #shadow = self.shadow
         frame = self.camera.frame
-        frame.reorient(30,70)
+        frame.reorient(-30,70)
 
         words = VGroup(
             Text("Just one orientation"),
