@@ -752,12 +752,12 @@ class Camera(object):
             "light_source_position": tuple(light_pos),
             "focal_distance": frame.get_focal_distance(),
         }
-        print("~"*100)
-        for name, value in self.perspective_uniforms.items():
-            if name == "camera_rotation":
-                print("rotation: \n", rotation)
-                continue 
-            print("{}={}".format(name, value))
+        # print("~"*100)
+        # for name, value in self.perspective_uniforms.items():
+        #     if name == "camera_rotation":
+        #         print("rotation: \n", rotation)
+        #         continue 
+        #     print("{}={}".format(name, value))
 
     def init_textures(self) -> None:
         self.n_textures: int = 0
