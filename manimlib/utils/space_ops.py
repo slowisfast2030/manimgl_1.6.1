@@ -387,6 +387,9 @@ def get_closest_point_on_line(
         It returns point x such that
         x is on line ab and xp is perpendicular to ab.
         If x lies beyond ab line, then it returns nearest edge(a or b).
+    
+        p是线段ab外一点
+        求p到线段ab的最短距离
     """
     # x = b + t*(a-b) = t*a + (1-t)*b
     t = np.dot(p - b, a - b) / np.dot(a - b, a - b)
