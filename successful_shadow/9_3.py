@@ -226,8 +226,8 @@ class ShadowScene(ThreeDScene):
         #self.camera.frame.move_to(self.frame_center)
         self.add_plane()
         self.add_solid()
-        self.add_shadow()
-        self.setup_light_source()
+        #self.add_shadow()
+        #self.setup_light_source()
 
     def add_plane(self):
         width, height = self.plane_dims
@@ -399,8 +399,10 @@ class uniform_test(ShadowScene):
     def construct(self):
         # Some random tumbling
         cube  = self.solid
-        shadow = self.shadow
+        cube.move_to([0,0,2])
+        #shadow = self.shadow
         frame = self.camera.frame
+        frame.reorient(0,0)
 
         words = VGroup(
             Text("Just one orientation"),
@@ -438,7 +440,7 @@ class uniform_test(ShadowScene):
         cube.target.set_opacity(0)
         cube.target[index].set_opacity(prev_opacity)
 
-        self.shadow.set_stroke(width=0)
+        #self.shadow.set_stroke(width=0)
         self.play(
             MoveToTarget(cube),
             FadeIn(words[1]),
@@ -446,29 +448,13 @@ class uniform_test(ShadowScene):
         # 3b1b经常使用的技巧: 并行执行多个动画
         # 如果我们想突出某个text的时候，如果仅仅只有文字的动画，会显得很呆
         self.play(
-            #frame.animate.reorient(-10, 65),
             FlashAround(words[1], rate_func=squish_rate_func(smooth, 0.2, 0.5)),
             FlashAround(words[0], rate_func=squish_rate_func(smooth, 0.5, 0.8)),
             run_time=1,
         )
-        #frame.add_updater(lambda f, dt: f.increment_theta(0.01 * dt))
 
         self.solid = face
-        # 移除旧的shadow，再添加新的shadow
-        self.remove(shadow)
-        # 添加新的shadow需要提前设置新的self.solid
-        self.add_shadow()
-        shadow = self.shadow
-
-        # Ask about area
-        area_q = Text("Area?")
-        """
-        这是一个经典的例子: 为一个对象同时添加了updater和animation
-        疑问: 在执行animation的时候会同时执行updater吗?
-        area_q的位置是何时移动的?
-        """
-        area_q.add_updater(lambda m: m.move_to(shadow))
-        self.play(Write(area_q))
+    
         self.wait()
 
         # Orient straight up
