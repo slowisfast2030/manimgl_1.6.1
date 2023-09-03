@@ -132,6 +132,14 @@ def rotate_vector(
     return np.dot(vector, rot.as_matrix().T)
 
 
+"""
+complex is a built-in function that comes with Python. It is used to create 
+a complex number by specifying a real part and an imaginary part. For example, 
+complex(3, 5) returns (3+5j), which is a complex number with real part 3 and 
+imaginary part 5. You can also use a string as the first argument of the complex 
+function, as long as it represents a valid complex number. For example, 
+complex('3+5j') also returns (3+5j)
+"""
 def rotate_vector_2d(vector: Iterable, angle: float):
     # Use complex numbers...because why not
     """
