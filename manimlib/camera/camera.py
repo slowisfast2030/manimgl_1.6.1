@@ -734,6 +734,12 @@ class Camera(object):
         )
         cam_pos = self.frame.get_implied_camera_location()  # TODO
 
+        """
+        一个疑问:
+        这里的camera_rotation是列表
+        但是在后面的着色器代码中又是mat3
+        究竟哪里对其进行了修改
+        """
         self.perspective_uniforms = {
             "frame_shape": frame.get_shape(),
             "anti_alias_width": anti_alias_width,
