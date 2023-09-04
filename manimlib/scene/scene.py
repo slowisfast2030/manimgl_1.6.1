@@ -657,6 +657,13 @@ class Scene(object):
         #print(animations)
         self.lock_static_mobject_data(*animations)
         self.begin_animations(animations)
+        """
+        这个函数是核心: 
+        animation.update_mobjects(dt)  执行mob的updater(此mob已经添加了animation)
+        animation.interpolate(alpha)   执行mob的animation
+        self.update_frame(dt)          执行所有self.mobjects的updater
+        self.emit_frame()              将frame写入管道
+        """
         self.progress_through_animations(animations)
         self.finish_animations(animations)
         self.unlock_mobject_data()
