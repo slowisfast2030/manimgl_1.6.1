@@ -3,6 +3,7 @@ import numpy as np
 from manimlib.animation.animation import Animation
 from manimlib.animation.creation import ShowCreation
 from manimlib.animation.creation import Write
+from manimlib.animation.creation import DrawBorderThenFill
 from manimlib.animation.fading import FadeOut
 from manimlib.animation.growing import GrowArrow
 from manimlib.animation.transform import ApplyFunction
