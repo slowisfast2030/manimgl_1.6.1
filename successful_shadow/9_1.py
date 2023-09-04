@@ -642,3 +642,18 @@ class FocusOnOneFace(ShadowScene):
         2.animation是主动, update是被动
         3.一般的模式: 通过animation驱动update
         """
+        
+        """
+        猜测：
+        上述这么多的updater, 执行顺序是咋样的呢？
+        以
+        face --> normal_vect --> glowdot
+        为例
+        上述图示是理想的调用顺序
+        然而
+        face --> glowdot --> normal_vect    
+        会有影响吗？     
+
+        """
+        print("-"*100)
+        print(self.mobjects)
