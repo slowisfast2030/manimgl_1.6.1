@@ -48,6 +48,12 @@ class Rotating(Animation):
         )
 
 
+"""
+对于旋转来说，一个重要的参数是旋转轴所过的点
+about_point和about_edge就是为了确定这个点
+当about_point为None, about_edge为ORIGIN的时候
+这个固定点就是mob的中心
+"""
 class Rotate(Rotating):
     CONFIG = {
         "run_time": 1,
