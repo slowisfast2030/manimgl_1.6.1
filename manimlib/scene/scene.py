@@ -212,6 +212,10 @@ class Scene(object):
         调用和mob绑定的updater, 更新mob的状态
         注意, 这里的参数是dt
         """
+        """
+        对于mob的updater, 如果没有self.add(mob)
+        会不执行
+        """
         for mobject in self.mobjects:
             mobject.update(dt)
 
