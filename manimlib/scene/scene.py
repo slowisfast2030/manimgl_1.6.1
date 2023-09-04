@@ -277,6 +277,9 @@ class Scene(object):
         """将 Mobject 添加到场景中，后添加的会覆盖在上层"""
         # 为何要先remove? 有可能要添加的mob已经在场景中了
         self.remove(*new_mobjects)
+        # 执行updater的时候会遍历self.mobjects
+        # 如果mob添加了updater，但是没有self.add(mob)
+        # 那么mob的updater就不会被执行
         self.mobjects += new_mobjects
         return self
 
