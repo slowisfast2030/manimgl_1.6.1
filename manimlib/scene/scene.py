@@ -646,7 +646,7 @@ class Scene(object):
     setup()
     self.file_writer.begin()
 
-    construct()
+    construct() (paly & wait)
     self.file_writer.write_frame(self.camera) (from: emit_frame函数)
 
     teardown()
