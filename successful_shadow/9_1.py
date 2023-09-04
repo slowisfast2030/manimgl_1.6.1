@@ -542,6 +542,16 @@ class FocusOnOneFace(ShadowScene):
         """
         add_updater和always_redraw有什么区别?
         下面的always_redraw可以用add_updater代替吗?
+
+        比如:
+        arc = Arc(start_angle=PI/2,
+                  redius=0.5,
+                  stroke_width=2)
+        arc.add_updater(lambda m: m.set_angle(-get_theta())
+                                   .rotate(PI / 2, RIGHT, about_point=ORIGIN)
+                                   .shift(get_fc())
+
+        不过arc并没有set_angle()方法
         """
         arc = always_redraw(lambda: Arc(
             start_angle=PI / 2,
