@@ -588,6 +588,7 @@ class FocusOnOneFace(ShadowScene):
         self.play(ShowCreation(normal_vect))
         """
         为normal_vect的顶点添加glowdot
+        如果不add, 会无法显示
         """
         dot = GlowDot()
         dot.add_updater(lambda m: m.move_to(normal_vect.get_end()))
