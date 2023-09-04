@@ -613,6 +613,9 @@ class FocusOnOneFace(ShadowScene):
         #frame.reorient(2)
         # 这里有一个很突兀的旋转
         #face.rotate(-35 * DEGREES, get_un(), about_point=face.get_center())
+        """
+        所有的animation背后都是mob自带方法的属性修改
+        """
         self.play(
             Rotate(face, 50 * DEGREES, UP),
             rate_func=there_and_back,
