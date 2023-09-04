@@ -631,6 +631,11 @@ class Scene(object):
     wait函数的核心是
     self.update_frame(dt)
     """
+    """
+    construct函数内部
+    在遇到play和wait函数之前
+    都是为scene对象添加一些属性
+    """
     @handle_play_like_call
     def wait(
         self,
