@@ -35,6 +35,8 @@ class UpdateFromFunc(Animation):
 
 
 """
+lambda的第二个参数是动画的完成比例: alpha
+
 self.play(
         Rotate(face, -PI / 3, UP),
         UpdateFromAlphaFunc(light_lines, lambda m, a: m.set_opacity(0.5 * (1 - a)), remover=True),
