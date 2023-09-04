@@ -525,6 +525,11 @@ class FocusOnOneFace(ShadowScene):
         get_fc = face.get_center
 
         def get_un():
+            """
+            vmob的单位法向量计算一次后, 会存储在self.uniform中
+            单face发生location或者orientation的时候
+            需要重新计算一次单位法向量
+            """
             return face.get_unit_normal(recompute=True)
 
         def get_theta():
