@@ -1,4 +1,4 @@
 git pull
 git add *
-git commit -m "slow is fast"
+git commit -m "10x is easier then 2x"
 git push
