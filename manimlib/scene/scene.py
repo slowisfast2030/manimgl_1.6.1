@@ -553,7 +553,6 @@ class Scene(object):
             # of the scene.mobjects list, which is usually desired.
             if animation.mobject not in self.mobjects:
                 """
-                原来如此
                 之前一直好奇动画的对象没有add
                 """
                 self.add(animation.mobject)

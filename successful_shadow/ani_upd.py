@@ -20,8 +20,8 @@ class ani_upd(Scene):
         这里给c同时添加了updater和animation
         故可以省略self.add()操作
         """
-        #self.add(c)
-        #self.add(s)
+        # self.add(c)
+        # self.add(s)
 
         self.play(
             Rotate(c, 50 * DEGREES, OUT, suspend_mobject_updating=True),
