@@ -17,8 +17,8 @@ class ani_upd(Scene):
             run_time = 6,
         ) 
 
-        #print("-"*100)
-        #print(self.mobjects)
+        print("-"*100)
+        print(self.mobjects)
         
 class test(Scene):
     def construct(self):
