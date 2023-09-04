@@ -344,6 +344,7 @@ class SceneFileWriter(object):
         '''
         if self.write_to_movie:
             raw_bytes = camera.get_raw_fbo_data()
+            # 前面打开了管道，这里往管道里写数据
             self.writing_process.stdin.write(raw_bytes)
             if self.has_progress_display:
                 self.progress_display.update()
