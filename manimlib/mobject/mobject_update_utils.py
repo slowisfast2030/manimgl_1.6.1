@@ -63,6 +63,10 @@ arc = always_redraw(lambda: Arc(
 """
 def always_redraw(func: Callable[..., Mobject], *args, **kwargs) -> Mobject:
     """始终重复调用 ``func`` 生成新物体"""
+    """
+    mob = Mobject()
+    似乎也未尝不可
+    """
     mob = func(*args, **kwargs)
     mob.add_updater(lambda m: mob.become(func(*args, **kwargs)))
     return mob
