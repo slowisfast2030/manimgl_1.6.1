@@ -567,8 +567,18 @@ class Scene(object):
         """
         last_t = 0
         for t in self.get_animation_time_progression(animations):
+            """
+            t是全局时间
+            dt是每帧的间隔时间
+
+            animation用的是t (严格来说, 用的是t/run_time)
+            updater用的是dt
+
+            t每次按dt增加
+            """
             dt = t - last_t
             last_t = t
+            #print(t, dt)
             for animation in animations:
                 """
                 困惑:
