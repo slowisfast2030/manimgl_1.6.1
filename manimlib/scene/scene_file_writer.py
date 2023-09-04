@@ -226,10 +226,24 @@ class SceneFileWriter(object):
         """
         果然, write_to_movie和save_last_frame都被执行了
         """
-        print("="*80)
-        print("self.write_to_movie: ", self.write_to_movie)
-        print("self.save_last_frame: ", self.save_last_frame)
-        
+        # print("="*80)
+        # print("self.write_to_movie: ", self.write_to_movie)
+        # print("self.save_last_frame: ", self.save_last_frame)
+        """
+        非常困惑
+        执行 ```manimgl test.py test -o -s```
+        self.write_to_movie:  False
+        self.save_last_frame:  True
+
+        执行 ```manimgl test.py test -o -l``` 执行两次
+        第一次
+        self.write_to_movie:  False
+        self.save_last_frame:  True
+        第二次
+        self.write_to_movie:  True
+        self.save_last_frame:  False
+        """
+
         if self.write_to_movie:
             #print("write_to_movie")
             if self.break_into_partial_movies:
