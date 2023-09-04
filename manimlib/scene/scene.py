@@ -582,6 +582,8 @@ class Scene(object):
                 
                 奇怪: 不是说animation和updater不会同时执行吗?
                 """
+                #即使设置为True，updater也会执行
+                #animation.suspend_mobject_updating = True
                 animation.update_mobjects(dt)
                 # 动画已经执行的时间 / 动画总时间 = alpha
                 alpha = t / animation.run_time
