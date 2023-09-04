@@ -548,6 +548,10 @@ class Scene(object):
             # those on screen, this can result in a restructuring
             # of the scene.mobjects list, which is usually desired.
             if animation.mobject not in self.mobjects:
+                """
+                原来如此
+                之前一直好奇动画的对象没有add
+                """
                 self.add(animation.mobject)
 
     def progress_through_animations(self, animations: Iterable[Animation]) -> None:
