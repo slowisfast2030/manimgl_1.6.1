@@ -665,7 +665,18 @@ class Scene(object):
         self.emit_frame()              将frame写入管道
 
         这里有一个隐藏细节:
-        
+        当为mob添加animation的时候, 会执行self.add(mob)
+        也就意味着, 此时的self.mobjects中包含mob
+        那么
+        animation.update_mobjects(dt)
+        和
+        self.update_frame(dt)
+        会把同一个mob的updater执行两次
+        那么会有什么影响吗？
+        a --> b
+        假设b受a影响, 在某一个时刻
+        执行b的updater两次和一次
+        没有区别
         """
         self.progress_through_animations(animations)
         self.finish_animations(animations)
