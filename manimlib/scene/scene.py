@@ -280,6 +280,8 @@ class Scene(object):
         # 执行updater的时候会遍历self.mobjects
         # 如果mob添加了updater，但是没有self.add(mob)
         # 那么mob的updater就不会被执行
+        # 对于静态的mob(没有updater和animation)需要self.add(mob)
+        # 否则也不会显示(lock_static_mobject_data函数会遍历self.mobjects)
         self.mobjects += new_mobjects
         return self
 
