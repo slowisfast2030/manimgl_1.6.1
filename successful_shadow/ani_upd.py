@@ -25,6 +25,8 @@ class ani_upd(Scene):
 
         self.play(
             Rotate(c, 50 * DEGREES, OUT, suspend_mobject_updating=True),
+            # 如果为一个mob同时添加两个animation, 后一个会执行
+            Rotate(s, 50 * DEGREES, OUT, suspend_mobject_updating=True), 
             s.animate.move_to(UP*2.5),
             run_time = 4,
         ) 
