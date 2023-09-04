@@ -21,6 +21,7 @@ from manimlib.mobject.matrix import Matrix
 from manimlib.mobject.matrix import VECTOR_LABEL_SCALE_FACTOR
 from manimlib.mobject.matrix import vector_coordinate_label
 from manimlib.mobject.mobject import Mobject
+from manimlib.mobject.mobject import Group
 from manimlib.mobject.svg.tex_mobject import Tex
 from manimlib.mobject.svg.tex_mobject import TexText
 from manimlib.mobject.types.vectorized_mobject import VGroup
