@@ -23,9 +23,11 @@ class upd(Scene):
         c = Triangle().set_color(RED)
         
         self.add(c)
+        # 通过为c添加两个updater，实现运动的合成
         c.add_updater(lambda m, dt: m.shift(dt*RIGHT))
+        c.add_updater(lambda m, dt: m.shift(dt*DOWN))
 
-        self.wait(6)
+        self.wait(3)
 
         print("-"*100)
         print(self.mobjects)
