@@ -187,7 +187,7 @@ class Scene(object):
         c是updater, 依赖于b
         d是updater, 依赖于c
 
-        理想的顺序是按照依赖顺序执行
+        理想的执行顺序是按照上面的顺序
         如果c的updater在b的updater之前执行
         会有什么后果?
         """
