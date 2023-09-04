@@ -628,7 +628,7 @@ class FocusOnOneFace(ShadowScene):
             run_time=8,
         )
         """
-                               face
+                 face(animation & updater)
             _________________________________________             
             |              |           |            |
         normal_vect       arc        theta        shadow
