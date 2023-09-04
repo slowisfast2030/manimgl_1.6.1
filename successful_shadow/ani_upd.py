@@ -5,11 +5,23 @@ class ani_upd(Scene):
         plane = NumberPlane()
         self.add(plane)
         c = Triangle().set_color(RED)
-        self.add(c)
+        
         c.add_updater(lambda m, dt: m.shift(dt*RIGHT))
 
         s = Square().set_color(YELLOW)
-        self.add(s)
+        
+        """
+        这里将self.add()函数注释掉, 不影响显示c和s对象
+        因为在play动画的过程中, 会执行self.add()操作
+
+        需要注意, 涉及到updater的时候
+        需要主动执行self.add()操作, 否则不会显示
+
+        这里给c同时添加了updater和animation
+        故可以省略self.add()操作
+        """
+        #self.add(c)
+        #self.add(s)
 
         self.play(
             Rotate(c, 50 * DEGREES, OUT, suspend_mobject_updating=True),
