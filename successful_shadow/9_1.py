@@ -635,4 +635,5 @@ class FocusOnOneFace(ShadowScene):
         animation和updater的思考:
         1.animation是部分时间, update是全部时间(从add到remove)
         2.animation是主动, update是被动
+        3.一般的模式: 通过animation驱动update
         """
