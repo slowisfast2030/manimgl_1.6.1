@@ -630,3 +630,9 @@ class FocusOnOneFace(ShadowScene):
         normal_vect, arc和theta都会跟随发生变化
         进而影响glowdot的属性
         """
+
+        """
+        animation和updater的思考:
+        1.animation是部分时间, update是全部时间(从add到remove)
+        2.animation是主动, update是被动
+        """
