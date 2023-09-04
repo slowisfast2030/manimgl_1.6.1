@@ -617,6 +617,6 @@ class FocusOnOneFace(ShadowScene):
             |              |           |
         unit_normal       arc        theta
 
-        当对face执行动画的时候
+        当对face执行动画的时候(修改face的属性)
         unit_normal, arc和theta都会跟随发生变化
         """
