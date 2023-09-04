@@ -568,6 +568,7 @@ class FocusOnOneFace(ShadowScene):
         theta = Tex("\\theta", font_size=30)
         theta.set_backstroke()
         theta.rotate(PI / 2, RIGHT)
+        # theta两个updater
         theta.add_updater(lambda m: m.move_to(
             get_fc() + 1.3 * (arc.pfp(0.5) - get_fc())
         ))
