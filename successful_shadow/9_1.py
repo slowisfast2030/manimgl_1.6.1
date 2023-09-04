@@ -539,6 +539,10 @@ class FocusOnOneFace(ShadowScene):
         normal_vect.add_updater(lambda v: v.put_start_and_end_on(
             get_fc(), get_fc() + get_un(),
         ))
+        """
+        add_updater和always_redraw有什么区别?
+        下面的always_redraw可以用add_updater代替吗?
+        """
         arc = always_redraw(lambda: Arc(
             start_angle=PI / 2,
             angle=-get_theta(),
