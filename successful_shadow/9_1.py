@@ -550,6 +550,7 @@ class FocusOnOneFace(ShadowScene):
         normal_vect.add_updater(lambda v: v.put_start_and_end_on(
             get_fc(), get_fc() + get_un(),
         ))
+        
         """
         add_updater和always_redraw有什么区别?
         下面的always_redraw可以用add_updater代替吗?
@@ -585,6 +586,12 @@ class FocusOnOneFace(ShadowScene):
 
         # 这里的normal_vect又同时具有updater和animation
         self.play(ShowCreation(normal_vect))
+        """
+        为normal_vect的顶点添加glowdot
+        """
+        dot = GlowDot()
+        dot.add_updater(lambda m: m.move_to(normal_vect.get_end()))
+        self.add(dot)
         self.wait()
         """
         这里一直有一个困惑:
@@ -615,7 +622,9 @@ class FocusOnOneFace(ShadowScene):
                                face
             _________________________________________             
             |              |           |            |
-        unit_normal       arc        theta        shadow
+        normal_vect       arc        theta        shadow
+            |
+         glowdot
 
         当对face执行动画的时候(修改face的属性)
         unit_normal, arc和theta都会跟随发生变化
