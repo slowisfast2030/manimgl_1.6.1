@@ -555,6 +555,7 @@ class Scene(object):
                 """
                 之前一直好奇动画的对象没有add
 
+                总结:
                 如果一个mob添加了animation, 可以不主动执行self.add()
                 如果一个mob添加了updater, 必须主动执行self.add()
                 """
