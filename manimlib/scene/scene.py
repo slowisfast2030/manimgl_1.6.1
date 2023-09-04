@@ -564,9 +564,8 @@ class Scene(object):
     def progress_through_animations(self, animations: Iterable[Animation]) -> None:
         """
         在执行动画的时候会被执行
-        比如: self.play(Transform(c, s), run_time=3)
-
-        updater和animation的区别?
+    
+        updater和animation都会被执行
         """
         last_t = 0
         for t in self.get_animation_time_progression(animations):
