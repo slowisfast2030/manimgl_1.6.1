@@ -570,11 +570,10 @@ class Scene(object):
             """
             t是全局时间
             dt是每帧的间隔时间
+            t每次按dt增加
 
             animation用的是t (严格来说, 用的是t/run_time)
-            updater用的是dt
-
-            t每次按dt增加
+            updater用的是dt            
             """
             dt = t - last_t
             last_t = t
