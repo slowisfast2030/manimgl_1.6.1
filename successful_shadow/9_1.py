@@ -623,7 +623,8 @@ class FocusOnOneFace(ShadowScene):
         """
         face.add_updater(lambda m, dt: m.shift(dt*0.2*IN))
         self.play(
-            Rotate(face, 50 * DEGREES, UP),
+            # 很奇怪，即使在这里暂停updater，仍然会执行
+            Rotate(face, 50 * DEGREES, UP, suspend_mobject_updating=True),
             rate_func=there_and_back,
             run_time=8,
         )
