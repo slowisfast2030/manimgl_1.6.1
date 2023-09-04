@@ -574,6 +574,10 @@ class FocusOnOneFace(ShadowScene):
         theta.set_backstroke()
         theta.rotate(PI / 2, RIGHT)
         # theta两个updater
+        """
+        第一个get_fc()是向量
+        第二个get_fc()是点
+        """
         theta.add_updater(lambda m: m.move_to(
             get_fc() + 1.3 * (arc.pfp(0.5) - get_fc())
         ))
@@ -607,4 +611,12 @@ class FocusOnOneFace(ShadowScene):
             rate_func=there_and_back,
             run_time=8,
         )
-        
+        """
+                         face
+            ____________________________             
+            |              |           |
+        unit_normal       arc        theta
+
+        当对face执行动画的时候
+        unit_normal, arc和theta都会跟随发生变化
+        """
