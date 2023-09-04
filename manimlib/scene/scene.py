@@ -625,6 +625,7 @@ class Scene(object):
             log.warning("Called Scene.play with no animations")
             return
         animations = self.anims_from_play_args(*args, **kwargs)
+        #print(animations)
         self.lock_static_mobject_data(*animations)
         self.begin_animations(animations)
         self.progress_through_animations(animations)

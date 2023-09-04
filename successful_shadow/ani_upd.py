@@ -8,13 +8,17 @@ class ani_upd(Scene):
         self.add(c)
         c.add_updater(lambda m, dt: m.shift(dt*RIGHT))
 
+        s = Square().set_color(YELLOW)
+        self.add(s)
+
         self.play(
             Rotate(c, 50 * DEGREES, OUT, suspend_mobject_updating=True),
-            run_time = 6
+            s.animate.move_to(UP*2.5),
+            run_time = 6,
         ) 
 
-        print("-"*100)
-        print(self.mobjects)
+        #print("-"*100)
+        #print(self.mobjects)
         
 class test(Scene):
     def construct(self):
