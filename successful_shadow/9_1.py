@@ -652,8 +652,10 @@ class FocusOnOneFace(ShadowScene):
         上述图示是理想的调用顺序
         然而
         face --> glowdot --> normal_vect    
-        会有影响吗？     
-
+        会有影响吗？
+        
+        glowdot每次更新的是上一帧的normal_vect的顶点位置
+        在视觉上，其实看不出来
         """
         print("-"*100)
         print(self.mobjects)
