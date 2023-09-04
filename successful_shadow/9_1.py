@@ -582,6 +582,10 @@ class FocusOnOneFace(ShadowScene):
         对于z_axis来说, 既add又play
         这两者之间是什么关系?似乎不用add, 只需要play就可以了
         """
+        """
+        normal_vect之前已经play了
+        这里又add了
+        """
         self.add(z_axis[0], face, z_axis[1], normal_vect)
         self.play(*map(FadeIn, z_axis))
         self.play(
