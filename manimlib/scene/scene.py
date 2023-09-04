@@ -179,6 +179,18 @@ class Scene(object):
         经过dt时间后, 更新场景中的所有物体
         """
         self.increment_time(dt)
+        """
+        研究下执行updater的顺序
+        a --> b --> c --> d
+        a是animation
+        b是updater, 依赖于a
+        c是updater, 依赖于b
+        d是updater, 依赖于c
+
+        理想的顺序是按照依赖顺序执行
+        如果c的updater在b的updater之前执行
+        会有什么后果?
+        """
         self.update_mobjects(dt)
         if self.skip_animations and not ignore_skipping:
             return
