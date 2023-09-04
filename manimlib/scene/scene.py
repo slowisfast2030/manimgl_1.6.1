@@ -658,7 +658,7 @@ class Scene(object):
         self.lock_static_mobject_data(*animations)
         self.begin_animations(animations)
         """
-        这个函数是核心: 
+        self.progress_through_animations(animations)函数是核心: 
         animation.update_mobjects(dt)  执行mob的updater(此mob已经添加了animation)
         animation.interpolate(alpha)   执行mob的animation
         self.update_frame(dt)          执行所有self.mobjects的updater
