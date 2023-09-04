@@ -612,7 +612,7 @@ class FocusOnOneFace(ShadowScene):
             run_time=8,
         )
         """
-                         face
+                               face
             _________________________________________             
             |              |           |            |
         unit_normal       arc        theta        shadow
