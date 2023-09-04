@@ -562,7 +562,14 @@ class Scene(object):
             dt = t - last_t
             last_t = t
             for animation in animations:
-                # 处理updater
+                """
+                困惑:
+                这里的
+                animation.update_mobjects(dt)
+                和
+                self.update_frame(dt)
+                之间是什么关系?
+                """
                 animation.update_mobjects(dt)
                 # 动画已经执行的时间 / 动画总时间 = alpha
                 alpha = t / animation.run_time
