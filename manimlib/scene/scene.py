@@ -570,6 +570,12 @@ class Scene(object):
                 self.update_frame(dt)
                 之间是什么关系?
                 """
+                # 这一行处理animation中的updater
+                """
+                当mob既有animation和updater的时候
+                animation.update_mobjects(dt)处理updater 
+                animation.interpolate(alpha)处理animation
+                """
                 animation.update_mobjects(dt)
                 # 动画已经执行的时间 / 动画总时间 = alpha
                 alpha = t / animation.run_time
