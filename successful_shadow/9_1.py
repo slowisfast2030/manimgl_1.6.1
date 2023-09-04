@@ -542,6 +542,11 @@ class FocusOnOneFace(ShadowScene):
             get_fc(), get_fc() + get_un()
         ))
         """
+        """
+        如何理解get_fc()
+        既是点
+        又是向量
+        """
         normal_vect.add_updater(lambda v: v.put_start_and_end_on(
             get_fc(), get_fc() + get_un(),
         ))
