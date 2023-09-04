@@ -226,6 +226,10 @@ class SceneFileWriter(object):
         """
         果然, write_to_movie和save_last_frame都被执行了
         """
+        print("="*80)
+        print("self.write_to_movie: ", self.write_to_movie)
+        print("self.save_last_frame: ", self.save_last_frame)
+        
         if self.write_to_movie:
             #print("write_to_movie")
             if self.break_into_partial_movies:
@@ -236,10 +240,12 @@ class SceneFileWriter(object):
                 self.add_sound_to_video()
             # 打印视频文件已生成
             self.print_file_ready_message(self.get_movie_file_path())
+        
         if self.save_last_frame:
             #print("save_last_frame")
             self.scene.update_frame(ignore_skipping=True)
             self.save_final_image(self.scene.get_image())
+        
         if self.should_open_file():
             # 打开视频文件
             self.open_file()
