@@ -663,6 +663,9 @@ class Scene(object):
         animation.interpolate(alpha)   执行mob的animation
         self.update_frame(dt)          执行所有self.mobjects的updater
         self.emit_frame()              将frame写入管道
+
+        这里有一个隐藏细节:
+        
         """
         self.progress_through_animations(animations)
         self.finish_animations(animations)
