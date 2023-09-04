@@ -34,6 +34,13 @@ class UpdateFromFunc(Animation):
         self.update_function(self.mobject)
 
 
+"""
+self.play(
+        Rotate(face, -PI / 3, UP),
+        UpdateFromAlphaFunc(light_lines, lambda m, a: m.set_opacity(0.5 * (1 - a)), remover=True),
+        run_time=2,
+        )
+"""
 class UpdateFromAlphaFunc(UpdateFromFunc):
     def interpolate_mobject(self, alpha: float) -> None:
         self.update_function(self.mobject, alpha)
