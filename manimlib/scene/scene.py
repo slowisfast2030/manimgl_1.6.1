@@ -642,6 +642,16 @@ class Scene(object):
         else:
             self.update_mobjects(0)
 
+    """
+    setup()
+    self.file_writer.begin()
+
+    construct()
+    self.file_writer.write_frame(self.camera) (from: emit_frame函数)
+
+    teardown()
+    self.file_writer.finish()
+    """
     @handle_play_like_call
     def play(self, *args, **kwargs) -> None:
         """
