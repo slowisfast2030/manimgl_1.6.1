@@ -603,9 +603,9 @@ class FocusOnOneFace(ShadowScene):
 
         # Vary Theta
         # 这里是干嘛的?
-        frame.reorient(2)
+        #frame.reorient(2)
         # 这里有一个很突兀的旋转
-        face.rotate(-35 * DEGREES, get_un(), about_point=face.get_center())
+        #face.rotate(-35 * DEGREES, get_un(), about_point=face.get_center())
         self.play(
             Rotate(face, 50 * DEGREES, UP),
             rate_func=there_and_back,
@@ -613,9 +613,9 @@ class FocusOnOneFace(ShadowScene):
         )
         """
                          face
-            ____________________________             
-            |              |           |
-        unit_normal       arc        theta
+            _________________________________________             
+            |              |           |            |
+        unit_normal       arc        theta        shadow
 
         当对face执行动画的时候(修改face的属性)
         unit_normal, arc和theta都会跟随发生变化
