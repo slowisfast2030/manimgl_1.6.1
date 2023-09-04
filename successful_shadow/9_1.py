@@ -616,6 +616,11 @@ class FocusOnOneFace(ShadowScene):
         """
         所有的animation背后都是mob自带方法的属性修改
         """
+
+        """
+        为face同时添加了updater和animation
+        """
+        face.add_updater(lambda m, dt: m.shift(dt*0.2*IN))
         self.play(
             Rotate(face, 50 * DEGREES, UP),
             rate_func=there_and_back,
