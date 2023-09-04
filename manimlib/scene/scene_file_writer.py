@@ -212,6 +212,7 @@ class SceneFileWriter(object):
     # Writers
     def begin(self) -> None:
         if not self.break_into_partial_movies and self.write_to_movie:
+            # 打开管道，准备往文件里写数据
             self.open_movie_pipe(self.get_movie_file_path())
 
     def begin_animation(self) -> None:
