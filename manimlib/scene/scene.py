@@ -575,6 +575,8 @@ class Scene(object):
                 当mob既有animation和updater的时候
                 animation.update_mobjects(dt)处理updater 
                 animation.interpolate(alpha)处理animation
+                
+                奇怪: 不是说animation和updater不会同时执行吗?
                 """
                 animation.update_mobjects(dt)
                 # 动画已经执行的时间 / 动画总时间 = alpha
