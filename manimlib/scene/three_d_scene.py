@@ -2,6 +2,7 @@ from manimlib.scene.scene import Scene
 
 
 class ThreeDScene(Scene):
+    '''现在所有 3D 场景都可以在 ``Scene`` 类完成，所以可以基本不用'''
     CONFIG = {
         "camera_config": {
             "samples": 4,
