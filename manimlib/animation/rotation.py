@@ -53,6 +53,12 @@ class Rotating(Animation):
 about_point和about_edge就是为了确定这个点
 当about_point为None, about_edge为ORIGIN的时候
 这个固定点就是mob的中心
+
+self.play(
+        Rotate(face, 50 * DEGREES, UP),
+        rate_func=there_and_back,
+        run_time=8,
+        )
 """
 class Rotate(Rotating):
     CONFIG = {
