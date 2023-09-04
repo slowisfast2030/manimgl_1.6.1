@@ -258,6 +258,7 @@ class SceneFileWriter(object):
         if self.save_last_frame:
             #print("save_last_frame")
             self.scene.update_frame(ignore_skipping=True)
+            # 会调用self.print_file_ready_message()函数
             self.save_final_image(self.scene.get_image())
         
         if self.should_open_file():
