@@ -629,6 +629,8 @@ class FocusOnOneFace(ShadowScene):
         当对face执行动画的时候(修改face的属性)
         normal_vect, arc和theta都会跟随发生变化
         进而影响glowdot的属性
+        
+        这么多update的执行顺序是如何决定的?
         """
 
         """
