@@ -11,6 +11,11 @@ if TYPE_CHECKING:
     from manimlib.mobject.mobject import Mobject
 
 
+"""
+这个动画类和其他的动画类不是并列关系, 更像是总分关系
+任何其他的动画类都可以用此类实现
+只要给出合适的update_function
+"""
 class UpdateFromFunc(Animation):
     """
     update_function of the form func(mobject), presumably
