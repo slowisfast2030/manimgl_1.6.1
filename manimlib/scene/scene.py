@@ -646,7 +646,6 @@ class Scene(object):
     ):
         """
         等待一段时间
-        执行self.wait()的时候会被执行
         """
         if note:
             log.info(note)
