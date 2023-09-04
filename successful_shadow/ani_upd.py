@@ -8,7 +8,7 @@ class ani_upd(Scene):
         
         c.add_updater(lambda m, dt: m.shift(dt*RIGHT))
 
-        s = Square().set_color(YELLOW)
+        #s = Square().set_color(YELLOW)
         
         """
         这里将self.add()函数注释掉, 不影响显示c和s对象
@@ -26,8 +26,8 @@ class ani_upd(Scene):
         self.play(
             Rotate(c, 50 * DEGREES, OUT, suspend_mobject_updating=True),
             # 如果为一个mob同时添加两个animation, 后一个会执行
-            Rotate(s, 50 * DEGREES, OUT, suspend_mobject_updating=True), 
-            s.animate.move_to(UP*2.5),
+            #Rotate(s, 50 * DEGREES, OUT, suspend_mobject_updating=True), 
+            #s.animate.move_to(UP*2.5),
             run_time = 4,
         ) 
 
