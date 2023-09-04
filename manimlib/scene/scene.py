@@ -622,6 +622,15 @@ class Scene(object):
         self.finish_animations(animations)
         self.unlock_mobject_data()
 
+    """
+    play函数的核心是
+    self.progress_through_animations(animations)
+    进一步深入, 发现核心是
+    self.update_frame(dt)
+
+    wait函数的核心是
+    self.update_frame(dt)
+    """
     @handle_play_like_call
     def wait(
         self,
