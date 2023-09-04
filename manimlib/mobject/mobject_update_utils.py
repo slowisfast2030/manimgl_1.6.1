@@ -53,6 +53,14 @@ def f_always(method, *arg_generators, **kwargs):
     return mobject
 
 
+"""
+arc = always_redraw(lambda: Arc(
+            start_angle=PI / 2,
+            angle=-get_theta(),
+            radius=0.5,
+            stroke_width=2,
+        ).rotate(PI / 2, RIGHT, about_point=ORIGIN).shift(get_fc()))
+"""
 def always_redraw(func: Callable[..., Mobject], *args, **kwargs) -> Mobject:
     """始终重复调用 ``func`` 生成新物体"""
     mob = func(*args, **kwargs)
