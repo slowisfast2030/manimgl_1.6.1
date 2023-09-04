@@ -627,6 +627,9 @@ class Scene(object):
         if len(args) == 0:
             log.warning("Called Scene.play with no animations")
             return
+        """
+        arg可能是animation, 也可能是mob.animate.method()
+        """
         animations = self.anims_from_play_args(*args, **kwargs)
         #print(animations)
         self.lock_static_mobject_data(*animations)
