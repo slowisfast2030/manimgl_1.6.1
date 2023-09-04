@@ -535,6 +535,7 @@ class FocusOnOneFace(ShadowScene):
         def get_theta():
             return np.arccos(get_un()[2])
 
+        # 获取随着face变化而变化的单位法向量
         normal_vect.add_updater(lambda v: v.put_start_and_end_on(
             get_fc(), get_fc() + get_un(),
         ))
