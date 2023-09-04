@@ -16,7 +16,7 @@ class ani_upd(Scene):
         print("-"*100)
         print(self.mobjects)
         
-class upd(Scene):
+class test(Scene):
     def construct(self):
         plane = NumberPlane()
         self.add(plane)
