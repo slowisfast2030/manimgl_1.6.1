@@ -978,6 +978,13 @@ class Mobject(object):
 
         自己的思维方式中并没有建立一个array数组的第dim维的概念
         '''
+        """
+        points[:, dim] *= factor: This line of code is performing an operation 
+        on a specific column (dim) of a 2D array (points). The : selects all 
+        rows, and dim selects the specified column. Then, *= factor multiplies 
+        each element in that column by the value of factor. This line essentially 
+        scales the values in the specified column by the factor.
+        """
         def func(points):
             points[:, dim] *= factor
             return points
