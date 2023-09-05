@@ -73,9 +73,9 @@ class Mobject(object):
         "shadow": 0.0,
         # Makes parts bright where light gets reflected toward the camera
         "gloss": 0.0,
-        # For shaders 对于着色器知之甚少，可以查看对应的wiki: https://en.wikipedia.org/wiki/Shader
+        # 着色器相关代码所在的文件夹，manimlib/shaders/
         "shader_folder": "",
-        # 可以查看对应词条的wiki: https://en.wikipedia.org/wiki/Triangle_strip
+        # 渲染的基元，子类会进行修改
         "render_primitive": moderngl.TRIANGLE_STRIP,
         "texture_paths": None,
         "depth_test": False,
