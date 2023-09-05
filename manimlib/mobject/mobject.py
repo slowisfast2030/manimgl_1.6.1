@@ -1128,6 +1128,7 @@ class Mobject(object):
         所以需要将matrix扩展为三阶方阵
         """
         full_matrix[:matrix.shape[0], :matrix.shape[1]] = matrix
+        # 对比下rotate函数
         self.apply_points_function(
             lambda points: np.dot(points, full_matrix.T),
             **kwargs
