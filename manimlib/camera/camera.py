@@ -591,6 +591,7 @@ class Camera(object):
         for mobject in mobjects:
             # 疑问: 一个mob会有好几个render_group?
             for render_group in self.get_render_group_list(mobject):
+                # 执行之后，渲染结果已经在fbo中了
                 self.render(render_group)
 
     def render(self, render_group: dict[str]) -> None:
