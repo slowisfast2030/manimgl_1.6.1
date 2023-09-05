@@ -497,7 +497,7 @@ class Camera(object):
     def get_image(self) -> Image.Image:
         '''获取当前帧图片'''
         """
-        由fbo数据生成图片
+        从fbo读取数据, 生成图片
         """
         return Image.frombytes(
             'RGBA',
@@ -591,6 +591,9 @@ class Camera(object):
         给场景中的mobs拍照
 
         核心函数, 在scene.py中被调用
+        vao --> vertex shader --> fragment shader --> fbo
+        本质上是对每一个mob的vao执行渲染操作
+        使得渲染的结果写入fbo
         """
         # 更新和透视投影有关的uniform变量
         self.refresh_perspective_uniforms()
