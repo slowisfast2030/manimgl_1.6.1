@@ -243,6 +243,8 @@ class Mobject(object):
         设置锚点
 
         严格来讲, 应该是anchor和handle
+        不过, 这应该是对vmobject子类来说的
+        surface子类就没有anchor和handle的概念
         '''
         if len(points) == len(self.data["points"]):
             self.data["points"][:] = points
