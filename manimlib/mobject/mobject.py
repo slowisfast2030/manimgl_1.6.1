@@ -231,6 +231,7 @@ class Mobject(object):
         有一个疑问: 
         这里重置self.data["points"]的大小, 还是拿原来的data["points"]进行填充
         要么重复, 要么截断, 并没有引入新的数据
+        这样做有什么用么
         '''
         if new_length != len(self.data["points"]):
             self.data["points"] = resize_func(self.data["points"], new_length)
