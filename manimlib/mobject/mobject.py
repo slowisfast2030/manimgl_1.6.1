@@ -328,12 +328,12 @@ class Mobject(object):
     ):
         """
         以 ``about_point`` 为不变基准点，或以 ``about_edge`` 为不变基准边，对所有点执行 ``func``
+        真是神仙注释:)
 
-        这个注释不是很准确
-        about_edge是为了计算about_point而存在的，核心还是about_point
+        about_edge是为了计算about_point而存在的, 核心还是about_point
 
-        灵魂发问：为何about_point是核心？
-        这里的func基本上是矩阵
+        灵魂发问: 为何about_point是核心?
+        如果这里的func是矩阵
         矩阵的几何意义是旋转+伸缩(平移需要扩充维度)
         如果规定伸缩比例为1
         那么就是正交矩阵
@@ -357,21 +357,8 @@ class Mobject(object):
                 if about_point is None:
                     arr[:] = func(arr)
                 else:
-                    # 这种计算方式的几何意义是什么？当about_point不是mob上的点和原点的时候
-                    # 如何理解这里的arr - about_point？
-                    # 看成从about_point指向arr的向量，且起始点为原点
                     """
-                    如果这里的func是伸缩变换：
-                    1.从about_point指向arr的向量，且起始点为原点
-                    2.伸缩变换
-                    3.将起始点移到about_point
-
-                    可以简化为：
-                    1.从about_point指向arr的向量，且起始点为about_point
-                    2.伸缩变换
-
-                    形象化理解：
-                    从abount_point向mob上的每一点做向量，并伸缩变换，连接变换后的向量的终点，就是变换后的mob
+                    
                     """
                     arr[:] = func(arr - about_point) + about_point
 
