@@ -135,7 +135,9 @@ def turn_animation_into_updater(
                 animation.finish()
                 m.remove_updater(update)
                 return
+        # 执行animation
         animation.interpolate(alpha)
+        # 假设mob同时有updater. 没有这样做也无妨
         animation.update_mobjects(dt)
         animation.total_time += dt
 
