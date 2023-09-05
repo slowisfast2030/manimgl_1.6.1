@@ -738,7 +738,9 @@ class Mobject(object):
         # TODO, either justify reason for shallow copy, or
         # remove this redundancy everywhere
         # return self.deepcopy()
-
+        """
+        3b1b的代码中经常使用
+        """
         parents = self.parents
         self.parents = []
         copy_mobject = copy.copy(self)
