@@ -220,12 +220,12 @@ class Scene(object):
         生成每一帧, 写入ffmpeg的输入管道
 
         执行顺序:
-        update_frame --> update_frame
+        update_frame() --> emit_frame()
         """
         """
         self.camera对象中包含渲染逻辑:
         vao --> vertex shader --> fragment shader --> fbo
-        
+
         在update_frame()函数中, 执行完self.camera.capture(*self.mobjects)后
         vao.render()已经执行完毕, 渲染的结果存储在fbo中
         fbo是self.camera的一个属性
