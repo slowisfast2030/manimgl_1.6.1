@@ -358,7 +358,11 @@ class Mobject(object):
                     arr[:] = func(arr)
                 else:
                     """
-                    
+                    当about_point为None且about_edge = ORIGIN的时候
+                    about_point就是mob的center
+
+                    当func为旋转变换的时候, 旋转中心就是mob的center
+                    当func为线性伸缩变换的时候(即所有坐标等比例放大的时候), 伸缩中心就是mob的center
                     """
                     arr[:] = func(arr - about_point) + about_point
 
