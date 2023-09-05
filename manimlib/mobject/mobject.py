@@ -360,6 +360,11 @@ class Mobject(object):
         # family是有自身的，submobjects没有
         for mob in self.get_family():
             arrs = []
+            """
+            好像一直以来误解了一个东西
+            arrs中最多有2个元素
+            每一个元素都是点集
+            """
             if mob.has_points():
                 arrs.append(mob.get_points())
             if works_on_bounding_box:
@@ -367,6 +372,7 @@ class Mobject(object):
 
             for arr in arrs:
                 if about_point is None:
+                    # func是作用于一个点集，而不是一个点
                     arr[:] = func(arr)
                 else:
                     """
@@ -1020,6 +1026,11 @@ class Mobject(object):
 
         这个函数的功能和apply_points_function()函数一样
         为何定义这个函数
+        
+        apply_points_function()和apply_function()
+        的参数都有一个是函数func, 只不过
+        apply_points_function()的func作用的是点集
+        apply_function()的func作用的是点 
 
         需要极高的想象力！
         self.play(
