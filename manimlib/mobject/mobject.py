@@ -38,7 +38,11 @@ from manimlib.event_handler import EVENT_DISPATCHER
 from manimlib.event_handler.event_listner import EventListner
 from manimlib.event_handler.event_type import EventType
 
-
+"""
+TimeBasedUpdater is a type alias for a function that takes two parameters: 
+a "Mobject" (which represents a graphical object) and 
+a float(which represents time). This function does not return anything (None).
+"""
 TimeBasedUpdater = Callable[["Mobject", float], None]
 NonTimeUpdater = Callable[["Mobject"], None]
 Updater = Union[TimeBasedUpdater, NonTimeUpdater]
