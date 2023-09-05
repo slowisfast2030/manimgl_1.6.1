@@ -1061,13 +1061,15 @@ class Mobject(object):
         return self
 
     """
+    矩阵乘以向量
     point = np.array([1, 2])
     matrix = np.array([[5, 6],
                        [7, 8]])
     result = np.dot(point, matrix)
     print(result)
     [19 22]
-
+    
+    矩阵乘以矩阵
     points = np.array([[1, 2],
                       [3, 4]])
     matrix = np.array([[5, 6],
