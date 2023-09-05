@@ -218,6 +218,9 @@ class Scene(object):
     def emit_frame(self) -> None:
         """
         生成每一帧, 写入ffmpeg的输入管道
+
+        执行顺序:
+        update_frame --> update_frame
         """
         """
         self.camera对象中包含渲染逻辑
