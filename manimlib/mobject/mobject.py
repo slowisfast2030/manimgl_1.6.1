@@ -2140,7 +2140,7 @@ class Mobject(object):
         read into the shader_wrapper objects needlessly
         """
         """
-        为了加速一些动画，尤其是 Transform，它可以很方便地确认哪些数据片段不会在动画期间改变，
+        为了加速一些动画，尤其是 Transform, 它可以很方便地确认哪些数据片段不会在动画期间改变
         以便调用插值可以跳过这一点，这样它就不会被不必要地读入 shader_wrapper 对象
         """
         if self.has_updaters:
