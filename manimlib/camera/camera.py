@@ -580,8 +580,9 @@ class Camera(object):
 
     # Rendering
     def capture(self, *mobjects: Mobject, **kwargs) -> None:
-        '''捕获 mobjects 中的物体'''
         """
+        给场景中的mobs拍照
+        
         核心函数, 在scene.py中被调用
         """
         self.refresh_perspective_uniforms()
