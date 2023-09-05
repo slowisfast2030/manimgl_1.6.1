@@ -551,6 +551,8 @@ class Mobject(object):
     def add(self, *mobjects: Mobject):
         '''
         将 ``mobjects`` 添加到子物体中
+
+        VGroup中所有物体都在self.submobjects列表中
         '''
         if self in mobjects:
             raise Exception("Mobject cannot contain self")
