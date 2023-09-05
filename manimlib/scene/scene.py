@@ -33,12 +33,6 @@ if TYPE_CHECKING:
     from manimlib.animation.animation import Animation
 
 
-"""
-整个类最核心的函数progress_through_animations
-
-函数内会调用emit_frame函数
-进而调用scene_file_writer.py的write_frame函数
-"""
 class Scene(object):
     CONFIG = {
         "window_config": {},
