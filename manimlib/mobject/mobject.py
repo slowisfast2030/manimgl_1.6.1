@@ -1430,6 +1430,7 @@ class Mobject(object):
         if np.all(curr_vect == 0):
             raise Exception("Cannot position endpoints of closed loop")
         target_vect = end - start
+        # 指定about_point是curr_start
         self.scale(
             get_norm(target_vect) / get_norm(curr_vect),
             about_point=curr_start,
