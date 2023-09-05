@@ -630,8 +630,11 @@ class Camera(object):
     - You can attach various types of textures or renderbuffers to an FBO, defining where the rendered data will go. These         attachments might include color buffers, depth buffers, and stencil buffers.
 
     In summary:
-    - VAOs are used to organize and specify input vertex data for the vertex shader. They help manage the binding of VBOs and IBOs, making it efficient to switch between different sets of vertex data.
-    - FBOs are used to specify the output target for the fragment shader. They allow you to render to custom framebuffers, enabling various rendering techniques and effects while controlling where the resulting image is stored.
+    - VAOs are used to organize and specify input vertex data for the vertex shader. They help manage 
+    the binding of VBOs and IBOs, making it efficient to switch between different sets of vertex data.
+    - FBOs are used to specify the output target for the fragment shader. They allow you to render to 
+    custom framebuffers, enabling various rendering techniques and effects while controlling where the 
+    resulting image is stored.
     """
     def get_render_group(
         self,
