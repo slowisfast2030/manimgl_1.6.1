@@ -1435,6 +1435,7 @@ class Mobject(object):
             get_norm(target_vect) / get_norm(curr_vect),
             about_point=curr_start,
         )
+        # 以OUT为轴，旋转到xoy平面的投影方向一致
         self.rotate(
             angle_of_vector(target_vect) - angle_of_vector(curr_vect),
         )
