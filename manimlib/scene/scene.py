@@ -198,7 +198,9 @@ class Scene(object):
         self.camera.clear()
         """
         一个被忽略但极其重要的函数
-        和着色器有关
+
+        从函数名来看, 是对scene中的mobs进行拍照
+        从这里就可以看出self.add(mob)的重要性了
         """
         self.camera.capture(*self.mobjects)
 
