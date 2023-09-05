@@ -390,7 +390,6 @@ class Camera(object):
         if ctx is None:
             ctx = moderngl.create_standalone_context()
             fbo = self.get_fbo(ctx, 0)
-            #print(fbo.viewport)
         else:
             fbo = ctx.detect_framebuffer()
         self.ctx = ctx
