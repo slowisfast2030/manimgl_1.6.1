@@ -2476,6 +2476,11 @@ class Group(Mobject):
 
 class Point(Mobject):
     '''点'''
+    """
+    这个类怎么使用呢?
+    如何使用着色器渲染呢?
+    还是仅仅用作继承?
+    """
     CONFIG = {
         "artificial_width": 1e-6,
         "artificial_height": 1e-6,
