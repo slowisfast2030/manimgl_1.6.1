@@ -161,7 +161,8 @@ class Mobject(object):
 
     def init_uniforms(self):
         """
-        这里的uniforms应该怎么翻译？
+        这里的uniforms应该怎么翻译?
+        不用翻译
         """
         self.uniforms: dict[str, float] = {
             "is_fixed_in_frame": float(self.is_fixed_in_frame),
