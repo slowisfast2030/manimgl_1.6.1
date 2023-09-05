@@ -115,6 +115,7 @@ class Scene(object):
             self.interact()
 
     def interact(self) -> None:
+        '''交互'''
         # If there is a window, enter a loop
         # which updates the frame while under
         # the hood calling the pyglet event loop
@@ -130,6 +131,7 @@ class Scene(object):
             self.unlock_mobject_data()
 
     def embed(self, close_scene_on_exit: bool = True) -> None:
+        '''使用 IPython 终端交互'''
         if not self.preview:
             # If the scene is just being
             # written, ignore embed calls
@@ -163,6 +165,7 @@ class Scene(object):
 
     # Only these methods should touch the camera
     def get_image(self) -> Image:
+        '''获取当前帧图片'''
         return self.camera.get_image()
 
     def show(self) -> None:
