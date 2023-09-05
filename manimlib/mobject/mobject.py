@@ -417,7 +417,7 @@ class Mobject(object):
         获取物件所有锚点
 
         这个函数就可以看出submobjects属性和self.get_family()的区别了
-        submobjects属性只包含直接子物件，而get_family()还包含自身
+        submobjects属性只包含直接子物件, 而get_family()还包含自身
         '''
         if self.submobjects:
             return np.vstack([sm.get_points() for sm in self.get_family()])
@@ -458,7 +458,7 @@ class Mobject(object):
         else:
             # Lower left and upper right corners
             """
-            为了更加形象的理解，我们可以假设mob为circle
+            为了更加形象的理解, 我们可以假设mob为circle
             将circle的所有锚点放在一个平面上
             那么这个平面的左下角和右上角就是circle的包围框
             """
