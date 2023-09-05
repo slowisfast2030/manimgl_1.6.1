@@ -2582,7 +2582,7 @@ class _AnimationBuilder:
             self.play(mob.animate.shift(UP).scale(2).rotate(PI/2))
             
             # 播放动画
-            anim = mob.animate.shift(UP).scale(2).rotate(PI/2).build() # 此处有无 .build() 均可
+            anim = mob.animate.shift(UP).scale(2).rotate(PI/2).build() # 此处有无 .build() 均可. why?
             self.play(anim)
     
             # 将动画实例用一个变量保存，并将动画转变为更新
