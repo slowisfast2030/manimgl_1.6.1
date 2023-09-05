@@ -2525,6 +2525,25 @@ class _AnimationBuilder:
         self.is_chaining = False
         self.methods = []
 
+    """
+    In Python, __getattr__ is a special method that you can define in your custom 
+    classes to control how attribute access is handled when an attribute is not 
+    found through the usual means (i.e., when the attribute is not present as an 
+    instance variable or a class variable). 
+
+    @property
+    def animate(self):
+        return _AnimationBuilder(self)
+
+    
+    执行逻辑分析:
+    1.当执行到mob.animate的时候, 会返回_AnimationBuilder(mob)对象
+    2.当执行到mob.animate.shift(UP)的时候, 即_AnimationBuilder(mob).shift(UP)
+    3.因为_AnimationBuilder类没有shift方法, 故会触发__getattr__(self, "shift")方法
+    4.执行getattr(self.mobject.target, "shift"), self.methods.append(shift)
+    5.
+    6. 
+    """
     def __getattr__(self, method_name: str):
         method = getattr(self.mobject.target, method_name)
         self.methods.append(method)
@@ -2546,6 +2565,7 @@ class _AnimationBuilder:
             return self
 
         self.is_chaining = True
+        # 这里为什么返回了一个函数?
         return update_target
 
     def build(self):
