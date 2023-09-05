@@ -264,16 +264,21 @@ class Mobject(object):
 
     # Create two input arrays
     a = np.array([1, 2, 3])
-    b = np.array([4, 5, 6])
+    b = np.array([[4, 5, 6], [7,8,9]])
+    c = np.array([[1, 2, 3], [4, 5, 6], [7,8,9]])
 
     # Stack them vertically using np.vstack
-    c = np.vstack((a, b))
+    d = np.vstack((a, b, c))
 
     # Print the output array
-    print(c)
+    print(d)
 
     [[1 2 3]
-    [4 5 6]]
+    [4 5 6]
+    [7 8 9]
+    [1 2 3]
+    [4 5 6]
+    [7 8 9]]
 
     """
     def append_points(self, new_points: npt.ArrayLike):
