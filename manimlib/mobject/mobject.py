@@ -922,8 +922,11 @@ class Mobject(object):
         '''
         相对移动 vector 向量
 
-        不是很理解about_edge = None的意思
+        不是很理解about_edge = None的意思?
+        如果about_edge = None且about_point = None
+        那么, 对所有点的操作都是相对于坐标系原点
         '''
+        # points是点集, vector是点
         self.apply_points_function(
             lambda points: points + vector,
             about_edge=None,
@@ -955,7 +958,7 @@ class Mobject(object):
         else:
             scale_factor = max(scale_factor, min_scale_factor)
         self.apply_points_function(
-            lambda points: scale_factor * points,
+            lambda points: scale_factor * points, # 点集中的每个点都会乘以scale_factor
             about_point=about_point,
             about_edge=about_edge,
             works_on_bounding_box=True,
@@ -1031,6 +1034,9 @@ class Mobject(object):
         的参数都有一个是函数func, 只不过
         apply_points_function()的func作用的是点集
         apply_function()的func作用的是点 
+
+        这个函数其实可以改个名: apply_point_function
+        因为是作用在每一个point上
 
         需要极高的想象力！
         self.play(
