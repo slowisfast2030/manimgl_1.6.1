@@ -460,6 +460,7 @@ class Camera(object):
         '''重置像素宽高'''
         self.pixel_width = new_width
         self.pixel_height = new_height
+        # 像素宽高会影响透视变换的uniform变量
         self.refresh_perspective_uniforms()
 
     def get_raw_fbo_data(self, dtype: str = 'f1') -> bytes:
