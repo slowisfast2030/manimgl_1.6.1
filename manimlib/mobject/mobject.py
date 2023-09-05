@@ -2462,6 +2462,10 @@ class Mobject(object):
 
 class Group(Mobject):
     '''数学物件组合'''
+    """
+    可以组合Mobject对象
+    和VGroup相对
+    """
     def __init__(self, *mobjects: Mobject, **kwargs):
         '''传入一系列 ``mobjects`` 作为子物件，可以用 ``[]`` 索引'''
         if not all([isinstance(m, Mobject) for m in mobjects]):
