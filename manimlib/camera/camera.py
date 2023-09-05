@@ -464,7 +464,12 @@ class Camera(object):
         self.refresh_perspective_uniforms()
 
     def get_raw_fbo_data(self, dtype: str = 'f1') -> bytes:
-        '''获取源缓冲数据'''
+        '''从fbo中读取数据'''
+        """
+        vao --> vertex shader --> fragment shader --> fbo
+        vao执行render之后, 渲染的结果写入了fbo
+        可以通过fbo.read()获取fbo中的内容
+        """
         # Copy blocks from the fbo_msaa to the drawn fbo using Blit
         """
         这里的fbo数据
