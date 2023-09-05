@@ -340,6 +340,18 @@ class Mobject(object):
         那么，正交矩阵的几何意义就是旋转
         这里的about_point就是旋转轴通过的点
         """
+        """
+        从更高的角度来理解:
+        func(arr - about_point) + about_point 和 func(arr)
+        本质是一样的
+        func(arr) = func(arr - [0, 0, 0]) + [0, 0, 0]
+        将func理解为对向量的函数
+
+        举例:
+        func = lambda point: 2 * point
+        将mob的每个点point放大为2倍
+        也可理解为将mob上每个点和原点之间的vector放大为2倍
+        """
         # about_point是主要的
         # 如果about_point为None，就用about_edge
         if about_point is None and about_edge is not None:
