@@ -88,6 +88,24 @@ def listify(obj) -> list:
 def resize_array(nparray: np.ndarray, length: int) -> np.ndarray:
     """
     np.resize函数会复制或者截断原数组，使得新数组的长度为length
+
+    points = np.array([[1,2,3], [4,5,6], [7,8,9]])
+
+    np.resize(points, (2, 3))
+    array([[1, 2, 3],
+           [4, 5, 6]])
+
+    np.resize(points, (5, 3))
+    array([[1, 2, 3],
+           [4, 5, 6],
+           [7, 8, 9],
+           [1, 2, 3],
+           [4, 5, 6]])
+
+    np.resize(points, (3, 5))
+    array([[1, 2, 3, 4, 5],
+           [6, 7, 8, 9, 1],
+           [2, 3, 4, 5, 6]])
     """
     if len(nparray) == length:
         return nparray
