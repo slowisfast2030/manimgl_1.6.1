@@ -109,6 +109,7 @@ class Scene(object):
 
     def tear_down(self) -> None:
         self.stop_skipping()
+        # 和setup()之前的self.file_writer.begin()对应
         self.file_writer.finish()
         if self.window and self.linger_after_completion:
             self.interact()
