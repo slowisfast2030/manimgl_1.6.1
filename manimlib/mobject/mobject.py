@@ -45,7 +45,14 @@ a float(which represents time). This function does not return anything (None).
 """
 TimeBasedUpdater = Callable[["Mobject", float], None]
 NonTimeUpdater = Callable[["Mobject"], None]
+"""
+Updater is a union type alias that can be either a TimeBasedUpdater or a NonTimeUpdater.
+"""
 Updater = Union[TimeBasedUpdater, NonTimeUpdater]
+"""
+ManimColor is a union type alias that can be either a str, a colour.Color object, 
+or a sequence of float values.
+"""
 ManimColor = Union[str, colour.Color, Sequence[float]]
 
 
