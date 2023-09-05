@@ -241,6 +241,8 @@ class Mobject(object):
     def set_points(self, points: npt.ArrayLike):
         '''
         设置锚点
+
+        严格来讲, 应该是anchor和handle
         '''
         if len(points) == len(self.data["points"]):
             self.data["points"][:] = points
