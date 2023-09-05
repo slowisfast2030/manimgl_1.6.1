@@ -223,9 +223,9 @@ class Scene(object):
         update_frame --> update_frame
         """
         """
-        self.camera对象中包含渲染逻辑
-
+        self.camera对象中包含渲染逻辑:
         vao --> vertex shader --> fragment shader --> fbo
+        
         在update_frame()函数中, 执行完self.camera.capture(*self.mobjects)后
         vao.render()已经执行完毕, 渲染的结果存储在fbo中
         fbo是self.camera的一个属性
