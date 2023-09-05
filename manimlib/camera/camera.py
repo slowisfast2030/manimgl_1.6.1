@@ -650,9 +650,11 @@ class Camera(object):
     rendering different objects in your scene.
 
     Here's how an FBO works:
-    - It represents a custom rendering target or "framebuffer" to which the results of rendering operations can be directed.
+    - It represents a custom rendering target or "framebuffer" to which the results of rendering operations 
+    can be directed.
     - Instead of rendering directly to the default framebuffer (the screen), you can render to an FBO.
-    - You can attach various types of textures or renderbuffers to an FBO, defining where the rendered data will go. These         attachments might include color buffers, depth buffers, and stencil buffers.
+    - You can attach various types of textures or renderbuffers to an FBO, defining where the rendered data 
+    will go. These attachments might include color buffers, depth buffers, and stencil buffers.
 
     In summary:
     
