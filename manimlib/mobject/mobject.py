@@ -183,6 +183,13 @@ class Mobject(object):
         # Typically implemented in subclass, unless purposefully left blank
         pass
 
+    """
+    The copy() function in Python is a method that is used to create shallow copies 
+    of objects, such as lists, dictionaries, or sets. A shallow copy means that the 
+    new object references the same elements as the original object, but does not 
+    create new copies of them. This means that if you modify an element in the original 
+    object, it will also affect the copied object, and vice versa.
+    """
     def set_data(self, data: dict):
         '''设置成员数据，以字典形式传入'''
         for key in data:
