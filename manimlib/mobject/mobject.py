@@ -151,7 +151,7 @@ class Mobject(object):
         (red, green, and blue) has a value ranging from 0 to 255, where 0 means no color 
         and 255 means full color. The alpha component represents the opacity or transparency 
         of the color, with a value ranging from 0 to 255, where 0 means fully transparent 
-        and 255 means fully opaque1
+        and 255 means fully opaque
         """
         self.data: dict[str, np.ndarray] = {
             "points": np.zeros((0, 3)), # 数列，3个元素
