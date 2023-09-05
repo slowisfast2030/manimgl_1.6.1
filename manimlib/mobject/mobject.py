@@ -1060,6 +1060,23 @@ class Mobject(object):
             submob.apply_function_to_position(function)
         return self
 
+    """
+    point = np.array([1, 2])
+    matrix = np.array([[5, 6],
+                       [7, 8]])
+    result = np.dot(point, matrix)
+    print(result)
+    [19 22]
+
+    points = np.array([[1, 2],
+                      [3, 4]])
+    matrix = np.array([[5, 6],
+                       [7, 8]])
+    result = np.dot(points, matrix)
+    print(result)
+    [[19 22]
+     [43 50]]
+    """
     def apply_matrix(self, matrix: npt.ArrayLike, **kwargs):
         # Default to applying matrix about the origin, not mobjects center
         '''
