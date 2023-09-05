@@ -201,6 +201,10 @@ class Scene(object):
 
         从函数名来看, 是对scene中的mobs进行拍照
         从这里就可以看出self.add(mob)的重要性了
+
+        1.对于一般的mob, 需要主动执行self.add(mob)
+        2.对于添加了updater的mob, 需要主动执行self.add(mob)
+        3.对于添加了animation的mob, 不需要主动执行self.add(mob)(因为执行animation的begin函数时会执行self.add(mob))
         """
         self.camera.capture(*self.mobjects)
 
