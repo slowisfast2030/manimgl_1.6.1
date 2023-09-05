@@ -662,8 +662,8 @@ class VMobject(Mobject):
         """
         在整条路径上占比为 alpha 处的点
 
-        不得不说，这个函数的实现比mobject中的函数实现的要更加准确
-        直接获取了第i段贝塞尔曲线的表达式，然后计算出曲线上的点
+        不得不说, 这个函数的实现比mobject中的函数实现的要更加准确
+        直接获取了第i段贝塞尔曲线的表达式, 然后计算出曲线上的点
         """
         if alpha <= 0:
             return self.get_start()
@@ -683,8 +683,8 @@ class VMobject(Mobject):
         """
         next(iterator, default)
 
-        其中，iterator是要传入的迭代器，default是可选的第二个参数，它表示当迭代器耗尽时返回的默认值。
-        如果不指定default，那么当迭代器耗尽时，next函数会抛出一个StopIteration异常，表示迭代结束。
+        其中, iterator是要传入的迭代器, default是可选的第二个参数, 它表示当迭代器耗尽时返回的默认值。
+        如果不指定default, 那么当迭代器耗尽时, next函数会抛出一个StopIteration异常, 表示迭代结束。
         """
         i = next(
             (i for i, x in enumerate(partials) if x >= full * alpha),
