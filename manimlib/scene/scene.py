@@ -219,6 +219,19 @@ class Scene(object):
         """
         生成每一帧, 写入ffmpeg的输入管道
         """
+        """
+        self.camera对象中包含渲染逻辑
+
+        vao --> vertex shader --> fragment shader --> fbo
+        在update_frame()函数中, 执行完self.camera.capture(*self.mobjects)后
+        vao.render()已经执行完毕, 渲染的结果存储在fbo中
+        fbo是self.camera的一个属性
+        通过self.camera.fbo.read()方法可以获取渲染帧
+
+        渲染帧的用途:
+        1.用来生成图片, 比如scene_file_writer.py中的get_image函数
+        2.用来生成视频, 比如scene_file_writer.py中的write_frame函数
+        """
         if not self.skip_animations:
             self.file_writer.write_frame(self.camera)
 
