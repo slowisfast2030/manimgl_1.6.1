@@ -63,6 +63,15 @@ render_modes = [moderngl.POINTS, moderngl.LINES, moderngl.LINE_STRIP, moderngl.L
 image_names = ["points.png", "lines.png", "line_strip.png", "line_loop.png"]
 
 for mode, name in zip(render_modes, image_names):
+    """
+    vao和fbo之间的关系:
+    vao --> vertex shader --> fragment shader --> fbo
+    vao中有render所需要的所有资源
+    render的结果会写入fbo
+
+    A VAO is used to specify the input data for the vertex shader, while a FBO is 
+    used to specify the output target for the fragment shader.
+    """
     vao.render(mode)
 
     # Read the rendered image from the FBO

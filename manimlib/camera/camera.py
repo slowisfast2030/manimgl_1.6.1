@@ -608,6 +608,27 @@ class Camera(object):
         except KeyError:
             return map(self.get_render_group, mobject.get_shader_wrapper_list())
 
+    """
+    vao --> vertex shader --> fragment shader --> fbo
+
+    A VAO is used to specify the input data for the vertex shader, while 
+    a FBO is used to specify the output target for the fragment shader.
+
+    Here's how a VAO works:
+    - It acts as a container for multiple Vertex Buffer Objects (VBOs) and Index Buffer Objects (IBOs).
+    - VBOs store the actual vertex attribute data, like positions, colors, and normals.
+    - IBOs store indices that define the order in which vertices are rendered (used for indexed drawing).
+    - The VAO keeps track of how to bind these buffers together.
+
+    By binding a VAO, you set up the configuration for the vertex shader to read data from specific 
+    VBOs and IBOs. This allows you to efficiently switch between different sets of vertex data when 
+    rendering different objects in your scene.
+
+    Here's how an FBO works:
+    - It represents a custom rendering target or "framebuffer" to which the results of rendering operations can be directed.
+    - Instead of rendering directly to the default framebuffer (the screen), you can render to an FBO.
+    - You can attach various types of textures or renderbuffers to an FBO, defining where the rendered data will go. These      attachments might include color buffers, depth buffers, and stencil buffers.
+    """
     def get_render_group(
         self,
         shader_wrapper: ShaderWrapper,
