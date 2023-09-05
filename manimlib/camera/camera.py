@@ -452,7 +452,7 @@ class Camera(object):
         )
 
     def clear(self) -> None:
-        '''清空帧缓冲'''
+        '''清空帧缓冲对象'''
         self.fbo.clear(*self.background_rgba)
         self.fbo_msaa.clear(*self.background_rgba)
 
