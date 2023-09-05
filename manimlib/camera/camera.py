@@ -582,9 +582,10 @@ class Camera(object):
     def capture(self, *mobjects: Mobject, **kwargs) -> None:
         """
         给场景中的mobs拍照
-        
+
         核心函数, 在scene.py中被调用
         """
+        # 更新和透视投影有关的uniform变量
         self.refresh_perspective_uniforms()
         for mobject in mobjects:
             for render_group in self.get_render_group_list(mobject):
