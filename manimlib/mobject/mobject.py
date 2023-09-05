@@ -917,6 +917,9 @@ class Mobject(object):
         return self
 
     # Transforming operations
+    # 这些变换操作基本都是基于apply_points_function函数
+    # 完全可以基于apply_function函数
+    # 因为两者可以等价
 
     def shift(self, vector: np.ndarray):
         '''
