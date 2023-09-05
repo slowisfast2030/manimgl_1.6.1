@@ -302,7 +302,7 @@ class Mobject(object):
         for mob in self.get_family():
             for key in mob.data:
                 mob.data[key] = mob.data[key][::-1]
-        # 这个函数是在Vmobject类中定义的，在这里调用可以吗？
+        # 这个函数是在Vmobject类中定义的
         self.refresh_unit_normal()
         return self
 
