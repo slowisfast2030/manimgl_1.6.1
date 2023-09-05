@@ -1634,21 +1634,21 @@ class Mobject(object):
     # get_bounding_box_point函数是核心，其他的很多函数都是基于这个函数
     def get_bounding_box_point(self, direction: np.ndarray) -> np.ndarray:
         """
-        给定direction，获取包围框上的点
+        给定direction, 获取包围框上的点
 
         例如：
-        给定RIGHT，获取包围框右边的点
-        给定RIGHT+UP，获取包围框右上角的点
+        给定RIGHT, 获取包围框右边的点
+        给定RIGHT+UP, 获取包围框右上角的点
 
         延伸：
         知道了包围框的三个点，我们就可以计算出包围框上的一些关键点
-        如果mob是正方体的，我们可以计算出六个面和12条边的中心点以及顶点
+        如果mob是正方体的, 我们可以计算出六个面和12条边的中心点以及顶点
 
         c = Cube()
         l = c.get_bounding_box_point(DOWN+RIGHT+IN)
         s = Sphere(radius=0.1).move_to(l).set_color(RED)
 
-        延伸2：
+        延伸2:
         通过包围框上的点
         我们可以计算出构成mob的边框上的任何一点
         也可以计算出构成mob的面上的任何一点
