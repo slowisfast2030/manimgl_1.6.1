@@ -588,6 +588,7 @@ class Camera(object):
         # 更新和透视投影有关的uniform变量
         self.refresh_perspective_uniforms()
         for mobject in mobjects:
+            # 疑问: 一个mob会有好几个render_group?
             for render_group in self.get_render_group_list(mobject):
                 self.render(render_group)
 
