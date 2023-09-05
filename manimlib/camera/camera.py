@@ -437,7 +437,8 @@ class Camera(object):
         pw = self.pixel_width
         ph = self.pixel_height
         
-        # 一旦返回了framebuffer，viewport也就定下来了
+        # 初始化framebuffer
+        # (pw, ph)参数决定了viewport
         return ctx.framebuffer(
             color_attachments=ctx.texture(
                 (pw, ph),
