@@ -1363,6 +1363,12 @@ class Mobject(object):
 
     def space_out_submobjects(self, factor: float = 1.5, **kwargs):
         '''调整子物件的间距为 ``factor`` 倍'''
+        """
+        这个函数真是太秀了
+
+        self.scale()函数默认的缩放中心是mob的center
+        这里的奥妙在于mob的center和每一个submob的中心不一致
+        """
         self.scale(factor, **kwargs)
         for submob in self.submobjects:
             submob.scale(1. / factor)
