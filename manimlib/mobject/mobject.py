@@ -154,9 +154,9 @@ class Mobject(object):
         and 255 means fully opaque
         """
         self.data: dict[str, np.ndarray] = {
-            "points": np.zeros((0, 3)), # 数列，3个元素
+            "points": np.zeros((0, 3)),       # 数列，3个元素
             "bounding_box": np.zeros((3, 3)), # 矩阵，3行3列
-            "rgbas": np.zeros((1, 4)), # 矩阵，1行4列
+            "rgbas": np.zeros((1, 4)),        # 矩阵，1行4列
         }
 
     def init_uniforms(self):
