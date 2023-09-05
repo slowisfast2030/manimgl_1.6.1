@@ -593,11 +593,24 @@ class Camera(object):
 
     def render(self, render_group: dict[str]) -> None:
         '''渲染'''
+        """
+        render_group是一个字典
+        里面存储着渲染所需的所有对象
+        render_group = {
+                "vbo":
+                "ibo":
+                "vao":
+                "prog":
+                "shader_wrapper":
+                "single_use":
+        }
+        """
         shader_wrapper = render_group["shader_wrapper"]
         shader_program = render_group["prog"]
         # 设置传入shader的uniform变量
         self.set_shader_uniforms(shader_program, shader_wrapper)
         self.set_ctx_depth_test(shader_wrapper.depth_test)
+        # 执行渲染, 需要指定mode: render_primitive 
         render_group["vao"].render(int(shader_wrapper.render_primitive))
         if render_group["single_use"]:
             self.release_render_group(render_group)
