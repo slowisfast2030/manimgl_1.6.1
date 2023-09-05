@@ -77,7 +77,9 @@ class Mobject(object):
         "shader_folder": "",
         # 渲染的基元，子类会进行修改
         "render_primitive": moderngl.TRIANGLE_STRIP,
+        # 纹理路径
         "texture_paths": None,
+        # 深度测试
         "depth_test": False,
         # If true, the mobject will not get rotated according to camera position
         "is_fixed_in_frame": False,
@@ -141,7 +143,7 @@ class Mobject(object):
     def init_data(self):
         """
         这里需要拓展认知：
-        每一个mob的data不仅仅包括points，还包括bounding_box和rgbas
+        每一个mob的data不仅仅包括points, 还包括bounding_box和rgbas
         """
         """
         RGBA stands for red, green, blue, and alpha. It is a color model that describes 
