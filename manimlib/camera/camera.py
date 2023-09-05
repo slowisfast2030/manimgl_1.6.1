@@ -433,7 +433,7 @@ class Camera(object):
         ctx: moderngl.Context,
         samples: int = 0
     ) -> moderngl.Framebuffer:
-        '''获取帧缓冲'''
+        '''获取帧缓冲对象'''
         pw = self.pixel_width
         ph = self.pixel_height
         
