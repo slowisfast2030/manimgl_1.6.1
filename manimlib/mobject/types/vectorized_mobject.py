@@ -1021,7 +1021,8 @@ class VMobject(Mobject):
          21 23  0  0  3  6  6  9 12 12 15 18 18 21  0  0  6 12 12 18  0]
 
          3个一组确定一个三角形(似乎多了一组(21,23,0))
-         可以发现, 一个圆的三角剖分的结果和 https://docs.manim.org.cn/documentation/shaders/quadratic_bezier_fill.html
+         可以发现, 一个圆的三角剖分的结果和 
+         https://docs.manim.org.cn/documentation/shaders/quadratic_bezier_fill.html
          图示的结果一样         
         """
         if normal_vector is None:
