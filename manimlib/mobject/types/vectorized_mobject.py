@@ -159,6 +159,7 @@ class VMobject(Mobject):
         background: bool | None = None,
         recurse: bool = True
     ):
+        '''设置轮廓线（轮廓线浮于填充色上方）'''
         self.set_rgba_array_by_color(color, opacity, 'stroke_rgba', recurse)
 
         if width is not None:
@@ -181,10 +182,6 @@ class VMobject(Mobject):
         background: bool = True
     ):
         """设置背景轮廓线（轮廓线衬于填充色下方）"""
-        """
-        和set_stroke函数进行对比后发现
-        set_backstroke的轮廓线会细一点
-        """
         self.set_stroke(color, width, background=background)
         return self
 
@@ -209,6 +206,7 @@ class VMobject(Mobject):
         shadow: float | None = None,
         recurse: bool = True
     ):
+        '''整体设置样式'''
         if fill_rgba is not None:
             self.data['fill_rgba'] = resize_with_interpolation(fill_rgba, len(fill_rgba))
         else:
@@ -242,6 +240,7 @@ class VMobject(Mobject):
         return self
 
     def get_style(self):
+        '''获取样式字典'''
         return {
             "fill_rgba": self.data['fill_rgba'].copy(),
             "stroke_rgba": self.data['stroke_rgba'].copy(),
@@ -253,6 +252,7 @@ class VMobject(Mobject):
         }
 
     def match_style(self, vmobject: VMobject, recurse: bool = True):
+        '''将自身样式与传入的 ``vmobject`` 匹配'''
         self.set_style(**vmobject.get_style(), recurse=False)
         if recurse:
             # Does its best to match up submobject lists, and
