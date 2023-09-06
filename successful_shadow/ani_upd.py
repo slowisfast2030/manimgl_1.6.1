@@ -56,15 +56,8 @@ class apply(Scene):
         self.add(plane)
         
         t = Triangle().set_color(RED)
-        self.add(t)
-
         s = Square().set_color(YELLOW)
-        self.add(s) 
-
         c = Circle().set_color(GREEN)
-        self.add(c)
-
-
         
         ani_t = t.animate.apply_function(lambda point: point+RIGHT*3).build()
         ani_s = s.animate.apply_points_function(lambda points: points+LEFT*3).build()
