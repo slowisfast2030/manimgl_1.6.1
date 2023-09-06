@@ -80,6 +80,16 @@ class VMobject(Mobject):
     }
 
     def __init__(self, **kwargs):
+        """
+        三角剖分
+        Triangulation in computer graphics is the process of dividing a complex polygonal area 
+        into simpler triangles, which can be rendered more efficiently by the graphics card.
+
+        Graphics hardware and software commonly use triangles as the basic rendering primitive. 
+        Triangles are straightforward to rasterize (convert to pixels) because they are always 
+        planar and convex. By breaking down complex shapes into triangles, rendering engines can 
+        efficiently display 3D models and scenes on 2D screens.
+        """
         self.needs_new_triangulation = True
         self.triangulation = np.zeros(0, dtype='i4')
         super().__init__(**kwargs)
