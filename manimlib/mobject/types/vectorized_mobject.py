@@ -400,6 +400,10 @@ class VMobject(Mobject):
         handle2: npt.ArrayLike,
         anchor2: npt.ArrayLike
     ):
+        """
+        三阶贝塞尔曲线需要两个anchor和两个handle
+        """
+        # 这里做一个猜想，这里返回的new_points是6个点，即两条二阶贝塞尔曲线的锚点和手柄
         new_points = get_quadratic_approximation_of_cubic(anchor1, handle1, handle2, anchor2)
         self.append_points(new_points)
 
@@ -412,6 +416,13 @@ class VMobject(Mobject):
         """
         Add cubic bezier curve to the path.
         """
+        """
+        添加一条三阶贝塞尔曲线（可能不准）
+        """
+        """
+        这里将第一个anchor省略了
+        默认为当前曲线的最后一个点
+        """
         self.throw_error_if_no_points()
         quadratic_approx = get_quadratic_approximation_of_cubic(
             self.get_last_point(), handle1, handle2, anchor
@@ -422,6 +433,7 @@ class VMobject(Mobject):
             self.append_points(quadratic_approx)
 
     def add_quadratic_bezier_curve_to(self, handle: np.ndarray, anchor: np.ndarray):
+        '''添加一条二阶贝塞尔曲线'''
         self.throw_error_if_no_points()
         if self.has_new_path_started():
             self.append_points([handle, anchor])
@@ -429,7 +441,10 @@ class VMobject(Mobject):
             self.append_points([self.get_last_point(), handle, anchor])
 
     def add_line_to(self, point: np.ndarray):
+        '''添加一条直线'''
+        # 添加一条直线，本质上在于添加一些点
         end = self.get_points()[-1]
+        # 在0和1之间等间隔插3个值，包含首尾
         alphas = np.linspace(0, 1, self.n_points_per_curve)
         if self.long_lines:
             halfway = interpolate(end, point, 0.5)
@@ -456,6 +471,8 @@ class VMobject(Mobject):
             self.add_line_to(point)
         else:
             self.throw_error_if_no_points()
+            # 这里用二阶贝塞尔曲线来生成曲线
+            # 需要首先计算出handle
             new_handle = self.get_reflection_of_last_handle()
             self.add_quadratic_bezier_curve_to(new_handle, point)
         return self
@@ -541,6 +558,7 @@ class VMobject(Mobject):
         points: Iterable[np.ndarray],
         true_smooth: bool = False
     ):
+        '''用平滑的曲线连接传入的系列点'''
         self.set_points_as_corners(points)
         if true_smooth:
             self.make_smooth()
@@ -549,6 +567,12 @@ class VMobject(Mobject):
         return self
 
     def change_anchor_mode(self, mode: str):
+        '''改变曲线连接模式
+
+         - ``jagged`` : 折线
+         - ``approx_smooth`` : 大致平滑
+         - ``true_smooth`` : 真正平滑
+        '''
         assert(mode in ("jagged", "approx_smooth", "true_smooth"))
         nppc = self.n_points_per_curve
         for submob in self.family_members_with_points():
@@ -575,6 +599,13 @@ class VMobject(Mobject):
         transforming between states before and after calling
         this might have strange artifacts
         """
+        """
+        使曲线变平滑
+
+        这个方法会使得锚点数量加倍，所以 **不要重复使用**，否则锚点数量会 **指数爆炸**
+
+        同时，应用 Transform 时有可能会出现奇怪的曲线
+        """
         self.change_anchor_mode("true_smooth")
         return self
 
@@ -586,14 +617,24 @@ class VMobject(Mobject):
         sampled at a not-too-low rate from a continuous function,
         as in the case of ParametricCurve
         """
+        """
+        使曲线变得大致平滑
+
+        这个方法不像 ``make_smooth``，本方法不会使锚点数量加倍，与此同时带来了无法达到完美平滑的问题
+
+        但是这个方法在锚点采样间隔较小时会有比较好的效果，所以有时会更实用
+        """
         self.change_anchor_mode("approx_smooth")
         return self
 
     def make_jagged(self):
+        '''使曲线模式变为折线'''
         self.change_anchor_mode("jagged")
         return self
 
     def add_subpath(self, points: Iterable[np.ndarray]):
+        # 这里传入的points就是二阶贝塞尔曲线的点了
+        # 需要判断点数是否是3的倍数
         assert(len(points) % self.n_points_per_curve == 0)
         self.append_points(points)
         return self
@@ -610,11 +651,13 @@ class VMobject(Mobject):
 
     #
     def consider_points_equals(self, p0: np.ndarray, p1: np.ndarray) -> bool:
+        '''判断两点是否大致重合'''
         return get_norm(p1 - p0) < self.tolerance_for_point_equality
 
     # Information about the curve
     def get_bezier_tuples_from_points(self, points: Sequence[np.ndarray]):
         # 二阶贝塞尔曲线，每一段由3个点组成
+        # 给定的points数目可能不是3的倍数
         nppc = self.n_points_per_curve
         # 保证points的长度是nppc的整数倍
         remainder = len(points) % nppc
@@ -804,8 +847,6 @@ class VMobject(Mobject):
     def get_unit_normal(self, recompute: bool = False) -> np.ndarray:
         '''
         获取单位法向量
-        
-        这个函数的使用场景是啥？
         '''
         if not recompute:
             return self.data["unit_normal"][0]
