@@ -58,6 +58,8 @@ class apply(Scene):
         t = Triangle().set_color(RED)
         s = Square().set_color(YELLOW)
         c = Circle().set_color(GREEN)
+
+        tt = t.copy()
         
         ani_t = t.animate.apply_function(lambda point: point+RIGHT*3).build()
         ani_s = s.animate.apply_points_function(lambda points: points+LEFT*3).build()
@@ -67,6 +69,15 @@ class apply(Scene):
         self.play(ani_t,
                   ani_s,
                   ani_c,
+                  tt.animate
+                  .shift(UP*2)
+                  .apply_function(
+                        lambda p: [
+                            p[0] + 1 * math.sin(p[1]),
+                            p[1] + 1 * math.sin(p[0]),
+                            p[2]
+                        ], about_point=np.array((1,1,0))*3
+                    ),
                   run_time=3)
 
         print("-"*100)
