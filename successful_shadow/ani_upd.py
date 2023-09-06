@@ -82,3 +82,14 @@ class apply(Scene):
 
         print("-"*100)
         print(self.mobjects)
+
+
+class stroke(Scene):
+    def construct(self):
+        plane = NumberPlane()
+        self.add(plane)
+        
+        t = Triangle().set_fill(GREEN).set_stroke(RED).shift(LEFT)
+        tt = Triangle().set_fill(GREEN).set_backstroke(RED).shift(RIGHT)
+
+        self.add(t, tt)
