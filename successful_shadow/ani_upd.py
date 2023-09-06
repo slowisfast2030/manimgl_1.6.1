@@ -49,3 +49,24 @@ class test(Scene):
 
         print("-"*100)
         print(self.mobjects)
+
+class apply(Scene):
+    def construct(self):
+        plane = NumberPlane()
+        self.add(plane)
+        
+        t = Triangle().set_color(RED)
+        self.add(t)
+
+        s = Square().set_color(YELLOW)
+        self.add(s) 
+        
+        ani_t = t.animate.apply_function(lambda point: point+RIGHT*3).build()
+        ani_s = s.animate.apply_points_function(lambda points: points+LEFT*3).build()
+
+        self.play(ani_t,
+                  ani_s,
+                  run_time=3)
+
+        print("-"*100)
+        print(self.mobjects)
