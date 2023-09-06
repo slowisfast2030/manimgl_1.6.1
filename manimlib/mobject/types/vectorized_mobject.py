@@ -181,6 +181,10 @@ class VMobject(Mobject):
         background: bool = True
     ):
         """设置背景轮廓线（轮廓线衬于填充色下方）"""
+        """
+        和set_stroke函数进行对比后发现
+        set_backstroke的轮廓线会细一点
+        """
         self.set_stroke(color, width, background=background)
         return self
 
