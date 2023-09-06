@@ -66,8 +66,7 @@ class apply(Scene):
         
         ani_t = t.animate.apply_function(lambda point: point+RIGHT*3).build()
         ani_s = s.animate.apply_points_function(lambda points: points+LEFT*3).build()
-        m = np.array([[3, 0, 0], [0, 3, 0], [0, 0, 3]])
-        ani_c = c.animate.apply_matrix(m.T).build()
+        ani_c = c.animate.apply_matrix(np.identity(3)*3).build()
 
         self.play(ani_t,
                   ani_s,
