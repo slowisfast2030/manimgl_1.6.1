@@ -60,12 +60,18 @@ class apply(Scene):
 
         s = Square().set_color(YELLOW)
         self.add(s) 
+
+        c = Circle().set_color(GREEN)
+        self.add(c)
         
         ani_t = t.animate.apply_function(lambda point: point+RIGHT*3).build()
         ani_s = s.animate.apply_points_function(lambda points: points+LEFT*3).build()
+        m = np.array([[3, 0, 0], [0, 3, 0], [0, 0, 3]])
+        ani_c = c.animate.apply_matrix(m.T).build()
 
         self.play(ani_t,
                   ani_s,
+                  ani_c,
                   run_time=3)
 
         print("-"*100)
