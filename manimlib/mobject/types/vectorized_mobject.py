@@ -1009,6 +1009,9 @@ class VMobject(Mobject):
         # Figure out how to triangulate the interior to know
         # how to send the points as to the vertex shader.
         # First triangles come directly from the points
+        """
+        经过三角形剖分后的结果是啥？
+        """
         if normal_vector is None:
             normal_vector = self.get_unit_normal(recompute=True)
 
@@ -1075,6 +1078,7 @@ class VMobject(Mobject):
 
     @triggers_refreshed_triangulation
     def set_points(self, points: npt.ArrayLike):
+        '''设置物件的锚点，传入的数组必须为 Nx3'''
         super().set_points(points)
         return self
 
@@ -1091,12 +1095,14 @@ class VMobject(Mobject):
         make_smooth: bool = False,
         **kwargs
     ):
+        '''把 ``function`` 作用到所有锚点上'''
         super().apply_function(function, **kwargs)
         if self.make_smooth_after_applying_functions or make_smooth:
             self.make_approximately_smooth()
         return self
 
     def flip(self, axis: np.ndarray = UP, **kwargs):
+        '''绕 axis 轴翻转'''
         super().flip(axis, **kwargs)
         self.refresh_unit_normal()
         self.refresh_triangulation()
@@ -1211,6 +1217,9 @@ class VMobject(Mobject):
 
 
 class VGroup(VMobject):
+    """
+    和 ``VMobject`` 相同，主要用作包含一些子物体（必须都是 VMobject)
+    """
     def __init__(self, *vmobjects: VMobject, **kwargs):
         if not all([isinstance(m, VMobject) for m in vmobjects]):
             raise Exception("All submobjects must be of type VMobject")
@@ -1223,6 +1232,9 @@ class VGroup(VMobject):
 
 
 class VectorizedPoint(Point, VMobject):
+    """
+    以 VMobject 形式存在的单个点
+    """
     CONFIG = {
         "color": BLACK,
         "fill_opacity": 0,
@@ -1238,6 +1250,9 @@ class VectorizedPoint(Point, VMobject):
 
 
 class CurvesAsSubmobjects(VGroup):
+    """
+    传入一个 VMobject 实例（物体），将其所有段曲线作为子物体（一个子物体为一条曲线）
+    """
     def __init__(self, vmobject: VMobject, **kwargs):
         super().__init__(**kwargs)
         for tup in vmobject.get_bezier_tuples():
@@ -1248,6 +1263,12 @@ class CurvesAsSubmobjects(VGroup):
 
 
 class DashedVMobject(VMobject):
+    """ 
+    传入一个 VMobject 实例（物体），将其所有曲线全部设为虚线
+    
+    - 传入 ``num_dashed`` 表示分为多少段虚线
+    - 传入 ``positive_space_ratio`` 表示虚实比例
+    """
     CONFIG = {
         "num_dashes": 15,
         "positive_space_ratio": 0.5,
