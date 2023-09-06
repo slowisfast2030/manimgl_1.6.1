@@ -63,10 +63,13 @@ class apply(Scene):
 
         c = Circle().set_color(GREEN)
         self.add(c)
+
+
         
         ani_t = t.animate.apply_function(lambda point: point+RIGHT*3).build()
         ani_s = s.animate.apply_points_function(lambda points: points+LEFT*3).build()
-        ani_c = c.animate.apply_matrix(np.identity(3)*3, about_point=(1,1,0)).build()
+        #ani_c = c.animate.apply_matrix(np.identity(3)*3, about_point=(1,1,0)).build()
+        ani_c = c.animate.apply_function(lambda point: np.dot(point, np.identity(3)*3),about_point=(1,1,0)).build()
 
         self.play(ani_t,
                   ani_s,
