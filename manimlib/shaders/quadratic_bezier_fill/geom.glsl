@@ -149,13 +149,27 @@ void emit_pentagon(vec3[3] points, vec3 normal){
         );
     }
 
+    /*
+    p0, p1是相机坐标系下的贝塞尔曲线的两个控制点
+    normal是相机坐标系下p0,p1,p2平面的法向量
+    通过正交变换，将相机坐标系下的点转换到uv坐标系下
+    p0 --> (0,0)
+    p1 --> (1,0)
+    xyz_to_uv: 相机坐标系到uv坐标系变换的(近似)正交矩阵(模长会有一个固定的缩放比例)
+    */
     mat4 xyz_to_uv = get_xyz_to_uv(p0, p1, normal);
     uv_b2 = (xyz_to_uv * vec4(p2, 1)).xy;
+    /*
+    上述的正交变换会使得模长发生变化
+    length(p1 - p0) --> length((1,0) - (0,0)) == 1
+    所以，在相机坐标系下的anti_alias_width转换到uv坐标系下需要同比例缩放
+    */
     uv_anti_alias_width = anti_alias_width / length(p1 - p0);
 
     for(int i = 0; i < 5; i++){
         vec3 corner = corners[i];
         uv_coords = (xyz_to_uv * vec4(corner, 1)).xy;
+        // 赋予了新的顶点索引
         int j = int(sign(i - 1) + 1);  // Maps i = [0, 1, 2, 3, 4] onto j = [0, 0, 1, 2, 2]
         emit_vertex_wrapper(corner, j);
     }
@@ -174,14 +188,19 @@ void main(){
         (v_vert_index[2] - v_vert_index[1]) != 1.0
     );
 
+    // 图元顶点索引不连续，三角形
     if(fill_all == 1.0){
         emit_simple_triangle();
         return;
     }
 
+    // 图元顶点索引连续，弓形
     vec3 new_bp[3];
+    // 三个点的空间位置有3种情况：重合、共线、共面
     bezier_degree = get_reduced_control_points(vec3[3](bp[0], bp[1], bp[2]), new_bp);
+    // 假设三点共面，计算单位法向量
     vec3 local_unit_normal = get_unit_normal(new_bp);
+    // 这个orientation的几何意义是什么？
     orientation = sign(dot(v_global_unit_normal[0], local_unit_normal));
 
     if(bezier_degree >= 1){
