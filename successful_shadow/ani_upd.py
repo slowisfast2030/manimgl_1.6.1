@@ -120,6 +120,8 @@ class glsl(Scene):
         当points[2]在第一象限的时候, 可以正确的着色
         当points[2]在第二象限的时候, 反向着色
         当points[2]在第三和第四象限的时候, 三角形内部全部着色
+
+        贝塞尔曲线内部和外部的判断标准是什么？
         """
         points = [[0,0,0], [1,0,0], [2.0,1.0,0]] 
         vm.set_points(np.array(points))
