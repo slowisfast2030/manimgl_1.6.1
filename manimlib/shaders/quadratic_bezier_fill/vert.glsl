@@ -8,7 +8,7 @@
 每段贝塞尔曲线有3个控制点
 因此，我们有24个控制点
 
-我们不仅传入了每个点的坐标，还传入了每个点的法向量(可以提前计算出来manim程序)、颜色、索引
+我们不仅传入了每个点的坐标，还传入了每个点的法向量(可以提前计算出来 manim程序)、颜色、索引
 
 思考:
 在surface的着色器代码中，每个点的法向量是在顶点着色器中计算出来的(GPU)
@@ -29,8 +29,29 @@ out float v_vert_index;
 #INSERT position_point_into_frame.glsl
 
 void main(){
+    /*
+    将point和unit_normal转换到相机坐标系中
+
+    position_point_into_frame和rotate_point_into_frame两个函数区别在于
+    后者没有平移操作，当然向量也不需要平移操作
+    */
     bp = position_point_into_frame(point);
     v_global_unit_normal = rotate_point_into_frame(unit_normal);
     v_color = color;
     v_vert_index = vert_index;
 }
+
+/*
+一个简单的思考：
+manim中默认的点是在世界坐标系中的
+
+在仅有vertex shader和fragment shader的情况下，我们可以
+在vertex shader中完成
+世界坐标系 ---> 相机坐标系 ---> 裁剪坐标系
+
+而在有vertex shader, geometry shader, fragment shader的情况下，我们可以
+在vertex shader中完成
+世界坐标系 ---> 相机坐标系
+在geometry shader中完成
+相机坐标系 ---> 裁剪坐标系
+*/
