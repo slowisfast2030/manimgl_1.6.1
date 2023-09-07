@@ -16,8 +16,11 @@ out vec4 v_color;
 #INSERT get_rotated_surface_unit_normal_vector.glsl
 
 void main(){
+    // 将点从世界坐标系转换到相机坐标系
     xyz_coords = position_point_into_frame(point);
+    // 计算(point, du_point, dv_point)面在point处的法向量, 并将其转换到相机坐标系
     v_normal = get_rotated_surface_unit_normal_vector(point, du_point, dv_point);
     v_color = color;
+    // 将点从相机坐标系转换到裁剪坐标系
     gl_Position = get_gl_Position(xyz_coords);
 }
