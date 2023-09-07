@@ -89,8 +89,8 @@ class stroke(Scene):
         plane = NumberPlane()
         self.add(plane)
         
-        t = Triangle().set_fill(GREEN).set_stroke(RED, width=3).shift(LEFT)
-        tt = Triangle().set_fill(GREEN).set_backstroke(RED, width=3).shift(RIGHT)
+        t = Triangle().set_fill(GREEN, 0.5).set_stroke(RED, width=3).shift(LEFT)
+        tt = Triangle().set_fill(GREEN, 0.5).set_backstroke(RED, width=3).shift(RIGHT)
 
         self.add(t, tt)
         self.wait()
