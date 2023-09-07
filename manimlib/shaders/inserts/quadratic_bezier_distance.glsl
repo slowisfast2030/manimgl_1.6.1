@@ -95,6 +95,7 @@ float dist_to_point_on_curve(vec2 p, float t, vec2 b2){
 b0, b1, b2三个点会确定一个三角形，且点p在三角形内
 */
 float min_dist_to_curve(vec2 p, vec2 b2, float degree){
+    // 这个函数的返回值是不是永远为正？
     // Check if curve is really a a line
     if(degree == 1) return dist_to_line(p, b2);
 
