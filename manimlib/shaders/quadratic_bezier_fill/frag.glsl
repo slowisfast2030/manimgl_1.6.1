@@ -105,3 +105,30 @@ void main() {
     */
     frag_color.a *= smoothstep(1, 0, sdf() / uv_anti_alias_width);
 }
+
+/*
+class glsl(Scene):
+    def construct(self):
+        frame = self.camera.frame
+        frame.scale(0.5)
+        plane = NumberPlane(x_range=(-2,2), y_range=(-2,2), width=8, height=8)
+        self.add(plane)
+        
+        vm = VMobject()
+        points = [[0,0,0], [1,0,0], [2.0,1.5,0]] 
+        vm.set_points(np.array(points))
+        vm.set_fill(GREEN, 1).set_stroke(WHITE, 0)
+        self.add(vm)
+
+        b0 = Dot(points[0]).set_color(RED).scale(0.5)
+        b1 = Dot(points[1]).set_color(RED).scale(0.5)
+        b2 = Dot(points[2]).set_color(RED).scale(0.5) 
+        self.add(b0, b1, b2)
+
+        vm.needs_new_triangulation = True
+        print(vm.get_triangulation())
+        self.wait()
+
+通过不断调整points[3]的位置，可以模拟这里sdf函数的效果
+通过在Camera类中修改anti_alias_width的大小，可以看出抗锯齿的效果
+*/
