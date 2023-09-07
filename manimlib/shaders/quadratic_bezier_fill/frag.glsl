@@ -2,6 +2,18 @@
 
 #INSERT camera_uniform_declarations.glsl
 
+/*
+vertex shader --> geometry shader --> rasterizer --> fragment shader
+顶点着色器只能看到每个点, 片段着色器只能看到每个像素
+几何着色器和光栅化器都能看到整个图元
+
+引入几何着色器有两个目的：
+目的一(次要): 将部分图元顶点数由3个变成5个
+目的二(主要): 因为几何着色器可以看见整个图元，我们需要针对每个图元做些计算并将计算结果传给光栅化器和片段着色器
+有些变量在图元范围内应该保持不变，比如uv_b2，不同的图元之间可以变化
+这种功能只能由几何着色器实现(顶点着色器看不见整个图元)
+*/
+
 in vec4 color;
 in float fill_all;  // Either 0 or 1
 in float uv_anti_alias_width;
