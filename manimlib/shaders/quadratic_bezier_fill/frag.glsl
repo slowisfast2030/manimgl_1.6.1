@@ -36,7 +36,7 @@ float modify_distance_for_endpoints(vec2 p, float dist, float t){
 
 float sdf(){
     /*
-    在uv空间下，计算当前像素点uv_coords到贝塞尔曲线的最小距离
+    在uv空间下，计算当前像素点uv_coords到贝塞尔曲线((0,0), (1,0), uv_b2)的最小距离
 
     Sdf stands for signed distance function, which is a mathematical construct that 
     computes the distance from a point to a surface, with the sign indicating whether 
