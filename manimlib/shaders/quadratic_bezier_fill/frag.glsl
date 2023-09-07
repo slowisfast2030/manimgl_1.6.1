@@ -37,6 +37,18 @@ float modify_distance_for_endpoints(vec2 p, float dist, float t){
 float sdf(){
     /*
     在uv空间下，计算当前像素点uv_coords到贝塞尔曲线的最小距离
+
+    Sdf stands for signed distance function, which is a mathematical construct that 
+    computes the distance from a point to a surface, with the sign indicating whether 
+    the point is inside or outside the surface.
+
+    The term "signed" in Signed Distance Function refers to the fact that the function 
+    can return both positive and negative values. It indicates not only the distance to
+    the object but also whether the point is inside or outside the object.
+
+    If the function returns a positive value, it means the point is outside the object.
+    If it returns zero, the point is on the object's surface.
+    If it returns a negative value, the point is inside the object.
     
     */
     if(bezier_degree < 2){
