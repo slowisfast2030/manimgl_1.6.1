@@ -94,5 +94,10 @@ void main() {
     if (color.a == 0) discard;
     frag_color = color;
     if (fill_all == 1.0) return;
+    /*
+    当sdf() / uv_anti_alias_width < 0，返回1
+    当sdf() / uv_anti_alias_width > 1，返回0
+    当0 < sdf() / uv_anti_alias_width < 1，返回从0到1的平滑插值
+    */
     frag_color.a *= smoothstep(1, 0, sdf() / uv_anti_alias_width);
 }
