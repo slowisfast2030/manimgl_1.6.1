@@ -139,6 +139,9 @@ anti-aliasing width results in a more significant reduction of jaggedness but
 can also introduce a slight blur to the image. The choice of anti-aliasing 
 width depends on the specific rendering requirements and the desired trade-off 
 between sharpness and smoothness.
+抗锯齿宽度：抗锯齿宽度中的“宽度”是指应用于对象边缘的混合或平滑效果的程度。更宽的抗锯齿宽度
+可以更显着地减少锯齿，但也会给图像带来轻微的模糊。抗锯齿宽度的选择取决于具体的渲染要求以及
+清晰度和平滑度之间所需的权衡。
 
 阴差阳错地解决了另一个在心中停留很久的问题:
 当对贝塞尔曲线进行填充的时候，究竟填充的是哪些区域？
