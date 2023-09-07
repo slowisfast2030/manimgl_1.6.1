@@ -87,6 +87,7 @@ float sdf(){
     );
     vec2 p = to_simple_space * uv_coords;
     // Sign takes care of whether we should be filling the inside or outside of curve.
+    // 这里出现了sign(v2)这种写法，就意味着uv_b2可以在x轴上方，也可以在x轴下方
     float sgn = orientation * sign(v2);
     float Fp = (p.x * p.x - p.y);
     if(sgn * Fp < 0){
