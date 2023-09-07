@@ -60,6 +60,7 @@ uv_coords_1就是uv_b1，即(0,1)
 uv_coords: interpolate(uv_coords_0, uv_coords_1, uv_coords_2)
 uv_b2: interpolate(uv_b2, uv_b2, uv_b2) = uv_b2
 这样，每个pixel是可以知道在uv空间中的贝塞尔曲线((0,0), (1,0), uv_b2)和自己的坐标(uv_b2)
+这样每个pixel就可以计算自己是否在贝塞尔曲线的内部
 */
 
 
