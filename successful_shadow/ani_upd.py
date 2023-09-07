@@ -115,7 +115,7 @@ class glsl(Scene):
         self.add(plane)
         
         vm = VMobject()
-        points = [[0,0,0], [1,0,0], [2,1.0,0]] 
+        points = [[0,0,0], [1,0,0], [2.0,0.5,0]] 
         vm.set_points(np.array(points))
 
         vm.set_fill(GREEN, 1).set_stroke(WHITE, 0)
