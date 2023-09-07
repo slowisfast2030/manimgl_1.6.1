@@ -80,6 +80,7 @@ float sdf(){
     // This converts uv_coords to yet another space where the bezier points sit on
     // (0, 0), (1/2, 0) and (1, 1), so that the curve can be expressed implicityly
     // as y = x^2.
+    // 为什么这里可以这么映射呢？费解
     mat2 to_simple_space = mat2(
         v2, 0,
         2 - u2, 4 * v2
