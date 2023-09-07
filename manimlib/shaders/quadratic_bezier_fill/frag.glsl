@@ -36,7 +36,7 @@ float modify_distance_for_endpoints(vec2 p, float dist, float t){
 
 float sdf(){
     /*
-    在uv空间下的当前像素点uv_coords到贝塞尔曲线的距离
+    在uv空间下，计算当前像素点uv_coords到贝塞尔曲线的最小距离
     
     */
     if(bezier_degree < 2){
