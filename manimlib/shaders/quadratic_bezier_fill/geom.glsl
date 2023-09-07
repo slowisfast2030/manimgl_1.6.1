@@ -60,14 +60,17 @@ uv_coords_1就是uv_b1，即(0,1)
 通过我们锐利的观察: 这份代码中存在一个没有使用的变量: xyz_coords
 我们完全可以猜测: 3b1b忘记删了
 那么他为什么引入这个变量呢？因为完全可以替代uv空间
-不过需要改成xyz_coords[3]
+不过需要再添加一个变量xyz_coords[3]
 示例如下:
 in(xyz space) -->         out(xyz space) 
-bz[0]         -->         [xy_coords_0, xy_coords_1, xy_coords_2]
-bz[1]         -->         [xy_coords_0, xy_coords_1, xy_coords_2] 
-bz[2]         -->         [xy_coords_0, xy_coords_1, xy_coords_2]
-
-
+bz[0]         -->         [xyz_coords_0, xyz_coords_1, xyz_coords_2], xyz_coords_0 
+bz[1]         -->         [xyz_coords_0, xyz_coords_1, xyz_coords_2], xyz_coords_1
+bz[2]         -->         [xyz_coords_0, xyz_coords_1, xyz_coords_2], xyz_coords_2
+经过光栅化器的插值，每个pixel
+xyz_coords有两个属性
+1. [xyz_coords_0, xyz_coords_1, xyz_coords_2]
+2. interpolate([(xyz_coords_0, xyz_coords_1, xyz_coords_2)) 
+和引入uv空间效果一样
 
 经过光栅化器的插值，每个pixel
 uv_coords: interpolate(uv_coords_0, uv_coords_1, uv_coords_2)
