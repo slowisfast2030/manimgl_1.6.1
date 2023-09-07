@@ -43,10 +43,13 @@ out float bezier_degree;
 /*
 这里可以进一步分析下uv_coords和uv_b2
 暂时忽略修改基元得到的5个顶点，仍然按照3个顶点分析
-bz[0] --> uv_coords_0, nv_b2
-bz[1] --> uv_coords_1, nv_b2
-bz[2] --> uv_coords_2, nv_b2
+in    --> out 
+bz[0] --> uv_coords_0, uv_b2
+bz[1] --> uv_coords_1, uv_b2
+bz[2] --> uv_coords_2, uv_b2
 
+因为贝塞尔曲线的前两个控制点已经映射到了uv_b0(0,0)和uv_b1(0,1)
+所以整个贝塞尔曲线完全由uv_b2决定
 
 */
 
