@@ -105,6 +105,16 @@ void main() {
     当sdf() / uv_anti_alias_width > 1，返回0（曲线外部，且比较远）
     当0 < sdf() / uv_anti_alias_width < 1，返回从0到1的平滑插值（曲线外部，不太远）
     */
+    /*
+    在b0, b1, b2三个点构成的三角形内部主要分为两个部分
+    曲线内和曲线外
+    曲线外还可以进一步细分为两个部分
+    抗锯齿宽度内和抗拒出宽度外
+
+    形象上看，三角形内部有2条线
+    贝塞尔曲线
+    抗锯齿宽度线
+    */
     frag_color.a *= smoothstep(1, 0, sdf() / uv_anti_alias_width);
 }
 
