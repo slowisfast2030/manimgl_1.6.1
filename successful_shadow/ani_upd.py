@@ -123,7 +123,7 @@ class glsl(Scene):
 
         贝塞尔曲线内部和外部的判断标准是什么？
         """
-        points = [[0,0,0], [1,0,0], [3.5,1.5,0]] 
+        points = [[0,0,0], [1,0,0], [2,1.5,0]] 
         vm.set_points(np.array(points))
         vm.set_fill(GREEN, 1).set_stroke(WHITE, 0)
         self.add(vm)
