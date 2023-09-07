@@ -51,6 +51,10 @@ float sdf(){
     If it returns a negative value, the point is inside the object.
     */
 
+    /*
+    uv_coords: 当前像素点的uv坐标
+    uv_b2: 贝塞尔曲线的第三个控制点（前两个固定在(0,0)和(1,0)，所以曲线的形状完全由uv_b2决定）
+    */
     if(bezier_degree < 2){
         return abs(uv_coords[1]);
     }
@@ -66,10 +70,6 @@ float sdf(){
     // For flat-ish curves, take the curve
     // 当有一些弯曲的时候
     else if(abs(v2 / u2) < 0.5 * uv_anti_alias_width){
-        /*
-        uv_coords: 当前像素点的uv坐标
-        uv_b2: 贝塞尔曲线的第三个控制点（前两个固定在(0,0)和(1,0)，所以曲线的形状完全由uv_b2决定）
-        */
         return min_dist_to_curve(uv_coords, uv_b2, bezier_degree);
     }
     // I know, I don't love this amount of arbitrary-seeming branching either,
