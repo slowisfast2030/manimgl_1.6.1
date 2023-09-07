@@ -105,9 +105,15 @@ float min_dist_to_curve(vec2 p, vec2 b2, float degree){
     // 这里的uv_b2哪里来的? 应该是写错了
     float xm2 = uv_b2.x - 2.0;
     float y = uv_b2.y;
-    // 修改后。奇怪的是，修改前和修改后都能正确的设置fill。麻了。。。
+    // 修改后
     // float xm2 = b2.x - 2.0;
     // float y = b2.y;
+    /*
+    修改前和修改后都能正确的执行。原因：
+    因为这段代码是插入quadratic_bezier_fill/frag.glsl文件中
+    这份文件一开始就定义了in vec2 uv_b2;
+    所以可以正确执行，算是歪打正着
+    */
 
     float a = xm2*xm2 + y*y;
     float b = 3 * xm2;
