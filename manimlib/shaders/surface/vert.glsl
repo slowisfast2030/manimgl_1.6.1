@@ -7,6 +7,8 @@ in vec3 du_point;
 in vec3 dv_point;
 in vec4 color;
 
+// 顶点着色器处理的是一个个顶点(只能处理顶点, 看不到基元)
+// 这里输出是顶点处的有关变量
 out vec3 xyz_coords;
 out vec3 v_normal;
 out vec4 v_color;

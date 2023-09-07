@@ -7,6 +7,8 @@ uniform float gloss;
 uniform float shadow;
 uniform float focal_distance;
 
+// 这里是每一个像素的输入变量
+// pixel的值是由vertex处的值插值得到的
 in vec3 xyz_coords;
 in vec3 v_normal;
 in vec4 v_color;
