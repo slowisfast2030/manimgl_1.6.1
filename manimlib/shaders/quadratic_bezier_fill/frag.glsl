@@ -16,7 +16,7 @@ vertex shader --> geometry shader --> rasterizer --> fragment shader
 
 in vec4 color;
 in float fill_all;  // Either 0 or 1
-in float uv_anti_alias_width;
+in float uv_anti_alias_width; // uv空间下的抗锯齿宽度
 
 in vec3 xyz_coords;
 in float orientation;
@@ -35,6 +35,10 @@ float modify_distance_for_endpoints(vec2 p, float dist, float t){
 
 
 float sdf(){
+    /*
+    在uv空间下的当前像素点uv_coords到贝塞尔曲线的距离
+    
+    */
     if(bezier_degree < 2){
         return abs(uv_coords[1]);
     }
@@ -46,6 +50,10 @@ float sdf(){
     }
     // For flat-ish curves, take the curve
     else if(abs(v2 / u2) < 0.5 * uv_anti_alias_width){
+        /*
+        uv_coords: 当前像素点的uv坐标
+        uv_b2: 贝塞尔曲线的第三个控制点（前两个固定在(0,0)和(0,1)，所以曲线的形状完全由uv_b2决定）
+        */
         return min_dist_to_curve(uv_coords, uv_b2, bezier_degree);
     }
     // I know, I don't love this amount of arbitrary-seeming branching either,
