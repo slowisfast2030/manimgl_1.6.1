@@ -115,10 +115,10 @@ class glsl(Scene):
         self.add(plane)
         
         vm = VMobject()
-        points = [[0,0,0], [1,0,0], [0.7,0.1,0]] 
+        points = [[0,0,0], [1,0,0], [2,1.0,0]] 
         vm.set_points(np.array(points))
 
-        vm.set_fill(GREEN, 0.5).set_stroke(WHITE, 1.5)
+        vm.set_fill(GREEN, 1).set_stroke(WHITE, 0)
         self.add(vm)
 
         b0 = Dot(points[0]).set_color(RED).scale(0.5)
