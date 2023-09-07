@@ -109,7 +109,7 @@ class triangulation(Scene):
 
 class glsl(Scene):
     def construct(self):
-        plane = NumberPlane()
+        plane = NumberPlane(x_range=(-2,2), y_range=(-2,2), width=8, height=8)
         self.add(plane)
         
         vm = VMobject()
@@ -117,4 +117,10 @@ class glsl(Scene):
 
         vm.set_fill(GREEN, 0.5)
         self.add(vm)
+
+        dot = Dot((1,0,0)).set_color(RED)
+        self.add(dot)
+
+        vm.needs_new_triangulation = True
+        print(vm.get_triangulation())
         self.wait()
