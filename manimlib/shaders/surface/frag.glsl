@@ -18,6 +18,9 @@ out vec4 frag_color;
 #INSERT finalize_color.glsl
 
 void main() {
+    // 计算光照下的颜色
+    // 光照颜色也可以在顶点着色器中计算
+    // 可以进一步思考下两者的区别
     frag_color = finalize_color(
         v_color,
         xyz_coords,
