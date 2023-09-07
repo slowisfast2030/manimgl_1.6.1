@@ -55,6 +55,7 @@ bz[2] --> uv_coords_2, uv_b2
 经过光栅化器的插值，每个pixel
 uv_coords: interpolate(uv_coords_0, uv_coords_1, uv_coords_2)
 uv_b2: interpolate(uv_b2, uv_b2, uv_b2) = uv_b2
+这样，每个pixel是可以知道在uv空间中的贝塞尔曲线((0,0), (1,0), uv_b2)和自己的坐标
 */
 
 
