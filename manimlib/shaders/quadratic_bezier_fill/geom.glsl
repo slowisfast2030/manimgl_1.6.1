@@ -40,6 +40,15 @@ bp[1] --> b1
 out vec2 uv_coords;
 out vec2 uv_b2;
 out float bezier_degree;
+/*
+这里可以进一步分析下uv_coords和uv_b2
+暂时忽略修改基元得到的5个顶点，仍然按照3个顶点分析
+bz[0] --> uv_coords_0, nv_b2
+bz[1] --> uv_coords_1, nv_b2
+bz[2] --> uv_coords_2, nv_b2
+
+
+*/
 
 
 // Analog of import for manim only
