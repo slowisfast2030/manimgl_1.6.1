@@ -16,18 +16,27 @@ uniform float reflectiveness;
 uniform float gloss;
 uniform float shadow;
 
+// 因为几何着色器处理的是整个图元
+// 所以这里的每一个输入变量都是3份
 in vec3 bp[3];
 in vec3 v_global_unit_normal[3];
 in vec4 v_color[3];
 in float v_vert_index[3];
 
+// 特别注意: 下面的输出变量对于图元中的每个顶点都会输出一次
 out vec4 color;
 out float fill_all;
 out float uv_anti_alias_width;
 
-out vec3 xyz_coords;
+out vec3 xyz_coords; // 这个变量没有用，应该是3b1b没有删除
 out float orientation;
 // uv space is where b0 = (0, 0), b1 = (1, 0), and transform is orthogonal
+/*
+从xyz空间映射到uv空间
+bp[0] --> b0
+bp[1] --> b1
+存在一个变换矩阵(通过get_xyz_to_uv函数计算)
+*/
 out vec2 uv_coords;
 out vec2 uv_b2;
 out float bezier_degree;
