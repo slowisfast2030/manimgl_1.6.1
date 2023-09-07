@@ -3,7 +3,7 @@
 layout (triangles) in;
 layout (triangle_strip, max_vertices = 5) out;
 
-uniform float anti_alias_width;
+uniform float anti_alias_width; // 抗锯齿宽度
 
 // Needed for get_gl_Position
 uniform vec2 frame_shape;

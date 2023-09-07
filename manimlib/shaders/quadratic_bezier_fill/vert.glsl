@@ -40,6 +40,12 @@ void main(){
     v_color = color;
     v_vert_index = vert_index;
 }
+/*
+vertex_index作为变量传递给几何着色器后，几何着色器根据三角形剖分的结果
+可以看到一整个图元
+*/
+
+
 
 /*
 一个简单的思考：
