@@ -64,6 +64,7 @@ float sdf(){
         return abs(uv_coords[1]);
     }
     // For flat-ish curves, take the curve
+    // 当有一些弯曲的时候
     else if(abs(v2 / u2) < 0.5 * uv_anti_alias_width){
         /*
         uv_coords: 当前像素点的uv坐标
