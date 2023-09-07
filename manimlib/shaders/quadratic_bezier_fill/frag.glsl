@@ -99,9 +99,9 @@ void main() {
     frag_color = color;
     if (fill_all == 1.0) return;
     /*
-    当sdf() / uv_anti_alias_width < 0，返回1
-    当sdf() / uv_anti_alias_width > 1，返回0
-    当0 < sdf() / uv_anti_alias_width < 1，返回从0到1的平滑插值
+    当sdf() / uv_anti_alias_width < 0，返回1（曲线内部）
+    当sdf() / uv_anti_alias_width > 1，返回0（曲线外部，且比较远）
+    当0 < sdf() / uv_anti_alias_width < 1，返回从0到1的平滑插值（曲线外部，不太远）
     */
     frag_color.a *= smoothstep(1, 0, sdf() / uv_anti_alias_width);
 }
