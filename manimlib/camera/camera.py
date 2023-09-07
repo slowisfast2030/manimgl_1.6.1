@@ -338,6 +338,9 @@ class Camera(object):
         "pixel_array_dtype": 'uint8',
         "light_source_position": [-10, 10, 10],
         # Measured in pixel widths, used for vector graphics
+        # anti_alias_width会在贝塞尔曲线的边缘产生一层模糊带的效果
+        # anti_alias_width越大，模糊带越宽
+        # 如果anti_alias_width设置的很小，边缘的锯齿感就会很强 
         "anti_alias_width": 1.5,
         # Although vector graphics handle antialiasing fine
         # without multisampling, for 3d scenes one might want
