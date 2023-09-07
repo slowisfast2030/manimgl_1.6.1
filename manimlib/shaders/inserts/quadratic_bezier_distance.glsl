@@ -100,10 +100,10 @@ float min_dist_to_curve(vec2 p, vec2 b2, float degree){
     // Try finding the exact sdf by solving the equation
     // (d/dt) dist^2(t) = 0, which amount to the following
     // cubic.
-    // 这里的uv_b2哪里来的?
+    // 这里的uv_b2哪里来的? 应该是写错了
     float xm2 = uv_b2.x - 2.0;
     float y = uv_b2.y;
-    // 修改后
+    // 修改后。奇怪的是，修改前和修改后都能正确的设置fill
     // float xm2 = b2.x - 2.0;
     // float y = b2.y;
 
