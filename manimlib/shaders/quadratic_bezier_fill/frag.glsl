@@ -132,6 +132,9 @@ class glsl(Scene):
 通过不断调整points[3]的位置，可以模拟这里sdf函数的效果
 通过在Camera类中修改anti_alias_width的大小，可以看出抗锯齿的效果
 
+From chatgpt:
+Anti-Aliasing Width: The "width" in anti-aliasing width refers to the extent of the blending or smoothing effect applied to the edges of objects. A wider anti-aliasing width results in a more significant reduction of jaggedness but can also introduce a slight blur to the image. The choice of anti-aliasing width depends on the specific rendering requirements and the desired trade-off between sharpness and smoothness.
+
 阴差阳错地解决了另一个在心中停留很久的问题:
 当对贝塞尔曲线进行填充的时候，究竟填充的是哪些区域？
 */
