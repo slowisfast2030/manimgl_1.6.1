@@ -165,6 +165,10 @@ void emit_pentagon(vec3[3] points, vec3 normal){
 
 void main(){
     // If vert indices are sequential, don't fill all
+    /*
+    几何着色器处理的是三角形图元
+    图元的顶点索引若是连续，则是弓形；不连续，则是三角形
+    */
     fill_all = float(
         (v_vert_index[1] - v_vert_index[0]) != 1.0 ||
         (v_vert_index[2] - v_vert_index[1]) != 1.0
