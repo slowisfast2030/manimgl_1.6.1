@@ -106,3 +106,15 @@ class triangulation(Scene):
         print(t.get_triangulation())
 
         self.wait()
+
+class glsl(Scene):
+    def construct(self):
+        plane = NumberPlane()
+        self.add(plane)
+        
+        vm = VMobject()
+        vm.set_points(np.array([[0,0,0], [1,0,0], [0.7,0.7,0]]))
+
+        vm.set_fill(GREEN, 0.5)
+        self.add(vm)
+        self.wait()
