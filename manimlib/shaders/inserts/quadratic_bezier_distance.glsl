@@ -105,7 +105,7 @@ float min_dist_to_curve(vec2 p, vec2 b2, float degree){
     // 这里的uv_b2哪里来的? 应该是写错了
     float xm2 = uv_b2.x - 2.0;
     float y = uv_b2.y;
-    // 修改后。奇怪的是，修改前和修改后都能正确的设置fill
+    // 修改后。奇怪的是，修改前和修改后都能正确的设置fill。麻了。。。
     // float xm2 = b2.x - 2.0;
     // float y = b2.y;
 
