@@ -109,17 +109,22 @@ class triangulation(Scene):
 
 class glsl(Scene):
     def construct(self):
+        frame = self.camera.frame
+        frame.scale(0.5)
         plane = NumberPlane(x_range=(-2,2), y_range=(-2,2), width=8, height=8)
         self.add(plane)
         
         vm = VMobject()
-        vm.set_points(np.array([[0,0,0], [1,0,0], [0.7,0.7,0]]))
+        points = [[0,0,0], [1,0,0], [0.7,0.9,0]] 
+        vm.set_points(np.array(points))
 
-        vm.set_fill(GREEN, 0.5)
+        vm.set_fill(GREEN, 0.5).set_stroke(WHITE, 1.5)
         self.add(vm)
 
-        dot = Dot((1,0,0)).set_color(RED)
-        self.add(dot)
+        b0 = Dot(points[0]).set_color(RED).scale(0.5)
+        b1 = Dot(points[1]).set_color(RED).scale(0.5)
+        b2 = Dot(points[2]).set_color(RED).scale(0.5) 
+        self.add(b0, b1, b2)
 
         vm.needs_new_triangulation = True
         print(vm.get_triangulation())
