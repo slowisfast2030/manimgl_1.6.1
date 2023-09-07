@@ -58,6 +58,8 @@ float sdf(){
     if(bezier_degree < 2){
         return abs(uv_coords[1]);
     }
+    // uv_b2是在第一象限，一切都解释的通
+    // 在哪里有规定吗？
     float u2 = uv_b2.x;
     float v2 = uv_b2.y;
     // For really flat curves, just take the distance to x-axis
