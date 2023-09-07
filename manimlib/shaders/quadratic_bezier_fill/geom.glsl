@@ -36,6 +36,8 @@ out float orientation;
 bp[0] --> b0
 bp[1] --> b1
 存在一个变换矩阵(通过get_xyz_to_uv函数计算)
+这个矩阵近似正交阵
+存在模长缩放: 缩放比例length(bp[0] - bp[1]) / length((1,0) - (0,0)) = length(bp[0] - bp[1])
 */
 out vec2 uv_coords;
 out vec2 uv_b2;
