@@ -57,6 +57,17 @@ uv_coords_1就是uv_b1，即(0,1)
 因为贝塞尔曲线的前两个控制点已经映射到了uv_b0(0,0)和uv_b1(0,1)
 所以整个贝塞尔曲线完全由uv_b2决定
 其实完全可以不做从xyz到uv空间的映射
+通过我们锐利的观察: 这份代码中存在一个没有使用的变量: xyz_coords
+我们完全可以猜测: 3b1b忘记删了
+那么他为什么引入这个变量呢？因为完全可以替代uv空间
+不过需要改成xyz_coords[3]
+示例如下:
+in(xyz space) -->         out(xyz space) 
+bz[0]         -->         xy_coords_0, 
+bz[1]         -->         xy_coords_1, 
+bz[2]         -->         xy_coords_2, 
+
+
 
 经过光栅化器的插值，每个pixel
 uv_coords: interpolate(uv_coords_0, uv_coords_1, uv_coords_2)
