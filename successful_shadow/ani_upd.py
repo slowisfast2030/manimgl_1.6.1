@@ -100,10 +100,9 @@ class triangulation(Scene):
         plane = NumberPlane()
         self.add(plane)
         
-        t = Circle().set_stroke(RED, width=3)
+        t = Circle().set_stroke(RED, width=3).set_fill(GREEN, opacity=0.5)
         self.add(t)
         t.needs_new_triangulation = True
         print(t.get_triangulation())
 
-        self.add(t)
         self.wait()

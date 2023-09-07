@@ -88,6 +88,11 @@ float dist_to_point_on_curve(vec2 p, float t, vec2 b2){
 }
 
 // 点到贝塞尔曲线上的最小距离
+/*
+这里需要把问题更加准确的定义一下：
+点: p
+贝塞尔曲线: b0(0,0), b1(1,0), b2
+*/
 float min_dist_to_curve(vec2 p, vec2 b2, float degree){
     // Check if curve is really a a line
     if(degree == 1) return dist_to_line(p, b2);
@@ -95,8 +100,13 @@ float min_dist_to_curve(vec2 p, vec2 b2, float degree){
     // Try finding the exact sdf by solving the equation
     // (d/dt) dist^2(t) = 0, which amount to the following
     // cubic.
+    // 这里的uv_b2哪里来的?
     float xm2 = uv_b2.x - 2.0;
     float y = uv_b2.y;
+    // 修改后
+    // float xm2 = b2.x - 2.0;
+    // float y = b2.y;
+
     float a = xm2*xm2 + y*y;
     float b = 3 * xm2;
     float c = -(p.x*xm2 + p.y*y) + 2;
