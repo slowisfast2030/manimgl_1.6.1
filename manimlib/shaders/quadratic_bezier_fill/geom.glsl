@@ -101,6 +101,7 @@ void emit_vertex_wrapper(vec3 point, int index){
         shadow
     );
     xyz_coords = point;
+    // 相机空间映射到裁剪空间
     gl_Position = get_gl_Position(xyz_coords);
     EmitVertex();
 }
