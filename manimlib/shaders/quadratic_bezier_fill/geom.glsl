@@ -88,6 +88,8 @@ uv_b2: interpolate(uv_b2, uv_b2, uv_b2) = uv_b2
 
 
 void emit_vertex_wrapper(vec3 point, int index){
+    // 这里在几何着色器中计算光照，本质上是计算顶点的颜色
+    // 而surface是在片段着色器计算光照，本质上是计算像素的颜色
     color = finalize_color(
         v_color[index],
         point,
