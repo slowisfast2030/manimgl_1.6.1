@@ -2,22 +2,29 @@ float cross2d(vec2 v, vec2 w){
     return v.x * w.y - w.x * v.y;
 }
 
-
+// 从相机坐标系到uv坐标系的转换
+// 返回近似的正交矩阵
 mat3 get_xy_to_uv(vec2 b0, vec2 b1){
+    // 偏移矩阵
     mat3 shift = mat3(
         1.0, 0.0, 0.0,
         0.0, 1.0, 0.0,
         -b0.x, -b0.y, 1.0
     );
-
+    /*
+    b0和b1是相机坐标系的点，经过正交变换后，b0变为[0, 0]，b1变为[1, 0]
+    那么正交阵对于模长的缩放因子为length(b1 - b0)
+    */
     float sf = length(b1 - b0);
     vec2 I = (b1 - b0) / sf;
     vec2 J = vec2(-I.y, I.x);
+    // 旋转矩阵
     mat3 rotate = mat3(
         I.x, J.x, 0.0,
         I.y, J.y, 0.0,
         0.0, 0.0, 1.0
     );
+    // 最终的变换矩阵 = 1/缩放因子 * 旋转矩阵 * 偏移矩阵
     return (1 / sf) * rotate * shift;
 }
 

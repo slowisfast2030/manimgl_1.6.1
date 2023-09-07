@@ -3,7 +3,7 @@
 // uniform mat3 camera_rotation;
 
 // 计算point, du_point和dv_point三个点所构成平面的法向量
-// 并将法向量由世界坐标系变换到相机坐标系
+// 并将法向量从世界坐标系变换到相机坐标系
 vec3 get_rotated_surface_unit_normal_vector(vec3 point, vec3 du_point, vec3 dv_point){
     vec3 cp = cross(
         (du_point - point),

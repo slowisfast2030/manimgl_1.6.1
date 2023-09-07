@@ -4,6 +4,10 @@
 // so that b0 = (0, 0) and b1 = (1, 0).  That is, b2 entirely
 // determines the shape of the curve
 
+/*
+假设 b0 = (0, 0) , b1 = (1, 0) , b2 = (x, y) ，
+返回 b0, b1, b2 之间的二阶贝塞尔插值
+*/
 vec2 bezier(float t, vec2 b2){
     // Quick returns for the 0 and 1 cases
     if (t == 0) return vec2(0, 0);
@@ -15,12 +19,12 @@ vec2 bezier(float t, vec2 b2){
     );
 }
 
-
+// 计算立方根
 float cube_root(float x){
     return sign(x) * pow(abs(x), 1.0 / 3.0);
 }
 
-
+// 解出一元三次方程的实根，返回值为实根个数
 int cubic_solve(float a, float b, float c, float d, out float roots[3]){
     // Normalize so a = 1
     b = b / a;
@@ -64,6 +68,7 @@ int cubic_solve(float a, float b, float c, float d, out float roots[3]){
     return n_valid_roots;
 }
 
+// 点到线段的距离
 float dist_to_line(vec2 p, vec2 b2){
     float t = clamp(p.x / b2.x, 0, 1);
     float dist;
@@ -74,7 +79,7 @@ float dist_to_line(vec2 p, vec2 b2){
     return modify_distance_for_endpoints(p, dist, t);
 }
 
-
+// 点到贝塞尔曲线上某一点的距离
 float dist_to_point_on_curve(vec2 p, float t, vec2 b2){
     t = clamp(t, 0, 1);
     return modify_distance_for_endpoints(
@@ -82,7 +87,7 @@ float dist_to_point_on_curve(vec2 p, float t, vec2 b2){
     );
 }
 
-
+// 点到贝塞尔曲线上的最小距离
 float min_dist_to_curve(vec2 p, vec2 b2, float degree){
     // Check if curve is really a a line
     if(degree == 1) return dist_to_line(p, b2);
