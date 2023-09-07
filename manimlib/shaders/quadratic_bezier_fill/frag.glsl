@@ -50,7 +50,7 @@ float sdf(){
     If it returns zero, the point is on the object's surface.
     If it returns a negative value, the point is inside the object.
     */
-    
+
     if(bezier_degree < 2){
         return abs(uv_coords[1]);
     }
