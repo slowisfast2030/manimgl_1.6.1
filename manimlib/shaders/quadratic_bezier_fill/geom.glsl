@@ -48,6 +48,10 @@ bz[0]         -->         uv_coords_0, uv_b2
 bz[1]         -->         uv_coords_1, uv_b2
 bz[2]         -->         uv_coords_2, uv_b2
 
+小细节：在3个顶点的情况下
+uv_coords_0就是uv_b0，既(0,0)
+uv_coords_1就是uv_b1，即(0,1)
+
 因为贝塞尔曲线的前两个控制点已经映射到了uv_b0(0,0)和uv_b1(0,1)
 所以整个贝塞尔曲线完全由uv_b2决定
 其实完全可以不做从xyz到uv空间的映射
