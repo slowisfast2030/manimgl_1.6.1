@@ -57,6 +57,9 @@ float sdf(){
     float u2 = uv_b2.x;
     float v2 = uv_b2.y;
     // For really flat curves, just take the distance to x-axis
+    // 贝塞尔曲线会经过uv_b2
+    // 当满足abs(v2 / u2) < 0.1 * uv_anti_alias_width，说明uv_b2离x轴很近
+    // 又因为贝塞尔曲线经过(0,0), 所以这条曲线近似于x轴 
     if(abs(v2 / u2) < 0.1 * uv_anti_alias_width){
         return abs(uv_coords[1]);
     }
