@@ -2,6 +2,8 @@ float cross2d(vec2 v, vec2 w){
     return v.x * w.y - w.x * v.y;
 }
 
+// Orthogonal matrix to convert to a uv space defined so that
+// b0 goes to [0, 0] and b1 goes to [1, 0]
 // 从相机坐标系到uv坐标系的转换
 // 返回近似的正交矩阵
 mat3 get_xy_to_uv(vec2 b0, vec2 b1){
@@ -31,6 +33,8 @@ mat3 get_xy_to_uv(vec2 b0, vec2 b1){
 
 // Orthogonal matrix to convert to a uv space defined so that
 // b0 goes to [0, 0] and b1 goes to [1, 0]
+// 从相机坐标系到uv坐标系的转换
+// 返回近似的正交矩阵
 mat4 get_xyz_to_uv(vec3 b0, vec3 b1, vec3 unit_normal){
     mat4 shift = mat4(
         1, 0, 0, 0,
@@ -61,6 +65,22 @@ mat4 get_xyz_to_uv(vec3 b0, vec3 b1, vec3 unit_normal){
 // might change.  The idea is to inform the caller of the degree,
 // while also passing tangency information in the linear case.
 // float get_reduced_control_points(vec3 b0, vec3 b1, vec3 b2, out vec3 new_points[3]){
+/*
+points[3] 为输入参数
+new_points[3] 为输出参数
+
+对于零曲线
+    new_points 均为 points[0]
+    返回 0
+对于单线段
+    new_points[0] 为 points[0]
+    new_points[1] 为 (points[0] + points[2]) / 2
+    new_points[2] 为 points[2]
+    返回 1
+对于二次贝塞尔曲线
+    new_points[i] 分别为 points[i], i = 0, 1, 2
+    返回 2
+*/
 float get_reduced_control_points(in vec3 points[3], out vec3 new_points[3]){
     float length_threshold = 1e-6;
     float angle_threshold = 5e-2;
