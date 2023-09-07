@@ -63,9 +63,9 @@ uv_coords_1就是uv_b1，即(0,1)
 不过需要改成xyz_coords[3]
 示例如下:
 in(xyz space) -->         out(xyz space) 
-bz[0]         -->         xy_coords_0, 
-bz[1]         -->         xy_coords_1, 
-bz[2]         -->         xy_coords_2, 
+bz[0]         -->         [xy_coords_0, xy_coords_1, xy_coords_2]
+bz[1]         -->         [xy_coords_0, xy_coords_1, xy_coords_2] 
+bz[2]         -->         [xy_coords_0, xy_coords_1, xy_coords_2]
 
 
 
