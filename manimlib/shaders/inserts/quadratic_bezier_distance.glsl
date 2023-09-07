@@ -93,7 +93,6 @@ float dist_to_point_on_curve(vec2 p, float t, vec2 b2){
 点: p
 贝塞尔曲线: b0(0,0), b1(1,0), b2
 b0, b1, b2三个点会确定一个三角形，且点p在三角形内
-
 */
 float min_dist_to_curve(vec2 p, vec2 b2, float degree){
     // Check if curve is really a a line
