@@ -34,6 +34,18 @@ if TYPE_CHECKING:
 EPSILON = 1e-8
 
 
+"""
+类继承关系：
+
+        CoordinateSystem
+              
+             Axes
+
+    ThreeDAxes   NumberPlane
+
+                 ComplexPlane
+"""
+
 class CoordinateSystem():
     """
     Abstract class for Axes and NumberPlane
