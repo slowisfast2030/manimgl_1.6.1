@@ -2090,6 +2090,9 @@ class Mobject(object):
     ):
         """
         需要先对齐两个物件的数据
+
+        alpha*arr1 + (1-alpha)*arr2
+        arr1和arr2必须是同维度
         """
         for key in self.data:
             if key in self.locked_data_keys:
