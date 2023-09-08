@@ -988,7 +988,11 @@ class VMobject(Mobject):
         """
         这个函数接口的定义和实现都不好
         接口: 这个函数返回的是对两个vmob的补间。按功能讲, 应该是一个单独的函数, 而不是vmob的方法
-        实现: 插值之前要先对齐。但代码中没有。可以先比较一下两个vmob的顶点数目的多少, 让数目少的对齐数目多的
+        实现: 插值之前要先对齐points。但代码中没有。可以先比较一下两个vmob的顶点数目的多少, 让数目少的对齐数目多的
+
+        之所以需要对齐points, 本质是因为后面会执行 alpha*arr1 + (1-alpha)*arr2
+        arr1是mob1的点集, arr2是mob2的点集
+        当点集维度不同的时候, 无法执行加法
         """
         super().interpolate(mobject1, mobject2, alpha, *args, **kwargs)
         if self.has_fill():
