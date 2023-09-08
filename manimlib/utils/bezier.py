@@ -14,6 +14,25 @@ from manimlib.logger import log
 
 CLOSED_THRESHOLD = 0.001
 T = TypeVar("T")
+"""
+TypeVar is a function from the typing module that allows you to define 
+a type variable. A type variable is a special kind of type that can 
+represent different types depending on the context. For example, you 
+can use a type variable to annotate a generic function that works with 
+any type of argument, such as:
+
+```
+T = TypeVar("T") # Define a type variable T
+
+def identity(arg: T) -> T:
+    return arg # Return the same type as the argument
+```
+
+In this example, T is a type variable that can be any type. The function 
+identity takes an argument of type T and returns a value of the same type 
+T. This means that the function can accept and return any type of value, 
+such as int, str, list, etc.
+"""
 
 def bezier(
     points: Iterable[float | np.ndarray]
