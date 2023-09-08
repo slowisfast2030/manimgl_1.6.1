@@ -89,6 +89,10 @@ class VMobject(Mobject):
         Triangles are straightforward to rasterize (convert to pixels) because they are always 
         planar and convex. By breaking down complex shapes into triangles, rendering engines can 
         efficiently display 3D models and scenes on 2D screens.
+
+        mobject类并不需要实现三角剖分, 比如Surface类
+        三角剖分的主要目的是在既有顶点下, 将顶点组合成一个个三角形, 作为基元, 方便着色器渲染
+        对于Surface类, 因为是对nv空间的采样, 直接设置了triangle index(可以算作另类的三角剖分)
         """
         self.needs_new_triangulation = True
         self.triangulation = np.zeros(0, dtype='i4')
