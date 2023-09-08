@@ -15,6 +15,11 @@ if TYPE_CHECKING:
     from manimlib.animation.animation import Animation
 
 
+# /Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/udemy/Bag_of_Tracks/51geodater.py
+# 上面的示例是最好的
+
+# 特别需要注意，这里的method方法的格式：mob.func
+# 不是method
 def assert_is_mobject_method(method):
     """判断 ``method`` 是否是 Mobject 的方法"""
     assert(inspect.ismethod(method))
@@ -22,15 +27,28 @@ def assert_is_mobject_method(method):
     assert(isinstance(mobject, Mobject))
 
 
+"""
+always(label.next_to, brace, dir)
+always(stuff[0].next_to, stuff[1], LEFT, buff=MED_SMALL_BUFF)
+"""
 def always(method, *args, **kwargs):
     """一直调用 ``method``，传入 ``*args, **kwargs``"""
     assert_is_mobject_method(method)
+    # 因为method的格式是mob.func
+    # 所以可以从method中提取mob和func
     mobject = method.__self__
     func = method.__func__
+    # 困惑：不应该是
+    # lambda m: m.func(*args, **kwargs)
+    # 难道等价？
     mobject.add_updater(lambda m: func(m, *args, **kwargs))
     return mobject
 
 
+"""
+x = ValueTracker(-3)
+f_always(stuff[0].set_x, x.get_value)
+"""
 def f_always(method, *arg_generators, **kwargs):
     """
     More functional version of always, where instead
@@ -96,6 +114,18 @@ def always_rotate(
     return mobject
 
 
+"""
+turn_animation_into_updater(Write(stuff[0]), cycle=True)
+turn_animation_into_updater(ShowCreation(stuff[1]), cycle=True)
+turn_animation_into_updater(FadeIn(stuff[2]), cycle=True)
+cycle_animation(FadeOut(stuff[3]))
+"""
+# 不得不赞叹！只有对animation和updater理解的足够深，才能完成两者之间的转换
+# 佩服不已
+
+# 可以进一步思考这个函数
+# 如果将cycle设置为False，那么这个函数就是一个普通的animation
+# 本质上，就将play(animation)的内部过程展现了出来
 def turn_animation_into_updater(
     animation: Animation,
     cycle: bool = False,

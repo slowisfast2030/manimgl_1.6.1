@@ -9,7 +9,32 @@ from manimlib.mobject.types.vectorized_mobject import VMobject
 from manimlib.utils.config_ops import digest_config
 
 
+"""
+注意这个函数：输入是一维，输出是三维
+def parametric_function(t: float) -> Vect3:
+    return self.c2p(t, function(t))
+
+graph = ParametricCurve(
+    parametric_function,
+    t_range=tuple(t_range),
+    **kwargs
+)
+"""
+"""
+Callable[[float], Sequence[float]] is a type annotation that indicates a callable object 
+that takes a float as an argument and returns a sequence of floats.
+
+the following function is compatible with the type Callable[[float], Sequence[float]]:
+
+def square_and_cube(x: float) -> Sequence[float]:
+    return [x, x**2, x**3]
+
+"""
 class ParametricCurve(VMobject):
+    """
+    参数曲线
+    ``discontinuities`` : 间断点列表（在这个列表中的值所对应的点将会是图像的间断点）
+    """
     CONFIG = {
         "t_range": [0, 1, 0.1],
         "epsilon": 1e-8,
