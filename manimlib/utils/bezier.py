@@ -32,6 +32,9 @@ In this example, T is a type variable that can be any type. The function
 identity takes an argument of type T and returns a value of the same type 
 T. This means that the function can accept and return any type of value, 
 such as int, str, list, etc.
+
+You can also use TypeVar to define a type variable that is restricted to 
+a specific set of types. 
 """
 
 def bezier(
