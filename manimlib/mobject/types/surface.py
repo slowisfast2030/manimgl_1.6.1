@@ -201,6 +201,9 @@ class Surface(Mobject):
         # the resolution of the surface, make sure
         # this is called.
         """
+        效果同三角剖分
+        """
+        """
         目前manim所支持的surface的(u, v)空间是一个矩形空间
         比如:
         Surface
