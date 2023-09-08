@@ -133,6 +133,7 @@ class glsl(Scene):
         b2 = Dot(points[2]).set_color(RED).scale(0.5) 
         self.add(b0, b1, b2)
 
-        #vm.needs_new_triangulation = True
-        #print(vm.get_triangulation())
+        # 在渲染过程中，会主动调用get_triangulation()函数
+        vm.needs_new_triangulation = True
+        print(vm.get_triangulation())
         self.wait()
