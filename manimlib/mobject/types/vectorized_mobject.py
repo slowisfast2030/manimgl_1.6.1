@@ -1066,6 +1066,15 @@ class VMobject(Mobject):
          https://docs.manim.org.cn/documentation/shaders/quadratic_bezier_fill.html
          图示的结果一样         
         """
+        """
+        三角剖分算法: earclip triangulation
+        Earclip triangulation is a method used in computational geometry to divide 
+        a simple polygon into a set of triangles. It is called "earclip" because it 
+        involves identifying and "clipping" or removing "ears" from the polygon until 
+        it is fully triangulated. An "ear" in this context refers to a convex vertex 
+        of the polygon that can be safely removed along with its connecting edges to 
+        form a triangle.
+        """
         if normal_vector is None:
             normal_vector = self.get_unit_normal(recompute=True)
 
@@ -1184,7 +1193,9 @@ class VMobject(Mobject):
         return self
 
     def get_fill_shader_wrapper(self) -> ShaderWrapper:
+        # 顶点数据
         self.fill_shader_wrapper.vert_data = self.get_fill_shader_data()
+        # 顶点索引，三角形剖分
         self.fill_shader_wrapper.vert_indices = self.get_fill_shader_vert_indices()
         self.fill_shader_wrapper.uniforms = self.get_shader_uniforms()
         self.fill_shader_wrapper.depth_test = self.depth_test
@@ -1267,6 +1278,16 @@ class VMobject(Mobject):
         self.get_stroke_shader_data()
 
     def get_fill_shader_vert_indices(self) -> np.ndarray:
+        """
+        需要进一步解释一下这里的顶点索引
+        一个VMobject对象, 当执行set_data函数的时候, 每个顶点按照列表的顺序已经有了列表索引
+        但是这里需要计算的是这些顶点组成三角形后的索引
+        比如:
+        按照列表索引: 0, 1, 2, 3
+        经过三角剖分后
+        得到新的索引:0, 1, 2, 1, 2, 3
+        每3个订单组成一个三角形
+        """
         return self.get_triangulation()
 
 
