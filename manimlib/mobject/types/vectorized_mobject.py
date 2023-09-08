@@ -986,6 +986,7 @@ class VMobject(Mobject):
             tri1 = mobject1.get_triangulation()
             tri2 = mobject2.get_triangulation()
             if len(tri1) != len(tri1) or not np.all(tri1 == tri2):
+                # 重新计算三角剖分
                 self.refresh_triangulation()
         return self
 
