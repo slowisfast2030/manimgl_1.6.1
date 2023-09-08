@@ -497,9 +497,35 @@ def earclip_triangulation(verts: np.ndarray, ring_ends: list[int]) -> list:
         return abs(s) / 2
 
     # Points at the same position may cause problems
+    """
+    numpy.core._exceptions.UFuncTypeError: Cannot cast ufunc 'add' output from 
+    dtype('float64') to dtype('int64') with casting rule 'same_kind'
+
+    The error you are getting is caused by trying to add two arrays of different 
+    data types using the numpy ufunc ‘add’. A ufunc is a function that operates 
+    on ndarrays in an element-by-element fashion1. The ‘add’ ufunc is the implementation 
+    of the arithmetic addition operator +.
+
+    In your code, you are trying to add verts[i[0]] and (verts[i[1]] - verts[i[0]]) * 1e-6. 
+    The first array is of dtype(‘int64’), which means it contains 64-bit integers. 
+    The second array is of dtype(‘float64’), which means it contains 64-bit floating-point 
+    numbers. These two data types are not compatible for the ‘add’ ufunc, which requires 
+    the same kind of data type for both inputs and outputs.
+
+    当传入的顶点是int型的时候会上面的错:
+    points = [[0,0,0], [1,0,0], [2,1,0]] 
+    vm.set_points(np.array(points))
+
+    最简单的方法:将2改为2.0
+    """
     for i in rings:
+        # 修改前，有数据类型不匹配风险
         verts[i[0]] += (verts[i[1]] - verts[i[0]]) * 1e-6
         verts[i[-1]] += (verts[i[-2]] - verts[i[-1]]) * 1e-6
+
+        # 修改后
+        # verts[i[0]] = np.add(verts[i[0]], (verts[i[1]] - verts[i[0]]) * 1e-6, casting='unsafe')
+        # verts[i[-1]] = np.add(verts[i[-1]], (verts[i[-2]] - verts[i[0-1]]) * 1e-6, casting='unsafe')
 
     # First, we should know which rings are directly contained in it for each ring
 
