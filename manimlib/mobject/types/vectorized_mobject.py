@@ -758,6 +758,11 @@ class VMobject(Mobject):
         # 遍历每一小段贝塞尔曲线
         for tup in self.get_bezier_tuples():
             # Approximate length with straight line from start to end
+            """
+            这里是点睛之笔
+            每一段贝塞尔曲线的长度是没有公式可以计算的
+            这里采取的是近似法
+            """
             arclen = get_norm(tup[0] - tup[-1])
             partials.append(partials[-1] + arclen)
         full = partials[-1]
