@@ -43,6 +43,10 @@ def bezier(
     n = len(points) - 1
 
     def result(t):
+        """
+        当len(points) == 3的时候, 就是二阶贝塞尔曲线的公式:
+        (1-t)**2*points[0]+2t(1-t)*points[1]+t**2*points[2]
+        """
         return sum(
             ((1 - t)**(n - k)) * (t**k) * choose(n, k) * point
             for k, point in enumerate(points)
