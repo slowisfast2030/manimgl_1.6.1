@@ -171,6 +171,23 @@ def mid(start: T, end: T) -> T:
     return (start + end) / 2.0
 
 
+"""
+In Python, specifically when using the NumPy library, np.true_divide() 
+is a function used for performing element-wise division of two arrays 
+or array-like objects. It is a way to divide the corresponding elements 
+of two arrays while preserving the data type and broadcasting rules.
+
+import numpy as np
+
+arr1 = np.array([[6, 6], [2, 9], [1, 2]])
+arr2 = np.array([[2, 3], [4, 3], [6, 7]])
+
+out = np.true_divide(arr1, arr2)
+
+[[6.  3. ]
+ [2.  4.5]
+ [1.  1. ]]
+"""
 def inverse_interpolate(start: T, end: T, value: T) -> float:
     return np.true_divide(value - start, end - start)
 
