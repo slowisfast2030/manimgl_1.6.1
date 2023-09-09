@@ -726,6 +726,7 @@ class VMobject(Mobject):
         # Assumes all curves have the same length, so is inaccurate
         num_curves = self.get_num_curves()
         n, residue = integer_interpolate(0, num_curves, alpha)
+        # 返回第n段贝塞尔曲线的公式
         curve_func = self.get_nth_curve_function(n)
         return curve_func(residue)
 
