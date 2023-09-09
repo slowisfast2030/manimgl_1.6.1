@@ -762,6 +762,10 @@ class VMobject(Mobject):
             这里是点睛之笔
             每一段贝塞尔曲线的长度是没有公式可以计算的
             这里采取的是近似法
+            这也给与我们很大启发:
+            在图形学中, 如果不能拿到准确的数学公式, 可以用近似方法解决
+            理论 vs 工程
+            这是一个优秀的工程师的素养
             """
             arclen = get_norm(tup[0] - tup[-1])
             partials.append(partials[-1] + arclen)
