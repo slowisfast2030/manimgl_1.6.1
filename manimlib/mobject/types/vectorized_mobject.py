@@ -721,7 +721,7 @@ class VMobject(Mobject):
         """
         在整条路径上占比为 alpha 处的点
 
-        这个方法建立在假设所有弧线长度相同的条件下，因此可能有一些误差，但是性能更好
+        这个方法建立在假设每一段弧线长度相同的条件下，因此可能有一些误差，但是性能更好
         """
         # Assumes all curves have the same length, so is inaccurate
         num_curves = self.get_num_curves()
