@@ -8,6 +8,17 @@ def sigmoid(x):
     return 1.0 / (1 + np.exp(-x))
 
 
+"""
+The math.comb(n, k) function in Python is used to calculate the 
+number of ways to choose k items from a set of n distinct items 
+without regard to the order of selection. This operation is known 
+as "combinations."
+
+Mathematically, it calculates the binomial coefficient, often 
+denoted as "C(n, k)" or "n choose k," which represents the number 
+of distinct combinations of k elements that can be selected from 
+a set of n elements.
+"""
 @lru_cache(maxsize=10)
 def choose(n, k):
     return math.comb(n, k)
