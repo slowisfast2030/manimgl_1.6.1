@@ -704,7 +704,7 @@ class VMobject(Mobject):
         return self.get_subpaths_from_points(self.get_points())
 
     def get_nth_curve_points(self, n: int) -> np.ndarray:
-        '''获取组成曲线的第 n 条贝塞尔曲线的锚点'''
+        '''获取组成曲线的第 n 条贝塞尔曲线的控制点'''
         assert(n < self.get_num_curves())
         nppc = self.n_points_per_curve
         return self.get_points()[nppc * n:nppc * (n + 1)]
