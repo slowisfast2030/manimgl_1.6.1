@@ -736,6 +736,12 @@ class VMobject(Mobject):
 
         不得不说, 这个函数的实现比mobject中的函数实现的要更加准确
         直接获取了第i段贝塞尔曲线的表达式, 然后计算出曲线上的点
+
+        整体思想:
+        整个vmob是由多段二阶贝塞尔曲线拼接而成
+        需要通过alpha获取两个关键信息: 
+        待求的点在第几段曲线
+        在曲线的百分比位置
         """
         if alpha <= 0:
             return self.get_start()
