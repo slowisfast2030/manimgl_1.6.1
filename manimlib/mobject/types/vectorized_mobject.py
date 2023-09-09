@@ -672,6 +672,9 @@ class VMobject(Mobject):
         )
 
     def get_bezier_tuples(self):
+        """
+        三个一组, 返回贝塞尔控制点
+        """
         return self.get_bezier_tuples_from_points(self.get_points())
 
     def get_subpaths_from_points(
