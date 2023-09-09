@@ -40,6 +40,10 @@ a specific set of types.
 def bezier(
     points: Iterable[float | np.ndarray]
 ) -> Callable[[float], float | np.ndarray]:
+    """
+    n阶贝塞尔曲线的公式
+    n = len(points) - 1
+    """
     n = len(points) - 1
 
     def result(t):
