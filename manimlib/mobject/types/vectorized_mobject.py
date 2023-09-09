@@ -722,6 +722,12 @@ class VMobject(Mobject):
         在整条路径上占比为 alpha 处的点
 
         这个方法建立在假设每一段弧线长度相同的条件下，因此可能有一些误差，但是性能更好
+
+        整体思想:
+        整个vmob是由多段二阶贝塞尔曲线拼接而成
+        需要通过alpha获取两个关键信息: 
+        待求的点在第几段曲线
+        在曲线的百分比位置
         """
         # Assumes all curves have the same length, so is inaccurate
         num_curves = self.get_num_curves()
