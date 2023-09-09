@@ -189,6 +189,12 @@ out = np.true_divide(arr1, arr2)
  [1.  1. ]]
 """
 def inverse_interpolate(start: T, end: T, value: T) -> float:
+    """
+    这里为啥取名反向插值
+
+    因为一般的插值的函数签名都是:
+    interpolate(start: T, end: T, alpha: float) --> value: T
+    """
     return np.true_divide(value - start, end - start)
 
 
