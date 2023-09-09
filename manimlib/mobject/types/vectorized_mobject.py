@@ -857,7 +857,7 @@ class VMobject(Mobject):
         '''
         返回一个向量，其长度为锚点(没有handle)形成的多边形所围成的面积，根据右手定则指向垂直于该多边形的方向
 
-        
+        这里只是近似的面积
         '''
         # Returns a vector whose length is the area bound by
         # the polygon formed by the anchor points, pointing
