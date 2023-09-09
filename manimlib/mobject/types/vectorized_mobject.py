@@ -798,7 +798,8 @@ class VMobject(Mobject):
         for any i in range(0, len(anchors1))
         """
         """
-        获取二阶贝塞尔曲线的锚点和手柄
+        获取二阶贝塞尔曲线的anchor和handle
+        [anchor1_list, handle_list, anchor2_list]
         """
         nppc = self.n_points_per_curve
         points = self.get_points()
