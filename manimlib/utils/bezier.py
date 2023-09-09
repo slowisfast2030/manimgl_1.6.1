@@ -194,6 +194,9 @@ def inverse_interpolate(start: T, end: T, value: T) -> float:
 
     因为一般的插值的函数签名都是:
     interpolate(start: T, end: T, alpha: float) --> value: T
+    本质: alpha --> value
+    反向插值
+    本质: value --> alpha
     """
     return np.true_divide(value - start, end - start)
 
