@@ -21,6 +21,9 @@ a set of n elements.
 """
 @lru_cache(maxsize=10)
 def choose(n, k):
+    """
+    组合: 从n选k的可能性
+    """
     return math.comb(n, k)
 
 
