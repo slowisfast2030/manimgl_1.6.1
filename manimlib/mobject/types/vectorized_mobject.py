@@ -773,6 +773,9 @@ class VMobject(Mobject):
             在图形学中, 如果不能拿到准确的数学公式, 可以用近似方法解决
             理论 vs 工程
             这是一个优秀的工程师的素养
+
+            后面有一个get_arc_length()函数
+            在曲线上进行采样, 可以用多段直线逼近曲线的长度
             """
             arclen = get_norm(tup[0] - tup[-1])
             partials.append(partials[-1] + arclen)
