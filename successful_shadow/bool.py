@@ -43,3 +43,5 @@ class insert(Scene):
         for point in points: 
             dot = Dot().move_to(point)
             self.add(dot)
+
+        self.wait()
