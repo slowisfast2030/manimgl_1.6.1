@@ -542,6 +542,9 @@ class VMobject(Mobject):
         angle_threshold: float = 30 * DEGREES,
         recurse: bool = True
     ):
+        """
+        subdivide: 把什么细分
+        """
         vmobs = [vm for vm in self.get_family(recurse) if vm.has_points()]
         for vmob in vmobs:
             new_points = []
@@ -560,6 +563,11 @@ class VMobject(Mobject):
         return self
 
     def add_points_as_corners(self, points: Iterable[np.ndarray]):
+        """
+        用直线连接这些点
+
+        这个函数可用的前提是已经存在至少一个点 
+        """
         for point in points:
             self.add_line_to(point)
         return points
