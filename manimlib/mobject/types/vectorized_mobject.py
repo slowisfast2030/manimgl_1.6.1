@@ -522,6 +522,10 @@ class VMobject(Mobject):
     def close_path(self):
         '''用直线闭合该曲线'''
         if not self.is_closed():
+            # 这里需要给出曲线的第一个点
+            # self.get_points()[0]
+            # self.get_subpaths()[-1][0]
+            # 区别是什么
             self.add_line_to(self.get_subpaths()[-1][0])
 
     def is_closed(self) -> bool:
