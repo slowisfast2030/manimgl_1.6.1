@@ -970,6 +970,15 @@ class VMobject(Mobject):
         return self
 
     def insert_n_curves_to_point_list(self, n: int, points: np.ndarray):
+        """
+        points: 当前二阶贝塞尔曲线的点集
+        在当前曲线上增加n条二阶贝塞尔曲线
+
+        思想: 以前的一段曲线用两段曲线代替
+
+        比如1/8圆弧
+        以前只需要3个点(一段), 现在用6个点代替(两段)
+        """
         nppc = self.n_points_per_curve
         if len(points) == 1:
             return np.repeat(points, nppc * n, 0)
