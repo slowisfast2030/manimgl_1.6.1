@@ -947,6 +947,7 @@ class VMobject(Mobject):
             return path_list[n]
 
         for n in range(n_subpaths):
+            # sp1和sp2是曲线的点集，比如一个是circle, 一个是square
             sp1 = get_nth_subpath(subpaths1, n)
             sp2 = get_nth_subpath(subpaths2, n)
             diff1 = max(0, (len(sp2) - len(sp1)) // nppc)
@@ -960,6 +961,9 @@ class VMobject(Mobject):
         return self
 
     def insert_n_curves(self, n: int, recurse: bool = True):
+        """
+        在原有曲线上, 插入n段贝塞尔曲线(不改变形状)
+        """
         for mob in self.get_family(recurse):
             if mob.get_num_curves() > 0:
                 new_points = mob.insert_n_curves_to_point_list(n, mob.get_points())
