@@ -933,6 +933,8 @@ class VMobject(Mobject):
         # Figure out what the subpaths are, and align
         subpaths1 = self.get_subpaths()
         subpaths2 = vmobject.get_subpaths()
+        # 注意：这里不是计算点集的数目，而是计算曲线的数目
+        # 对于circle，曲线的数目就是1, 点集的数目是24
         n_subpaths = max(len(subpaths1), len(subpaths2))
         # Start building new ones
         new_subpaths1 = []
