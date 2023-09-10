@@ -515,6 +515,7 @@ class VMobject(Mobject):
         return self.get_points()[-1]
 
     def get_reflection_of_last_handle(self) -> np.ndarray:
+        '''计算handle'''
         points = self.get_points()
         return 2 * points[-1] - points[-2]
 
