@@ -32,3 +32,14 @@ class align(Scene):
             self.add(dot)
         
         self.wait()
+
+class insert(Scene):
+    def construct(self):
+        p = NumberPlane()
+        c = Circle().scale(3)
+        self.add(p, c)
+
+        points = c.insert_n_curves_to_point_list(1, c.get_points())
+        for point in points: 
+            dot = Dot().move_to(point)
+            self.add(dot)
