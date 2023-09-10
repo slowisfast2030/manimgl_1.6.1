@@ -507,6 +507,7 @@ class VMobject(Mobject):
         self.add_cubic_bezier_curve_to(new_handle, handle, point)
 
     def has_new_path_started(self) -> bool:
+        '''是否开启了新的路径'''
         return self.get_num_points() % self.n_points_per_curve == 1
 
     def get_last_point(self) -> np.ndarray:
