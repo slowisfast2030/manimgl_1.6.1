@@ -97,6 +97,8 @@ def partial_quadratic_bezier_points(
     """
     获取贝塞尔曲线上介于a和b之间的一段(0<=a<b<=1)
     返回新曲线的三个控制点
+
+    输入参数points是确定二阶贝塞尔曲线的三个点
     """
     if a == 1:
         return 3 * [points[-1]]
