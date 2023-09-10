@@ -950,8 +950,10 @@ class VMobject(Mobject):
             # sp1和sp2是曲线的点集，比如一个是circle, 一个是square
             sp1 = get_nth_subpath(subpaths1, n)
             sp2 = get_nth_subpath(subpaths2, n)
+            # 两条曲线的点集数量的差
             diff1 = max(0, (len(sp2) - len(sp1)) // nppc)
             diff2 = max(0, (len(sp1) - len(sp2)) // nppc)
+            # 这里是不是最好判断下，可以减少计算量 (diff1和diff2有一个是0)
             sp1 = self.insert_n_curves_to_point_list(diff1, sp1)
             sp2 = self.insert_n_curves_to_point_list(diff2, sp2)
             new_subpaths1.append(sp1)
