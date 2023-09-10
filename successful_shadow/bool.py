@@ -105,6 +105,7 @@ class corners(Scene):
         points = [[0,0,0],
                   [1.1,1.1,0],
                   [2,1,0],
-                  [3,0,0]]
+                  [3,-1,0]]
         c.set_points_as_corners(points)
+        c.set_fill(RED, 0.7)
         self.add(c, p)
