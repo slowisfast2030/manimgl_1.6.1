@@ -94,6 +94,10 @@ def partial_quadratic_bezier_points(
     a: float,
     b: float
 ) -> list[float]:
+    """
+    获取贝塞尔曲线上介于a和b之间的一段(0<=a<b<=1)
+    返回新曲线的三个控制点
+    """
     if a == 1:
         return 3 * [points[-1]]
 
@@ -102,6 +106,11 @@ def partial_quadratic_bezier_points(
     # bezier(points)
     h0 = curve(a) if a > 0 else points[0]
     h2 = curve(b) if b < 1 else points[2]
+    """
+    对贝塞尔曲线性质的深入了解
+    两个anchor很好确定
+    确定handle需要对曲线性质进一步了解
+    """
     h1_prime = (1 - a) * points[1] + a * points[2]
     end_prop = (b - a) / (1. - a)
     h1 = (1 - end_prop) * h0 + end_prop * h1_prime
