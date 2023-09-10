@@ -25,7 +25,7 @@ class align(Scene):
         
         subpath = s.get_subpaths()
         print(subpath)
-        # print(c.get_points())
+        print(s.get_points())
         for point in subpath[0]:
         #for point in c.get_points(): 
             dot = Dot().move_to(point)
