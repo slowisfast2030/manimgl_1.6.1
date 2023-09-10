@@ -1099,6 +1099,7 @@ class VMobject(Mobject):
         """
         使用integer_interpolate函数进行插值
         是建立在一个假设之上: 每一小段贝塞尔曲线长度相等
+        所幸, 常见的几何形状每一小段都相等, 比如圆, 三角形
         """
         lower_index, lower_residue = integer_interpolate(0, num_curves, a)
         upper_index, upper_residue = integer_interpolate(0, num_curves, b)
@@ -1121,11 +1122,14 @@ class VMobject(Mobject):
         else:
             low_tup = partial_quadratic_bezier_points(vm_points[i1:i2], lower_residue, 1)
             high_tup = partial_quadratic_bezier_points(vm_points[i3:i4], 0, upper_residue)
+            # 将low_tup[0]这个点复制i1-1遍，然后赋值给new_points[0:i1]部分
             new_points[0:i1] = low_tup[0]
             new_points[i1:i2] = low_tup
             # Keep new_points i2:i3 as they are
             new_points[i3:i4] = high_tup
+            # 道理同上
             new_points[i4:] = high_tup[2]
+            # 并没有对原点集进行截断, 点集长度不变
         self.set_points(new_points)
         return self
 
