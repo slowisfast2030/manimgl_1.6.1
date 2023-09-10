@@ -1277,6 +1277,11 @@ class VMobject(Mobject):
         return self
 
     # For shaders
+    """
+    mobject.py文件没有shaders部分代码
+    主要是因为mobject是用来被继承的, 比如后面的Surface类
+    Surface类有shaders部分
+    """
     def init_shader_data(self):
         self.fill_data = np.zeros(0, dtype=self.fill_dtype)
         self.stroke_data = np.zeros(0, dtype=self.stroke_dtype)
