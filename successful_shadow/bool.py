@@ -103,9 +103,10 @@ class corners(Scene):
         
         c = VMobject()
         points = [[0,0,0],
-                  [1.1,1.1,0],
+                  [1.3,1.4,0],
                   [2,1,0],
                   [3,-1,0]]
         c.set_points_as_corners(points)
-        c.set_fill(RED, 0.7)
+        c.set_fill(RED, 0.7).set_stroke(GREEN, 3)
+        c.close_path()
         self.add(c, p)
