@@ -64,3 +64,35 @@ class insert2(Scene):
             dot = Dot().move_to(point)
             self.add(dot) 
 
+class line(Scene):
+    def construct(self):
+        p = NumberPlane()
+        
+        c = VMobject()
+        points = [[0,0,0],
+                  [1,1,0],
+                  [2,2,0]]
+        c.set_points(points)
+        self.add(c,p)
+
+class cubic(Scene):
+    def construct(self):
+        p = NumberPlane()
+        
+        c = VMobject()
+        points = [[0,0,0],
+                  [1,1,0],
+                  [2,1,0],
+                  [3,0,0]]
+        for point in points: 
+            dot = Dot().move_to(point)
+            self.add(dot)  
+        
+        c.add_cubic_bezier_curve(*points)
+
+        c.add_line_to(np.array([5,1,0]))
+        self.add(p, c)
+
+        for point in c.get_points(): 
+            dot = Dot().move_to(point).set_color(RED)
+            self.add(dot)  

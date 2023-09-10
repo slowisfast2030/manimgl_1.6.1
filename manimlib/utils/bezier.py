@@ -369,6 +369,12 @@ def get_quadratic_approximation_of_cubic(
     h1: npt.ArrayLike,
     a1: npt.ArrayLike
 ) -> np.ndarray:
+    """
+    输入: 三阶贝塞尔曲线的控制点, 一共4个
+    输出: 二阶贝塞尔曲线的控制点, 一共6个(2段)
+
+    用2段二阶贝塞尔曲线去近似1段三阶贝塞尔曲线
+    """
     a0 = np.array(a0, ndmin=2)
     h0 = np.array(h0, ndmin=2)
     h1 = np.array(h1, ndmin=2)

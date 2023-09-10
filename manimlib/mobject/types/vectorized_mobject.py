@@ -406,8 +406,15 @@ class VMobject(Mobject):
     ):
         """
         三阶贝塞尔曲线需要两个anchor和两个handle
+
+        c = VMobject()
+        points = [[0,0,0],
+                  [1,1,0],
+                  [2,1,0],
+                  [3,0,0]]
+        
+        c.add_cubic_bezier_curve(*points)
         """
-        # 这里做一个猜想，这里返回的new_points是6个点，即两条二阶贝塞尔曲线的锚点和手柄
         new_points = get_quadratic_approximation_of_cubic(anchor1, handle1, handle2, anchor2)
         self.append_points(new_points)
 
@@ -421,7 +428,7 @@ class VMobject(Mobject):
         Add cubic bezier curve to the path.
         """
         """
-        添加一条三阶贝塞尔曲线（可能不准）
+        添加一条三阶贝塞尔曲线
         """
         """
         这里将第一个anchor省略了
@@ -445,11 +452,15 @@ class VMobject(Mobject):
             self.append_points([self.get_last_point(), handle, anchor])
 
     def add_line_to(self, point: np.ndarray):
-        '''添加一条直线'''
+        '''
+        添加一条直线
+        一直忽略了一点: 当贝塞尔曲线的控制点在一条直线上时, 就会显示直线
+        '''
         # 添加一条直线，本质上在于添加一些点
         end = self.get_points()[-1]
         # 在0和1之间等间隔插3个值，包含首尾
         alphas = np.linspace(0, 1, self.n_points_per_curve)
+        # 直线很长的话有什么需要注意的吗?
         if self.long_lines:
             halfway = interpolate(end, point, 0.5)
             points = [
