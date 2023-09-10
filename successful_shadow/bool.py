@@ -19,8 +19,9 @@ class align(Scene):
     def construct(self):
         p = NumberPlane()
         c = Circle()
-        s = Triangle().shift(RIGHT*2)
-        self.add(p, c, s)
+        t = Triangle().shift(RIGHT*2)
+        s = Square().shift(LEFT*2)
+        self.add(p, c, t, s)
         
         subpath = s.get_subpaths()
         print(subpath)
