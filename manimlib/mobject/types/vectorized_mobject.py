@@ -701,6 +701,16 @@ class VMobject(Mobject):
         ]
 
     def get_subpaths(self) -> list[Sequence[np.ndarray]]:
+        """
+        当前曲线由几条path构成
+
+        这里需要区分curve和path
+        以circle = Circle()举例
+        circle的组成
+        point_num: 24
+        curve_num: 8
+        path_num: 1 
+        """
         return self.get_subpaths_from_points(self.get_points())
 
     def get_nth_curve_points(self, n: int) -> np.ndarray:
