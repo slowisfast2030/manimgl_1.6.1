@@ -915,6 +915,9 @@ class VMobject(Mobject):
     def align_points(self, vmobject: VMobject):
         '''对齐锚点，主要用于 Transform 的内部实现'''
         if self.get_num_points() == len(vmobject.get_points()):
+            """
+            这里不应该是return self吗?
+            """
             return
 
         for mob in self, vmobject:

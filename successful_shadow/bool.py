@@ -19,5 +19,5 @@ class align(Scene):
     def construct(self):
         c1 = Circle().shift(LEFT*0.7)
         c2 = Circle().shift(RIGHT*0.7)
-        c3 = c1.align_points(c2)
-        print(c3)
+        c1 = c1.align_points(c2)
+        print(c1)
