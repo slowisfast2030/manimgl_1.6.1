@@ -495,7 +495,7 @@ class VMobject(Mobject):
     def add_smooth_cubic_curve_to(self, handle: np.ndarray, point: np.ndarray):
         """
         这里用三阶贝塞尔曲线生成曲线
-        三阶曲线需要两个handle
+        三阶曲线需要两个handle(第一个anchor是self.get_points()[-1])
         这里只给出了一个
         需要计算出另一个
         """
