@@ -681,9 +681,6 @@ class VMobject(Mobject):
         self,
         points: Sequence[np.ndarray]
     ) -> list[Sequence[np.ndarray]]:
-        """
-        两个vmob的布尔操作会用到
-        """
         nppc = self.n_points_per_curve
         diffs = points[nppc - 1:-1:nppc] - points[nppc::nppc]
         splits = (diffs * diffs).sum(1) > self.tolerance_for_point_equality
