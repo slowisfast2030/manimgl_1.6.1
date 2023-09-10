@@ -252,6 +252,14 @@ def get_smooth_quadratic_bezier_handle_points(
     another that would produce a parabola passing through P0, call it smooth_to_left,
     and use the midpoint between the two.
     """
+    """
+    注释存在困惑:
+    Given three successive points, P0, P1 and P2, you can compute that by defining
+    h = (1/4) P0 + P1 - (1/4)P2, the bezier curve defined by (P0, h, P1) will pass
+    through the point P2.
+
+    (P0, h, P1)三点确定的贝塞尔曲线不是只存在于P0和P1之间么?怎么会继续经过P2呢？
+    """
     if len(points) == 2:
         return midpoint(*points)
     smooth_to_right, smooth_to_left = [
