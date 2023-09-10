@@ -1113,12 +1113,14 @@ class VMobject(Mobject):
         if num_curves == 0:
             new_points[:] = 0
             return self
+        # 同一段贝塞尔曲线
         if lower_index == upper_index:
             tup = partial_quadratic_bezier_points(vm_points[i1:i2], lower_residue, upper_residue)
             new_points[:i1] = tup[0]
             new_points[i1:i4] = tup
             new_points[i4:] = tup[2]
             new_points[nppc:] = new_points[nppc - 1]
+        # 不同段
         else:
             low_tup = partial_quadratic_bezier_points(vm_points[i1:i2], lower_residue, 1)
             high_tup = partial_quadratic_bezier_points(vm_points[i3:i4], 0, upper_residue)
