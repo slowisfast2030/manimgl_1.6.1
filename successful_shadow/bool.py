@@ -45,3 +45,22 @@ class insert(Scene):
             self.add(dot)
 
         self.wait()
+
+
+class insert2(Scene):
+    def construct(self):
+        p = NumberPlane()
+        # c = Circle().scale(3).insert_n_curves(-7)\
+        #                      .set_fill(RED, 1)\
+        #                      .set_stroke(GREEN, 0)
+        
+        c = VMobject()
+        points = [[1.2,0,0], [1.7, 1.5, 0], [0,0.9,0]]
+        c.set_points(points)
+        c.set_fill(RED, 1).set_stroke(GREEN, 0)
+        self.add(p, c)
+
+        for point in c.get_points(): 
+            dot = Dot().move_to(point)
+            self.add(dot) 
+
