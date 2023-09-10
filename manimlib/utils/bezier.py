@@ -151,6 +151,10 @@ def set_array_by_interpolation(
     alpha: float,
     interp_func: Callable[[np.ndarray, np.ndarray, float], np.ndarray] = interpolate
 ) -> np.ndarray:
+    """
+    arr1和arr2之间的插值
+    可用于颜色的插值 
+    """
     arr[:] = interp_func(arr1, arr2, alpha)
     return arr
 
