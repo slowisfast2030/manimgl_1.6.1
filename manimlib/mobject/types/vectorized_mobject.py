@@ -841,6 +841,9 @@ class VMobject(Mobject):
         ))))
 
     def get_points_without_null_curves(self, atol: float=1e-9) -> np.ndarray:
+        """
+        当贝塞尔曲线的三个点重合的时候就是null curve
+        """
         nppc = self.n_points_per_curve
         points = self.get_points()
         distinct_curves = reduce(op.or_, [
