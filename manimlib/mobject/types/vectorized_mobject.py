@@ -574,6 +574,12 @@ class VMobject(Mobject):
 
     def set_points_as_corners(self, points: Iterable[np.ndarray]):
         '''传入一个 Nx3 的数组，绘制顺序连接的折线'''
+        """
+        这个函数很有用
+        在曲面上要想绘制一条曲线
+        只需要获取曲线上的点集
+        然后通过这个函数就可以得到曲线上的曲线
+        """
         nppc = self.n_points_per_curve
         points = np.array(points)
         self.set_anchors_and_handles(*[

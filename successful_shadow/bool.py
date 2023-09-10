@@ -96,3 +96,15 @@ class cubic(Scene):
         for point in c.get_points(): 
             dot = Dot().move_to(point).set_color(RED)
             self.add(dot)  
+
+class corners(Scene):
+    def construct(self):
+        p = NumberPlane()
+        
+        c = VMobject()
+        points = [[0,0,0],
+                  [1.1,1.1,0],
+                  [2,1,0],
+                  [3,0,0]]
+        c.set_points_as_corners(points)
+        self.add(c, p)
