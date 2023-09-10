@@ -1155,7 +1155,7 @@ class VMobject(Mobject):
         # First triangles come directly from the points
         """
         earclip算法
-        
+
         经过三角形剖分后的结果是啥？
 
         t = Circle().set_stroke(RED, width=3)
