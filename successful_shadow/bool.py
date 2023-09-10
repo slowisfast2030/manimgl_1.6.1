@@ -17,7 +17,17 @@ class bl(Scene):
 
 class align(Scene):
     def construct(self):
-        c1 = Circle().shift(LEFT*0.7)
-        c2 = Circle().shift(RIGHT*0.7)
-        c1 = c1.align_points(c2)
-        print(c1)
+        p = NumberPlane()
+        c = Circle()
+        s = Triangle().shift(RIGHT*2)
+        self.add(p, c, s)
+        
+        subpath = s.get_subpaths()
+        print(subpath)
+        # print(c.get_points())
+        for point in subpath[0]:
+        #for point in c.get_points(): 
+            dot = Dot().move_to(point)
+            self.add(dot)
+        
+        self.wait()
