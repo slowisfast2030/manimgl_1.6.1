@@ -850,6 +850,10 @@ class VMobject(Mobject):
         return points[distinct_curves.repeat(nppc)]
 
     def get_arc_length(self, n_sample_points: int | None = None) -> float:
+        """
+        计算贝塞尔曲线的长度
+        在曲线上采样, 用一段段直线代替整段曲线的长度
+        """
         if n_sample_points is None:
             n_sample_points = 4 * self.get_num_curves() + 1
         points = np.array([
