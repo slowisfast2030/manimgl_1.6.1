@@ -1092,6 +1092,10 @@ class VMobject(Mobject):
         # - A start, which is some ending portion of an inner quadratic
         # - An end, which is the starting portion of a later inner quadratic
 
+        """
+        使用integer_interpolate函数进行插值
+        是建立在一个假设之上: 每一小段贝塞尔曲线长度相等
+        """
         lower_index, lower_residue = integer_interpolate(0, num_curves, a)
         upper_index, upper_residue = integer_interpolate(0, num_curves, b)
         i1 = nppc * lower_index
