@@ -225,6 +225,10 @@ def match_interpolate(
     old_end: T, 
     old_value: T
 ) -> T:
+    """
+    old_start, old_end, old_value --> alpha
+    new_start, new_end, alpha --> new_value
+    """
     return interpolate(
         new_start, new_end,
         inverse_interpolate(old_start, old_end, old_value)
