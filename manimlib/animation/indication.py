@@ -69,6 +69,11 @@ class FocusOn(Transform):
 
 
 class Indicate(Transform):
+    """
+    self.play(Indicate(obj2), Indicate(obj1))
+    放大，颜色变黄
+    恢复原状
+    """
     CONFIG = {
         "rate_func": there_and_back,
         "scale_factor": 1.2,

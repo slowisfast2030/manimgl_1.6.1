@@ -12,6 +12,21 @@ if TYPE_CHECKING:
     from manimlib.mobject.mobject import Mobject
 
 
+"""
+test_homotopy1 = lambda x, y, z, t: (
+			x + interpolate(-3, 3, 2*t if t<=0.5 else 1),     # First 5 Seconds
+			y + interpolate(0, 3, 2*(t-0.5) if t>0.5 else 0), # Next 5 Seconds
+			z)
+
+test_homotopy2 = lambda x, y, z, t: (
+			x + interpolate(-3, 3, 4*t if t<=0.25 else 1) 
+				+ interpolate(3, -3, 4*(t-0.5) if (t>=0.5 and t<=0.75) else (0 if t<=0.5 else 1)), 
+			y + interpolate(-3, 3, 4*(t-0.25) if (t>0.25 and t<0.5) else (0 if t<=0.25 else 1)) 
+				+ interpolate(3, -3, 4*(t-0.75) if (t>0.75) else (0 if t<=0.75 else 1)), 
+			z)
+
+self.play(Homotopy(test_homotopy1, obj2, run_time=10, rate_func=linear))
+"""
 class Homotopy(Animation):
     CONFIG = {
         "run_time": 3,
@@ -27,6 +42,15 @@ class Homotopy(Animation):
         """
         Homotopy is a function from
         (x, y, z, t) to (x', y', z')
+        """
+        """
+        homotopy 是一个从 (x, y, z, t) 到 (x', y', z') 的函数
+        t 的取值范围是 [0, 1]
+        让 mobject 根据 homotopy 计算的每个点坐标进行变换
+        例子中 t = 0 时 mob 是边长为 0 的正方形
+        t = 1 时是边长为 2 的正方形
+        与 Transform 类似，区别在于 Transform 锚点运动轨迹是直线
+        Homotopy 锚点运动轨迹是根据传入的 homotopy 计算的
         """
         self.homotopy = homotopy
         super().__init__(mobject, **kwargs)
