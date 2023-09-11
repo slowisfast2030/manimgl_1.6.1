@@ -211,6 +211,19 @@ class _MethodAnimation(MoveToTarget):
         super().__init__(mobject)
 
 
+"""
+x = ValueTracker(0)
+self.play(ApplyMethod(x.increment_value, 3, run_time=5))
+
+self.play(ApplyMethod(sine.shift, 4*LEFT, **kwargs))
+
+self.play(*[
+            ApplyMethod(mob.scale, 0.5*random.random(), **kwargs)
+            for mob in self.intervals
+        ])
+
+通过method, 获得一个target
+"""
 class ApplyMethod(Transform):
     def __init__(self, method: Callable, *args, **kwargs):
         """
