@@ -102,6 +102,7 @@ class Animation(object):
 
     def create_starting_mobject(self) -> Mobject:
         # Keep track of where the mobject starts
+        # 一直没有搞明白这里是浅拷贝还是深拷贝
         return self.mobject.copy()
 
     def get_all_mobjects(self) -> tuple[Mobject, Mobject]:
