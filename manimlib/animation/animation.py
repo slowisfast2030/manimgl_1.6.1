@@ -18,7 +18,31 @@ if TYPE_CHECKING:
 DEFAULT_ANIMATION_RUN_TIME = 1.0
 DEFAULT_ANIMATION_LAG_RATIO = 0
 
+"""
+c = Circle().set_color(RED)
+s = Square().set_color(BLUE)
+t = Triangle().set_color(GREEN)
+c.add(s, t)
+self.play(ShowCreation(c, lag_ratio=0, run_time=3))
+print("\n", "-"*100)
+print(c.submobjects)
+print("-"*100)
 
+有关lag_ratio的思考:
+1.如果lag_ratio=0, 那么所有的submobject的alpha值都是一样的。如果整个动画的时间固定, 那么每一个submobject的动画时间比较长
+
+2.如果lag_ratio=1, 那么所有的submobject的alpha值都是不一样的。如果整个动画的时间固定, 那么每一个submobject的动画时间比较短
+以上面的代码为例
+lag_ratio=1时, 每个submobject的动画时间是1
+lag_ratio=0时, 每个submobject的动画时间是3
+
+3.当lag_ratio=0时, 每一个submobject看上去是同时完成的, 那么是并行的吗?
+其实并不是, 具体执行时是通过for循环, 仍然是串行的
+因为是一帧帧渲染的
+渲染每一帧的时候, 是按照submobject的顺序来的
+播放的时候，是播放渲染完成的帧
+所以看上去是同时完成的
+"""
 class Animation(object):
     CONFIG = {
         "run_time": DEFAULT_ANIMATION_RUN_TIME,
