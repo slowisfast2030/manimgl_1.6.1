@@ -8,7 +8,8 @@ class test(Scene):
 	def construct(self): 
 		
 		plane = NumberPlane()
-		
+		self.add(plane)
+
 		vector_field = VectorField(
 			pendulum_vector_field_func,
 			plane,
