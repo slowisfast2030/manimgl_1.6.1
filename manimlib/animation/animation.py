@@ -77,6 +77,8 @@ class Animation(object):
         # especially any mobject copying, should live in
         # this method
         self.starting_mobject = self.create_starting_mobject()
+        # 如果一个mob同时具有updater和animation，那么它的updater会在这里被暂停
+        # 相对应的，在fininsh函数中会恢复updater
         if self.suspend_mobject_updating:
             # All calls to self.mobject's internal updaters
             # during the animation, either from this Animation
