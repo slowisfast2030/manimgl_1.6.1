@@ -51,6 +51,8 @@ VGroup
 
 对于AnimationGroup
 也有alpha和sub_alpha
+
+sub_alpha的计算需要lag_ratio
 """
 class AnimationGroup(Animation):
     '''动画组，可以传入一系列动画，统一播放'''
