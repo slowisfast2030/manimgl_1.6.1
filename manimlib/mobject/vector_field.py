@@ -115,6 +115,51 @@ def get_sample_points_from_coordinate_system(
     return it.product(*ranges)
 
 
+"""
+def pendulum_vector_field_func(theta, omega, mu=0.3, g=9.8, L=3):
+    return [omega, -np.sqrt(g / L) * np.sin(theta) - mu * omega]
+
+class test(Scene):
+	
+	def construct(self): 
+		
+		plane = NumberPlane()
+		
+		vector_field = VectorField(
+			pendulum_vector_field_func,
+			plane,
+			step_multiple=0.5,
+            magnitude_range=(0, 5),
+            length_func=lambda norm: 0.35 * sigmoid(norm)
+		)
+		vector_field.scale(0.5)
+		self.play(FadeIn(vector_field))
+		self.play(FadeOut(vector_field))
+
+		
+		stream_lines = StreamLines(
+			pendulum_vector_field_func,
+			plane
+		)
+		stream_lines.scale(0.5)
+		self.play(FadeIn(stream_lines))
+		self.play(FadeOut(stream_lines))
+		
+		asl = AnimatedStreamLines(stream_lines)
+		self.add(asl)
+		self.wait(3)
+"""
+"""
+Callable[[float, float], Sequence[float]] 
+means a callable that takes two float arguments and returns a sequence of floats.
+
+Here is an example of a function that matches this type annotation:
+
+```
+def average_two_numbers(x: float, y: float) -> Sequence[float]:
+    return [x, y, (x + y) / 2]
+```
+"""
 # Mobjects
 
 class VectorField(VGroup):
