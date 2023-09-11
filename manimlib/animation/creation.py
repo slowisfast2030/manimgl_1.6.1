@@ -188,6 +188,23 @@ class DrawBorderThenFill(Animation):
             submob.interpolate(outline, start, subalpha)
 
 
+"""
+c = Circle().set_color(RED)
+s = Square().set_color(BLUE)
+t = Triangle().set_color(GREEN)
+c.add(s, t)
+self.play(Write(c, lag_ratio=1, run_time=3, remover=True))
+self.wait()
+
+动画过程：
+1.画出圆的轮廓，对边缘上色
+2.画出正方形的轮廓，对边缘上色
+3.画出三角形的轮廓，对边缘上色
+
+仔细对比一下, 这个动画和ShowCreation的区别:
+Write将绘制轮廓和给边缘上色分开了
+ShowCreation将绘制轮廓和给边缘上色合并了(本质上ShowCreation没有轮廓和边缘的概念)
+"""
 class Write(DrawBorderThenFill):
     CONFIG = {
         # To be figured out in
