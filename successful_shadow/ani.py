@@ -13,5 +13,5 @@ class ani(Scene):
 
         self.play(ShowCreation(vg, lag_ratio=0, run_time=3))
         print("\n", "-"*100)
-        print(c.submobjects)
+        print(vg.submobjects)
         print("-"*100)
