@@ -380,6 +380,10 @@ class VMobject(Mobject):
         anchors2: np.ndarray
     ):
         '''设置二阶贝塞尔曲线的anchor和handle'''
+        """
+        不得不说, 这种数据结构真挺奇怪
+        适用于一些很特殊的场景
+        """
         assert(len(anchors1) == len(handles) == len(anchors2))
         # CONFIG字典中给出的是3，二阶贝塞尔曲线有两个anchor和一个handle
         nppc = self.n_points_per_curve
