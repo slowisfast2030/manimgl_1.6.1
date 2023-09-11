@@ -24,7 +24,9 @@ if TYPE_CHECKING:
 """
 洞见:
 每一个animation, 都是建立在vmob的一个函数之上
-这里就是:pointwise_become_partial(vmobject: VMobject, a: float, b: float)
+这里就是:
+vmob.pointwise_become_partial(vmobject: VMobject, a: float, b: float)
+vmob.interpolate(start: VMobject, end: VMobject, alpha: float)
 """
 class ShowPartial(Animation):
     """
