@@ -45,6 +45,13 @@ VGroup
 <manimlib.mobject.geometry.Dot object at 0x14300f8e0>
 ]
 """
+"""
+对于Animation
+有alpha和sub_alpha
+
+对于AnimationGroup
+也有alpha和sub_alpha
+"""
 class AnimationGroup(Animation):
     '''动画组，可以传入一系列动画，统一播放'''
     CONFIG = {
