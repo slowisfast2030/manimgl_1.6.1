@@ -210,7 +210,7 @@ class Animation(object):
         由于一些参数设置(比如lag_ratio), 每个submobject的animation的alpha值是不同的
         """
         """
-        假设每一个submobject的动画时间为单位1
+        假设每一个submobject的动画时间为单位1【这里是为了计算每一个submobject动画的执行比例, 可以用单位1表示】
         -----
            -----
               -----
