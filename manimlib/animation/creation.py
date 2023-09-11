@@ -87,7 +87,15 @@ class Uncreate(ShowCreation):
     }
 
 
+"""
+c = Circle().set_stroke(RED).set_fill(GREEN, opacity=0.5)        
+self.play(DrawBorderThenFill(c, lag_ratio=1, run_time=3, remover=True))
+"""
 class DrawBorderThenFill(Animation):
+    '''
+    画出边缘，然后填充颜色（包括边缘和内部）
+    0 ---> outline(只有轮廓，轮廓有颜色) ---> target(既有轮廓，又有内部颜色)
+    '''
     CONFIG = {
         "run_time": 2,
         "rate_func": double_smooth,
@@ -120,8 +128,17 @@ class DrawBorderThenFill(Animation):
         self.mobject.unlock_data()
 
     def get_outline(self) -> VMobject:
+        """
+        整个动画分为两个阶段：
+        1.画出轮廓
+        2.填充颜色
+
+        这里的轮廓就是动画的第一个阶段的目标，边缘有颜色，内部透明
+        """
         outline = self.mobject.copy()
+        # 内部填充，透明
         outline.set_fill(opacity=0)
+        # 边缘颜色
         for sm in outline.get_family():
             sm.set_stroke(
                 color=self.get_stroke_color(sm),
@@ -146,6 +163,11 @@ class DrawBorderThenFill(Animation):
         outline: VMobject,
         alpha: float
     ) -> None:
+        """
+        函数历程分为两个阶段：
+        1.index=0, subalpha从0到1, 设置轮廓
+        2.index=1, subalpha从0到1, 设置边缘颜色
+        """
         index, subalpha = integer_interpolate(0, 2, alpha)
 
         if index == 1 and self.sm_to_index[hash(submob)] == 0:
@@ -158,8 +180,11 @@ class DrawBorderThenFill(Animation):
             self.sm_to_index[hash(submob)] = 1
 
         if index == 0:
+            # 轮廓
             submob.pointwise_become_partial(outline, 0, subalpha)
         else:
+            # 边缘颜色
+            # outline是轮廓，start是最终形态
             submob.interpolate(outline, start, subalpha)
 
 
