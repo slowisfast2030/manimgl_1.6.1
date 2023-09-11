@@ -12,6 +12,10 @@ from manimlib.utils.config_ops import digest_config
 
 
 class Broadcast(LaggedStart):
+    """
+    一个个圆圈圆心在focal_point
+    向外扩散
+    """
     CONFIG = {
         "small_radius": 0.0,
         "big_radius": 5,
