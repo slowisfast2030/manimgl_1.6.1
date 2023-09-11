@@ -27,9 +27,13 @@ DEFAULT_LAGGED_START_LAG_RATIO = 0.05
 而是对具体的animation的组合播放
 
        Animation
+           |
      AnimationGroup
+     |              |
 Succession     LaggedStart
-             LaggedStartMap
+                    |
+              LaggedStartMap
+
 """
 
 """
