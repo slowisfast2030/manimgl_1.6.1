@@ -34,6 +34,8 @@ Succession     LaggedStart
                     |
               LaggedStartMap
 
+如何做到对这些具体的类的控制呢？
+关键参数: lag_ratio
 """
 
 """
