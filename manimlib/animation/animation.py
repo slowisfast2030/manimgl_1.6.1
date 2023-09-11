@@ -159,6 +159,8 @@ class Animation(object):
         1s可以15帧, 30帧, 60帧等
         """
         alpha = clip(alpha, 0, 1)
+        # rate_func作用于alpha
+        # 最好的例子是there_and_back这个速率函数
         self.interpolate_mobject(self.rate_func(alpha))
 
     def update(self, alpha: float) -> None:
