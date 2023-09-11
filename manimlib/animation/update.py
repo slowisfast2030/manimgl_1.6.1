@@ -12,6 +12,12 @@ if TYPE_CHECKING:
 
 
 """
+有一个函数可以将animation转换为updater
+这里是将updater转换成animation
+
+animation <---> updater
+"""
+"""
 rect = Rectangle().set_color(BLUE)
 ball_1 = Dot().set_color(RED)
 ball_2 = Dot().set_color(YELLOW)
