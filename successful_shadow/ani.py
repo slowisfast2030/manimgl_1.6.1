@@ -8,9 +8,10 @@ class ani(Scene):
         c = Circle().set_color(RED)
         s = Square().set_color(BLUE)
         t = Triangle().set_color(GREEN)
-        c.add(s, t)
-        
-        self.play(ShowCreation(c, lag_ratio=0, run_time=3))
+        #c.add(s, t)
+        vg = VGroup(c,s,t)
+
+        self.play(ShowCreation(vg, lag_ratio=0, run_time=3))
         print("\n", "-"*100)
         print(c.submobjects)
         print("-"*100)
