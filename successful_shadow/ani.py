@@ -10,7 +10,7 @@ class ani_add(Scene):
         t = Triangle().set_color(GREEN)
         c.add(s, t)
 
-        self.play(ShowCreation(c, lag_ratio=1, run_time=3))
+        self.play(ShowCreation(c, lag_ratio=1, run_time=3, rate_func=linear))
         print("\n", "-"*100)
         print(c.submobjects)
         print("-"*100)
@@ -25,7 +25,7 @@ class ani_vg(Scene):
         t = Triangle().set_color(GREEN)
         vg = VGroup(c,s,t)
 
-        self.play(ShowCreation(vg, lag_ratio=1, run_time=3))
+        self.play(ShowCreation(vg, lag_ratio=1, run_time=3, rate_func=linear))
         print("\n", "-"*100)
         print(vg.submobjects)
         print("-"*100)
