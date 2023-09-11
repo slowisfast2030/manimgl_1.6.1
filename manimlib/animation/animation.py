@@ -155,7 +155,8 @@ class Animation(object):
     # Methods for interpolation, the mean of an Animation
     def interpolate(self, alpha: float) -> None:
         """
-        
+        给定alpha值, 就可以渲染对应的帧
+        1s可以15帧, 30帧, 60帧等
         """
         alpha = clip(alpha, 0, 1)
         self.interpolate_mobject(self.rate_func(alpha))
