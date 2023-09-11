@@ -147,6 +147,15 @@ class AnimationGroup(Animation):
         alpha: 整个动画的进度
         sub_alpha: 每一个动画的进度
         可以通过alpha计算出sub_alpha
+
+        alpha * self.max_end_time
+               |
+               |
+        ----------
+               -----------
+                     -----------    
+        |<--------------------->|
+              max_end_time
         """
         time = alpha * self.max_end_time
         for anim, start_time, end_time in self.anims_with_timings:

@@ -45,7 +45,8 @@ lag_ratio=0时, 每个submobject的动画时间是3
 """
 
 """
-alpha --> rate_func(alpha) --> lag_ratio(rate_func(alpha))
+alpha --> rate_func(alpha) --> get_sub_alpha(rate_func(alpha), lag_ratio)
+          整个动画的执行比例              每一个submobject的执行比例
 """
 class Animation(object):
     CONFIG = {
