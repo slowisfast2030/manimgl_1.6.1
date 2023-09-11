@@ -108,5 +108,5 @@ class corners(Scene):
                   [3,-1,0]]
         c.set_points_as_corners(points)
         c.set_fill(RED, 0.7).set_stroke(GREEN, 3)
-        c.close_path()
+        #c.close_path()
         self.add(c, p)
