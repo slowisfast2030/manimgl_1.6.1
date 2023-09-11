@@ -12,6 +12,23 @@ if TYPE_CHECKING:
 
 
 """
+rect = Rectangle().set_color(BLUE)
+ball_1 = Dot().set_color(RED)
+ball_2 = Dot().set_color(YELLOW)
+self.play(
+    ShowCreation(rect, run_time=2),
+    UpdateFromFunc(ball_1, lambda m: m.move_to(rect.get_end())),
+    ball_2.animate.move_to(rect.get_end())              
+)
+
+ball_1的动画符合预期
+ball_2的动画不符合预期
+这里需要对animate函数的本质有着进一步的理解
+animate后面可以跟着很多的属性设置, 本质上会产生一个target_mobject
+整个animate动画等价于MoveToTarget(ball_2)
+"""
+
+"""
 这个动画类和其他的动画类不是并列关系, 更像是总分关系
 任何其他的动画类都可以用此类实现
 只要给出合适的update_function
