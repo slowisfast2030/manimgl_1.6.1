@@ -51,6 +51,9 @@ class ShowPartial(Animation):
             start_submob, *self.get_bounds(alpha)
         )
 
+    """
+    In Python, an abstract method is a method that is declared but does not have an implementation in the base class. Subclasses are required to provide an implementation for any abstract methods. Abstract methods are used in abstract classes, which serve as blueprints for other classes and cannot be instantiated directly.
+    """
     @abstractmethod
     def get_bounds(self, alpha: float) -> tuple[float, float]:
         raise Exception("Not Implemented")
