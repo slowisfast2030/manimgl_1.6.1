@@ -379,14 +379,13 @@ class VMobject(Mobject):
         handles: np.ndarray,
         anchors2: np.ndarray
     ):
-        '''设置二阶贝塞尔曲线的锚点和手柄'''
+        '''设置二阶贝塞尔曲线的anchor和handle'''
         assert(len(anchors1) == len(handles) == len(anchors2))
         # CONFIG字典中给出的是3，二阶贝塞尔曲线有两个anchor和一个handle
         nppc = self.n_points_per_curve
         new_points = np.zeros((nppc * len(anchors1), self.dim))
         arrays = [anchors1, handles, anchors2]
         for index, array in enumerate(arrays):
-            # new_points中重复存储了部分anchor
             new_points[index::nppc] = array
         self.set_points(new_points)
         return self

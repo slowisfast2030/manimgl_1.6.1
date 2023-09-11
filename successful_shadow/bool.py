@@ -102,10 +102,17 @@ class corners(Scene):
         p = NumberPlane()
         
         c = VMobject()
-        points = [[0,0,0],
-                  [1.3,1.4,0],
-                  [2,1,0],
-                  [3,-1,0]]
+        points = [[0.0, 0.0, 0.0],
+                  [1.3, 1.4, 0.0],
+                  [2.0, 1.0, 0.0],
+                  [3.0, -1.0, 0.0]]
+        points = np.array(points)
+        
+        nppc = c.n_points_per_curve
+        res = [
+            interpolate(points[:-1], points[1:], a)
+            for a in np.linspace(0, 1, nppc)]
+        print(res)
         c.set_points_as_corners(points)
         c.set_fill(RED, 0.7).set_stroke(GREEN, 3)
         #c.close_path()
