@@ -21,6 +21,12 @@ DEFAULT_FADE_LAG_RATIO = 0
 
 
 class Fade(Transform):
+    """
+    淡化
+
+    这个动画类不能执行，因为没有target_mobject
+    用来继承的
+    """
     CONFIG = {
         "lag_ratio": DEFAULT_FADE_LAG_RATIO,
     }
@@ -38,6 +44,9 @@ class Fade(Transform):
 
 
 class FadeIn(Fade):
+    """
+    淡入
+    """
     CONFIG = {
         "lag_ratio": DEFAULT_FADE_LAG_RATIO,
     }
@@ -54,6 +63,9 @@ class FadeIn(Fade):
 
 
 class FadeOut(Fade):
+    """
+    淡出
+    """
     CONFIG = {
         "remover": True,
         # Put it back in original state when done
