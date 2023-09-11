@@ -474,6 +474,10 @@ class VMobject(Mobject):
                 for a in alphas
             ]
         else:
+            """
+            如果是你, 想添加一条从end到point的直线
+            你会怎么做?
+            """
             points = [
                 interpolate(end, point, a)
                 for a in alphas
