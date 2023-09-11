@@ -28,6 +28,9 @@ if TYPE_CHECKING:
 这里:
 vmob.pointwise_become_partial(vmobject: VMobject, a: float, b: float)
 vmob.interpolate(start: VMobject, end: VMobject, alpha: float)
+
+ShowCreation
+DrawBorderThenFill
 """
 class ShowPartial(Animation):
     """
