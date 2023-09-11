@@ -154,6 +154,9 @@ class Animation(object):
 
     # Methods for interpolation, the mean of an Animation
     def interpolate(self, alpha: float) -> None:
+        """
+        
+        """
         alpha = clip(alpha, 0, 1)
         self.interpolate_mobject(self.rate_func(alpha))
 
