@@ -8,6 +8,9 @@ from manimlib.utils.bezier import interpolate
 
 
 class ChangingDecimal(Animation):
+    """
+    专门针对DecimalNumber对象的animation
+    """
     CONFIG = {
         "suspend_mobject_updating": False,
     }
