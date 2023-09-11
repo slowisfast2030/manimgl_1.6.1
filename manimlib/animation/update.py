@@ -34,6 +34,17 @@ animate后面可以跟着很多的属性设置, 本质上会产生一个target_m
 整个animate动画等价于MoveToTarget(ball_2)
 
 能解释清楚这个区别真是厉害
+rect是对象的别名
+
+执行ShowCreation(rect, run_time=2)
+self.mobject = rect
+现在self.mobject也是对象的别名
+随着ShowCreation动画的执行, 对象本身发生变化
+
+(rect和self.mobject指向同一个对象)
+self.mobject     
+            -------> 对象
+rect       
 """
 
 """
