@@ -137,6 +137,7 @@ class Animation(object):
         suspended during the animation, this will do
         nothing to self.mobject.
         """
+        # 注意：通常情况下，处在动画进程中的 self.mobject 会停止更新（只处理动画），所以这个方法对它是没有用的
         for mob in self.get_all_mobjects_to_update():
             mob.update(dt)
 
