@@ -92,6 +92,7 @@ class Animation(object):
 
     def finish(self) -> None:
         self.interpolate(self.final_alpha_value)
+        # 恢复updater
         if self.suspend_mobject_updating:
             self.mobject.resume_updating()
 
