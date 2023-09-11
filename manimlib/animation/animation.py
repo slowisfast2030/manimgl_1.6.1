@@ -193,6 +193,12 @@ class Animation(object):
         # TODO, make this more understanable, and/or combine
         # its functionality with AnimationGroup's method
         # build_animations_with_timings
+        """
+        计算每个submobject的alpha值
+
+        一个mob的animation是由多个submobject的animation组成的
+        由于一些参数设置(比如lag_ratio), 每个submobject的animation的alpha值是不同的
+        """
         lag_ratio = self.lag_ratio
         full_length = (num_submobjects - 1) * lag_ratio + 1
         value = alpha * full_length
