@@ -209,6 +209,26 @@ class Animation(object):
         一个mob的animation是由多个submobject的animation组成的
         由于一些参数设置(比如lag_ratio), 每个submobject的animation的alpha值是不同的
         """
+        """
+        假设每一个submobject的动画时间为单位1
+        -----
+           -----
+              -----
+        那么整个动画的时间就是:
+        (nums(submobjects)-1) * lag_ratio + 1
+        整个时间就映射为run_time
+
+        当整个动画播放进度为alpha的时候
+        需要计算每一个submobject的播放进度
+        
+         alpha
+           |
+           |
+        -----
+           -----
+              -----    
+
+        """
         lag_ratio = self.lag_ratio
         full_length = (num_submobjects - 1) * lag_ratio + 1
         value = alpha * full_length
