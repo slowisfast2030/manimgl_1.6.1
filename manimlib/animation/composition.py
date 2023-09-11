@@ -148,9 +148,25 @@ class AnimationGroup(Animation):
             anim.interpolate(sub_alpha)
 
 
+"""
+c = Circle().set_color(RED)
+s = Square().set_color(BLUE)
+t = Triangle().set_color(GREEN)
+d = Dot().set_color(YELLOW)
+
+animations = [Write(c),
+              Write(s),
+              Write(t),
+              d.animate.shift(LEFT*2)]   
+
+self.play(Succession(*animations))
+
+基本功能是实现了, 但是不明白为什么在动画开始前, 屏幕上已经显示了部分mob
+"""
 class Succession(AnimationGroup):
+    '''使子动画逐一播放'''
     CONFIG = {
-        "lag_ratio": 1,
+        "lag_ratio": 1, #这里即使改成0，各个动画也是依次执行
     }
 
     def begin(self) -> None:
@@ -177,13 +193,47 @@ class Succession(AnimationGroup):
         animation.interpolate(subalpha)
 
 
+"""
+c = Circle().set_color(RED)
+s = Square().set_color(BLUE)
+t = Triangle().set_color(GREEN)
+d = Dot().set_color(YELLOW)
+
+animations = [c.animate.shift(DOWN*2),
+                s.animate.shift(UP*2),
+                t.animate.shift(RIGHT*2),
+                d.animate.shift(LEFT*2)]   
+
+self.play(LaggedStart(*animations, lag_ratio=0))
+"""
 class LaggedStart(AnimationGroup):
+    '''可以统一控制 ``lag_ratio`` 的动画组'''
     CONFIG = {
-        "lag_ratio": DEFAULT_LAGGED_START_LAG_RATIO,
+        "lag_ratio": DEFAULT_LAGGED_START_LAG_RATIO, # lag_ratio = 0时，所有动画同时开始
     }
 
 
+"""
+self.play(
+        LaggedStart(*(
+            dot.animate.set_radius(0.1).set_opacity(self.dot_fade_factor)
+            for dot in dots
+        ), **kw),
+        LaggedStartMap(FadeOut, labels, **kw),
+        LaggedStartMap(FadeOut, lines[:2], **kw),
+)
+"""
+"""
+self.play(
+        LaggedStartMap(
+            FadeIn, VGroup(*blocks[10:30]),
+            lag_ratio=0.9,
+        ),
+        run_time=12,
+)
+"""
 class LaggedStartMap(LaggedStart):
+    '''统一控制 **动画类**、 ``mobjects``、 ``lag_ratio`` 的动画组'''
     CONFIG = {
         "run_time": 2,
     }
