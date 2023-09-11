@@ -46,6 +46,7 @@ VGroup
 ]
 """
 class AnimationGroup(Animation):
+    '''动画组，可以传入一系列动画，统一播放'''
     CONFIG = {
         # If None, this defaults to the sum of all
         # internal animations
@@ -61,6 +62,7 @@ class AnimationGroup(Animation):
 
     def __init__(self, *animations: Animation, **kwargs):
         digest_config(self, kwargs)
+        # 动画列表
         self.animations = [prepare_animation(anim) for anim in animations]
         if self.group is None:
             self.group = Group(*remove_list_redundancies(
@@ -115,6 +117,9 @@ class AnimationGroup(Animation):
             )
             # Start time of next animation is based on
             # the lag_ratio
+            """
+            秀的头皮发麻
+            """
             curr_time = interpolate(
                 start_time, end_time, self.lag_ratio
             )
@@ -125,6 +130,11 @@ class AnimationGroup(Animation):
         # times might not correspond to actual times,
         # e.g. of the surrounding scene.  Instead they'd
         # be a rescaled version.  But that's okay!
+        """
+        alpha: 整个动画的进度
+        sub_alpha: 每一个动画的进度
+        可以通过alpha计算出sub_alpha
+        """
         time = alpha * self.max_end_time
         for anim, start_time, end_time in self.anims_with_timings:
             anim_time = end_time - start_time
