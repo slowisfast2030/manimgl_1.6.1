@@ -227,6 +227,7 @@ class Animation(object):
         -----
            -----
               -----    
+
         """
         lag_ratio = self.lag_ratio
         full_length = (num_submobjects - 1) * lag_ratio + 1
