@@ -323,6 +323,12 @@ class Restore(ApplyMethod):
 
 
 class ApplyFunction(Transform):
+    """
+    和ApplyMethod类进行对比
+
+    通过function对mobject进行变换, 得到target
+    然后执行插值操作
+    """
     def __init__(
         self,
         function: Callable[[Mobject], Mobject],
