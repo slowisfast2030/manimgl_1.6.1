@@ -21,6 +21,16 @@ if TYPE_CHECKING:
 
 DEFAULT_LAGGED_START_LAG_RATIO = 0.05
 
+"""
+思考:
+这份文件中的几个类并不是一个具体的animation
+而是对具体的animation的组合播放
+
+       Animation
+     AnimationGroup
+Succession     LaggedStart
+             LaggedStartMap
+"""
 
 """
 c = Circle().set_color(RED)
