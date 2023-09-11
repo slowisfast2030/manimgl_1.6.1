@@ -43,6 +43,10 @@ lag_ratio=0时, 每个submobject的动画时间是3
 播放的时候，是播放渲染完成的帧
 所以看上去是同时完成的
 """
+
+"""
+alpha --> rate_func(alpha) --> lag_ratio(rate_func(alpha))
+"""
 class Animation(object):
     CONFIG = {
         "run_time": DEFAULT_ANIMATION_RUN_TIME,
