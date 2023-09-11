@@ -173,10 +173,10 @@ class Animation(object):
     def interpolate_mobject(self, alpha: float) -> None:
         for i, mobs in enumerate(self.families):
             sub_alpha = self.get_sub_alpha(alpha, i, len(self.families))
-            """
+            """s
             严格来讲, 下面这个函数的名字取得不好
-            在manim中, submobject和family是两个不同的属性
-            family比submobjects多一个自身
+            在manim中, submobjects和family是两个不同的属性
+            family比submobjects多一个mob自身
             """
             self.interpolate_submobject(*mobs, sub_alpha)
 
