@@ -38,7 +38,6 @@ ag = AnimationGroup(*animations, lag_ratio=1, run_time=4)
 print(ag.group, ag.group.submobjects)
 
 VGroup 
-
 [
 <manimlib.mobject.geometry.Circle object at 0x142e17a90>, 
 <manimlib.mobject.geometry.Square object at 0x14300f730>, 
