@@ -66,7 +66,7 @@ class ShowPartial(Animation):
 
 class ShowCreation(ShowPartial):
     CONFIG = {
-        "lag_ratio": 1,
+        "lag_ratio": 1, # 设置为1很合理
     }
 
     def get_bounds(self, alpha: float) -> tuple[float, float]:
@@ -74,6 +74,12 @@ class ShowCreation(ShowPartial):
 
 
 class Uncreate(ShowCreation):
+    """
+    除了设置rate_func, 也可以重新定义get_bounds方法
+
+    def get_bounds(self, alpha: float) -> tuple[float, float]:
+        return (0, 1-alpha) 
+    """
     CONFIG = {
         "rate_func": lambda t: smooth(1 - t),
         "remover": True,
