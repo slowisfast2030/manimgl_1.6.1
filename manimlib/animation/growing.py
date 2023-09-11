@@ -12,6 +12,17 @@ if TYPE_CHECKING:
 
 
 class GrowFromPoint(Transform):
+    """
+    start: self.mobject.copy().scale(0).move_to(self.point)
+    target: self.mobject
+
+    从一个点变成mobject
+
+    注意: 这里的一个点本质上是mobject缩小到点的大小
+    因为Transfrom的动画需要插值
+    不可能真的是一个点
+    不过, 只要点集大小一致的mob缩小到一个点似乎都可以
+    """
     CONFIG = {
         "point_color": None,
     }
