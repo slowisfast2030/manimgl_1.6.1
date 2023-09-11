@@ -550,7 +550,7 @@ class VMobject(Mobject):
         recurse: bool = True
     ):
         """
-        subdivide: 把什么细分
+        subdivide: 把...细分
         """
         vmobs = [vm for vm in self.get_family(recurse) if vm.has_points()]
         for vmob in vmobs:
