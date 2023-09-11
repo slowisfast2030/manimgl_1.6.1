@@ -26,11 +26,15 @@ if TYPE_CHECKING:
 每一个animation, 都是建立在vmob的一个函数之上
 
 这里:
-vmob.pointwise_become_partial(vmobject: VMobject, a: float, b: float)
-vmob.interpolate(start: VMobject, end: VMobject, alpha: float)
+函数一: vmob.pointwise_become_partial(vmobject: VMobject, a: float, b: float)
+函数二: vmob.interpolate(start: VMobject, end: VMobject, alpha: float)
 
 ShowCreation
+使用了函数一
+
 DrawBorderThenFill
+先使用函数一画出轮廓
+再使用函数二插值
 """
 class ShowPartial(Animation):
     """
