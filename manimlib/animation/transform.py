@@ -63,6 +63,11 @@ class Transform(Animation):
         # preserved, since calling allign_data will potentially
         # change the structure of both arguments
         self.target_copy = self.target_mobject.copy()
+        """
+        以前有一个很大的疑问: 如何对circle和square进行插值?
+        它们的点集的数目是不一样的
+        现在看来, 这个问题的关键在于, 如何对两个mobject进行对齐
+        """
         self.mobject.align_data_and_family(self.target_copy)
         super().begin()
         self.mobject.lock_matching_data(
@@ -117,6 +122,7 @@ class Transform(Animation):
             ]
         ])
 
+    # 特别注意，这个函数和父类的同名函数，参数个数不一致
     def interpolate_submobject(
         self,
         submob: Mobject,
@@ -158,6 +164,34 @@ class CounterclockwiseTransform(Transform):
     }
 
 
+"""
+frame = self.frame
+frame.target = frame.generate_target()
+frame.target.scale(1.75, about_edge=LEFT)
+self.play(
+    LaggedStartMap(
+        FadeIn, VGroup(*blocks[10:30]),
+        lag_ratio=0.9, # 将lag_ratio设置为0, 所有的block同时出现
+    ),
+    MoveToTarget(frame, rate_func=rush_into),
+    run_time=12,
+    )
+"""
+"""
+MoveToTarget这个类名字起得不好, 容易让人误解
+直观的印象就是将mobect移动到target的位置
+但实际上, 这个类的作用是将mobject的属性变成target的属性
+包括点集，颜色，透明度等等
+
+MoveToTarget这个类初始化需要一个mobject
+给人的感觉是这个transform只需要一个对象
+但实际上, 这个类还需要一个target
+只是这个target是通过拷贝mobject得到的
+"""
+"""
+MoveToTarget这个类的作用是将mobject的属性变成target的属性
+是现在的自己和过去的自己之间的一次变化
+"""
 class MoveToTarget(Transform):
     def __init__(self, mobject: Mobject, **kwargs):
         self.check_validity_of_input(mobject)
