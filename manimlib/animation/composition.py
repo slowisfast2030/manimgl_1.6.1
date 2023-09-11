@@ -92,6 +92,9 @@ class AnimationGroup(Animation):
             anim.update_mobjects(dt)
 
     def init_run_time(self) -> None:
+        """
+        动画组的最大执行时间
+        """
         self.build_animations_with_timings()
         if self.anims_with_timings:
             self.max_end_time = np.max([
