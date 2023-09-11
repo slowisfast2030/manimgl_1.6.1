@@ -125,8 +125,8 @@ class AnimationGroup(Animation):
             通过这个函数可以明确lag_ratio的具体含义:
             
             |<------>|:a
-            ----------
-                  ---------
+            ----------: 动画1
+                  ---------: 动画2
             |<--->|:b
 
             lag_ratio = b/a 
