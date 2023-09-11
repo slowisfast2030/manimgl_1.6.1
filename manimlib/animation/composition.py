@@ -22,6 +22,30 @@ if TYPE_CHECKING:
 DEFAULT_LAGGED_START_LAG_RATIO = 0.05
 
 
+"""
+c = Circle().set_color(RED)
+s = Square().set_color(BLUE)
+t = Triangle().set_color(GREEN)
+d = Dot().set_color(YELLOW)
+animations = [Write(c),
+              Write(s),
+              Write(t),
+              d.animate.shift(LEFT*2)]   
+
+self.play(AnimationGroup(*animations, lag_ratio=1, run_time=4))
+
+ag = AnimationGroup(*animations, lag_ratio=1, run_time=4)
+print(ag.group, ag.group.submobjects)
+
+VGroup 
+
+[
+<manimlib.mobject.geometry.Circle object at 0x142e17a90>, 
+<manimlib.mobject.geometry.Square object at 0x14300f730>, 
+<manimlib.mobject.geometry.Triangle object at 0x14300f790>, 
+<manimlib.mobject.geometry.Dot object at 0x14300f8e0>
+]
+"""
 class AnimationGroup(Animation):
     CONFIG = {
         # If None, this defaults to the sum of all
