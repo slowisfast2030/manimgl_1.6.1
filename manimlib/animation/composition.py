@@ -119,6 +119,16 @@ class AnimationGroup(Animation):
             # the lag_ratio
             """
             秀的头皮发麻
+            通过这个函数可以明确lag_ratio的具体含义:
+            
+            |<------>|:a
+            ----------
+                  ---------
+            |<--->|:b
+
+            lag_ratio = b/a 
+            也就是说, 当上一个动画执行了lag_ratio比例的时候
+            下一个动画开始执行
             """
             curr_time = interpolate(
                 start_time, end_time, self.lag_ratio
