@@ -25,6 +25,9 @@ class ShowPartial(Animation):
     """
     Abstract class for ShowCreation and ShowPassingFlash
     """
+    """
+    ShowCreation 和 ShowPassingFlash 的抽象类
+    """
     CONFIG = {
         "should_match_start": False,
     }
