@@ -21,6 +21,11 @@ if TYPE_CHECKING:
     from manimlib.mobject.mobject import Group
 
 
+"""
+洞见:
+每一个animation, 都是建立在vmob的一个函数之上
+这里就是:pointwise_become_partial(vmobject: VMobject, a: float, b: float)
+"""
 class ShowPartial(Animation):
     """
     Abstract class for ShowCreation and ShowPassingFlash
