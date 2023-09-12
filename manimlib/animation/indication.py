@@ -188,6 +188,9 @@ class ShowPassingFlash(ShowPartial):
 
 
 class VShowPassingFlash(Animation):
+    """
+    这个animation用在了StreamLines上
+    """
     CONFIG = {
         "time_width": 0.3,
         "taper_width": 0.02,
@@ -248,6 +251,9 @@ class VShowPassingFlash(Animation):
 
 
 class FlashAround(VShowPassingFlash):
+    """
+    mob外围flash
+    """
     CONFIG = {
         "stroke_width": 4.0,
         "color": YELLOW,
