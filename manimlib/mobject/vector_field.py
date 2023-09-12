@@ -36,8 +36,22 @@ def get_vectorized_rgb_gradient_function(
     color_map: str
 ) -> Callable[[npt.ArrayLike], np.ndarray]:
     rgbs = np.array(get_colormap_list(color_map))
+    #print(color_map, rgbs)
+    """
+    3b1b_colormap 
+    [[0.10980392 0.45882353 0.54117647]
+     [0.26127451 0.57058824 0.48970588]
+     [0.4127451  0.68235294 0.43823529]
+     [0.5745098  0.7872549  0.35343137]
+     [0.75686275 0.87843137 0.20196078]
+     [0.93921569 0.96960784 0.0504902 ]
+     [0.99705882 0.84607843 0.08333333]
+     [0.99264706 0.61519608 0.20833333]
+     [0.98823529 0.38431373 0.33333333]]
+    """
 
     def func(values):
+        #print(min_value, max_value, values)
         alphas = inverse_interpolate(
             min_value, max_value, np.array(values)
         )
