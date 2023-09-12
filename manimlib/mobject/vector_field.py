@@ -39,7 +39,7 @@ def get_vectorized_rgb_gradient_function(
     #print(color_map, rgbs)
     """
     3b1b_colormap 
-    
+
     [[0.10980392 0.45882353 0.54117647]
      [0.26127451 0.57058824 0.48970588]
      [0.4127451  0.68235294 0.43823529]
@@ -52,21 +52,41 @@ def get_vectorized_rgb_gradient_function(
     """
 
     def func(values):
+        """
+        完成模长到颜色的映射
+
+        颜色数组:
+        [c1, c2, c3, c4, c5, c6]
+        模长范围:
+        [min, max]
+
+        假设:
+        min --> c1, max --> c2
+        当min < value < max时
+        value --> ?
+        """
         #print(min_value, max_value, values)
         """VectorField (如果是StreamLines输出会不一样)
 
         0 3 [3.7785946829182113]
         """
+        # 模长在min_value和max_value之间的比例
         alphas = inverse_interpolate(
             min_value, max_value, np.array(values)
         )
         alphas = np.clip(alphas, 0, 1)
+        # 映射到颜色数组的索引: indices和next_indices
+        # 颜色数组的两个索引对应颜色继续插值: inter_alphas 
         scaled_alphas = alphas * (len(rgbs) - 1)
         indices = scaled_alphas.astype(int)
         next_indices = np.clip(indices + 1, 0, len(rgbs) - 1)
         inter_alphas = scaled_alphas % 1
         inter_alphas = inter_alphas.repeat(3).reshape((len(indices), 3))
         result = interpolate(rgbs[indices], rgbs[next_indices], inter_alphas)
+        #print(result)
+        """
+        [[0.98823529 0.38431373 0.33333333]]
+        """
         return result
     return func
 
