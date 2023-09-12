@@ -299,9 +299,11 @@ class StreamLines(VGroup):
             for x in range(self.max_time_steps):
                 time += self.dt
                 last_point = points[-1]
+                # 计算每一个点的场向量, 得到最新的点
                 new_point = last_point + self.dt * (self.point_func(last_point) - origin)
                 points.append(new_point)
                 total_arc_len += get_norm(new_point - last_point)
+                # 对场线进行截断
                 if get_norm(last_point) > self.cutoff_norm:
                     break
                 if total_arc_len > self.arc_len:
@@ -309,6 +311,7 @@ class StreamLines(VGroup):
             line = VMobject()
             line.virtual_time = time
             step = max(1, int(len(points) / self.n_samples_per_line))
+            # 点动成线
             line.set_points_as_corners(points[::step])
             line.make_approximately_smooth()
             lines.append(line)
