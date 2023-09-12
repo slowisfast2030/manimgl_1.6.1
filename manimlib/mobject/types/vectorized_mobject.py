@@ -137,6 +137,9 @@ class VMobject(Mobject):
         name: str = None,
         recurse: bool = False
     ):
+        """
+        通过rgba数组设置颜色
+        """
         if name is None:
             names = ["fill_rgba", "stroke_rgba"]
         else:
