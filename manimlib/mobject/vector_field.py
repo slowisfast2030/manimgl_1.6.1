@@ -502,7 +502,6 @@ class AnimatedStreamLines(VGroup):
                 run_time=line.virtual_time,
                 **self.line_anim_config,
             )
-            # 这一行有什么用
             # 猜想: 这个animation不是通过play方式执行, 所以begin不会自动执行
             # 而begin函数为mob设置了一些属性, 执行line.anim.update的时候会用到
             line.anim.begin()
