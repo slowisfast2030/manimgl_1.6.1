@@ -40,7 +40,7 @@ class test(Scene):
 		self.add(stream_lines)
 		stream_lines.scale(0.9)
 		
-		asl = AnimatedStreamLines(stream_lines)
+		asl = AnimatedStreamLines(stream_lines, line_anim_class=VShowPassingFlash)
 		self.add(asl)
 		self.wait(6)
 
