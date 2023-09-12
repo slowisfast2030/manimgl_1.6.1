@@ -43,3 +43,17 @@ class test(Scene):
 		asl = AnimatedStreamLines(stream_lines)
 		self.add(asl)
 		self.wait(6)
+
+class line_test(Scene):
+	
+	def construct(self): 
+		
+		plane = NumberPlane()
+		self.add(plane)
+
+		line = Line([-4,-4,0], [4,4,0]).set_stroke(YELLOW)
+		self.add(line)
+		self.wait()
+
+		self.play(VShowPassingFlash(line, time_width=1, run_time=3))
+		
