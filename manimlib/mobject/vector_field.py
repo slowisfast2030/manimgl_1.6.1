@@ -168,7 +168,7 @@ class VectorField(VGroup):
         "magnitude_range": (0, 2), # 和颜色有关
         "color_map": "3b1b_colormap",
         # Takes in actual norm, spits out displayed norm
-        "length_func": lambda norm: 0.45 * sigmoid(norm),
+        "length_func": lambda norm: 0.45 * sigmoid(norm), # 向量长度
         "opacity": 1.0,
         "vector_config": {},
     }
