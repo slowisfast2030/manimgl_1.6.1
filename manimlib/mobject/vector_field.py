@@ -231,6 +231,7 @@ class VectorField(VGroup):
             **vector_config
         )
         vect.shift(_input - origin)
+        # 模长被归一化后, 长度信息就丢失了。但可以通过颜色显示模长信息
         vect.set_rgba_array([[*self.value_to_rgb(norm), self.opacity]])
         return vect
 
