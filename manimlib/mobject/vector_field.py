@@ -201,8 +201,20 @@ class VectorField(VGroup):
         )
 
         output = np.array(self.func(*coords))
+        """
+        output是self.func作用后的坐标, 将其当做向量的话, 有方向有模长
+        如果按照原本的模长显示, 长短差距难免过大
+        所以, 通过合适的数学手段将模长缩放到一个合理的区间
+        这里采取的函数是sigmoid(深度学习常用的公式)
+        
+        模长缩放后, 起模长信息被丢失了
+        可以根据模长为向量设置颜色
+        这样, 根据颜色, 可以大致明白其长度
+        """
+        # norm被用来设置颜色
         norm = get_norm(output)
         if norm > 0:
+            # norm归一化
             output *= self.length_func(norm) / norm
 
         origin = self.coordinate_system.get_origin()
