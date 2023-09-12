@@ -53,11 +53,13 @@ class line_test(Scene):
 		plane = NumberPlane()
 		self.add(plane)
 
-		line = Line([-3,-3,0], [3,3,0]).set_stroke(YELLOW)
-		self.add(line)
-		self.wait()
+		points = [[-1, -1, 0],
+			      [0, 1, 0],
+				  [2, 1, 0],
+				  [3, 4, 0]]
+		curve = VMobject().set_points_smoothly(points, True).set_stroke(YELLOW, 5)
 
-		self.play(VShowPassingFlash(Circle().scale(2), time_width=1, run_time=1))
-
-		self.play(FlashAround(line, run_time=3))
+		self.play(VShowPassingFlash(Circle().scale(2), time_width=1, run_time=2))
+		self.play(VShowPassingFlash(curve, time_width=1, run_time=2))
+		
 		
