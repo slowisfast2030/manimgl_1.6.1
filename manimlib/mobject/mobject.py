@@ -1515,7 +1515,7 @@ class Mobject(object):
 
     def set_rgba_array(
         self,
-        rgba_array: npt.ArrayLike,
+        rgba_array: npt.ArrayLike, # 二维数组
         name: str = "rgbas",
         recurse: bool = False
     ):
@@ -1524,6 +1524,20 @@ class Mobject(object):
         
         在vmobject对象中, 会删除rgbas
         添加fill_rgba和stroke_rgba
+
+        from manimlib import *
+
+        class test(Scene):
+            def construct(self): 
+                plane = NumberPlane()
+                self.add(plane)
+                line = Line([-3,-3,0], [3,3,0])
+                rgbas = [[0.95882272, 0.0277352,  0.061623,   1.        ]]	
+                rgbas = [[0.95882272, 0.0277352,  0.061623,   1.        ],
+                        [0.03781613, 0.96890806, 0.05165273, 1.        ],
+                        [0.0795209,  0.03976045, 0.90007538, 1.        ]]
+                line.set_rgba_array(rgbas, "stroke_rgba")
+                self.add(line)
         '''
         for mob in self.get_family(recurse):
             mob.data[name] = np.array(rgba_array)

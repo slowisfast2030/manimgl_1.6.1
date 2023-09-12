@@ -457,6 +457,8 @@ class StreamLines(VGroup):
                 rgbas = np.zeros((len(rgbs), 4))
                 rgbas[:, :3] = rgbs
                 rgbas[:, 3] = self.stroke_opacity
+                print("--------------------------------")
+                print(rgbas)
                 line.set_rgba_array(rgbas, "stroke_rgba")
         else:
             self.set_stroke(self.stroke_color, opacity=self.stroke_opacity)
