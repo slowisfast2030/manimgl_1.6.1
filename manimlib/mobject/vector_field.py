@@ -165,6 +165,10 @@ def average_two_numbers(x: float, y: float) -> Sequence[float]:
 """
 # Mobjects
 
+"""
+VectorField和StreamLines
+是表达场的两种方式
+"""
 class VectorField(VGroup):
     CONFIG = {
         "step_multiple": 0.5, # 采样点间隔
