@@ -39,8 +39,6 @@ class test(Scene):
 		)
 		self.add(stream_lines)
 		stream_lines.scale(0.9)
-		self.play(FadeIn(stream_lines))
-		self.play(FadeOut(stream_lines))
 		
 		asl = AnimatedStreamLines(stream_lines)
 		self.add(asl)
