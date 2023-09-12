@@ -174,6 +174,9 @@ class VectorField(VGroup):
     The values of this functions is displayed as a grid of vectors.
     By default the color of each vector is determined by it's magnitude.
 
+    func
+        The function defining the rate of change at every position of the vector field.
+    
     length_func
         The function determining the displayed size of the vectors. The actual size
         of the vector is passed, the returned value will be used as display size for the
@@ -211,6 +214,12 @@ class VectorField(VGroup):
         ))
 
     def get_vector(self, coords: Iterable[float], **kwargs) -> Arrow:
+        """Creates a vector in the vector field.
+
+        The created vector is based on the function of the vector field and is
+        rooted in the given point. Color and length fit the specifications of
+        this vector field.
+        """
         vector_config = merge_dicts_recursively(
             self.vector_config,
             kwargs
