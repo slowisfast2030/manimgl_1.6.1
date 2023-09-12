@@ -22,10 +22,10 @@ class test(Scene):
 
 		vector_field = VectorField(
 			#pendulum_vector_field_func,
-			field_func2,
+			field_func,
 			plane,
 			step_multiple=0.5,
-            magnitude_range=(0, 1),
+            magnitude_range=(0, 3),
             length_func=lambda norm: 0.35 * sigmoid(norm)
 		)
 		vector_field.scale(0.8)
