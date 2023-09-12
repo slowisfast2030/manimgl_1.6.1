@@ -43,6 +43,7 @@ class test(Scene):
 		asl = AnimatedStreamLines(stream_lines, line_anim_class=VShowPassingFlash)
 		# 竟然是通过add, 添加了一个animation or updater
 		self.add(asl)
+		# 给asl的updater起作用的时间
 		self.wait(3)
 
 class line_test(Scene):
