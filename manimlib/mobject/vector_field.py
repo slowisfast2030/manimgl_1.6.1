@@ -359,8 +359,8 @@ class StreamLines(VGroup):
 
     def point_func(self, point: np.ndarray) -> np.ndarray:
         """
-        输入: 世界空间
-        输出: 世界空间
+        输入: 世界空间 点
+        输出: 世界空间 点处的向量
 
         self.func是作用在坐标系空间
         所以需要完成这种转换
