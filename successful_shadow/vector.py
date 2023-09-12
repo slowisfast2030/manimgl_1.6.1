@@ -28,11 +28,11 @@ class test(Scene):
 			pendulum_vector_field_func,
 			plane
 		)
-		self.add(stream_lines)
-		stream_lines.scale(0.7)
+		# self.add(stream_lines)
+		# stream_lines.scale(0.7)
 		# self.play(FadeIn(stream_lines))
 		# self.play(FadeOut(stream_lines))
 		
-		# asl = AnimatedStreamLines(stream_lines)
-		# self.add(asl)
-		# self.wait(3)
+		asl = AnimatedStreamLines(stream_lines)
+		self.add(asl)
+		self.wait(3)
