@@ -69,6 +69,12 @@ def color_to_int_rgba(color, opacity=1.0):
 
 
 def color_gradient(reference_colors, length_of_output):
+    """
+    给定颜色数组reference_colors
+    输出length_of_output中颜色
+
+    可以简单理解为在原颜色数组中插值得到另一个颜色数组
+    """
     if length_of_output == 0:
         return reference_colors[0]
     rgbs = list(map(color_to_rgb, reference_colors))
@@ -96,11 +102,17 @@ def interpolate_color(color1, color2, alpha):
 
 
 def average_color(*colors):
+    """
+    平均色
+    """
     rgbs = np.array(list(map(color_to_rgb, colors)))
     return rgb_to_color(rgbs.mean(0))
 
 
 def random_bright_color():
+    """
+    随机明亮的颜色
+    """
     color = random_color()
     curr_rgb = color_to_rgb(color)
     new_rgb = interpolate(
@@ -110,6 +122,9 @@ def random_bright_color():
 
 
 def random_color():
+    """
+    随机颜色
+    """
     return Color(rgb=(random.random() for i in range(3)))
 
 
