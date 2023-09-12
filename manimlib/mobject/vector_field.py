@@ -469,7 +469,7 @@ class StreamLines(VGroup):
         """
 
         if self.taper_stroke_width:
-            # width还能设置为数组？
+            # width还能设置为数组
             width = [0, self.stroke_width, 0]
         else:
             width = self.stroke_width
