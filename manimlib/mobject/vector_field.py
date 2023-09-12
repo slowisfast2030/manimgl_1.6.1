@@ -279,7 +279,9 @@ class StreamLines(VGroup):
         super().__init__(**kwargs)
         self.func = func
         self.coordinate_system = coordinate_system
+        # 画场线
         self.draw_lines()
+        # 上颜色
         self.init_style()
 
     def point_func(self, point: np.ndarray) -> np.ndarray:
