@@ -190,6 +190,7 @@ class ShowPassingFlash(ShowPartial):
 class VShowPassingFlash(Animation):
     """
     这个animation用在了StreamLines上
+    没理解
     """
     CONFIG = {
         "time_width": 0.3,
