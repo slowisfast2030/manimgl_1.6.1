@@ -3,6 +3,11 @@ from manimlib import *
 def pendulum_vector_field_func(theta, omega, mu=0.3, g=9.8, L=3):
     return [omega, -np.sqrt(g / L) * np.sin(theta) - mu * omega]
 
+#func = lambda pos: ((pos[0] * UR + pos[1] * LEFT) - pos) / 3
+
+def field_func(x, y):
+	return ((x * np.array((0, 1)) + y * np.array((-1, 0))) - np.array((x,y))) / 3	
+
 class test(Scene):
 	
 	def construct(self): 
@@ -10,29 +15,31 @@ class test(Scene):
 		plane = NumberPlane()
 		self.add(plane)
 
-		# vector_field = VectorField(
-		# 	pendulum_vector_field_func,
-		# 	plane,
-		# 	step_multiple=0.5,
-        #     magnitude_range=(0, 5),
-        #     length_func=lambda norm: 0.35 * sigmoid(norm)
-		# )
-		# vector_field.scale(0.8)
-		# self.add(vector_field)
-		# self.play(Write(vector_field))
+		vector_field = VectorField(
+			#pendulum_vector_field_func,
+			field_func,
+			plane,
+			step_multiple=0.5,
+            magnitude_range=(0, 5),
+            length_func=lambda norm: 0.35 * sigmoid(norm)
+		)
+		vector_field.scale(0.8)
+		self.add(vector_field)
+		self.play(Write(vector_field))
 		# self.play(FadeIn(vector_field))
 		# self.play(FadeOut(vector_field))
 
 		
-		stream_lines = StreamLines(
-			pendulum_vector_field_func,
-			plane
-		)
+		# stream_lines = StreamLines(
+		# 	#pendulum_vector_field_func,
+		# 	field_func,
+		# 	plane
+		# )
 		# self.add(stream_lines)
 		# stream_lines.scale(0.7)
 		# self.play(FadeIn(stream_lines))
 		# self.play(FadeOut(stream_lines))
 		
-		asl = AnimatedStreamLines(stream_lines)
-		self.add(asl)
-		self.wait(3)
+		# asl = AnimatedStreamLines(stream_lines)
+		# self.add(asl)
+		# self.wait(3)
