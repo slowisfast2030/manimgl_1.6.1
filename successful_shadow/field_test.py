@@ -8,6 +8,11 @@ def pendulum_vector_field_func(theta, omega, mu=0.3, g=9.8, L=3):
 def field_func(x, y):
 	return ((x * np.array((0, 1)) + y * np.array((-1, 0))) - np.array((x,y))) / 3	
 
+#func = lambda pos: np.sin(pos[1]) * RIGHT + np.cos(pos[0]) * UP
+
+def field_func2(x, y):
+	return np.sin(y) * np.array([1,0]) + np.cos(x) * np.array([0,1])
+
 class test(Scene):
 	
 	def construct(self): 
@@ -17,10 +22,10 @@ class test(Scene):
 
 		vector_field = VectorField(
 			#pendulum_vector_field_func,
-			field_func,
+			field_func2,
 			plane,
 			step_multiple=0.5,
-            magnitude_range=(0, 5),
+            magnitude_range=(0, 1),
             length_func=lambda norm: 0.35 * sigmoid(norm)
 		)
 		vector_field.scale(0.8)
