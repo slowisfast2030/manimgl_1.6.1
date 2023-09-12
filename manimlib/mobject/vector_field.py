@@ -462,6 +462,11 @@ class StreamLines(VGroup):
                 line.set_rgba_array(rgbas, "stroke_rgba")
         else:
             self.set_stroke(self.stroke_color, opacity=self.stroke_opacity)
+        """
+        可以对比下下面两种写法:
+        line.set_rgba_array(rgbas, "stroke_rgba")
+        self.set_stroke(self.stroke_color, opacity=self.stroke_opacity) 
+        """
 
         if self.taper_stroke_width:
             width = [0, self.stroke_width, 0]
