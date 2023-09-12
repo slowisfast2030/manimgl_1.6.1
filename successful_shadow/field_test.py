@@ -51,9 +51,11 @@ class line_test(Scene):
 		plane = NumberPlane()
 		self.add(plane)
 
-		line = Line([-4,-4,0], [4,4,0]).set_stroke(YELLOW)
+		line = Line([-3,-3,0], [3,3,0]).set_stroke(YELLOW)
 		self.add(line)
 		self.wait()
 
-		self.play(VShowPassingFlash(line, time_width=1, run_time=3))
+		#self.play(VShowPassingFlash(line, time_width=1, run_time=1))
+
+		self.play(FlashAround(line, run_time=3))
 		
