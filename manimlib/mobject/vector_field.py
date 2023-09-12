@@ -170,6 +170,10 @@ VectorField和StreamLines
 是表达场的两种方式
 """
 class VectorField(VGroup):
+    """
+    The values of this functions is displayed as a grid of vectors.
+    By default the color of each vector is determined by it's magnitude.
+    """
     CONFIG = {
         "step_multiple": 0.5, # 采样点间隔
         "magnitude_range": (0, 2), # 和颜色有关
