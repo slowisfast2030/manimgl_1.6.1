@@ -39,6 +39,7 @@ def get_vectorized_rgb_gradient_function(
     #print(color_map, rgbs)
     """
     3b1b_colormap 
+    
     [[0.10980392 0.45882353 0.54117647]
      [0.26127451 0.57058824 0.48970588]
      [0.4127451  0.68235294 0.43823529]
@@ -52,6 +53,10 @@ def get_vectorized_rgb_gradient_function(
 
     def func(values):
         #print(min_value, max_value, values)
+        """VectorField (如果是StreamLines输出会不一样)
+
+        0 3 [3.7785946829182113]
+        """
         alphas = inverse_interpolate(
             min_value, max_value, np.array(values)
         )
