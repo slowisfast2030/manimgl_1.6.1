@@ -97,6 +97,8 @@ def get_rgb_gradient_function(
     color_map: str
 ) -> Callable[[T], np.ndarray]:
     vectorized_func = get_vectorized_rgb_gradient_function(min_value, max_value, color_map)
+    # 这里会取第一个元素
+    # 函数的返回值是二维数组
     return lambda value: vectorized_func([value])[0]
 
 

@@ -85,6 +85,9 @@ def color_gradient(reference_colors, length_of_output):
 
 
 def interpolate_color(color1, color2, alpha):
+    """
+    颜色的插值
+    """
     rgb = interpolate(color_to_rgb(color1), color_to_rgb(color2), alpha)
     return rgb_to_color(rgb)
 
