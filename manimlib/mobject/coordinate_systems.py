@@ -81,6 +81,9 @@ class CoordinateSystem():
         return self.point_to_coords(point)
 
     def get_origin(self) -> np.ndarray:
+        """
+        
+        """
         return self.c2p(*[0] * self.dimension)
 
     @abstractmethod
