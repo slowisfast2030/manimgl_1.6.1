@@ -57,7 +57,7 @@ class line_test(Scene):
 		self.add(line)
 		self.wait()
 
-		#self.play(VShowPassingFlash(line, time_width=1, run_time=1))
+		self.play(VShowPassingFlash(Circle().scale(2), time_width=1, run_time=1))
 
 		self.play(FlashAround(line, run_time=3))
 		
