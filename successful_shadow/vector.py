@@ -29,7 +29,7 @@ class test(Scene):
 			plane
 		)
 		self.add(stream_lines)
-		stream_lines.scale(0.6)
+		stream_lines.scale(0.7)
 		# self.play(FadeIn(stream_lines))
 		# self.play(FadeOut(stream_lines))
 		
