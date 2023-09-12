@@ -200,6 +200,12 @@ class VectorField(VGroup):
             kwargs
         )
 
+        """
+        self.func是场的函数
+        输入空间坐标, 输出场向量
+
+        认知: 任何一个场都有一个函数
+        """
         output = np.array(self.func(*coords))
         """
         output是self.func作用后的坐标, 将其当做向量的话, 有方向有模长
