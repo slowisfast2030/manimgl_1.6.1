@@ -253,7 +253,19 @@ class VectorField(VGroup):
             # norm归一化
             output *= self.length_func(norm) / norm
 
+        # 坐标系空间的原点在世界坐标系中的位置
         origin = self.coordinate_system.get_origin()
+        """
+        如何理解c2p?两个空间的映射
+        坐标系空间 ---> 世界空间
+        coords: 采样点(坐标系空间)
+        _input: 采样点(世界空间)
+        output: 向量(坐标系空间)
+        _output: 向量(世界空间)
+
+        注意: 向量没有起始点
+        为了可视化向量, 需要人为的为向量添加起始点
+        """
         _input = self.coordinate_system.c2p(*coords)
         _output = self.coordinate_system.c2p(*output)
 
