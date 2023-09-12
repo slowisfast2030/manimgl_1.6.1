@@ -427,6 +427,7 @@ class StreamLines(VGroup):
             cs, self.step_multiple,
         )
 
+        # 设置噪声的目的是?
         noise_factor = self.noise_factor
         if noise_factor is None:
             noise_factor = cs.x_range[2] * self.step_multiple * 0.5
