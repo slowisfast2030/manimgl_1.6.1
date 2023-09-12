@@ -514,6 +514,7 @@ class AnimatedStreamLines(VGroup):
     def update(self, dt: float) -> None:
         stream_lines = self.stream_lines
         for line in stream_lines:
+            # 这一步有啥用？
             line.time += dt
             adjusted_time = max(line.time, 0) % line.anim.run_time
             line.anim.update(adjusted_time / line.anim.run_time)
