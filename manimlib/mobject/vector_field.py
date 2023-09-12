@@ -164,8 +164,8 @@ def average_two_numbers(x: float, y: float) -> Sequence[float]:
 
 class VectorField(VGroup):
     CONFIG = {
-        "step_multiple": 0.5,
-        "magnitude_range": (0, 2),
+        "step_multiple": 0.5, # 采样点间隔
+        "magnitude_range": (0, 2), # 和颜色有关
         "color_map": "3b1b_colormap",
         # Takes in actual norm, spits out displayed norm
         "length_func": lambda norm: 0.45 * sigmoid(norm),
