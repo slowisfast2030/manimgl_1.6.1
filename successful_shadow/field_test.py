@@ -32,16 +32,16 @@ class test(Scene):
 		self.add(vector_field)
 		self.play(Write(vector_field, run_time=3))
 		
-		# stream_lines = StreamLines(
-		# 	#pendulum_vector_field_func,
-		# 	field_func,
-		# 	plane
-		# )
-		# self.add(stream_lines)
-		# stream_lines.scale(0.9)
-		# self.play(FadeIn(stream_lines))
-		# self.play(FadeOut(stream_lines))
+		stream_lines = StreamLines(
+			#pendulum_vector_field_func,
+			field_func,
+			plane
+		)
+		self.add(stream_lines)
+		stream_lines.scale(0.9)
+		self.play(FadeIn(stream_lines))
+		self.play(FadeOut(stream_lines))
 		
-		# asl = AnimatedStreamLines(stream_lines)
-		# self.add(asl)
-		# self.wait(6)
+		asl = AnimatedStreamLines(stream_lines)
+		self.add(asl)
+		self.wait(6)

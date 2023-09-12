@@ -372,6 +372,7 @@ class StreamLines(VGroup):
     def draw_lines(self) -> None:
         lines = []
         origin = self.coordinate_system.get_origin()
+        #print(origin)
         for point in self.get_start_points():
             points = [point]
             total_arc_len = 0
@@ -386,6 +387,15 @@ class StreamLines(VGroup):
                 time += self.dt
                 last_point = points[-1]
                 # 计算每一个点的场向量, 得到最新的点
+                """
+                任何数学公式要想明白其物理意义
+                self.point_func(last_point)的几何意义:
+                场线在last_point处的切线
+                
+                个人觉得, 这里并不需要减去origin
+                self.point_func(last_point)本身就是向量
+                再减去origin, 几何意义反而不够明确 
+                """
                 new_point = last_point + self.dt * (self.point_func(last_point) - origin)
                 points.append(new_point)
                 # 场线长度
