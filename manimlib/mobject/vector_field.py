@@ -382,8 +382,9 @@ class StreamLines(VGroup):
                 # 计算每一个点的场向量, 得到最新的点
                 new_point = last_point + self.dt * (self.point_func(last_point) - origin)
                 points.append(new_point)
+                # 场线长度
                 total_arc_len += get_norm(new_point - last_point)
-                # 对场线进行截断
+                # 对场线进行截断, 两种情况
                 if get_norm(last_point) > self.cutoff_norm:
                     break
                 if total_arc_len > self.arc_len:
