@@ -476,6 +476,13 @@ class StreamLines(VGroup):
         self.set_stroke(width=width)
 
 
+"""
+面对复杂问题的时候要善于分解
+将复杂问题分解为几个简单的问题
+1.明确VShowPassingFlash类的实现原理(深入研究会涉及贝塞尔曲线的stroke的着色代码)
+2.animation不作为play函数的参数的时候, 如何被调用
+3.animation的update方法的深入研究
+"""
 class AnimatedStreamLines(VGroup):
     """
     想象力！
