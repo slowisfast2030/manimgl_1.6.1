@@ -17,7 +17,7 @@ class test(Scene):
             magnitude_range=(0, 5),
             length_func=lambda norm: 0.35 * sigmoid(norm)
 		)
-		vector_field.scale(0.5)
+		vector_field.scale(0.8)
 		self.add(vector_field)
 		# self.play(FadeIn(vector_field))
 		# self.play(FadeOut(vector_field))
