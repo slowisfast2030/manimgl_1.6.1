@@ -403,11 +403,11 @@ class StreamLines(VGroup):
                 points.append(new_point)
                 # 场线长度
                 total_arc_len += get_norm(new_point - last_point)
-                # 对场线进行截断, 两种情况
+                # 对场线进行截断, 两种情况(逻辑上不统一)
                 # 第一种情况, 为何不是对new_point进行判断?
                 if get_norm(last_point) > self.cutoff_norm:
                     break
-                # 第二种情况
+                # 第二种情况, 引入了new_point之后的总弧长
                 if total_arc_len > self.arc_len:
                     break
             line = VMobject()
