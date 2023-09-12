@@ -501,6 +501,7 @@ class AnimatedStreamLines(VGroup):
                 run_time=line.virtual_time,
                 **self.line_anim_config,
             )
+            # 这一行有什么用
             line.anim.begin()
             line.time = -self.lag_range * random.random()
             self.add(line.anim.mobject)

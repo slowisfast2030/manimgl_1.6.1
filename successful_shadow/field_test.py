@@ -30,7 +30,7 @@ class test(Scene):
 		)
 		vector_field.scale(0.8)
 		self.add(vector_field)
-		self.play(Write(vector_field, run_time=3))
+		self.play(Write(vector_field, run_time=1))
 		
 		stream_lines = StreamLines(
 			#pendulum_vector_field_func,
@@ -42,7 +42,7 @@ class test(Scene):
 		
 		asl = AnimatedStreamLines(stream_lines, line_anim_class=VShowPassingFlash)
 		self.add(asl)
-		self.wait(6)
+		self.wait(3)
 
 class line_test(Scene):
 	
