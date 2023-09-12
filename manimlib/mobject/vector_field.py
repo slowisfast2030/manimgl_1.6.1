@@ -209,7 +209,7 @@ class VectorField(VGroup):
         
         模长缩放后, 起模长信息被丢失了
         可以根据模长为向量设置颜色
-        这样, 根据颜色, 可以大致明白其长度
+        这样, 根据颜色, 可以大致明白其模长
         """
         # norm被用来设置颜色
         norm = get_norm(output)
