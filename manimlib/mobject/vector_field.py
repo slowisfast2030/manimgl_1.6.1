@@ -375,8 +375,14 @@ class StreamLines(VGroup):
         for point in self.get_start_points():
             points = [point]
             total_arc_len = 0
+            # 画每一条线消耗的virtual time
+            # 这个属性有什么用么
             time = 0
             for x in range(self.max_time_steps):
+                """
+                这里设置了最大的迭代步数
+                每一步执行消耗virtual time: dt
+                """
                 time += self.dt
                 last_point = points[-1]
                 # 计算每一个点的场向量, 得到最新的点
