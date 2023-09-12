@@ -187,11 +187,24 @@ class ShowPassingFlash(ShowPartial):
             submob.pointwise_become_partial(start, 0, 1)
 
 
+"""
+plane = NumberPlane()
+self.add(plane)
+
+points = [[-1, -1, 0],
+            [0, 1, 0],
+            [2, 1, 0],
+            [3, 4, 0]]
+curve = VMobject().set_points_smoothly(points, True).set_stroke(YELLOW, 5)
+
+self.play(VShowPassingFlash(Circle().scale(2), time_width=1, run_time=2))
+self.play(VShowPassingFlash(curve, time_width=1, run_time=2))
+"""
 class VShowPassingFlash(Animation):
     """
     这个animation用在了StreamLines上
     
-    作用于line的时候, 使得line部分可见
+    作用于vmob的时候, 使得vmob部分可见
     """
     CONFIG = {
         "time_width": 0.3,
