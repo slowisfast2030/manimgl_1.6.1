@@ -190,7 +190,8 @@ class ShowPassingFlash(ShowPartial):
 class VShowPassingFlash(Animation):
     """
     这个animation用在了StreamLines上
-    没理解
+    
+    作用于line的时候, 使得line部分可见
     """
     CONFIG = {
         "time_width": 0.3,
@@ -245,7 +246,7 @@ class VShowPassingFlash(Animation):
         new_widths[1::3] = (new_widths[0::3] + new_widths[2::3]) / 2
         """
         动画的效果就是line的部分可见
-        
+
         通过设置边缘的宽度, 使得部分line可见
         """
         submobject.set_stroke(width=new_widths)
