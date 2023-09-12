@@ -173,6 +173,11 @@ class VectorField(VGroup):
     """
     The values of this functions is displayed as a grid of vectors.
     By default the color of each vector is determined by it's magnitude.
+
+    length_func
+        The function determining the displayed size of the vectors. The actual size
+        of the vector is passed, the returned value will be used as display size for the
+        vector. By default this is used to cap the displayed size of vectors to reduce the clutter.
     """
     CONFIG = {
         "step_multiple": 0.5, # 采样点间隔
