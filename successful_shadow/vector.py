@@ -19,6 +19,7 @@ class test(Scene):
 		)
 		vector_field.scale(0.8)
 		self.add(vector_field)
+		self.play(Write(vector_field))
 		# self.play(FadeIn(vector_field))
 		# self.play(FadeOut(vector_field))
 
