@@ -14,6 +14,9 @@ color_to_rgb(RED)
 [0.98823529 0.38431373 0.33333333]
 """
 def color_to_rgb(color):
+    """
+    颜色到rgb数组
+    """
     if isinstance(color, str):
         return hex_to_rgb(color)
     elif isinstance(color, Color):
@@ -23,10 +26,16 @@ def color_to_rgb(color):
 
 
 def color_to_rgba(color, alpha=1):
+    """
+    颜色到rgba数组
+    """
     return np.array([*color_to_rgb(color), alpha])
 
 
 def rgb_to_color(rgb):
+    """
+    rgb数组到颜色
+    """
     try:
         return Color(rgb=rgb)
     except ValueError:
@@ -34,6 +43,9 @@ def rgb_to_color(rgb):
 
 
 def rgba_to_color(rgba):
+    """
+    rgba数组到颜色
+    """
     return rgb_to_color(rgba[:3])
 
 
@@ -56,6 +68,9 @@ def hex_to_rgb(hex_code):
 
 
 def invert_color(color):
+    """
+    反转色
+    """
     return rgb_to_color(1.0 - color_to_rgb(color))
 
 

@@ -358,6 +358,13 @@ class StreamLines(VGroup):
         self.init_style()
 
     def point_func(self, point: np.ndarray) -> np.ndarray:
+        """
+        输入: 世界空间
+        输出: 世界空间
+
+        self.func是作用在坐标系空间
+        所以需要完成这种转换
+        """
         in_coords = self.coordinate_system.p2c(point)
         out_coords = self.func(*in_coords)
         return self.coordinate_system.c2p(*out_coords)
