@@ -10,6 +10,7 @@ class test(Scene):
                  [0.03781613, 0.96890806, 0.05165273, 1.        ],
                  [0.0795209,  0.03976045, 0.90007538, 1.        ]]
 		line.set_rgba_array(rgbas, "stroke_rgba")
+		line.set_stroke(width=[60,30,1.5])
 		self.add(line)
 	    
     
