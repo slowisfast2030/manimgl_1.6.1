@@ -395,6 +395,9 @@ class StreamLines(VGroup):
                 个人觉得, 这里并不需要减去origin
                 self.point_func(last_point)本身就是向量
                 再减去origin, 几何意义反而不够明确 
+
+                new_point = last_point + self.dt * self.point_func(last_point)
+                这一步是整个StreamLines的点睛之笔 
                 """
                 new_point = last_point + self.dt * (self.point_func(last_point) - origin)
                 points.append(new_point)
