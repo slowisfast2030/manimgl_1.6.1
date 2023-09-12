@@ -269,6 +269,7 @@ class VectorField(VGroup):
         _input = self.coordinate_system.c2p(*coords)
         _output = self.coordinate_system.c2p(*output)
 
+        # origin和_output都已经在世界坐标系中
         vect = Arrow(
             origin, _output, buff=0,
             **vector_config
