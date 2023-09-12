@@ -412,9 +412,11 @@ class StreamLines(VGroup):
                     break
             line = VMobject()
             line.virtual_time = time
+            # 每一条线的点集数目可能有不同
+            # 隔step采样, 保证每一条线点集数目相同
             step = max(1, int(len(points) / self.n_samples_per_line))
-            # 点动成线
             line.set_points_as_corners(points[::step])
+            # 折线变光滑
             line.make_approximately_smooth()
             lines.append(line)
         self.set_submobjects(lines)
