@@ -82,7 +82,7 @@ class CoordinateSystem():
 
     def get_origin(self) -> np.ndarray:
         """
-        
+        坐标系空间的原点映射到世界空间
         """
         return self.c2p(*[0] * self.dimension)
 
