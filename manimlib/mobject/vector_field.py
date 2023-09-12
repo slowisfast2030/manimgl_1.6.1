@@ -477,6 +477,11 @@ class StreamLines(VGroup):
 
 
 class AnimatedStreamLines(VGroup):
+    """
+    想象力！
+
+    余华: 没有洞见的想象力一文不值
+    """
     CONFIG = {
         "lag_range": 4,
         "line_anim_class": VShowPassingFlash,
