@@ -107,6 +107,9 @@ def get_sample_points_from_coordinate_system(
     coordinate_system: CoordinateSystem,
     step_multiple: float
 ) -> it.product[tuple[np.ndarray, ...]]:
+    """
+    在坐标系上采点
+    """
     ranges = []
     for range_args in coordinate_system.get_all_ranges():
         _min, _max, step = range_args
