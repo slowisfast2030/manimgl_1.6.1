@@ -222,6 +222,7 @@ class VectorField(VGroup):
         The function determining the displayed size of the vectors. The actual size
         of the vector is passed, the returned value will be used as display size for the
         vector. By default this is used to cap the displayed size of vectors to reduce the clutter.
+        可改为 ``linear`` 表示原长
     """
     CONFIG = {
         "step_multiple": 0.5, # 采样点间隔
@@ -484,6 +485,7 @@ class StreamLines(VGroup):
 3.animation的update方法的深入研究
 """
 class AnimatedStreamLines(VGroup):
+    """自动实现流动效果的物体（利用 ``StreamLines`` 和转化为 ``updater`` 的动画）"""
     """
     想象力！
 
@@ -533,6 +535,11 @@ class AnimatedStreamLines(VGroup):
 
 # TODO: This class should be deleted
 class ShowPassingFlashWithThinningStrokeWidth(AnimationGroup):
+    """
+    通过改变线条宽度来实现流动效果
+
+    注意：该类将被删除
+    """
     CONFIG = {
         "n_segments": 10,
         "time_width": 0.1,
