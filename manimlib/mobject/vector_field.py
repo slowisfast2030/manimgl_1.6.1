@@ -168,7 +168,7 @@ class VectorField(VGroup):
         "magnitude_range": (0, 2), # 和颜色有关
         "color_map": "3b1b_colormap",
         # Takes in actual norm, spits out displayed norm
-        "length_func": lambda norm: 0.45 * sigmoid(norm), # 向量长度
+        "length_func": lambda norm: 0.45 * sigmoid(norm), # 向量长度归一化。这里用sigmoid真是独具匠心。不得不佩服3b1b对公式的天赋。
         "opacity": 1.0,
         "vector_config": {},
     }
