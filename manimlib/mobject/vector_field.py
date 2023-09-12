@@ -504,6 +504,7 @@ class AnimatedStreamLines(VGroup):
             )
             # 这一行有什么用
             line.anim.begin()
+            # 设置一个随机time
             line.time = -self.lag_range * random.random()
             #print(line.anim.mobject == line)
             self.add(line.anim.mobject)
