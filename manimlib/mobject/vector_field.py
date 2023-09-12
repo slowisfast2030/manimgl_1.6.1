@@ -496,7 +496,7 @@ class AnimatedStreamLines(VGroup):
         super().__init__(**kwargs)
         self.stream_lines = stream_lines
         for line in stream_lines:
-            line.anim = self.line_anim_class(
+            line.anim: VShowPassingFlash = self.line_anim_class(
                 line,
                 run_time=line.virtual_time,
                 **self.line_anim_config,
