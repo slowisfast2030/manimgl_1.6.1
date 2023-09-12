@@ -495,6 +495,7 @@ class AnimatedStreamLines(VGroup):
     def __init__(self, stream_lines: StreamLines, **kwargs):
         super().__init__(**kwargs)
         self.stream_lines = stream_lines
+        # 将每一个line添加到scene中
         for line in stream_lines:
             line.anim: VShowPassingFlash = self.line_anim_class(
                 line,
@@ -504,8 +505,10 @@ class AnimatedStreamLines(VGroup):
             # 这一行有什么用
             line.anim.begin()
             line.time = -self.lag_range * random.random()
+            #print(line.anim.mobject == line)
             self.add(line.anim.mobject)
-
+        # 为AnimatedStreamLines对象添加updater
+        # 在类初始化的时候就给自己添加了updater, 真少见
         self.add_updater(lambda m, dt: m.update(dt))
 
     def update(self, dt: float) -> None:
