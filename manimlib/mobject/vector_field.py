@@ -519,6 +519,8 @@ class AnimatedStreamLines(VGroup):
             # 这一步有啥用？
             line.time += dt
             adjusted_time = max(line.time, 0) % line.anim.run_time
+            # 这里是把animaton当做updater来用了
+            # animation有一个update方法。本来以为是冗余的方法, 没想到这里可以用
             line.anim.update(adjusted_time / line.anim.run_time)
 
 
