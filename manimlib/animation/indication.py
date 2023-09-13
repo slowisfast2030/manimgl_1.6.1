@@ -221,6 +221,7 @@ class VShowPassingFlash(Animation):
         # Compute an array of stroke widths for each submobject
         # which tapers out at either end
         self.submob_to_anchor_widths = dict()
+        #print(self.mobject.get_family())
         for sm in self.mobject.get_family():
             original_widths = sm.get_stroke_widths()
             anchor_widths = np.array([*original_widths[0::3], original_widths[-1]])
@@ -261,6 +262,7 @@ class VShowPassingFlash(Animation):
         new_widths[0::3] = scaled_widths[:-1]
         new_widths[2::3] = scaled_widths[1:]
         new_widths[1::3] = (new_widths[0::3] + new_widths[2::3]) / 2
+        #print(new_widths)
         """
         动画的效果就是line的部分可见
 
