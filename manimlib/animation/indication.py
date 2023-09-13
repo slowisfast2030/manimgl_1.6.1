@@ -247,6 +247,7 @@ class VShowPassingFlash(Animation):
         # Create a gaussian such that 3 sigmas out on either side
         # will equals time_width
         tw = self.time_width
+        # 正太分布的均值和方差都和tw有关
         sigma = tw / 6
         mu = interpolate(-tw / 2, 1 + tw / 2, alpha)
 
