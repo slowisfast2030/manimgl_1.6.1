@@ -4,7 +4,7 @@ class test(Scene):
 	def construct(self): 
 		plane = NumberPlane()
 		self.add(plane)
-		
+
 		points = [[-2, -3, 0],
 			      [0, 0, 0],
 				  [2, 1, 0],
@@ -24,7 +24,11 @@ class test(Scene):
 		line.set_rgba_array(rgbas, "stroke_rgba")
 		line.set_stroke(width=[20,1,18,1])
 		
-		
+		"""
+		一个猜想:
+		整个曲线分为6段, 每一段的stroke渲染的时候都会从rgbas和width数组拿到属于自己的颜色和线宽(插值)
+		每一段衔接处有些不自然, 需要进一步研究stroke部分的着色器代码
+		"""
 		print(len(line.get_points())//3) #6
 	    
     
