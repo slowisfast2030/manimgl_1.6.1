@@ -133,6 +133,10 @@ array([[1. , 2. , 3. ],
        [4. , 5. , 6. ]])
 """
 def resize_with_interpolation(nparray: np.ndarray, length: int) -> np.ndarray:
+    """
+    这是一个典型的黑箱
+    有一些黑箱是可以跳过的
+    """
     if len(nparray) == length:
         return nparray
     if length == 0:
