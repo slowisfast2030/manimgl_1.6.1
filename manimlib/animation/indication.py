@@ -260,6 +260,11 @@ class VShowPassingFlash(Animation):
         kernel_array = list(map(gauss_kernel, np.linspace(0, 1, len(anchor_widths))))
         scaled_widths = anchor_widths * kernel_array
         new_widths = np.zeros(submobject.get_num_points())
+        """
+        new_widths是mob的点集的数目, len(new_widths) // 3就是贝塞尔曲线的数目
+        scaled_widths是 len(new_widths) // 3 + 1
+        因为每条贝塞尔曲线2个端点
+        """
         new_widths[0::3] = scaled_widths[:-1]
         new_widths[2::3] = scaled_widths[1:]
         new_widths[1::3] = (new_widths[0::3] + new_widths[2::3]) / 2
