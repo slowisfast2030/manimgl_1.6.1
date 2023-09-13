@@ -527,6 +527,8 @@ class AnimatedStreamLines(VGroup):
         stream_lines = self.stream_lines
         for line in stream_lines:
             # 这一步有啥用？
+            # 为了在updater中使用animation, 就需要将dt --> alpha
+            # alpha是间隔, alpha是占比
             line.time += dt
             # 这里就涉及到animation和updater执行时间的一个区别:
             # animation有固定的run_time, 而updater从添加那刻起, 直到场景结束或者主动移除
