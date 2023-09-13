@@ -318,14 +318,14 @@ class VShowPassingFlash(Animation):
         #print(new_widths)
         #print(len(new_widths))
         """
-        当mob的点集大小为18的时候
+        当submob的点集大小为18的时候
         len(new_widths) == 18
         len(scaled_widths) == 7 (anchor的width, 重复的anchor算一个)
         """
         """
         动画的效果就是line的部分可见
 
-        通过设置边缘的宽度, 使得部分line可见
+        通过设置线宽, 使得部分line可见
         """
         submobject.set_stroke(width=new_widths)
 
