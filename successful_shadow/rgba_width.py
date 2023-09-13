@@ -30,9 +30,6 @@ class test(Scene):
 						       20,11,2,
 							   2,9.5,17])	
 		
-		for key, value in line.data.items():
-			if key in ["stroke_rgba", "fill_rgba", "stroke_width"]:
-				print(key, value)
 		"""
 		一个猜想:
 		整个曲线分为6段, 每一段的stroke渲染的时候都会从rgbas和width数组拿到属于自己的颜色和线宽
@@ -42,13 +39,21 @@ class test(Scene):
 		解答:需要为每一段曲线需要3个width值, 且上一段width的末尾和后一段width的开始要相等
 		"""
 		#self.play(ShowCreation(line, run_time=3))
-		#self.play(Write(line, run_time=3)) # 报错
 		#print(len(line.get_points())//3) #6
 
 		t = Triangle().shift(LEFT*4).scale(2)
 		t.set_rgba_array(rgbas, "fill_rgba")
-		#t.set_rgba_array(rgbas, "stroke_rgba")
+		t.set_rgba_array(rgbas, "stroke_rgba")
+		t.set_stroke(width=[20,10.5,1, 
+						       1,9.5,18,
+							   18,9.5,1,
+							   1,10.5,20, 
+						       20,11,2,
+							   2,9.5,17])	
 		self.add(t)
+		for key, value in t.data.items():
+			if key in ["stroke_rgba", "fill_rgba", "stroke_width"]:
+				print(key, "\n", value)
 
 
 class test_ani(Scene):
