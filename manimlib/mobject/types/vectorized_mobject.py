@@ -193,6 +193,10 @@ class VMobject(Mobject):
         return self
 
     def align_stroke_width_data_to_points(self, recurse: bool = True) -> None:
+        """
+        以前一直以为stroke_width就是一个数而已
+        没想到还可以是一个数组
+        """
         for mob in self.get_family(recurse):
             mob.data["stroke_width"] = resize_with_interpolation(
                 mob.data["stroke_width"], len(mob.get_points())
