@@ -532,6 +532,45 @@ class AnimatedStreamLines(VGroup):
             # animation有一个update方法。本来以为是冗余的方法, 没想到这里可以用
             line.anim.update(adjusted_time / line.anim.run_time)
 
+"""
+def turn_animation_into_updater(
+    animation: Animation,
+    cycle: bool = False,
+    **kwargs
+) -> Mobject:
+    
+    mobject = animation.mobject
+    animation.update_config(**kwargs)
+    # 当一个mob有animation的时候, 可能同时有一个updater
+    # 默认情况下，执行animation的时候, updater会被暂停
+    # 但是这里要将animation转成updater, 就没有必要暂停既有的updater了
+    animation.suspend_mobject_updating = False
+    animation.begin()
+    # animation已执行的时间
+    animation.total_time = 0
+
+    def update(m, dt):
+        # animation的总时长
+        run_time = animation.get_run_time()
+        # animation已执行比例
+        time_ratio = animation.total_time / run_time
+        if cycle:
+            alpha = time_ratio % 1
+        else:
+            alpha = clip(time_ratio, 0, 1)
+            if alpha >= 1:
+                animation.finish()
+                m.remove_updater(update)
+                return
+        # 执行animation
+        animation.interpolate(alpha)
+        # 假设mob同时有updater. 没有这样做也无妨
+        animation.update_mobjects(dt)
+        animation.total_time += dt
+
+    mobject.add_updater(update)
+    return mobject
+"""
 
 # TODO: This class should be deleted
 class ShowPassingFlashWithThinningStrokeWidth(AnimationGroup):
