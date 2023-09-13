@@ -1,5 +1,6 @@
 from manimlib import *
 
+
 class test(Scene):
 	def construct(self): 
 		plane = NumberPlane()
@@ -37,7 +38,8 @@ class test(Scene):
 		困惑:每一段衔接处有些不自然, 需要进一步研究stroke部分的着色器代码
 		解答:需要为每一段曲线需要3个width值, 且上一段width的末尾和后一段width的开始要相等
 		"""
-		print(len(line.get_points())//3) #6
+		#print(len(line.get_points())//3) #6
+
 
 class test_ani(Scene):
 	def construct(self): 
