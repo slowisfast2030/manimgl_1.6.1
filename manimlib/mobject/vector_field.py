@@ -517,8 +517,8 @@ class AnimatedStreamLines(VGroup):
             line.anim.begin()
             # 设置一个随机time
             line.time = -self.lag_range * random.random()
-            #print(line.anim.mobject == line)
             self.add(line.anim.mobject)
+            #self.add(line)
         # 为AnimatedStreamLines对象添加updater
         # 在类初始化的时候就给自己添加了updater, 真少见
         self.add_updater(lambda m, dt: m.update(dt))
