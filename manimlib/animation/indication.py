@@ -259,6 +259,7 @@ class VShowPassingFlash(Animation):
 
         """
         这里的命名很好anchor_widths
+        genius
         """
         kernel_array = list(map(gauss_kernel, np.linspace(0, 1, len(anchor_widths))))
         scaled_widths = anchor_widths * kernel_array
