@@ -213,7 +213,11 @@ class VShowPassingFlash(Animation):
     }
 
     def begin(self) -> None:
+        # 需要认识到每一条曲线都是由多段拼成, 每一段都可以设置不同的width
+        #print(self.mobject.data["stroke_width"])
         self.mobject.align_stroke_width_data_to_points()
+        #print(self.mobject.data["stroke_width"])
+
         # Compute an array of stroke widths for each submobject
         # which tapers out at either end
         self.submob_to_anchor_widths = dict()
