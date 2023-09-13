@@ -514,6 +514,7 @@ class AnimatedStreamLines(VGroup):
             # 猜想: 这个animation不是通过play方式执行, 所以begin不会自动执行(play函数会主动调用每一个animation的begin方法)
             # 而begin函数为mob设置了一些属性, 执行line.anim.update的时候会用到
             # 以前仅仅认为begin完成的是alpha=0的插值, 其实还有些额外工作
+            # 有点小缺陷, 没有line.ani.finish()
             line.anim.begin()
             # 设置一个随机time
             line.time = -self.lag_range * random.random()
