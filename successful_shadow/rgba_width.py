@@ -45,15 +45,14 @@ class test(Scene):
 		t.set_rgba_array(rgbas, "fill_rgba")
 		t.set_rgba_array(rgbas, "stroke_rgba")
 		t.set_stroke(width=[20,10.5,1, 
-						       1,9.5,18,
-							   18,9.5,1,
-							   1,10.5,20, 
-						       20,11,2,
-							   2,9.5,17])	
+						    1,9.5,18,
+							18,9.5,1,
+							])	
 		self.add(t)
 		for key, value in t.data.items():
 			if key in ["stroke_rgba", "fill_rgba", "stroke_width"]:
 				print(key, "\n", value)
+		#print(len(t.get_points())) #9
 
 
 class test_ani(Scene):
