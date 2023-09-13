@@ -258,7 +258,7 @@ class VShowPassingFlash(Animation):
             return math.exp(-0.5 * z * z)
 
         """
-        这里的命令很好anchor_widths
+        这里的命名很好anchor_widths
         """
         kernel_array = list(map(gauss_kernel, np.linspace(0, 1, len(anchor_widths))))
         scaled_widths = anchor_widths * kernel_array
