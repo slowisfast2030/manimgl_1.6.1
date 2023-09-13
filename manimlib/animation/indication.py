@@ -262,7 +262,7 @@ class VShowPassingFlash(Animation):
         new_widths = np.zeros(submobject.get_num_points())
         """
         new_widths是mob的点集的数目, len(new_widths) // 3就是贝塞尔曲线的数目
-        scaled_widths是 len(new_widths) // 3 + 1
+        scaled_widths是 len(new_widths) // 3 + 1, 存储的是每段曲线端点的width
         因为每条贝塞尔曲线2个端点
         """
         new_widths[0::3] = scaled_widths[:-1]
