@@ -250,6 +250,7 @@ class VShowPassingFlash(Animation):
         sigma = tw / 6
         mu = interpolate(-tw / 2, 1 + tw / 2, alpha)
 
+        # genius
         def gauss_kernel(x):
             if abs(x - mu) > 3 * sigma:
                 return 0
