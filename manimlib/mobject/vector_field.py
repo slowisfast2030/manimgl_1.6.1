@@ -146,6 +146,9 @@ def move_points_along_vector_field(
     func: Callable[[float, float], Iterable[float]],
     coordinate_system: CoordinateSystem
 ) -> Mobject:
+    """
+    将mob的所有point沿着向量场运动
+    """
     cs = coordinate_system
     origin = cs.get_origin()
 
