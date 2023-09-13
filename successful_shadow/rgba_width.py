@@ -38,5 +38,21 @@ class test(Scene):
 		解答:需要为每一段曲线需要3个width值, 且上一段width的末尾和后一段width的开始要相等
 		"""
 		print(len(line.get_points())//3) #6
-	    
-    
+
+class test_ani(Scene):
+	def construct(self): 
+
+		plane = NumberPlane()
+		self.add(plane)
+
+		points = [[-1, -1, 0],
+					[0, 1, 0],
+					[2, 1, 0],
+					[3, 4, 0]]
+		curve = VMobject().set_points_smoothly(points, True).set_stroke(YELLOW, 5)
+		self.add(curve)
+
+		#self.play(VShowPassingFlash(Circle().scale(2), time_width=1, run_time=2))
+		self.play(VShowPassingFlash(curve, time_width=1, run_time=2))
+			
+		
