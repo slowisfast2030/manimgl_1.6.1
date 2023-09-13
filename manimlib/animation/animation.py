@@ -173,6 +173,9 @@ class Animation(object):
         """
         This method shouldn't exist, but it's here to
         keep many old scenes from breaking
+
+        这个函数的存在确实挺冗余
+        不过, 也能看出3b1b对于animation转化为updater的得心应手
         """
         self.interpolate(alpha)
 
