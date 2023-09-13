@@ -124,6 +124,13 @@ def move_submobjects_along_vector_field(
     mobject: Mobject,
     func: Callable[[np.ndarray], np.ndarray]
 ) -> Mobject:
+    """
+    submob在向量场中运动
+
+    frame中任何一点的坐标满足:
+    -FRAME_WIDTH < x < FRAME_WIDTH
+    -FRAME_HEIGHT < y < FRAME_HEIGHT
+    """
     def apply_nudge(mob, dt):
         for submob in mob:
             x, y = submob.get_center()[:2]
