@@ -121,6 +121,17 @@ def resize_preserving_order(nparray: np.ndarray, length: int) -> np.ndarray:
     return nparray[indices]
 
 
+"""
+points = np.array([[1,2,3], [4,5,6]])
+resize_with_interpolation(points, 6)
+
+array([[1. , 2. , 3. ],
+       [1.6, 2.6, 3.6],
+       [2.2, 3.2, 4.2],
+       [2.8, 3.8, 4.8],
+       [3.4, 4.4, 5.4],
+       [4. , 5. , 6. ]])
+"""
 def resize_with_interpolation(nparray: np.ndarray, length: int) -> np.ndarray:
     if len(nparray) == length:
         return nparray
