@@ -22,7 +22,7 @@ class test(Scene):
                  [0.0795209,  0.03976045, 0.90007538, 1.        ],
 				 ]
 		line.set_rgba_array(rgbas, "stroke_rgba")
-		line.set_stroke(width=[20,1,0,0,0,0,18,1])
+		line.set_stroke(width=[20,1,1,18,18,1])
 		
 		"""
 		一个猜想:
