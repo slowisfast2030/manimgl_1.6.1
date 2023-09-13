@@ -148,6 +148,8 @@ def move_points_along_vector_field(
 ) -> Mobject:
     """
     将mob的所有point沿着向量场运动
+
+    困惑: 和move_along_vector_field函数有什么区别吗?
     """
     cs = coordinate_system
     origin = cs.get_origin()
