@@ -531,6 +531,8 @@ class AnimatedStreamLines(VGroup):
             # 这里是把animaton当做updater来用了
             # animation有一个update方法。本来以为是冗余的方法, 没想到这里可以用
             line.anim.update(adjusted_time / line.anim.run_time)
+            # 改成下面这一行也可以
+            #line.anim.interpolate(adjusted_time / line.anim.run_time)
 
 """
 def turn_animation_into_updater(
