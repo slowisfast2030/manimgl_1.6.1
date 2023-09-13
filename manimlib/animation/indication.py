@@ -313,7 +313,15 @@ class VShowPassingFlash(Animation):
         new_widths[0::3] = scaled_widths[:-1]
         new_widths[2::3] = scaled_widths[1:]
         new_widths[1::3] = (new_widths[0::3] + new_widths[2::3]) / 2
+        #print(scaled_widths)
+        #print(len(scaled_widths))
         #print(new_widths)
+        #print(len(new_widths))
+        """
+        当mob的点集大小为18的时候
+        len(new_widths) == 18
+        len(scaled_widths) == 7 (anchor的width, 重复的anchor算一个)
+        """
         """
         动画的效果就是line的部分可见
 

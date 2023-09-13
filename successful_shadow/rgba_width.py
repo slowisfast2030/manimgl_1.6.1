@@ -51,6 +51,8 @@ class test_ani(Scene):
 					[3, 4, 0]]
 		curve = VMobject().set_points_smoothly(points, True).set_stroke(YELLOW, 5)
 		self.add(curve)
+		# print(curve.get_points())
+		# print(len(curve.get_points()))
 
 		#self.play(VShowPassingFlash(Circle().scale(2), time_width=1, run_time=2))
 		self.play(VShowPassingFlash(curve, time_width=1, run_time=2))
