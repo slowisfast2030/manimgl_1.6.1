@@ -529,7 +529,8 @@ class AnimatedStreamLines(VGroup):
             # 这一步有啥用？
             line.time += dt
             # 这里就涉及到animation和updater执行时间的一个区别:
-            # animation有固定的run_time, 而updater
+            # animation有固定的run_time, 而updater从添加那刻起, 直到场景结束或者主动移除
+            # 所以, 将animation转成updater的时候, 需要对updater的时间累加再取余
             adjusted_time = max(line.time, 0) % line.anim.run_time
             # 这里是把animaton当做updater来用了
             # animation有一个update方法。本来以为是冗余的方法, 没想到这里可以用
