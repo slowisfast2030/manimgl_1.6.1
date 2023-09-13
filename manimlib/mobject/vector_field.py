@@ -106,6 +106,12 @@ def move_along_vector_field(
     mobject: Mobject,
     func: Callable[[np.ndarray], np.ndarray]
 ) -> Mobject:
+    """
+    mob在向量场中运动
+
+    func: 输入location, 返回vector
+    这里可以赋予一个物理意义: mob在location时的瞬时速度
+    """
     mobject.add_updater(
         lambda m, dt: m.shift(
             func(m.get_center()) * dt
