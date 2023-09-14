@@ -21,6 +21,12 @@ ManimColor = Union[str, colour.Color, Sequence[float]]
 SCALE_FACTOR_PER_FONT_POINT = 0.001
 
 
+"""
+c = SingleStringTex("XYZ")
+c.family有4个元素
+后面3个分别是x,y,z
+第一个究竟是什么？不显示
+"""
 class SingleStringTex(SVGMobject):
     CONFIG = {
         "height": None,

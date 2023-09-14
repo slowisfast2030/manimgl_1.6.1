@@ -18,18 +18,19 @@ class test(Scene):
         
 class test1(Scene):
     def construct(self):
-        c = SingleStringTex("XYZ")
+        c = SingleStringTex("ABC")
         print(c.submobjects)
 
-        points = c.submobjects[0].get_points()
+        #points = c.submobjects[0].get_points()
+        points = c.get_all_points()
         #print(points, type(points))
         vm = VMobject()
         vm.set_points(points)
-        vm.scale(20).set_fill(GREEN, 0.4)
+        vm.scale(12).set_fill(GREEN, 0.4)
         self.add(vm)
 
         for point in vm.get_points():
             dot = Dot(point).set_color(RED).scale(0.5)
             self.add(dot)
         
-        self.add(c.submobjects[0].shift(LEFT*3))
+        #self.add(c.submobjects[0].shift(LEFT*3))
