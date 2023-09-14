@@ -66,6 +66,17 @@ class SVGMobject(VMobject):
         self.init_colors()
         self.move_into_position()
 
+    """
+    c = SingleStringTex("A  BC", organize_left_to_right=False)
+
+    print(c.family)
+    [
+    <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f793a79a760>, 
+    <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f793a76e3d0>, 
+    <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f793a961e50>, 
+    <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f793a9822e0>
+    ]
+    """
     def init_svg_mobject(self) -> None:
         hash_val = hash_obj(self.hash_seed)
         if hash_val in SVG_HASH_TO_MOB_MAP:
@@ -89,7 +100,7 @@ class SVGMobject(VMobject):
 
     def generate_mobject(self) -> None:
         """
-        解析svg文件, 获得vmob
+        解析svg文件, 获得vmobs, 并将其添加为submobs
         """
         file_path = self.get_file_path()
         element_tree = ET.parse(file_path)
