@@ -34,7 +34,12 @@ SingleStringTex("XYZ")和SingleStringTex("XY Z")
 的显示效果一致
 
 思考三:
-" A B C " ---> 去掉空格 ---> latex ---> svg ---> vmob
+" A B C " ---> 去掉首尾空格 ---> latex ---> svg ---> vmob
+
+思考四:
+"ABC"在latex模版中会被居中显示
+每一个smob都会有自己的空间坐标
+单独显示一个smob的时候, 也会遵循自己的空间坐标
 """
 class SingleStringTex(SVGMobject):
     """
