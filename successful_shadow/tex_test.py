@@ -2,11 +2,17 @@ from manimlib import *
 
 class test(Scene):
     def construct(self):
-        t = Tex("A^2", "+", "B^2", "=", "C^2")
-        self.add(t)
+        to_isolate = ["B", "C", "=", "(", ")"]
 
-        c = Tex("A^2 + B^2 = C^2").shift(DOWN)
-        self.add(c)
+        # t = Tex("A^2", "+", "B^2", "=", "C^2")
+        # self.add(t)
+
+        c = Tex("A^2 + B^2 = C^2", isolate=to_isolate)
+        # c.shift(DOWN)
+        # self.add(c)
         
-        print(t.submobjects)
-        print(c.submobjects)
+        #print(t.submobjects)
+        for index, smob in  enumerate(c.submobjects):
+            print(index, smob)
+            self.add(smob.shift(0.5*index*DOWN))
+        
