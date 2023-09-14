@@ -92,10 +92,8 @@ class SingleStringTex(SVGMobject):
 
     def get_tex_file_body(self, tex_string: str) -> str:
         new_tex = self.get_modified_expression(tex_string)
-        #print(new_tex)
         if self.math_mode:
             new_tex = "\\begin{align*}\n" + new_tex + "\n\\end{align*}"
-            #print(new_tex)
 
         new_tex = self.alignment + "\n" + new_tex
         print(new_tex)
