@@ -32,6 +32,9 @@ c.family有4个元素
 当传入的字符串中有空格时, 会被自动删除
 SingleStringTex("XYZ")和SingleStringTex("XY Z")
 的显示效果一致
+
+思考三:
+" A B C " ---> 去掉空格 ---> latex ---> svg ---> vmob
 """
 class SingleStringTex(SVGMobject):
     CONFIG = {
@@ -100,6 +103,11 @@ class SingleStringTex(SVGMobject):
         return self.modify_special_strings(tex_string.strip())
 
     def modify_special_strings(self, tex: str) -> str:
+        """
+        对传入的str进行处理
+
+        部分处理: 去掉首尾空格, 去掉中间空格
+        """
         tex = tex.strip()
         should_add_filler = reduce(op.or_, [
             # Fraction line needs something to be over

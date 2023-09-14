@@ -18,14 +18,14 @@ class test(Scene):
         
 class test1(Scene):
     def construct(self):
-        c = SingleStringTex("AB")
+        c = SingleStringTex("A  B")
         print(c.submobjects)
 
         #points = c.submobjects[0].get_points()
         points = c.get_all_points()
         vm = VMobject()
         vm.set_points(points)
-        vm.scale(12).set_fill(GREEN, 0.4)
+        vm.scale(12).set_fill(GREEN, 0)
         self.add(vm)
 
         for point in vm.get_points():
