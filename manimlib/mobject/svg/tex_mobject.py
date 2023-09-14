@@ -97,6 +97,14 @@ class SingleStringTex(SVGMobject):
 
         new_tex = self.alignment + "\n" + new_tex
         print(new_tex)
+        """
+        \centering
+        \begin{align*}
+        A  BC
+        \end{align*}
+
+        显示的时候A和B之间的空格消失了, 这是latex的align环境的行为
+        """
 
         tex_config = get_tex_config()
         return tex_config["tex_body"].replace(
