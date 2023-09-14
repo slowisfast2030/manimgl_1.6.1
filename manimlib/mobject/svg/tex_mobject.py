@@ -261,9 +261,11 @@ class Tex(SingleStringTex):
         # print("="*78)
         # print(self.submobjects)
         # print("="*78)
+
         # 执行了break_up_by_substrings()方法后
         # self.submobjects发生了翻天覆地的变化
         self.break_up_by_substrings()
+        
         # print("="*78)
         # print(self.submobjects)
         # print("="*78)
