@@ -70,12 +70,13 @@ class SVGMobject(VMobject):
     c = SingleStringTex("A  BC", organize_left_to_right=False)
 
     print(c.family)
-    [
-    <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f793a79a760>, 
+    [<manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f793a79a760>, 
     <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f793a76e3d0>, 
     <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f793a961e50>, 
-    <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f793a9822e0>
-    ]
+    <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f793a9822e0>]
+
+    打印后发现后三个分别是A, B, C
+    第一个是SingleStringTex对象
     """
     def init_svg_mobject(self) -> None:
         hash_val = hash_obj(self.hash_seed)
