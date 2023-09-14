@@ -25,9 +25,11 @@ class test1(Scene):
         #print(points, type(points))
         vm = VMobject()
         vm.set_points(points)
-        vm.scale(20)
+        vm.scale(20).set_fill(GREEN, 0.4)
         self.add(vm)
 
         for point in vm.get_points():
             dot = Dot(point).set_color(RED).scale(0.5)
             self.add(dot)
+        
+        self.add(c.submobjects[0].shift(LEFT*3))
