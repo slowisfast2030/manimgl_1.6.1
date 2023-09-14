@@ -76,7 +76,7 @@ class SVGMobject(VMobject):
     <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f793a9822e0>]
 
     打印后发现后三个分别是A, B, C
-    第一个是SingleStringTex对象
+    第一个是SingleStringTex对象, 没有点集, 是一个空对象
     """
     def init_svg_mobject(self) -> None:
         hash_val = hash_obj(self.hash_seed)
