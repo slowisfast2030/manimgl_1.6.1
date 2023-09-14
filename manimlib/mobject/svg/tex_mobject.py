@@ -248,8 +248,25 @@ class Tex(SingleStringTex):
         digest_config(self, kwargs)
         self.tex_strings = self.break_up_tex_strings(tex_strings)
         full_string = self.arg_separator.join(self.tex_strings)
+        # print("="*78)
+        # print(self.tex_strings)
+        # print(full_string)
+        # print("="*78)
+        """
+        ['A^2', '+', 'B^2', '=', 'C^2']
+        A^2+B^2=C^2
+        """
+        # 这里把full_string传递给了父类的初始化函数
         super().__init__(full_string, **kwargs)
+        # print("="*78)
+        # print(self.submobjects)
+        # print("="*78)
+        # 执行了break_up_by_substrings()方法后
+        # self.submobjects发生了翻天覆地的变化
         self.break_up_by_substrings()
+        # print("="*78)
+        # print(self.submobjects)
+        # print("="*78)
         self.set_color_by_tex_to_color_map(self.tex_to_color_map)
 
         if self.organize_left_to_right:
