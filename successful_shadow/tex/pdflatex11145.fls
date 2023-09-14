@@ -1,0 +1,4 @@
+PWD /Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/successful_shadow/tex
+INPUT /usr/local/texlive/2023/texmf.cnf
+INPUT /usr/local/texlive/2023/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt
