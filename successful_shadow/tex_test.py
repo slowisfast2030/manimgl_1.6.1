@@ -16,3 +16,17 @@ class test(Scene):
             self.add(smob.shift(0.5*index*DOWN))
             #self.add(smob)
         
+class test1(Scene):
+    def construct(self):
+        c = SingleStringTex("CD")
+
+        points = c.family[1].get_points()
+        print(points, type(points))
+        vm = VMobject()
+        vm.set_points(points)
+        vm.scale(20)
+        self.add(vm)
+
+        for point in vm.get_points():
+            dot = Dot(point).set_color(RED).scale(0.5)
+            self.add(dot)
