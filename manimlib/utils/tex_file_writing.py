@@ -66,6 +66,7 @@ def tex_to_svg_file(tex_file_content):
     svg_file = os.path.join(
         get_tex_dir(), tex_hash(tex_file_content) + ".svg"
     )
+    #print(svg_file)
     if not os.path.exists(svg_file):
         # If svg doesn't exist, create it
         tex_to_svg(tex_file_content, svg_file)
@@ -74,6 +75,7 @@ def tex_to_svg_file(tex_file_content):
 
 def tex_to_svg(tex_file_content, svg_file):
     tex_file = svg_file.replace(".svg", ".tex")
+    #print(tex_file)
     with open(tex_file, "w", encoding="utf-8") as outfile:
         outfile.write(tex_file_content)
     svg_file = dvi_to_svg(tex_to_dvi(tex_file))
