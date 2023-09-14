@@ -304,22 +304,22 @@ class Tex(SingleStringTex):
         """
         """
         重新组织子物体
-        before
-        [<manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e8276cd30>, 
-        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82a78ca0>, 
-        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82a90520>, 
-        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82a90b20>, 
-        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82a90730>, 
-        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82aa73d0>, 
-        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82aa7a90>, 
-        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82aa7610>]
+        before:
+        [<manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e8276cd30>, #A
+        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82a78ca0>,  #2
+        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82a90520>,  #+
+        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82a90b20>,  #B
+        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82a90730>,  #2
+        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82aa73d0>,  #=
+        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82aa7a90>,  #C
+        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82aa7610>]  #2
 
-        after
-        [<manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e82a10fa0>, 
-        <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e8276a250>, 
-        <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e82aad340>, 
-        <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e82ab7160>, 
-        <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e82752eb0>]
+        after:
+        [<manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e82a10fa0>, #A^2
+        <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e8276a250>,  #+
+        <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e82aad340>,  #B^2
+        <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e82ab7160>,  #=
+        <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e82752eb0>]  #C^2
         """
         if len(self.tex_strings) == 1:
             submob = self.copy()
