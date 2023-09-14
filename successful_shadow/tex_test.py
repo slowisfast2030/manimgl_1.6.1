@@ -18,7 +18,7 @@ class test(Scene):
         
 class test1(Scene):
     def construct(self):
-        c = SingleStringTex("ZCD")
+        c = SingleStringTex("XYZ")
         print(c.family)
 
         points = c.family[1].get_points()
