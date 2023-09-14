@@ -335,18 +335,24 @@ class Tex(SingleStringTex):
         curr_index = 0
         config = dict(self.CONFIG)
         config["alignment"] = ""
+        # ['A^2', '+', 'B^2', '=', 'C^2']
         for tex_string in self.tex_strings:
             tex_string = tex_string.strip()
             if len(tex_string) == 0:
                 continue
+            # 此时已经拿到了每一个VMobjectFromSVGPath, 再执行一遍会不会冗余
+            # 从后面的代码来看, 并没有用这里再执行生成的VMobjectFromSVGPath
+            # 因为空间位置变了
             sub_tex_mob = SingleStringTex(tex_string, **config)
             num_submobs = len(sub_tex_mob)
             if num_submobs == 0:
                 continue
             new_index = curr_index + num_submobs
+            # 将VMobjectFromSVGPath对象加入SingleStringTex对象的submobjects
             sub_tex_mob.set_submobjects(self[curr_index:new_index])
             new_submobjects.append(sub_tex_mob)
             curr_index = new_index
+        # 将SingleStringTex对象加入Tex对象的submobjects
         self.set_submobjects(new_submobjects)
         return self
 
