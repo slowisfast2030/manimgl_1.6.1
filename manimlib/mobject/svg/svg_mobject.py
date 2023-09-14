@@ -171,7 +171,7 @@ class SVGMobject(VMobject):
         for shape in svg.elements():
             if isinstance(shape, se.Group):
                 continue
-            elif isinstance(shape, se.Path):
+            elif isinstance(shape, se.Path):    # 字母、公式
                 mob = self.path_to_mobject(shape)
             elif isinstance(shape, se.SimpleLine):
                 mob = self.line_to_mobject(shape)
