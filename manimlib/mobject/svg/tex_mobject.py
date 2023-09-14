@@ -304,6 +304,10 @@ class Tex(SingleStringTex):
         """
         """
         重新组织子物体
+        
+        to_isolate = ["+", "="]
+        c = Tex("A^2","+B^2","=C^2", isolate=to_isolate, arg_separator="")
+
         before:
         [<manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e8276cd30>, #A
         <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82a78ca0>,  #2
