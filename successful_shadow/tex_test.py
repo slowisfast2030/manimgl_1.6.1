@@ -33,3 +33,19 @@ class test1(Scene):
             self.add(dot)
         
         #self.add(c.submobjects[0].shift(LEFT*3))
+
+class test2(Scene):
+    def construct(self):
+        c = Text("QW")
+        print(c.submobjects)
+
+        #points = c.submobjects[0].get_points()
+        points = c.get_all_points()
+        vm = VMobject()
+        vm.set_points(points)
+        vm.scale(12).set_fill(GREEN, 0)
+        self.add(vm)
+
+        for point in vm.get_points():
+            dot = Dot(point).set_color(RED).scale(0.5)
+            self.add(dot)
