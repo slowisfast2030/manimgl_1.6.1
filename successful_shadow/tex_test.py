@@ -5,16 +5,18 @@ class test(Scene):
         #to_isolate = ["A^2", "B^2", "C^2", "=", "+"]
         #to_isolate = ["A^2", "B^2", "C^2"]
         #to_isolate = ["A^2", "C^2"]
-        to_isolate = ["+"]
+        to_isolate = ["+", "="]
 
         # Tex类传入的文本中间的空格会被处理, 多个空格会被合并为一个空格
         # 传入isolate后，文本会被isolate中给定的字符进行分隔
         c = Tex("A^2 + B^2 = C^2", isolate=to_isolate)
-    
+        print(c.family[0])
         for index, smob in  enumerate(c.submobjects):
             print(f"Index {index}: Value {smob}      String: {smob.tex_string}")
-            self.add(smob.shift(0.5*index*DOWN))
-            #self.add(smob)
+            self.add(smob.copy().shift(0.5*index*DOWN))
+            for i, j in enumerate(smob.submobjects):
+                print(i,j)
+
         
 class test1(Scene):
     def construct(self):
