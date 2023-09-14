@@ -19,9 +19,9 @@ class test(Scene):
 class test1(Scene):
     def construct(self):
         c = SingleStringTex("XYZ")
-        print(c.family)
+        print(c.submobjects)
 
-        points = c.family[1].get_points()
+        points = c.submobjects[0].get_points()
         #print(points, type(points))
         vm = VMobject()
         vm.set_points(points)
