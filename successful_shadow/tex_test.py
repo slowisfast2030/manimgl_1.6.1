@@ -12,7 +12,9 @@ class test(Scene):
         # 然后根据isolate, 将合并后的str分割
         # 分割后的每一部分str传入SingleStringTex
         c = Tex("A^2","+B^2","=C^2", isolate=to_isolate, arg_separator="")
-        print(c.family[0])
+        print("family 0: ", c.family[0])
+
+        print("\nsubmobjects")
         for index, smob in  enumerate(c.submobjects):
             print(f"Index {index}: Value {smob}      String: {smob.tex_string}")
             self.add(smob.copy().shift(0.25*index*DOWN))
