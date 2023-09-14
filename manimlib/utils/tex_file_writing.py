@@ -62,6 +62,7 @@ def tex_to_svg_file(tex_file_content):
     输入str, 返回转换后的svg文件path
     """
     # 需要为get_tex_dir()重新设置文件夹
+    # 在default_config.yml文件中修改
     svg_file = os.path.join(
         get_tex_dir(), tex_hash(tex_file_content) + ".svg"
     )

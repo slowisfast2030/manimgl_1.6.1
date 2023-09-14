@@ -88,6 +88,9 @@ class SVGMobject(VMobject):
         )
 
     def generate_mobject(self) -> None:
+        """
+        解析svg文件, 获得mob
+        """
         file_path = self.get_file_path()
         element_tree = ET.parse(file_path)
         new_tree = self.modify_xml_tree(element_tree)
