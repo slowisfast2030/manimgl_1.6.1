@@ -6,7 +6,7 @@ class test(Scene):
         #to_isolate = ["A^2", "B^2", "C^2"]
         to_isolate = ["A^2", "C^2"]
 
-        c = Tex("A^2 + B^2 = C^2", isolate=to_isolate)
+        c = Tex("A^2      + B^2 = C^2", isolate=to_isolate)
     
         for index, smob in  enumerate(c.submobjects):
             print(f"Index {index}: Value {smob}      String: {smob.tex_string}")
