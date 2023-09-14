@@ -229,9 +229,10 @@ class SingleStringTex(SVGMobject):
 
 
 """
-很多函数黑箱, 可以先拿一个例子测一下
-看输入输出
+很多函数黑箱, 可以先拿一个例子测一下, 看输入输出
 在明确了输入输出的情况下, 看代码事半功倍
+
+切忌: 一上来就啃代码, 极其低效
 """
 class Tex(SingleStringTex):
     """
