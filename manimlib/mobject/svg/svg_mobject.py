@@ -103,6 +103,7 @@ class SVGMobject(VMobject):
         os.remove(modified_file_path)
 
         mobjects = self.get_mobjects_from(svg)
+        # mobjects是vmob列表, 这里执行self.add方法, 就将其添加为submob 
         self.add(*mobjects)
         self.flip(RIGHT)  # Flip y
 
@@ -152,7 +153,7 @@ class SVGMobject(VMobject):
 
     def get_mobjects_from(self, svg: se.SVG) -> list[VMobject]:
         """
-        解析svg, 获得vmob
+        解析svg, 获得vmob列表
         """
         result = []
         for shape in svg.elements():
