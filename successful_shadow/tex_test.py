@@ -7,7 +7,6 @@ class test(Scene):
         #to_isolate = ["A^2", "C^2"]
         to_isolate = ["+", "="]
 
-        # Tex类传入的文本中间的空格会被处理, 多个空格会被合并为一个空格
         # 传入isolate后，文本会被isolate中给定的字符进行分隔
         # 不论传入几个str, 会合并成一个
         # 然后根据isolate, 将合并后的str分割
