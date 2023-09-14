@@ -320,6 +320,8 @@ class Tex(SingleStringTex):
         <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e82aad340>,  #B^2
         <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e82ab7160>,  #=
         <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e82752eb0>]  #C^2
+        
+        也就是把每一个VMobjectFromSVGPath对象塞进了对应的SingleStringTex
         """
         if len(self.tex_strings) == 1:
             submob = self.copy()
