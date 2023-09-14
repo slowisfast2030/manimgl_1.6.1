@@ -74,6 +74,11 @@ def tex_to_svg_file(tex_file_content):
 
 
 def tex_to_svg(tex_file_content, svg_file):
+    """
+    将tex模版中的内容编译成svg文件
+
+    tex_file_content --> dvi --> svg
+    """
     tex_file = svg_file.replace(".svg", ".tex")
     #print(tex_file)
     with open(tex_file, "w", encoding="utf-8") as outfile:
