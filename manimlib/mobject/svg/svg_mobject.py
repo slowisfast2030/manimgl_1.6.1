@@ -177,7 +177,8 @@ class SVGMobject(VMobject):
             elif type(shape) == se.SVGElement:
                 continue
             else:
-                # 下面这一行总是报错，直接注释掉
+                # 下面这一行总是报警，直接注释掉
+                # 因为这里对svg的解析不是很全面, 只做了最基本形状的解析
                 #log.warning(f"Unsupported element type: {type(shape)}")
                 continue
             if not mob.has_points():
