@@ -258,17 +258,17 @@ class Tex(SingleStringTex):
         """
         # 这里把full_string传递给了父类的初始化函数
         super().__init__(full_string, **kwargs)
-        # print("="*78)
-        # print(self.submobjects)
-        # print("="*78)
+        print("="*78)
+        print(self.submobjects)
+        print("="*78)
 
         # 执行了break_up_by_substrings()方法后
         # self.submobjects发生了翻天覆地的变化
         self.break_up_by_substrings()
-        
-        # print("="*78)
-        # print(self.submobjects)
-        # print("="*78)
+
+        print("="*78)
+        print(self.submobjects)
+        print("="*78)
         self.set_color_by_tex_to_color_map(self.tex_to_color_map)
 
         if self.organize_left_to_right:
@@ -303,7 +303,23 @@ class Tex(SingleStringTex):
         of tex_strings)
         """
         """
-        重新组织子物体，``tex_string`` 中每个子字符串为一个子物体
+        重新组织子物体
+        before
+        [<manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e8276cd30>, 
+        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82a78ca0>, 
+        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82a90520>, 
+        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82a90b20>, 
+        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82a90730>, 
+        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82aa73d0>, 
+        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82aa7a90>, 
+        <manimlib.mobject.svg.svg_mobject.VMobjectFromSVGPath object at 0x7f8e82aa7610>]
+
+        after
+        [<manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e82a10fa0>, 
+        <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e8276a250>, 
+        <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e82aad340>, 
+        <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e82ab7160>, 
+        <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e82752eb0>]
         """
         if len(self.tex_strings) == 1:
             submob = self.copy()
