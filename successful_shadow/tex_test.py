@@ -19,8 +19,7 @@ class test(Scene):
 class test1(Scene):
     def construct(self):
         c = SingleStringTex("A  BC", organize_left_to_right=False)
-
-        print(c.family)
+        #print(c.family)
         for index, smob in  enumerate(c.submobjects):
             print(f"Index {index}: Value {smob}")
             self.add(smob.copy().shift(UP*3))

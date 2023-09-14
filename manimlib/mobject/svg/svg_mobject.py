@@ -239,6 +239,9 @@ class SVGMobject(VMobject):
         return mob
 
     def path_to_mobject(self, path: se.Path) -> VMobjectFromSVGPath:
+        """
+        渲染字母和公式的时候, 会根据字母和公式的path生成vmob
+        """
         return VMobjectFromSVGPath(path, **self.path_string_config)
 
     def line_to_mobject(self, line: se.Line) -> Line:
