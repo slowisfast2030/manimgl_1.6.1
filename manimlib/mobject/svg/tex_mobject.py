@@ -37,9 +37,9 @@ SingleStringTex("XYZ")和SingleStringTex("XY Z")
 " A B C " ---> 去掉首尾空格 ---> latex ---> svg ---> vmob
 
 思考四:
-"ABC"在latex模版中会被居中显示
 每一个smob都会有自己的空间坐标
 单独显示一个smob的时候, 也会遵循自己的空间坐标
+疑问: smob的空间坐标是在哪里被确定的?应该是在latex中渲染的时候就被确定了
 """
 class SingleStringTex(SVGMobject):
     """
