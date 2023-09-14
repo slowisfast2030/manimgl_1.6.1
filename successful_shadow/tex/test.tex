@@ -1,5 +1,15 @@
 \documentclass[preview]{standalone}
 
+% executable: "latex"
+% template_file: "tex_template.tex" 
+% intermediate_filetype: "dvi"
+% text_to_replace: "[tex_expression]"
+% 
+% For ctex, use the following configuration
+% 
+% executable: "xelatex -no-pdf"
+% template_file: "ctex_template.tex"
+% intermediate_filetype: "xdv"
 
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
@@ -28,19 +38,9 @@
 
 %\centering
 \begin{align*}
-A  B
+A  BC
+DE
 \end{align*}
 
 
 \end{document}
-
-% executable: "latex"
-% template_file: "tex_template.tex" 
-% intermediate_filetype: "dvi"
-% text_to_replace: "[tex_expression]"
-% 
-% For ctex, use the following configuration
-% 
-% executable: "xelatex -no-pdf"
-% template_file: "ctex_template.tex"
-% intermediate_filetype: "xdv"
