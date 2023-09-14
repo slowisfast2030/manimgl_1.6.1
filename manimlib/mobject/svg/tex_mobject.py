@@ -22,10 +22,16 @@ SCALE_FACTOR_PER_FONT_POINT = 0.001
 
 
 """
+思考一:
 c = SingleStringTex("XYZ")
 c.family有4个元素
 后面3个分别是x,y,z
 第一个究竟是什么？不显示
+
+思考二:
+当传入的字符串中有空格时, 会被自动删除
+SingleStringTex("XYZ")和SingleStringTex("XY Z")
+的显示效果一致
 """
 class SingleStringTex(SVGMobject):
     CONFIG = {

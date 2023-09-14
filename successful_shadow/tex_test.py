@@ -18,12 +18,11 @@ class test(Scene):
         
 class test1(Scene):
     def construct(self):
-        c = SingleStringTex("ABC")
+        c = SingleStringTex("AB C")
         print(c.submobjects)
 
         #points = c.submobjects[0].get_points()
         points = c.get_all_points()
-        #print(points, type(points))
         vm = VMobject()
         vm.set_points(points)
         vm.scale(12).set_fill(GREEN, 0.4)
