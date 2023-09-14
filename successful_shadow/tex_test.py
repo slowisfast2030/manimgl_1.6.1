@@ -9,7 +9,10 @@ class test(Scene):
 
         # Tex类传入的文本中间的空格会被处理, 多个空格会被合并为一个空格
         # 传入isolate后，文本会被isolate中给定的字符进行分隔
-        c = Tex("A^2 + ", "B^2 = C^2", isolate=to_isolate)
+        # 不论传入几个str, 会合并成一个
+        # 然后根据isolate, 将合并后的str分割
+        # 分割后的每一部分str传入SingleStringTex
+        c = Tex("A^2","+B^2","=C^2", isolate=to_isolate)
         print(c.family[0])
         for index, smob in  enumerate(c.submobjects):
             print(f"Index {index}: Value {smob}      String: {smob.tex_string}")
