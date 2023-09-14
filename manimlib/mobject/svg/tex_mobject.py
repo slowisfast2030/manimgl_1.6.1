@@ -344,6 +344,7 @@ class Tex(SingleStringTex):
             # 从后面的代码来看, 并没有用这里再执行生成的VMobjectFromSVGPath
             # 因为空间位置变了
             sub_tex_mob = SingleStringTex(tex_string, **config)
+            # 难道只是为了获取这个量?
             num_submobs = len(sub_tex_mob)
             if num_submobs == 0:
                 continue
