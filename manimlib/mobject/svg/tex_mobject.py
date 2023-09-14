@@ -96,7 +96,7 @@ class SingleStringTex(SVGMobject):
             new_tex = "\\begin{align*}\n" + new_tex + "\n\\end{align*}"
 
         new_tex = self.alignment + "\n" + new_tex
-        print(new_tex)
+        #print(new_tex)
         """
         \centering
         \begin{align*}
