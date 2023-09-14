@@ -92,6 +92,7 @@ class SingleStringTex(SVGMobject):
 
         父类中有一个generate_mobject()方法
         会调用当前方法, 获得svg文件的路径
+        进而解析svg文件得到vmobs, 并将其作为submobs
         """
         # 获取待渲染的完整tex文件内容（完整模版）
         full_tex = self.get_tex_file_body(self.tex_string)
