@@ -156,6 +156,37 @@ class TextExample(Scene):
         self.play(Write(slant))
         self.wait()
 
+class test(Scene):
+    def construct(self):
+        to_isolate = ["B", "C", "=", "(", ")"]
+        lines = VGroup(
+            # Passing in muliple arguments to Tex will result
+            # in the same expression as if those arguments had
+            # been joined together, except that the submobject
+            # hierarchy of the resulting mobject ensure that the
+            # Tex mobject has a subject corresponding to
+            # each of these strings.  For example, the Tex mobject
+            # below will have 5 subjects, corresponding to the
+            # expressions [A^2, +, B^2, =, C^2]
+            Tex("A^2", "+", "B^2", "=", "C^2"),
+            # Likewise here
+            Tex("A^2", "=", "C^2", "-", "B^2"),
+            # Alternatively, you can pass in the keyword argument
+            # "isolate" with a list of strings that should be out as
+            # their own submobject.  So the line below is equivalent
+            # to the commented out line below it.
+            Tex("A^2 = (C + B)(C - B)", isolate=["A^2", *to_isolate]),
+            # Tex("A^2", "=", "(", "C", "+", "B", ")", "(", "C", "-", "B", ")"),
+            Tex("A = \\sqrt{(C + B)(C - B)}", isolate=["A", *to_isolate])
+        )
+        lines.arrange(DOWN, buff=LARGE_BUFF)
+        for line in lines:
+            line.set_color_by_tex_to_color_map({
+                "A": BLUE,
+                "B": TEAL,
+                "C": GREEN,
+            })
+            self.add(line)
 
 class TexTransformExample(Scene):
     def construct(self):
