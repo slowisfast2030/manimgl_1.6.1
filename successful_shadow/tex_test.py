@@ -19,7 +19,8 @@ class test(Scene):
 class test1(Scene):
     def construct(self):
         c = SingleStringTex("A  B")
-        print(c.submobjects)
+        for index, smob in  enumerate(c.submobjects):
+            print(f"Index {index}: Value {smob}")
 
         #points = c.submobjects[0].get_points()
         points = c.get_all_points()
