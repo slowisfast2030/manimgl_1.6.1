@@ -21,6 +21,7 @@ class test1(Scene):
         c = SingleStringTex("A  BC")
         for index, smob in  enumerate(c.submobjects):
             print(f"Index {index}: Value {smob}")
+            print(dir(smob))
 
         #points = c.submobjects[0].get_points()
         points = c.get_all_points()
