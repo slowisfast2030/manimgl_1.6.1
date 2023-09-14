@@ -258,17 +258,17 @@ class Tex(SingleStringTex):
         """
         # 这里把full_string传递给了父类的初始化函数
         super().__init__(full_string, **kwargs)
-        print("="*78)
-        print(self.submobjects)
-        print("="*78)
+        # print("="*78)
+        # print(self.submobjects)
+        # print("="*78)
 
         # 执行了break_up_by_substrings()方法后
         # self.submobjects发生了翻天覆地的变化
         self.break_up_by_substrings()
 
-        print("="*78)
-        print(self.submobjects)
-        print("="*78)
+        # print("="*78)
+        # print(self.submobjects)
+        # print("="*78)
         self.set_color_by_tex_to_color_map(self.tex_to_color_map)
 
         if self.organize_left_to_right:
@@ -321,7 +321,8 @@ class Tex(SingleStringTex):
         <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e82ab7160>,  #=
         <manimlib.mobject.svg.tex_mobject.SingleStringTex object at 0x7f8e82752eb0>]  #C^2
         
-        也就是把每一个VMobjectFromSVGPath对象塞进了对应的SingleStringTex
+        也就是把每一个VMobjectFromSVGPath对象
+        添加进了对应的SingleStringTex的submobjects
         """
         if len(self.tex_strings) == 1:
             submob = self.copy()
