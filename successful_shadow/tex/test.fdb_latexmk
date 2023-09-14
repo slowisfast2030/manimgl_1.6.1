@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1694701807 "/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/successful_shadow/tex/test.tex" "test.pdf" "test" 1694701808 0
-  "/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/successful_shadow/tex/test.tex" 1694701807 861 16cd7b99dc86125e1199548aa8df9499 ""
-  "/dev/null" 1694701769 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1694701884 "/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/successful_shadow/tex/test.tex" "test.pdf" "test" 1694701885 0
+  "/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/successful_shadow/tex/test.tex" 1694701884 857 3024fe3ad121bcb9c21d3183a85b0469 ""
+  "/dev/null" 1694701885 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
@@ -92,8 +92,8 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1691583235 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1691583198 7883462 6879f825122093f2e27e7a940aaf5f07 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "test.aux" 1694701808 90 d579d2b5cf5dc13c79df423f907d8130 "pdflatex"
-  "test.tex" 1694701807 861 16cd7b99dc86125e1199548aa8df9499 ""
+  "test.aux" 1694701885 90 d579d2b5cf5dc13c79df423f907d8130 "pdflatex"
+  "test.tex" 1694701884 857 3024fe3ad121bcb9c21d3183a85b0469 ""
   (generated)
   "test.aux"
   "test.log"
