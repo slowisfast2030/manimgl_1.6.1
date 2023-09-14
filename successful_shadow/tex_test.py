@@ -18,10 +18,11 @@ class test(Scene):
         
 class test1(Scene):
     def construct(self):
-        c = SingleStringTex("CD")
+        c = SingleStringTex("ZCD")
+        print(c.family)
 
         points = c.family[1].get_points()
-        print(points, type(points))
+        #print(points, type(points))
         vm = VMobject()
         vm.set_points(points)
         vm.scale(20)
