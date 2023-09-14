@@ -37,6 +37,9 @@ SingleStringTex("XYZ")和SingleStringTex("XY Z")
 " A B C " ---> 去掉空格 ---> latex ---> svg ---> vmob
 """
 class SingleStringTex(SVGMobject):
+    """
+    单个字符串渲染出的 SVGMobject
+    """
     CONFIG = {
         "height": None,
         "fill_opacity": 1.0,
@@ -55,6 +58,7 @@ class SingleStringTex(SVGMobject):
     }
 
     def __init__(self, tex_string: str, **kwargs):
+        """只传入一个字符串``tex_string``"""
         assert isinstance(tex_string, str)
         self.tex_string = tex_string
         super().__init__(**kwargs)
@@ -104,7 +108,7 @@ class SingleStringTex(SVGMobject):
 
     def modify_special_strings(self, tex: str) -> str:
         """
-        对传入的str进行处理
+        对传入的特殊str进行处理
 
         部分处理: 去掉首尾空格, 去掉中间空格
         """
@@ -175,6 +179,9 @@ class SingleStringTex(SVGMobject):
         """
         Makes Tex resiliant to unmatched braces
         """
+        """
+        匹配大括号
+        """
         num_unclosed_brackets = 0
         for i in range(len(tex)):
             if i > 0 and tex[i - 1] == "\\":
@@ -200,6 +207,9 @@ class SingleStringTex(SVGMobject):
 
 
 class Tex(SingleStringTex):
+    """
+    用于生成 LaTeX 公式(align 环境)
+    """
     CONFIG = {
         "arg_separator": "",
         "isolate": [],
@@ -207,6 +217,12 @@ class Tex(SingleStringTex):
     }
 
     def __init__(self, *tex_strings: str, **kwargs):
+        """可传入多个 ``tex_strings``
+        
+        - ``arg_separator`` 表示每两个字符串之间的字符，默认为空格
+        - ``isolate`` 列表中放有想要单独拆开的字符串，可以不用手动拆开
+        - ``tex_to_color_map`` 为一个字典，会根据其中的键自动拆开字符串用于上色
+        """
         digest_config(self, kwargs)
         self.tex_strings = self.break_up_tex_strings(tex_strings)
         full_string = self.arg_separator.join(self.tex_strings)
@@ -220,6 +236,9 @@ class Tex(SingleStringTex):
     def break_up_tex_strings(self, tex_strings: Iterable[str]) -> Iterable[str]:
         # Separate out any strings specified in the isolate
         # or tex_to_color_map lists.
+        """
+        根据isolate 或者 tex_to_color_map 再次拆开 tex_strings
+        """
         substrings_to_isolate = [*self.isolate, *self.tex_to_color_map.keys()]
         if len(substrings_to_isolate) == 0:
             return tex_strings
@@ -241,6 +260,9 @@ class Tex(SingleStringTex):
         Reorganize existing submojects one layer
         deeper based on the structure of tex_strings (as a list
         of tex_strings)
+        """
+        """
+        重新组织子物体，``tex_string`` 中每个子字符串为一个子物体
         """
         if len(self.tex_strings) == 1:
             submob = self.copy()
@@ -290,6 +312,9 @@ class Tex(SingleStringTex):
         return all_parts[0] if all_parts else None
 
     def set_color_by_tex(self, tex: str, color: ManimColor, **kwargs):
+        """
+        给 ``tex`` 上颜色为 ``color``，注意此时 ``tex`` 要独立存在，否则会给包含 ``tex`` 的也上色
+        """
         self.get_parts_by_tex(tex, **kwargs).set_color(color)
         return self
 
@@ -298,6 +323,9 @@ class Tex(SingleStringTex):
         tex_to_color_map: dict[str, ManimColor],
         **kwargs
     ):
+        """
+        根据 ``texs_to_color_map`` 上色，同样，会给包含键的全部上色，不会自动拆分
+        """
         for tex, color in list(tex_to_color_map.items()):
             self.set_color_by_tex(tex, color, **kwargs)
         return self
@@ -327,6 +355,9 @@ class Tex(SingleStringTex):
             return self[start_index:stop_index]
 
     def sort_alphabetically(self) -> None:
+        """
+        根据字典序给子物体排序
+        """
         self.submobjects.sort(key=lambda m: m.get_tex())
 
     def set_bstroke(self, color: ManimColor = BLACK, width: float = 4):
@@ -335,6 +366,10 @@ class Tex(SingleStringTex):
 
 
 class TexText(Tex):
+    """ 用于生成 LaTeX 文字，默认每行之间居中
+    
+    传入的两个字符串之间无分隔 (即 ``arg_separator=""``)
+    """
     CONFIG = {
         "math_mode": False,
         "arg_separator": "",
@@ -342,6 +377,9 @@ class TexText(Tex):
 
 
 class BulletedList(TexText):
+    """
+    项目列表
+    """
     CONFIG = {
         "buff": MED_LARGE_BUFF,
         "dot_scale_factor": 2,
@@ -349,6 +387,9 @@ class BulletedList(TexText):
     }
 
     def __init__(self, *items: str, **kwargs):
+        """ 
+        支持多个字符串，每个一行；也支持一个字符串，使用 LaTeX 的换行 (\\\\)
+        """
         line_separated_items = [s + "\\\\" for s in items]
         TexText.__init__(self, *line_separated_items, **kwargs)
         for part in self:
@@ -362,6 +403,10 @@ class BulletedList(TexText):
         )
 
     def fade_all_but(self, index_or_string: int | str, opacity: float = 0.5) -> None:
+        """把除了 ``index_or_string`` 之外的不透明度均设为 ``opacity``
+        
+        ``index_or_string`` 可以传入子物体的下标，也可以传入一个字符串
+        """
         arg = index_or_string
         if isinstance(arg, str):
             part = self.get_part_by_tex(arg)
@@ -390,6 +435,9 @@ class TexFromPresetString(Tex):
 
 
 class Title(TexText):
+    """
+    标题
+    """
     CONFIG = {
         "scale_factor": 1,
         "include_underline": True,
@@ -400,6 +448,10 @@ class Title(TexText):
     }
 
     def __init__(self, *text_parts: str, **kwargs):
+        """``include_underline=True`` 会添加下划线（默认添加）
+        ``underline_width`` 下划线的长度（默认屏幕宽 - 2 个单位）
+        ``match_underline_width_to_text=True`` 时将下划线的长度和文字匹配（默认为 False）
+        """
         TexText.__init__(self, *text_parts, **kwargs)
         self.scale(self.scale_factor)
         self.to_edge(UP)
