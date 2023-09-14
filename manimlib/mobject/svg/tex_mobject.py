@@ -86,6 +86,10 @@ class SingleStringTex(SVGMobject):
 
     def get_file_path(self) -> str:
         """
+        将self.tex_string的内容插入tex模版
+        经过latex处理后生成svg文件
+        这里返回的就是svg文件的path
+
         父类中有一个generate_mobject()方法
         会调用当前方法, 获得svg文件的路径
         """

@@ -89,7 +89,7 @@ class SVGMobject(VMobject):
 
     def generate_mobject(self) -> None:
         """
-        解析svg文件, 获得mob
+        解析svg文件, 获得vmob
         """
         file_path = self.get_file_path()
         element_tree = ET.parse(file_path)
@@ -151,6 +151,9 @@ class SVGMobject(VMobject):
         return result
 
     def get_mobjects_from(self, svg: se.SVG) -> list[VMobject]:
+        """
+        解析svg, 获得vmob
+        """
         result = []
         for shape in svg.elements():
             if isinstance(shape, se.Group):
