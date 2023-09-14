@@ -15,7 +15,7 @@ directories:
   # default, these will be stored at tempfile.gettempdir(), e.g. this might
   # return whatever is at to the TMPDIR environment variable.  If you want to
   # specify them elsewhere,
-  temporary_storage: ""
+  temporary_storage: "/Users/linus/Desktop/videos/Tex"
 tex:
   executable: "latex"
   template_file: "tex_template.tex" 

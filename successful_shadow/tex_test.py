@@ -18,7 +18,7 @@ class test(Scene):
         
 class test1(Scene):
     def construct(self):
-        c = SingleStringTex("AB C")
+        c = SingleStringTex("AB")
         print(c.submobjects)
 
         #points = c.submobjects[0].get_points()

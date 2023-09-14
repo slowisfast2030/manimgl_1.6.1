@@ -76,6 +76,7 @@ class SingleStringTex(SVGMobject):
         full_tex = self.get_tex_file_body(self.tex_string)
         with display_during_execution(f"Writing \"{self.tex_string}\""):
             file_path = tex_to_svg_file(full_tex)
+            #print(file_path)
         return file_path
 
     def get_tex_file_body(self, tex_string: str) -> str:
