@@ -20,6 +20,25 @@ ManimColor = Union[str, colour.Color, Sequence[float]]
 
 SCALE_FACTOR_PER_FONT_POINT = 0.001
 
+"""
+VMobjectFromSVGPath  ---> SingleStringTex ---> Tex
+前面的对象作为后面对象的submobjects
+
+一个Tex类的submobjects结构:
+Index 0: Value SingleStringTex      String: A^2
+0 VMobjectFromSVGPath
+1 VMobjectFromSVGPath
+Index 1: Value SingleStringTex      String: +
+0 VMobjectFromSVGPath
+Index 2: Value SingleStringTex      String: B^2
+0 VMobjectFromSVGPath
+1 VMobjectFromSVGPath
+Index 3: Value SingleStringTex      String: =
+0 VMobjectFromSVGPath
+Index 4: Value SingleStringTex      String: C^2
+0 VMobjectFromSVGPath
+1 VMobjectFromSVGPath
+"""
 
 """
 思考一:
