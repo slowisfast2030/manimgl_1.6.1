@@ -1,5 +1,11 @@
 from manimlib import *
 
+class temp2(Scene):
+    def construct(self):
+        t = Text("This is what the matrix")
+        self.add(t)
+
+
 class temp1(Scene):
     def construct(self):
         t = TexText("A B", math_mode=False)
@@ -13,6 +19,7 @@ class temp1(Scene):
         pi = SingleStringTex("\Omega")
         pi = SingleStringTex("\partial")
         pi = SingleStringTex("\pi")
+        
         vm = VMobject()
         vm.set_points(pi.get_all_points())
         vm.scale(20)
