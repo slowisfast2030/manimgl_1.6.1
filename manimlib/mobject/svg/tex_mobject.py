@@ -400,6 +400,20 @@ class Tex(SingleStringTex):
         substring: bool = True,
         case_sensitive: bool = True
     ) -> VGroup:
+        """
+        to_isolate = ["+", "="]
+        tex_to_color_map = {
+                "A^2": BLUE,
+                "B": TEAL,
+                "C": GREEN,
+            }
+        
+        c = Tex("A^2","+B^2","=C^2", isolate=to_isolate, arg_separator="", tex_to_color_map=tex_to_color_map)
+        c.set_color_by_tex("C", PINK)
+
+        当打算为字符C染色PINK的时候, 获取到的SingleStringTex是C^2
+        但从实际的效果来看, 仅仅给C染色了, 真奇怪?
+        """
         def test(tex1, tex2):
             if not case_sensitive:
                 tex1 = tex1.lower()
