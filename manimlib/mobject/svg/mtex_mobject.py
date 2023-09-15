@@ -137,7 +137,7 @@ class MTex(LabelledString):
                     script_name = {
                         "_": "subscript",
                         "^": "superscript"
-                    }[script_char]
+                    }[script_char] # type: ignore
                     raise ValueError(
                         f"Unclear {script_name} detected while parsing. "
                         "Please use braces to clarify"
