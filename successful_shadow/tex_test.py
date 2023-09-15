@@ -11,7 +11,7 @@ class temp(Scene):
         #tex_to_color_map={}
         
         c = Tex("A^2","+B^2","=C^2", isolate=to_isolate, arg_separator="", tex_to_color_map=tex_to_color_map)
-        c.set_color_by_tex("A", RED_D)
+        c.set_color_by_tex("2", RED_D)
 
         for smob in c.submobjects:
             print(smob, smob.tex_string)
