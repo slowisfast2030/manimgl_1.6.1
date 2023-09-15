@@ -463,7 +463,8 @@ class Tex(SingleStringTex):
 
     def set_color_by_tex(self, tex: str, color: ManimColor, **kwargs):
         """
-        给 ``tex`` 上颜色为 ``color``，注意此时 ``tex`` 要独立存在，否则会给包含 ``tex`` 的也上色
+        给 ``tex`` 上色``color``
+        注意此时 ``tex`` 要独立存在，否则会给包含 ``tex`` 的SingleStringTex整体也上色
         """
         self.get_parts_by_tex(tex, **kwargs).set_color(color)
         return self
@@ -474,7 +475,8 @@ class Tex(SingleStringTex):
         **kwargs
     ):
         """
-        根据 ``texs_to_color_map`` 上色，同样，会给包含键的全部上色，不会自动拆分
+        根据 ``texs_to_color_map`` 上色
+        同样, 会给包含tex的整体上色(如果tex不是单独作为SingleStringTex而存在)
         """
         for tex, color in list(tex_to_color_map.items()):
             self.set_color_by_tex(tex, color, **kwargs)
@@ -505,6 +507,7 @@ class Tex(SingleStringTex):
             return self[start_index:]
         else:
             stop_index = self.index_of_part_by_tex(stop_tex, start=start_index, **kwargs)
+            # 竟然可以对vmob进行slice操作
             return self[start_index:stop_index]
 
     def sort_alphabetically(self) -> None:
