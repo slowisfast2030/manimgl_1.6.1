@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import itertools as it
 import colour
-from typing import Union, Sequence
+from typing import Union, Sequence, Tuple
 
 from manimlib.mobject.svg.labelled_string import LabelledString
 from manimlib.utils.tex_file_writing import tex_to_svg_file
@@ -16,7 +16,9 @@ if TYPE_CHECKING:
     from manimlib.mobject.types.vectorized_mobject import VMobject
     from manimlib.mobject.types.vectorized_mobject import VGroup
     ManimColor = Union[str, colour.Color, Sequence[float]]
-    Span = tuple[int, int]
+    #Span = tuple[int, int]
+    # linus
+    Span = Tuple[int, int]
 
 
 SCALE_FACTOR_PER_FONT_POINT = 0.001

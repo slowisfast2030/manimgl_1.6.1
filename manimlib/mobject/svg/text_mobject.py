@@ -611,4 +611,4 @@ def register_font(font_file: str | Path):
         assert manimpango.register_font(str(file_path)) # type: ignore
         yield
     finally:
-        manimpango.unregister_font(str(file_path))
+        manimpango.unregister_font(str(file_path)) # type: ignore
