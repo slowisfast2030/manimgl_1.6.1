@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./3b1b-videos-master"
+    ]
+}
