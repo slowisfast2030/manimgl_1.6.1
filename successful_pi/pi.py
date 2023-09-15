@@ -24,11 +24,11 @@ class test(Scene):
         self.wait()
 
 """
-part1:
+part1: 为编译器所需
 import sys
 sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
 
-part2:
+part2: 为vscode所需
 {
     "python.analysis.extraPaths": [
         "./3b1b-videos-master"
