@@ -6,6 +6,9 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import Union, Tuple, Annotated, Literal, Iterable, Dict
+    # linus
+    from typing_extensions import Annotated
+
     from colour import Color
     import numpy as np
     import re
