@@ -345,7 +345,7 @@ class Tex(SingleStringTex):
         of tex_strings)
         """
         """
-        重新组织子物体
+        将VMobjectFromSVGPath对象进行结构重组
 
         c = Tex("A^2","+B^2","=C^2", isolate=["+", "="], arg_separator="")
 
