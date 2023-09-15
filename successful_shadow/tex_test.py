@@ -20,7 +20,6 @@ class temp(Scene):
 
 
         subsubmob = c.submobjects[0].submobjects[0]
-        #self.add(subsubmob)
         self.add(c.copy().shift(LEFT*2))
 
         vm = VMobject()
