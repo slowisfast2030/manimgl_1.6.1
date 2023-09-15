@@ -1,6 +1,12 @@
 import sys
 sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
-
+"""
+{
+    "python.analysis.extraPaths": [
+        "./3b1b-videos-master"
+    ]
+}
+"""
 from manim_imports_ext import *
 
 class test(Scene):
