@@ -10,7 +10,7 @@ class temp1(Scene):
             "Derivatives in \\\\ computational graphs"
             )
         
-        pi = SingleStringTex("\pi")
+        pi = SingleStringTex("\Omega")
         vm = VMobject()
         vm.set_points(pi.get_all_points())
         vm.scale(20)
