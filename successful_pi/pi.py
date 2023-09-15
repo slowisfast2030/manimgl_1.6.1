@@ -1,12 +1,6 @@
 import sys
 sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
-"""
-{
-    "python.analysis.extraPaths": [
-        "./3b1b-videos-master"
-    ]
-}
-"""
+
 from manim_imports_ext import *
 
 class test(Scene):
@@ -28,3 +22,29 @@ class test(Scene):
 
         pi2.shrug()
         self.wait()
+
+"""
+part1:
+import sys
+sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
+
+part2:
+{
+    "python.analysis.extraPaths": [
+        "./3b1b-videos-master"
+    ]
+}
+
+part1需要写在当前文件的开头
+part2需要写在settings.json中
+
+如果只写part2
+整个文件内的变量都可以正常跳转, 但是无法执行, 会告知:
+ModuleNotFoundError: No module named 'manim_imports_ext'
+
+如果只写part1
+整个文件内的变量不能正常跳转, 但是可以执行
+
+同时添加part1和part2
+技能跳转, 又能执行
+"""
