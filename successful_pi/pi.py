@@ -20,6 +20,9 @@ class test(Scene):
         pi2.look_at(LEFT)
         self.wait()
 
+        pi2.blink()
+        self.wait()
+
         pi2.shrug()
         self.wait()
 
