@@ -29,7 +29,7 @@ class TextExample(Scene):
         fonts.set_width(FRAME_WIDTH - 1)
         slant = Text(
             "And the same as slant and weight",
-            font="Consolas",
+            font="Times New Roman",
             t2s={"slant": ITALIC},
             t2w={"weight": BOLD},
             t2c={"slant": ORANGE, "weight": RED}
