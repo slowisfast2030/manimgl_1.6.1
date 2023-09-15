@@ -493,6 +493,9 @@ class Tex(SingleStringTex):
         stop_tex: str | None = None,
         **kwargs
     ) -> VGroup:
+        """
+        获取start_tex到stop_tex之间的submobs
+        """
         if start_tex is None:
             start_index = 0
         else:
