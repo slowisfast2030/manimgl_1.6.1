@@ -9,7 +9,16 @@ class temp1(Scene):
             "Intuitive walkthrough",
             "Derivatives in \\\\ computational graphs"
             )
-        self.add(items)
+        
+        pi = SingleStringTex("\pi")
+        vm = VMobject()
+        vm.set_points(pi.get_all_points())
+        vm.scale(20)
+        self.add(vm)
+        for point in vm.get_points():
+            dot = Dot(point).scale(0.5).set_color(RED)
+            self.add(dot) 
+        self.add(vm)
 
 class temp(Scene):
     def construct(self):
