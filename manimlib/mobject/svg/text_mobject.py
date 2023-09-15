@@ -7,7 +7,7 @@ import itertools as it
 from pathlib import Path
 from contextlib import contextmanager
 import typing
-from typing import Iterable, Sequence, Union
+from typing import Iterable, Sequence, Union, Tuple
 
 import pygments
 import pygments.formatters
@@ -32,7 +32,8 @@ if TYPE_CHECKING:
     from manimlib.mobject.types.vectorized_mobject import VMobject
     from manimlib.mobject.types.vectorized_mobject import VGroup
     ManimColor = Union[str, colour.Color, Sequence[float]]
-    Span = tuple[int, int]
+    #Span = tuple[int, int]
+    Span = Tuple[int, int]
 
 
 TEXT_MOB_SCALE_FACTOR = 0.0076

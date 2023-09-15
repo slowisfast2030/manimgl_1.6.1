@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 import colour
 import itertools as it
-from typing import Iterable, Union, Sequence
+from typing import Iterable, Union, Sequence, Tuple
 from abc import ABC, abstractmethod
 
 from manimlib.constants import BLACK, WHITE
@@ -21,7 +21,8 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from manimlib.mobject.types.vectorized_mobject import VMobject
     ManimColor = Union[str, colour.Color, Sequence[float]]
-    Span = tuple[int, int]
+    #Span = tuple[int, int]
+    Span = Tuple[int, int]
 
 
 class _StringSVG(SVGMobject):
