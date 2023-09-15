@@ -4,10 +4,9 @@ class temp(Scene):
     def construct(self):
         to_isolate = ["+", "="]
         tex_to_color_map = {
-                "A": BLUE,
+                "A^2": BLUE,
                 "B": TEAL,
                 "C": GREEN,
-                "2": YELLOW,
             }
         
         c = Tex("A^2","+B^2","=C^2", isolate=to_isolate, arg_separator="", tex_to_color_map=tex_to_color_map)
