@@ -71,6 +71,7 @@ class PiCreature(SVGMobject):
             **kwargs
         )
 
+        # 会报错，直接重写这个函数
         self.init_structure()
         self.set_color(color)
         if flip_at_start:
@@ -80,6 +81,8 @@ class PiCreature(SVGMobject):
         self.refresh_triangulation()
 
     def get_svg_file_path(self, mode):
+        # 直接写死路径
+        return "/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3b1b-videos-master/custom/characters/PiCreatures_plain.svg"
         folder = get_directories()["pi_creature_images"]
         path = os.path.join(folder, f"{mode}.svg")
         if os.path.exists(path):
@@ -92,16 +95,32 @@ class PiCreature(SVGMobject):
             folder = get_directories()["pi_creature_images"]
             return os.path.join(folder, "plain.svg")
 
+    # 这个函数里面的index对不上号
+    # def init_structure(self):
+    #     # Figma exports with superfluous parts, so this
+    #     # hardcodes how to extract what we want.
+    #     parts = self.submobjects
+    #     self.eyes: VGroup = self.draw_eyes(
+    #         original_irises=VGroup(parts[2], parts[6]),
+    #         original_pupils=VGroup(parts[8], parts[9])
+    #     )
+    #     self.body: VMobject = parts[10]
+    #     self.mouth: VMobject = parts[11]
+    #     self.mouth.insert_n_curves(10)
+    #     self.set_submobjects([self.eyes, self.body, self.mouth])
+    
+    # 自己实现的init_structure
     def init_structure(self):
         # Figma exports with superfluous parts, so this
         # hardcodes how to extract what we want.
         parts = self.submobjects
+        
         self.eyes: VGroup = self.draw_eyes(
-            original_irises=VGroup(parts[2], parts[6]),
-            original_pupils=VGroup(parts[8], parts[9])
+            original_irises=VGroup(parts[LEFT_EYE_INDEX], parts[RIGHT_EYE_INDEX]),
+            original_pupils=VGroup(parts[LEFT_PUPIL_INDEX], parts[RIGHT_PUPIL_INDEX])
         )
-        self.body: VMobject = parts[10]
-        self.mouth: VMobject = parts[11]
+        self.body: VMobject = parts[BODY_INDEX]
+        self.mouth: VMobject = parts[MOUTH_INDEX]
         self.mouth.insert_n_curves(10)
         self.set_submobjects([self.eyes, self.body, self.mouth])
 
