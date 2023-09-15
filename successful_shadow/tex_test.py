@@ -18,7 +18,7 @@ class temp1(Scene):
         for point in vm.get_points():
             dot = Dot(point).scale(0.5).set_color(RED)
             self.add(dot) 
-        self.add(vm)
+        
 
 class temp(Scene):
     def construct(self):
