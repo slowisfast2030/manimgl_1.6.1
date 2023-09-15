@@ -1,5 +1,10 @@
 import numpy as np
 
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from typing import List
+    from manimlib.typing import ManimColor, Vect3
+
 # Sizes relevant to default camera frame
 ASPECT_RATIO = 16.0 / 9.0
 FRAME_HEIGHT = 8.0

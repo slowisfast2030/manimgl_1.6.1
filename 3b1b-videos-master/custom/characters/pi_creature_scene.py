@@ -18,7 +18,7 @@ from manimlib.mobject.frame import FullScreenFadeRectangle
 from manimlib.mobject.svg.drawings import SpeechBubble
 from manimlib.mobject.svg.drawings import ThoughtBubble
 from manimlib.mobject.types.vectorized_mobject import VGroup
-from manimlib.scene.interactive_scene import InteractiveScene
+from manimlib.scene.interactive_scene import InteractiveScene # 潜在风险
 from manimlib.scene.scene import Scene
 from manimlib.utils.rate_functions import squish_rate_func
 from manimlib.utils.rate_functions import there_and_back

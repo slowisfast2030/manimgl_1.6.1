@@ -37,17 +37,17 @@ class OpeningQuote(Scene):
         }
         if isinstance(self.quote, str):
             if self.use_quotation_marks:
-                quote = OldTexText("``%s''" %
+                quote = TexText("``%s''" %
                                     self.quote.strip(), **text_mobject_kwargs)
             else:
-                quote = OldTexText("%s" %
+                quote = TexText("%s" %
                                     self.quote.strip(), **text_mobject_kwargs)
         else:
             if self.use_quotation_marks:
                 words = [self.text_size + " ``"] + list(self.quote) + ["''"]
             else:
                 words = [self.text_size] + list(self.quote)
-            quote = OldTexText(*words, **text_mobject_kwargs)
+            quote = TexText(*words, **text_mobject_kwargs)
             # TODO, make less hacky
             if self.quote_arg_separator == " ":
                 quote[0].shift(0.2 * RIGHT)
@@ -60,7 +60,7 @@ class OpeningQuote(Scene):
         return quote
 
     def get_author(self, quote):
-        author = OldTexText(self.text_size + " --" + self.author)
+        author = TexText(self.text_size + " --" + self.author)
         author.next_to(quote, DOWN, buff=self.author_buff)
         author.set_color(YELLOW)
         return author
