@@ -280,7 +280,7 @@ class Tex(SingleStringTex):
         - ``tex_to_color_map`` 为一个字典，会根据其中的键自动拆开字符串用于上色
         """
         digest_config(self, kwargs)
-        self.tex_strings = self.break_up_tex_strings(tex_strings)
+        self.tex_strings = self.break_up_tex_strings(tex_strings) # 字符串重组
         full_string = self.arg_separator.join(self.tex_strings)
         # print("="*78)
         # print(self.tex_strings)
@@ -292,17 +292,11 @@ class Tex(SingleStringTex):
         """
         # 这里把full_string传递给了父类的初始化函数
         super().__init__(full_string, **kwargs)
-        # print("="*78)
-        # print(self.submobjects)
-        # print("="*78)
 
         # 执行了break_up_by_substrings()方法后
         # self.submobjects发生了翻天覆地的变化
-        self.break_up_by_substrings()
+        self.break_up_by_substrings() # submob结构重组
 
-        # print("="*78)
-        # print(self.submobjects)
-        # print("="*78)
         self.set_color_by_tex_to_color_map(self.tex_to_color_map)
 
         if self.organize_left_to_right:
