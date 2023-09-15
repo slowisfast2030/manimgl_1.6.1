@@ -11,6 +11,8 @@ class temp1(Scene):
             )
         
         pi = SingleStringTex("\Omega")
+        pi = SingleStringTex("\partial")
+        pi = SingleStringTex("\pi")
         vm = VMobject()
         vm.set_points(pi.get_all_points())
         vm.scale(20)
