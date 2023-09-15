@@ -16,7 +16,7 @@ class temp1(Scene):
         vm = VMobject()
         vm.set_points(pi.get_all_points())
         vm.scale(20)
-        self.add(vm.set_fill(GREEN, 0.3))
+        self.add(vm.set_fill(GREEN, 0.))
         for point in vm.get_points():
             dot = Dot(point).scale(0.5).set_color(RED)
             self.add(dot) 
