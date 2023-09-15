@@ -402,17 +402,20 @@ class Tex(SingleStringTex):
     ) -> VGroup:
         """
         to_isolate = ["+", "="]
-        tex_to_color_map = {
-                "A^2": BLUE,
-                "B": TEAL,
-                "C": GREEN,
-            }
+        tex_to_color_map = {}
         
         c = Tex("A^2","+B^2","=C^2", isolate=to_isolate, arg_separator="", tex_to_color_map=tex_to_color_map)
         c.set_color_by_tex("C", PINK)
 
-        当打算为字符C染色PINK的时候, 获取到的SingleStringTex是C^2
-        但从实际的效果来看, 仅仅给C染色了, 真奇怪?
+        需要注意, 此时c的submobjects有5个元素:
+        SingleStringTex A^2
+        SingleStringTex +
+        SingleStringTex B^2
+        SingleStringTex =
+        SingleStringTex C^2
+        
+        当给C染色的时候, 会给整个C^2整体染色
+        当给2染色的时候, 会给A^2, B^2和C^2整体染色
         """
         def test(tex1, tex2):
             if not case_sensitive:
