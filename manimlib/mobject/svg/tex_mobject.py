@@ -259,7 +259,7 @@ VMobjectFromSVGPath  ---> SingleStringTex ---> Tex
 Tex类嵌套了svg文件中的每一个element
 可以在Tex对象中取出任何一个VMobjectFromSVGPath对象
 
-c = Tex("A^2","+B^2","=C^2", isolate=to_isolate, arg_separator="")
+c = Tex("A^2","+B^2","=C^2", isolate=["+", "="], arg_separator="")
 subsubmob = c.submobjects[0].submobjects[0]
 """
 class Tex(SingleStringTex):
@@ -313,6 +313,13 @@ class Tex(SingleStringTex):
         # or tex_to_color_map lists.
         """
         根据isolate 或者 tex_to_color_map 再次拆开 tex_strings
+
+        比如:
+        c = Tex("A^2","+B^2","=C^2", isolate=["+", "="], arg_separator="")
+        输入
+        tex_strings = ["A^2","+B^2","=C^2"]
+        输出
+        ['A^2', '+', 'B^2', '=', 'C^2']
         """
         substrings_to_isolate = [*self.isolate, *self.tex_to_color_map.keys()]
         if len(substrings_to_isolate) == 0:
