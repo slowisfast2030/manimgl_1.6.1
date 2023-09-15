@@ -1,5 +1,21 @@
 from manimlib import *
 
+class temp(Scene):
+    def construct(self):
+        to_isolate = ["+", "="]
+        c = Tex("A^2","+B^2","=C^2", isolate=to_isolate, arg_separator="")
+        subsubmob = c.submobjects[0].submobjects[0]
+        self.add(subsubmob)
+
+        vm = VMobject()
+        vm.set_points(subsubmob.get_points())
+        vm.scale(20).shift(RIGHT*3)
+        self.add(vm)
+        for point in vm.get_points():
+            dot = Dot(point).scale(0.5).set_color(RED)
+            self.add(dot)
+
+
 class test(Scene):
     def construct(self):
         #to_isolate = ["A^2", "B^2", "C^2", "=", "+"]
