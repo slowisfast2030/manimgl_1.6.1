@@ -345,7 +345,9 @@ class Tex(SingleStringTex):
         of tex_strings)
         """
         """
-        将VMobjectFromSVGPath对象进行结构重组
+        将VMobjectFromSVGPath对象进行submob结构重组
+        注意: 是根据break_up_tex_strings方法的字符串重组结果进行submob结构重复
+
 
         c = Tex("A^2","+B^2","=C^2", isolate=["+", "="], arg_separator="")
 
