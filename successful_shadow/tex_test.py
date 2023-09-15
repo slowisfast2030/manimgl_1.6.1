@@ -15,7 +15,8 @@ class temp(Scene):
 
         for smob in c.submobjects:
             print(smob, smob.tex_string)
-        #print(c.get_parts_by_tex("C").submobjects[0].tex_string)
+            # for ssmob in smob.submobjects:
+            #     print(ssmob)
 
 
         subsubmob = c.submobjects[0].submobjects[0]
