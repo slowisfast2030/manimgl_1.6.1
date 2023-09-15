@@ -313,7 +313,7 @@ class Tex(SingleStringTex):
         # or tex_to_color_map lists.
         """
         根据isolate 或者 tex_to_color_map 
-        对输入tex_strings进行重组
+        对输入tex_strings进行字符串重组
 
         比如:
         c = Tex("A^2","+B^2","=C^2", isolate=["+", "="], arg_separator="")
