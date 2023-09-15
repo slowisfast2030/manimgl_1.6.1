@@ -253,6 +253,15 @@ class SingleStringTex(SVGMobject):
 
 切忌: 一上来就啃代码, 极其低效
 """
+"""
+VMobjectFromSVGPath  ---> SingleStringTex ---> Tex
+
+Tex类嵌套了svg文件中的每一个element
+可以在Tex对象中取出任何一个VMobjectFromSVGPath对象
+
+c = Tex("A^2","+B^2","=C^2", isolate=to_isolate, arg_separator="")
+subsubmob = c.submobjects[0].submobjects[0]
+"""
 class Tex(SingleStringTex):
     """
     用于生成 LaTeX 公式(align 环境)
