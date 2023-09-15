@@ -33,6 +33,7 @@ if TYPE_CHECKING:
     from manimlib.mobject.types.vectorized_mobject import VGroup
     ManimColor = Union[str, colour.Color, Sequence[float]]
     #Span = tuple[int, int]
+    # linus
     Span = Tuple[int, int]
 
 
@@ -607,7 +608,7 @@ def register_font(font_file: str | Path):
         raise FileNotFoundError(error)
 
     try:
-        assert manimpango.register_font(str(file_path))
+        assert manimpango.register_font(str(file_path)) # type: ignore
         yield
     finally:
         manimpango.unregister_font(str(file_path))

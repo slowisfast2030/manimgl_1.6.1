@@ -22,6 +22,7 @@ if TYPE_CHECKING:
     from manimlib.mobject.types.vectorized_mobject import VMobject
     ManimColor = Union[str, colour.Color, Sequence[float]]
     #Span = tuple[int, int]
+    # linus
     Span = Tuple[int, int]
 
 
