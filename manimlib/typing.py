@@ -1,12 +1,12 @@
 from typing import TYPE_CHECKING
 
 """
-整份文件都是添加的
+整份文件都是添加的, 并做了很多修改
+因为很多写法都是基于python3.10+版本
 """
 
 if TYPE_CHECKING:
-    from typing import Union, Tuple, Annotated, Literal, Iterable, Dict
-    # linus
+    from typing import Union, Tuple, Literal, Iterable, Dict
     from typing_extensions import Annotated
 
     from colour import Color
@@ -20,22 +20,17 @@ if TYPE_CHECKING:
 
     # Abbreviations for a common types
     ManimColor = Union[str, Color, None]
-    #RangeSpecifier = Tuple[float, float, float] | Tuple[float, float] # python3.10引入的写法
     RangeSpecifier = Union[Tuple[float, float, float], Tuple[float, float]]
 
 
-
-    #Span = tuple[int, int]
     Span = Tuple[int, int]
     SingleSelector = Union[
         str,
         re.Pattern,
-        #tuple[Union[int, None], Union[int, None]],
         Tuple[Union[int, None], Union[int, None]],
     ]
     Selector = Union[SingleSelector, Iterable[SingleSelector]]
 
-    #UniformDict = Dict[str, float | bool | np.ndarray | tuple]
     UniformDict = Dict[str, Union[float, bool, np.ndarray, tuple]]
 
 
