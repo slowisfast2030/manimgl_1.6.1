@@ -10,6 +10,8 @@ class temp(Scene):
             }
         
         c = Tex("A^2","+B^2","=C^2", isolate=to_isolate, arg_separator="", tex_to_color_map=tex_to_color_map)
+        c.set_color_by_tex("C", PINK)
+
         subsubmob = c.submobjects[0].submobjects[0]
         #self.add(subsubmob)
         self.add(c.copy().shift(LEFT*2))
@@ -21,6 +23,9 @@ class temp(Scene):
         for point in vm.get_points():
             dot = Dot(point).scale(0.5).set_color(RED)
             self.add(dot)
+        
+        
+        
 
 
 class test(Scene):
