@@ -14,7 +14,7 @@ class temp1(Scene):
         pi = SingleStringTex("\partial")
         pi = SingleStringTex("\pi")
         vm = VMobject()
-        vm.set_points(pi.get_all_points()[:159])
+        vm.set_points(pi.get_all_points())
         vm.scale(20)
         self.add(vm.set_fill(GREEN, .0))
         for point in vm.get_points():
