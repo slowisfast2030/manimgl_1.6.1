@@ -6,6 +6,8 @@ import random
 from manimlib.animation.transform import ReplacementTransform
 from manimlib.animation.transform import Transform
 from manimlib.animation.transform import ApplyMethod
+from manimlib.animation.transform import ApplyPointwiseFunction
+
 from manimlib.animation.composition import LaggedStart
 from manimlib.animation.fading import FadeIn
 from manimlib.animation.fading import FadeTransform
