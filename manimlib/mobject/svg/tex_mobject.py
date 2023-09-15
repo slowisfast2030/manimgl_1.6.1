@@ -77,7 +77,7 @@ class SingleStringTex(SVGMobject):
         },
         "font_size": 48,
         "alignment": "\\centering",
-        "math_mode": True,
+        "math_mode": True,   # 因为True, 所以字符串中间的空格会被自动忽略
         "organize_left_to_right": False,
     }
 

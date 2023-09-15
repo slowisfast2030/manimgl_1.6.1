@@ -1,5 +1,10 @@
 from manimlib import *
 
+class temp1(Scene):
+    def construct(self):
+        t = TexText("A B", math_mode=False)
+        self.add(t)
+
 class temp(Scene):
     def construct(self):
         to_isolate = ["+", "="]
