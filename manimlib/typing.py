@@ -17,13 +17,13 @@ if TYPE_CHECKING:
 
     # Abbreviations for a common types
     ManimColor = Union[str, Color, None]
-    #RangeSpecifier = Tuple[float, float, float] | Tuple[float, float]
+    #RangeSpecifier = Tuple[float, float, float] | Tuple[float, float] # python3.10引入的写法
     RangeSpecifier = Union[Tuple[float, float, float], Tuple[float, float]]
 
 
 
-    Span = tuple[int, int]
-    #Span = Tuple[int, int]
+    #Span = tuple[int, int]
+    Span = Tuple[int, int]
     SingleSelector = Union[
         str,
         re.Pattern,
@@ -32,7 +32,9 @@ if TYPE_CHECKING:
     ]
     Selector = Union[SingleSelector, Iterable[SingleSelector]]
 
-    UniformDict = Dict[str, float | bool | np.ndarray | tuple]
+    #UniformDict = Dict[str, float | bool | np.ndarray | tuple]
+    UniformDict = Dict[str, Union[float, bool, np.ndarray, tuple]]
+
 
     # These are various alternate names for np.ndarray meant to specify
     # certain shapes.
