@@ -169,6 +169,12 @@ class SVGMobject(VMobject):
         """
         result = []
         for shape in svg.elements():
+            """
+            每一个字母、数字等符号都是由贝塞尔曲线生成的
+            当各种符号被latex渲染出来并保存为svg后
+            每一个符号在svg文件中都是一个xml元素
+            可以一个个被解析出来
+            """
             if isinstance(shape, se.Group):
                 continue
             elif isinstance(shape, se.Path):    # 字母、公式
