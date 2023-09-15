@@ -305,7 +305,7 @@ class Tex(SingleStringTex):
         # Separate out any strings specified in the isolate
         # or tex_to_color_map lists.
         """
-        根据isolate 或者 tex_to_color_map 
+        根据isolate 和 tex_to_color_map 
         对输入tex_strings进行字符串重组
 
         比如:
@@ -416,6 +416,28 @@ class Tex(SingleStringTex):
         
         当给C染色的时候, 会给整个C^2整体染色
         当给2染色的时候, 会给A^2, B^2和C^2整体染色
+
+        -------------------------------------
+        需要注意的是, 如果
+
+        to_isolate = ["+", "="]
+        tex_to_color_map = {
+                "A": BLUE,
+                "B": TEAL,
+                "C": GREEN,
+            }
+        c = Tex("A^2","+B^2","=C^2", isolate=to_isolate, arg_separator="", tex_to_color_map=tex_to_color_map)
+        此时c的submobjects有8个元素:
+        SingleStringTex A
+        SingleStringTex ^2
+        SingleStringTex +
+        SingleStringTex B
+        SingleStringTex ^2
+        SingleStringTex =
+        SingleStringTex C
+        SingleStringTex ^2
+
+        因为isolate和tex_to_color_map都会用来重组字符串
         """
         def test(tex1, tex2):
             if not case_sensitive:
