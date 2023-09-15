@@ -293,8 +293,7 @@ class Tex(SingleStringTex):
         # 这里把full_string传递给了父类的初始化函数
         super().__init__(full_string, **kwargs)
 
-        # 执行了break_up_by_substrings()方法后
-        # self.submobjects发生了翻天覆地的变化
+        # 执行了break_up_by_substrings()方法后, self.submobjects发生了翻天覆地的变化
         self.break_up_by_substrings() # submob结构重组
 
         self.set_color_by_tex_to_color_map(self.tex_to_color_map)
