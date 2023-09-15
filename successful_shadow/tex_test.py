@@ -3,7 +3,13 @@ from manimlib import *
 class temp1(Scene):
     def construct(self):
         t = TexText("A B", math_mode=False)
-        self.add(t)
+
+        items = BulletedList(
+            "Recap",
+            "Intuitive walkthrough",
+            "Derivatives in \\\\ computational graphs"
+            )
+        self.add(items)
 
 class temp(Scene):
     def construct(self):

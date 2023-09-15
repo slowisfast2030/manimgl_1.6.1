@@ -532,6 +532,13 @@ class TexText(Tex):
     }
 
 
+"""
+items = BulletedList(
+            "Recap",
+            "Intuitive walkthrough",
+            "Derivatives in \\\\ computational graphs"
+            )
+"""
 class BulletedList(TexText):
     """
     项目列表
@@ -606,7 +613,7 @@ class Title(TexText):
     def __init__(self, *text_parts: str, **kwargs):
         """``include_underline=True`` 会添加下划线（默认添加）
         ``underline_width`` 下划线的长度（默认屏幕宽 - 2 个单位）
-        ``match_underline_width_to_text=True`` 时将下划线的长度和文字匹配（默认为 False）
+        ``match_underline_width_to_text=True`` 时将下划线的长度和文字匹配(默认为 False)
         """
         TexText.__init__(self, *text_parts, **kwargs)
         self.scale(self.scale_factor)
