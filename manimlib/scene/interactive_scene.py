@@ -2,6 +2,8 @@ from __future__ import annotations
 
 """
 整份文件都是添加的
+需要注意, import部分有很多符号是白色的
+意味着当前版本的库中很有符号没有定义
 """
 import itertools as it
 import numpy as np
