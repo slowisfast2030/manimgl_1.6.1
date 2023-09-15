@@ -448,6 +448,10 @@ class Tex(SingleStringTex):
             else:
                 return tex1 == tex2
 
+        """
+        这里返回的是原submob的索引
+        指向的是同一个对象
+        """
         return VGroup(*filter(
             lambda m: isinstance(m, SingleStringTex) and test(tex, m.get_tex()),
             self.submobjects
