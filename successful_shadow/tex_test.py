@@ -41,19 +41,6 @@ class TextExample(Scene):
         self.play(Write(slant))
         self.wait()
 
-class temp2(Scene):
-    def construct(self):
-        difference = Text(
-            """
-            The most important difference between Text and TexText is that\n
-            you can change the font more easily, but can't use the LaTeX grammar
-            """,
-            font="Arial", font_size=24,
-            # t2c is a dict that you can choose color for different text
-            t2c={"Text": BLUE, "TexText": BLUE, "LaTeX": ORANGE}
-        )
-        self.add(difference)
-
 
 class temp1(Scene):
     def construct(self):
