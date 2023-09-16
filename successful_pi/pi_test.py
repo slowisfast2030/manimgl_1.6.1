@@ -19,3 +19,6 @@ class test(Scene):
         original_pupils=VGroup(parts[LEFT_PUPIL_INDEX], parts[RIGHT_PUPIL_INDEX])
         self.add(original_irises)
         self.add(original_pupils)
+
+        for iris, ref_pupil in zip(original_irises, original_pupils):
+            print(iris, ref_pupil)
