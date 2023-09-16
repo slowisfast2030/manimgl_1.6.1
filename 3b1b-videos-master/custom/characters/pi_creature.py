@@ -134,6 +134,10 @@ class PiCreature(SVGMobject):
         """
         irises: 眼白(白色的4/5圆)
         pupils: 眼珠(黑色圆+白色小圆)
+
+        眼睛部分已经从原始的svg文件读入了
+        只不过原始文件的眼珠部分有瑕疵
+        眼白保持不变, 眼珠用两个circle代替
         """
         eyes = VGroup()
         for iris, ref_pupil in zip(original_irises, original_pupils):
