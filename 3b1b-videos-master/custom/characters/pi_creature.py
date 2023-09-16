@@ -246,8 +246,9 @@ class PiCreature(SVGMobject):
                 content_mob = content
             bubble.add_content(content_mob)
             bubble.resize_to_content()
-        # linus 报错, 先注释掉
-        # bubble.pin_to(self, auto_flip=["direction" not in bubble_config])
+        # 多了一个auto_flip参数
+        #bubble.pin_to(self, auto_flip=["direction" not in bubble_config])
+        bubble.pin_to(self)
         self.bubble = bubble
         return bubble
 
