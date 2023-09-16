@@ -141,6 +141,10 @@ class PiCreature(SVGMobject):
         """
         eyes = VGroup()
         for iris, ref_pupil in zip(original_irises, original_pupils):
+            """
+            iris保持不变
+            ref_pupil被替换
+            """
             pupil_r = iris.get_width() / 2
             pupil_r *= self.pupil_to_eye_width_ratio
             dot_r = pupil_r
