@@ -26,6 +26,18 @@ class NowWeHaveEmotions(TeacherStudentsScene):
 
 class test(Scene):
     def construct(self):
-        pi = PiCreature()
+        p = NumberPlane(x_range=[-5, 5], y_range=[-10,10])
+        self.add(p)
+        modes = ('plain', 'sassy', 'happy', 'hooray', 'sad', 'thinking', 'confused',
+                 'angry', 'speaking', 'pleading', 'shruggie', 'maybe', 'surprised',
+                 'well', 'pondering', 'erm', 'raise_right_hand', 'raise_left_hand',
+                 'guilty', 'hesitant', 'dance_kick', 'horrified', 'dance_1',
+                 'dance_2', 'dance_3', 'gracious', 'tired')
+        pi = PiCreature(mode='plain').scale(2)
         self.add(pi)
-        self.wait(1)
+        for mode in modes:
+            t = Text(mode).move_to(pi, UP)
+            self.add(t)
+            pi.change_mode(mode)
+            self.wait(0.3)
+            self.remove(t)

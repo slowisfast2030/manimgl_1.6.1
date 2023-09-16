@@ -3,7 +3,7 @@ from manimlib.mobject.svg.tex_mobject import *
 
 from custom.backdrops import *
 from custom.banner import *
-from custom.characters.pi_creature_new import *
+from custom.characters.pi_creature import *
 from custom.characters.pi_creature_animations import *
 
 from custom.characters.pi_creature_scene import * 

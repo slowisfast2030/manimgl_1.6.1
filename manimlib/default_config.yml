@@ -52,8 +52,8 @@ camera_qualities:
     resolution: "1280x720"
     frame_rate: 30
   high:
-    resolution: "1920x1080"
-    #resolution: "1080x1920"
+    #resolution: "1920x1080"
+    resolution: "1080x1920"
     frame_rate: 30
   ultra_high:
     resolution: "3840x2160"
