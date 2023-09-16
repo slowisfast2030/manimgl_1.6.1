@@ -36,7 +36,9 @@ if TYPE_CHECKING:
     from manimlib.typing import ManimColor, Vect3
 
 
-class PiCreatureScene(InteractiveScene):
+# InteractiveScene有很多未解决问题, 暂时用Scene代替 
+#class PiCreatureScene(InteractiveScene):
+class PiCreatureScene(Scene):
     total_wait_time: float = 0
     seconds_to_blink: float = 3
     pi_creatures_start_on_screen: bool = True
@@ -278,7 +280,8 @@ class TeacherStudentsScene(PiCreatureScene):
             fill_color=color,
             fill_opacity=1,
         )
-        self.disable_interaction(self.background)
+        # linus
+        # self.disable_interaction(self.background)
         self.add(self.background)
         self.bring_to_back(self.background)
 
