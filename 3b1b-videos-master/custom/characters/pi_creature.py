@@ -95,20 +95,6 @@ class PiCreature(SVGMobject):
             folder = get_directories()["pi_creature_images"]
             return os.path.join(folder, "plain.svg")
 
-    # 这个函数里面的index对不上号
-    # def init_structure(self):
-    #     # Figma exports with superfluous parts, so this
-    #     # hardcodes how to extract what we want.
-    #     parts = self.submobjects
-    #     self.eyes: VGroup = self.draw_eyes(
-    #         original_irises=VGroup(parts[2], parts[6]),
-    #         original_pupils=VGroup(parts[8], parts[9])
-    #     )
-    #     self.body: VMobject = parts[10]
-    #     self.mouth: VMobject = parts[11]
-    #     self.mouth.insert_n_curves(10)
-    #     self.set_submobjects([self.eyes, self.body, self.mouth])
-    
     # 自己实现的init_structure
     def init_structure(self):
         # Figma exports with superfluous parts, so this
