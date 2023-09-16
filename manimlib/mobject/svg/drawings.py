@@ -388,24 +388,29 @@ class Bubble(SVGMobject):
         self.add_content(VMobject())
         return self
 
+import os
+from manimlib.utils.directories import get_directories
+PI_CREATURE_DIR = get_directories()["pi_creature_images"]
 
 class SpeechBubble(Bubble):
     CONFIG = {
-        "file_name": "Bubbles_speech.svg",
+        #"file_name": "Bubbles_speech.svg",
+        "file_name": os.path.join(PI_CREATURE_DIR, "Bubbles_speech.svg"),
         "height": 4
     }
 
 
 class DoubleSpeechBubble(Bubble):
     CONFIG = {
-        "file_name": "Bubbles_double_speech.svg",
+        "file_name": "Bubbles_double_speech.svg", # 没有这个svg文件
         "height": 4
     }
 
 
 class ThoughtBubble(Bubble):
     CONFIG = {
-        "file_name": "Bubbles_thought.svg",
+        #"file_name": "Bubbles_thought.svg",
+        "file_name": os.path.join(PI_CREATURE_DIR, "Bubbles_thought.svg"),
     }
 
     def __init__(self, **kwargs):

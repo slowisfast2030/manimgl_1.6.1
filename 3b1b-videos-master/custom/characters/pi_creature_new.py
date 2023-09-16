@@ -16,6 +16,12 @@ from manimlib.utils.directories import get_directories
 from manimlib.utils.space_ops import get_norm
 from manimlib.utils.space_ops import normalize
 
+"""
+这份文件来自于https://github.com/CaftBotti/manim_pi_creatures/tree/main
+里面给出了很多pi生物
+这份文件需要大量修改
+"""
+
 pi_creature_dir_maybe = get_directories()["pi_creature_images"]
 if os.path.exists(pi_creature_dir_maybe):
     PI_CREATURE_DIR = pi_creature_dir_maybe
