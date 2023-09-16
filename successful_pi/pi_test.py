@@ -13,6 +13,7 @@ MOUTH_INDEX: int = 5
 class test(Scene):
     def construct(self):
         pi = PiCreature(color=BLUE_E)
+        
         parts = pi.parts
 
         original_irises=VGroup(parts[LEFT_EYE_INDEX], parts[RIGHT_EYE_INDEX])
@@ -22,3 +23,5 @@ class test(Scene):
 
         for iris, ref_pupil in zip(original_irises, original_pupils):
             print(iris, ref_pupil)
+
+        self.add(pi)

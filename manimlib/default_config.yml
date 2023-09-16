@@ -16,6 +16,7 @@ directories:
   # return whatever is at to the TMPDIR environment variable.  If you want to
   # specify them elsewhere,
   temporary_storage: "/Users/linus/Desktop/videos"
+  pi_creature_images: "/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/characters"
 tex:
   executable: "latex"
   template_file: "tex_template.tex" 
