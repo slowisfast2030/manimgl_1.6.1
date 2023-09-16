@@ -17,7 +17,7 @@ directories:
   # specify them elsewhere,
   temporary_storage: "/Users/linus/Desktop/videos"
   # 添加了pi生物的文件夹路径
-  pi_creature_images: "/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/characters"
+  pi_creature_images: "/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-characters"
 tex:
   executable: "latex"
   template_file: "tex_template.tex" 
