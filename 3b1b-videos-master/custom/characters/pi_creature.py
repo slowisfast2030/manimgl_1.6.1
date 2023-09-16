@@ -95,10 +95,13 @@ class PiCreature(SVGMobject):
             folder = get_directories()["pi_creature_images"]
             return os.path.join(folder, "plain.svg")
 
-    # 自己实现的init_structure
     def init_structure(self):
         # Figma exports with superfluous parts, so this
         # hardcodes how to extract what we want.
+        """
+        主要修改了parts的index
+        pi生物的svg文件由6部分构成
+        """
         parts = self.submobjects
         # temp line
         self.parts = parts.copy()
