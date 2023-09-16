@@ -3,7 +3,7 @@ from __future__ import annotations
 import operator as op
 import itertools as it
 from functools import reduce, wraps
-from typing import Iterable, Sequence, Callable, Union
+from typing import Iterable, Sequence, Callable, Union, Tuple
 
 import colour
 import moderngl
@@ -21,6 +21,7 @@ from manimlib.utils.bezier import inverse_interpolate
 from manimlib.utils.bezier import integer_interpolate
 from manimlib.utils.bezier import partial_quadratic_bezier_points
 from manimlib.utils.color import rgb_to_hex
+from manimlib.utils.color import color_gradient
 from manimlib.utils.iterables import make_even
 from manimlib.utils.iterables import resize_array
 from manimlib.utils.iterables import resize_with_interpolation
@@ -1538,3 +1539,24 @@ class DashedVMobject(VMobject):
         # Family is already taken care of by get_subcurve
         # implementation
         self.match_style(vmobject, recurse=False)
+
+
+class VHighlight(VGroup):
+    def __init__(
+        self,
+        vmobject: VMobject,
+        n_layers: int = 5,
+        color_bounds: Tuple[ManimColor] = (GREY_C, GREY_E),
+        max_stroke_addition: float = 5.0,
+    ):
+        outline = vmobject.replicate(n_layers)
+        outline.set_fill(opacity=0)
+        added_widths = np.linspace(0, max_stroke_addition, n_layers + 1)[1:]
+        colors = color_gradient(color_bounds, n_layers)
+        for part, added_width, color in zip(reversed(outline), added_widths, colors):
+            for sm in part.family_members_with_points():
+                sm.set_stroke(
+                    width=sm.get_stroke_width() + added_width,
+                    color=color,
+                )
+        super().__init__(*outline)

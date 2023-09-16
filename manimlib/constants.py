@@ -1,6 +1,6 @@
 import numpy as np
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 if TYPE_CHECKING:
     from typing import List
     from manimlib.typing import ManimColor, Vect3
@@ -160,3 +160,28 @@ PURPLE = PURPLE_C
 GREY = GREY_C
 
 COLORMAP_3B1B = [BLUE_E, GREEN, YELLOW, RED]
+
+# For keyboard interactions
+CTRL_SYMBOL: int = 65508
+SHIFT_SYMBOL: int = 65505
+COMMAND_SYMBOL: int = 65517
+DELETE_SYMBOL: int = 65288
+ARROW_SYMBOLS: 'list[int]' = list(range(65361, 65365))
+
+SHIFT_MODIFIER: int = 1
+CTRL_MODIFIER: int = 2
+COMMAND_MODIFIER: int = 64
+
+MANIM_COLORS = [
+    BLACK, GREY_E, GREY_D, GREY_C, GREY_B, GREY_A, WHITE,
+    BLUE_E, BLUE_D, BLUE_C, BLUE_B, BLUE_A,
+    TEAL_E, TEAL_D, TEAL_C, TEAL_B, TEAL_A,
+    GREEN_E, GREEN_D, GREEN_C, GREEN_B, GREEN_A,
+    YELLOW_E, YELLOW_D, YELLOW_C, YELLOW_B, YELLOW_A,
+    GOLD_E, GOLD_D, GOLD_C, GOLD_B, GOLD_A,
+    RED_E, RED_D, RED_C, RED_B, RED_A,
+    MAROON_E, MAROON_D, MAROON_C, MAROON_B, MAROON_A,
+    PURPLE_E, PURPLE_D, PURPLE_C, PURPLE_B, PURPLE_A,
+    GREY_BROWN, DARK_BROWN, LIGHT_BROWN,
+    PINK, LIGHT_PINK,
+]
