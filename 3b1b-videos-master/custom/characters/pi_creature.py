@@ -131,6 +131,10 @@ class PiCreature(SVGMobject):
         # This is mostly because the paths associated
         # with the eyes in all the drawings got slightly
         # messed up.
+        """
+        irises: 眼白(白色的4/5圆)
+        pupils: 眼珠(黑色圆+白色小圆)
+        """
         eyes = VGroup()
         for iris, ref_pupil in zip(original_irises, original_pupils):
             pupil_r = iris.get_width() / 2
