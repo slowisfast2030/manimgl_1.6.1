@@ -85,7 +85,9 @@ class PiCreature(SVGMobject):
         在配置文件中添加一行pi_creature_images
         """
         folder = get_directories()["pi_creature_images"]
-        path = os.path.join(folder, f"{mode}.svg")
+        #path = os.path.join(folder, f"{mode}.svg")
+        path = os.path.join(folder, "%s_%s.svg" % ("PiCreatures", mode))
+        
         if os.path.exists(path):
             return path
         else:

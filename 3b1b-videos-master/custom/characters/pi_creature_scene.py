@@ -27,6 +27,10 @@ from manimlib.utils.space_ops import get_norm
 from custom.characters.pi_creature import Mortimer
 from custom.characters.pi_creature import PiCreature
 from custom.characters.pi_creature import Randolph
+# from custom.characters.pi_creature_new import Mortimer
+# from custom.characters.pi_creature_new import PiCreature
+# from custom.characters.pi_creature_new import Randolph
+
 from custom.characters.pi_creature_animations import Blink
 from custom.characters.pi_creature_animations import PiCreatureBubbleIntroduction
 from custom.characters.pi_creature_animations import RemovePiCreatureBubble

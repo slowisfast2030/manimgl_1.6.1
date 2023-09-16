@@ -14,6 +14,7 @@ from manimlib.utils.rate_functions import squish_rate_func
 from manimlib.utils.rate_functions import there_and_back
 
 from custom.characters.pi_creature import PiCreature
+#from custom.characters.pi_creature_new import PiCreature
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:

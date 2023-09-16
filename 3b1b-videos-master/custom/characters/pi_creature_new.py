@@ -57,11 +57,14 @@ class PiCreature(SVGMobject):
         "pupil_dot_to_pupil_width_ratio": 0.3,
     }
 
-    def __init__(self, mode=("plain", 'sassy', 'happy', 'hooray', 'sad', 'thinking', 'confused',
-                             'angry', 'speaking', 'pleading', 'shruggie', 'maybe', 'surprised',
-                             'well', 'pondering', 'erm', 'raise_right_hand', 'raise_left_hand',
-                             'guilty', 'hesitant', 'dance_kick', 'horrified', 'miner', 'dance_1',
-                             'dance_2', 'dance_3', 'gracious', 'frustrated', 'tired'), **kwargs):
+    def __init__(self, mode="plain", **kwargs):
+        """
+        mode=("plain", 'sassy', 'happy', 'hooray', 'sad', 'thinking', 'confused',
+            'angry', 'speaking', 'pleading', 'shruggie', 'maybe', 'surprised',
+            'well', 'pondering', 'erm', 'raise_right_hand', 'raise_left_hand',
+            'guilty', 'hesitant', 'dance_kick', 'horrified', 'miner', 'dance_1',
+            'dance_2', 'dance_3', 'gracious', 'frustrated', 'tired')
+        """
         digest_config(self, kwargs)
         self.mode = mode
         self.parts_named = False
@@ -70,6 +73,8 @@ class PiCreature(SVGMobject):
                 PI_CREATURE_DIR,
                 "%s_%s.svg" % (self.file_name_prefix, mode)
             )
+            print("="*78)
+            print(svg_file)
             SVGMobject.__init__(self, file_name=svg_file, **kwargs)
         except Exception:
             warnings.warn("No %s design with mode %s" %
@@ -77,7 +82,7 @@ class PiCreature(SVGMobject):
             # TODO, this needs to change to a different, better directory
             svg_file = os.path.join(
                 PI_CREATURE_DIR,
-                "PiCreatures_plain.svg",
+                "plain.svg",
                 # "PiCreatures_sassy.svg",
                 # "PiCreatures_happy.svg",
                 # "PiCreatures_hooray.svg",
@@ -86,6 +91,8 @@ class PiCreature(SVGMobject):
                 # "PiCreatures_thinking.svg",
                 # "PiCreatures_confused.svg",
             )
+            print("&"*78)
+            print(svg_file)
             SVGMobject.__init__(self, mode="plain", file_name=svg_file, **kwargs)
 
         if self.flip_at_start:
@@ -101,6 +108,8 @@ class PiCreature(SVGMobject):
             self.mode = mobject.get_mode()
 
     def name_parts(self):
+        print("="*78)
+        print(self.submobjects) 
         self.mouth = self.submobjects[MOUTH_INDEX]
         self.body = self.submobjects[BODY_INDEX]
         self.pupils = VGroup(*[
