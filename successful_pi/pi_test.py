@@ -7,5 +7,6 @@ class test(Scene):
     def construct(self):
         pi = PiCreature(color=BLUE_E)
         print(pi.parts)
-        for index, part in enumerate(pi.parts):
-            self.add(part.shift(index*RIGHT))
+        self.add(pi.parts[0], pi.parts[2])
+
+        self.add(pi.submobjects[0].copy().shift(DOWN))
