@@ -169,6 +169,10 @@ class PiCreature(SVGMobject):
         return self.body.get_color()
 
     def change_mode(self, mode):
+        """
+        用mode实例化一个新对象
+        然后become
+        """
         new_self = self.__class__(mode=mode)
         new_self.match_style(self)
         new_self.match_height(self)
