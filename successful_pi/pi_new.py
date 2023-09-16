@@ -17,11 +17,11 @@ class NowWeHaveEmotions(TeacherStudentsScene):
         self.teacher_says('Now we have emotions!')
         
         self.wait()
-        self.student_says('Hooray!', student_index=1, target_mode='hooray',
+        self.student_says('Hooray!', index=1, target_mode='hooray',
                          added_anims=[self.teacher.change, "hooray"])
         self.play(self.teacher.change_mode, 'hooray')
         self.wait(2)
-        self.play(RemovePiCreatureBubble(self.students[2]), target_mode='hooray')
+        self.play(RemovePiCreatureBubble(self.students[1]), target_mode='hooray')
         self.wait(3)
 
 class test(Scene):
