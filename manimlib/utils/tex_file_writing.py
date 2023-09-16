@@ -166,3 +166,7 @@ def display_during_execution(message):
         yield
     finally:
         print(" " * len(to_print), end="\r")
+
+
+class LatexError(Exception):
+    pass

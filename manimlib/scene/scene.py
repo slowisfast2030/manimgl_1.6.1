@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import OrderedDict
 import time
 import random
 import inspect
@@ -32,6 +33,11 @@ if TYPE_CHECKING:
     from PIL.Image import Image
     from manimlib.animation.animation import Animation
 
+
+PAN_3D_KEY = 'd'
+FRAME_SHIFT_KEY = 'f'
+RESET_FRAME_KEY = 'r'
+QUIT_KEY = 'q'
 
 class Scene(object):
     CONFIG = {
@@ -935,6 +941,51 @@ class Scene(object):
 
     def on_close(self) -> None:
         pass
+
+
+
+class SceneState():
+    def __init__(self, scene: Scene, ignore: list[Mobject] | None = None):
+        self.time = scene.time
+        self.num_plays = scene.num_plays
+        self.mobjects_to_copies = OrderedDict.fromkeys(scene.mobjects)
+        if ignore:
+            for mob in ignore:
+                self.mobjects_to_copies.pop(mob, None)
+
+        last_m2c = scene.undo_stack[-1].mobjects_to_copies if scene.undo_stack else dict()
+        for mob in self.mobjects_to_copies:
+            # If it hasn't changed since the last state, just point to the
+            # same copy as before
+            if mob in last_m2c and last_m2c[mob].looks_identical(mob):
+                self.mobjects_to_copies[mob] = last_m2c[mob]
+            else:
+                self.mobjects_to_copies[mob] = mob.copy()
+
+    def __eq__(self, state: SceneState):
+        return all((
+            self.time == state.time,
+            self.num_plays == state.num_plays,
+            self.mobjects_to_copies == state.mobjects_to_copies
+        ))
+
+    def mobjects_match(self, state: SceneState):
+        return self.mobjects_to_copies == state.mobjects_to_copies
+
+    def n_changes(self, state: SceneState):
+        m2c = state.mobjects_to_copies
+        return sum(
+            1 - int(mob in m2c and mob.looks_identical(m2c[mob]))
+            for mob in self.mobjects_to_copies
+        )
+
+    def restore_scene(self, scene: Scene):
+        scene.time = self.time
+        scene.num_plays = self.num_plays
+        scene.mobjects = [
+            mob.become(mob_copy)
+            for mob, mob_copy in self.mobjects_to_copies.items()
+        ]
 
 
 class EndSceneEarlyException(Exception):
