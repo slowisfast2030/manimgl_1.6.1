@@ -42,3 +42,12 @@ class test(Scene):
             pi.change_mode(mode)
             self.wait(0.3)
             self.remove(t)
+
+
+class test1(Scene):
+    def construct(self):
+       pi = PiCreature(mode='plain') 
+       self.add(pi)
+       self.wait()
+       pi.look_at(UP+LEFT)
+       self.wait()

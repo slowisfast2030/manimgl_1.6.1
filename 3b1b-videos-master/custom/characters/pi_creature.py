@@ -189,6 +189,9 @@ class PiCreature(SVGMobject):
         return self.mode
 
     def look(self, direction):
+        """
+        iris不变, 移动pupil
+        """
         direction = normalize(direction)
         self.purposeful_looking_direction = direction
         for eye in self.eyes:
