@@ -114,6 +114,8 @@ class PiCreature(SVGMobject):
         # Figma exports with superfluous parts, so this
         # hardcodes how to extract what we want.
         parts = self.submobjects
+        # temp line
+        self.parts = parts.copy()
         
         self.eyes: VGroup = self.draw_eyes(
             original_irises=VGroup(parts[LEFT_EYE_INDEX], parts[RIGHT_EYE_INDEX]),
