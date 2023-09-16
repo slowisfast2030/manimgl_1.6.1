@@ -18,4 +18,4 @@ class test(Scene):
         original_irises=VGroup(parts[LEFT_EYE_INDEX], parts[RIGHT_EYE_INDEX])
         original_pupils=VGroup(parts[LEFT_PUPIL_INDEX], parts[RIGHT_PUPIL_INDEX])
         self.add(original_irises)
-        #self.add(original_pupils)
+        self.add(original_pupils)
