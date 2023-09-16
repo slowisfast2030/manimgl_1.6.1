@@ -238,6 +238,13 @@ class PiCreature(SVGMobject):
         return self
 
     def get_bubble(self, content, bubble_type=ThoughtBubble, **bubble_config):
+        """
+        单独调用这个函数不能正常显示content
+
+        在replace_bubble方法中可以被正常调用
+
+        疑惑
+        """
         bubble = bubble_type(**bubble_config)
         if len(content) > 0:
             if isinstance(content[0], str):
@@ -311,6 +318,11 @@ class PiCreature(SVGMobject):
         )
 
     def replace_bubble(self, content, mode="pondering", look_at=None, **kwargs) -> Animation | _AnimationBuilder:
+        """
+        用新的bubble替换旧的bubble
+
+        注意: 一开始要有bubble
+        """
         if self.bubble is None:
             return self.change(mode, look_at)
         old_bubble = self.bubble
@@ -323,6 +335,11 @@ class PiCreature(SVGMobject):
         )
 
     def debubble(self, mode="plain", look_at=None, **kwargs):
+        """
+        从有bubble的状态回到没有bubble的状态
+
+        注意: 一开始要有bubble
+        """
         if self.bubble is None:
             logging.log(
                 logging.WARNING,
