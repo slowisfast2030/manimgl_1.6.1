@@ -26,9 +26,9 @@ class NowWeHaveEmotions(TeacherStudentsScene):
 
 class test(Scene):
     def construct(self):
-        p = NumberPlane()
-        self.add(p)
-        
+        # p = NumberPlane()
+        # self.add(p)
+
         modes = ('plain', 'sassy', 'happy', 'hooray', 'sad', 'thinking', 'confused',
                  'angry', 'speaking', 'pleading', 'shruggie', 'maybe', 'surprised',
                  'well', 'pondering', 'erm', 'raise_right_hand', 'raise_left_hand',
