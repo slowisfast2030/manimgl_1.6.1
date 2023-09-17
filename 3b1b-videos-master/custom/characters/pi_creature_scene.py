@@ -107,14 +107,14 @@ class PiCreatureScene(Scene):
         """
         class Pi(PiCreatureScene):
             def construct(self):
-                modes = ['plain', 'sassy', 'happy', 'hooray']
-                self.play(self.pi_changes(*modes, run_time=3)) 
-        
-        为何不能正确执行？需要改成:
+                modes = ['sassy', 'happy', 'hooray']
+                self.play(self.pi_changes(*modes, run_time=3))  
 
-        class Pi(PiCreatureScene):
-            def construct(self):
-                self.play(self.pi_changes('plain', 'sassy', 'happy', 'hooray', run_time=3))  
+        从实际的执行效果来看, pi生物只会换一种表情
+        根源在于:
+        for pi, mode in zip(self.pi_creatures, modes)
+        self.pi_creatures是只有一个元素的列表
+        modes是有三个元素的列表 
         """
         return LaggedStart(
             *(
