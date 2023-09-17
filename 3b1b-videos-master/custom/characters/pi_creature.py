@@ -296,6 +296,9 @@ class PiCreature(SVGMobject):
     # Animations
 
     def change(self, new_mode, look_at=None) -> _AnimationBuilder:
+        """
+        通过animate创建了动画
+        """
         animation = self.animate.change_mode(new_mode)
         if look_at is not None:
             animation = animation.look_at(look_at)
