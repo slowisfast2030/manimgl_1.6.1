@@ -26,7 +26,7 @@ class NowWeHaveEmotions(TeacherStudentsScene):
 
 
 class Pi(PiCreatureScene):
-    def pi_changes(self, *modes, look_at=None, lag_ratio=0.5, run_time=1):
+    def pi_changes(self, *modes, lag_ratio=0.5, run_time=1):
         return LaggedStart(
             *(
                 self.pi_creature.change(mode)
