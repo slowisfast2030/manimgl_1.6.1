@@ -143,6 +143,8 @@ class PiCreatureScene(Scene):
                               content="To be or not to be, that is a question",
                               bubble_type=ThoughtBubble,
                               target_mode="thinking")
+
+        在方法里调用了play方法
         """
         if target_mode is None:
             target_mode = "thinking" if bubble_type is ThoughtBubble else "speaking"
