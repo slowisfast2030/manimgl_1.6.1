@@ -331,6 +331,9 @@ class TeacherStudentsScene(PiCreatureScene):
         self.bring_to_back(self.background)
 
     def create_pi_creatures(self):
+        """
+        覆写父类的方法
+        """
         self.teacher = Mortimer(color=self.teacher_color)
         self.teacher.to_corner(DOWN + RIGHT)
         self.teacher.look(DOWN + LEFT)
