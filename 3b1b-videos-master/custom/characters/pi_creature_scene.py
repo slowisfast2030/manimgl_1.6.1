@@ -273,6 +273,10 @@ class PiCreatureScene(Scene):
         return self
 
     def change_mode(self, mode):
+        """
+        play函数的参数不应该是animation吗?
+        这里怎么传入了函数和函数参数?
+        """
         self.play(self.get_primary_pi_creature().change_mode, mode)
 
     def look_at(self, thing_to_look_at, pi_creatures=None, added_anims=None, **kwargs):
