@@ -110,7 +110,11 @@ class PiCreatureScene(Scene):
                 modes = ['plain', 'sassy', 'happy', 'hooray']
                 self.play(self.pi_changes(*modes, run_time=3)) 
         
-        为何不能正确执行？
+        为何不能正确执行？需要改成:
+
+        class Pi(PiCreatureScene):
+            def construct(self):
+                self.play(self.pi_changes('plain', 'sassy', 'happy', 'hooray', run_time=3))  
         """
         return LaggedStart(
             *(
