@@ -115,6 +115,23 @@ class PiCreatureScene(Scene):
         for pi, mode in zip(self.pi_creatures, modes)
         self.pi_creatures是只有一个元素的列表
         modes是有三个元素的列表 
+
+        =========================================================
+        改成了下面这种还是只能显示一个表情, why?
+
+        def pi_changes(self, *modes, lag_ratio=0.5, run_time=1):
+            return LaggedStart(
+                *(
+                    self.pi_creature.change(mode)
+                    for mode in modes
+                ),
+                lag_ratio=lag_ratio,
+                run_time=run_time
+            )
+    
+        def construct(self):
+            modes = ['sassy', 'happy', 'hooray']
+            self.play(self.pi_changes(*modes, run_time=3)) 
         """
         return LaggedStart(
             *(
