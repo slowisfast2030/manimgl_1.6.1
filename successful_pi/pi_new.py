@@ -26,16 +26,9 @@ class NowWeHaveEmotions(TeacherStudentsScene):
 
 
 class Pi(PiCreatureScene):
-    def pi_changes(self, *modes):
-        return [
-                self.pi_creature.change(mode)
-                for mode in modes
-            ]
-        
-    
     def construct(self):
         modes = ['sassy', 'happy', 'hooray']
-        self.play(*self.pi_changes(*modes)) 
+        self.play(self.pi_changes(*modes, run_time=3)) 
     
 
 class test(Scene):
