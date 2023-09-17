@@ -24,6 +24,17 @@ class NowWeHaveEmotions(TeacherStudentsScene):
         self.play(RemovePiCreatureBubble(self.students[1]), target_mode='hooray')
         self.wait(3)
 
+
+class Now(PiCreatureScene):
+    def construct(self):
+        modes = ['plain', 'sassy', 'happy', 'hooray', 'sad', 'thinking', 'confused',
+                 'angry', 'speaking', 'pleading', 'shruggie', 'maybe', 'surprised',
+                 'well', 'pondering', 'erm', 'raise_right_hand', 'raise_left_hand',
+                 'guilty', 'hesitant', 'dance_kick', 'horrified', 'dance_1',
+                 'dance_2', 'dance_3', 'gracious', 'tired']
+        self.play(self.pi_changes(*modes, run_time=10)) 
+    
+
 class test(Scene):
     def construct(self):
         # p = NumberPlane()
