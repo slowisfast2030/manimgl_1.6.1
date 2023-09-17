@@ -27,8 +27,9 @@ class NowWeHaveEmotions(TeacherStudentsScene):
 
 class Pi(PiCreatureScene):
     def construct(self):
-        modes = ['sassy', 'happy', 'hooray']
-        self.play(self.pi_changes(*modes, run_time=3)) 
+        # modes = ['sassy', 'happy', 'hooray']
+        # self.play(self.pi_changes(*modes, run_time=1)) 
+        self.introduce_bubble(self.pi_creature, "hello world")
     
 
 class test(Scene):
