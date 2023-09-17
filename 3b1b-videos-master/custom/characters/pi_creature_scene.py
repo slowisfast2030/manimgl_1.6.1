@@ -111,7 +111,6 @@ class PiCreatureScene(Scene):
                 if mode is not None
             ),
             lag_ratio=lag_ratio,
-            #run_time=1,
             run_time=run_time
         )
 
