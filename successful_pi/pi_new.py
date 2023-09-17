@@ -26,19 +26,16 @@ class NowWeHaveEmotions(TeacherStudentsScene):
 
 
 class Pi(PiCreatureScene):
-    def pi_changes(self, *modes, lag_ratio=0.5, run_time=1):
-        return LaggedStart(
-            *(
+    def pi_changes(self, *modes):
+        return [
                 self.pi_creature.change(mode)
                 for mode in modes
-            ),
-            lag_ratio=lag_ratio,
-            run_time=run_time
-        )
+            ]
+        
     
     def construct(self):
         modes = ['sassy', 'happy', 'hooray']
-        self.play(self.pi_changes(*modes, run_time=3)) 
+        self.play(*self.pi_changes(*modes)) 
     
 
 class test(Scene):
