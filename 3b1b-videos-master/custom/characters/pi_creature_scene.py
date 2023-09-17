@@ -138,6 +138,12 @@ class PiCreatureScene(Scene):
         added_anims=[],
         **kwargs
     ):
+        """
+        self.introduce_bubble(pi_creature=self.pi_creature, 
+                              content="To be or not to be, that is a question",
+                              bubble_type=ThoughtBubble,
+                              target_mode="thinking")
+        """
         if target_mode is None:
             target_mode = "thinking" if bubble_type is ThoughtBubble else "speaking"
 
