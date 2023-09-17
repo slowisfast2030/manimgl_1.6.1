@@ -29,7 +29,10 @@ class Pi(PiCreatureScene):
     def construct(self):
         # modes = ['sassy', 'happy', 'hooray']
         # self.play(self.pi_changes(*modes, run_time=1)) 
-        self.introduce_bubble(self.pi_creature, "hello world")
+        self.introduce_bubble(pi_creature=self.pi_creature, 
+                              content="To be or not to be, that is a question",
+                              bubble_type=ThoughtBubble,
+                              target_mode="thinking")
     
 
 class test(Scene):
