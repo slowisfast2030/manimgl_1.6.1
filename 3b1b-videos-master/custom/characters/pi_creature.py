@@ -265,6 +265,10 @@ class PiCreature(SVGMobject):
         return self
 
     def shrug(self):
+        """
+        不论是代码和svg文件
+        都把shruggle写成了shruggie
+        """
         self.change_mode("shruggie")
         points = self.mouth.get_points()
         top_mouth_point, bottom_mouth_point = [
