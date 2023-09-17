@@ -104,6 +104,14 @@ class PiCreatureScene(Scene):
         ))
 
     def pi_changes(self, *modes, look_at=None, lag_ratio=0.5, run_time=1):
+        """
+        class Pi(PiCreatureScene):
+            def construct(self):
+                modes = ['plain', 'sassy', 'happy', 'hooray']
+                self.play(self.pi_changes(*modes, run_time=3)) 
+        
+        为何不能正确执行？
+        """
         return LaggedStart(
             *(
                 pi.change(mode, look_at)
