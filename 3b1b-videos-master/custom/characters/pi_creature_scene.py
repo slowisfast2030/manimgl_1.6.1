@@ -94,6 +94,9 @@ class PiCreatureScene(Scene):
         return len(self.get_on_screen_pi_creatures()) > 0
 
     def get_on_screen_pi_creatures(self):
+        """
+        获取在屏幕上的pi生物
+        """
         mobjects = self.get_mobject_family_members()
         return VGroup(*(
             pi for pi in self.get_pi_creatures()
