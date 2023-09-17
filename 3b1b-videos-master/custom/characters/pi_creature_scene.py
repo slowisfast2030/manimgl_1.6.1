@@ -325,7 +325,7 @@ class TeacherStudentsScene(PiCreatureScene):
             fill_color=color,
             fill_opacity=1,
         )
-        # linus
+        # linus disable_interaction方法来自于interactive_scene.py 
         # self.disable_interaction(self.background)
         self.add(self.background)
         self.bring_to_back(self.background)
