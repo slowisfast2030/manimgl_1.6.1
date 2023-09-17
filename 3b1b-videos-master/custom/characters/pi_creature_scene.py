@@ -58,6 +58,11 @@ class PiCreatureScene(Scene):
     default_pi_creature_start_corner: Vect3 = DL
 
     def setup(self):
+        """
+        setup()方法是先于construct()方法执行
+        将pi生物创建的代码放在setup()方法
+        意味着在construct()方法中已经有了pi生物
+        """
         super().setup()
         self.pi_creatures = VGroup(*self.create_pi_creatures())
         self.pi_creature = self.get_primary_pi_creature()
