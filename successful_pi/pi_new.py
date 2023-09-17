@@ -29,7 +29,7 @@ class Pi(PiCreatureScene):
     def pi_changes(self, *modes, look_at=None, lag_ratio=0.5, run_time=1):
         return LaggedStart(
             *(
-                self.pi_creature.change(mode, look_at)
+                self.pi_creature.change(mode)
                 for mode in modes
             ),
             lag_ratio=lag_ratio,
