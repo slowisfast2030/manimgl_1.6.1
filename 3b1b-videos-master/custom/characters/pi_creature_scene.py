@@ -37,7 +37,14 @@ if TYPE_CHECKING:
     from manimlib.typing import ManimColor, Vect3
 
 
-# InteractiveScene有很多未解决问题, 暂时用Scene代替 
+"""
+InteractiveScene有很多未解决问题, 暂时用Scene代替 
+
+几个有意思的问题:
+1.我这个manimgl版本是tag1.6.1, manimlib文件夹下是没有interactive_scene.py文件的
+然而3b1b的视频代码(几个pi生物)却需要
+2.interactive_scene.py文件主要增加的功能是交互
+"""
 #class PiCreatureScene(InteractiveScene):
 class PiCreatureScene(Scene):
     total_wait_time: float = 0
