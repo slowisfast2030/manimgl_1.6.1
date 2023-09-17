@@ -60,6 +60,10 @@ class PiCreatureScene(Scene):
         """
         Likely updated for subclasses
         """
+        """
+        只返回一个pi生物, 这里为何要放入列表?
+        因为这个方法会被子类覆盖
+        """
         return [self.create_pi_creature()]
 
     def create_pi_creature(self) -> PiCreature:
