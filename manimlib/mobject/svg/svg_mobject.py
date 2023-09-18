@@ -31,7 +31,17 @@ def _convert_point_to_3d(x: float, y: float) -> np.ndarray:
     return np.array([x, y, 0.0])
 
 
+"""
+SVGMobject就是取出svg文件里的命令, 绘制出对应的图形
+
+所以, 你可以用inkscape等工具, 绘制出你想要的图形, 然后导出为svg文件, 再用SVGMobject读取, 就可以得到对应的图形了
+
+也可以通过manim去绘制, 工作量比较大
+"""
 class SVGMobject(VMobject):
+    """
+    传入一个文件名指向输入的SVG文件
+    """
     CONFIG = {
         "should_center": True,
         "height": 2,
@@ -165,6 +175,18 @@ class SVGMobject(VMobject):
 
     def get_mobjects_from(self, svg: se.SVG) -> list[VMobject]:
         """
+        https://www.runoob.com/svg/svg-path.html
+        svg元素如下:
+        1.<path>     最复杂，既包含简单的移动，也包含复杂的贝塞尔曲线
+        2.<line>
+        3.<rect>
+        4.<circle>
+        5.<ellipse>
+        6.<polygon>  多边形
+        7.<polyline> 多线段
+        8.<text>     Todo
+        """
+        """
         解析svg, 获得vmob列表
         """
         result = []
@@ -246,17 +268,32 @@ class SVGMobject(VMobject):
 
     def path_to_mobject(self, path: se.Path) -> VMobjectFromSVGPath:
         """
-        渲染字母和公式的时候, 会根据字母和公式的path生成vmob
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <path d="M150 0 L75 200 L225 200 Z" />
+        </svg>
         """
         return VMobjectFromSVGPath(path, **self.path_string_config)
 
     def line_to_mobject(self, line: se.Line) -> Line:
+        """
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <line x1="0" y1="0" x2="200" y2="200"
+        style="stroke:rgb(255,0,0);stroke-width:2"/>
+        </svg>
+        """
         return Line(
             start=_convert_point_to_3d(line.x1, line.y1),
             end=_convert_point_to_3d(line.x2, line.y2)
         )
 
     def rect_to_mobject(self, rect: se.Rect) -> Rectangle:
+        """
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <rect x="50" y="20" rx="20" ry="20" width="150"
+        height="150"
+        style="fill:red;stroke:black;stroke-width:5;opacity:0.5"/>
+        </svg>
+        """
         if rect.rx == 0 or rect.ry == 0:
             mob = Rectangle(
                 width=rect.width,
@@ -284,6 +321,12 @@ class SVGMobject(VMobject):
         return mob
 
     def ellipse_to_mobject(self, ellipse: se.Ellipse) -> Circle:
+        """
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <ellipse cx="300" cy="80" rx="100" ry="50"
+        style="fill:yellow;stroke:purple;stroke-width:2"/>
+        </svg>
+        """
         mob = Circle(radius=ellipse.rx)
         mob.stretch_to_fit_height(2 * ellipse.ry)
         mob.shift(_convert_point_to_3d(
@@ -292,6 +335,12 @@ class SVGMobject(VMobject):
         return mob
 
     def polygon_to_mobject(self, polygon: se.Polygon) -> Polygon:
+        """
+        <svg  height="210" width="500">
+        <polygon points="200,10 250,190 160,210"
+        style="fill:lime;stroke:purple;stroke-width:1"/>
+        </svg>
+        """
         points = [
             _convert_point_to_3d(*point)
             for point in polygon
@@ -299,6 +348,12 @@ class SVGMobject(VMobject):
         return Polygon(*points)
 
     def polyline_to_mobject(self, polyline: se.Polyline) -> Polyline:
+        """
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <polyline points="20,20 40,25 60,40 80,120 120,140 200,180"
+        style="fill:none;stroke:black;stroke-width:3" />
+        </svg>
+        """
         points = [
             _convert_point_to_3d(*point)
             for point in polyline
@@ -306,6 +361,11 @@ class SVGMobject(VMobject):
         return Polyline(*points)
 
     def text_to_mobject(self, text: se.Text):
+        """
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <text x="0" y="15" fill="red">I love SVG</text>
+        </svg>
+        """
         pass
 
     def move_into_position(self) -> None:
@@ -318,6 +378,25 @@ class SVGMobject(VMobject):
 
 
 class VMobjectFromSVGPath(VMobject):
+    """传入svg的path元素的字符串, 得到一个由其生成的VMobject, 即只处理path
+    
+    下面的命令可用于路径数据：
+    M = moveto
+    L = lineto
+    H = horizontal lineto
+    V = vertical lineto
+    C = curveto
+    S = smooth curveto
+    Q = quadratic Bézier curve
+    T = smooth quadratic Bézier curveto
+    A = elliptical Arc
+    Z = closepath
+
+    示例：
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <path d="M150 0 L75 200 L225 200 Z" />
+        </svg>
+    """
     CONFIG = {
         "long_lines": False,
         "should_subdivide_sharp_curves": False,
