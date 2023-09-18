@@ -117,4 +117,4 @@ class test6(Scene):
         path = Path(path_string)
 
         smob = VMobjectFromSVGPath(path)
-        self.add(smob.set_stroke(RED, 0.6))
+        self.add(smob.set_color(RED, 0.6))
