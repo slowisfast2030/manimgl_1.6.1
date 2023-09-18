@@ -6,6 +6,6 @@ from alphabet_creature import AlphabetCreature
 
 class test(Scene):
     def construct(self):
-        a = AlphabetCreature("Q")
+        a = AlphabetCreature("Q", color=RED_E)
         self.add(a)
         print(a.submobjects)
