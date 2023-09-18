@@ -19,7 +19,7 @@ class AlphabetCreature(SingleStringTex):
     CONFIG = {
         "color": BLUE_E,
         "height": 3,
-        "start_corner": ORIGIN
+        "start_corner": ORIGIN,
     }
 
     def __init__(self, 
@@ -41,7 +41,7 @@ class AlphabetCreature(SingleStringTex):
 
     def draw_eyes(self):
         eyes = VGroup()
-        
+
         iris = Circle().scale(0.22).\
                     shift(0.15*LEFT+1.6*UP).\
                     set_stroke(BLACK, 1).\
