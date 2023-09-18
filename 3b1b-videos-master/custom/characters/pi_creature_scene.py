@@ -406,7 +406,7 @@ class TeacherStudentsScene(PiCreatureScene):
                 if mode is not None
             ),
             lag_ratio=lag_ratio,
-            run_time=1,
+            run_time=run_time,
         )
 
     def zoom_in_on_thought_bubble(self, bubble=None, radius=FRAME_Y_RADIUS + FRAME_X_RADIUS):
