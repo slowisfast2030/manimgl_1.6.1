@@ -65,20 +65,15 @@ class test(Scene):
 class test1(Scene):
     def construct(self):
        pi = PiCreature(mode='plain') 
-       pii = pi.copy()
+       pi.target = pi.generate_target()
+
        self.add(pi)
-       #pi.look_at(UP+LEFT)
        self.wait()
-       pi.blink_linus()
-       #bubble = pi.get_bubble(content="hello")
-       #self.add(bubble)
-       #pi.shrug()
-       #self.play(pi.thinks("hello world"))
-       #self.play(pi.replace_bubble("hi"))
-       #self.wait()
-       #self.play(pi.change("happy"))
+
+       pi.blink()
        self.wait(0.2)
-       self.add(pii)
+       
+       self.add(pi.target)
        self.wait()
 
 class test2(Scene):
@@ -86,6 +81,6 @@ class test2(Scene):
        pi = PiCreature(mode='plain') 
        self.add(pi)
        pi.target = pi.generate_target()
-       pi.target.blink()
-       #self.play(MoveToTarget(pi, rate_func=there_and_back, run_time=2))
-       self.play(MoveToTarget(pi, rate_func=linear, run_time=1))
+       #pi.target.blink()
+       pi.target.shrug() 
+       self.play(MoveToTarget(pi, rate_func=there_and_back, run_time=1))
