@@ -12,6 +12,9 @@ MOUTH_INDEX: int = 5
 
 class NowWeHaveEmotions(TeacherStudentsScene):
     def construct(self):
+        """
+        blink的效果没有
+        """
         self.play(self.change_students('happy', 'hooray', 'hello'))
         self.play(self.teacher.change_mode, 'happy')
         self.teacher_says('Now we have emotions!')
