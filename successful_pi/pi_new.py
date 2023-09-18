@@ -80,3 +80,12 @@ class test1(Scene):
        self.wait(0.2)
        self.add(pii)
        self.wait()
+
+class test2(Scene):
+    def construct(self):
+       pi = PiCreature(mode='plain') 
+       self.add(pi)
+       pi.target = pi.generate_target()
+       pi.target.shrug()
+       self.play(MoveToTarget(pi, rate_func=there_and_back, run_time=2))
+       #self.play(MoveToTarget(pi, rate_func=linear, run_time=1))
