@@ -108,3 +108,13 @@ class test5(Scene):
        pi = PiCreature(mode='plain') 
        self.add(pi)
        pi.change_mode("tease")
+
+class test6(Scene):
+    def construct(self):
+        path_string = "M 245.05,118.499 L 245.678,118.478 L 246.104,118.016 C 248.603,115.298 250.2,111.95 250.2,108.2 C 250.2,98.9333 240.643,92 229.6,92 C 218.65,92 209.1,98.9376 209.1,108.2 C 209.1,112.039 211.091,116.433 213.983,119.102 L 214.435,119.52 L 215.05,119.499 L 245.05,118.499 Z"
+
+        from svgelements import Path
+        path = Path(path_string)
+
+        smob = VMobjectFromSVGPath(path)
+        self.add(smob.set_stroke(RED, 0.6))
