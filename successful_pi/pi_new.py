@@ -86,6 +86,6 @@ class test2(Scene):
        pi = PiCreature(mode='plain') 
        self.add(pi)
        pi.target = pi.generate_target()
-       pi.target.shrug()
+       pi.target.blink()
        self.play(MoveToTarget(pi, rate_func=there_and_back, run_time=2))
        #self.play(MoveToTarget(pi, rate_func=linear, run_time=1))
