@@ -46,6 +46,11 @@ InteractiveScene有很多未解决问题, 暂时用Scene代替
 2.interactive_scene.py文件主要增加的功能是交互, 可以通过鼠标和键盘控制屏幕中的mob
 3.在早期的manimlib版本(cairo), PiCreatureScene直接继承于Scene 
 """
+"""
+看了PiCreatureScene的源码
+发现主要用到了Scene.play方法
+和InteractiveScene关系不大
+"""
 #class PiCreatureScene(InteractiveScene):
 class PiCreatureScene(Scene):
     total_wait_time: float = 0
