@@ -41,8 +41,8 @@ class AlphabetCreature(SingleStringTex):
 
         
         # 眼白
-        iris = Circle().scale(0.2).\
-                    shift(0.25*LEFT+1.6*UP).\
+        iris = Circle().scale(0.22).\
+                    shift(0.15*LEFT+1.6*UP).\
                     set_stroke(BLACK, 1).\
                     set_fill(WHITE, 1)
         
@@ -62,6 +62,9 @@ class AlphabetCreature(SingleStringTex):
         eye.pupil = pupil
         eye.iris = iris
         eyes.add(eye)
+
+        eyes_right = eyes.copy().shift(RIGHT*0.8)
+        eyes.add(eyes_right)
 
         return eyes
         
