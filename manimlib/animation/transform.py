@@ -234,6 +234,10 @@ class ApplyMethod(Transform):
 
         Relies on the fact that mobject methods return the mobject
         """
+        """
+        将vmob的一个方法封装成animation
+        本质上和animate一样
+        """
         self.check_validity_of_input(method)
         self.method = method
         self.method_args = args

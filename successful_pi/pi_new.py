@@ -107,7 +107,7 @@ class test5(Scene):
     def construct(self):
        pi = PiCreature(mode='plain') 
        self.add(pi)
-       pi.change_mode("tease")
+       self.play(Shrug(pi), run_time=3)
 
 class test6(Scene):
     def construct(self):

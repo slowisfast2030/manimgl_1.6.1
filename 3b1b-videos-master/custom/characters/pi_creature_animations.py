@@ -24,10 +24,20 @@ class Blink(ApplyMethod):
     def __init__(
         self,
         pi_creature: PiCreature,
-        rate_func: Callable = squish_rate_func(there_and_back),
+        rate_func: Callable = there_and_back,
         **kwargs
     ):
         super().__init__(pi_creature.blink, rate_func=rate_func, **kwargs)
+
+
+class Shrug(ApplyMethod):
+    def __init__(
+        self,
+        pi_creature: PiCreature,
+        rate_func: Callable = squish_rate_func(there_and_back),
+        **kwargs
+    ):
+        super().__init__(pi_creature.shrug, rate_func=rate_func, **kwargs)
 
 
 class PiCreatureBubbleIntroduction(AnimationGroup):
