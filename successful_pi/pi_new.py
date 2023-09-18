@@ -92,5 +92,5 @@ class test3(Scene):
        self.add(pi)
        pi.target = pi.generate_target()
        pii = pi.target.blink()
-       #pi.target.shrug() 
+       pi.target.shrug() 
        self.play(Transform(pi, pii, rate_func=there_and_back, run_time=1))
