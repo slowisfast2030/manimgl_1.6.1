@@ -394,8 +394,8 @@ class VMobjectFromSVGPath(VMobject):
 
     示例：
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <path d="M150 0 L75 200 L225 200 Z" />
-        </svg>
+    <path d="M150 0 L75 200 L225 200 Z" />
+    </svg>
     """
     CONFIG = {
         "long_lines": False,
