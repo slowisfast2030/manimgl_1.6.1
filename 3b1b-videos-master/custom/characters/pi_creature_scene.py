@@ -399,6 +399,9 @@ class TeacherStudentsScene(PiCreatureScene):
         )
 
     def change_students(self, *modes, look_at=None, lag_ratio=0.5, run_time=1):
+        """
+        注意: 学生的数目和mode的数目要匹配
+        """
         return LaggedStart(
             *(
                 student.change(mode, look_at)
