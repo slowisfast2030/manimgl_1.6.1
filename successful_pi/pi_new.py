@@ -69,7 +69,7 @@ class test1(Scene):
        self.add(pi)
        #pi.look_at(UP+LEFT)
        self.wait()
-       pi.blink()
+       pi.blink_linus()
        #bubble = pi.get_bubble(content="hello")
        #self.add(bubble)
        #pi.shrug()

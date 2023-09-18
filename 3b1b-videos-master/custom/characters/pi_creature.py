@@ -228,6 +228,10 @@ class PiCreature(SVGMobject):
 
     def blink(self):
         """
+        将眼睛部分的点的y坐标设置为eye_bottom_y
+        从而实现闭眼的效果
+        """
+        """
         blink的效果不太好
         眼睛会闭起来
         但不再睁开
