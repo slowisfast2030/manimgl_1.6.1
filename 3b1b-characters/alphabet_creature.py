@@ -5,6 +5,8 @@ from manimlib.utils.config_ops import digest_config
 from manimlib.mobject.types.vectorized_mobject import VGroup
 from manimlib.mobject.types.vectorized_mobject import VMobject
 from manimlib.mobject.geometry import Circle
+from manimlib.mobject.geometry import Rectangle
+
 
 from typing import TYPE_CHECKING, Union
 if TYPE_CHECKING:
@@ -33,7 +35,8 @@ class AlphabetCreature(SingleStringTex):
     def init_structure(self):
         self.body:VMobject = self.submobjects[0]
         self.eyes = self.draw_eyes()
-        self.set_submobjects([self.body, self.eyes]) 
+        self.mouth = self.draw_mouth()
+        self.set_submobjects([self.body, self.eyes, self.mouth]) 
 
 
     def draw_eyes(self):
@@ -67,4 +70,10 @@ class AlphabetCreature(SingleStringTex):
         eyes.add(eyes_right)
 
         return eyes
-        
+
+    def draw_mouth(self):
+        mouth = Rectangle(color=BLACK,
+                          height=0.01,
+                          width=0.3)
+        mouth.shift(UP*1.22 + RIGHT*0.2)
+        return mouth
