@@ -232,7 +232,7 @@ class PiCreature(SVGMobject):
         从而实现闭眼的效果
         """
         """
-        blink的效果不太好
+        blink的效果需要改进
         眼睛会闭起来
         但不再睁开
         """
