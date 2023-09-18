@@ -94,3 +94,11 @@ class test3(Scene):
        pii = pi.target.blink()
        pi.target.shrug() 
        self.play(Transform(pi, pii, rate_func=there_and_back, run_time=1))
+
+class test4(Scene):
+    def construct(self):
+       pi = PiCreature(mode='plain') 
+       self.add(pi)
+       pi.look(DOWN+LEFT)
+       dot = Dot(pi.eyes[0].get_center()).set_color(RED).scale(0.5)
+       self.add(dot)
