@@ -366,6 +366,9 @@ class Randolph(PiCreature):
 
 
 class Mortimer(PiCreature):
+    """
+    教师
+    """
     def __init__(
         self,
         mode: str = "plain",
