@@ -362,6 +362,12 @@ class PiCreature(SVGMobject):
 
 
 class Randolph(PiCreature):
+    """
+    学生
+    """
+    """
+    直接为pass也行
+    """
     pass  # Nothing more than an alternative name
 
 
