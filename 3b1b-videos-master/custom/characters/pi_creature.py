@@ -227,6 +227,9 @@ class PiCreature(SVGMobject):
             self.eyes.submobjects[1].get_center()[0]
 
     def blink(self):
+        """
+        
+        """
         eyes = self.eyes
         eye_bottom_y = eyes.get_y(DOWN)
 

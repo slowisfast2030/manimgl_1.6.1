@@ -65,6 +65,7 @@ class test(Scene):
 class test1(Scene):
     def construct(self):
        pi = PiCreature(mode='plain') 
+       pii = pi.copy()
        self.add(pi)
        #pi.look_at(UP+LEFT)
        self.wait()
@@ -76,4 +77,6 @@ class test1(Scene):
        #self.play(pi.replace_bubble("hi"))
        #self.wait()
        #self.play(pi.change("happy"))
+       self.wait(0.2)
+       self.add(pii)
        self.wait()
