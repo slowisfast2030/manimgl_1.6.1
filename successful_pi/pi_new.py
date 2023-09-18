@@ -102,3 +102,9 @@ class test4(Scene):
        pi.look(DOWN+LEFT)
        dot = Dot(pi.eyes[0].get_center()).set_color(RED).scale(0.5)
        self.add(dot)
+
+class test5(Scene):
+    def construct(self):
+       pi = PiCreature(mode='plain') 
+       self.add(pi)
+       pi.change_mode("tease")
