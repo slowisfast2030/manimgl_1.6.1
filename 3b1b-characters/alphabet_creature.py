@@ -41,9 +41,7 @@ class AlphabetCreature(SingleStringTex):
 
     def draw_eyes(self):
         eyes = VGroup()
-
         
-        # 眼白
         iris = Circle().scale(0.22).\
                     shift(0.15*LEFT+1.6*UP).\
                     set_stroke(BLACK, 1).\
