@@ -228,7 +228,9 @@ class PiCreature(SVGMobject):
 
     def blink(self):
         """
-        
+        blink的效果不太好
+        眼睛会闭起来
+        但不再睁开
         """
         eyes = self.eyes
         eye_bottom_y = eyes.get_y(DOWN)
