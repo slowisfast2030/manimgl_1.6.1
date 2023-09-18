@@ -226,6 +226,19 @@ class PiCreature(SVGMobject):
         return self.eyes.submobjects[0].get_center()[0] > \
             self.eyes.submobjects[1].get_center()[0]
 
+    """
+    class test2(Scene):
+        def construct(self):
+            pi = PiCreature(mode='plain') 
+            self.add(pi)
+            pi.target = pi.generate_target()
+            pi.target.blink()
+            #pi.target.shrug() 
+            self.play(MoveToTarget(pi, rate_func=there_and_back, run_time=1))
+    
+    困惑:
+    执行shrug正常, 执行blink没有效果
+    """
     def blink(self):
         """
         将眼睛部分的点的y坐标设置为eye_bottom_y

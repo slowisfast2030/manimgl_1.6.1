@@ -72,7 +72,8 @@ class test1(Scene):
 
        pi.blink()
        self.wait(0.2)
-       
+     
+       self.remove(pi)
        self.add(pi.target)
        self.wait()
 
@@ -81,6 +82,15 @@ class test2(Scene):
        pi = PiCreature(mode='plain') 
        self.add(pi)
        pi.target = pi.generate_target()
-       #pi.target.blink()
-       pi.target.shrug() 
+       pi.target.blink()
+       #pi.target.shrug() 
        self.play(MoveToTarget(pi, rate_func=there_and_back, run_time=1))
+
+class test3(Scene):
+    def construct(self):
+       pi = PiCreature(mode='plain') 
+       self.add(pi)
+       pi.target = pi.generate_target()
+       pii = pi.target.blink()
+       #pi.target.shrug() 
+       self.play(Transform(pi, pii, rate_func=there_and_back, run_time=1))
