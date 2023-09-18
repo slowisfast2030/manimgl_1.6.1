@@ -241,6 +241,22 @@ class PiCreature(SVGMobject):
             eye_part.set_points(new_points)
 
         return self
+    
+    def blink_linus(self):
+        """
+        linus修改版
+        """
+        eyes = self.eyes
+        eyes_starting = eyes.copy()
+
+        eye_bottom_y = eyes.get_y(DOWN)
+
+        for eye_part in eyes.family_members_with_points():
+            new_points = eye_part.get_points()
+            new_points[:, 1] = eye_bottom_y
+            eye_part.set_points(new_points)
+
+        return self
 
     def get_bubble(self, content, bubble_type=ThoughtBubble, **bubble_config):
         """
