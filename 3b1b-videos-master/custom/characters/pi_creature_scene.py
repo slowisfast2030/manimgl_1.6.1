@@ -230,6 +230,9 @@ class PiCreatureScene(Scene):
         return animations
 
     def blink(self):
+        """
+        随机挑选一个pi生物眨眼
+        """
         self.play(Blink(random.choice(self.get_on_screen_pi_creatures())))
 
     def joint_blink(self, pi_creatures=None, shuffle=True, **kwargs):
