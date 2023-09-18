@@ -71,7 +71,6 @@ class PiCreature(SVGMobject):
             **kwargs
         )
 
-        # 会报错，直接重写这个函数
         self.init_structure()
         self.set_color(color)
         if flip_at_start:
