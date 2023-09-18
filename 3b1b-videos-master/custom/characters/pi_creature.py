@@ -161,6 +161,9 @@ class PiCreature(SVGMobject):
             self.mode = mobject.get_mode()
 
     def set_color(self, color, recurse=True):
+        """
+        为body部分设置颜色
+        """
         self.body.set_fill(color, recurse=recurse)
         return self
 
