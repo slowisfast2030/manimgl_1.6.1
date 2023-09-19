@@ -142,6 +142,26 @@ class AlphabetCreature(SingleStringTex):
     def get_color(self):
         return self.body.get_color()
     
+    def change_letter(self, new_letter):
+        """
+        用new_letter实例化一个新对象
+        然后become
+        """
+        new_self = self.__class__(letter=new_letter)
+        new_self.match_style(self)
+        new_self.match_height(self)
+        if self.is_flipped() != new_self.is_flipped():
+            new_self.flip()
+        new_self.shift(self.eyes.get_center() - new_self.eyes.get_center())
+        if hasattr(self, "purposeful_looking_direction"):
+            new_self.look(self.purposeful_looking_direction)
+        self.become(new_self)
+        self.mode = mode
+        return self
+
+    def get_letter(self):
+        return self.letter
+
     def look(self, direction):
         """
         iris不变, 移动pupil
