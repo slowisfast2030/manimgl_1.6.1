@@ -75,7 +75,7 @@ class SVGMobject(VMobject):
         self.init_svg_mobject()
         self.init_colors()
         self.move_into_position()
-
+        
     """
     c = SingleStringTex("A  BC", organize_left_to_right=False)
 
