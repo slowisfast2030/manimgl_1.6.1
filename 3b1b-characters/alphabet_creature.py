@@ -82,6 +82,7 @@ class AlphabetCreature(SingleStringTex):
     def draw_eyes(self):
         eyes = VGroup()
 
+        # 眼白
         iris = Circle().scale(0.22).\
                     shift(0.15*LEFT+1.6*UP).\
                     set_stroke(BLACK, 1).\
@@ -92,6 +93,7 @@ class AlphabetCreature(SingleStringTex):
         dot_r = pupil_r
         dot_r *= self.pupil_dot_to_pupil_width_ratio
 
+        # 眼睛
         black = Circle(radius=pupil_r, color=BLACK)
         dot = Circle(radius=dot_r, color=WHITE)
         dot.shift(black.pfp(3 / 8) - dot.pfp(3 / 8))
@@ -99,13 +101,15 @@ class AlphabetCreature(SingleStringTex):
         pupil.set_style(fill_opacity=1, stroke_width=0)
         pupil.move_to(iris.get_center()+UR*0.08)
 
+        # 左眼
         iris_left = iris.copy()
         pupil_left = pupil.copy()
-        eye = VGroup(iris, pupil)
-        eye.pupil = pupil
-        eye.iris = iris
-        eyes.add(eye)
+        eye_left = VGroup(iris_left, pupil_left)
+        eye_left.iris = iris
+        eye_left.pupil = pupil
+        eyes.add(eye_left)
 
+        # 右眼
         iris_right = iris.copy()
         pupil_right = pupil.copy()
         eye_right = VGroup(iris_right, pupil_right).shift(RIGHT*0.8)

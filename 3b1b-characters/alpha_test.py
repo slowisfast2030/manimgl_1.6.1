@@ -7,7 +7,7 @@ from alphabet_creature import AlphabetCreature
 class test(Scene):
     def construct(self):
         a = AlphabetCreature("\pi", flip_at_start=False)
-        self.add(a.eyes[1])
+        self.add(a.eyes)
         print(a.submobjects)
 
 class test1(Scene):
