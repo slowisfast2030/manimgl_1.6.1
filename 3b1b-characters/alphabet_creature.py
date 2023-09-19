@@ -16,6 +16,21 @@ class AlphabetCreature(SingleStringTex):
     pupil_to_eye_width_ratio: float = 0.4
     pupil_dot_to_pupil_width_ratio: float = 0.3
 
+    """
+    在CONFIG类中定义了2种属性:
+    1.父类中出现过, 比如color, height
+    2.父类中没有出现过, 比如start_corner
+
+    这里涉及到如何理解继承
+    当前类的继承链如下:
+    AlphabetCreature --> SingleStringTex --> SVGMobject --> VMobject --> Mobject
+    每一个类都会有自己的CONFIG字典
+    在当前类中, 我们可以想象
+    当前类拥有所有类的方法, 也会拥有所有类的CONFIG中定义的属性
+    当前类的同名方法会覆盖父类的同名方法(所有父类的方法会合并到当前类)
+    当前类的同名属性会覆盖父类的同名属性(所有的父类的CONFIG字典会合并成一个字典)
+
+    """
     CONFIG = {
         "color": BLUE_E,
         "height": 4,

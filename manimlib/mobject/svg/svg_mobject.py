@@ -79,6 +79,8 @@ class SVGMobject(VMobject):
         print("self.height: {}".format(self.height))
         print("self.organize_left_to_right: {}".format(self.organize_left_to_right))
         print("self.shader_dtype: {}".format(self.shader_dtype))
+        print("="*78)
+        print(self.color)
         
     """
     c = SingleStringTex("A  BC", organize_left_to_right=False)
