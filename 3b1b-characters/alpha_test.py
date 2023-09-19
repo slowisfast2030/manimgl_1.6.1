@@ -17,6 +17,13 @@ class test(Scene):
         self.add(aa)
         self.wait(1)
 
+class test_letter(Scene):
+    def construct(self):
+        a = AlphabetCreature("\pi", flip_at_start=False, color=TEAL)
+        self.add(a)
+        self.play(a.change("B"))
+
+
 class test1(Scene):
     def construct(self):
         a = SingleStringTex("AB")

@@ -1,6 +1,8 @@
 
 from manimlib.constants import *
+from manimlib.mobject.mobject import _AnimationBuilder
 from manimlib.mobject.svg.tex_mobject import SingleStringTex
+from manimlib.mobject.svg.svg_mobject import SVGMobject
 from manimlib.utils.config_ops import digest_config
 from manimlib.mobject.types.vectorized_mobject import VGroup
 from manimlib.mobject.types.vectorized_mobject import VMobject
@@ -55,6 +57,7 @@ class AlphabetCreature(SingleStringTex):
         #digest_config(self, kwargs)
         
         self.letter = letter
+        self.bubble = None
         
         super().__init__(self.letter, **kwargs)
 
@@ -132,6 +135,13 @@ class AlphabetCreature(SingleStringTex):
         mouth.shift(UP*1.22 + RIGHT*0.2)
         return mouth
     
+    def align_data_and_family(self, mobject):
+        # This ensures that after a transform into a different mode,
+        # the pi creatures mode will be updated appropriately
+        SVGMobject.align_data_and_family(self, mobject)
+        if isinstance(mobject, AlphabetCreature):
+            self.mode = mobject.get_mode()
+
     def set_color(self, color, recurse=True):
         """
         为body部分设置颜色
@@ -156,7 +166,7 @@ class AlphabetCreature(SingleStringTex):
         if hasattr(self, "purposeful_looking_direction"):
             new_self.look(self.purposeful_looking_direction)
         self.become(new_self)
-        self.mode = mode
+        self.letter = new_letter 
         return self
 
     def get_letter(self):
@@ -221,3 +231,22 @@ class AlphabetCreature(SingleStringTex):
             eye_part.set_points(new_points)
 
         return self
+    
+    # Overrides
+
+    def become(self, mobject):
+        super().become(mobject)
+        if isinstance(mobject, AlphabetCreature):
+            self.bubble = mobject.bubble
+        return self
+    
+     # Animations
+
+    def change(self, new_letter, look_at=None) -> _AnimationBuilder:
+        """
+        通过animate创建了动画
+        """
+        animation = self.animate.change_letter(new_letter)
+        if look_at is not None:
+            animation = animation.look_at(look_at)
+        return animation
