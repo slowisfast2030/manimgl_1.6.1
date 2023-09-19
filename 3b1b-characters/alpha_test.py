@@ -9,3 +9,8 @@ class test(Scene):
         a = AlphabetCreature("Q", linus = True, turing= True)
         self.add(a)
         print(a.submobjects)
+
+class test1(Scene):
+    def construct(self):
+        a = SingleStringTex("A")
+        self.add(a)

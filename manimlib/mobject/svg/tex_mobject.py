@@ -83,9 +83,23 @@ class SingleStringTex(SVGMobject):
 
     def __init__(self, tex_string: str, **kwargs):
         """只传入一个字符串``tex_string``"""
+        
+        #print(self.organize_left_to_right)
+        #print(self.joint_type)
+
         assert isinstance(tex_string, str)
         self.tex_string = tex_string
         super().__init__(**kwargs)
+        
+        """
+        如何理解CONFIG字典?
+        当前类中并没有显示调用digest_config函数
+        但是通过super().__init__(**kwargs)溯源, 可以发现在Mobject类中主动调用了digest_config函数
+        在此之后, 当前类的所有父类的CONFIG字典的属性都可以被引用
+        """
+        # print(self.organize_left_to_right)
+        # print(self.joint_type)
+        # print(self.shader_dtype)
 
         if self.height is None:
             self.scale(SCALE_FACTOR_PER_FONT_POINT * self.font_size)
