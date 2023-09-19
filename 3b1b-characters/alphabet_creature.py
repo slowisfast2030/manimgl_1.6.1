@@ -34,20 +34,28 @@ class AlphabetCreature(SingleStringTex):
     CONFIG = {
         "color": BLUE_E,
         "height": 4,
-        "start_corner": ORIGIN,
+        "start_corner": ORIGIN+RIGHT*2,
     }
 
     def __init__(self, 
                  letter: str = "A",
                  **kwargs
                  ):
-        # 在父类中会调用这个函数, 这里可以省去
-        digest_config(self, kwargs)
+        """
+        __init__方法中的属性和CONFIG字典中的属性是什么关系?
+        
+
+        """
+        # 在父类Mobject中会调用这个函数, 这里可以省去
+        #digest_config(self, kwargs)
         self.letter = letter
         
         super().__init__(self.letter, **kwargs)
 
         self.init_structure()
+
+        if self.start_corner is not None:
+            self.move_to(self.start_corner)
         
         
     def init_structure(self):
@@ -55,7 +63,7 @@ class AlphabetCreature(SingleStringTex):
         self.eyes = self.draw_eyes()
         self.mouth = self.draw_mouth()
         self.set_submobjects([self.body, self.eyes, self.mouth]) 
-        
+
 
 
     def draw_eyes(self):

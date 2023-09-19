@@ -6,7 +6,7 @@ from alphabet_creature import AlphabetCreature
 
 class test(Scene):
     def construct(self):
-        a = AlphabetCreature("Q", linus = True, turing= True)
+        a = AlphabetCreature("Q", start_corner=ORIGIN)
         self.add(a)
         print(a.submobjects)
 
