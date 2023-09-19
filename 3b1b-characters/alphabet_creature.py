@@ -33,8 +33,8 @@ class AlphabetCreature(SingleStringTex):
     """
     CONFIG = {
         "color": BLUE_E,
-        "height": 4,
-        "start_corner": ORIGIN+RIGHT*2,
+        "height": 3,
+        "start_corner": ORIGIN,
         "flip_at_start": False,
     }
     """
