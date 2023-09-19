@@ -43,8 +43,10 @@ class AlphabetCreature(SingleStringTex):
                  ):
         """
         __init__方法中的属性和CONFIG字典中的属性是什么关系?
+        一般而言, CONFIG中的属性都是类的一般属性
+        __init__方法中上属性都是更加私人化的
         
-
+        而且, __init__方法的属性优先级更高, 可以覆盖CONFIG字典的属性
         """
         # 在父类Mobject中会调用这个函数, 这里可以省去
         #digest_config(self, kwargs)
