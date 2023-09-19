@@ -37,20 +37,21 @@ class AlphabetCreature(SingleStringTex):
         "start_corner": ORIGIN+RIGHT*2,
         "flip_at_start": False,
     }
-
+    """
+    __init__方法中的属性和CONFIG字典中的属性是什么关系?
+    一般而言, CONFIG中的属性都是类的一般属性
+    __init__方法中上属性都是更加私人化的
+    
+    而且, __init__方法的属性优先级更高, 可以覆盖CONFIG字典的属性
+    """
     def __init__(self, 
                  letter: str = "A",
                  **kwargs
                  ):
-        """
-        __init__方法中的属性和CONFIG字典中的属性是什么关系?
-        一般而言, CONFIG中的属性都是类的一般属性
-        __init__方法中上属性都是更加私人化的
         
-        而且, __init__方法的属性优先级更高, 可以覆盖CONFIG字典的属性
-        """
         # 在父类Mobject中会调用这个函数, 这里可以省去
         #digest_config(self, kwargs)
+        
         self.letter = letter
         
         super().__init__(self.letter, **kwargs)
@@ -72,7 +73,10 @@ class AlphabetCreature(SingleStringTex):
 
 
     def draw_body(self):
-        body = self.submobjects[0]
+        submobjects = self.submobjects
+        assert len(submobjects) == 1, "the length of the letter must be 1"
+
+        body = submobjects[0]
         return body
 
     def draw_eyes(self):
