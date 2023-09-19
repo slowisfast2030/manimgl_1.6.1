@@ -5,7 +5,7 @@ from manim_imports_ext_new import *
 import json
 
 
-class test(Scene):
+class save(Scene):
     def construct(self):
         # p = NumberPlane()
         # self.add(p)
@@ -37,3 +37,15 @@ class test(Scene):
         with open(file_path, "w") as json_file:
             json.dump(data_to_write, json_file)
         
+class read(Scene):
+    def construct(self):
+        file_path = "/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-characters/alphabet_points.json"
+        with open(file_path, "r") as json_file:
+            data = json.load(json_file)
+        
+        vm = VMobject()
+        mouth_points = data['happy']['iris_left']
+        vm.set_points(mouth_points)
+        #vm.set_color(BLACK)
+
+        self.add(vm)
