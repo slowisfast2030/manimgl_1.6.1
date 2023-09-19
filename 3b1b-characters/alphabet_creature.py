@@ -58,11 +58,15 @@ class AlphabetCreature(SingleStringTex):
 
         self.init_structure()
 
+        self.set_color(self.color)
+
         if self.start_corner is not None:
             self.move_to(self.start_corner)
         
         if self.flip_at_start:
             self.flip()
+        
+        self.refresh_triangulation()
         
     def init_structure(self):
         """
@@ -125,3 +129,13 @@ class AlphabetCreature(SingleStringTex):
                           width=0.3)
         mouth.shift(UP*1.22 + RIGHT*0.2)
         return mouth
+    
+    def set_color(self, color, recurse=True):
+        """
+        为body部分设置颜色
+        """
+        self.body.set_fill(color, recurse=recurse)
+        return self
+
+    def get_color(self):
+        return self.body.get_color()
