@@ -99,13 +99,19 @@ class AlphabetCreature(SingleStringTex):
         pupil.set_style(fill_opacity=1, stroke_width=0)
         pupil.move_to(iris.get_center()+UR*0.08)
 
+        iris_left = iris.copy()
+        pupil_left = pupil.copy()
         eye = VGroup(iris, pupil)
         eye.pupil = pupil
         eye.iris = iris
         eyes.add(eye)
 
-        eyes_right = eyes.copy().shift(RIGHT*0.8)
-        eyes.add(eyes_right)
+        iris_right = iris.copy()
+        pupil_right = pupil.copy()
+        eye_right = VGroup(iris_right, pupil_right).shift(RIGHT*0.8)
+        eye_right.iris = iris_right
+        eye_right.pupil = pupil_right
+        eyes.add(eye_right)
 
         return eyes
 
