@@ -174,3 +174,30 @@ class AlphabetCreature(SingleStringTex):
     def get_looking_direction(self):
         vect = self.eyes[0].pupil.get_center() - self.eyes[0].get_center()
         return normalize(vect)
+    
+    def get_look_at_spot(self):
+        return self.eyes.get_center() + self.get_looking_direction()
+
+    def is_flipped(self):
+        return self.eyes.submobjects[0].get_center()[0] > \
+            self.eyes.submobjects[1].get_center()[0]
+    
+    def blink(self):
+        """
+        将眼睛部分的点的y坐标设置为eye_bottom_y
+        从而实现闭眼的效果
+        """
+        """
+        blink的效果需要改进
+        眼睛会闭起来
+        但不再睁开
+        """
+        eyes = self.eyes
+        eye_bottom_y = eyes.get_y(DOWN)
+
+        for eye_part in eyes.family_members_with_points():
+            new_points = eye_part.get_points()
+            new_points[:, 1] = eye_bottom_y
+            eye_part.set_points(new_points)
+
+        return self
