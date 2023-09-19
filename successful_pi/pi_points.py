@@ -47,9 +47,9 @@ class read(Scene):
         
 
         vm = VMobject()
-        mouth_points = data['happy']['pupil_left']
+        mouth_points = data['happy']['mouth']
         vm.set_points(mouth_points)
-        vm.match_style(pi.eyes[0].pupil)
+        vm.match_style(pi.mouth)
 
 
         self.add(vm)
