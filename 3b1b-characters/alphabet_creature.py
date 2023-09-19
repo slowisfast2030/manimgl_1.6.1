@@ -26,12 +26,14 @@ class AlphabetCreature(SingleStringTex):
                  letter: str = "A",
                  **kwargs
                  ):
-        digest_config(self, kwargs)
+        #digest_config(self, kwargs)
         self.letter = letter
-        print("kwargs: {}".format(kwargs))
-        print(self.height)
         
         super().__init__(self.letter, **kwargs)
+        print("self.height: {}".format(self.height))
+        print("self.organize_left_to_right: {}".format(self.organize_left_to_right))
+        print("self.shader_dtype: {}".format(self.shader_dtype))
+
         self.init_structure()
         
         

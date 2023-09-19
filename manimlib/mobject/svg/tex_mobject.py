@@ -100,6 +100,14 @@ class SingleStringTex(SVGMobject):
         # print(self.organize_left_to_right)
         # print(self.joint_type)
         # print(self.shader_dtype)
+        """
+        测试一下CONFIG中的height属性
+        在当前类中height=None
+        在父类SVGMobject中height=2
+        在子类AlphabetCreature中height=4
+        那么打印self.height是多少?
+        """
+        #print("self.height:{}".format(self.height))
 
         if self.height is None:
             self.scale(SCALE_FACTOR_PER_FONT_POINT * self.font_size)
