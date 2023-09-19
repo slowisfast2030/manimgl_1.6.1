@@ -18,7 +18,7 @@ class AlphabetCreature(SingleStringTex):
 
     CONFIG = {
         "color": BLUE_E,
-        "height": 3,
+        "height": 4,
         "start_corner": ORIGIN,
     }
 
@@ -28,6 +28,9 @@ class AlphabetCreature(SingleStringTex):
                  ):
         digest_config(self, kwargs)
         self.letter = letter
+        print("kwargs: {}".format(kwargs))
+        print(self.height)
+        
         super().__init__(self.letter, **kwargs)
         self.init_structure()
         
