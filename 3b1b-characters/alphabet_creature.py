@@ -64,18 +64,18 @@ class AlphabetCreature(SingleStringTex):
         if self.flip_at_start:
             self.flip()
         
-        
     def init_structure(self):
+        """
+        初始化卡通生物的body,eyes和mouth
+        """
         self.body:VMobject = self.draw_body()
         self.eyes:VGroup = self.draw_eyes()
         self.mouth:VMobject = self.draw_mouth()
         self.set_submobjects([self.body, self.eyes, self.mouth]) 
 
-
     def draw_body(self):
         submobjects = self.submobjects
-        assert len(submobjects) == 1, "the length of the letter must be 1"
-
+        assert len(submobjects) == 1, "the length of the submobjects must be 1"
         body = submobjects[0]
         return body
 
