@@ -11,7 +11,7 @@ class test(Scene):
         # self.add(p)
 
         modes = ('plain', 'happy', 'sad')
-        pi = PiCreature(mode='plain')
+        pi = PiCreature(mode='happy')
         mob = pi
         
         eyes = mob.eyes
@@ -23,7 +23,7 @@ class test(Scene):
 
         self.add(mob, )
         data_to_write = {
-            "plain": {
+            "happy": {
                 "iris_left": left_iris.get_points().tolist(),
                 "pupil_left": left_pupil.get_all_points().tolist(),
                 "iris_right": right_iris.get_points().tolist(),
