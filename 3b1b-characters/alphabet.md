@@ -18,3 +18,37 @@ eyes和mouth有几种类型，可以读取不同类型的eyes和mouth，并将�
 
 ## 文件
 格式: yml
+
+在AlphabetCreature类初始化的时候读入这份文件
+```
+bubble:
+    speaking:
+        points:
+    thought:
+        points:
+eyes:
+    plain:
+    happy:
+    sad:
+mouth:
+    plain:
+    happy:
+    sad:
+alphabet:
+    A:
+        eyes_location:
+        mouth_location:
+    B:
+        eyes_location:
+        mouth_location:
+    C:
+        eyes_location:
+        mouth_location:
+    pi:
+        eyes_location:
+        mouth_location:
+    mu:
+        eyes_location:
+        mouth_location:
+
+```
