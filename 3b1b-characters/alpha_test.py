@@ -12,8 +12,9 @@ class test(Scene):
 
 class test1(Scene):
     def construct(self):
-        a = SingleStringTex("A")
+        a = SingleStringTex("AB")
         self.add(a)
+        print(a.submobjects)
 
 
 class MyCircle(Circle):

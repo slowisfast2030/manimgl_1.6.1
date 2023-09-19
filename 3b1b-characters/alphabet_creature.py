@@ -65,12 +65,15 @@ class AlphabetCreature(SingleStringTex):
         
         
     def init_structure(self):
-        self.body:VMobject = self.submobjects[0]
-        self.eyes = self.draw_eyes()
-        self.mouth = self.draw_mouth()
+        self.body:VMobject = self.draw_body()
+        self.eyes:VGroup = self.draw_eyes()
+        self.mouth:VMobject = self.draw_mouth()
         self.set_submobjects([self.body, self.eyes, self.mouth]) 
 
 
+    def draw_body(self):
+        body = self.submobjects[0]
+        return body
 
     def draw_eyes(self):
         eyes = VGroup()
