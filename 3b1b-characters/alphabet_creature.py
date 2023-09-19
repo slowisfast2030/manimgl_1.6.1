@@ -33,7 +33,7 @@ class AlphabetCreature(SingleStringTex):
     当前类拥有所有类的方法, 也会拥有所有类的CONFIG中定义的属性
     当前类的同名方法会覆盖父类的同名方法(所有父类的方法会合并到当前类)
     当前类的同名属性会覆盖父类的同名属性(所有的父类的CONFIG字典会合并成一个字典)
-    
+
     """
     CONFIG = {
         "color": BLUE_E,
