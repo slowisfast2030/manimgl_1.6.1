@@ -35,6 +35,7 @@ class AlphabetCreature(SingleStringTex):
         "color": BLUE_E,
         "height": 4,
         "start_corner": ORIGIN+RIGHT*2,
+        "flip_at_start": False,
     }
 
     def __init__(self, 
@@ -58,6 +59,9 @@ class AlphabetCreature(SingleStringTex):
 
         if self.start_corner is not None:
             self.move_to(self.start_corner)
+        
+        if self.flip_at_start:
+            self.flip()
         
         
     def init_structure(self):
