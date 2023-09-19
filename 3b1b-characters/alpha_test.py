@@ -9,6 +9,7 @@ class test(Scene):
         a = AlphabetCreature("\pi", flip_at_start=False, color=RED)
         self.add(a)
         print(a.submobjects)
+        a.look(LEFT)
 
 class test1(Scene):
     def construct(self):

@@ -4,9 +4,11 @@ from manimlib.mobject.svg.tex_mobject import SingleStringTex
 from manimlib.utils.config_ops import digest_config
 from manimlib.mobject.types.vectorized_mobject import VGroup
 from manimlib.mobject.types.vectorized_mobject import VMobject
+from manimlib.mobject.mobject import Mobject
 from manimlib.mobject.geometry import Circle
 from manimlib.mobject.geometry import Rectangle
-
+from manimlib.utils.space_ops import get_norm
+from manimlib.utils.space_ops import normalize
 
 from typing import TYPE_CHECKING, Union
 if TYPE_CHECKING:
@@ -114,9 +116,9 @@ class AlphabetCreature(SingleStringTex):
         eyes.add(eye_left)
 
         # 右眼
-        iris_right = iris.copy()
-        pupil_right = pupil.copy()
-        eye_right = VGroup(iris_right, pupil_right).shift(RIGHT*0.8)
+        iris_right = iris.copy().shift(RIGHT*0.8)
+        pupil_right = pupil.copy().shift(RIGHT*0.8)
+        eye_right = VGroup(iris_right, pupil_right)
         eye_right.iris = iris_right
         eye_right.pupil = pupil_right
         eyes.add(eye_right)
@@ -139,3 +141,36 @@ class AlphabetCreature(SingleStringTex):
 
     def get_color(self):
         return self.body.get_color()
+    
+    def look(self, direction):
+        """
+        iris不变, 移动pupil
+        """
+        direction = normalize(direction)
+        self.purposeful_looking_direction = direction
+        for eye in self.eyes:
+            iris, pupil = eye
+            iris_center = iris.get_center()
+            right = iris.get_right() - iris_center
+            up = iris.get_top() - iris_center
+            vect = direction[0] * right + direction[1] * up
+            v_norm = get_norm(vect)
+            pupil_radius = 0.5 * pupil.get_width()
+            vect *= (v_norm - 0.75 * pupil_radius) / v_norm
+            pupil.move_to(iris_center + vect)
+        
+        # 这一行注释掉就正常了
+        #self.eyes[1].pupil.align_to(self.eyes[0].pupil, DOWN)
+        return self
+
+    def look_at(self, point_or_mobject):
+        if isinstance(point_or_mobject, Mobject):
+            point = point_or_mobject.get_center()
+        else:
+            point = point_or_mobject
+        self.look(point - self.eyes.get_center())
+        return self
+
+    def get_looking_direction(self):
+        vect = self.eyes[0].pupil.get_center() - self.eyes[0].get_center()
+        return normalize(vect)
