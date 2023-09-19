@@ -55,6 +55,7 @@ class AlphabetCreature(SingleStringTex):
         self.eyes = self.draw_eyes()
         self.mouth = self.draw_mouth()
         self.set_submobjects([self.body, self.eyes, self.mouth]) 
+        
 
 
     def draw_eyes(self):
