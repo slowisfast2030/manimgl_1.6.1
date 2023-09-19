@@ -2,7 +2,7 @@ import sys
 sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
 
 from manim_imports_ext_new import *
-import yaml
+import json
 
 
 class test(Scene):
@@ -24,14 +24,16 @@ class test(Scene):
         self.add(mob, )
         data_to_write = {
             "plain": {
-                "iris_left": left_iris.get_points(),
-                "pupil_left": left_pupil.get_all_points(),
-                "iris_right": right_iris.get_points(),
-                "pupil_right": right_pupil.get_all_points(),
-                "mouth": mouth.get_points()
+                "iris_left": left_iris.get_points().tolist(),
+                "pupil_left": left_pupil.get_all_points().tolist(),
+                "iris_right": right_iris.get_points().tolist(),
+                "pupil_right": right_pupil.get_all_points().tolist(),
+                "mouth": mouth.get_points().tolist()
                 }
         }
 
-        with open("alphabet_points.yml", "w") as yaml_file:
-            yaml.dump(data_to_write, yaml_file)
+        #print(data_to_write)
+        file_path = "/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-characters/alphabet_points.json"
+        with open(file_path, "w") as json_file:
+            json.dump(data_to_write, json_file)
         
