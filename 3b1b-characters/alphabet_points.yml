@@ -1,12 +1,12 @@
 bubble:
   speaking:
   thought:
-eyes:
-  plain:
-  happy:
-  sad:
-mouth:
-  plain:
-  happy:
-  sad:
+plain:
+  eyes:
+    left:
+      iris:
+      pupils:
+  mouth:
+happy:
+sad:
   
