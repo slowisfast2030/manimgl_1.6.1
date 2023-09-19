@@ -29,6 +29,9 @@ def digest_config(obj, kwargs, caller_locals={}):
     be easily passed into instantiation, and is attached
     as an attribute of the object.
     """
+    """
+    将self类的字典(当前类和所有父类)和参数(当前类的kwargs)初始化为self的属性
+    """
 
     # Assemble list of CONFIGs from all super classes
     classes_in_hierarchy = [obj.__class__]

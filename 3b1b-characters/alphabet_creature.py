@@ -42,7 +42,7 @@ class AlphabetCreature(SingleStringTex):
                  **kwargs
                  ):
         # 在父类中会调用这个函数, 这里可以省去
-        #digest_config(self, kwargs)
+        digest_config(self, kwargs)
         self.letter = letter
         
         super().__init__(self.letter, **kwargs)
