@@ -136,11 +136,11 @@ class AlphabetCreature(SingleStringTex):
         return mouth
     
     def align_data_and_family(self, mobject):
-        # This ensures that after a transform into a different mode,
-        # the pi creatures mode will be updated appropriately
+        # This ensures that after a transform into a different letter,
+        # the alphabet creatures letter will be updated appropriately
         SVGMobject.align_data_and_family(self, mobject)
         if isinstance(mobject, AlphabetCreature):
-            self.mode = mobject.get_mode()
+            self.letter = mobject.get_letter()
 
     def set_color(self, color, recurse=True):
         """

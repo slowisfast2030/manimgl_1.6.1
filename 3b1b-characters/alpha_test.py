@@ -21,7 +21,7 @@ class test_letter(Scene):
     def construct(self):
         a = AlphabetCreature("\pi", flip_at_start=False, color=TEAL)
         self.add(a)
-        self.play(a.change("B"))
+        self.play(a.change("\pi"))
 
 
 class test1(Scene):
