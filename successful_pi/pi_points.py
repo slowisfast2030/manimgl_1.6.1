@@ -5,13 +5,13 @@ from manim_imports_ext_new import *
 import json
 
 
-class save(Scene):
+class write(Scene):
     def construct(self):
         # p = NumberPlane()
         # self.add(p)
 
         modes = ('plain', 'happy', 'sad')
-        pi = PiCreature(mode='happy')
+        pi = PiCreature(mode='speaking')
         mob = pi
         
         eyes = mob.eyes
@@ -43,9 +43,13 @@ class read(Scene):
         with open(file_path, "r") as json_file:
             data = json.load(json_file)
         
+        pi = PiCreature(mode='speaking')
+        
+
         vm = VMobject()
-        mouth_points = data['happy']['iris_left']
+        mouth_points = data['happy']['pupil_left']
         vm.set_points(mouth_points)
-        #vm.set_color(BLACK)
+        vm.match_style(pi.eyes[0].pupil)
+
 
         self.add(vm)
