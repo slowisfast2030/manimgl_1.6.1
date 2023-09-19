@@ -107,10 +107,6 @@ class SingleStringTex(SVGMobject):
         在子类AlphabetCreature中height=4
         那么打印self.height是多少?
         """
-        
-        print("self.height: {}".format(self.height))
-        print("self.organize_left_to_right: {}".format(self.organize_left_to_right))
-        print("self.shader_dtype: {}".format(self.shader_dtype))
 
         if self.height is None:
             self.scale(SCALE_FACTOR_PER_FONT_POINT * self.font_size)

@@ -14,3 +14,17 @@ class test1(Scene):
     def construct(self):
         a = SingleStringTex("A")
         self.add(a)
+
+
+class MyCircle(Circle):
+    CONFIG = {
+        "color": YELLOW_A
+    }
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+class test2(Scene):
+    def construct(self):
+        c = MyCircle()
+        self.add(c)

@@ -41,13 +41,11 @@ class AlphabetCreature(SingleStringTex):
                  letter: str = "A",
                  **kwargs
                  ):
+        # 在父类中会调用这个函数, 这里可以省去
         #digest_config(self, kwargs)
         self.letter = letter
         
         super().__init__(self.letter, **kwargs)
-        print("self.height: {}".format(self.height))
-        print("self.organize_left_to_right: {}".format(self.organize_left_to_right))
-        print("self.shader_dtype: {}".format(self.shader_dtype))
 
         self.init_structure()
         

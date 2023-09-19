@@ -76,11 +76,35 @@ class SVGMobject(VMobject):
         self.init_colors()
         self.move_into_position()
 
+        """
+        执行:
+        a = SingleStringTex("A")
+
+        在SVGMobject类中添加以下几行:
         print("self.height: {}".format(self.height))
         print("self.organize_left_to_right: {}".format(self.organize_left_to_right))
         print("self.shader_dtype: {}".format(self.shader_dtype))
-        print("="*78)
-        print(self.color)
+
+        打印结果:
+        self.height: None
+        self.organize_left_to_right: False
+        self.shader_dtype: [('point', <class 'numpy.float32'>, (3,))]
+
+        可以发现:
+        height属性被子类覆盖
+        organize_left_to_right是子类属性
+        shader_dtype是父类属性 
+
+        ================================================================
+        更加准确的理解是:
+        压根没有子类和父类
+        当执行a = SingleStringTex("A")时
+        有一个特别巨大的SingleStringTex类
+        里面有父类的所有方法和父类所有的CONFIG字典的属性
+        
+        记住: 就一个类
+        父类和子类是人为创造的概念
+        """
         
     """
     c = SingleStringTex("A  BC", organize_left_to_right=False)
