@@ -75,6 +75,10 @@ class SVGMobject(VMobject):
         self.init_svg_mobject()
         self.init_colors()
         self.move_into_position()
+
+        print("self.height: {}".format(self.height))
+        print("self.organize_left_to_right: {}".format(self.organize_left_to_right))
+        print("self.shader_dtype: {}".format(self.shader_dtype))
         
     """
     c = SingleStringTex("A  BC", organize_left_to_right=False)

@@ -98,7 +98,7 @@ class VMobject(Mobject):
         self.needs_new_triangulation = True
         self.triangulation = np.zeros(0, dtype='i4')
         super().__init__(**kwargs)
-        
+
 
     def get_group_class(self):
         return VGroup
