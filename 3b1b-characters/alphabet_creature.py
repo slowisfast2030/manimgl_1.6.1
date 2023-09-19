@@ -30,9 +30,9 @@ class AlphabetCreature(SingleStringTex):
         self.letter = letter
         
         super().__init__(self.letter, **kwargs)
-        print("self.height: {}".format(self.height))
-        print("self.organize_left_to_right: {}".format(self.organize_left_to_right))
-        print("self.shader_dtype: {}".format(self.shader_dtype))
+        # print("self.height: {}".format(self.height))
+        # print("self.organize_left_to_right: {}".format(self.organize_left_to_right))
+        # print("self.shader_dtype: {}".format(self.shader_dtype))
 
         self.init_structure()
         

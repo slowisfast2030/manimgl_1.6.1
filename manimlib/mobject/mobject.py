@@ -91,6 +91,7 @@ class Mobject(object):
 
     def __init__(self, **kwargs):
         digest_config(self, kwargs)
+
         self.submobjects: list[Mobject] = []
         self.parents: list[Mobject] = [] # self.parents和self.family是什么关系？
         self.family: list[Mobject] = [self]
