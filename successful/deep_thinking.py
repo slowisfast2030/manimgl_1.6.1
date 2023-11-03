@@ -10,4 +10,4 @@ class test(Scene):
         line1 = Line(RIGHT*2, LEFT*2).shift(LEFT*3)
         line2 = Line(LEFT*2, RIGHT*2).shift(LEFT*3)
 
-        self.play(Transform(partial_circle, line2))
+        self.play(Transform(partial_circle, line1))
