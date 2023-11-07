@@ -93,14 +93,14 @@ class test2(ThreeDScene):
             return [np.cos(t), np.sin(t), 0]
         
         def func_up(t):
-            return [np.cos(t), np.sin(t), np.sin(2*t) + 2]
+            return [np.cos(t), np.sin(t), 0.5*np.sin(2*t) + 1]
         
 
         curve_down = ParametricCurve(func_down,
-                                t_range=[0, 2*PI])
+                                t_range=[0, 2*PI]).scale(2)
         
         curve_up = ParametricCurve(func_up,
-                                t_range=[0, 2*PI])
+                                t_range=[0, 2*PI]).scale(2).shift(OUT)
         
         self.play(ShowCreation(curve_down), run_time=2)
         self.play(TransformFromCopy(curve_down, curve_up), run_rime=3)
