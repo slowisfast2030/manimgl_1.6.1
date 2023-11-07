@@ -73,3 +73,36 @@ class test1(ThreeDScene):
         self.play(ShowCreation(s_up))
         self.play(Transform(s_up, s_down))
         self.wait(3)
+
+class test2(ThreeDScene):
+    def construct(self):
+        frame = self.camera.frame
+        frame.reorient(20, 70)
+        def update_frame(frame, dt):
+            frame.increment_theta(-0.2 * dt)
+        frame.add_updater(update_frame)
+
+        axes = ThreeDAxes(x_range=[-3, 3, 1], 
+                        y_range=[-3, 3, 1], 
+                        z_range=[-3, 3, 1],
+                        width=10,
+                        height=10)
+        self.add(axes)
+
+        def func_down(t):
+            return [np.cos(t), np.sin(t), 0]
+        
+        def func_up(t):
+            return [np.cos(t), np.sin(t), np.sin(2*t) + 2]
+        
+
+        curve_down = ParametricCurve(func_down,
+                                t_range=[0, 2*PI])
+        
+        curve_up = ParametricCurve(func_up,
+                                t_range=[0, 2*PI])
+        
+        self.play(ShowCreation(curve_down), run_time=2)
+        self.play(TransformFromCopy(curve_down, curve_up), run_rime=3)
+
+        self.wait(1)
