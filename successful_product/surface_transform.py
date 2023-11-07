@@ -106,3 +106,5 @@ class test2(ThreeDScene):
         self.play(TransformFromCopy(curve_down, curve_up), run_rime=3)
 
         self.wait(1)
+
+        
