@@ -63,13 +63,9 @@ class test1(ThreeDScene):
                 0
             ])
 
-        s_up = Sphere()
-        
-        s_down = ParametricSurface(
-            uv_func_down,
-            u_range=[-2, 2],
-            v_range=[-2, 2]
-        )
+        s_up = Sphere().set_color(BLUE_E).scale(2)
+
+        s_down = Cylinder().set_color(BLUE_E).scale(2)
 
         self.play(ShowCreation(s_up))
         self.play(Transform(s_up, s_down))
