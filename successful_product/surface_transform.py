@@ -41,3 +41,36 @@ class test(ThreeDScene):
         self.play(ShowCreation(s_up))
         self.play(Transform(s_up, s_down))
         self.wait(3)
+
+
+class test1(ThreeDScene):
+    def construct(self):
+        frame = self.camera.frame
+        frame.reorient(20, 70)
+        def update_frame(frame, dt):
+            frame.increment_theta(-0.2 * dt)
+        frame.add_updater(update_frame)
+
+        axes = ThreeDAxes(x_range=[-5, 5, 1], 
+                        y_range=[-5, 5, 1], 
+                        z_range=[-5, 5, 1])
+        self.add(axes)
+
+        def uv_func_down(u:float, v:float) -> np.ndarray:
+            return np.array([
+                u,
+                v,
+                0
+            ])
+
+        s_up = Sphere()
+        
+        s_down = ParametricSurface(
+            uv_func_down,
+            u_range=[-2, 2],
+            v_range=[-2, 2]
+        )
+
+        self.play(ShowCreation(s_up))
+        self.play(Transform(s_up, s_down))
+        self.wait(3)
