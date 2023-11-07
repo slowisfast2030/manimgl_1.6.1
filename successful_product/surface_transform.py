@@ -34,8 +34,8 @@ class test(ThreeDScene):
         )
         s_down = ParametricSurface(
             uv_func_down,
-            u_range=[-1, 1],
-            v_range=[-1, 1]
+            u_range=[-2, 2],
+            v_range=[-2, 2]
         )
 
         self.play(ShowCreation(s_up))
