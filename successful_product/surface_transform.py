@@ -8,9 +8,11 @@ class test(ThreeDScene):
             frame.increment_theta(-0.2 * dt)
         frame.add_updater(update_frame)
 
-        axes = ThreeDAxes(x_range=[-5, 5, 1], 
-                        y_range=[-5, 5, 1], 
-                        z_range=[-5, 5, 1])
+        axes = ThreeDAxes(x_range=[-3, 3, 1], 
+                        y_range=[-3, 3, 1], 
+                        z_range=[-3, 3, 1],
+                        width=10,
+                        height=10)
         self.add(axes)
 
         def uv_func_up(u:float, v:float) -> np.ndarray:
@@ -31,15 +33,16 @@ class test(ThreeDScene):
             uv_func_up,
             u_range=[-1, 1],
             v_range=[-1, 1]
-        )
+        ).set_color(BLUE_E)
+
         s_down = ParametricSurface(
             uv_func_down,
             u_range=[-2, 2],
             v_range=[-2, 2]
-        )
+        ).set_color(BLUE_E)
 
         self.play(ShowCreation(s_up))
-        self.play(Transform(s_up, s_down))
+        self.play(Transform(s_up, s_down), run_time=3)
         self.wait(3)
 
 
