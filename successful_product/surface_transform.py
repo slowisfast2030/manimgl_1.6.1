@@ -102,9 +102,23 @@ class test2(ThreeDScene):
         curve_up = ParametricCurve(func_up,
                                 t_range=[0, 2*PI]).scale(2).shift(OUT)
         
-        self.play(ShowCreation(curve_down), run_time=2)
-        self.play(TransformFromCopy(curve_down, curve_up), run_rime=3)
+        self.play(ShowCreation(curve_down), run_time=1)
+        self.play(TransformFromCopy(curve_down, curve_up), run_rime=1)
 
         self.wait(1)
+
+        dot_list = []
+        for i in np.linspace(0, 2*PI, 20):
+            dot = Sphere(radius=0.1).set_color(RED).move_to(np.array(func_down(i))*2)
+            print(dot.get_center())
+            self.add(dot)
+            dot_list.append(dot)
+        
+        dot_anim = []
+        for dot, i in zip(dot_list, np.linspace(0, 2*PI, 20)):
+            dot_anim.append(dot.animate.move_to(np.array(func_up(i))*2))
+            
+        self.play(*dot_anim, run_time=2)
+        self.wait(3)
 
         
