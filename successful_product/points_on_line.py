@@ -12,6 +12,10 @@ from manimlib import *
 1.updater
 2.animation
 
+当前代码采取了updater的方式来实现
+一般而言，updater只是作用于单个对象
+但是这里创造性的将其作用于一个VGroup
+
 如果采取animation的方法来实现，我们需要将每一帧的点集看做一个整体
 可以借助UpdateFromAlphaFunc类来实现
 在一般的animation的代码示例中，一般都是作用于单个对象，比如一个点
@@ -20,8 +24,17 @@ from manimlib import *
 个人觉得，Transform类更适合单个对象的变换
 why？因为Transform需要指定当前对象和目标对象，在动画的过程中涉及点与点的对应关系
 而当前动画最大的特点是，点的个数是不断变化的
+Transform非常不适合VGroup之间的变换
 
-而UpdateFromAlphaFunc类更适合整体的变换
+当Transform作用于单个对象的时候，是一种很省力的创作动画的方式
+因为只给出了目标对象，动画过程中如何插值已经被封装好了
+
+而UpdateFromAlphaFunc类可以说，是一种比较底层的动画实现方式
+因为它需要指定每一帧的动画过程，而不是只指定目标对象
+由于精确到每一帧的控制，所以UpdateFromAlphaFunc类的灵活性是非常高的
+既适合单个对象，也适合VGroup
+如果做进一步的深入分析，会发现UpdateFromAlphaFunc类和updater的本质是一样的
+只不过前者是通过alpha做插值，后者是通过dt做插值
 
 """
 # from gpt4
