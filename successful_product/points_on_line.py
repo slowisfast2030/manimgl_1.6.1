@@ -85,3 +85,37 @@ class test1(Scene):
             Line(line.point_from_proportion(i / max(num_points, 1)), self.func(line.point_from_proportion(i / max(num_points, 1))))
             for i in range(1, num_points)
         ])
+    
+
+# gpt4
+class EqualizeLines(Scene):
+    def construct(self):
+        # Initial data for lines
+        line_lengths = [2, 3, 1, 4, 0.5, 3, 1, 2, 4, 0.5]
+        lines_start = ORIGIN + LEFT * len(line_lengths) / 2  # starting point for the first line
+        
+        # Create the lines
+        lines = VGroup(*[
+            Line(start=lines_start + RIGHT * i, end=lines_start + RIGHT * i + UP * length, stroke_width=10)
+            for i, length in enumerate(line_lengths)
+        ])
+        
+        # Show the original lines
+        self.play(ShowCreation(lines))
+        self.wait(1)
+        
+        # The target length for all lines
+        target_length = 3
+        
+        # Create a list of animations to change the length of each line
+        length_change_animations = []
+        for line in lines:
+            # The new end point for the line with the desired length
+            start_point = line.get_start()
+            end_point = start_point + UP * target_length
+            # Create the animation and add to the list
+            length_change_animations.append(ApplyMethod(line.put_start_and_end_on, start_point, end_point))
+        
+        # Play all animations simultaneously
+        self.play(*length_change_animations, run_time=2)
+        self.wait(2)
