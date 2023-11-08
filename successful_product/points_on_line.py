@@ -181,7 +181,7 @@ class test1(Scene):
 需要深度思考下ApplyMethod这个类
 Transform类的作用是将一个对象变成另一个对象
 UpdateFromAlphaFunc类的作用是精确控制每一帧
-ApplyMethod类的作用是通过函数修改一个对象的属性
+ApplyMethod类的作用是通过对象的方法去修改一个对象的属性
 
 """
 # gpt4
