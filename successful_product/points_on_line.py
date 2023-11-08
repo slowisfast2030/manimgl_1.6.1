@@ -19,6 +19,11 @@ updater有一个极其重要的参数dt：每一帧的间隔
 我们可以定义另一个变量time，来记录时间的前进
 time += dt
 如果我们提前确定updater的持续时间，就可以将time转化为动画的执行比例alpha
+mob.add_updater(update_func)
+self.wait() or self.play()
+mob.remove_updater(update_func)
+对于上述这种写法就可以精确控制updater的执行时间
+
 updater是一种控制力很强的动画实现方式
 可以精确控制每一帧的行为
 
@@ -41,6 +46,10 @@ Transform非常不适合VGroup之间的变换
 既适合单个对象，也适合VGroup
 如果做进一步的深入分析，会发现UpdateFromAlphaFunc类和updater的本质是一样的
 只不过前者是通过alpha做插值，后者是通过dt做插值
+
+---------------
+
+
 
 """
 # from gpt4
