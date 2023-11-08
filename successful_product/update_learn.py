@@ -58,8 +58,6 @@ class test2(Scene):
         dot.add_updater(dot_updater)
         text.add_updater(text_updater)
 
-        self.add(dot)  # Don't forget to add the dot to the scene if it hasn't been added already.
-
         self.play(Transform(circle, circle.copy().shift(RIGHT*3)), run_time=3)  # The updater will work during this time.
 
         dot.remove_updater(dot_updater)  # Optionally, remove the updater if it's no longer needed.
