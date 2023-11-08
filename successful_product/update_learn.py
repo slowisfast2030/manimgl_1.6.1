@@ -59,6 +59,7 @@ class test2(Scene):
         dot.add_updater(dot_updater)
         text.add_updater(text_updater)
 
+        # 非常有启发
         self.play(Transform(circle, square), run_time=3)  # The updater will work during this time.
 
         dot.remove_updater(dot_updater)  # Optionally, remove the updater if it's no longer needed.
