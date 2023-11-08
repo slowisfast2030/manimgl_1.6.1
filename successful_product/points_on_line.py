@@ -142,7 +142,7 @@ class test1(Scene):
         for point in points:
             point_copy = Line(point.get_start(), point.get_start()+UP*2)
             ani_list.append(Transform(point, point_copy))
-
+            
         self.play(*ani_list, run_time=2)
 
 
