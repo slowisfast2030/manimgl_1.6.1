@@ -114,7 +114,6 @@ class test1(Scene):
         density = 1
         time = 0
         increment = 0.8  # Increment the density linearly with time
-        #points = VGroup()
         points = self.get_dots_on_line(density, line)
 
         # Add points on the line
@@ -124,8 +123,7 @@ class test1(Scene):
             density += increment * dt
             new_points = self.get_dots_on_line(density, line)
             points.become(new_points)
-            #points.shift(dt * RIGHT)
-
+ 
         points.add_updater(update_points)
         self.add(points)
 
