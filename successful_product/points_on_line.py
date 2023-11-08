@@ -15,6 +15,11 @@ from manimlib import *
 当前代码采取了updater的方式来实现
 一般而言，updater只是作用于单个对象
 但是这里创造性的将其作用于一个VGroup
+updater有一个极其重要的参数dt：每一帧的间隔
+我们可以定义另一个变量time，来记录时间的前进
+time += dt
+如果我们提前确定updater的持续时间，就可以将time转化为动画的执行比例alpha
+
 
 如果采取animation的方法来实现，我们需要将每一帧的点集看做一个整体
 可以借助UpdateFromAlphaFunc类来实现
