@@ -24,14 +24,14 @@ class test1(Scene):
         dot = Dot()
         self.add(circle, dot)
         
-        def circle_updater(mob):
+        def dot_updater(mob):
             mob.move_to(circle.get_edge_center(RIGHT))
         
-        dot.add_updater(circle_updater)
+        dot.add_updater(dot_updater)
         self.add(dot)  # Don't forget to add the dot to the scene if it hasn't been added already.
 
         self.play(circle.animate.move_to(RIGHT * 4), run_time=3)  # The updater will work during this time.
 
-        dot.remove_updater(circle_updater)  # Optionally, remove the updater if it's no longer needed.
+        dot.remove_updater(dot_updater)  # Optionally, remove the updater if it's no longer needed.
 
 # 对于updater来说，play和wait是一样的
