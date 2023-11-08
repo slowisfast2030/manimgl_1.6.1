@@ -12,6 +12,17 @@ from manimlib import *
 1.updater
 2.animation
 
+如果采取animation的方法来实现，我们需要将每一帧的点集看做一个整体
+可以借助UpdateFromAlphaFunc类来实现
+在一般的animation的代码示例中，一般都是作用于单个对象，比如一个点
+将点集看做是一个整体，比较少见
+
+个人觉得，Transform类更适合单个对象的变换
+why？因为Transform需要指定当前对象和目标对象，在动画的过程中涉及点与点的对应关系
+而当前动画最大的特点是，点的个数是不断变化的
+
+而UpdateFromAlphaFunc类更适合整体的变换
+
 """
 # from gpt4
 class test(Scene):
