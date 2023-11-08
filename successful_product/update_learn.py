@@ -22,12 +22,18 @@ class test1(Scene):
     def construct(self):
         circle = Circle()
         dot = Dot()
-        self.add(circle, dot)
+        text = Text("hello world")
+        self.add(circle, dot, text)
         
         def dot_updater(mob):
             mob.move_to(circle.get_edge_center(RIGHT))
+
+        def text_updater(mob):
+            mob.move_to(dot.get_center() + UP * 2)
         
         dot.add_updater(dot_updater)
+        text.add_updater(text_updater)
+
         self.add(dot)  # Don't forget to add the dot to the scene if it hasn't been added already.
 
         self.play(circle.animate.move_to(RIGHT * 4), run_time=3)  # The updater will work during this time.
