@@ -61,5 +61,6 @@ class test2(Scene):
 
         # 非常有启发
         self.play(Transform(circle, square), run_time=3)  # The updater will work during this time.
+        #self.play(TransformFromCopy(circle, square), run_time=3)
 
         dot.remove_updater(dot_updater)  # Optionally, remove the updater if it's no longer needed.
