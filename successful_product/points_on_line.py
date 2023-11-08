@@ -65,7 +65,16 @@ class test1(Scene):
         points.add_updater(update_points)
         self.add(points)
 
-        self.wait(5)  # The animation will last for 5 seconds
+        self.wait(3)  # The animation will last for 5 seconds
+
+        ani_list = []
+        for point in points:
+            point_copy = Line(point.get_start(), point.get_start()+UP*2)
+
+            ani_list.append(Transform(point, point_copy))
+
+        self.play(*ani_list, run_time=2)
+
 
     def func(self,  point):
         return [point[0], 2+np.sin(point[0]), point[2]]
