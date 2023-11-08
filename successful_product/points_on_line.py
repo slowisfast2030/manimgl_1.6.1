@@ -138,11 +138,18 @@ class test1(Scene):
         # 如何实现多条直线的高度一致？
         # 第一步：是将所有的直线看做是一个整体，还是单独处理。感觉都可行。就单独处理吧
         # 可以使用最常用的Transform类。无中生有，为每一条直线设置一个目标直线
+        """
+        有一个高难度的实现方法：
+        这些直线的高度的轮廓是一个函数
+        能不能将这个轮廓函数变化为常值函数，进而改变所有直线的长度？
+        也就是说为轮廓函数设置一个目标常值函数，通过Transform类实现
+        每一条直线添加updater，使得其长度随着时间的变化而变化
+        """
         ani_list = []
         for point in points:
             point_copy = Line(point.get_start(), point.get_start()+UP*2)
             ani_list.append(Transform(point, point_copy))
-            
+
         self.play(*ani_list, run_time=2)
 
 
