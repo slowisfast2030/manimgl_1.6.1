@@ -68,7 +68,7 @@ class test1(Scene):
         self.wait(5)  # The animation will last for 5 seconds
 
     def func(self,  point):
-        return [point[0], np.sin(point[0]), point[2]]
+        return [point[0], 2+np.sin(point[0]), point[2]]
 
     def get_dots_on_line(self, density, line):
         num_points = int(density * line.get_length())
