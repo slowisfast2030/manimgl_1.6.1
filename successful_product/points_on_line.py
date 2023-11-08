@@ -135,10 +135,12 @@ class test1(Scene):
 
         self.wait(3)  # The animation will last for 5 seconds
 
+        # 如何实现多条直线的高度一致？
+        # 第一步：是将所有的直线看做是一个整体，还是单独处理。感觉都可行。就单独处理吧
+        # 可以使用最常用的Transform类。无中生有，为每一条直线设置一个目标直线
         ani_list = []
         for point in points:
             point_copy = Line(point.get_start(), point.get_start()+UP*2)
-
             ani_list.append(Transform(point, point_copy))
 
         self.play(*ani_list, run_time=2)
