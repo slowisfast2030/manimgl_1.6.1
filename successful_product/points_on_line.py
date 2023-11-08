@@ -146,6 +146,7 @@ class test1(Scene):
         每一条直线添加updater，使得其长度随着时间的变化而变化
 
         感觉应该是可行的
+        Transform(curve1, curve2)
 
 
         ------------
