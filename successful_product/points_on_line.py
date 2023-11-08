@@ -58,6 +58,7 @@ self.play()一次可以传输很多个animation
 用updater也可以。不论是单个对象还是VGroup。
 
 对于第二类动画，已经讨论过了
+需要将这个对象当做整体VGruop，使用UpdateFromAlphaFunc类或者updater
 
 """
 # from gpt4
