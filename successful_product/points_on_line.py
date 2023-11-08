@@ -101,7 +101,13 @@ class test(Scene):
             for i in range(1, num_points)
         ])
 
+"""
+x轴上均匀分布着直线
+随着时间的进行，直线的密度会变大
+直线的高度类似sin函数
 
+当密度不再变化的时候，直线的高度变成统一高度
+"""
 class test1(Scene):
     def construct(self):
         # Define the start and end points of the line
