@@ -45,6 +45,7 @@ class test1(Scene):
 class test2(Scene):
     def construct(self):
         circle = Circle()
+        square = Square().shift(RIGHT*3).set_color(BLUE_E)
         dot = Dot()
         text = Text("hello world")
         self.add(circle, dot, text)
@@ -58,6 +59,6 @@ class test2(Scene):
         dot.add_updater(dot_updater)
         text.add_updater(text_updater)
 
-        self.play(Transform(circle, circle.copy().shift(RIGHT*3)), run_time=3)  # The updater will work during this time.
+        self.play(Transform(circle, square), run_time=3)  # The updater will work during this time.
 
         dot.remove_updater(dot_updater)  # Optionally, remove the updater if it's no longer needed.
