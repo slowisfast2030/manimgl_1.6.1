@@ -84,8 +84,8 @@ class test(Scene):
             time += dt
             density += increment * dt
             new_points = self.get_dots_on_line(density, line)
+            # become函数真是太好用了！
             points.become(new_points)
-            #points.shift(dt * RIGHT)
 
         points.add_updater(update_points)
         self.add(points)
