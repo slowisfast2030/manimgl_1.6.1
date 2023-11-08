@@ -51,10 +51,13 @@ Transform非常不适合VGroup之间的变换
 考虑两类动画：
 1.对象的数目不发生变化，但每一个对象的属性会发生变化
 2.对象的数目会发生变化
+
 对于第一种实现方式就多了。最简单的就是为每一个对象找到其对应的目标对象，然后使用Transform类
 self.play()一次可以传输很多个animation
+也可以将这些对像当做整体VGroup，使用UpdateFromAlphaFunc类，也可以实现
+用updater也可以。不论是单个对象还是VGroup。
 
-
+对于第二类动画，已经讨论过了
 
 """
 # from gpt4
