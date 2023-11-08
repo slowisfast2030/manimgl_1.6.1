@@ -1,5 +1,11 @@
 from manimlib import *
 
+"""
+这个场景想实现的功能：
+一条直线上均匀分布着一些点，随着时间的前进，点的密度会变大，点的位置也会变化
+
+
+"""
 # from gpt4
 class test(Scene):
     def construct(self):
