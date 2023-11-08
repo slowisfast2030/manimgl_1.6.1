@@ -33,3 +33,5 @@ class test1(Scene):
         self.play(circle.animate.move_to(RIGHT * 4), run_time=3)  # The updater will work during this time.
 
         dot.remove_updater(circle_updater)  # Optionally, remove the updater if it's no longer needed.
+
+# 对于updater来说，play和wait是一样的
