@@ -92,6 +92,8 @@ class test(Scene):
 
         self.wait(5)  # The animation will last for 5 seconds
 
+    # 一开始总想着在construct函数内定义函数
+    # 忘了在construct函数外定义函数会更加清晰
     def get_dots_on_line(self, density, line):
         num_points = int(density * line.get_length())
         return VGroup(*[
