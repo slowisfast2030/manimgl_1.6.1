@@ -80,6 +80,7 @@ class test(Scene):
         def update_points(points, dt):
             # 这一步确实很亮眼
             nonlocal time, density
+            # 用time对dt进行累积
             time += dt
             density += increment * dt
             new_points = self.get_dots_on_line(density, line)
