@@ -74,11 +74,11 @@ class test(Scene):
         density = 1
         time = 0
         increment = 0.8  # Increment the density linearly with time
-        #points = VGroup()
         points = self.get_dots_on_line(density, line)
 
         # Add points on the line
         def update_points(points, dt):
+            # 这一步确实很亮眼
             nonlocal time, density
             time += dt
             density += increment * dt
