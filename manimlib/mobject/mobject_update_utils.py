@@ -79,6 +79,9 @@ arc = always_redraw(lambda: Arc(
             stroke_width=2,
         ).rotate(PI / 2, RIGHT, about_point=ORIGIN).shift(get_fc()))
 """
+"""
+brace = always_redraw(Brace, square, UP)
+"""
 def always_redraw(func: Callable[..., Mobject], *args, **kwargs) -> Mobject:
     """始终重复调用 ``func`` 生成新物体"""
     """
