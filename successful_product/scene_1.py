@@ -76,8 +76,24 @@ class test(ThreeDScene):
         """
         在底面的圆上浮现出均匀分布的蓝色直线
         """
-        lines = self.get_lines_on_circle(30, curve_down)
+        nums = 20
+        time = 0
+
+        lines = self.get_lines_on_circle(nums, curve_down)
         self.add(lines)
+
+        def update_lines(lines, dt):
+            nonlocal time, nums
+            time += dt
+            nums += time * 2
+            new_lines = self.get_lines_on_circle(nums, curve_down)
+            lines.become(new_lines)
+        
+        lines.add_updater(update_lines)
+        self.wait(3)
+
+
+
 
 
     def get_spheres_on_circle(self, nums, circle):
