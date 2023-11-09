@@ -72,6 +72,7 @@ def f_always(method, *arg_generators, **kwargs):
 
 
 """
+天才！
 arc = always_redraw(lambda: Arc(
             start_angle=PI / 2,
             angle=-get_theta(),
