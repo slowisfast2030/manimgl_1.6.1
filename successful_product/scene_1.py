@@ -85,8 +85,8 @@ class test(ThreeDScene):
         def update_lines(lines, dt):
             nonlocal time, nums
             time += dt
-            nums += time * 2
-            new_lines = self.get_lines_on_circle(nums, curve_down)
+            nums += time * 10
+            new_lines = self.get_lines_on_circle(int(nums), curve_down)
             lines.become(new_lines)
         
         lines.add_updater(update_lines)
