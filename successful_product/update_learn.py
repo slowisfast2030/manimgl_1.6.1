@@ -1,7 +1,9 @@
 from manimlib import *
 
 """
-updater
+updater如果不使用dt参数，是很明显的被动触发方式
+
+
 """
 class test(Scene):
     def construct(self):
