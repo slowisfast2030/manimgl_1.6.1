@@ -21,6 +21,7 @@ class test(Scene):
         # 看Brace类的源码，可以发现：每次执行Brace(square, UP)，都会自动设置宽度
         brace = always_redraw(Brace, square, UP)
 
+        # 可以为VGroup添加updater方法
         text, number = label = VGroup(
             Text("Width = "),
             DecimalNumber(
