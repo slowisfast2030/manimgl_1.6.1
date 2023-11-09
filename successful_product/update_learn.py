@@ -2,7 +2,10 @@ from manimlib import *
 
 """
 updater如果不使用dt参数，是很明显的被动触发方式
-
+animation --> updater
+执行动画的过程中，animation会作用于一个mob
+mob的某些属性会在每一帧发生变化
+而updater可以跟踪这些属性变化
 
 """
 class test(Scene):
