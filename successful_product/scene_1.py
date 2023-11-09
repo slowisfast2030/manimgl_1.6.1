@@ -99,7 +99,22 @@ class test(ThreeDScene):
 
         curve_up_2 = ParametricCurve(func_up_2,
                                 t_range=[0, 2*PI]).set_color(WHITE)
-        self.play(Transform(curve_up, curve_up_2), run_time=2)
+        
+        import math
+
+        def calculate_angle_in_radians(x, y):
+            angle = math.atan2(y, x)
+            return angle
+        
+        def update_lines_height(lines, alpha):
+            for line in lines:
+                angle = calculate_angle_in_radians(line.get_start()[0], line.get_start()[1])
+                height = interpolate(func_up(angle), func_up_2(angle), alpha)
+                line.put_start_and_end_on(line.get_start(), line.get_start()+OUT*height)
+
+        self.play(Transform(curve_up, curve_up_2), 
+                  UpdateFromAlphaFunc(lines, update_lines_height),
+                  run_time=2)
 
 
     def get_spheres_on_circle(self, nums, circle):
