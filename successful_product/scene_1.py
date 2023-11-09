@@ -76,9 +76,21 @@ class test(ThreeDScene):
         """
         在底面的圆上浮现出均匀分布的蓝色直线
         """
+        lines = self.get_lines_on_circle(30, curve_down)
+        self.add(lines)
+
 
     def get_spheres_on_circle(self, nums, circle):
         return Group(*[
             Sphere(radius=0.15).move_to(circle.point_from_proportion(i / max(nums, 1))).set_color(RED)
             for i in range(1, nums)
         ])
+    
+    def get_lines_on_circle(self, nums, circle):
+        return VGroup(*[
+            Line(circle.point_from_proportion(i / max(nums, 1)), self.func(circle.point_from_proportion(i / max(nums, 1)))).set_color(BLUE_E)
+            for i in range(1, nums)
+        ])
+    
+    def func(self,  point):
+        return [point[0], point[1], 1]
