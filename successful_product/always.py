@@ -16,6 +16,7 @@ class test(Scene):
         # On all frames, the constructor Brace(square, UP) will
         # be called, and the mobject brace will set its data to match
         # that of the newly constructed object
+        # 看Brace类的源码，可以发现：每次执行Brace(square, UP)，都会自动设置宽度
         brace = always_redraw(Brace, square, UP)
 
         text, number = label = VGroup(
