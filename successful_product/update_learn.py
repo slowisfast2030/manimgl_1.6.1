@@ -7,6 +7,8 @@ animation --> updater
 mob的某些属性会在每一帧发生变化
 而updater可以跟踪这些属性变化
 
+updater如果使用dt参数，是很明显的主动触发方式
+可以精确控制每一帧的行为
 """
 class test(Scene):
     def construct(self):
@@ -24,6 +26,10 @@ class test(Scene):
 
         dot.remove_updater(circle_updater)  # Optionally, remove the updater if it's no longer needed.
 
+"""
+链式触发
+animation(circle) --> updater(dot) --> updater(text)
+"""
 class test1(Scene):
     def construct(self):
         circle = Circle()
