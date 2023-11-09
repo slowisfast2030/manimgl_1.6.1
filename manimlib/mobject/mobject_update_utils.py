@@ -117,6 +117,10 @@ def always_redraw(func: Callable[..., Mobject], *args, **kwargs) -> Mobject:
     return mob
 
 
+"""
+value_tracker = ValueTracker(0)
+always_shift(value_tracker, rate=0.5)
+"""
 def always_shift(
     mobject: Mobject,
     direction: np.ndarray = RIGHT,
