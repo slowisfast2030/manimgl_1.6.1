@@ -93,6 +93,7 @@ class test(ThreeDScene):
         self.play(frame.animate.reorient(-10, 70), run_time=2)
 
         # 蓝色直线高度变得一致
+        
 
 
 
