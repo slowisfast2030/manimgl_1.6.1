@@ -76,7 +76,7 @@ class test(ThreeDScene):
         """
         在底面的圆上浮现出均匀分布的蓝色直线
         """
-        nums = 20
+        nums = 10
         time = 0
 
         lines = self.get_lines_on_circle(nums, curve_down)
@@ -85,7 +85,7 @@ class test(ThreeDScene):
         def update_lines(lines, dt):
             nonlocal time, nums
             time += dt
-            nums += time * 5
+            nums += time * 3
             new_lines = self.get_lines_on_circle(int(nums), curve_down)
             lines.become(new_lines)
         
