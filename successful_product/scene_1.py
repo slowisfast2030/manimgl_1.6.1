@@ -88,7 +88,7 @@ class test(ThreeDScene):
     
     def get_lines_on_circle(self, nums, circle):
         return VGroup(*[
-            Line(circle.point_from_proportion(i / max(nums, 1)), self.func(circle.point_from_proportion(i / max(nums, 1)))).set_color(BLUE_E)
+            Line(circle.point_from_proportion(i / max(nums, 1)), self.func(circle.point_from_proportion(i / max(nums, 1)))).set_color(BLUE)
             for i in range(1, nums)
         ])
     
