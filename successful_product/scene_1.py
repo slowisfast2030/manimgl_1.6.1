@@ -73,6 +73,10 @@ class test(ThreeDScene):
         self.play(*sphere_anim, run_time=2)
         self.play(FadeOut(spheres), run_time=1)
 
+        """
+        在底面的圆上浮现出均匀分布的蓝色直线
+        """
+
     def get_dots_on_line(self, nums, circle):
         return Group(*[
             Sphere(radius=0.15).move_to(circle.point_from_proportion(i / max(nums, 1))).set_color(RED)
