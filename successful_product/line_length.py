@@ -53,4 +53,4 @@ class test(Scene):
         self.wait()
 
 # To run the scene, use the following command in your terminal:
-# manimgl your_script.py DynamicLines
+# manimgl your_script.py DynamicLines -ol
