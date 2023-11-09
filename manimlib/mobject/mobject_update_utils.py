@@ -90,8 +90,10 @@ def always_redraw(func: Callable[..., Mobject], *args, **kwargs) -> Mobject:
     is something that can be called like a function. A callable object 
     can be a function, a method, a class, or an instance with a __call__ 
     method. 
+
     输入：The ... in the brackets means that the callable object can take 
     any number and type of arguments. 
+    
     输出：The Mobject after the arrow means that the callable object returns 
     a Mobject object
     """
