@@ -133,6 +133,9 @@ def always_shift(
     return mobject
 
 
+"""
+always_rotate(cube, axis=UP)
+"""
 def always_rotate(
     mobject: Mobject,
     rate: float = 20 * DEGREES,
