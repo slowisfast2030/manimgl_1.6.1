@@ -33,7 +33,7 @@ class test(ThreeDScene):
             uv_func,
             u_range=[-4, 4],
             v_range=[-4, 4]
-        ).set_color(BLUE_E).set_opacity(0.5)
+        ).set_color(BLUE_E).set_opacity(0.1)
         self.add(s)
 
         # c = Circle(radius=3.8).set_color(RED)
@@ -67,7 +67,7 @@ class test(ThreeDScene):
         self.add(spheres)
 
     def get_dots_on_line(self, nums, circle):
-        return VGroup(*[
-            Dot(circle.point_from_proportion(i / max(nums, 1)), radius=0.05)
+        return Group(*[
+            Sphere(radius=0.15).move_to(circle.point_from_proportion(i / max(nums, 1))).set_color(RED)
             for i in range(1, nums)
         ])
