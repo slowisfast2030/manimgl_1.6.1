@@ -76,7 +76,7 @@ class test(ThreeDScene):
         """
         在底面的圆上浮现出均匀分布的蓝色直线
         """
-        nums = 10
+        nums = 20
         time = 0
 
         lines = self.get_lines_on_circle(nums, curve_down)
