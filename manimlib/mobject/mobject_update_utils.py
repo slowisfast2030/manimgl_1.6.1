@@ -89,9 +89,11 @@ def always_redraw(func: Callable[..., Mobject], *args, **kwargs) -> Mobject:
     This means that the type annotation is for a callable object, which 
     is something that can be called like a function. A callable object 
     can be a function, a method, a class, or an instance with a __call__ 
-    method. The ... in the brackets means that the callable object can 
-    take any number and type of arguments. The Mobject after the arrow 
-    means that the callable object returns a Mobject object
+    method. 
+    输入：The ... in the brackets means that the callable object can take 
+    any number and type of arguments. 
+    输出：The Mobject after the arrow means that the callable object returns 
+    a Mobject object
     """
     mob = func(*args, **kwargs)
     mob.add_updater(lambda m: mob.become(func(*args, **kwargs)))
