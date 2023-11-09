@@ -85,8 +85,8 @@ func(函数): lambda: Arc(...).rotate(PI / 2, RIGHT, about_point=ORIGIN).shift(g
 
 可以思考下，可否用下面的等效方式实现：
 arc = always_redraw(Arc, start_angle=PI / 2, angle=-get_theta(), radius=0.5, stroke_width=2)
-always(arc.rotate(PI / 2, RIGHT, about_point=ORIGIN))
-always(arc.shift(get_fc()))
+always(arc.rotate, PI / 2, RIGHT, about_point=ORIGIN)
+always(arc.shift, get_fc())
 """
 
 """
