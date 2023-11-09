@@ -4,7 +4,9 @@
 为某个mob添加了updater方法
 然后将整体封装
 
-
+下面这段代码的整体逻辑：
+animation(square) --> updater(brace) --> updater(label) 
+                  --> updater(number)
 """
 from manimlib import *
 
