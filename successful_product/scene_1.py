@@ -71,6 +71,7 @@ class test(ThreeDScene):
             sphere_anim.append(sphere.animate.move_to(np.array(func_up(i))))
             
         self.play(*sphere_anim, run_time=2)
+        self.play(FadeOut(spheres), run_time=1)
 
     def get_dots_on_line(self, nums, circle):
         return Group(*[
