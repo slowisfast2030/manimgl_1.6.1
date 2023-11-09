@@ -31,10 +31,12 @@ class test(ThreeDScene):
 
         s = ParametricSurface(
             uv_func,
-            u_range=[-2, 2],
-            v_range=[-2, 2]
+            u_range=[-4, 4],
+            v_range=[-4, 4]
         ).set_color(BLUE_E).set_opacity(0.5)
         self.add(s)
 
-        c = Circle(radius=1.8).set_color(RED)
+        c = Circle(radius=3.8).set_color(RED)
         self.add(c)
+
+        self.play(frame.animate.reorient(20, 70), run_time=2)
