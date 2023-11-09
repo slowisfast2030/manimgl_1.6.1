@@ -46,10 +46,7 @@ def always(method, *args, **kwargs):
 
 
 """
-x = ValueTracker(-3)
-f_always(stuff[0].set_x, x.get_value)
-"""
-"""
+以下三种写法等价：
 f_always(number.set_value, square.get_width)
 always(number.set_value, square.get_width())
 number.add_updater(lambda m: m.set_value(square.get_width()))
