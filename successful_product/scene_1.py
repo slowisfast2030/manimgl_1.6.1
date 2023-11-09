@@ -91,10 +91,15 @@ class test(ThreeDScene):
         
         lines.add_updater(update_lines)
         self.play(frame.animate.reorient(-10, 70), run_time=2)
+        lines.remove_updater(update_lines)
 
-        # 蓝色直线高度变得一致
-        
+        # 上方的curve变换成另一个形状，直线的高度也随着改变
+        def func_up_2(t):
+            return np.array([3*np.cos(t), 3*np.sin(t), 0.8*np.sin(2*t-PI) + 2])
 
+        curve_up_2 = ParametricCurve(func_up_2,
+                                t_range=[0, 2*PI]).set_color(WHITE)
+        self.play(Transform(curve_up, curve_up_2), run_time=2)
 
 
     def get_spheres_on_circle(self, nums, circle):
