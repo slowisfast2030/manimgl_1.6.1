@@ -78,9 +78,16 @@ arc = always_redraw(lambda: Arc(
             radius=0.5,
             stroke_width=2,
         ).rotate(PI / 2, RIGHT, about_point=ORIGIN).shift(get_fc()))
+func: lambda: Arc(...).rotate(PI / 2, RIGHT, about_point=ORIGIN).shift(get_fc())
+*args: {}
+**kwargs: {}
 """
+
 """
 brace = always_redraw(Brace, square, UP)
+func: Brace
+*args: square, UP
+**kwargs: {}
 """
 def always_redraw(func: Callable[..., Mobject], *args, **kwargs) -> Mobject:
     """始终重复调用 ``func`` 生成新物体"""
@@ -93,7 +100,7 @@ def always_redraw(func: Callable[..., Mobject], *args, **kwargs) -> Mobject:
 
     输入：The ... in the brackets means that the callable object can take 
     any number and type of arguments. 
-    
+
     输出：The Mobject after the arrow means that the callable object returns 
     a Mobject object
     """
