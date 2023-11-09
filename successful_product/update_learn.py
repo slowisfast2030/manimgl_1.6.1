@@ -1,5 +1,8 @@
 from manimlib import *
 
+"""
+updater
+"""
 class test(Scene):
     def construct(self):
         circle = Circle()
@@ -7,8 +10,6 @@ class test(Scene):
         self.add(circle, dot)
         
         def circle_updater(mob, dt):
-            #circle.shift(RIGHT * dt)
-            #mob.move_to(circle.get_edge_center(RIGHT))
             mob.shift(dt * RIGHT)
         
         dot.add_updater(circle_updater)
