@@ -63,7 +63,7 @@ class test(ThreeDScene):
         """
         在底面的圆上浮现出均匀分布的红色小球
         """
-        spheres = self.get_dots_on_line(30, curve_down)
+        spheres = self.get_spheres_on_circle(30, curve_down)
         self.add(spheres)
 
         sphere_anim = []
@@ -77,7 +77,7 @@ class test(ThreeDScene):
         在底面的圆上浮现出均匀分布的蓝色直线
         """
 
-    def get_dots_on_line(self, nums, circle):
+    def get_spheres_on_circle(self, nums, circle):
         return Group(*[
             Sphere(radius=0.15).move_to(circle.point_from_proportion(i / max(nums, 1))).set_color(RED)
             for i in range(1, nums)
