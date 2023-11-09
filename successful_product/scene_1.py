@@ -59,3 +59,15 @@ class test(ThreeDScene):
         curve_up = ParametricCurve(func_up,
                                 t_range=[0, 2*PI]).set_color(WHITE)
         self.play(TransformFromCopy(curve_down, curve_up), run_rime=1)
+
+        """
+        在底面的圆上浮现出均匀分布的红色小球
+        """
+        spheres = self.get_dots_on_line(30, curve_down)
+        self.add(spheres)
+
+    def get_dots_on_line(self, nums, circle):
+        return VGroup(*[
+            Dot(circle.point_from_proportion(i / max(nums, 1)), radius=0.05)
+            for i in range(1, nums)
+        ])
