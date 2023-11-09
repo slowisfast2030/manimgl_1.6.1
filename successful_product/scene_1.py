@@ -57,5 +57,5 @@ class test(ThreeDScene):
         self.play(frame.animate.reorient(20, 70), run_time=1)
 
         curve_up = ParametricCurve(func_up,
-                                t_range=[0, 2*PI]).set_color(RED)
+                                t_range=[0, 2*PI]).set_color(WHITE)
         self.play(TransformFromCopy(curve_down, curve_up), run_rime=1)
