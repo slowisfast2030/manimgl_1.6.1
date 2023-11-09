@@ -21,5 +21,19 @@ class test(ThreeDScene):
                         z_range=[-5, 5, 1])
         self.add(axes)
 
-        rec = Rectangle(width=4, height=4).set_fill(BLUE_E)
-        self.add(rec)
+        #rec = Rectangle(width=4, height=4).set_color(BLUE_E).set_opacity(0.5)
+        def uv_func(u:float, v:float) -> np.ndarray:
+            return np.array([
+                u,
+                v,
+                0
+            ])
+
+        s = ParametricSurface(
+            uv_func,
+            u_range=[-2, 2],
+            v_range=[-2, 2]
+        ).set_color(BLUE_E).set_opacity(0.5)
+        self.add(s)
+
+        
