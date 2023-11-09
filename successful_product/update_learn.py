@@ -57,6 +57,8 @@ class test1(Scene):
 """
 如何理解Transform类
 需要注意，animation都是作用于一个mob，会在动画的过程中改变mob的属性
+Transform类会传入两个参数，不过第一个参数是作用对象mob
+随着动画的进行，mob的属性会发生变化
 
 """
 class test2(Scene):
