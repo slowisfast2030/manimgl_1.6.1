@@ -49,6 +49,11 @@ def always(method, *args, **kwargs):
 x = ValueTracker(-3)
 f_always(stuff[0].set_x, x.get_value)
 """
+"""
+f_always(number.set_value, square.get_width)
+always(number.set_value, square.get_width())
+number.add_updater(lambda m: m.set_value(square.get_width()))
+"""
 def f_always(method, *arg_generators, **kwargs):
     """
     More functional version of always, where instead
