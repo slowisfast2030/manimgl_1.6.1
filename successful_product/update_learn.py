@@ -54,6 +54,11 @@ class test1(Scene):
 
 # 对于updater来说，play和wait是一样的
 
+"""
+如何理解Transform类
+需要注意，animation都是作用于一个mob，会在动画的过程中改变mob的属性
+
+"""
 class test2(Scene):
     def construct(self):
         circle = Circle()
