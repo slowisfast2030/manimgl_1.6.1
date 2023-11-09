@@ -10,6 +10,10 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from manimlib.mobject.mobject import Mobject
 
+"""
+UpdateFromFunc完全可以用updater代替
+UpdateFromAlphaFunc更加有用一些
+"""
 
 """
 有一个函数可以将animation转换为updater
