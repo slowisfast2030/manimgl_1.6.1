@@ -66,6 +66,12 @@ class test(ThreeDScene):
         spheres = self.get_dots_on_line(30, curve_down)
         self.add(spheres)
 
+        sphere_anim = []
+        for sphere, i in zip(spheres, np.linspace(0, 2*PI, 30)):
+            sphere_anim.append(sphere.animate.move_to(np.array(func_up(i))))
+            
+        self.play(*sphere_anim, run_time=2)
+
     def get_dots_on_line(self, nums, circle):
         return Group(*[
             Sphere(radius=0.15).move_to(circle.point_from_proportion(i / max(nums, 1))).set_color(RED)
