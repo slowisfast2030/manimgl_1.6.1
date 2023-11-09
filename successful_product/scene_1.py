@@ -90,7 +90,7 @@ class test(ThreeDScene):
             lines.become(new_lines)
         
         lines.add_updater(update_lines)
-        self.wait(3)
+        self.play(frame.animate.reorient(20, 90), run_time=2)
 
 
 
