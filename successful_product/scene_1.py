@@ -36,7 +36,23 @@ class test(ThreeDScene):
         ).set_color(BLUE_E).set_opacity(0.5)
         self.add(s)
 
-        c = Circle(radius=3.8).set_color(RED)
-        self.add(c)
+        # c = Circle(radius=3.8).set_color(RED)
+        # self.add(c)
+
+        def func_down(t):
+            return np.array([np.cos(t), np.sin(t), 0])*3
+        
+        def func_up(t):
+            return [np.cos(t), np.sin(t), 0.5*np.sin(2*t) + 1]
+        
+
+        curve_down = ParametricCurve(func_down,
+                                t_range=[0, 2*PI]).set_color(RED)
+        
+        curve_up = ParametricCurve(func_up,
+                                t_range=[0, 2*PI]).scale(2).shift(OUT)
+        
+        self.play(ShowCreation(curve_down), run_time=1)
+        #self.play(TransformFromCopy(curve_down, curve_up), run_rime=1)
 
         self.play(frame.animate.reorient(20, 70), run_time=2)
