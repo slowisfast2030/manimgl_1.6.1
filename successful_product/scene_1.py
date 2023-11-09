@@ -36,4 +36,5 @@ class test(ThreeDScene):
         ).set_color(BLUE_E).set_opacity(0.5)
         self.add(s)
 
-        
+        c = Circle(radius=1.8).set_color(RED)
+        self.add(c)
