@@ -26,6 +26,7 @@ self.play(
     UpdateFromFunc(ball_1, lambda m: m.move_to(rect.get_end())),
     ball_2.animate.move_to(rect.get_end())              
 )
+注：ball_1.add_updater(lambda m: m.move_to(rect.get_end()))也可以实现相同的效果
 
 ball_1的动画符合预期
 ball_2的动画不符合预期
