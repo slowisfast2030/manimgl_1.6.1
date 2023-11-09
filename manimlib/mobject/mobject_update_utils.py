@@ -78,14 +78,14 @@ arc = always_redraw(lambda: Arc(
             radius=0.5,
             stroke_width=2,
         ).rotate(PI / 2, RIGHT, about_point=ORIGIN).shift(get_fc()))
-func: lambda: Arc(...).rotate(PI / 2, RIGHT, about_point=ORIGIN).shift(get_fc())
+func(函数): lambda: Arc(...).rotate(PI / 2, RIGHT, about_point=ORIGIN).shift(get_fc())
 *args: {}
 **kwargs: {}
 """
 
 """
 brace = always_redraw(Brace, square, UP)
-func: Brace
+func(类): Brace
 *args: square, UP
 **kwargs: {}
 """
