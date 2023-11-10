@@ -24,6 +24,9 @@ if TYPE_CHECKING:
     from manimlib.mobject.mobject import Mobject
     from manimlib.animation.animation import Animation
 
+"""
+brace = always_redraw(Brace, square, UP)
+"""
 class Brace(SingleStringTex):
     CONFIG = {
         "buff": 0.2,
