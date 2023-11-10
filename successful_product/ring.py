@@ -1,5 +1,9 @@
 from manimlib import *
 
+"""
+锯齿状非常明显
+是不是cario升级为opengl后的遗留问题
+"""
 class test(Scene):
     def construct(self):
         radius = 2
