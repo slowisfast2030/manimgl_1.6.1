@@ -20,16 +20,16 @@ class test(Scene):
         #self.add(text, tex, textext)
 
         integral_tex = Tex(
-            r"\int_a^b f(x) \,dx = S", isolate=["f(x)", "dx", "a", "b", "\int"]
+            r"\int_a^b f(x) \,dx = S", isolate=["a", "b", "\int", "f(x)", "dx"]
         ).shift(DOWN)
 
         # Set different colors for different parts of the formula
         integral_tex.set_color_by_tex_to_color_map({
             "\int": RED,  # Color for the integral symbol
-            "a": WHITE,     # Color for the 'a' variable
+            "b": ORANGE,     # Color for the 'a' variable
             "dx": GREEN,   # Color for the 'dx' part
             "=": YELLOW,   # Color for the '=' symbol
-            "b": ORANGE,    # Color for the 'b' variable
+            "a": WHITE,    # Color for the 'b' variable
             "f(x)": BLUE_E,    # Color for the 'f(x)' part
         })
 
