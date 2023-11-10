@@ -11,8 +11,8 @@ class test(Scene):
         radius = 2
         dR = 0.2
 
-        outer_ring = Circle(radius=radius + dR, n_components=200)
-        inner_ring = Circle(radius=radius, n_components=200)
+        outer_ring = Circle(radius=radius + dR, n_components=500)
+        inner_ring = Circle(radius=radius, n_components=500)
         inner_ring.rotate(PI, RIGHT)
 
         # 使用差运算代替 append_vectorized_mobject
