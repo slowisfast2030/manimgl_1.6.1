@@ -9,6 +9,6 @@ class test(Scene):
         textext = TexText("""
             Or thinking of the plane as $\\mathds{C}$,\\\\
             this is the map $z \\rightarrow z^2$
-        """).shift(DOWN*2)
+        """).shift(DOWN*2.5)
 
         self.add(text, tex, textext)
