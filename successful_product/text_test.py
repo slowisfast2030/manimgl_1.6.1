@@ -17,4 +17,20 @@ class test(Scene):
         # """).shift(DOWN*2.5)
         textext = TexText("This is a combination of text and a LaTeX formula: $E=mc^2$").shift(DOWN*2)
 
-        self.add(text, tex, textext)
+        #self.add(text, tex, textext)
+
+        integral_tex = Tex(
+            r"\int_a^b f(x) \,dx = S", isolate=["f(x)", "dx", "a", "b"]
+        ).shift(DOWN)
+
+        # Set different colors for different parts of the formula
+        integral_tex.set_color_by_tex_to_color_map({
+            "\int": RED,  # Color for the integral symbol
+            "a": WHITE,     # Color for the 'a' variable
+            "dx": GREEN,   # Color for the 'dx' part
+            "=": YELLOW,   # Color for the '=' symbol
+            "b": ORANGE    # Color for the 'b' variable
+        })
+
+        # Add the formula to the scene
+        self.add(integral_tex)
