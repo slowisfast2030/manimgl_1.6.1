@@ -9,7 +9,7 @@ class test(Scene):
         # Apply different colors to each part of the expression
         integral_tex.set_color_by_tex_to_color_map({
             "\int": RED,
-            "a": GREEN,
+            "a": WHITE,
             "b": BLUE,
             "f(x)": YELLOW,
             "dx": ORANGE,
