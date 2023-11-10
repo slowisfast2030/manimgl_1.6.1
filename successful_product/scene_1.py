@@ -50,8 +50,8 @@ class test(ThreeDScene):
                                 t_range=[0, 2*PI]).set_color(RED)
         
         
-        eq = Tex("x^2", "+", "y^2", "=", "9").shift(DOWN*3+LEFT*3).scale(1.2) 
-        plane = Text("the xoy plane").shift(DOWN*3+RIGHT*3).scale(1.2)
+        eq = Tex("x^2", "+", "y^2", "=", "9").shift(DOWN*3+LEFT*3).scale(1) 
+        plane = Text("the xoy plane").shift(DOWN*3+RIGHT*3).scale(1)
         self.play(ShowCreation(curve_down),
                   FadeIn(eq), 
                   FadeIn(plane),
