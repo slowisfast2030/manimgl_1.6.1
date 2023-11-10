@@ -9,8 +9,9 @@ class test(Scene):
         radius = 2
         dR = 0.2
 
-        outer_ring = Circle(radius=radius + dR)
-        inner_ring = Circle(radius=radius)
+        outer_ring = Circle(radius=radius + dR, n_components=200)
+        inner_ring = Circle(radius=radius, n_components=200)
+        inner_ring.rotate(PI, RIGHT)
 
         # 使用差运算代替 append_vectorized_mobject
         ring = Difference(outer_ring, inner_ring)
@@ -18,5 +19,9 @@ class test(Scene):
         ring.set_fill(color=GREEN, opacity=1.0)  # 设置填充颜色和不透明度
 
         self.add(ring)
+        #self.play(ShowCreation(ring))
+
+        # rec = Rectangle(width=10, height=0.2).set_color(BLUE_E).set_opacity(0.5)
+        # self.play(Transform(ring, rec))
         
         
