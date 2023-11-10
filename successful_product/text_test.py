@@ -2,9 +2,9 @@ from manimlib import *
 
 class test(Scene):
     def construct(self):
-        text = Text("E = MC^2")
+        text = Text("E = mc^2")
     
-        tex = Tex("E = MC^2").shift(DOWN)
+        tex = Tex("E = mc^2").shift(DOWN)
 
         # textext = TexText("""
         #     Or thinking of the plane as $\\mathds{C}$,\\\\
