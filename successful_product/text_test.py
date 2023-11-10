@@ -12,5 +12,4 @@ class test(Scene):
         # """).shift(DOWN*2.5)
         textext = TexText("This is a combination of text and a LaTeX formula: $E=mc^2$").shift(DOWN*2)
 
-
         self.add(text, tex, textext)
