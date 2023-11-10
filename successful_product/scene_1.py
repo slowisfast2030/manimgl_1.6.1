@@ -50,7 +50,7 @@ class test(ThreeDScene):
                                 t_range=[0, 2*PI]).set_color(RED)
         
         
-        eq = Tex("x^2", "+", "y^2", "=", "9").shift(DOWN*2.5+LEFT*2.5).scale(1.5) 
+        eq = Tex("x^2", "+", "y^2", "=", "9").shift(DOWN*2.5+LEFT*3).scale(1.3) 
         self.play(ShowCreation(curve_down),
                   FadeIn(eq), 
                   run_time=1)
