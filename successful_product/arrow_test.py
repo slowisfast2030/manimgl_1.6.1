@@ -8,5 +8,5 @@ class test(Scene):
         elbow = Elbow().shift(UP)
         self.add(elbow)
 
-        fillarrow = FillArrow(LEFT, RIGHT, color=RED).shift(DOWN)
-        self.add(fillarrow)
+        vector = Vector().shift(DOWN)
+        self.add(vector)
