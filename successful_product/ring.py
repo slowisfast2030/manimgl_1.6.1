@@ -13,7 +13,7 @@ class test(Scene):
         print(outer_ring.insert_n_curves_to_point_list(10, outer_ring.get_points()))
         # 创建内圆
         inner_ring = Circle(radius=radius)
-        inner_ring_2 = VMobject().set_points(inner_ring.insert_n_curves_to_point_list(10, inner_ring.get_points()))
+        inner_ring_2 = VMobject().set_points(inner_ring.insert_n_curves_to_point_list(10, inner_ring.get_all_points()))
 
         # 使用差运算代替 append_vectorized_mobject
         # ring = Difference(outer_ring_2, inner_ring_2)
