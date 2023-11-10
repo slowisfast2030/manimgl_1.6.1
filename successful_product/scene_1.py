@@ -20,7 +20,7 @@ class test(ThreeDScene):
                         y_range=[-5, 5, 1], 
                         z_range=[-3.5, 4, 1],
                         axis_config={"include_tip": True, "tick_size": 0.05})
-        self.add(axes)
+        #self.add(axes)
 
         #rec = Rectangle(width=4, height=4).set_color(BLUE_E).set_opacity(0.5)
         def uv_func(u:float, v:float) -> np.ndarray:
