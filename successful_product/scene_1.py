@@ -50,8 +50,10 @@ class test(ThreeDScene):
                                 t_range=[0, 2*PI]).set_color(RED)
         
         
-        
-        self.play(ShowCreation(curve_down), run_time=1)
+        eq = Tex("x^2", "+", "y^2", "=", "9").shift(DOWN*2.5+LEFT*2.5).scale(1.5) 
+        self.play(ShowCreation(curve_down),
+                  FadeIn(eq), 
+                  run_time=1)
         
 
         self.play(frame.animate.reorient(20, 70), run_time=1)
