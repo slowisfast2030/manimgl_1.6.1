@@ -52,8 +52,19 @@ class test(ThreeDScene):
         
         
         eq = Tex("x^2", "+", "y^2", "=", "9").shift(DOWN*3.5+LEFT*3).scale(1) 
-        integral = Tex(r"\int_{\text{circle}} f(x,y) \,ds").shift(DOWN*3.5+RIGHT*3).scale(1)
-        eq_arrow = Arrow(LEFT, RIGHT).scale(0.5).next_to(eq, LEFT)
+        integral = Tex(r"\int_{\text{circle}} f(x,y) \,ds",
+                       isolate=["f(x,y)", "ds"]
+                       ).shift(DOWN*3.5+RIGHT*3).scale(1)
+        integral.set_color_by_tex_to_color_map({
+            "\int": RED,
+            "ds": RED,
+        })
+
+
+        eq_arrow = Arrow(LEFT, RIGHT)\
+                    .scale(0.5)\
+                    .next_to(eq, LEFT).rotate(PI/4)\
+                    .shift(RIGHT*2+UP)
         self.play(ShowCreation(curve_down),
                   FadeIn(eq), 
                   FadeIn(eq_arrow),
