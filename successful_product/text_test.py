@@ -20,7 +20,7 @@ class test(Scene):
         #self.add(text, tex, textext)
 
         integral_tex = Tex(
-            r"\int_a^b f(x) \,dx = S", isolate=["a", "b", "\int", "f(x)", "dx"]
+            r"\int_a^b f(x) \,dx = S", isolate=["\int", "a", "b", "f(x)", "dx"]
         ).shift(DOWN)
 
         # Set different colors for different parts of the formula
