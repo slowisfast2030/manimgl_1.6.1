@@ -3,6 +3,8 @@ from manimlib import *
 """
 锯齿状非常明显
 是不是cario升级为opengl后的遗留问题
+
+可以通过增加内环和外环的分段数来减少锯齿
 """
 class test(Scene):
     def construct(self):
