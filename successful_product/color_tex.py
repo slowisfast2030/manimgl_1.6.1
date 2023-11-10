@@ -7,6 +7,7 @@ class test(Scene):
                                isolate=["\int", "a", "b", "f(x)", "dx", "S"])
 
         # Apply different colors to each part of the expression
+        # a和b的颜色是反的！！！
         integral_tex.set_color_by_tex_to_color_map({
             "\int": RED,
             "a": WHITE,
