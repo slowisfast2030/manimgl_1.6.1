@@ -18,7 +18,7 @@ class test(ThreeDScene):
         
         axes = ThreeDAxes(x_range=[-5, 5, 1], 
                         y_range=[-5, 5, 1], 
-                        z_range=[-3.5, 3.5, 1],
+                        z_range=[-3.5, 4, 1],
                         axis_config={"include_tip": True, "tick_size": 0.05})
         self.add(axes)
 
