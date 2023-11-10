@@ -10,11 +10,10 @@ class test(Scene):
         dR = 0.2
 
         outer_ring = Circle(radius=radius + dR)
-        inner_ring = Circle(radius=radius).shift(RIGHT*2)
+        inner_ring = Circle(radius=radius)
 
         # 使用差运算代替 append_vectorized_mobject
-        #ring = Difference(outer_ring, inner_ring)
-        ring = Intersection(outer_ring, inner_ring)
+        ring = Difference(outer_ring, inner_ring)
         ring.set_stroke(width=0)  # 设置描边宽度
         ring.set_fill(color=GREEN, opacity=1.0)  # 设置填充颜色和不透明度
 
