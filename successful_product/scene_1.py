@@ -51,8 +51,10 @@ class test(ThreeDScene):
         
         
         eq = Tex("x^2", "+", "y^2", "=", "9").shift(DOWN*3+LEFT*3).scale(1.2) 
+        plane = Text("the xoy plane").shift(DOWN*3+RIGHT*3).scale(1.2)
         self.play(ShowCreation(curve_down),
                   FadeIn(eq), 
+                  FadeIn(plane),
                   run_time=1)
         
 
