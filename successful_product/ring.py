@@ -10,16 +10,14 @@ class test(Scene):
         dR = 0.2
 
         outer_ring = Circle(radius=radius + dR)
-        print(outer_ring.insert_n_curves_to_point_list(10, outer_ring.get_points()))
-        # 创建内圆
-        inner_ring = Circle(radius=radius)
-        inner_ring_2 = VMobject().set_points(inner_ring.insert_n_curves_to_point_list(10, inner_ring.get_all_points()))
+        inner_ring = Circle(radius=radius).shift(RIGHT*2)
 
         # 使用差运算代替 append_vectorized_mobject
-        # ring = Difference(outer_ring_2, inner_ring_2)
-        # ring.set_stroke(width=0)  # 设置描边宽度
-        # ring.set_fill(color=GREEN, opacity=1.0)  # 设置填充颜色和不透明度
+        #ring = Difference(outer_ring, inner_ring)
+        ring = Intersection(outer_ring, inner_ring)
+        ring.set_stroke(width=0)  # 设置描边宽度
+        ring.set_fill(color=GREEN, opacity=1.0)  # 设置填充颜色和不透明度
 
-        # self.add(ring)
-        self.add(inner_ring_2)
+        self.add(ring)
+        
         
