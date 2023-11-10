@@ -51,10 +51,11 @@ class test(ThreeDScene):
         
         
         eq = Tex("x^2", "+", "y^2", "=", "9").shift(DOWN*3+LEFT*3).scale(1) 
-        plane = Text("the xoy plane").shift(DOWN*3+RIGHT*3).scale(1)
+        integral = Tex(r"\int_circle f(x,y) \,ds").shift(DOWN*3+RIGHT*3).scale(1)
+
         self.play(ShowCreation(curve_down),
                   FadeIn(eq), 
-                  FadeIn(plane),
+                  FadeIn(integral),
                   run_time=1)
         
 
