@@ -29,7 +29,8 @@ class test(Scene):
             "a": WHITE,     # Color for the 'a' variable
             "dx": GREEN,   # Color for the 'dx' part
             "=": YELLOW,   # Color for the '=' symbol
-            "b": ORANGE    # Color for the 'b' variable
+            "b": ORANGE,    # Color for the 'b' variable
+            "f(x)": BLUE_E,    # Color for the 'f(x)' part
         })
 
         # Add the formula to the scene
