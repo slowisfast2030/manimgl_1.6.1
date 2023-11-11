@@ -17,6 +17,7 @@ class test(Scene):
 
         # 使用差运算代替 append_vectorized_mobject
         ring = Difference(outer_ring, inner_ring)
+        #ring = Annulus(inner_radius=radius, outer_radius=radius+dR, n_components=500, mark_paths_closed=True)
         ring.set_stroke(width=0)  # 设置描边宽度
         ring.set_fill(color=GREEN, opacity=1.0)  # 设置填充颜色和不透明度
 
