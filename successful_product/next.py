@@ -5,16 +5,20 @@ class test(Scene):
         "square_width": 3,
         "square_color": GREEN,
         "square_fill_opacity": 0.75,
+        "dx" : 0.25,
+        "dx_color" : BLUE_B,
     }
     def construct(self):
         self.add_function_label()
         self.introduce_square()
+        self.increase_area()
     
     def add_function_label(self):
         label = Tex("f(x) = x^2")
         label.next_to(ORIGIN, RIGHT, buff = (self.square_width-3)/2.)
         label.to_edge(UP)
         self.add(label)
+        self.function_label = label
 
     def introduce_square(self):
         square = Square(
@@ -39,3 +43,75 @@ class test(Scene):
         )
         self.play(*list(map(GrowFromCenter, braces)))
         self.play(Write(x_squared))
+
+        self.square = square
+        self.side_braces = braces
+
+    def increase_area(self):
+        color_kwargs = {
+            "fill_color" : YELLOW,
+            "fill_opacity" : self.square_fill_opacity,
+            "stroke_width" : 0,
+        }
+        right_rect = Rectangle(
+            width = self.dx,
+            height = self.square_width,
+            **color_kwargs
+        )
+        bottom_rect = right_rect.copy().rotate(-PI/2)
+        right_rect.next_to(self.square, RIGHT, buff = 0)
+        bottom_rect.next_to(self.square, DOWN, buff = 0)
+        corner_square = Square(
+            side_length = self.dx,
+            **color_kwargs
+        )
+        corner_square.next_to(self.square, DOWN+RIGHT, buff = 0)
+
+        right_line = Line(
+            self.square.get_corner(UP+RIGHT),
+            self.square.get_corner(DOWN+RIGHT),
+            stroke_width = 0
+        )
+        bottom_line = Line(
+            self.square.get_corner(DOWN+RIGHT),
+            self.square.get_corner(DOWN+LEFT),
+            stroke_width = 0
+        )
+        corner_point = VectorizedPoint(
+            self.square.get_corner(DOWN+RIGHT)
+        )
+
+        little_braces = VGroup()
+        for vect in RIGHT, DOWN:
+            brace = Brace(
+                corner_square, vect, 
+                buff = SMALL_BUFF,
+            )
+            text = brace.get_tex("dx", buff = SMALL_BUFF)
+            text.set_color(self.dx_color)
+            brace.add(text)
+            little_braces.add(brace)
+
+        right_brace, bottom_brace = self.side_braces
+        self.play(
+            Transform(right_line, right_rect),
+            Transform(bottom_line, bottom_rect),
+            Transform(corner_point, corner_square),
+            right_brace.next_to, right_rect, RIGHT, SMALL_BUFF,
+            bottom_brace.next_to, bottom_rect, DOWN, SMALL_BUFF,
+        )
+        self.remove(corner_point, bottom_line, right_line)
+        self.add(corner_square, bottom_rect, right_rect)
+        self.play(*list(map(GrowFromCenter, little_braces)))
+        self.wait()
+        self.play(*it.chain(*[
+            [mob.shift, vect*SMALL_BUFF]
+            for mob, vect in [
+                (right_rect, RIGHT),
+                (bottom_rect, DOWN),
+                (corner_square, DOWN+RIGHT),
+                (right_brace, RIGHT),
+                (bottom_brace, DOWN),
+                (little_braces, DOWN+RIGHT)
+            ]
+        ]))
