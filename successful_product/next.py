@@ -7,11 +7,14 @@ class test(Scene):
         "square_fill_opacity": 0.75,
     }
     def construct(self):
+        self.add_function_label()
+        self.introduce_square()
+    
+    def add_function_label(self):
         label = Tex("f(x) = x^2")
         label.next_to(ORIGIN, RIGHT, buff = (self.square_width-3)/2.)
         label.to_edge(UP)
         self.add(label)
-        self.introduce_square()
 
     def introduce_square(self):
         square = Square(
