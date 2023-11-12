@@ -29,8 +29,8 @@ tex:
   # intermediate_filetype: "xdv"
 universal_import_line: "from manimlib import *"
 style:
-  #font: "Times New Roman"
-  font: "Consolas"
+  font: "Times New Roman"
+  #font: "Comic Sans"
   background_color: "#333333"
   #background_color: "#330033"
 # Set the position of preview window, you can use directions, e.g. UL/DR/OL/OO/...
