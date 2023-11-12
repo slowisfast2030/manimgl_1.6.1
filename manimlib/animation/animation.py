@@ -177,6 +177,11 @@ class Animation(object):
         这个函数的存在确实挺冗余
         不过, 也能看出3b1b对于animation转化为updater的得心应手
         """
+        """
+        genius!!!
+        
+        Transform(rects, new_rects).update(1)
+        """
         self.interpolate(alpha)
 
     def interpolate_mobject(self, alpha: float) -> None:
