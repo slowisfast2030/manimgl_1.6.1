@@ -67,6 +67,24 @@ def wiggle(t: float, wiggles: float = 2) -> float:
     return there_and_back(t) * np.sin(wiggles * np.pi * t)
 
 
+"""
+genius!
+
+self.play(
+    MoveCar(car, end),
+    FadeIn(
+        ticks, 
+        lag_ratio=1,
+        rate_func=linear,
+    ),
+    ShowCreation(line),
+    FadeIn(
+        v_dt_brace_group,
+        rate_func = squish_rate_func(smooth, 0.6, 0.8)
+    ),
+    run_time = self.t_max
+    )
+"""
 def squish_rate_func(
     func: Callable[[float], float],
     a: float = 0.4,
