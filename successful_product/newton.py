@@ -40,8 +40,8 @@ class test(Scene):
         language_words = "language of differential equations"
         author = "-Steven Strogatz"
         quote = TexText(
-            """
-            \\Large
+            r"""
+            \Large
             ``Since Newton, mankind has come to realize
             that the laws of physics are always expressed
             in the language of differential equations.''\\\\
@@ -60,3 +60,43 @@ class test(Scene):
         quote.author_part.scale(1.2, about_edge=UL)
 
         return quote
+    
+Lg_formula_config = {
+    "tex_to_color_map": {
+        "\\theta_0": WHITE,
+        "{L}": BLUE,
+        "{g}": YELLOW,
+    },
+}
+
+class small(Scene):
+    def construct(self):
+        approx = Tex(
+            "\\sin", "(", "\\theta", ") \\approx \\theta",
+            tex_to_color_map={"\\theta": RED},
+            arg_separator="",
+        )
+
+        implies = Tex("\\Downarrow")
+        period = Tex(
+            "\\text{Period}", "\\approx",
+            "2\\pi \\sqrt{\\,{L} / {g}}",
+            **Lg_formula_config,
+        )
+        group = VGroup(approx, implies, period)
+        group.arrange(DOWN)
+
+        approx_brace = Brace(approx, UP, buff=SMALL_BUFF)
+        approx_words = TexText(
+            "For small $\\theta$",
+            tex_to_color_map={"$\\theta$": RED},
+        )
+        approx_words.scale(0.75)
+        approx_words.next_to(approx_brace, UP, SMALL_BUFF)
+
+        self.add(approx, approx_brace, approx_words)
+        self.play(
+            Write(implies),
+            FadeIn(period, LEFT)
+        )
+        self.wait()
