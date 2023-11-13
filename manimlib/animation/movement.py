@@ -27,6 +27,24 @@ test_homotopy2 = lambda x, y, z, t: (
 
 self.play(Homotopy(test_homotopy1, obj2, run_time=10, rate_func=linear))
 """
+
+"""
+pi_creature = PiCreature(color = PINK).scale(0.5)
+pi_creature.shift(-pi_creature.get_corner(DOWN+LEFT))
+self.plane.prepare_for_nonlinear_transform()
+
+self.play(ShowCreation(
+    self.plane,
+    run_time = 2
+))
+self.play(FadeIn(pi_creature))
+self.play(Blink(pi_creature))
+self.plane.add(pi_creature)
+self.play(Homotopy(plane_wave_homotopy, self.plane, run_time = 3))
+self.wait(2)
+self.apply_matrix([[2, 1], [1, 2]])
+self.wait()
+"""
 class Homotopy(Animation):
     CONFIG = {
         "run_time": 3,
