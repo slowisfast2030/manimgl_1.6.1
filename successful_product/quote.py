@@ -1,6 +1,7 @@
 from manimlib import *
 
 class OpeningQuote(Scene):
+    # 注意区分类属性和实例属性
     quote = []
     quote_arg_separator = " "
     highlighted_quote_terms = {}
