@@ -19,6 +19,7 @@ class OpeningQuote(Scene):
     def construct(self):
         self.quote = self.get_quote()
         self.author = self.get_author(self.quote)
+        # 打印，看是否正确提取了字符串
         print(self.quote.tex_strings, self.author.tex_strings)
 
         self.play(FadeIn(self.quote, **self.fade_in_kwargs))
