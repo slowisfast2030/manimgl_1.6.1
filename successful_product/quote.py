@@ -48,6 +48,7 @@ class OpeningQuote(Scene):
                 quote[0].shift(0.2 * RIGHT)
                 quote[-1].shift(0.2 * LEFT)
         
+        # 报错。因为self.highlighted_quote_terms是一个字典，不是一个列表
         # for term, color in self.highlighted_quote_terms:
         #     quote.set_color_by_tex(term, color)
         for term, color in self.highlighted_quote_terms.items():
