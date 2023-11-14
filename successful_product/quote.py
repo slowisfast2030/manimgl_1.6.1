@@ -48,8 +48,6 @@ class OpeningQuote(Scene):
                 quote[0].shift(0.2 * RIGHT)
                 quote[-1].shift(0.2 * LEFT)
         
-        print(self.highlighted_quote_terms)
-
         # for term, color in self.highlighted_quote_terms:
         #     quote.set_color_by_tex(term, color)
         for term, color in self.highlighted_quote_terms.items():
