@@ -9,6 +9,7 @@ class test(Scene):
     def get_ring(self, radius, dR, color = RED):
         ring = Circle(radius = radius + dR).center()
         inner_ring = Circle(radius = radius).center()
+        # 点睛之笔
         inner_ring.rotate(PI, RIGHT)
         ring.append_vectorized_mobject(inner_ring)
         ring.set_stroke(width = 0.5)
