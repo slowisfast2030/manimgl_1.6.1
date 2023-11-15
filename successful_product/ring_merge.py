@@ -1,8 +1,8 @@
 from manimlib import *
 
-class RingMerge(Scene):
+class test(Scene):
     def construct(self):
-        ring = self.get_ring(1, 0.2, color = BLUE)
+        ring = self.get_ring(1, 0.2)
         self.add(ring)
         print(ring.get_all_points())
         
@@ -12,7 +12,7 @@ class RingMerge(Scene):
     
     def get_ring(self, radius, dR, color = RED):
         ring = Circle(radius = radius + dR).center()
-        inner_ring = Circle(radius = radius)
+        inner_ring = Circle(radius = radius).center()
         inner_ring.rotate(np.pi, RIGHT)
         ring.append_vectorized_mobject(inner_ring)
         ring.set_stroke(width = 0.5)
