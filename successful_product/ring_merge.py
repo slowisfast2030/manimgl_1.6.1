@@ -2,11 +2,11 @@ from manimlib import *
 
 class test(Scene):
     def construct(self):
-        ring = self.get_ring(1, 0.2)
+        ring = self.get_ring(1, 0.2).rotate(PI/2)
         self.play(FadeIn(ring))
 
         unwrapped = self.get_unwrapped(ring).shift(DOWN*2) 
-        self.play(FadeIn(unwrapped))
+        self.play(Transform(ring, unwrapped))
     
     def get_ring(self, radius, dR, color = RED):
         ring = Circle(radius = radius + dR).center()
