@@ -3,7 +3,8 @@ from manimlib import *
 class test(Scene):
     def construct(self):
         ring = self.get_ring(1, 0.2)
-        self.add(ring)
+        #self.add(ring)
+        self.play(FadeIn(ring))
     
     def get_ring(self, radius, dR, color = RED):
         ring = Circle(radius = radius + dR).center()
