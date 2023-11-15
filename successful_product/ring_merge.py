@@ -6,13 +6,13 @@ class test(Scene):
         self.play(FadeIn(ring))
 
         unwrapped = self.get_unwrapped(ring).shift(DOWN*2) 
-        # 点集没有对齐
+        # 点集没有对齐。所以动画很难看
         self.play(Transform(ring, unwrapped))
     
     def get_ring(self, radius, dR, color = RED):
         ring = Circle(radius = radius + dR).center()
         inner_ring = Circle(radius = radius).center()
-        # 点睛之笔
+        # 点睛之笔。特别注意点集的顺序。
         inner_ring.rotate(PI, RIGHT)
         ring.append_vectorized_mobject(inner_ring)
         ring.set_stroke(width = 0.5)
@@ -25,6 +25,7 @@ class test(Scene):
         R = ring.R
         R_plus_dr = ring.R + ring.dR
         n_anchors = ring.get_num_curves()
+        # 如果manim没有自己想要的形状，可以自己构造点集
         result = VMobject()
         result.set_points_as_corners([
             interpolate(np.pi*R_plus_dr*LEFT,  np.pi*R_plus_dr*RIGHT, a)
