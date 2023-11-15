@@ -6,6 +6,7 @@ class test(Scene):
         self.play(FadeIn(ring))
 
         unwrapped = self.get_unwrapped(ring).shift(DOWN*2) 
+        # 点集没有对齐
         self.play(Transform(ring, unwrapped))
     
     def get_ring(self, radius, dR, color = RED):
