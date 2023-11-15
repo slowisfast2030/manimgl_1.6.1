@@ -5,7 +5,8 @@ class RingMerge(Scene):
         ring = self.get_ring(1, 0.2, color = BLUE)
         self.add(ring)
         print(ring.get_all_points())
-        c = Circle(radius = 1.2).set_stroke(width = 0.5).set_color(RED)
+        
+        c = Circle(radius = 1.2).set_stroke(width = 0.5).set_fill(RED)
         c.shift(LEFT*3)
         self.add(c)
     
