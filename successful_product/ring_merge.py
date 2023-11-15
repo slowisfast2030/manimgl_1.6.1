@@ -24,7 +24,6 @@ class test(Scene):
         R = ring.R
         R_plus_dr = ring.R + ring.dR
         n_anchors = ring.get_num_curves()
-        #print(n_anchors)
         result = VMobject()
         result.set_points_as_corners([
             interpolate(np.pi*R_plus_dr*LEFT,  np.pi*R_plus_dr*RIGHT, a)
