@@ -33,5 +33,5 @@ class test(Scene):
             return [x, y + 0.5*np.sin(2*np.pi*alpha), z]
         
 
-        #self.play(Homotopy(plane_wave_homotopy, plane, run_time=3, rate_func=linear))
-        self.play(Homotopy(test_homotopy1, mob, run_time=10, rate_func=linear))
+        self.play(Homotopy(plane_wave_homotopy, plane, run_time=3, rate_func=linear))
+        #self.play(Homotopy(test_homotopy1, mob, run_time=10, rate_func=linear))
