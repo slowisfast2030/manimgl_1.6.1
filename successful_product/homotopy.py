@@ -36,3 +36,37 @@ class test(Scene):
 
         self.play(Homotopy(plane_wave_homotopy, plane, run_time=3, rate_func=linear))
         #self.play(Homotopy(test_homotopy1, mob, run_time=10, rate_func=linear))
+
+def prepare_for_nonlinear_transform_local(obj, num_inserted_curves: int = 100):
+        for mob in obj.family_members_with_points():
+            num_curves = mob.get_num_curves()
+            if num_inserted_curves > num_curves:
+                mob.insert_n_curves(num_inserted_curves - num_curves)
+            mob.make_smooth_after_applying_functions = True
+        return obj
+
+class SquareToCircleHomotopy(Scene):
+    
+    def construct(self):
+        # Create a square
+        square = Square()
+        square = prepare_for_nonlinear_transform_local(square)
+
+        # Define the homotopy transformation function
+        def square_to_circle_homotopy(x, y, z, t):
+            # Calculate the distance from the origin
+            distance = np.sqrt(x**2 + y**2)
+
+            # Interpolate between the square and circle's points
+            new_x = interpolate(x, x / distance, t)
+            new_y = interpolate(y, y / distance, t)
+
+            # Return the new coordinates
+            return [new_x, new_y, z]
+
+        # Apply the homotopy to transform the square into the circle
+        self.play(Homotopy(square_to_circle_homotopy, square))
+
+        # Keep the final state displayed
+        self.wait(2)
+
