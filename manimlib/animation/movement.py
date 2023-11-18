@@ -85,6 +85,10 @@ class Homotopy(Animation):
         start: Mobject,
         alpha: float
     ) -> None:
+        """
+        alpha是时间进程，不是动画进程
+        两者之间的纽带：rate_func
+        """
         submob.match_points(start)
         submob.apply_function(
             self.function_at_time_t(alpha),
