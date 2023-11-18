@@ -31,6 +31,13 @@ class ChangingDecimal(Animation):
     需要实现interpolate_mobject方法
     但有的时候是实现interpolate_submobject方法
     这是为何？
+
+    如果动画作用的对象是一个不包含子对象的Mobject，使用interpolate_mobject
+    如果动画作用的对象是一个包含子对象的Mobject，使用interpolate_submobject，
+    可以针对不同的子对象进行不同的动画
+    但是，如果所有子对象都是同一个动画，那么使用interpolate_mobject也是可以的
+
+    这里动画的对象是DecimalNumber，它是一个Mobject，没有子对象，所以使用interpolate_mobject
     """
     def interpolate_mobject(self, alpha: float) -> None:
         self.mobject.set_value(
