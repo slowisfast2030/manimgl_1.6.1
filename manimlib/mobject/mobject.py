@@ -1170,7 +1170,7 @@ class Mobject(object):
         return self
 
     """
-    想象力不够：不明白这种操作的几何意义
+    数学和想象力需要增强：思考这种操作的几何意义
     self.play(
         moving_c_grid.animate.apply_complex_function(lambda z: z**2),
         run_time=6,
