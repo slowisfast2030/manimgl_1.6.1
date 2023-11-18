@@ -1163,6 +1163,12 @@ class Mobject(object):
         )
         return self
 
+    """
+    self.play(
+            moving_c_grid.animate.apply_complex_function(lambda z: z**2),
+            run_time=6,
+        )
+    """
     def apply_complex_function(self, function: Callable[[complex], complex], **kwargs):
         '''
         施加一个复变函数
