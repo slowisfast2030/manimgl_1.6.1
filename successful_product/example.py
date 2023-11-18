@@ -537,10 +537,10 @@ class SurfaceExample(Scene):
         # in whatever you've set as the image directory in
         # the custom_config.yml file
 
-        # day_texture = "EarthTextureMap"
-        # night_texture = "NightEarthTextureMap"
-        day_texture = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Whole_world_-_land_and_oceans.jpg/1280px-Whole_world_-_land_and_oceans.jpg"
-        night_texture = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/The_earth_at_night.jpg/1280px-The_earth_at_night.jpg"
+        day_texture = "EarthTextureMap.jpeg"
+        night_texture = "NightEarthTextureMap.jpeg"
+        #day_texture = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Whole_world_-_land_and_oceans.jpg/1280px-Whole_world_-_land_and_oceans.jpg"
+        #night_texture = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/The_earth_at_night.jpg/1280px-The_earth_at_night.jpg"
 
         surfaces = [
             TexturedSurface(surface, day_texture, night_texture)
