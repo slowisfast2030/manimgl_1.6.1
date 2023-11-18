@@ -516,6 +516,9 @@ class GraphExample(Scene):
         self.wait()
 
 
+"""
+天才！！！
+"""
 class SurfaceExample(Scene):
     CONFIG = {
         "camera_class": ThreeDCamera,
