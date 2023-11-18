@@ -1179,6 +1179,7 @@ class Mobject(object):
     def apply_complex_function(self, function: Callable[[complex], complex], **kwargs):
         '''
         施加一个复变函数
+        作用在每一个点，而不是点集
         '''
         def R3_func(point):
             x, y, z = point
