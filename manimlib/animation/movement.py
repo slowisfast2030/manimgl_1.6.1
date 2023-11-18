@@ -98,7 +98,7 @@ class Homotopy(Animation):
 
 class SmoothedVectorizedHomotopy(Homotopy):
     CONFIG = {
-        "apply_function_kwargs": {"make_smooth": True},
+        "apply_function_kwargs": {"make_smooth": True}, # mob.apply_function(**kwargs)似乎没有make_smooth参数
     }
 
 
