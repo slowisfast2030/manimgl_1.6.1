@@ -94,6 +94,9 @@ class UpdateFromAlphaFunc(UpdateFromFunc):
         self.update_function(self.mobject, alpha)
 
 
+"""
+保持和某个对象的相对位置不变
+"""
 class MaintainPositionRelativeTo(Animation):
     def __init__(
         self,
