@@ -624,6 +624,7 @@ class NumberPlane(Axes):
 
     self.play(Homotopy(plane_wave_homotopy, plane, run_time=3, rate_func=linear))
     """
+    # 3b1b是怎么发现：非线性变换需要增加曲线的数量的？
     def prepare_for_nonlinear_transform(self, num_inserted_curves: int = 50):
         for mob in self.family_members_with_points():
             num_curves = mob.get_num_curves()
