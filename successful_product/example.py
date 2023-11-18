@@ -114,6 +114,9 @@ class AnimatingMethods(Scene):
 
         # Even more generally, you could apply Mobject.apply_function,
         # which takes in functions form R^3 to R^3
+        """
+        波纹效果
+        """
         self.play(
             grid.animate.apply_function(
                 lambda p: [
