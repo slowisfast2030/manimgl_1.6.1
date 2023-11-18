@@ -1019,7 +1019,7 @@ class Mobject(object):
         '''
         rot_matrix_T = rotation_matrix_transpose(angle, axis)
         self.apply_points_function(
-            lambda points: np.dot(points, rot_matrix_T),
+            lambda points: np.dot(points, rot_matrix_T), # points是点集
             about_point,
             **kwargs
         )
