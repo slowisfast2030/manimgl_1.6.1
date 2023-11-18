@@ -106,6 +106,8 @@ class AnimatingMethods(Scene):
         z --> z^2
         x+iy --> e^x*e^iy
         缩放和旋转
+        x越大(大于1), 缩放越大
+        y越大, 旋转越大
         """
         self.play(grid.animate.apply_complex_function(np.exp), run_time=5)
         self.wait()
