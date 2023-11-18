@@ -526,6 +526,7 @@ class SurfaceExample(Scene):
 
     def construct(self):
         surface_text = Text("For 3d scenes, try using surfaces")
+        # 固定在屏幕上，不随着摄像机移动
         surface_text.fix_in_frame()
         surface_text.to_edge(UP)
         self.add(surface_text)
@@ -556,6 +557,7 @@ class SurfaceExample(Scene):
             mob.mesh.set_stroke(BLUE, 1, opacity=0.5)
 
         # Set perspective
+        # 观察的角度
         frame = self.camera.frame
         frame.set_euler_angles(
             theta=-30 * DEGREES,
@@ -596,9 +598,11 @@ class SurfaceExample(Scene):
         light_text.fix_in_frame()
 
         self.play(FadeTransform(surface_text, light_text))
+        # 光源的位置
         light = self.camera.light_source
         self.add(light)
         light.save_state()
+        # 移动光源
         self.play(light.animate.move_to(3 * IN), run_time=5)
         self.play(light.animate.shift(10 * OUT), run_time=5)
 
