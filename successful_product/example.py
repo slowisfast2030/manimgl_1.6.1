@@ -44,6 +44,7 @@ class OpeningManimExample(Scene):
         # Complex map
         c_grid = ComplexPlane()
         moving_c_grid = c_grid.copy()
+        # 非线性变换前需要增加点集的数量
         moving_c_grid.prepare_for_nonlinear_transform()
         c_grid.set_stroke(BLUE_E, 1)
         c_grid.add_coordinate_labels(font_size=24)
