@@ -37,6 +37,7 @@ class test(Scene):
         self.play(Homotopy(plane_wave_homotopy, plane, run_time=3, rate_func=linear))
         #self.play(Homotopy(test_homotopy1, mob, run_time=10, rate_func=linear))
 
+# 从coordinate_systems.py文件中借鉴
 def prepare_for_nonlinear_transform_local(obj, num_inserted_curves: int = 100):
         for mob in obj.family_members_with_points():
             num_curves = mob.get_num_curves()
