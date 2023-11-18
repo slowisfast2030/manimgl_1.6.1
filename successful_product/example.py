@@ -101,6 +101,9 @@ class AnimatingMethods(Scene):
         # The method Mobject.apply_complex_function lets you apply arbitrary
         # complex functions, treating the points defining the mobject as
         # complex numbers.
+        """
+        这个变换的几何意义是什么？
+        """
         self.play(grid.animate.apply_complex_function(np.exp), run_time=5)
         self.wait()
 
