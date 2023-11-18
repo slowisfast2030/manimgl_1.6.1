@@ -136,6 +136,11 @@ class PhaseFlow(Animation):
         self.function = function
         super().__init__(mobject, **kwargs)
 
+    """
+    updater的参数是dt，即帧之间的时间间隔
+    见过将dt改为alpha的
+    这里是将alpha改为dt
+    """
     def interpolate_mobject(self, alpha: float) -> None:
         if hasattr(self, "last_alpha"):
             dt = self.virtual_time * (alpha - self.last_alpha)
