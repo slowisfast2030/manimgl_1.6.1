@@ -11,8 +11,9 @@ class test(Scene):
         pi_2 = PiCreature(color=BLUE).shift(DOWN*2)
 
         plane = NumberPlane(height=16, width=20)
+        plane.prepare_for_nonlinear_transform()
         plane.add(pi_1, pi_2)
-
+        
         test_homotopy1 = lambda x, y, z, t: (
 			x + interpolate(-3, 3, 2*t if t<=0.5 else 1),     # First 5 Seconds
 			y + interpolate(0, 3, 2*(t-0.5) if t>0.5 else 0), # Next 5 Seconds
