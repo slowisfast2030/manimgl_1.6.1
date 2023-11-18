@@ -1182,6 +1182,12 @@ class Mobject(object):
         '''
         def R3_func(point):
             x, y, z = point
+            # 这里需要思考复数乘法的几何意义
+            # 旋转和缩放
+            # 可以想象z的幅度和角度
+            # z = r*e^(i*theta)
+            # z^2 = r^2*e^(i*2*theta)
+            # z^2的幅度是r^2, 角度是2*theta
             xy_complex = function(complex(x, y))
             return [
                 xy_complex.real,
