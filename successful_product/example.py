@@ -68,6 +68,9 @@ class OpeningManimExample(Scene):
         self.wait(2)
 
 
+"""
+天才！！！
+"""
 class AnimatingMethods(Scene):
     def construct(self):
         grid = Tex(r"\pi").get_grid(10, 10, height=4)
