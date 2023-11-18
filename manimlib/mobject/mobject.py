@@ -313,7 +313,7 @@ class Mobject(object):
     c = Circle().set_color(RED)
     cc = c.copy().set_color(TEAL)
     cc.apply_points_function(
-        lambda point: 2*point,
+        lambda points: 2*points,
         about_point=c.point_from_proportion(0.125+0.25)
     )
 
@@ -931,6 +931,7 @@ class Mobject(object):
         那么, 对所有点的操作都是相对于坐标系原点
         '''
         # points是点集, vector是点
+        # 广播机制
         self.apply_points_function(
             lambda points: points + vector,
             about_edge=None,
