@@ -67,7 +67,7 @@ class CountInFrom(ChangingDecimal):
         source_number: float | complex = 0,
         **kwargs
     ):
-        start_number = decimal_mob.number
+        start_number = decimal_mob.number # 这里感觉更像是end_number
         super().__init__(
             decimal_mob,
             lambda a: interpolate(source_number, start_number, a),
