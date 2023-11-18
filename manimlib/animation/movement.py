@@ -142,6 +142,7 @@ class PhaseFlow(Animation):
     这里是将alpha改为dt
     """
     def interpolate_mobject(self, alpha: float) -> None:
+        #print(self.virtual_time)
         if hasattr(self, "last_alpha"):
             dt = self.virtual_time * (alpha - self.last_alpha)
             self.mobject.apply_function(
