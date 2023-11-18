@@ -602,6 +602,27 @@ class NumberPlane(Axes):
         return Arrow(self.c2p(0, 0), self.c2p(*coords), **kwargs)
 
     # 执行非线性变换之前需要调用这个函数
+    """
+    调用了这个函数之后，整个动画会更加平滑
+
+    plane = NumberPlane(height=16, width=20)
+    plane.prepare_for_nonlinear_transform()
+
+    pi_1 = PiCreature(color=RED).shift(UP*2)
+    pi_2 = PiCreature(color=BLUE).shift(DOWN*2)
+
+    plane.add(pi_1, pi_2)
+    
+    def plane_wave_homotopy(x, y, z, t):
+        norm = get_norm([x, y])
+        tau = interpolate(5, -5, t) + norm/FRAME_X_RADIUS
+        alpha = sigmoid(tau)
+        #return [x, y + 0.5*np.sin(2*np.pi*alpha)-t*SMALL_BUFF/2, z]
+        return [x, y + 0.5*np.sin(2*np.pi*alpha), z]
+        
+
+    self.play(Homotopy(plane_wave_homotopy, plane, run_time=3, rate_func=linear))
+    """
     def prepare_for_nonlinear_transform(self, num_inserted_curves: int = 50):
         for mob in self.family_members_with_points():
             num_curves = mob.get_num_curves()
