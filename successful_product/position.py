@@ -12,4 +12,5 @@ class ExampleScene(Scene):
 
         # Animate the square to maintain its position relative to the circle
         self.play(MaintainPositionRelativeTo(square, circle), run_time=3)
+        #self.wait(3)
 
