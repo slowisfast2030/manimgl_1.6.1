@@ -360,6 +360,11 @@ class Mobject(object):
 
         # family是有自身的，submobjects没有
         for mob in self.get_family():
+            """
+            arr中的元素是点集的引用
+            对引用的操作会改变点集本身
+            进而影响到mob
+            """
             arrs = []
             """
             好像一直以来误解了一个东西
