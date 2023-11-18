@@ -103,6 +103,9 @@ class AnimatingMethods(Scene):
         # complex numbers.
         """
         这个变换的几何意义是什么？
+        z --> z^2
+        x+iy --> e^x*e^iy
+        缩放和旋转
         """
         self.play(grid.animate.apply_complex_function(np.exp), run_time=5)
         self.wait()
