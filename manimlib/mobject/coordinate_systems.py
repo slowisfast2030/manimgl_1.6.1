@@ -601,6 +601,7 @@ class NumberPlane(Axes):
         kwargs["buff"] = 0
         return Arrow(self.c2p(0, 0), self.c2p(*coords), **kwargs)
 
+    # 执行非线性变换之前需要调用这个函数
     def prepare_for_nonlinear_transform(self, num_inserted_curves: int = 50):
         for mob in self.family_members_with_points():
             num_curves = mob.get_num_curves()
