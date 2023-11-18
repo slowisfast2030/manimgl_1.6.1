@@ -101,6 +101,7 @@ class AnimatingMethods(Scene):
         # The method Mobject.apply_complex_function lets you apply arbitrary
         # complex functions, treating the points defining the mobject as
         # complex numbers.
+        # 复数有着明显的几何意义
         """
         这个变换的几何意义是什么？
         z --> z^2
