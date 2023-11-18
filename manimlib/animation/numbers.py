@@ -55,7 +55,7 @@ class ChangeDecimalToValue(ChangingDecimal):
         start_number = decimal_mob.number
         super().__init__(
             decimal_mob,
-            lambda a: interpolate(start_number, target_number, a),
+            lambda a: interpolate(start_number, target_number, a), # 用插值函数来实现动画
             **kwargs
         )
 
