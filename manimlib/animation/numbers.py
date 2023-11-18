@@ -25,6 +25,13 @@ class ChangingDecimal(Animation):
         self.number_update_func = number_update_func
         super().__init__(decimal_mob, **kwargs)
 
+    """
+    有一个疑问：
+    当继承Animation类时
+    需要实现interpolate_mobject方法
+    但有的时候是实现interpolate_submobject方法
+    这是为何？
+    """
     def interpolate_mobject(self, alpha: float) -> None:
         self.mobject.set_value(
             self.number_update_func(alpha)
