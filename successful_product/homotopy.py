@@ -46,10 +46,10 @@ def prepare_for_nonlinear_transform_local(obj, num_inserted_curves: int = 100):
         return obj
 
 class SquareToCircleHomotopy(Scene):
-    
     def construct(self):
         # Create a square
         square = Square()
+        # 非线性变换需要增加点集的数量
         square = prepare_for_nonlinear_transform_local(square)
 
         # Define the homotopy transformation function
