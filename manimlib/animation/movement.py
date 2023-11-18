@@ -120,6 +120,10 @@ class ComplexHomotopy(Homotopy):
         super().__init__(homotopy, mobject, **kwargs)
 
 
+"""
+对于一些不知道如何使用的类，可以让gpt4进行解释并给出代码示例
+准确率很高
+"""
 class PhaseFlow(Animation):
     CONFIG = {
         "virtual_time": 1,
