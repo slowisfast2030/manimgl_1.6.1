@@ -124,6 +124,10 @@ class ComplexHomotopy(Homotopy):
 对于一些不知道如何使用的类，可以让gpt4进行解释并给出代码示例
 准确率很高
 """
+"""
+这个类真是挺奇怪的
+不是很能理解其几何意义
+"""
 class PhaseFlow(Animation):
     CONFIG = {
         "virtual_time": 1,
