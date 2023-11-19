@@ -109,7 +109,10 @@ class CameraFrame(Mobject):
         "center_point": ORIGIN,
         "focal_dist_to_height": 2,
     }
-
+    """
+    
+    """
+    
     def init_uniforms(self) -> None:
         super().init_uniforms()
         # As a quaternion
