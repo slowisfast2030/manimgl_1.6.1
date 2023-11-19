@@ -4,7 +4,7 @@
 2.python解释器是如何知道manimlib文件夹的位置呢? 是不是安装时候加manimlib所在的路径添加到了sys.path中? 很有可能
 """
 from manimlib import *
-from manimlib.mobject.svg.tex_mobject import *
+from manimlib.mobject.svg.tex_mobject import * #可以发现这一行冗余了
 
 from custom.backdrops import *
 from custom.banner import *
