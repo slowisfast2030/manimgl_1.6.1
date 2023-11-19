@@ -121,7 +121,7 @@ class CameraFrame(Mobject):
     比如: 
     focal_distance = focal_dist_to_height * frame_height
     height_to_focal_dist = 1 / focal_dist_to_height
-    
+
 
     """
 
@@ -286,11 +286,8 @@ class CameraFrame(Mobject):
         return self
 
     def set_focal_distance(self, focal_distance: float):
-        '''
-        设置相机的焦距
-        '''
         """
-        这里并不是设置焦距, 而是计算焦距与高度的比值
+        设置相机焦距与frame高度的比值
         """
         self.uniforms["focal_dist_to_height"] = focal_distance / self.get_height()
         return self
