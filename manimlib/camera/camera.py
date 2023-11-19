@@ -110,9 +110,12 @@ class CameraFrame(Mobject):
         "focal_dist_to_height": 2,
     }
     """
-    
+    已知: 焦距/高度 = 2, 高度 = 8
+    所以: 焦距 = 16
+
+    也就是说, 相机的位置是(0, 0, 16)
     """
-    
+
     def init_uniforms(self) -> None:
         super().init_uniforms()
         # As a quaternion
