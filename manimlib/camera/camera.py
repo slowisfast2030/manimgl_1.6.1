@@ -69,7 +69,7 @@ frame.reorient
 等函数会改变camera的位置
 
 疑惑: 上述frame的函数为何会改变camera视角呢?
-在Camera类中, 会把CameraFrame对象的属性写入uniform
+回答：在Camera类中, 会把CameraFrame对象的属性写入uniform
 """
 class CameraFrame(Mobject):
     '''相机所拍摄到的帧'''
