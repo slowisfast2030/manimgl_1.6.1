@@ -30,16 +30,16 @@ class NowWeHaveEmotions(TeacherStudentsScene):
 
 class Pi(PiCreatureScene):
     def construct(self):
-        # modes = ['sassy', 'happy', 'hooray']
-        # self.play(self.pi_changes(*modes, run_time=1)) 
+        modes = ['sassy', 'happy', 'hooray']
+        self.play(self.pi_changes(*modes, run_time=1)) 
 
-        # self.introduce_bubble(pi_creature=self.pi_creature, 
-        #                       content="To be or not to be, that is a question",
-        #                       bubble_type=ThoughtBubble,
-        #                       target_mode="thinking")
+        self.introduce_bubble(pi_creature=self.pi_creature, 
+                              content="To be or not to be, that is a question",
+                              bubble_type=ThoughtBubble,
+                              target_mode="thinking")
         
-        #self.change_mode('happy')
-        self.blink()
+        self.change_mode('happy')
+        #self.blink() # 没有什么效果
     
 
 class test(Scene):

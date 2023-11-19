@@ -286,6 +286,8 @@ class PiCreatureScene(Scene):
         """
         play函数的参数不应该是animation吗?
         这里怎么传入了函数和函数参数?
+
+        答: 历史遗留问题
         """
         self.play(self.get_primary_pi_creature().change_mode, mode)
 
