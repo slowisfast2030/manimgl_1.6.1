@@ -2,6 +2,13 @@
 深度思考：
 1.执行`from manimlib import *`的时候, 本质上会执行`from manimlib.__init__ import *`
 2.python解释器是如何知道manimlib文件夹的位置呢? 是不是安装时候加manimlib所在的路径添加到了sys.path中? 很有可能
+
+--->
+在这份文件中可以执行`from manimlib import *`其实是一件很奇怪的事
+更进一步, 在manimgl_1.6.1文件夹下的任何位置（包括多层嵌套）都可以执行`from manimlib import *`
+这里就会涉及两个问题:
+python编译器是如何知道manimlib文件夹的位置的? (应该是在安装的时候sys.path加入了manimlib所在的路径)
+vscode编辑器是如何知道manimlib文件夹的位置的? (修改.vscode/settings.json文件? 但并没有显示修改)
 """
 from manimlib import *
 from manimlib.mobject.svg.tex_mobject import * # 这一行冗余了
