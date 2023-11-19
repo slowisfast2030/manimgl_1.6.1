@@ -314,7 +314,7 @@ class CameraFrame(Mobject):
 
     """
     从更新版本的manimgl拷贝过来:
-    
+
     @Mobject.affects_data
     def set_focal_distance(self, focal_distance: float):
         self.uniforms["fovy"] = 2 * math.atan(0.5 * self.get_height() / focal_distance)
@@ -461,6 +461,14 @@ class Camera(object):
     def init_frame(self) -> None:
         '''
         初始化相机帧
+
+        经常在construct方法下写:
+        frame = self.camera.frame
+        这里涉及3个class
+        Scene, Camera, CameraFrame
+        说明
+        Scene类中有一个Camera实例属性
+        Camera类中有一个CameraFrame实例属性
         '''
         self.frame = CameraFrame(**self.frame_config)
 
