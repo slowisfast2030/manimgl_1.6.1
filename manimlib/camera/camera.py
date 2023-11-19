@@ -300,6 +300,8 @@ class CameraFrame(Mobject):
         这里绝对写错了！
         按照公式, 这里应该是
         self.uniforms["height_to_focal_dist"] = 2 * math.tan(field_of_view / 2)
+
+        如果写错了, 但是manim代码能够正常运行, 那么说明这里的uniform变量并没有被使用
         """
         self.uniforms["focal_dist_to_height"] = 2 * math.tan(field_of_view / 2)
         return self
