@@ -114,6 +114,15 @@ class CameraFrame(Mobject):
     所以: 焦距 = 16
 
     也就是说, 相机的位置是(0, 0, 16)
+
+    进一步思考:
+    知道了focal_dist_to_height, frame_shape已经足够了
+    其他的参数都可以通过这两个参数计算出来
+    比如: 
+    focal_distance = focal_dist_to_height * frame_height
+    height_to_focal_dist = 1 / focal_dist_to_height
+    
+
     """
 
     def init_uniforms(self) -> None:
