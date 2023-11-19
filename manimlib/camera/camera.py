@@ -70,10 +70,14 @@ frame.reorient
 
 frame = self.camera.frame
 frame.set_height(height)
-当height从8变为20的时候, 会看到渲染的mob变小了
+效果: 当height从8变为20的时候, 会看到渲染的mob变小了
 这是因为frame的高度变大了, 导致了视锥的范围变大了
 frame的高度变大, 相当于camera向后移动了
 进而导致mob变小了
+
+frame.move_to(np.array([3,0,0]))
+效果: mob移到了屏幕中心的左侧
+本质上相当于camera向右移动了
 
 疑惑: 上述frame的函数为何会改变camera视角呢?
 回答: 在Camera类中, 会把CameraFrame对象的属性写入uniform
