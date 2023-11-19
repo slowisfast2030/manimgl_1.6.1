@@ -307,6 +307,9 @@ class PiCreatureScene(Scene):
 class MortyPiCreatureScene(PiCreatureScene):
     """
     定义在这个位置的是类属性
+    在3b1b的动画中pi生物分为学生和老师
+    学生: 蓝色, 不翻转, 左下角
+    老师: 棕色, 翻转, 右下角
     """
     default_pi_creature_kwargs: dict = dict(
         color=GREY_BROWN,
