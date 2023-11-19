@@ -122,7 +122,10 @@ class CameraFrame(Mobject):
     focal_distance = focal_dist_to_height * frame_height
     height_to_focal_dist = 1 / focal_dist_to_height
 
-
+    可以通过get_implied_camera_location方法获取相机在世界空间中的位置
+    frame = self.camera.frame
+    location = frame.get_implied_camera_location()
+    print(location)
     """
 
     def init_uniforms(self) -> None:

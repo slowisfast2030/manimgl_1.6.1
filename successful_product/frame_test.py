@@ -7,7 +7,7 @@ class FrameTest(Scene):
 
         frame = self.camera.frame
         frame.set_height(8)
-        frame.move_to(np.array([0,0,0]))
+        frame.move_to(np.array([0,0,10]))
         location = frame.get_implied_camera_location()
         print(location)
 
