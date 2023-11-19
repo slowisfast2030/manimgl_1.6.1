@@ -55,6 +55,9 @@ class Pi_morty(MortyPiCreatureScene):
         
         self.change_mode('happy')
 
+        # 没效果
+        self.joint_blink()
+
 class test(Scene):
     def construct(self):
         # p = NumberPlane()
