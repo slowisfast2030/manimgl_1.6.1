@@ -39,7 +39,9 @@ class Pi(PiCreatureScene):
                               target_mode="thinking")
         
         self.change_mode('happy')
-        #self.blink() # 没有什么效果
+        
+        # 没有什么效果。blink的效果需要修复
+        #self.blink() 
     
 
 class test(Scene):
