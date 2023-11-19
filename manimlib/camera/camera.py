@@ -312,6 +312,19 @@ class CameraFrame(Mobject):
         self.uniforms["focal_dist_to_height"] = focal_distance / self.get_height()
         return self
 
+    """
+    从更新版本的manimgl拷贝过来:
+    
+    @Mobject.affects_data
+    def set_focal_distance(self, focal_distance: float):
+        self.uniforms["fovy"] = 2 * math.atan(0.5 * self.get_height() / focal_distance)
+        return self
+
+    @Mobject.affects_data
+    def set_field_of_view(self, field_of_view: float):
+        self.uniforms["fovy"] = field_of_view
+        return self
+    """
     def set_field_of_view(self, field_of_view: float):
         '''
         设置相机的视野vfov(垂直视野)
