@@ -63,6 +63,10 @@ frame.height = 8
 离camera越远, object会缩小
 投影面的object保持不变
 
+c = Circle().move_to([0,0,10])
+将c的高度增加, 会看到c变大
+这是因为离摄像头更近
+
 frame.set_height
 frame.move_to
 frame.reorient
@@ -78,6 +82,11 @@ frame的高度变大, 相当于camera向后移动了
 frame.move_to(np.array([3,0,0]))
 效果: mob移到了屏幕中心的左侧
 本质上相当于camera向右移动了
+
+frame.move_to(np.array([0,0,-10]))
+效果: mob变大了
+解释不通
+(左右移动可以理解, 上下移动不能理解)
 
 疑惑: 上述frame的函数为何会改变camera视角呢?
 回答: 在Camera类中, 会把CameraFrame对象的属性写入uniform
