@@ -89,6 +89,23 @@ frame.move_to(np.array([0,0,5]))
 效果: mob变小了
 不能理解，完全相反的效果
 (左右移动可以理解, 上下移动不能理解)
+---------
+破案了！！！
+frame = self.camera.frame
+frame.set_height(8)
+frame.move_to(np.array([0,0,-5]))
+location = frame.get_implied_camera_location()
+print(location)
+当执行frame.move_to(np.array([0,0,-5]))的时候会使得camera向xoy平面移动5个单位
+这个时候, camera的位置是(0, 0, 11), 相机位置离投影面更近了, 所以mob变大了
+这里的move_to本质是shift
+---------trick----------
+frame = self.camera.frame
+frame.set_height(16)   # 将height从8变为16, 会导致相机的的位置由(0,0,16)变为(0,0,32)
+frame.move_to(np.array([0,0,-16])) # 将相机的位置由(0,0,32)变为(0,0,16)
+location = frame.get_implied_camera_location()
+print(location)
+
 
 疑惑: 上述frame的函数为何会改变camera视角呢?
 回答: 在Camera类中, 会把CameraFrame对象的属性写入uniform
