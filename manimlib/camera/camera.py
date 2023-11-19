@@ -464,6 +464,7 @@ class Camera(object):
 
         经常在construct方法下写:
         frame = self.camera.frame
+        
         这里涉及3个class
         Scene, Camera, CameraFrame
         说明
