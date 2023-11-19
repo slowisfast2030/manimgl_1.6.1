@@ -305,6 +305,9 @@ class PiCreatureScene(Scene):
 
 
 class MortyPiCreatureScene(PiCreatureScene):
+    """
+    定义在这个位置的是类属性
+    """
     default_pi_creature_kwargs: dict = dict(
         color=GREY_BROWN,
         flip_at_start=True,
