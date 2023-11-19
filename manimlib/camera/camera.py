@@ -52,7 +52,7 @@ for i in range(200):
 深度思考:
 默认情况下,
 camera的位置(0, 0, 16)
-tan(vfov/2) = 1/2
+tan(vfov/2) = 1/2        # 这里应该是水平视野, tan(hfov/2) = 1/2
 aspect_ratio = 16:9
 focal_distance = 16
 frame.height = 8
