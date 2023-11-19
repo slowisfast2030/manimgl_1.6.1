@@ -20,6 +20,7 @@ class test(Scene):
         pi2.look_at(LEFT)
         self.wait()
 
+        # blink的效果有问题
         pi2.blink()
         self.wait()
 
