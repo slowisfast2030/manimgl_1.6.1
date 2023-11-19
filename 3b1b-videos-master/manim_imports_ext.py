@@ -6,6 +6,9 @@
 from manimlib import *
 from manimlib.mobject.svg.tex_mobject import * # 这一行冗余了
 
+"""
+默认的搜索路径: 当前文件所在的路径
+"""
 from custom.backdrops import *
 from custom.banner import *
 from custom.characters.pi_creature import *
