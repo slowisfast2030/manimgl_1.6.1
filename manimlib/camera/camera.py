@@ -92,6 +92,15 @@ frame.move_to(np.array([0,0,5]))
 
 疑惑: 上述frame的函数为何会改变camera视角呢?
 回答: 在Camera类中, 会把CameraFrame对象的属性写入uniform
+
+
+frame = self.camera.frame
+frame_copy = frame.copy()
+frame_copy.scale(0.5).shift(UP+RIGHT)
+self.add(frame_copy)
+效果: 屏幕上不会有任何变化
+因为frame主要是为渲染提供参数
+本身不是可渲染对象
 """
 class CameraFrame(Mobject):
     '''相机所拍摄到的帧'''
