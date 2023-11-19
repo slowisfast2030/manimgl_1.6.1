@@ -1,3 +1,8 @@
+"""
+深度思考：
+1.执行`from manimlib import *`的时候, 本质上会执行`from manimlib.__init__ import *`
+2.python解释器是如何知道manimlib文件夹的位置呢? 是不是安装时候加manimlib所在的路径添加到了sys.path中? 很有可能
+"""
 from manimlib import *
 from manimlib.mobject.svg.tex_mobject import *
 
