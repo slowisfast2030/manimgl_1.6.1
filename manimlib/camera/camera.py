@@ -83,9 +83,11 @@ frame.move_to(np.array([3,0,0]))
 效果: mob移到了屏幕中心的左侧
 本质上相当于camera向右移动了
 
-frame.move_to(np.array([0,0,-10]))
+frame.move_to(np.array([0,0,-5])
 效果: mob变大了
-解释不通
+frame.move_to(np.array([0,0,5]))
+效果: mob变小了
+不能理解，完全相反的效果
 (左右移动可以理解, 上下移动不能理解)
 
 疑惑: 上述frame的函数为何会改变camera视角呢?
