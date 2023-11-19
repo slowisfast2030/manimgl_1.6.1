@@ -16,6 +16,7 @@ from manimlib.utils.space_ops import angle_between_vectors
 from manimlib.utils.space_ops import project_along_vector
 from manimlib.utils.space_ops import rotate_vector
 from manimlib.utils.space_ops import z_to_vector
+from manimlib.utils.space_ops import get_norm
 
 LIGHT_COLOR = YELLOW
 SHADOW_COLOR = BLACK
