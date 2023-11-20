@@ -53,7 +53,7 @@ class test(Scene):
         sentence_3.next_to(meaning_3, DOWN)
         self.play(Write(sentence_3))
 
-        word_fix = Text("Abandon", t2w={"Abandon": BOLD}).scale(2).set_color(RED).shift(UP*2)
+        word_fix = Text("Abandon", t2w={"Abandon": BOLD}).scale(3).set_color(RED).shift(UP*2)
         word_fix.fix_in_frame()
         pis[0].fix_in_frame()
         pis[1].fix_in_frame()
@@ -62,10 +62,9 @@ class test(Scene):
         frame = self.camera.frame
         def update_frame(frame, dt):
             frame.increment_theta(-0.1 * dt)
-        self.play(frame.animate.reorient(30, 60), run_time=2)
+        self.play(frame.animate.reorient(30, 70),Write(word_fix), run_time=2)
         frame.add_updater(update_frame)
 
-        self.play(Write(word_fix))
         self.wait(7)
 
 
