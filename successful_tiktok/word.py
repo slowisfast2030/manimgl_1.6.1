@@ -9,9 +9,15 @@ class test(Scene):
         colors = color_gradient([BLUE, GREEN], 3)
         pis = [PiCreature(color=color).scale(0.8) for color in colors]
         pi_group = VGroup(*pis)
-        pi_group.arrange(RIGHT).shift(DOWN*5)
-        self.add(pi_group)
+        pi_group.arrange(RIGHT)
+        self.play(FadeIn(pi_group))
         self.wait()
+        pi_group_copy = pi_group.shift(DOWN*5).copy()
+        self.play(FadeOut(pi_group))
+        self.wait()
+        self.play(FadeIn(pi_group_copy))
+
+
         word = Text("Abandon").scale(2).shift(UP*6.5+LEFT*2.2).set_color(PINK)
         self.play(Write(word))
 
