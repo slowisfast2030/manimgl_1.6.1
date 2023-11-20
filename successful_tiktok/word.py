@@ -52,4 +52,13 @@ class test(Scene):
         sentence_3 = Text("\n•  Logic had prevailed and he had abandoned the\n idea.", font_size=40)
         sentence_3.next_to(meaning_3, DOWN)
         self.play(Write(sentence_3))
+
+        frame = self.camera.frame
+        def update_frame(frame, dt):
+            frame.increment_theta(-0.2 * dt)
+        frame.add_updater(update_frame)
+        self.play(frame.animate.reorient(40, 70), run_time=2)
+        self.wait(3)
+
+        
         
