@@ -12,15 +12,37 @@ class test(Scene):
         pi_group.arrange(RIGHT).shift(DOWN*5)
         self.add(pi_group)
         self.wait()
-        word = Text("Abandon").scale(2).shift(UP*6.5+LEFT*2.2).set_color(RED)
+        word = Text("Abandon").scale(2).shift(UP*6.5+LEFT*2.2).set_color(PINK)
         self.play(Write(word))
 
         pis[0].look_at(LEFT)
         pis[1].shrug()
         self.wait()
 
-        meaning_1 = Text("V-T If you abandon a place, thing, or person, you leave the place, thing, or person permanently or for a long time, especially when you should not do so.         •  He claimed that his parents had abandoned him.")
-        meaning_1.next_to(word, DOWN)
-        self.add(meaning_1)
-        self.wait()
+        meaning_1 = Text("V-T If you abandon a place, thing, or person, you\n        leave the place, thing, or person permanently or for a long time, \n        especially when you should not do so.", 
+                         font_size=40,
+                         t2c={'abandon': BLUE, 'V-T': RED})
+        meaning_1.next_to(word, DOWN).shift(RIGHT*2.2)
+        self.play(FadeIn(meaning_1))
+        sentence_1 = Text("\n•  He claimed that his parents had abandoned him.", font_size=40)
+        sentence_1.next_to(meaning_1, DOWN)
+        self.play(Write(sentence_1))
+
+        meaning_2 = Text("V-T If you abandon an activity or piece of work, you\n        stop doing it before it is finished.", 
+                         font_size=40,
+                         t2c={'abandon': BLUE, 'V-T': RED})
+        meaning_2.next_to(meaning_1, 4*DOWN)
+        self.play(FadeIn(meaning_2))
+        sentence_2 = Text("\n•  The authorities have abandoned any attempt to\n distribute food in an orderly fashion. ", font_size=40)
+        sentence_2.next_to(meaning_2, DOWN)
+        self.play(Write(sentence_2))
+
+        meaning_3 = Text("V-T  If you abandon an idea or way of thinking, you \n        stop having that idea or thinking in that way.", 
+                         font_size=40,
+                         t2c={'abandon': BLUE, 'V-T': RED})
+        meaning_3.next_to(meaning_2, 6*DOWN)
+        self.play(FadeIn(meaning_3))
+        sentence_3 = Text("\n•  Logic had prevailed and he had abandoned the\n idea.", font_size=40)
+        sentence_3.next_to(meaning_3, DOWN)
+        self.play(Write(sentence_3))
         
