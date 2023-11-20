@@ -12,10 +12,12 @@ class test(Scene):
         pi_group = VGroup(*pis)
         pi_group.arrange(RIGHT)
         self.play(FadeIn(pi_group))
+        self.play(pis[1].says("today, we will leran a new word, abandon!"))
+        self.play(pis[1].debubble())
+        self.play(FadeOut(pi_group))
         self.wait()
         pi_group_copy = pi_group.shift(DOWN*5).copy()
-        self.wait()
-        self.play(Transform(pi_group, pi_group_copy), run_time=2)
+        self.play(FadeIn(pi_group_copy), run_time=2)
 
 
         word = Text("Abandon").scale(2).shift(UP*6.5+LEFT*2.2).set_color(RED)
