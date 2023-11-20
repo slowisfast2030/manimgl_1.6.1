@@ -19,7 +19,7 @@ class test(Scene):
         self.play(FadeOut(pi_group),FadeIn(pi_group_copy), run_time=2)
 
 
-        word = Text("Abandon").scale(2).shift(UP*6.5+LEFT*2.2).set_color(RED)
+        word = Text("Abandon").scale(2).shift(UP*6.5+LEFT*2.2).set_color(BLUE)
         self.play(Write(word))
 
         pis[0].look_at(LEFT)
@@ -53,8 +53,11 @@ class test(Scene):
         sentence_3.next_to(meaning_3, DOWN)
         self.play(Write(sentence_3))
 
-        word_fix = Text("Abandon").scale(2).set_color(RED).shift(UP*2)
+        word_fix = Text("Abandon", t2w={"Abandon": BOLD}).scale(2).set_color(RED).shift(UP*2)
         word_fix.fix_in_frame()
+        pis[0].fix_in_frame()
+        pis[1].fix_in_frame()
+        pis[2].fix_in_frame()
 
         frame = self.camera.frame
         def update_frame(frame, dt):
