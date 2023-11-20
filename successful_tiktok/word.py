@@ -62,7 +62,7 @@ class test(Scene):
         frame = self.camera.frame
         def update_frame(frame, dt):
             frame.increment_theta(-0.1 * dt)
-        self.play(frame.animate.reorient(30, 70), run_time=2)
+        self.play(frame.animate.reorient(30, 60), run_time=2)
         frame.add_updater(update_frame)
 
         self.play(Write(word_fix))
