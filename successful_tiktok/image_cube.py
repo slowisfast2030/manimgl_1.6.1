@@ -9,7 +9,7 @@ def compass_directions(n: int = 4, start_vect: np.ndarray = RIGHT) -> np.ndarray
 
 class test(Scene):
     def construct(self):
-        image_path = ImageMobject("dall-path.png")
+        image_path = ImageMobject("dall-house.png")
         print(image_path.get_height())
         print(image_path.get_width())
         #image_house = ImageMobject("dall-house.png").scale(2)
