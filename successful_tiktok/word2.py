@@ -43,6 +43,7 @@ class test(Scene):
                   run_time=2,
                   )
         self.wait(1)
+        self.clear()
 
 
 
@@ -81,7 +82,7 @@ class test(Scene):
 
         self.add(*result)   
 
-        word_fix = Text("Abandon", t2w={"Abandon": BOLD}).scale(3).set_color(BLUE_B).shift(UP*3)
+        word_fix = Text("Abandon", t2w={"Abandon": BOLD}).scale(3).set_color(BLUE).shift(UP*3)
         word_fix.fix_in_frame()
 
         frame = self.camera.frame
