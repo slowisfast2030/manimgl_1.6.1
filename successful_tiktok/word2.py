@@ -16,7 +16,7 @@ class test(Scene):
         self.play(pis[1].debubble())
         self.wait()
         pi_group_copy = pi_group.shift(DOWN*5).copy()
-        self.play(FadeOut(pi_group),FadeIn(pi_group_copy), run_time=2)
+        self.play(FadeOut(pi_group),FadeIn(pi_group_copy), run_time=1)
 
 
         word = Text("Abandon").scale(2).shift(UP*6.5+LEFT*2.2).set_color(BLUE)
@@ -41,8 +41,9 @@ class test(Scene):
         self.play(pis[0].thinks("what a lonely boy!"),
                   run_time=2,
                   )
+        
+        self.play(MoveToTarget(image_boy), run_time=2)
         self.wait(1)
-        self.play(MoveToTarget(image_boy), run_time=3)
 
         self.clear()
 
