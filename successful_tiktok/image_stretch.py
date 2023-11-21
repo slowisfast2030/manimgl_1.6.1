@@ -10,7 +10,8 @@ class test(Scene):
         self.add(image_path, image_path_blocker)
 
         self.play(ApplyMethod(
-                image_path_blocker.stretch, 0, 1, {"about_edge": LEFT},
+                image_path_blocker.stretch, 0, 1, {"about_edge": DOWN},
                 run_time=3,
-                rate_func=bezier([0, 0, 1, 1]),
+                #rate_func=bezier([0, 0, 1, 1]),
+                rate_func = rush_into
             ))
