@@ -46,7 +46,7 @@ class test(Scene):
                   run_time=1,
                   )
         
-        self.play(FadeIn(image_boy, rate_func=squish_rate_func(smooth, 0.5,1)), run_time=1)
+        self.play(FadeIn(image_boy, rate_func=slow_into), run_time=2)
         self.wait(2)
 
         self.clear()
