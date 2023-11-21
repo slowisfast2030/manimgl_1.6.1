@@ -38,7 +38,7 @@ class test(Scene):
         image_boy = ImageMobject("dall-boy.png").rotate(PI/2).scale(1.5).set_opacity(0).rotate(-PI/2)
         image_boy.target = image_boy.copy().set_opacity(1)
 
-        self.play(pis[0].thinks("lonely boy"),
+        self.play(pis[0].thinks("what a lonely boy!"),
                   MoveToTarget(image_boy),
                   run_time=2,
                   )
