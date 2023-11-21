@@ -42,12 +42,15 @@ class DivideImage(Scene):
 
         # Iterate over each segment and apply a rotation animation
         segments = random.sample(list(segments), num_rows*num_cols)
-        for segment in segments:
-            # Randomly choose the axis for rotation
-            #rotation_axis = np.random.choice([RIGHT, UP])
-            # Apply the rotation animation
-            #self.play(segment.animate.rotate(TAU/2, UP), run_time=0.5)
-            #self.play(ApplyMethod(segment.rotate, TAU/2, UP), run_time=0.5)
-            self.play(ApplyMethod(segment.rotate, TAU/2, UP), run_time=0.5)
+        segments = Group(*segments)
+        # for segment in segments:
+        #     # Randomly choose the axis for rotation
+        #     #rotation_axis = np.random.choice([RIGHT, UP])
+        #     # Apply the rotation animation
+        #     #self.play(segment.animate.rotate(TAU/2, UP), run_time=0.5)
+        #     #self.play(ApplyMethod(segment.rotate, TAU/2, UP), run_time=0.5)
+        #     self.play(ApplyMethod(segment.rotate, TAU/2, UP), run_time=0.1)
+
+        #self.play(LaggedStartMap(FadeIn, segments, lag_ratio=0), run_time=3)
 
         self.wait()
