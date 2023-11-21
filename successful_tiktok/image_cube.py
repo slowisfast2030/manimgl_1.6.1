@@ -25,7 +25,9 @@ class test(Scene):
         result = Group(*result).space_out_submobjects(1.01)
         self.add(*result)   
 
-        word_fix = Text("Abandon", t2w={"Abandon": BOLD}).scale(2).set_color_by_gradient(RED, BLUE).shift(UP*3)
+        word_fix = Text("Abandon", t2w={"Abandon": BOLD}).\
+                    scale(2).set_color_by_gradient(RED, BLUE, GREEN).\
+                    shift(UP*3)
         word_fix.fix_in_frame()
 
         frame = self.camera.frame

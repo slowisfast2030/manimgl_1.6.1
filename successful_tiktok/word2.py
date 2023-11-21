@@ -19,7 +19,7 @@ class test(Scene):
         self.play(FadeOut(pi_group),FadeIn(pi_group_copy), run_time=1)
 
 
-        word = Text("Abandon").scale(2).shift(UP*6.5+LEFT*2.2).set_color(BLUE)
+        word = Text("Abandon").scale(2).shift(UP*6.5+LEFT*2.2).set_color_by_gradient(RED, BLUE, GREEN)
         self.play(Write(word))
 
         pis[0].look_at(LEFT)
@@ -35,14 +35,18 @@ class test(Scene):
         sentence_1.next_to(meaning_1, DOWN)
         self.play(Write(sentence_1))
 
-        image_boy = ImageMobject("dall-boy.png").rotate(PI/2).scale(1.5).set_opacity(0).rotate(-PI/2)
+        image_boy = ImageMobject("dall-boy.png").rotate(PI/2)\
+                                                .scale(2)\
+                                                .set_opacity(1)\
+                                                .rotate(-PI/2)\
+                                                .shift(DOWN*2.5)
         image_boy.target = image_boy.copy().set_opacity(1)
 
         self.play(pis[0].thinks("what a lonely boy!"),
                   run_time=1,
                   )
         
-        self.play(GrowFromCenter(image_boy), run_time=1)
+        self.play(FadeIn(image_boy, rate_func=squish_rate_func(smooth, 0.5,1)), run_time=1)
         self.wait(2)
 
         self.clear()
@@ -84,7 +88,7 @@ class test(Scene):
 
         self.add(*result)   
 
-        word_fix = Text("Abandon", t2w={"Abandon": BOLD}).scale(3).set_color(BLUE).shift(UP*3)
+        word_fix = Text("Abandon", t2w={"Abandon": BOLD}).scale(3).set_color_by_gradient(RED, BLUE, GREEN).shift(UP*3)
         word_fix.fix_in_frame()
 
         frame = self.camera.frame
