@@ -24,7 +24,7 @@ class DivideImage(Scene):
         full_image = ImageMobject("dall-path.png").scale(2)
 
         # Dimensions for slicing (4x4 grid)
-        num_rows, num_cols = 4, 4
+        num_rows, num_cols = 20, 10
         segments = []
 
         # Calculate the size of each segment
