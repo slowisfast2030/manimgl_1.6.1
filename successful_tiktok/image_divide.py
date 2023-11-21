@@ -6,7 +6,7 @@ class DivideImage(Scene):
         full_image = ImageMobject("dall-path.png").scale(2)
 
         # Dimensions for slicing (4x4 grid)
-        num_rows, num_cols = 4, 4
+        num_rows, num_cols = 3, 3
         segments = []
 
         # Calculate the size of each segment
@@ -33,7 +33,7 @@ class DivideImage(Scene):
                 segments.append(segment)
 
         # Display all the segments
-        segments = Group(*segments).space_out_submobjects(1)
+        segments = Group(*segments).space_out_submobjects(1.05)
         self.add(*segments)
         # for seg in segments:
         #     self.play(FadeIn(seg, rate_func=linear), run_time=0.01)
@@ -43,17 +43,18 @@ class DivideImage(Scene):
         # Iterate over each segment and apply a rotation animation
         segments = random.sample(list(segments), num_rows*num_cols)
         # 在翻转之前，先执行一次翻转
-        for segment in segments:
-            segment.rotate(TAU/2, UP)
+        for i in range(len(segments)):
+            if i % 2 == 1:
+                segments[i]= segments[i].rotate(TAU/2, UP).copy()
+            else:
+                segments[i].rotate(TAU/4, OUT)
 
-        segments = Group(*segments)
-        for segment in segments:
-            # Randomly choose the axis for rotation
-            #rotation_axis = np.random.choice([RIGHT, UP])
-            # Apply the rotation animation
-            #self.play(segment.animate.rotate(TAU/2, UP), run_time=0.5)
-            #self.play(ApplyMethod(segment.rotate, TAU/2, UP), run_time=0.5)
-            self.play(ApplyMethod(segment.rotate, TAU/2, UP), run_time=0.5)
+        for i in range(len(segments)):
+            if i % 2 == 1:
+                self.play(ApplyMethod(segments[i].rotate, TAU/2, UP), run_time=0.5)
+            else:
+                self.play(ApplyMethod(segments[i].rotate, TAU/4, -OUT), run_time=0.5)
+            
 
         #self.play(LaggedStartMap(FadeIn, segments, lag_ratio=0), run_time=3)
 
