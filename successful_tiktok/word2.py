@@ -39,10 +39,11 @@ class test(Scene):
         image_boy.target = image_boy.copy().set_opacity(1)
 
         self.play(pis[0].thinks("what a lonely boy!"),
-                  MoveToTarget(image_boy),
                   run_time=2,
                   )
         self.wait(1)
+        self.play(MoveToTarget(image_boy), run_time=3)
+
         self.clear()
 
 
