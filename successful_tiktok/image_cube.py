@@ -18,9 +18,9 @@ RIGHT本身是[1,0,0], 经过4次旋转后得到:
 
 class test(Scene):
     def construct(self):
-        image_path = ImageMobject("dall-path.png")
-        image_house = ImageMobject("dall-house.png")
-        image_boy = ImageMobject("dall-boy.png").rotate(PI/2)
+        image_path = ImageMobject("dall-path.png").scale(1.5)
+        image_house = ImageMobject("dall-house.png").scale(1.5)
+        image_boy = ImageMobject("dall-boy.png").rotate(PI/2).scale(1.5)
 
         radius = image_path.get_height()/2
         image_path.move_to(radius * OUT)
