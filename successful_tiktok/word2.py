@@ -72,6 +72,15 @@ class test(Scene):
 
         word_fix = Text("Abandon", t2w={"Abandon": BOLD}).scale(3).set_color_by_gradient(RED, BLUE).shift(UP*3)
         word_fix.fix_in_frame()
+        # sentence_1 = Text("\n•  He claimed that his parents had abandoned him.", font_size=40)
+        # sentence_2 = Text("\n•  The authorities have abandoned any attempt to\n distribute food in an orderly fashion. ", font_size=40)
+        # sentence_3 = Text("\n•  Logic had prevailed and he had abandoned the\n idea.", font_size=40)
+        # sentences = Group(sentence_1, sentence_2, sentence_3)
+        # sentences.arrange(DOWN, buff=0.3).shift(DOWN*3)
+        # sentences.fix_in_frame()
+        # self.add(sentences)
+
+        
 
         frame = self.camera.frame
         def update_frame(frame, dt):
