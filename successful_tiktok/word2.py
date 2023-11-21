@@ -43,7 +43,7 @@ class test(Scene):
                   )
         
         self.play(MoveToTarget(image_boy), run_time=1)
-        self.wait(1)
+        self.wait(2)
 
         self.clear()
 
