@@ -6,7 +6,7 @@ class DivideImage(Scene):
         full_image = ImageMobject("dall-path.png").scale(2)
 
         # Dimensions for slicing (4x4 grid)
-        num_rows, num_cols = 5, 5
+        num_rows, num_cols = 10, 10
         segments = []
 
         # Calculate the size of each segment
@@ -33,24 +33,36 @@ class DivideImage(Scene):
                 segments.append(segment)
 
         # Display all the segments
-        segments = Group(*segments).space_out_submobjects(1.05)
+        segments = Group(*segments).space_out_submobjects(1)
         self.add(*segments)
 
         # Iterate over each segment and apply a rotation animation
         segments = random.sample(list(segments), num_rows*num_cols)
         # 在翻转之前，先执行一次翻转
         for i in range(len(segments)):
-            if i % 2 == 1:
+            if i % 3 == 0:
                 segments[i]= segments[i].rotate(TAU/2, UP).copy()
-            else:
+            elif i % 3 == 1:
                 segments[i].rotate(TAU/4, OUT)
-
-        for i in range(len(segments)):
-            if i % 2 == 1:
-                self.play(ApplyMethod(segments[i].rotate, TAU/2, UP), run_time=0.5)
             else:
-                self.play(ApplyMethod(segments[i].rotate, TAU/4, -OUT), run_time=0.5)
-            
+                segments[i].rotate(TAU/4, IN)
+
+        # for i in range(len(segments)):
+        #     if i % 2 == 1:
+        #         self.play(ApplyMethod(segments[i].rotate, TAU/2, UP), run_time=0.5)
+        #     else:
+        #         self.play(ApplyMethod(segments[i].rotate, TAU/4, -OUT), run_time=0.5)
+    
+        anims = []
+        for i in range(len(segments)):
+            if i % 3 == 0:
+                anims.append(ApplyMethod(segments[i].rotate, TAU/2, UP))
+            elif i % 3 == 1:
+                anims.append(ApplyMethod(segments[i].rotate, TAU/4, -OUT))
+            else:
+                anims.append(ApplyMethod(segments[i].rotate, TAU/4, -IN))
+        
+        self.play(*anims, run_time=3)
 
         #self.play(LaggedStartMap(FadeIn, segments, lag_ratio=0), run_time=3)
 
