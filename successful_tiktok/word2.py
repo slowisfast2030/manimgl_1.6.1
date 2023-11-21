@@ -42,7 +42,7 @@ class test(Scene):
                   run_time=1,
                   )
         
-        self.play(MoveToTarget(image_boy), run_time=1)
+        self.play(GrowFromCenter(image_boy), run_time=1)
         self.wait(2)
 
         self.clear()
