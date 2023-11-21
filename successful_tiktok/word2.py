@@ -31,7 +31,7 @@ class test(Scene):
                          t2c={'abandon': BLUE, 'V-T': RED})
         meaning_1.next_to(word, DOWN*2).shift(RIGHT*2.2)
         self.play(FadeIn(meaning_1))
-        sentence_1 = Text("\n•  He claimed that his parents had abandoned him.", font_size=40)
+        sentence_1 = Text("\n•  He claimed that his parents had abandoned him.", font_size=40, t2c={'abandoned': BLUE})
         sentence_1.next_to(meaning_1, DOWN*2)
         self.play(Write(sentence_1))
 
