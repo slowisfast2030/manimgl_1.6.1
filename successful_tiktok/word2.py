@@ -19,7 +19,7 @@ class test(Scene):
         self.play(FadeOut(pi_group),FadeIn(pi_group_copy), run_time=1)
 
 
-        word = Text("Abandon").scale(2).shift(UP*6.5+LEFT*2.2).set_color_by_gradient(RED, BLUE, GREEN)
+        word = Text("Abandon").scale(2).shift(UP*6.5+LEFT*2.2).set_color_by_gradient(RED, BLUE)
         self.play(Write(word))
 
         pis[0].look_at(LEFT)
@@ -88,7 +88,7 @@ class test(Scene):
 
         self.add(*result)   
 
-        word_fix = Text("Abandon", t2w={"Abandon": BOLD}).scale(3).set_color_by_gradient(RED, BLUE, GREEN).shift(UP*3)
+        word_fix = Text("Abandon", t2w={"Abandon": BOLD}).scale(3).set_color_by_gradient(RED, BLUE).shift(UP*3)
         word_fix.fix_in_frame()
 
         frame = self.camera.frame
