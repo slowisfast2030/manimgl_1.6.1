@@ -3,7 +3,8 @@ from manimlib import *
 class DivideImage(Scene):
     def construct(self):
         # Load the full image
-        full_image = ImageMobject("dall-path.png").scale(2)
+        image_path = "dall-path.png"
+        full_image = ImageMobject(image_path).scale(2)
 
         # Dimensions for slicing (4x4 grid)
         num_rows, num_cols = 10, 10
@@ -20,7 +21,7 @@ class DivideImage(Scene):
                 y = segment_height * (num_rows / 2 - i - 0.5)
 
                 # Create a new ImageMobject for the segment
-                segment = ImageMobject("dall-path.png")
+                segment = ImageMobject(image_path)
                 segment.set_width(segment_width)
                 segment.set_height(segment_height)
                 segment.move_to(np.array([x, y, 0]))
@@ -33,19 +34,21 @@ class DivideImage(Scene):
                 segments.append(segment)
 
         # Display all the segments
-        segments = Group(*segments).space_out_submobjects(1)
+        segments = Group(*segments).space_out_submobjects(1.02)
         self.add(*segments)
 
         # Iterate over each segment and apply a rotation animation
         segments = random.sample(list(segments), num_rows*num_cols)
         # 在翻转之前，先执行一次翻转
         for i in range(len(segments)):
-            if i % 3 == 0:
+            if i % 4 == 0:
                 segments[i]= segments[i].rotate(TAU/2, UP).copy()
-            elif i % 3 == 1:
+            elif i % 4 == 1:
                 segments[i].rotate(TAU/4, OUT)
-            else:
+            elif i % 4 == 2:
                 segments[i].rotate(TAU/4, IN)
+            else:
+                segments[i].rotate(TAU/2, OUT)
 
         # for i in range(len(segments)):
         #     if i % 2 == 1:
@@ -55,12 +58,14 @@ class DivideImage(Scene):
     
         anims = []
         for i in range(len(segments)):
-            if i % 3 == 0:
+            if i % 4 == 0:
                 anims.append(ApplyMethod(segments[i].rotate, TAU/2, UP))
-            elif i % 3 == 1:
+            elif i % 4 == 1:
                 anims.append(ApplyMethod(segments[i].rotate, TAU/4, -OUT))
-            else:
+            elif i % 4 == 2:
                 anims.append(ApplyMethod(segments[i].rotate, TAU/4, -IN))
+            else:
+                anims.append(ApplyMethod(segments[i].rotate, TAU/2, -OUT))
         
         self.play(*anims, run_time=3)
 
