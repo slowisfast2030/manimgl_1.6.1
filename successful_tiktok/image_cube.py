@@ -8,7 +8,13 @@ def compass_directions(n: int = 4, start_vect: np.ndarray = RIGHT) -> np.ndarray
     ])
 
 print(compass_directions(4))
-
+"""
+RIGHT本身是[1,0,0], 经过4次旋转后得到: 
+[1,0,0]
+[0,1,0]
+[-1,0,0]
+[0,-1,0]
+"""
 
 class test(Scene):
     def construct(self):
