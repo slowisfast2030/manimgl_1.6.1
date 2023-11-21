@@ -65,6 +65,6 @@ class DivideImage(Scene):
             # Apply the rotation animation
             #self.play(segment.animate.rotate(TAU/2, UP), run_time=0.5)
             #self.play(ApplyMethod(segment.rotate, TAU/2, UP), run_time=0.5)
-            self.play(ApplyMethod(segment.rotate, TAU/2, UP), run_time=0.5)
+            self.play(ApplyMethod(segment.rotate, TAU/2, OUT), run_time=0.5)
 
         self.wait()
