@@ -18,20 +18,22 @@ RIGHT本身是[1,0,0], 经过4次旋转后得到:
 
 class test(Scene):
     def construct(self):
-        image_path = ImageMobject("dall-house.png")
-        print(image_path.get_height())
-        print(image_path.get_width())
-        #image_house = ImageMobject("dall-house.png").scale(2)
-        #image_boy = ImageMobject("dall-boy.png").scale(2)
+        image_path = ImageMobject("dall-path.png")
+        image_house = ImageMobject("dall-house.png")
+        image_boy = ImageMobject("dall-boy.png").rotate(PI/2)
 
         radius = image_path.get_height()/2
         image_path.move_to(radius * OUT)
+        image_house.move_to(radius * OUT)
+        image_boy.move_to(radius * OUT)
+
         result = [image_path]
-        result.extend([
-            image_path.copy().rotate(PI / 2, axis=vect, about_point=ORIGIN)
-            for vect in compass_directions(4)
-        ])
-        result.append(image_path.copy().rotate(PI, RIGHT, about_point=ORIGIN))
+        # result.extend([
+        #     image_path.copy().rotate(PI / 2, axis=vect, about_point=ORIGIN)
+        #     for vect in compass_directions(4)
+        # ])
+        result.append(image_house.copy().rotate(PI/2, RIGHT, about_point=ORIGIN))
+        result.append(image_boy.copy().rotate(PI/2, UP, about_point=ORIGIN))
 
         self.add(*result)   
 
