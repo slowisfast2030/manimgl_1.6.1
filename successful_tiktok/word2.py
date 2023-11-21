@@ -70,7 +70,8 @@ class test(Scene):
         result = Group(*result).space_out_submobjects(1.01)
         self.add(*result)   
 
-        word_fix = Text("Abandon", t2w={"Abandon": BOLD}).scale(3).set_color_by_gradient(RED, BLUE).shift(UP*3)
+        word_fix = Text("Abandon", t2w={"Abandon": BOLD}).\
+                            scale(3).set_color_by_gradient(RED, BLUE).shift(UP*3)
         word_fix.fix_in_frame()
         # sentence_1 = Text("\n•  He claimed that his parents had abandoned him.", font_size=40)
         # sentence_2 = Text("\n•  The authorities have abandoned any attempt to\n distribute food in an orderly fashion. ", font_size=40)
