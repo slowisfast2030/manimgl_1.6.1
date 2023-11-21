@@ -7,6 +7,9 @@ def compass_directions(n: int = 4, start_vect: np.ndarray = RIGHT) -> np.ndarray
         for k in range(n)
     ])
 
+print(compass_directions(4))
+
+
 class test(Scene):
     def construct(self):
         image_path = ImageMobject("dall-house.png")
