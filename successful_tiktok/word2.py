@@ -29,10 +29,10 @@ class test(Scene):
         meaning_1 = Text("V-T If you abandon a place, thing, or person, you\n        leave the place, thing, or person permanently or for a long time, \n        especially when you should not do so.", 
                          font_size=40,
                          t2c={'abandon': BLUE, 'V-T': RED})
-        meaning_1.next_to(word, DOWN).shift(RIGHT*2.2)
+        meaning_1.next_to(word, DOWN*2).shift(RIGHT*2.2)
         self.play(FadeIn(meaning_1))
         sentence_1 = Text("\n•  He claimed that his parents had abandoned him.", font_size=40)
-        sentence_1.next_to(meaning_1, DOWN)
+        sentence_1.next_to(meaning_1, DOWN*2)
         self.play(Write(sentence_1))
 
         image_boy = ImageMobject("dall-boy.png").rotate(PI/2)\
@@ -67,7 +67,7 @@ class test(Scene):
         # ])
         result.append(image_house.copy().rotate(PI/2, RIGHT, about_point=ORIGIN))
         result.append(image_boy.copy().rotate(PI/2, UP, about_point=ORIGIN))
-
+        result = Group(*result).space_out_submobjects(1.01)
         self.add(*result)   
 
         word_fix = Text("Abandon", t2w={"Abandon": BOLD}).scale(3).set_color_by_gradient(RED, BLUE).shift(UP*3)
