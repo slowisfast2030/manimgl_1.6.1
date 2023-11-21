@@ -25,11 +25,14 @@ class test(Scene):
         result = Group(*result).space_out_submobjects(1.01)
         self.add(*result)   
 
+        word_fix = Text("Abandon", t2w={"Abandon": BOLD}).scale(2).set_color_by_gradient(RED, BLUE).shift(UP*3)
+        word_fix.fix_in_frame()
+
         frame = self.camera.frame
         def update_frame(frame, dt):
             frame.increment_theta(-0.1 * dt)
 
-        self.play(frame.animate.reorient(60, 70), run_time=2)
+        self.play(frame.animate.reorient(60, 70),Write(word_fix), run_time=2)
         frame.add_updater(update_frame)
 
         self.wait(5)
