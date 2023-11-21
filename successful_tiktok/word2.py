@@ -35,12 +35,14 @@ class test(Scene):
         sentence_1.next_to(meaning_1, DOWN)
         self.play(Write(sentence_1))
 
-        image_boy = ImageMobject("dall-boy.png").rotate(PI/2).scale(1.5).rotate(-PI/2)
+        image_boy = ImageMobject("dall-boy.png").rotate(PI/2).scale(1.5).set_opacity(0).rotate(-PI/2)
+        image_boy.target = image_boy.copy().set_opacity(1)
 
-        self.play(pis[1].says("hi"),
-                  #FadeIn(image_boy)
+        self.play(pis[0].thinks("lonely boy"),
+                  MoveToTarget(image_boy),
+                  run_time=2,
                   )
-        
+        self.wait(1)
 
 
 
