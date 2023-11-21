@@ -53,4 +53,8 @@ class DivideImage(Scene):
 
         # Display all the segments
         segments = Group(*segments).space_out_submobjects(1.1)
-        self.add(*segments)
+        #self.add(*segments[5:])
+        for seg in segments:
+            self.play(FadeIn(seg, rate_func=linear), run_time=0.01)
+            self.wait(0.1)
+
