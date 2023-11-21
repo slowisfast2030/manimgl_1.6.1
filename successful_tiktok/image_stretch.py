@@ -59,6 +59,7 @@ class DivideImage(Scene):
 
 
         # Iterate over each segment and apply a rotation animation
+        segments = random.sample(list(segments), num_rows*num_cols)
         for segment in segments:
             # Randomly choose the axis for rotation
             #rotation_axis = np.random.choice([RIGHT, UP])
