@@ -20,7 +20,7 @@ class test(Scene):
         result = [image_path]
         result.extend([
             image_path.copy().rotate(PI / 2, axis=vect, about_point=ORIGIN)
-            for vect in compass_directions(4)[2:]
+            for vect in compass_directions(4)
         ])
         result.append(image_path.copy().rotate(PI, RIGHT, about_point=ORIGIN))
 
