@@ -22,7 +22,7 @@ class test(Scene):
         result.append(image_house.copy().rotate(PI/2, RIGHT, about_point=ORIGIN))
         result.append(image_boy.copy().rotate(PI/2, UP, about_point=ORIGIN))
 
-        result = Group(*result).space_out_submobjects(1.02)
+        result = Group(*result).space_out_submobjects(1.01)
         self.add(*result)   
 
         frame = self.camera.frame
