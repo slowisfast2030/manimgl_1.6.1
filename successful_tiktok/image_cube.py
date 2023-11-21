@@ -41,6 +41,8 @@ class test(Scene):
         def update_frame(frame, dt):
             frame.increment_theta(-0.1 * dt)
 
-        self.play(frame.animate.reorient(30, 70), run_time=2)
+        self.play(frame.animate.reorient(60, 70), run_time=2)
         frame.add_updater(update_frame)
+
+        self.wait(5)
 
