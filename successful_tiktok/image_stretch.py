@@ -18,7 +18,6 @@ class test(Scene):
 
 
 
-
 class DivideImage(Scene):
     def construct(self):
         # Load the full image
@@ -53,8 +52,19 @@ class DivideImage(Scene):
 
         # Display all the segments
         segments = Group(*segments).space_out_submobjects(1.1)
-        #self.add(*segments[5:])
-        for seg in segments:
-            self.play(FadeIn(seg, rate_func=linear), run_time=0.01)
-            self.wait(0.1)
+        self.add(*segments)
+        # for seg in segments:
+        #     self.play(FadeIn(seg, rate_func=linear), run_time=0.01)
+        #     self.wait(0.1)
 
+
+        # Iterate over each segment and apply a rotation animation
+        for segment in segments:
+            # Randomly choose the axis for rotation
+            #rotation_axis = np.random.choice([RIGHT, UP])
+            # Apply the rotation animation
+            #self.play(segment.animate.rotate(TAU/2, UP), run_time=0.5)
+            self.play(ApplyMethod(segment.rotate, TAU/2, UP), run_time=0.1)
+            self.play(ApplyMethod(segment.rotate, TAU/2, UP), run_time=0.1)
+
+        self.wait()
