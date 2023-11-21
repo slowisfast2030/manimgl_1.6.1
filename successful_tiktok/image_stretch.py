@@ -22,7 +22,7 @@ class test(Scene):
 class DivideImage(Scene):
     def construct(self):
         # Load the full image
-        full_image = ImageMobject("dall-path.png")
+        full_image = ImageMobject("dall-path.png").scale(2)
 
         # Dimensions for slicing (4x4 grid)
         num_rows, num_cols = 4, 4
@@ -52,4 +52,5 @@ class DivideImage(Scene):
                 segments.append(segment)
 
         # Display all the segments
-        self.add(*segments[:5])
+        segments = Group(*segments).space_out_submobjects(1.1)
+        self.add(*segments)
