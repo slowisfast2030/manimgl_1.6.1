@@ -35,10 +35,6 @@ class DivideImage(Scene):
         # Display all the segments
         segments = Group(*segments).space_out_submobjects(1.05)
         self.add(*segments)
-        # for seg in segments:
-        #     self.play(FadeIn(seg, rate_func=linear), run_time=0.01)
-        #     self.wait(0.1)
-
 
         # Iterate over each segment and apply a rotation animation
         segments = random.sample(list(segments), num_rows*num_cols)
