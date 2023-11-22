@@ -60,7 +60,7 @@ class ImageMobject(Mobject):
         self.data = {
             "points": np.array([UL, DL, UR, DR]),
             "im_coords": np.array([(0, 0), (0, 1), (1, 0), (1, 1)]),
-            #"im_coords": np.array([(0, 0), (0, 1/4), (1/4, 0), (1/4, 1/4)]),
+            #"im_coords": np.array([(0, 0), (0, 1/10), (1/10, 0), (1/10, 1/10)]),
             "opacity": np.array([[self.opacity]], dtype=np.float32),
         }
 
