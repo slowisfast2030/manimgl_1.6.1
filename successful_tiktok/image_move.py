@@ -29,11 +29,32 @@ def image_divide(image_path, num_rows, num_cols):
 
             segments.append(segment)
 
+    segments = random.sample(list(segments), num_rows*num_cols)
+
     # Display all the segments
     segments = Group(*segments).space_out_submobjects(1.02)
     return segments
 
 class test(Scene):
     def construct(self):
-        segments = image_divide("dall-path.png", 20, 20)
+        segments = image_divide("dall-path.png", 3, 3)
+        print(len(segments))
         self.add(*segments)
+
+        segments_copy = segments.copy().shift(OUT*3)
+        segments_copy.rotate(TAU/4, UP)
+
+        for source, target in zip(segments, segments_copy):
+            source.target = target
+            source.shift(IN*3)
+
+        frame = self.camera.frame
+        frame.reorient(20, 70)
+
+        #self.add(*segments_copy)
+        # self.play(LaggedStart(*[MoveToTarget(source) for source in segments], lag_ratio=0), run_time=5)
+
+        for source in segments:
+            self.play(MoveToTarget(source, rate=smooth), run_time=0.1)
+        
+        self.wait(1)
