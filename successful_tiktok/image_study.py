@@ -35,6 +35,22 @@ class test(Scene):
         print(image_mob.pixel_array.shape)
 
         ps = PixelsAsSquares(image_mob).space_out_submobjects(1.1)
-        #self.add(ps)
-        self.play(Write(ps))
+        self.add(ps)
+        #self.play(Write(ps))
 
+        # numbers = VGroup()
+        # for square in ps:
+        #     #rgb = square.fill_rgb
+        #     num = DecimalNumber(
+        #         #square.fill_rgb[0],
+        #         0,
+        #         num_decimal_places = 1
+        #     )
+        #     num.set_stroke(width = 1)
+        #     # color = rgba_to_color(1 - (rgb + 0.2)/1.2)
+        #     # num.set_color(color)
+        #     num.set_width(0.7*square.get_width())
+        #     num.move_to(square)
+        #     numbers.add(num)
+        # self.add(numbers)
+        #self.play(Write(numbers))
