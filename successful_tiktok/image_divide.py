@@ -7,7 +7,7 @@ class DivideImage(Scene):
         full_image = ImageMobject(image_path).scale(2)
 
         # Dimensions for slicing (4x4 grid)
-        num_rows, num_cols = 10, 10
+        num_rows, num_cols = 20,20
         segments = []
 
         # Calculate the size of each segment
