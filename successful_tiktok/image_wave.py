@@ -30,19 +30,20 @@ def image_divide(image_path, num_rows, num_cols):
             segments.append(segment)
 
     # Display all the segments
-    segments = Group(*segments).space_out_submobjects(1.1)
+    segments = Group(*segments).space_out_submobjects(1)
     return segments
 
 class test(Scene):
     def construct(self):
-        image_path_gr = image_divide("dall-path.png", 10, 10)
+        image_path_gr = image_divide("dall-path.png", 20, 20)
         self.add(*image_path_gr)
 
         def update_func_alpha(mobs, alpha):
             for mob in mobs:
                 x = mob.get_center()[0]
-                wave_phase = 0.02 * np.sin(alpha * 1 + x)
-                mob.move_to(mob.get_center() + np.array([0, 0, wave_phase]))
+                y = mob.get_center()[1]
+                wave_phase = 1 * np.sin(alpha * 1 + x)
+                mob.move_to(np.array([x, y, wave_phase]))
 
         
         frame = self.camera.frame
