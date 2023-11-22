@@ -41,9 +41,9 @@ class test(Scene):
         image_house = image_divide("dall-house.png", 10, 10)
         image_boy = image_divide("dall-boy.png", 10, 10).rotate(PI/2)
 
-        image_path = ImageMobject("dall-path.png").scale(1.5)
-        image_house = ImageMobject("dall-house.png").scale(1.5)
-        image_boy = ImageMobject("dall-boy.png").rotate(PI/2).scale(1.5)
+        # image_path = ImageMobject("dall-path.png").scale(1.5)
+        # image_house = ImageMobject("dall-house.png").scale(1.5)
+        # image_boy = ImageMobject("dall-boy.png").rotate(PI/2).scale(1.5)
 
         radius = image_path.get_height()/2
         image_path.move_to(radius * OUT)
