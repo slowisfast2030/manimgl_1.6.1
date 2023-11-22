@@ -6,10 +6,8 @@ class PixelsAsSquares(VGroup):
     }
     def __init__(self, image_mobject, **kwargs):
         VGroup.__init__(self, **kwargs)
-        i=0
+        
         for row in image_mobject.pixel_array:
-            print(i)
-            i+=1
             for rgba in row:
                 square = Square(
                     stroke_width = 0, 
