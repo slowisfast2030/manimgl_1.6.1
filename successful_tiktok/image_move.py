@@ -3,7 +3,7 @@ from manimlib import *
 # 输入图片的路径，小正方形在长宽上的个数，返回这一系列小正方的集合
 def image_divide(image_path, num_rows, num_cols):
 
-    full_image = ImageMobject(image_path).scale(2)
+    full_image = ImageMobject(image_path).scale(1.5)
     segments = []
 
     # Calculate the size of each segment
@@ -32,29 +32,39 @@ def image_divide(image_path, num_rows, num_cols):
     segments = random.sample(list(segments), num_rows*num_cols)
 
     # Display all the segments
-    segments = Group(*segments).space_out_submobjects(1.02)
+    segments = Group(*segments).space_out_submobjects(1.1)
     return segments
 
 class test(Scene):
     def construct(self):
-        segments = image_divide("dall-path.png", 3, 3)
-        print(len(segments))
-        self.add(*segments)
+        image_path = image_divide("dall-path.png", 10, 10)
+        image_house = image_divide("dall-house.png", 10, 10)
+        image_boy = image_divide("dall-boy.png", 10, 10).rotate(PI/2)
 
-        segments_copy = segments.copy().shift(OUT*3)
-        segments_copy.rotate(TAU/4, UP)
+        image_path = ImageMobject("dall-path.png").scale(1.5)
+        image_house = ImageMobject("dall-house.png").scale(1.5)
+        image_boy = ImageMobject("dall-boy.png").rotate(PI/2).scale(1.5)
 
-        for source, target in zip(segments, segments_copy):
-            source.target = target
-            source.shift(IN*3)
+        radius = image_path.get_height()/2
+        image_path.move_to(radius * OUT)
+        image_house.move_to(radius * OUT)
+        image_boy.move_to(radius * OUT)
+
+        result = [image_path]
+        
+        result.append(image_house.copy().rotate(PI/2, RIGHT, about_point=ORIGIN))
+        result.append(image_boy.copy().rotate(PI/2, UP, about_point=ORIGIN))
+
+        result = Group(*result).space_out_submobjects(1.01)
+        self.add(*result)   
 
         frame = self.camera.frame
-        frame.reorient(20, 70)
+        def update_frame(frame, dt):
+            frame.increment_theta(-0.1 * dt)
 
-        #self.add(*segments_copy)
-        # self.play(LaggedStart(*[MoveToTarget(source) for source in segments], lag_ratio=0), run_time=5)
+        self.play(frame.animate.reorient(60, 70), run_time=2)
+        frame.add_updater(update_frame)
 
-        for source in segments:
-            self.play(MoveToTarget(source, rate=smooth), run_time=0.1)
+        self.wait(5)
+
         
-        self.wait(1)
