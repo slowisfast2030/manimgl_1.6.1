@@ -38,4 +38,15 @@ class test(Scene):
         image_path_gr = image_divide("dall-path.png", 10, 10)
         self.add(*image_path_gr)
 
+        def update_func_alpha(mobs, alpha):
+            for mob in mobs:
+                x = mob.get_center()[0]
+                wave_phase = 0.02 * np.sin(alpha * 1 + x)
+                mob.move_to(mob.get_center() + np.array([0, 0, wave_phase]))
+
         
+        frame = self.camera.frame
+        frame.reorient(20,70)
+
+        self.play(UpdateFromAlphaFunc(image_path_gr, update_func_alpha), run_time=3)
+
