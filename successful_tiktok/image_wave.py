@@ -36,14 +36,16 @@ def image_divide(image_path, num_rows, num_cols):
 class test(Scene):
     def construct(self):
         image_path_gr = image_divide("dall-path.png", 20, 20)
-        self.add(*image_path_gr)
+        #self.add(*image_path_gr)
 
         def update_func_alpha(mobs, alpha):
             for mob in mobs:
                 x = mob.get_center()[0]
                 y = mob.get_center()[1]
-                wave_phase = 1 * np.sin(alpha * 1 + x)
+                wave_phase = 1 * np.sin(alpha * 1 +x)
                 mob.move_to(np.array([x, y, wave_phase]))
+            
+            return Group(*mobs)
 
         
         frame = self.camera.frame
