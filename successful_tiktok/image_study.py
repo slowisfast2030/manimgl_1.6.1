@@ -35,5 +35,6 @@ class test(Scene):
         print(image_mob.pixel_array.shape)
 
         ps = PixelsAsSquares(image_mob).space_out_submobjects(1.1)
-        self.add(ps)
+        #self.add(ps)
+        self.play(Write(ps))
 
