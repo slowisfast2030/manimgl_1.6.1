@@ -39,4 +39,21 @@ class test(Scene):
         #result.append(image.copy().rotate(PI, RIGHT, about_point=ORIGIN))
        
         return Group(*result)
-    
+
+class test1(Scene):
+    def construct(self):
+        frame = self.camera.frame
+        frame.reorient(20, 70) 
+        cube = Cube().scale(2)
+
+        image_path = ImageMobject("dall-house.png").scale(1).set_opacity(1)
+        image_path.move_to(cube[0])
+        i2 = image_path.copy().move_to(cube[2]).rotate(PI/2, UP, about_point=cube[2].get_center())
+        i3 = image_path.copy().rotate(PI/2, RIGHT, about_point=cube.get_center())
+        cube.add(image_path, i2, i3)
+        cube.scale(1) 
+
+
+
+        self.add(*cube)
+

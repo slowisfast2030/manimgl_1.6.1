@@ -3,7 +3,7 @@ from manimlib import *
 # 输入图片的路径，小正方形在长宽上的个数，返回这一系列小正方的集合
 def image_divide(image_path, num_rows, num_cols):
 
-    full_image = ImageMobject(image_path).scale(1.5)
+    full_image = ImageMobject(image_path).scale(2)
     segments = []
 
     # Calculate the size of each segment
@@ -32,7 +32,7 @@ def image_divide(image_path, num_rows, num_cols):
     segments = random.sample(list(segments), num_rows*num_cols)
 
     # Display all the segments
-    segments = Group(*segments).space_out_submobjects(1.1)
+    segments = Group(*segments).space_out_submobjects(1.02)
     return segments
 
 class test(Scene):
@@ -68,3 +68,17 @@ class test(Scene):
         self.wait(5)
 
         
+class test1(Scene):
+    def construct(self):
+        image_path = image_divide("dall-path.png", 10, 10)
+        self.add(*image_path)
+
+        # def plane_wave_homotopy(x, y, z, t):
+        #     norm = get_norm([x, y])
+        #     tau = interpolate(5, -5, t) + norm/FRAME_X_RADIUS
+        #     alpha = sigmoid(tau)
+        #     #return [x, y + 0.5*np.sin(2*np.pi*alpha)-t*SMALL_BUFF/2, z]
+        #     return [x, y + 0.5*np.sin(2*np.pi*alpha), z]
+        
+
+        #self.play(Homotopy(plane_wave_homotopy, image_path, run_time=3, rate_func=linear))
