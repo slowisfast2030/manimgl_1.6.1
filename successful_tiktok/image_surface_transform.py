@@ -31,9 +31,9 @@ class test(Scene):
         #texture = "../successful_product/EarthTextureMap.jpeg"
         mob2 = TexturedSurface(sphere2, texture2).scale(3)
 
-        gr = Group(mob1, mob2).arrange(RIGHT, buff=1).shift(OUT*2)
+        #gr = Group(mob1, mob2).arrange(RIGHT, buff=1).shift(OUT*2)
 
-        self.add(gr[0])
+        self.add(mob1)
         
       
         self.wait(2)
