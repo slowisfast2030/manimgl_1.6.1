@@ -10,7 +10,7 @@ class test(Scene):
 
     def construct(self):
         frame = self.camera.frame
-        frame.reorient(0, 70) 
+        frame.reorient(20, 70) 
 
         def update_frame(frame, dt):
             frame.increment_theta(-0.5 * dt)    
@@ -24,7 +24,7 @@ class test(Scene):
         self.play(FadeIn(pi_group))
         #self.play(pis[1].says("today, we will \nleran abandon!"))
         #self.play(pis[1].debubble())
-        self.wait()
+        #self.wait()
 
         sphere1 = Sphere(radius=3)
         sphere2 = Sphere(radius=3)
@@ -49,7 +49,11 @@ class test(Scene):
         #texture = "../successful_product/EarthTextureMap.jpeg"
         mob3 = TexturedSurface(sphere3, texture3).scale(0.3)
 
-        gr = Group(mob1, mob2, mob3).arrange(RIGHT, buff=1).shift(OUT*2)
+        #gr = Group(mob1, mob2, mob3).arrange(RIGHT, buff=1).shift(OUT*2)
+        gr = Group(mob1, mob2, mob3).shift(OUT*4)
+        mob1.move_to([3, 0, 0])
+        mob2.move_to([-1, 2, 0])
+        mob3.move_to([-1, -2, 0])
 
         self.add(gr)
 
