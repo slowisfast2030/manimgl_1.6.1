@@ -66,7 +66,7 @@ class test(Scene):
         # frame.remove_updater(update_frame)
         # frame.reorient(90, 0)
         # gr.move_to(ORIGIN+UP*6+RIGHT*2)
-        self.wait(1)
+        self.wait(2)
 
 
 
