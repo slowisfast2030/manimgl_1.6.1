@@ -21,7 +21,8 @@ class test(Scene):
         pis[1].set_color(GREY_BROWN).scale(1.3).shift(UP*1.2)
         pi_group = VGroup(*pis)
         pi_group.arrange(RIGHT, buff=0.9).shift(DOWN*2).stretch(0.33 ,1).scale(1.5)
-        self.play(FadeIn(pi_group))
+        #self.play(FadeIn(pi_group))
+        self.add(pi_group)
         #self.play(pis[1].says("today, we will \nleran abandon!"))
         #self.play(pis[1].debubble())
         #self.wait()
@@ -55,7 +56,7 @@ class test(Scene):
         mob2.move_to([-1, 2, 0])
         mob3.move_to([-1, -2, 0])
 
-        self.add(gr.shift(OUT*4))
+        self.add(gr.shift(OUT*2))
 
         self.play(Rotate(gr[1], PI/2, axis=RIGHT), 
                   Rotate(gr[2], PI/2),
@@ -65,7 +66,7 @@ class test(Scene):
         # frame.remove_updater(update_frame)
         # frame.reorient(90, 0)
         # gr.move_to(ORIGIN+UP*6+RIGHT*2)
-        self.wait(2)
+        self.wait(1)
 
 
 
