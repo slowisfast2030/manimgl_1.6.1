@@ -50,12 +50,12 @@ class test(Scene):
         mob3 = TexturedSurface(sphere3, texture3).scale(0.3)
 
         #gr = Group(mob1, mob2, mob3).arrange(RIGHT, buff=1).shift(OUT*2)
-        gr = Group(mob1, mob2, mob3).shift(OUT*4)
+        gr = Group(mob1, mob2, mob3)
         mob1.move_to([3, 0, 0])
         mob2.move_to([-1, 2, 0])
         mob3.move_to([-1, -2, 0])
 
-        self.add(gr)
+        self.add(gr.shift(OUT*4))
 
         self.play(Rotate(gr[1], PI/2, axis=RIGHT), 
                   Rotate(gr[2], PI/2),
