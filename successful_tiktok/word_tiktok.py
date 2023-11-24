@@ -353,10 +353,9 @@ class test(Scene):
 
         
         self.play(
-            mob_gr[0].animate.move_to(-2*LEFT+DOWN*1),
-            mob_gr[1].animate.move_to(2*LEFT+DOWN*1),
-            mob_gr[2].animate.move_to(UP*2),
-            mob_gr.animate.scale(2.5),
+            mob_gr[0].animate.scale(2.5).move_to(-2*LEFT+DOWN*1),
+            mob_gr[1].animate.scale(2.5).move_to(2*LEFT+DOWN*1),
+            mob_gr[2].animate.scale(2.5).move_to(UP*2),
             run_time=2
         )
 
