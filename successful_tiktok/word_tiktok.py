@@ -37,6 +37,7 @@ def image_divide(image_path, num_rows, num_cols):
 
             segments.append(segment)
 
+    # 这里打乱了顺序，是因为要给每个小正方形加上动画
     segments = random.sample(list(segments), num_rows*num_cols)
     segments = Group(*segments).space_out_submobjects(1.02)
 
