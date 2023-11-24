@@ -9,24 +9,6 @@ class test(Scene):
     # }
 
     def construct(self):
-        frame = self.camera.frame
-        print(frame.get_theta(), frame.get_phi())
-        #frame.reorient(20, 70) 
-
-        def update_frame(frame, dt):
-            frame.increment_theta(-0.5 * dt)    
-        #frame.add_updater(update_frame)
-
-        colors = color_gradient([BLUE, GREEN], 2)
-        pis = [PiCreature(color=color) for color in colors]
-        pis[1].set_color(RED).scale(1.3).shift(UP*1.2)
-        pi_group = VGroup(*pis)
-        pi_group.arrange(RIGHT, buff=0.9).shift(DOWN*5.5).scale(0.8)
-        #self.play(FadeIn(pi_group))
-        self.add(pi_group)
-        self.play(pis[1].says("today, we will \nleran abandon!"))
-        #self.play(pis[1].debubble())
-        #self.wait()
 
         sphere1 = Sphere(radius=3)
         sphere2 = Sphere(radius=3)
@@ -37,17 +19,37 @@ class test(Scene):
         # in whatever you've set as the image directory in
         # the custom_config.yml file
 
+        def update_sphere_right(sphere, dt):
+            sphere.rotate(0.3 * dt, axis=RIGHT)
+        
+        def update_sphere_up(sphere, dt):
+            sphere.rotate(0.3 * dt, axis=UP)
+
+        def update_sphere(sphere, dt):
+            sphere.rotate(0.3 * dt)
     
         texture1 = "dall-boy.png"
         mob1 = TexturedSurface(sphere1, texture1).scale(0.3).rotate(PI/2, axis=RIGHT)
+        mob1.add_updater(update_sphere_right)
 
         texture2 = "dall-house.png"
         mob2 = TexturedSurface(sphere2, texture2).scale(0.3).rotate(PI/2, axis=RIGHT)
+        mob2.add_updater(update_sphere_up)
 
         texture3 = "dall-path.png"
         mob3 = TexturedSurface(sphere3, texture3).scale(0.3).rotate(PI/2, axis=RIGHT)
+        mob3.add_updater(update_sphere)
 
-        gr = Group(mob1, mob2, mob3).arrange(RIGHT, buff=0.5).scale(0.4).move_to([2.7,6.7,0])
+        # 这3个小球在右上角的位置应该固定
+        # gr = Group(mob1, mob2, mob3).arrange(RIGHT, buff=0.5).scale(0.4).move_to([2.7,6.7,0])
+        # for mob in gr:
+        #     print(mob.get_center())
+        """
+        [1.78 6.7  0.  ]
+        [2.7 6.7 0. ]
+        [3.62 6.7  0.  ]
+        """
+        gr = Group(mob1, mob2, mob3).arrange(RIGHT, buff=1).shift(UP*2)
         self.add(gr)
 
         #gr = Group(mob1, mob2, mob3)
@@ -72,6 +74,33 @@ class test(Scene):
         #     gr.animate.move_to(ORIGIN+UP*6+RIGHT*2),
         # )
         # self.wait()
+
+        colors = color_gradient([BLUE, GREEN], 2)
+        pis = [PiCreature(color=color) for color in colors]
+        pis[1].set_color(RED).scale(1.3).shift(UP*1.2)
+        pi_group = VGroup(*pis)
+        pi_group.arrange(RIGHT, buff=0.9).shift(DOWN*5.5).scale(0.8)
+        self.play(FadeIn(pi_group))
+        self.add(pi_group)
+        self.play(pis[1].says("today, we will \nlearn abandon!"))
+        self.wait(1)
+
+        # 单词出现
+        word = Text("Abandon").scale(2).move_to([-2.3, 6.8,0]).set_color_by_gradient(RED, BLUE)
+
+        self.play(
+            pis[1].debubble(),
+            mob1.animate.scale(0.4).move_to([1.78, 6.7,  0.  ]),
+            mob2.animate.scale(0.4).move_to([2.7, 6.7, 0. ]),
+            mob3.animate.scale(0.4).move_to([3.62, 6.7,  0.  ]),
+            Write(word),
+            run_time=2
+        )
+        self.wait(1)
+
+        
+        
+
 
 
 
