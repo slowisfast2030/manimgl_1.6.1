@@ -119,7 +119,13 @@ class test(Scene):
             )
         sentence_1 = Text("\n•  He claimed that his parents had abandoned him.", font_size=40, t2c={'abandoned': BLUE})
         sentence_1.next_to(meaning_1, DOWN*2)
-        self.play(Write(sentence_1))
+        sentence_1_ch = Text("\n•  他声称他的父母抛弃了他", font_size=40, t2c={'抛弃': BLUE})
+        sentence_1_ch.next_to(sentence_1, DOWN)
+
+        self.play(
+            Write(sentence_1),
+            Write(sentence_1_ch),
+                  )
 
         self.play(pis[0].thinks("what a lonely boy!"),
                   run_time=2,
