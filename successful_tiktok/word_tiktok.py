@@ -203,7 +203,7 @@ class test(Scene):
         # 画出单词
         word = Text("Abandon").scale(2).move_to(Word_coord).set_color_by_gradient(RED, BLUE)
         self.add(word)
-        self.wait(4)
+        self.wait(1)
 
         # 给出中英文释义
         parts = ["If you abandon a place, thing, or person, you", 
