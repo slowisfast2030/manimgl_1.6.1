@@ -70,6 +70,22 @@ class test(Scene):
         )
         self.wait(1)
 
+        # 单词的第一个释义出现
+
+        meaning_1 = Text("V-T If you abandon a place, thing, or person, you\n        leave the place, thing, or person permanently or for a long time, \n        especially when you should not do so.", 
+                         font_size=40,
+                         t2c={'abandon': BLUE, 'V-T': RED})
+        meaning_1.next_to(word, DOWN*2).shift(RIGHT*2.2)
+        self.play(FadeIn(meaning_1))
+        sentence_1 = Text("\n•  He claimed that his parents had abandoned him.", font_size=40, t2c={'abandoned': BLUE})
+        sentence_1.next_to(meaning_1, DOWN*2)
+        self.play(Write(sentence_1))
+
+        self.play(pis[0].thinks("what a lonely boy!"),
+                  run_time=2,
+                  )
+        self.wait(1)
+
         
         
 
