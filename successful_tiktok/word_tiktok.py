@@ -49,6 +49,31 @@ def image_divide(image_path, num_rows, num_cols):
 
     return segments
 
+def image_anims(image_segments):
+    # 在翻转之前，先执行一次翻转
+    for i in range(len(image_segments)):
+        if i % 4 == 0:
+            image_segments[i]= image_segments[i].rotate(TAU/2, UP).copy()
+        elif i % 4 == 1:
+            image_segments[i].rotate(TAU/4, OUT)
+        elif i % 4 == 2:
+            image_segments[i].rotate(TAU/4, IN)
+        else:
+            image_segments[i].rotate(TAU/2, OUT)
+
+    anims = []
+    for i in range(len(image_segments)):
+        if i % 4 == 0:
+            anims.append(ApplyMethod(image_segments[i].rotate, TAU/2, UP))
+        elif i % 4 == 1:
+            anims.append(ApplyMethod(image_segments[i].rotate, TAU/4, -OUT))
+        elif i % 4 == 2:
+            anims.append(ApplyMethod(image_segments[i].rotate, TAU/4, -IN))
+        else:
+            anims.append(ApplyMethod(image_segments[i].rotate, TAU/2, -OUT))
+
+    return anims
+
 # 传入三张图片的地址，返回3个小球
 def three_sphere_with_texture(texture1, texture2, texture3):
     sphere1 = Sphere(radius=3)
