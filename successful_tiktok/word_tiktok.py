@@ -115,7 +115,7 @@ def student_with_teacher():
     student_teacher.arrange(RIGHT, buff=0.9).shift(DOWN*5.5).scale(0.8)
 
     _, teacher = student_teacher
-    teacher.scale(1.3).shift(UP*1.2)
+    teacher.scale(1.3)
 
     return student_teacher
 
@@ -249,7 +249,7 @@ class test(Scene):
             student_teacher[1].debubble(),
             mob1.animate.scale(0.4).move_to(Mob1_coord),
             mob2.animate.scale(0.4).move_to(Mob2_coord),
-            mob3.animate.scale(0.4).move_to(Mob1_coord),
+            mob3.animate.scale(0.4).move_to(Mob3_coord),
             Write(word),
             run_time=2
         )
