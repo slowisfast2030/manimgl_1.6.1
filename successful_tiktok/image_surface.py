@@ -107,20 +107,26 @@ class test(Scene):
         self.wait(1)
 
         # 单词的第一个释义出现
-
+        # 如果你放弃一个地方、一件事或一个人，你就永久地离开了这个地方、一件事或人，尤其是当你不应该这样做的时候。
         meaning_1 = Text("V-T If you abandon a place, thing, or person, you\n        leave the place, thing, or person permanently or for a long time, \n        especially when you should not do so.", 
                          font_size=40,
                          t2c={'abandon': BLUE, 'V-T': RED})
         meaning_1.next_to(word, DOWN*2).shift(RIGHT*2.2)
+        meaning_1_ch = Text("如果你放弃一个地方、一件事或一个人，你\n就永久地离开了这个地方、一件事或人，尤\n其是当你不应该这样做的时候。", 
+                         font_size=38,
+                         t2c={'放弃': BLUE, 'V-T': RED})
+        meaning_1_ch.next_to(meaning_1, DOWN*0.8).shift(RIGHT*0.35)
+
         self.play(
             FadeIn(meaning_1),
+            FadeIn(meaning_1_ch),
             mob2.animate.set_opacity(0.2),
             mob3.animate.set_opacity(0.2),
             )
         sentence_1 = Text("\n•  He claimed that his parents had abandoned him.", font_size=40, t2c={'abandoned': BLUE})
-        sentence_1.next_to(meaning_1, DOWN*2)
-        sentence_1_ch = Text("\n•  他声称他的父母抛弃了他", font_size=40, t2c={'抛弃': BLUE})
-        sentence_1_ch.next_to(sentence_1, DOWN)
+        sentence_1.next_to(meaning_1, DOWN*8)
+        sentence_1_ch = Text("\n    他声称他的父母抛弃了他", font_size=38, t2c={'抛弃': BLUE})
+        sentence_1_ch.next_to(sentence_1, DOWN*0.8).shift(LEFT*1.6)
 
         self.play(
             Write(sentence_1),
