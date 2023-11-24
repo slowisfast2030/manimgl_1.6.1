@@ -225,15 +225,35 @@ class test(Scene):
         # 画出3个小球
         textures = ["dall-boy.png", "dall-house.png", "dall-path.png"]
         mob_gr = three_sphere_with_texture(*textures)
-        mob_coords = [Mob1_coord, Mob2_coord, Mob3_coord]
-        for mob, coord in zip(mob_gr, mob_coords):
-            mob.move_to(coord)
-            mob.scale(0.4)
-            self.add(mob)
+
+        # 先把3个球放中间
+        mob_gr = mob_gr.arrange(RIGHT, buff=1).shift(UP*2)
+        self.add(mob_gr)
+
+        # 画出学生和老师
+        student_teacher = student_with_teacher()
+        self.play(FadeIn(student_teacher))
+        self.play(student_teacher[1].says("today, we will \nlearn abandon!"))
+        self.wait(1) 
+
+        # mob_coords = [Mob1_coord, Mob2_coord, Mob3_coord]
+        # for mob, coord in zip(mob_gr, mob_coords):
+        #     mob.move_to(coord)
+        #     mob.scale(0.4)
+        #     self.add(mob)
 
         # 画出单词
         word = Text("Abandon").scale(2).move_to(Word_coord).set_color_by_gradient(RED, BLUE)
-        self.add(word)
+        mob1, mob2, mob3 = mob_gr  
+        self.play(
+            student_teacher[1].debubble(),
+            mob1.animate.scale(0.4).move_to(Mob1_coord),
+            mob2.animate.scale(0.4).move_to(Mob2_coord),
+            mob3.animate.scale(0.4).move_to(Mob1_coord),
+            Write(word),
+            run_time=2
+        )
+
         self.wait(0.5)
 
         # 单词的第一个释义出现
