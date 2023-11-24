@@ -306,3 +306,39 @@ class test(Scene):
         image_anims = get_image_anims(image_boy)
         self.play(*image_anims, run_time=1.5)
         self.wait(1)
+
+        # 清场，为第三个单词释义做准备
+        self.clear()
+        self.add(mob_gr, word)
+        self.wait()
+
+        # 单词的第三个释义
+        parts = ["If you abandon an idea or way of thinking, you", 
+                 "stop having that idea or thinking in that way.", 
+                 ]
+        
+        parts_ch = ["如果你放弃一个想法或思维方式，意味着你",
+                    "停止拥有那个想法或以那种方式思考。"]
+
+        sents = ["Logic had prevailed and he had abandoned the", 
+                 "idea."]
+        
+        sents_ch = ["逻辑占了上风，他放弃了那个想法。"] 
+
+        meaning_sentence = meaning(parts, parts_ch, sents, sents_ch)
+        meaning_gr = meaning_sentence[0]
+        sentence_gr = meaning_sentence[1]
+
+        self.play(FadeIn(meaning_gr))
+        self.play(
+            *[Write(sent) for sent in sentence_gr])
+
+        self.wait(1)
+
+        image_boy = image_divide("dall-path.png", 10, 10).shift(DOWN*3.5).space_out_submobjects(1.01).scale(1)
+        #image_boy = image_divide("dall-house.png", 10, 10).next_to(meaning_sentence, DOWN*2).space_out_submobjects(1.01).scale(1)
+        self.add(*image_boy)
+
+        image_anims = get_image_anims(image_boy)
+        self.play(*image_anims, run_time=1.5)
+        self.wait(1) 
