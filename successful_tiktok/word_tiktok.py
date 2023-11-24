@@ -90,6 +90,7 @@ def student_with_teacher():
 
 class test(Scene):
     def construct(self):
+        # 画出3个小球
         textures = ["dall-boy.png", "dall-house.png", "dall-path.png"]
         mob_gr = three_sphere_with_texture(*textures)
         mob_coords = [Mob1_coord, Mob2_coord, Mob3_coord]
@@ -98,6 +99,14 @@ class test(Scene):
             mob.scale(0.4)
             self.add(mob)
 
+        # 画出单词
         word = Text("Abandon").scale(2).move_to(Word_coord).set_color_by_gradient(RED, BLUE)
         self.add(word)
         self.wait(4)
+
+        meaning_1 = Text("V-T If you abandon a place, thing, or person, you\n        leave the place, thing, or person permanently or for a long time, \n        especially when you should not do so.", 
+                         font_size=40,
+                         t2c={'abandon': BLUE, 'V-T': RED})
+        meaning_1.next_to(word, DOWN*2).shift(RIGHT*2.2)
+
+        self.add(meaning_1)
