@@ -38,9 +38,8 @@ def image_divide(image_path, num_rows, num_cols):
             segments.append(segment)
 
     segments = random.sample(list(segments), num_rows*num_cols)
-
     segments = Group(*segments).space_out_submobjects(1.02)
-    
+
     return segments
 
 # 传入三张图片的地址，返回3个小球
