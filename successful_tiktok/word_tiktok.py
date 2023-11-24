@@ -38,7 +38,7 @@ def image_divide(image_path, num_rows, num_cols):
             segments.append(segment)
 
     segments = random.sample(list(segments), num_rows*num_cols)
-    # Display all the segments
+    
     segments = Group(*segments).space_out_submobjects(1.02)
     return segments
 
