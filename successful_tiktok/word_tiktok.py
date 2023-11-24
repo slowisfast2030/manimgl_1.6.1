@@ -36,3 +36,39 @@ def image_divide(image_path, num_rows, num_cols):
     # Display all the segments
     segments = Group(*segments).space_out_submobjects(1.02)
     return segments
+
+# 传入三张图片的地址，返回3个小球
+def three_sphere_with_texture(texture1, texture2, texture3):
+    sphere1 = Sphere(radius=3)
+    sphere2 = Sphere(radius=3)
+    sphere3 = Sphere(radius=3)
+
+    def update_sphere_right(sphere, dt):
+        sphere.rotate(0.3 * dt, axis=RIGHT)
+    
+    def update_sphere_up(sphere, dt):
+        sphere.rotate(0.3 * dt, axis=UP)
+
+    def update_sphere(sphere, dt):
+        sphere.rotate(0.3 * dt)
+
+    mob1 = TexturedSurface(sphere1, texture1).scale(0.3).rotate(PI/2, axis=RIGHT)
+    mob1.add_updater(update_sphere_right)
+
+    mob2 = TexturedSurface(sphere2, texture2).scale(0.3).rotate(PI/2, axis=RIGHT)
+    mob2.add_updater(update_sphere_up)
+
+    mob3 = TexturedSurface(sphere3, texture3).scale(0.3).rotate(PI/2, axis=RIGHT)
+    mob3.add_updater(update_sphere)
+
+    # 这3个小球在右上角的位置应该固定
+    # gr = Group(mob1, mob2, mob3).arrange(RIGHT, buff=0.5).scale(0.4).move_to([2.7,6.7,0])
+    # for mob in gr:
+    #     print(mob.get_center())
+    """
+    [1.78 6.7  0.  ]
+    [2.7 6.7 0. ]
+    [3.62 6.7  0.  ]
+    """
+    gr = Group(mob1, mob2, mob3).arrange(RIGHT, buff=1).shift(UP*2)
+    return gr
