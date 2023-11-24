@@ -140,36 +140,10 @@ class test(Scene):
         self.add(word)
         self.wait(4)
 
-        # VT = Text("V-T", font_size=40, t2c={'V-T': RED})
-        # VT.move_to(VT_coord)
-
-        # meaning_en_1 = Text("If you abandon a place, thing, or person, you", 
-        #                  font_size=40,
-        #                  t2c={'abandon': BLUE, 'V-T': RED}).set_width(7.3)
-        # meaning_en_1.next_to(VT, RIGHT)
-
-        # meaning_en_2 = Text("leave the place, thing, or person permanently", 
-        #                  font_size=40,
-        #                  t2c={'abandon': BLUE, 'V-T': RED}).set_width(7.3)
-        # meaning_en_2.next_to(VT, RIGHT).shift(DOWN*0.5) 
-
-        # meaning_en_3 = Text("or for a long time, especially when you should", 
-        #                  font_size=40,
-        #                  t2c={'abandon': BLUE, 'V-T': RED}).set_width(7.3)
-        # meaning_en_3.next_to(VT, RIGHT).shift(DOWN*0.5*2) 
-
-        # meaning_en_4 = Text("not do so.", 
-        #                  font_size=40,
-        #                  t2c={'abandon': BLUE, 'V-T': RED})
-        # meaning_en_4.next_to(VT, RIGHT).shift(DOWN*0.5*3) 
-
-
-        # meaning_gr = Group(VT, meaning_en_1, meaning_en_2, meaning_en_3, meaning_en_4)
-
-        # self.add(meaning_gr)
         parts = ["If you abandon a place, thing, or person, you", 
                  "leave the place, thing, or person permanently", 
                  "or for a long time, especially when you should", 
                  "not do so."]
+        
         meaning_gr = meaning(*parts)
         self.add(meaning_gr)
