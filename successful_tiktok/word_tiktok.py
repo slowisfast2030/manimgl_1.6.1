@@ -143,7 +143,7 @@ def meaning(parts, parts_ch, sents, sents_ch):
 
     # VT是释义的定位点，例句也需要一个定位点
     eg = Text("E.G.", font_size=40, t2c={'E.G.': BLUE})
-    eg_coord = VT_coord + (len(parts)+len(parts_ch))*DOWN*0.5 + DOWN * 0.2
+    eg_coord = VT_coord + (len(parts)+len(parts_ch))*DOWN*0.5 + DOWN * 0.2 # 0.2是调整的参数
     eg.move_to(eg_coord)
     meaning_gr.append(eg)
 
@@ -215,7 +215,7 @@ class test(Scene):
                  "him."]
         
         sents_ch = ["他声称他的父母抛弃了他。"] 
-        
+
         meaning_gr = meaning(parts, parts_ch, sents, sents_ch)
         self.add(meaning_gr)
 
