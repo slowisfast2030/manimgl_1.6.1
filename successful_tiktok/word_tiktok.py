@@ -359,7 +359,7 @@ class test(Scene):
             run_time=2
         )
 
-        #word.fix_in_frame()
+        word.fix_in_frame()
 
         frame = self.camera.frame
         
