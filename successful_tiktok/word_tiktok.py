@@ -109,7 +109,6 @@ class test(Scene):
 
         VT = Text("V-T", font_size=40, t2c={'V-T': RED})
         VT.move_to(VT_coord)
-        self.add(VT)
 
         meaning_en_1 = Text("If you abandon a place, thing, or person, you", 
                          font_size=40,
@@ -126,11 +125,12 @@ class test(Scene):
                          t2c={'abandon': BLUE, 'V-T': RED}).set_width(7.3)
         meaning_en_3.next_to(VT, RIGHT).shift(DOWN*0.5*2) 
 
-        
+        meaning_en_4 = Text("not do so.", 
+                         font_size=40,
+                         t2c={'abandon': BLUE, 'V-T': RED})
+        meaning_en_4.next_to(VT, RIGHT).shift(DOWN*0.5*3) 
 
-        print(meaning_en_1.get_width())
-        print(meaning_en_2.get_width())
 
-        self.add(meaning_en_1)
-        self.add(meaning_en_2)
-        self.add(meaning_en_3)
+        meaning_gr = Group(VT, meaning_en_1, meaning_en_2, meaning_en_3, meaning_en_4)
+
+        self.add(meaning_gr)
