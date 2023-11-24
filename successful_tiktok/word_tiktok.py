@@ -9,7 +9,10 @@ Mob2_coord = [2.7, 6.7, 0.]
 Mob3_coord = [3.62, 6.7, 0.]
 
 # 单词在左上角的坐标
-Word_coord = [-2.3, 6.8,0]
+Word_coord = [-2.3, 6.8, 0]
+
+# VT的坐标
+VT_coord = [-3.72, 5.81836484, 0.] 
 
 # 输入图片的路径，小正方形在长宽上的个数，返回这一系列小正方的集合
 def image_divide(image_path, num_rows, num_cols):
@@ -104,9 +107,30 @@ class test(Scene):
         self.add(word)
         self.wait(4)
 
-        meaning_1 = Text("V-T If you abandon a place, thing, or person, you\n        leave the place, thing, or person permanently or for a long time, \n        especially when you should not do so.", 
-                         font_size=40,
-                         t2c={'abandon': BLUE, 'V-T': RED})
-        meaning_1.next_to(word, DOWN*2).shift(RIGHT*2.2)
+        VT = Text("V-T", font_size=40, t2c={'V-T': RED})
+        VT.move_to(VT_coord)
+        self.add(VT)
 
-        self.add(meaning_1)
+        meaning_en_1 = Text("If you abandon a place, thing, or person, you", 
+                         font_size=40,
+                         t2c={'abandon': BLUE, 'V-T': RED}).set_width(7.3)
+        meaning_en_1.next_to(VT, RIGHT)
+
+        meaning_en_2 = Text("leave the place, thing, or person permanently", 
+                         font_size=40,
+                         t2c={'abandon': BLUE, 'V-T': RED}).set_width(7.3)
+        meaning_en_2.next_to(VT, RIGHT).shift(DOWN*0.5) 
+
+        meaning_en_3 = Text("or for a long time, especially when you should", 
+                         font_size=40,
+                         t2c={'abandon': BLUE, 'V-T': RED}).set_width(7.3)
+        meaning_en_3.next_to(VT, RIGHT).shift(DOWN*0.5*2) 
+
+        
+
+        print(meaning_en_1.get_width())
+        print(meaning_en_2.get_width())
+
+        self.add(meaning_en_1)
+        self.add(meaning_en_2)
+        self.add(meaning_en_3)
