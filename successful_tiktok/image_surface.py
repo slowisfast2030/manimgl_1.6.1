@@ -128,6 +128,7 @@ class test(Scene):
 
 
         # 导入第一个单词对应的图片
+        self.play(pis[0].debubble())
         self.remove(pi_group)
         image_boy = image_divide("dall-boy.png", 10, 10).shift(DOWN*3).space_out_submobjects(1.03)
         self.add(*image_boy)
