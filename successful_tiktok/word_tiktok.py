@@ -236,6 +236,7 @@ class test(Scene):
         self.add(word)
         self.wait(0.5)
 
+        # 单词的第一个释义出现
         # 给出中英文释义
         parts = ["If you abandon a place, thing, or person, you", 
                  "leave the place, thing, or person permanently", 
@@ -268,3 +269,8 @@ class test(Scene):
         image_anims = get_image_anims(image_boy)
         self.play(*image_anims, run_time=1.5)
         self.wait(1)
+
+        self.clear()
+        self.add(mob_gr, word)
+        self.wait()
+        # 单词的第二个释义
