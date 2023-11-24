@@ -421,7 +421,7 @@ class test(Scene):
         student_teacher.fix_in_frame()
 
         # 把所有单词的释义放在一起
-        self.add(meaning_sentence)
+        self.add(meaning_sentence.shift(DOWN))
         self.add(meaning_sentence.copy().shift(DOWN*4)) 
         self.add(meaning_sentence.copy().shift(DOWN*8))  
 
