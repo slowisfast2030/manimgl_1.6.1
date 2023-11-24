@@ -419,7 +419,10 @@ class test(Scene):
         mob2.set_opacity(1)
         mob3.set_opacity(1)
         student_teacher.fix_in_frame()
+
+        # 把所有单词的释义放在一起
         
+
         self.play(
             mob_gr[0].animate.scale(2.5).move_to(-2*LEFT+DOWN*1),
             mob_gr[1].animate.scale(2.5).move_to(2*LEFT+DOWN*1),
