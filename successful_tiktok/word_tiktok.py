@@ -260,7 +260,7 @@ class test(Scene):
         self.clear()
         self.add(mob_gr, word)
         self.wait()
-        
+
         # 单词的第一个释义出现
         # 给出中英文释义
         parts = ["If you abandon a place, thing, or person, you", 
@@ -281,7 +281,11 @@ class test(Scene):
         meaning_gr = meaning_sentence[0]
         sentence_gr = meaning_sentence[1]
 
-        self.play(FadeIn(meaning_gr))
+        self.play(FadeIn(meaning_gr),
+                  mob1.animate.set_opacity(1),
+                  mob2.animate.set_opacity(0.2),
+                  mob3.animate.set_opacity(0.2))
+        
         self.play(
             *[Write(sent) for sent in sentence_gr])
 
@@ -318,7 +322,10 @@ class test(Scene):
         meaning_gr = meaning_sentence[0]
         sentence_gr = meaning_sentence[1]
 
-        self.play(FadeIn(meaning_gr))
+        self.play(FadeIn(meaning_gr),
+                  mob1.animate.set_opacity(0.2),
+                  mob2.animate.set_opacity(1),
+                  mob3.animate.set_opacity(0.2))
         self.play(
             *[Write(sent) for sent in sentence_gr])
 
@@ -354,7 +361,10 @@ class test(Scene):
         meaning_gr = meaning_sentence[0]
         sentence_gr = meaning_sentence[1]
 
-        self.play(FadeIn(meaning_gr))
+        self.play(FadeIn(meaning_gr),
+                  mob1.animate.set_opacity(0.2),
+                  mob2.animate.set_opacity(0.2),
+                  mob3.animate.set_opacity(1))
         self.play(
             *[Write(sent) for sent in sentence_gr])
 
