@@ -3,6 +3,11 @@ sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-mas
 
 from manim_imports_ext import *
 
+# 三个小球在右上角的坐标
+mob1_coord = [1.78, 6.7, 0.]
+mob2_coord = [2.7, 6.7, 0.]
+mob3_coord = [3.62, 6.7, 0.]
+
 # 输入图片的路径，小正方形在长宽上的个数，返回这一系列小正方的集合
 def image_divide(image_path, num_rows, num_cols):
 
@@ -61,14 +66,5 @@ def three_sphere_with_texture(texture1, texture2, texture3):
     mob3 = TexturedSurface(sphere3, texture3).scale(0.3).rotate(PI/2, axis=RIGHT)
     mob3.add_updater(update_sphere)
 
-    # 这3个小球在右上角的位置应该固定
-    # gr = Group(mob1, mob2, mob3).arrange(RIGHT, buff=0.5).scale(0.4).move_to([2.7,6.7,0])
-    # for mob in gr:
-    #     print(mob.get_center())
-    """
-    [1.78 6.7  0.  ]
-    [2.7 6.7 0. ]
-    [3.62 6.7  0.  ]
-    """
     gr = Group(mob1, mob2, mob3).arrange(RIGHT, buff=1).shift(UP*2)
     return gr
