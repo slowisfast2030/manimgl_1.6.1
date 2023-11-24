@@ -258,7 +258,7 @@ class test(Scene):
 
         # 清场，为第一个单词释义做准备
         self.clear()
-        self.add(mob_gr, word)
+        self.add(mob_gr, word, student_teacher)
         self.wait()
 
         # 单词的第一个释义出现
@@ -311,7 +311,7 @@ class test(Scene):
 
         # 清场，为第二个单词释义做准备
         self.clear()
-        self.add(mob_gr, word)
+        self.add(mob_gr, word, student_teacher)
         self.wait()
 
         # 单词的第二个释义
@@ -360,7 +360,7 @@ class test(Scene):
 
         # 清场，为第三个单词释义做准备
         self.clear()
-        self.add(mob_gr, word)
+        self.add(mob_gr, word, student_teacher)
         self.wait()
 
         # 单词的第三个释义
@@ -408,7 +408,7 @@ class test(Scene):
 
         # 清场，为首尾准备
         self.clear()
-        self.add(mob_gr, word)
+        self.add(mob_gr, word, student_teacher)
         self.wait()
 
         # 收尾
@@ -416,6 +416,7 @@ class test(Scene):
         mob1.set_opacity(1)
         mob2.set_opacity(1)
         mob3.set_opacity(1)
+        student_teacher.fix_in_frame()
         
         self.play(
             mob_gr[0].animate.scale(2.5).move_to(-2*LEFT+DOWN*1),
