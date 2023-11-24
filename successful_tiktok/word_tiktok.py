@@ -342,3 +342,11 @@ class test(Scene):
         image_anims = get_image_anims(image_boy)
         self.play(*image_anims, run_time=1.5)
         self.wait(1) 
+
+        # 清场，为首尾准备
+        self.clear()
+        self.add(mob_gr, word)
+        self.wait()
+
+        # 首尾
+        
