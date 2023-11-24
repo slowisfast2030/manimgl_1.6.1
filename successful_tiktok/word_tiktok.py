@@ -38,8 +38,9 @@ def image_divide(image_path, num_rows, num_cols):
             segments.append(segment)
 
     segments = random.sample(list(segments), num_rows*num_cols)
-    
+
     segments = Group(*segments).space_out_submobjects(1.02)
+    
     return segments
 
 # 传入三张图片的地址，返回3个小球
@@ -66,5 +67,19 @@ def three_sphere_with_texture(texture1, texture2, texture3):
     mob3 = TexturedSurface(sphere3, texture3).scale(0.3).rotate(PI/2, axis=RIGHT)
     mob3.add_updater(update_sphere)
 
-    gr = Group(mob1, mob2, mob3).arrange(RIGHT, buff=1).shift(UP*2)
-    return gr
+    mob_gr = Group(mob1, mob2, mob3).arrange(RIGHT, buff=1).shift(UP*2)
+
+    return mob_gr
+
+def student_with_teacher():
+    colors = [BLUE, RED]
+    student_teacher = [PiCreature(color=color) for color in colors]
+    student_teacher = VGroup(*student_teacher)
+    student_teacher.arrange(RIGHT, buff=0.9).shift(DOWN*5.5).scale(0.8)
+
+    _, teacher = student_teacher
+    teacher.scale(1.3).shift(UP*1.2)
+
+    return student_teacher
+
+   
