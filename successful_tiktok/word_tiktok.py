@@ -93,7 +93,7 @@ def student_with_teacher():
 def meaning(parts, parts_ch, sents, sents_ch):
     # parts是单词含义的各个部分，每个部分都是一个str
     #VT = Text("V-T", font_size=40, t2c={'V-T': RED})
-    VT = SVGMobject("svg-teapot.svg").scale(0.3)
+    VT = SVGMobject("svg-teapot.svg").scale(0.25)
     VT.move_to(VT_coord) 
 
     meaning_gr = [VT]
@@ -144,7 +144,8 @@ def meaning(parts, parts_ch, sents, sents_ch):
 
     
     # VT是释义的定位点，例句也需要一个定位点
-    eg = Text("E.G.", font_size=40, t2c={'E.G.': BLUE})
+    #eg = Text("E.G.", font_size=40, t2c={'E.G.': BLUE})
+    eg = SVGMobject("svg-water-cup.svg").scale(0.3)
     eg_coord = VT_coord + (len(parts)+len(parts_ch))*DOWN*0.5 + DOWN * 0.2 # 0.2是调整的参数
     eg.move_to(eg_coord)
     sentence_gr = [eg]
