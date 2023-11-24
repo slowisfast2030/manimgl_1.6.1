@@ -421,14 +421,14 @@ class test(Scene):
         student_teacher.fix_in_frame()
 
         # 把所有单词的释义放在一起
-        self.add(meaning_sentence.shift(DOWN*2))
+        self.add(meaning_sentence.shift(DOWN))
         self.add(meaning_sentence.copy().shift(DOWN*4)) 
         self.add(meaning_sentence.copy().shift(DOWN*8))  
 
         self.play(
-            mob_gr[0].animate.scale(2.5).move_to(-2*LEFT+DOWN*1+OUT*2),
-            mob_gr[1].animate.scale(2.5).move_to(2*LEFT+DOWN*1+OUT*2),
-            mob_gr[2].animate.scale(2.5).move_to(UP*2+OUT*2),
+            mob_gr[0].animate.scale(2.5).move_to(-2*LEFT+DOWN*1+OUT*3),
+            mob_gr[1].animate.scale(2.5).move_to(2*LEFT+DOWN*1+OUT*3),
+            mob_gr[2].animate.scale(2.5).move_to(UP*2+OUT*3),
             run_time=2
         )
 
