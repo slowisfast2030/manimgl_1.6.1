@@ -256,6 +256,11 @@ class test(Scene):
 
         self.wait(0.5)
 
+        # 清场，为第一个单词释义做准备
+        self.clear()
+        self.add(mob_gr, word)
+        self.wait()
+        
         # 单词的第一个释义出现
         # 给出中英文释义
         parts = ["If you abandon a place, thing, or person, you", 
