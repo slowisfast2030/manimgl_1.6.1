@@ -230,4 +230,5 @@ class test(Scene):
         self.play(
             *[Write(sent) for sent in sentence_gr])
 
-
+        image_boy = image_divide("dall-boy.png", 10, 10).shift(DOWN*3).space_out_submobjects(1.01)
+        self.add(*image_boy)
