@@ -140,10 +140,13 @@ class test(Scene):
         self.add(word)
         self.wait(4)
 
+        # parts = ["If you abandon a place, thing, or person, you", 
+        #          "leave the place, thing, or person permanently", 
+        #          "or for a long time, especially when you should", 
+        #          "not do so."]
         parts = ["If you abandon a place, thing, or person, you", 
                  "leave the place, thing, or person permanently", 
-                 "or for a long time, especially when you should", 
-                 "not do so."]
-        
+                 "or for a long time, especially when", 
+                ]
         meaning_gr = meaning(*parts)
         self.add(meaning_gr)
