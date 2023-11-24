@@ -351,11 +351,12 @@ class test(Scene):
         # 收尾
         #self.play(word.animate.move_to(ORIGIN+UP*4))
 
-        mob_gr.scale(2.5)
+        
         self.play(
             mob_gr[0].animate.move_to(-2*LEFT+DOWN*1),
             mob_gr[1].animate.move_to(2*LEFT+DOWN*1),
             mob_gr[2].animate.move_to(UP*2),
+            mob_gr.animate.scale(2.5),
             run_time=2
         )
 
