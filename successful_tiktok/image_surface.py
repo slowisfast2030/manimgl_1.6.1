@@ -18,7 +18,7 @@ class test(Scene):
 
         colors = color_gradient([BLUE, GREEN], 2)
         pis = [PiCreature(color=color).scale(0.8).fix_in_frame() for color in colors]
-        pis[1].set_color(GREY_BROWN).scale(1.3).shift(UP*1.2)
+        pis[1].set_color(RED).scale(1.3).shift(UP*1.2)
         pi_group = VGroup(*pis)
         pi_group.arrange(RIGHT, buff=0.9).shift(DOWN*2).stretch(0.33 ,1).scale(1.5)
         #self.play(FadeIn(pi_group))
