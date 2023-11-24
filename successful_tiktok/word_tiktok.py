@@ -201,14 +201,14 @@ def meaning(parts, parts_ch, sents, sents_ch):
         if index == len(sents_ch)-1:
             index = index + len(sents)
 
-            sentence = Text(sent, font_size=36, t2c={'抛弃': BLUE})
+            sentence = Text(sent, font_size=36, t2c={'抛弃': BLUE, "放弃": BLUE})
             sentence.next_to(eg, RIGHT).shift(DOWN*0.5*index)
             sentence_gr.append(sentence)
 
         else:
             index = index + len(sents)
 
-            sentence = Text(sent, font_size=36, t2c={'抛弃': BLUE}).set_width(7.3)
+            sentence = Text(sent, font_size=36, t2c={'抛弃': BLUE, "放弃": BLUE}).set_width(7.3)
             sentence.next_to(eg, RIGHT).shift(DOWN*0.5*index)
             sentence_gr.append(sentence)
 
@@ -270,7 +270,39 @@ class test(Scene):
         self.play(*image_anims, run_time=1.5)
         self.wait(1)
 
+        # 清场，为第二个单词释义做准备
         self.clear()
         self.add(mob_gr, word)
         self.wait()
+
         # 单词的第二个释义
+        parts = ["you abandon an activity or piece of work, you", 
+                 "stop doing it before it is finished.", 
+                 ]
+        
+        parts_ch = ["如果你放弃一个活动或一项工作，意味着在",
+                    "它完成之前你就停止了进行。其是当你不应",
+                    "该这样做的时候。"]
+
+        sents = ["The authorities have abandoned any attempt to", 
+                 "distribute food in an orderly fashion."]
+        
+        sents_ch = ["当局已放弃以有序方式分发食物的任何尝试。"] 
+
+        meaning_sentence = meaning(parts, parts_ch, sents, sents_ch)
+        meaning_gr = meaning_sentence[0]
+        sentence_gr = meaning_sentence[1]
+
+        self.play(FadeIn(meaning_gr))
+        self.play(
+            *[Write(sent) for sent in sentence_gr])
+
+        self.wait(1)
+
+        image_boy = image_divide("dall-house.png", 10, 10).shift(DOWN*3.5).space_out_submobjects(1.01).scale(1)
+        #image_boy = image_divide("dall-house.png", 10, 10).next_to(meaning_sentence, DOWN*2).space_out_submobjects(1.01).scale(1)
+        self.add(*image_boy)
+
+        image_anims = get_image_anims(image_boy)
+        self.play(*image_anims, run_time=1.5)
+        self.wait(1)
