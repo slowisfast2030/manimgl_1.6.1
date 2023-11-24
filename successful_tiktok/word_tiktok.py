@@ -122,19 +122,21 @@ def meaning(parts, parts_ch):
     
     # 中文释义
     for index, part in enumerate(parts_ch):
-        index = index + len(parts)
 
         if index == len(parts_ch)-1:
-            print(part)
+            index = index + len(parts)
+
             meaning_ch = Text(part, 
-                             font_size=38,
+                             font_size=36,
                              t2c={'放弃': BLUE, 'V-T': RED})
             meaning_ch.next_to(VT, RIGHT).shift(DOWN*0.5*index)
             meaning_gr.append(meaning_ch)
 
         else:
+            index = index + len(parts)
+
             meaning_ch = Text(part, 
-                             font_size=38,
+                             font_size=36,
                              t2c={'放弃': BLUE, 'V-T': RED}).set_width(7.3)
             meaning_ch.next_to(VT, RIGHT).shift(DOWN*0.5*index)
             meaning_gr.append(meaning_ch)
