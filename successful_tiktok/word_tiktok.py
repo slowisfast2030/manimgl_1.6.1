@@ -289,8 +289,18 @@ class test(Scene):
         self.play(
             *[Write(sent) for sent in sentence_gr])
 
+        # 写完句子后，需要给出对话
+        self.play(student_teacher[0].thinks("what a lonely boy!"),
+                  run_time=2,
+                  )
         self.wait(1)
+        # 删除对话 
+        self.play(
+            student_teacher[0].debubble(),
+            FadeOut(student_teacher),
+            )
 
+        # 出现图片
         #image_boy = image_divide("dall-boy.png", 10, 10).shift(DOWN*3.5).space_out_submobjects(1.01).scale(1)
         image_boy = image_divide("dall-boy.png", 10, 10).next_to(meaning_sentence, DOWN*2).space_out_submobjects(1.01).scale(1)
         self.add(*image_boy)
@@ -329,6 +339,15 @@ class test(Scene):
         self.play(
             *[Write(sent) for sent in sentence_gr])
 
+        # 写完句子后，需要给出对话
+        self.play(student_teacher[0].thinks("hha..."),
+                  run_time=2,
+                  )
+        # 删除对话 
+        self.play(
+            student_teacher[0].debubble(),
+            FadeOut(student_teacher),
+            )
         self.wait(1)
 
         image_boy = image_divide("dall-house.png", 10, 10).shift(DOWN*3.5).space_out_submobjects(1.01).scale(1)
@@ -367,7 +386,16 @@ class test(Scene):
                   mob3.animate.set_opacity(1))
         self.play(
             *[Write(sent) for sent in sentence_gr])
-
+        
+        # 写完句子后，需要给出对话
+        self.play(student_teacher[0].thinks("good choice!"),
+                  run_time=2,
+                  )
+        # 删除对话 
+        self.play(
+            student_teacher[0].debubble(),
+            FadeOut(student_teacher),
+            )
         self.wait(1)
 
         image_boy = image_divide("dall-path.png", 10, 10).shift(DOWN*3.5).space_out_submobjects(1.01).scale(1)
