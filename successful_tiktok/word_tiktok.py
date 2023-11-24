@@ -443,4 +443,4 @@ class test(Scene):
         self.play(frame.animate.reorient(20, 70),
                   #word.animate.shift(DOWN*2), 
                   run_time=2)
-        self.wait(4)
+        self.wait(7)
