@@ -310,6 +310,7 @@ class test(Scene):
         self.wait(1)
 
         # 清场，为第二个单词释义做准备
+        student_teacher[0].change_mode("plain")
         self.clear()
         self.add(mob_gr, word, student_teacher)
         self.wait()
@@ -359,6 +360,7 @@ class test(Scene):
         self.wait(1)
 
         # 清场，为第三个单词释义做准备
+        student_teacher[0].change_mode("plain")
         self.clear()
         self.add(mob_gr, word, student_teacher)
         self.wait()
