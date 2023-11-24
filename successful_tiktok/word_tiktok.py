@@ -215,6 +215,7 @@ class test(Scene):
                  "him."]
         
         sents_ch = ["他声称他的父母抛弃了他。"] 
+        
         meaning_gr = meaning(parts, parts_ch, sents, sents_ch)
         self.add(meaning_gr)
 
