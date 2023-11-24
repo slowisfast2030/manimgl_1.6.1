@@ -13,11 +13,6 @@ class test(Scene):
         sphere1 = Sphere(radius=3)
         sphere2 = Sphere(radius=3)
         sphere3 = Sphere(radius=3)
-        # You can texture a surface with up to two images, which will
-        # be interpreted as the side towards the light, and away from
-        # the light.  These can be either urls, or paths to a local file
-        # in whatever you've set as the image directory in
-        # the custom_config.yml file
 
         def update_sphere_right(sphere, dt):
             sphere.rotate(0.3 * dt, axis=RIGHT)
@@ -51,29 +46,6 @@ class test(Scene):
         """
         gr = Group(mob1, mob2, mob3).arrange(RIGHT, buff=1).shift(UP*2)
         self.add(gr)
-
-        #gr = Group(mob1, mob2, mob3)
-        # mob1.move_to([3, 0, 0])
-        # mob2.move_to([-1, 2, 0])
-        # mob3.move_to([-1, -2, 0])
-
-        # self.add(gr.shift(OUT*2))
-
-        # self.play(Rotate(gr[1], PI/2, axis=RIGHT), 
-        #           Rotate(gr[2], PI/2),
-        #           Rotate(gr[0], PI/2, axis=UP),
-        #            run_time= 4)
-        
-        # frame.remove_updater(update_frame)
-        # frame.arrange(RIGHT, buff=1).reorient(0, 0)
-        # gr.move_to(ORIGIN+UP*6+RIGHT*2)
-        # self.wait(2)
-
-        # self.play(
-        #     frame.animate.reorient(0,0),
-        #     gr.animate.move_to(ORIGIN+UP*6+RIGHT*2),
-        # )
-        # self.wait()
 
         colors = color_gradient([BLUE, GREEN], 2)
         pis = [PiCreature(color=color) for color in colors]
