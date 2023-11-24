@@ -351,8 +351,22 @@ class test(Scene):
         # 收尾
         self.play(word.animate.move_to(ORIGIN+UP*4))
 
+        mob_gr.scale(2.5)
         self.play(
             mob_gr[0].animate.move_to(-2*LEFT+DOWN*1),
             mob_gr[1].animate.move_to(2*LEFT+DOWN*1),
             mob_gr[2].animate.move_to(UP*2),
         )
+
+        word.fix_in_frame()
+
+        frame = self.camera.frame
+        
+        def update_frame(frame, dt):
+            frame.increment_theta(-0.3 * dt)
+        frame.add_updater(update_frame)
+
+        self.play(frame.animate.reorient(20, 70),
+                  word.animate.shift(DOWN*2), 
+                  run_time=2)
+        self.wait(4)
