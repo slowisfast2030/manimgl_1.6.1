@@ -385,7 +385,9 @@ class test(Scene):
 
         # 收尾
         #self.play(word.animate.move_to(ORIGIN+UP*4))
-
+        mob1.set_opacity(1)
+        mob2.set_opacity(1)
+        mob3.set_opacity(1)
         
         self.play(
             mob_gr[0].animate.scale(2.5).move_to(-2*LEFT+DOWN*1),
