@@ -132,6 +132,32 @@ class test(Scene):
         self.remove(pi_group)
         image_boy = image_divide("dall-boy.png", 10, 10).shift(DOWN*3).space_out_submobjects(1.03)
         self.add(*image_boy)
+        image_boy = random.sample(list(image_boy), 10*10)
+        # 在翻转之前，先执行一次翻转
+        for i in range(len(image_boy)):
+            if i % 4 == 0:
+                image_boy[i]= image_boy[i].rotate(TAU/2, UP).copy()
+            elif i % 4 == 1:
+                image_boy[i].rotate(TAU/4, OUT)
+            elif i % 4 == 2:
+                image_boy[i].rotate(TAU/4, IN)
+            else:
+                image_boy[i].rotate(TAU/2, OUT)
+
+        anims = []
+        for i in range(len(image_boy)):
+            if i % 4 == 0:
+                anims.append(ApplyMethod(image_boy[i].rotate, TAU/2, UP))
+            elif i % 4 == 1:
+                anims.append(ApplyMethod(image_boy[i].rotate, TAU/4, -OUT))
+            elif i % 4 == 2:
+                anims.append(ApplyMethod(image_boy[i].rotate, TAU/4, -IN))
+            else:
+                anims.append(ApplyMethod(image_boy[i].rotate, TAU/2, -OUT))
+        
+        self.play(*anims, run_time=3)
+        self.wait(1)
+        
 
         
         
