@@ -408,7 +408,7 @@ class test(Scene):
 
         # 清场，为首尾准备
         self.clear()
-        self.add(mob_gr, word, student_teacher)
+        self.add(mob_gr, word)
         self.wait()
 
         # 收尾
