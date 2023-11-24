@@ -90,7 +90,7 @@ def student_with_teacher():
 
     return student_teacher
 
-def meaning(parts, parts_ch, sents):
+def meaning(parts, parts_ch, sents, sents_ch):
     # parts是单词含义的各个部分，每个部分都是一个str
     VT = Text("V-T", font_size=40, t2c={'V-T': RED})
     VT.move_to(VT_coord) 
@@ -147,6 +147,7 @@ def meaning(parts, parts_ch, sents):
     eg.move_to(eg_coord)
     meaning_gr.append(eg)
 
+    # 英文例句
     for index, sent in enumerate(sents):
         if index == 0:
             sentence = Text(sent, font_size=40, t2c={'abandoned': BLUE}).set_width(7.3)
@@ -160,6 +161,22 @@ def meaning(parts, parts_ch, sents):
 
         else:
             sentence = Text(sent, font_size=40, t2c={'abandoned': BLUE}).set_width(7.3)
+            sentence.next_to(eg, RIGHT).shift(DOWN*0.5*index)
+            meaning_gr.append(sentence)
+    
+    # 中文例句
+    for index, sent in enumerate(sents_ch):
+        if index == len(sents_ch)-1:
+            index = index + len(sents)
+
+            sentence = Text(sent, font_size=36, t2c={'抛弃': BLUE})
+            sentence.next_to(eg, RIGHT).shift(DOWN*0.5*index)
+            meaning_gr.append(sentence)
+
+        else:
+            index = index + len(sents)
+
+            sentence = Text(sent, font_size=36, t2c={'抛弃': BLUE}).set_width(7.3)
             sentence.next_to(eg, RIGHT).shift(DOWN*0.5*index)
             meaning_gr.append(sentence)
 
@@ -196,7 +213,9 @@ class test(Scene):
 
         sents = ["He claimed that his parents had abandoned", 
                  "him."]
-        meaning_gr = meaning(parts, parts_ch, sents)
+        
+        sents_ch = ["他声称他的父母抛弃了他。"] 
+        meaning_gr = meaning(parts, parts_ch, sents, sents_ch)
         self.add(meaning_gr)
 
 
