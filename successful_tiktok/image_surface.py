@@ -21,7 +21,7 @@ class test(Scene):
         pis = [PiCreature(color=color) for color in colors]
         pis[1].set_color(RED).scale(1.3).shift(UP*1.2)
         pi_group = VGroup(*pis)
-        pi_group.arrange(RIGHT, buff=0.9).shift(DOWN*4).scale(0.8)
+        pi_group.arrange(RIGHT, buff=0.9).shift(DOWN*6).scale(0.8)
         #self.play(FadeIn(pi_group))
         self.add(pi_group)
         self.play(pis[1].says("today, we will \nleran abandon!"))
