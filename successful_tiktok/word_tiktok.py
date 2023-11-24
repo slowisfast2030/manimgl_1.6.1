@@ -49,7 +49,11 @@ def image_divide(image_path, num_rows, num_cols):
 
     return segments
 
-def image_anims(image_segments):
+def get_image_anims(image_segments):
+
+    # group对象不支持索引，所以要转换成list
+    image_segments = list(image_segments)
+    
     # 在翻转之前，先执行一次翻转
     for i in range(len(image_segments)):
         if i % 4 == 0:
@@ -257,3 +261,7 @@ class test(Scene):
 
         image_boy = image_divide("dall-boy.png", 10, 10).shift(DOWN*3.5).space_out_submobjects(1.01).scale(1)
         self.add(*image_boy)
+
+        image_anims = get_image_anims(image_boy)
+        self.play(*image_anims, run_time=1.5)
+        self.wait(1)
