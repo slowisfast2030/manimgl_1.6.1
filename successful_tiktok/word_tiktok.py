@@ -141,28 +141,29 @@ def meaning(parts, parts_ch, sents, sents_ch):
             meaning_ch.next_to(VT, RIGHT).shift(DOWN*0.5*index)
             meaning_gr.append(meaning_ch)
 
+    
     # VT是释义的定位点，例句也需要一个定位点
     eg = Text("E.G.", font_size=40, t2c={'E.G.': BLUE})
     eg_coord = VT_coord + (len(parts)+len(parts_ch))*DOWN*0.5 + DOWN * 0.2 # 0.2是调整的参数
     eg.move_to(eg_coord)
-    meaning_gr.append(eg)
+    sentence_gr = [eg]
 
     # 英文例句
     for index, sent in enumerate(sents):
         if index == 0:
             sentence = Text(sent, font_size=40, t2c={'abandoned': BLUE}).set_width(7.3)
             sentence.next_to(eg, RIGHT)
-            meaning_gr.append(sentence)
+            sentence_gr.append(sentence)
         
         elif index == len(sents)-1:
             sentence = Text(sent, font_size=40, t2c={'abandoned': BLUE})
             sentence.next_to(eg, RIGHT).shift(DOWN*0.5*index)
-            meaning_gr.append(sentence)
+            sentence_gr.append(sentence)
 
         else:
             sentence = Text(sent, font_size=40, t2c={'abandoned': BLUE}).set_width(7.3)
             sentence.next_to(eg, RIGHT).shift(DOWN*0.5*index)
-            meaning_gr.append(sentence)
+            sentence_gr.append(sentence)
     
     # 中文例句
     for index, sent in enumerate(sents_ch):
@@ -171,16 +172,19 @@ def meaning(parts, parts_ch, sents, sents_ch):
 
             sentence = Text(sent, font_size=36, t2c={'抛弃': BLUE})
             sentence.next_to(eg, RIGHT).shift(DOWN*0.5*index)
-            meaning_gr.append(sentence)
+            sentence_gr.append(sentence)
 
         else:
             index = index + len(sents)
 
             sentence = Text(sent, font_size=36, t2c={'抛弃': BLUE}).set_width(7.3)
             sentence.next_to(eg, RIGHT).shift(DOWN*0.5*index)
-            meaning_gr.append(sentence)
+            sentence_gr.append(sentence)
 
-    return Group(*meaning_gr)
+    meaning_gr = Group(*meaning_gr)
+    sentence_gr = Group(*sentence_gr)
+
+    return Group(meaning_gr, sentence_gr)
 
     
 
@@ -216,8 +220,12 @@ class test(Scene):
         
         sents_ch = ["他声称他的父母抛弃了他。"] 
 
-        meaning_gr = meaning(parts, parts_ch, sents, sents_ch)
-        self.add(meaning_gr)
+        meaning_sentence = meaning(parts, parts_ch, sents, sents_ch)
+        meaning_gr = meaning_sentence[0]
+        sentence_gr = meaning_sentence[1]
 
+        self.play(FadeIn(meaning_gr))
+        self.play(
+            *[Write(sent) for sent in sentence_gr])
 
 
