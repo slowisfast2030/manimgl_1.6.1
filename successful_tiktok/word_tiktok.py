@@ -90,7 +90,7 @@ def student_with_teacher():
 
     return student_teacher
 
-def meaning(parts, parts_ch):
+def meaning(parts, parts_ch, sents):
     # parts是单词含义的各个部分，每个部分都是一个str
     VT = Text("V-T", font_size=40, t2c={'V-T': RED})
     VT.move_to(VT_coord) 
@@ -141,6 +141,27 @@ def meaning(parts, parts_ch):
             meaning_ch.next_to(VT, RIGHT).shift(DOWN*0.5*index)
             meaning_gr.append(meaning_ch)
 
+    # VT是释义的定位点，例句也需要一个定位点
+    eg = Text("E.G.", font_size=40, t2c={'E.G.': BLUE})
+    eg_coord = VT_coord + (len(parts)+len(parts_ch))*DOWN*0.5 + DOWN * 0.2
+    eg.move_to(eg_coord)
+    meaning_gr.append(eg)
+
+    for index, sent in enumerate(sents):
+        if index == 0:
+            sentence = Text(sent, font_size=40, t2c={'abandoned': BLUE}).set_width(7.3)
+            sentence.next_to(eg, RIGHT)
+            meaning_gr.append(sentence)
+        
+        elif index == len(sents)-1:
+            sentence = Text(sent, font_size=40, t2c={'abandoned': BLUE})
+            sentence.next_to(eg, RIGHT).shift(DOWN*0.5*index)
+            meaning_gr.append(sentence)
+
+        else:
+            sentence = Text(sent, font_size=40, t2c={'abandoned': BLUE}).set_width(7.3)
+            sentence.next_to(eg, RIGHT).shift(DOWN*0.5*index)
+            meaning_gr.append(sentence)
 
     return Group(*meaning_gr)
 
@@ -163,6 +184,7 @@ class test(Scene):
         self.add(word)
         self.wait(4)
 
+        # 给出中英文释义
         parts = ["If you abandon a place, thing, or person, you", 
                  "leave the place, thing, or person permanently", 
                  "or for a long time, especially when you should", 
@@ -172,5 +194,10 @@ class test(Scene):
                     "就永久地离开了这个地方、一件事或人，尤",
                     "其是当你不应该这样做的时候。"]
 
-        meaning_gr = meaning(parts, parts_ch)
+        sents = ["He claimed that his parents had abandoned", 
+                 "him."]
+        meaning_gr = meaning(parts, parts_ch, sents)
         self.add(meaning_gr)
+
+
+
