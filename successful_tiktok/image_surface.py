@@ -128,9 +128,14 @@ class test(Scene):
 
 
         # 导入第一个单词对应的图片
-        self.play(pis[0].debubble())
-        self.remove(pi_group)
-        image_boy = image_divide("dall-boy.png", 10, 10).shift(DOWN*3).space_out_submobjects(1.03)
+        self.play(
+            pis[0].debubble(),
+            FadeOut(pi_group),
+            )
+        # self.remove(pi_group)
+
+        image_boy = image_divide("dall-boy.png", 10, 10).shift(DOWN*3).space_out_submobjects(1.01)
+        #self.play(FadeIn(*image_boy))
         self.add(*image_boy)
         image_boy = random.sample(list(image_boy), 10*10)
         # 在翻转之前，先执行一次翻转
