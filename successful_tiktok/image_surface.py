@@ -50,12 +50,14 @@ class test(Scene):
         colors = color_gradient([BLUE, GREEN], 2)
         pis = [PiCreature(color=color) for color in colors]
         pis[1].set_color(RED).scale(1.3).shift(UP*1.2)
+        #pis[1].look_at(UL)
         pi_group = VGroup(*pis)
         pi_group.arrange(RIGHT, buff=0.9).shift(DOWN*5.5).scale(0.8)
         self.play(FadeIn(pi_group))
         self.add(pi_group)
         self.play(pis[1].says("today, we will \nlearn abandon!"))
         self.wait(1)
+        #pis[1].look_at(UP)
 
         # 单词出现
         word = Text("Abandon").scale(2).move_to([-2.3, 6.8,0]).set_color_by_gradient(RED, BLUE)
@@ -76,7 +78,11 @@ class test(Scene):
                          font_size=40,
                          t2c={'abandon': BLUE, 'V-T': RED})
         meaning_1.next_to(word, DOWN*2).shift(RIGHT*2.2)
-        self.play(FadeIn(meaning_1))
+        self.play(
+            FadeIn(meaning_1),
+            mob2.animate.set_opacity(0.2),
+            mob3.animate.set_opacity(0.2),
+            )
         sentence_1 = Text("\n•  He claimed that his parents had abandoned him.", font_size=40, t2c={'abandoned': BLUE})
         sentence_1.next_to(meaning_1, DOWN*2)
         self.play(Write(sentence_1))
