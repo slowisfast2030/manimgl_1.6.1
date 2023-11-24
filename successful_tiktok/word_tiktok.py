@@ -4,9 +4,12 @@ sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-mas
 from manim_imports_ext import *
 
 # 三个小球在右上角的坐标
-mob1_coord = [1.78, 6.7, 0.]
-mob2_coord = [2.7, 6.7, 0.]
-mob3_coord = [3.62, 6.7, 0.]
+Mob1_coord = [1.78, 6.7, 0.]
+Mob2_coord = [2.7, 6.7, 0.]
+Mob3_coord = [3.62, 6.7, 0.]
+
+# 单词在左上角的坐标
+Word_coord = [-2.3, 6.8,0]
 
 # 输入图片的路径，小正方形在长宽上的个数，返回这一系列小正方的集合
 def image_divide(image_path, num_rows, num_cols):
@@ -49,14 +52,16 @@ def three_sphere_with_texture(texture1, texture2, texture3):
     sphere2 = Sphere(radius=3)
     sphere3 = Sphere(radius=3)
 
+    speed = 0.7
+
     def update_sphere_right(sphere, dt):
-        sphere.rotate(0.3 * dt, axis=RIGHT)
+        sphere.rotate(speed * dt, axis=RIGHT)
     
     def update_sphere_up(sphere, dt):
-        sphere.rotate(0.3 * dt, axis=UP)
+        sphere.rotate(speed * dt, axis=UP)
 
     def update_sphere(sphere, dt):
-        sphere.rotate(0.3 * dt)
+        sphere.rotate(speed * dt)
 
     mob1 = TexturedSurface(sphere1, texture1).scale(0.3).rotate(PI/2, axis=RIGHT)
     mob1.add_updater(update_sphere_right)
@@ -82,4 +87,17 @@ def student_with_teacher():
 
     return student_teacher
 
-   
+
+class test(Scene):
+    def construct(self):
+        textures = ["dall-boy.png", "dall-house.png", "dall-path.png"]
+        mob_gr = three_sphere_with_texture(*textures)
+        mob_coords = [Mob1_coord, Mob2_coord, Mob3_coord]
+        for mob, coord in zip(mob_gr, mob_coords):
+            mob.move_to(coord)
+            mob.scale(0.4)
+            self.add(mob)
+
+        word = Text("Abandon").scale(2).move_to(Word_coord).set_color_by_gradient(RED, BLUE)
+        self.add(word)
+        self.wait(4)
