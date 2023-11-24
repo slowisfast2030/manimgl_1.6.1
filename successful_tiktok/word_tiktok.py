@@ -90,13 +90,14 @@ def student_with_teacher():
 
     return student_teacher
 
-def meaning(*parts):
+def meaning(parts, parts_ch):
     # parts是单词含义的各个部分，每个部分都是一个str
     VT = Text("V-T", font_size=40, t2c={'V-T': RED})
     VT.move_to(VT_coord) 
 
     meaning_gr = [VT]
 
+    # 英文释义
     for index, part in enumerate(parts):
         if index == 0:
             meaning_en = Text(part, 
@@ -119,6 +120,26 @@ def meaning(*parts):
             meaning_en.next_to(VT, RIGHT).shift(DOWN*0.5*index)
             meaning_gr.append(meaning_en)
     
+    # 中文释义
+    for index, part in enumerate(parts_ch):
+        index = index + len(parts)
+
+        if index == len(parts_ch)-1:
+            print(part)
+            meaning_ch = Text(part, 
+                             font_size=38,
+                             t2c={'放弃': BLUE, 'V-T': RED})
+            meaning_ch.next_to(VT, RIGHT).shift(DOWN*0.5*index)
+            meaning_gr.append(meaning_ch)
+
+        else:
+            meaning_ch = Text(part, 
+                             font_size=38,
+                             t2c={'放弃': BLUE, 'V-T': RED}).set_width(7.3)
+            meaning_ch.next_to(VT, RIGHT).shift(DOWN*0.5*index)
+            meaning_gr.append(meaning_ch)
+
+
     return Group(*meaning_gr)
 
     
@@ -144,6 +165,10 @@ class test(Scene):
                  "leave the place, thing, or person permanently", 
                  "or for a long time, especially when you should", 
                  "not do so."]
+        
+        parts_ch = ["如果你放弃一个地方、一件事或一个人，你",
+                    "就永久地离开了这个地方、一件事或人，尤",
+                    "其是当你不应该这样做的时候。"]
 
-        meaning_gr = meaning(*parts)
+        meaning_gr = meaning(parts, parts_ch)
         self.add(meaning_gr)
