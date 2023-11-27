@@ -62,6 +62,7 @@ def digest_config(obj, kwargs, caller_locals={}):
     # Assemble list of CONFIGs from all super classes
     classes_in_hierarchy = [obj.__class__]
     static_configs = []
+    # 从当前类开始，将当前类和所有父类的CONFIG字典加入static_configs
     while len(classes_in_hierarchy) > 0:
         Class = classes_in_hierarchy.pop()
         classes_in_hierarchy += Class.__bases__
