@@ -355,6 +355,9 @@ class Introduction(TeacherStudentsScene):
         但，这个动画的实现方式真的很优雅
 
         Animation在这里的目的是使得作用的mob可见
+
+        time progression
+        animation progression
         """
         self.play(*[
             ApplyMethod(
@@ -379,6 +382,10 @@ class Introduction(TeacherStudentsScene):
         essence_words = words.get_part_by_tex("Essence").copy()
         """
         bubble和content都是mobject
+        """
+        """
+        FadeOut将content的opacity从1变为0
+        又将content中的essence_words移动到series的下方
         """
         self.play(
             FadeOut(self.teacher.bubble),
