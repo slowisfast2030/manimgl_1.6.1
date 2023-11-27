@@ -407,6 +407,12 @@ class Introduction(TeacherStudentsScene):
         self.essence_words = essence_words
 
     def show_many_facts(self):
+        """genius!
+        如果需要多个公式
+        这种写法很优雅
+
+        如果是我, 只会一个个写
+        """
         rules = list(it.starmap(Tex, [
             ("{d(", "x", "^2)", "\\over \\,", "dx}", "=", "2", "x"),
             (
