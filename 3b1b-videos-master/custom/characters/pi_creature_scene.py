@@ -408,6 +408,15 @@ class TeacherStudentsScene(PiCreatureScene):
     def play_all_student_changes(self, mode, **kwargs):
         self.play_student_changes(*[mode] * len(self.students), **kwargs)
 
+    """
+    self.play_student_changes(
+            *["hooray"]*3,
+            look_at = series[1].get_left(),
+            added_anims = [
+                ApplyMethod(this_video.restore, run_time = 3),
+            ]
+        )
+    """
     def play_student_changes(self, *modes, **kwargs):
         added_anims = kwargs.pop("added_anims", [])
         self.play(
