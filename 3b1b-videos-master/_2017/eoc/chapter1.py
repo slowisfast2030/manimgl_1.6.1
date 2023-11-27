@@ -473,6 +473,11 @@ class Introduction(TeacherStudentsScene):
         )
         self.wait()
         alt_rules_list = list(rules[1:]) + [VectorizedPoint(self.teacher.eyes.get_top())]
+        """
+        有一点很奇怪:
+        当每一个公式移动到对应的video的时候, 视频中pi生物的眼睛会看像视频的位置
+        但是代码中并没有体现这一点
+        """
         for last_rule, rule, video_index in zip(rules, alt_rules_list, video_indices):
             video = self.series[video_index]
             self.play(
