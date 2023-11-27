@@ -501,7 +501,8 @@ class Introduction(TeacherStudentsScene):
 
         calculus = VGroup(*self.essence_words[-len("calculus"):])
         calculus.generate_target()
-        invent = OldTexText("Invent")
+        # 将OldTexText变为TexText
+        invent = TexText("Invent")
         invent_calculus = VGroup(invent, calculus.target)
         invent_calculus.arrange(RIGHT, buff = MED_SMALL_BUFF)
         invent_calculus.next_to(student, UP, 1.5*LARGE_BUFF)
