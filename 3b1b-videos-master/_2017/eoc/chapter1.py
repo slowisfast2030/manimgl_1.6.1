@@ -350,6 +350,10 @@ class Introduction(TeacherStudentsScene):
                 ApplyMethod(this_video.restore, run_time = 3),
             ]
         )
+        """genius!
+        就这个动画效果, 很多manim的使用者是可以做出来的
+        但，这个动画的实现方式真的很优雅
+        """
         self.play(*[
             ApplyMethod(
                 video.shift, 0.5*video.get_height()*DOWN,
