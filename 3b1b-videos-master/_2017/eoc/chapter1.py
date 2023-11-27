@@ -293,6 +293,13 @@ class Introduction(TeacherStudentsScene):
         self.this_video = this_video
 
         # 将OldTexText替换为TexText
+        """gpt4
+        For a line break in LaTeX, the command is \\. To represent this in 
+        a Python string, each backslash is doubled, resulting in \\\\. In
+        the context of the TexText object in Manim, \\\\ will create a new
+        line, so the text "Welcome to" and "Essence of calculus" will
+        appear on two separate lines in the rendered output.
+        """
         words = TexText(
             "Welcome to \\\\",
             "Essence of calculus"
