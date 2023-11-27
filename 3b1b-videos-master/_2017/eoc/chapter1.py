@@ -443,6 +443,7 @@ class Introduction(TeacherStudentsScene):
             for tex, color in tex_to_color:
                 rule.set_color_by_tex(tex, color, substring = False)
             rule.next_to(self.teacher.get_corner(UP+LEFT), UP)
+            # 这里是否多余
             rule.shift_onto_screen()
 
         index = 1
