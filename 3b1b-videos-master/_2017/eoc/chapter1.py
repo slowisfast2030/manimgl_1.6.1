@@ -309,6 +309,8 @@ class Introduction(TeacherStudentsScene):
 
         # change_mode不是一个动画
         self.teacher.change_mode("happy")
+        # 在3b1b的视频中并没有看见这个动画
+        # 应该是剪辑的时候去掉了
         self.play(
             FadeIn(
                 series,
