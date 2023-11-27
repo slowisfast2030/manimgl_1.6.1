@@ -282,7 +282,6 @@ class Introduction(TeacherStudentsScene):
         self.invent_calculus()
 
     def show_series(self):
-        
         series = VideoSeries()
         series.to_edge(UP)
         this_video = series[0]
