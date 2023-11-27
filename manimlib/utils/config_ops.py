@@ -30,7 +30,7 @@ def digest_config(obj, kwargs, caller_locals={}):
     as an attribute of the object.
     """
     """
-    将self类的字典(当前类和所有父类)和参数(当前类的kwargs)初始化为self的属性
+    将self类的CONFIG字典(当前类和所有父类)和参数(当前类的kwargs)初始化为self的属性
     """
 
     # Assemble list of CONFIGs from all super classes
