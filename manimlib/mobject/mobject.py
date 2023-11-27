@@ -1852,6 +1852,9 @@ class Mobject(object):
         '''获取右边缘中心'''
         return self.get_edge_center(RIGHT)
 
+    """
+    look_at = series[1].get_left()
+    """
     def get_left(self) -> np.ndarray:
         '''获取左边缘中心'''
         return self.get_edge_center(LEFT)
