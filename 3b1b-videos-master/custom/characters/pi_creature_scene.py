@@ -417,6 +417,15 @@ class TeacherStudentsScene(PiCreatureScene):
             ]
         )
     """
+    """
+    self.play_student_changes(
+            "pondering", "sassy", "pondering",
+            look_at = self.teacher.eyes,
+            added_anims = [
+                self.teacher.change_mode, "plain"
+            ]
+        )
+    """
     def play_student_changes(self, *modes, **kwargs):
         added_anims = kwargs.pop("added_anims", [])
         self.play(
