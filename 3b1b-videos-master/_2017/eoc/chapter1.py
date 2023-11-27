@@ -284,8 +284,12 @@ class Introduction(TeacherStudentsScene):
     def show_series(self):
         series = VideoSeries()
         series.to_edge(UP)
+        """geinus!
+        优雅
+        """
         this_video = series[0]
         this_video.set_color(YELLOW)
+        # 保存状态，可以通过restore()恢复
         this_video.save_state()
         this_video.set_fill(opacity = 0)
         this_video.center()
