@@ -341,6 +341,7 @@ class Introduction(TeacherStudentsScene):
         look_at = series[1].get_left()
         需要意识到每一个mob都有一个bounding_box
         可以获取到bounding_box的corner和edge_center
+        get_left()返回bounding_box的左边缘的中点
         """
         self.play_student_changes(
             *["hooray"]*3,
