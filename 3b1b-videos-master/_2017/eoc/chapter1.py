@@ -304,6 +304,7 @@ class Introduction(TeacherStudentsScene):
             "Welcome to \\\\",
             "Essence of calculus"
         )
+        # 可以为每一部分设置颜色
         words.set_color_by_tex("Essence of calculus", YELLOW)
 
         self.teacher.change_mode("happy")
