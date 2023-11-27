@@ -353,6 +353,8 @@ class Introduction(TeacherStudentsScene):
         """genius!
         就这个动画效果, 很多manim的使用者是可以做出来的
         但，这个动画的实现方式真的很优雅
+
+        Animation在这里的目的是使得作用的mob可见
         """
         self.play(*[
             ApplyMethod(
