@@ -292,8 +292,8 @@ class Introduction(TeacherStudentsScene):
         this_video.set_height(FRAME_HEIGHT)
         self.this_video = this_video
 
-
-        words = OldTexText(
+        # 将OldText替换为TexText
+        words = TexText(
             "Welcome to \\\\",
             "Essence of calculus"
         )
