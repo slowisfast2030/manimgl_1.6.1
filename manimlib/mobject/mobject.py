@@ -801,6 +801,13 @@ class Mobject(object):
     invent_calculus.arrange(RIGHT, buff = MED_SMALL_BUFF)
     invent_calculus.next_to(student, UP, 1.5*LARGE_BUFF)
     invent_calculus.shift(RIGHT)
+
+    self.play(
+            Write(invent),
+            MoveToTarget(calculus),
+            student.change_mode, "erm",
+            student.look_at, calculus
+        )
     """
     def generate_target(self, use_deepcopy: bool = False):
         '''通过复制自身作为自己的 target, 生成一个 target 属性'''
