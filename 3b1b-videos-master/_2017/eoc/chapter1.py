@@ -254,6 +254,10 @@ class CircleScene(PiCreatureScene):
 #############
 
 class Chapter1OpeningQuote(OpeningQuote):
+    """
+    继承链
+    Scene --> OpeningQuote --> Chapter1OpeningQuote
+    """
     CONFIG = {
         "quote" : [
             """The art of doing mathematics is finding
