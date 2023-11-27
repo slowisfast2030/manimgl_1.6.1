@@ -795,6 +795,7 @@ class Mobject(object):
     calculus = VGroup(*self.essence_words[-len("calculus"):])
     # 生成一个target
     calculus.generate_target()
+    
     invent = TexText("Invent")
     invent_calculus = VGroup(invent, calculus.target)
     invent_calculus.arrange(RIGHT, buff = MED_SMALL_BUFF)
