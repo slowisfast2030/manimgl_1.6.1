@@ -448,6 +448,7 @@ class Introduction(TeacherStudentsScene):
 
         index = 1
         student = self.get_students()[index]
+        # 学生和老师同时切换mode
         self.play_student_changes(
             "pondering", "sassy", "pondering",
             look_at = self.teacher.eyes,
