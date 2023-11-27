@@ -510,6 +510,8 @@ class Introduction(TeacherStudentsScene):
         invent_calculus.shift(RIGHT)
         arrow = Arrow(invent_calculus, student)
 
+        # 原来是通过这种方式使得整个视频的背景变暗
+        # 真有创造力！！！
         fader = Rectangle(
             width = FRAME_WIDTH,
             height = FRAME_HEIGHT,
