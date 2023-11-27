@@ -226,6 +226,7 @@ class VideoSeries(VGroup):
         videos = [VideoIcon() for x in range(self.num_videos)]
         VGroup.__init__(self, *videos, **kwargs)
         self.arrange()
+        # 设置宽度和颜色都很有启发
         self.set_width(FRAME_WIDTH - MED_LARGE_BUFF)
         self.set_color_by_gradient(*self.gradient_colors)
 
