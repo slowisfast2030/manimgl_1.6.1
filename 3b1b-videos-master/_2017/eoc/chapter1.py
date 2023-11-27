@@ -370,6 +370,12 @@ class Introduction(TeacherStudentsScene):
             Animation(self.teacher.bubble.content),
         ])
 
+        """
+        3b1b的视频和其他人基于manim做出的视频有几个显著的区别:
+        1.多个动画同时执行。可以是同类动画，也可以是不同类动画。画面会更加丰富
+        2.动画之间的过渡更加连贯: 场景中会出现一些新的元素，但新元素的出现不会显得突兀，
+        尽可能使得新元素是基于旧元素的变化而产生的
+        """
         essence_words = words.get_part_by_tex("Essence").copy()
         self.play(
             FadeOut(self.teacher.bubble),
