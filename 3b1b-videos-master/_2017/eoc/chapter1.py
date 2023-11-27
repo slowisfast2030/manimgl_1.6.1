@@ -506,6 +506,7 @@ class Introduction(TeacherStudentsScene):
         我可以在屏幕上接着显示invent, 但是我不知道该怎么对齐invent和calculus
         """
         calculus = VGroup(*self.essence_words[-len("calculus"):])
+        # 生成一个target
         calculus.generate_target()
         # 将OldTexText变为TexText
         invent = TexText("Invent")
