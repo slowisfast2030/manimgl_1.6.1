@@ -337,6 +337,11 @@ class Introduction(TeacherStudentsScene):
         但是, 往往学生的modes改变是因为发生了另一个动画
         这里的play_student_changes就是用来实现这个功能的
         """
+        """
+        look_at = series[1].get_left()
+        需要意识到每一个mob都有一个bounding_box
+        可以获取到bounding_box的corner和edge_center
+        """
         self.play_student_changes(
             *["hooray"]*3,
             look_at = series[1].get_left(),
