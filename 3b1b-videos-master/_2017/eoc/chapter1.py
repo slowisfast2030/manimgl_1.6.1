@@ -361,7 +361,7 @@ class Introduction(TeacherStudentsScene):
         """
         self.play(*[
             ApplyMethod(
-                video.shift, 0.5*video.get_height()*DOWN,
+                video.shift, 0.5*video.get_height()*DOWN, # 如果是我，只会shift一个具体的数值
                 run_time = 3,
                 rate_func = squish_rate_func(
                     there_and_back, alpha, alpha+0.3
