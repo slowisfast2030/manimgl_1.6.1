@@ -438,7 +438,7 @@ class Introduction(TeacherStudentsScene):
             ("f(x)", BLUE),
             ( "f^{(n)}(a)", BLUE),
         ]
-
+        # 数学公式最好需要上色
         for rule in rules:
             for tex, color in tex_to_color:
                 rule.set_color_by_tex(tex, color, substring = False)
