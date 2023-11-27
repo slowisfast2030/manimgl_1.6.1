@@ -500,6 +500,11 @@ class Introduction(TeacherStudentsScene):
         self.remove(creatures)
         self.add(creature_copies)
 
+        """genius!
+        老实讲, 让我实现在屏幕上显示invent calculus, 我不知道该怎么做
+        calculus是屏幕上已经有的文字
+        我可以在屏幕上接着显示invent, 但是我不知道该怎么对齐invent和calculus
+        """
         calculus = VGroup(*self.essence_words[-len("calculus"):])
         calculus.generate_target()
         # 将OldTexText变为TexText
