@@ -63,6 +63,8 @@ def digest_config(obj, kwargs, caller_locals={}):
     classes_in_hierarchy = [obj.__class__]
     static_configs = []
     # 从当前类开始，将当前类和所有父类的CONFIG字典加入static_configs
+    # 需要注意的是，所有类的CONFIG字典的排列顺序
+    # 子类的CONFIG字典在前，父类的CONFIG字典在后
     while len(classes_in_hierarchy) > 0:
         Class = classes_in_hierarchy.pop()
         classes_in_hierarchy += Class.__bases__
@@ -71,6 +73,9 @@ def digest_config(obj, kwargs, caller_locals={}):
 
     # Order matters a lot here, first dicts have higher priority
     caller_locals = filtered_locals(caller_locals)
+    # 将kwargs、caller_locals、obj.__dict__、static_configs中的字典合并
+    # 顺序很重要，越靠前的字典优先级越高，即
+    # kwargs > caller_locals > obj.__dict__ > static_configs
     all_dicts = [kwargs, caller_locals, obj.__dict__]
     all_dicts += static_configs
     obj.__dict__ = merge_dicts_recursively(*reversed(all_dicts))
@@ -86,8 +91,16 @@ def merge_dicts_recursively(*dicts):
 
     When values are dictionaries, it is applied recursively
     """
+    """
+    需要注意, 传递给当前函数的dicts中的字典的排列顺序
+    static_configs, obj.__dict__, caller_locals, kwargs
+    """
     result = dict()
     all_items = it.chain(*[d.items() for d in dicts])
+    # all_items中的字典的排列顺序
+    # static_configs, obj.__dict__, caller_locals, kwargs
+    # 如果不同的字典有相同的key，那么排列靠后的字典的key-value会覆盖排列靠前的字典的key-value
+    # 所以，kwargs中的key-value优先级最高
     for key, value in all_items:
         if key in result and isinstance(result[key], dict) and isinstance(value, dict):
             result[key] = merge_dicts_recursively(result[key], value)
