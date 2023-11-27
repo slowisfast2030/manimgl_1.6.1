@@ -519,7 +519,14 @@ class Introduction(TeacherStudentsScene):
             fill_color = BLACK,
             fill_opacity = 0.5,
         )
+        """
+        将整个视频变暗
+        突出局部的mob
 
+        这种明暗的设计, 非常适合强调某个mob
+
+        终于知道Animation的用法了
+        """
         self.play(
             FadeIn(fader),
             Animation(student),
