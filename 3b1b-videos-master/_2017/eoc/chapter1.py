@@ -307,6 +307,7 @@ class Introduction(TeacherStudentsScene):
         # 可以为每一部分设置颜色
         words.set_color_by_tex("Essence of calculus", YELLOW)
 
+        # change_mode不是一个动画
         self.teacher.change_mode("happy")
         self.play(
             FadeIn(
