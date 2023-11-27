@@ -90,6 +90,9 @@ def squish_rate_func(
     a: float = 0.4,
     b: float = 0.6
 ) -> Callable[[float], float]:
+    """
+    返回一个新的rate_func
+    """
     def result(t):
         if a == b:
             return a
