@@ -457,6 +457,13 @@ class Introduction(TeacherStudentsScene):
             ]
         )
         self.wait(2)
+        """
+        在视频中引入pi生物, 会增加视频的趣味性
+        pi生物需要和视频中的其他动画进行交互
+        比如
+        pi生物可以看着视频中的某个对象
+        pi生物可以切换mode, 伴随着某个动画的发生
+        """
         self.play(
             Write(rules[0]),
             self.teacher.change_mode, "raise_right_hand",
