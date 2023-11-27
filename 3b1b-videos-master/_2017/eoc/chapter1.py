@@ -384,8 +384,8 @@ class Introduction(TeacherStudentsScene):
         bubble和content都是mobject
         """
         """
-        FadeOut将content的opacity从1变为0
-        又将content中的essence_words移动到series的下方
+        FadeOut将content的opacity从1变为0, 变得不可见
+        又将content中的essence_words移动到series的下方, 变得可见
         """
         self.play(
             FadeOut(self.teacher.bubble),
