@@ -496,6 +496,7 @@ class Introduction(TeacherStudentsScene):
         creatures = self.get_pi_creatures()
         creatures.remove(student)
         creature_copies = creatures.copy()
+        # 这样做的目的是啥？
         self.remove(creatures)
         self.add(creature_copies)
 
