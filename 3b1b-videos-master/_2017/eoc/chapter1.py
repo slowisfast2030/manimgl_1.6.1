@@ -377,6 +377,9 @@ class Introduction(TeacherStudentsScene):
         尽可能使得新元素是基于旧元素的变化而产生的
         """
         essence_words = words.get_part_by_tex("Essence").copy()
+        """
+        bubble和content都是mobject
+        """
         self.play(
             FadeOut(self.teacher.bubble),
             FadeOut(self.teacher.bubble.content),
