@@ -317,6 +317,7 @@ class Introduction(TeacherStudentsScene):
             ),
             Blink(self.get_teacher())
         )
+        # 将老师的mode从happy改为hooray
         self.teacher_says(words, target_mode = "hooray")
         self.play_student_changes(
             *["hooray"]*3,
