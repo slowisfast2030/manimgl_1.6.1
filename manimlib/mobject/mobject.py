@@ -800,6 +800,21 @@ class Mobject(object):
             self.target = self.copy()
         return self.target
 
+    """
+    this_video.set_color(YELLOW)
+    this_video.save_state()
+    this_video.set_fill(opacity = 0)
+    this_video.center()
+    this_video.set_height(FRAME_HEIGHT)
+
+    self.play_student_changes(
+            *["hooray"]*3,
+            look_at = series[1].get_left(),
+            added_anims = [
+                ApplyMethod(this_video.restore, run_time = 3),
+            ]
+        )
+    """
     def save_state(self, use_deepcopy: bool = False):
         '''保留状态，即复制一份作为 ``saved_state`` 属性'''
         if hasattr(self, "saved_state"):
