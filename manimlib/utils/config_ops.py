@@ -59,7 +59,7 @@ def digest_config(obj, kwargs, caller_locals={}):
     将self类的CONFIG字典(当前类和所有父类)和参数(当前类的kwargs)初始化为self的属性
     """
     """
-    3b1b对python语言的掌握程度远超一般人
+    3b1b对python语言底层机制的掌握程度远超一般人
     """
 
     # Assemble list of CONFIGs from all super classes
