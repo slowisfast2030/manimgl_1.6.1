@@ -320,6 +320,7 @@ class Introduction(TeacherStudentsScene):
             Blink(self.get_teacher())
         )
         # 将老师的mode从happy改为hooray
+        # 这里是一个动画
         self.teacher_says(words, target_mode = "hooray")
         """genius!
         在教师-学生场景中, 
