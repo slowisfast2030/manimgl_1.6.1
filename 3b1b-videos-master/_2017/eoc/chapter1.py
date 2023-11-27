@@ -463,6 +463,9 @@ class Introduction(TeacherStudentsScene):
         比如
         pi生物可以看着视频中的某个对象
         pi生物可以切换mode, 伴随着某个动画的发生
+
+        在我做单词解释的视频中, 就很缺乏这种交互
+        比如, 当例句出现的时候, 可以让pi生物切换表情
         """
         self.play(
             Write(rules[0]),
