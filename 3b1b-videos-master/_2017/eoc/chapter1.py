@@ -1,4 +1,4 @@
-from manim_imports_ext import *
+from manim_imports_ext_new import *
 from _2017.eoc.chapter2 import Car, MoveCar
 
 
