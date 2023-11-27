@@ -296,6 +296,7 @@ class Introduction(TeacherStudentsScene):
         # 保存状态，可以通过restore()恢复
         this_video.save_state()
         this_video.set_fill(opacity = 0)
+        # 快速将mobject移动到屏幕中心
         this_video.center()
         this_video.set_height(FRAME_HEIGHT)
         self.this_video = this_video
