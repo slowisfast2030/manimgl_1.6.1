@@ -283,6 +283,10 @@ class Introduction(TeacherStudentsScene):
 
     def show_series(self):
         series = VideoSeries()
+        """
+        提供了to_edge()和to_corner()方法
+        可以将mobject移动到屏幕的边缘或者角落
+        """
         series.to_edge(UP)
         """geinus!
         优雅
