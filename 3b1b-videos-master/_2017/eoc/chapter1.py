@@ -274,6 +274,9 @@ class Chapter1OpeningQuote(OpeningQuote):
 
 class Introduction(TeacherStudentsScene):
     def construct(self):
+        """
+        这种结构真清晰
+        """
         self.show_series()
         self.show_many_facts()
         self.invent_calculus()
