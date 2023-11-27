@@ -321,6 +321,12 @@ class Introduction(TeacherStudentsScene):
         )
         # 将老师的mode从happy改为hooray
         self.teacher_says(words, target_mode = "hooray")
+        """genius!
+        在教师-学生场景中, 
+        学生的mode可以单独改变
+        但是, 往往学生的mode改变是因为发生了另一个动画
+        这里的play_student_changes就是用来实现这个功能的
+        """
         self.play_student_changes(
             *["hooray"]*3,
             look_at = series[1].get_left(),
