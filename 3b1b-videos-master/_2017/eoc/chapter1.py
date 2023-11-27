@@ -278,6 +278,11 @@ class Introduction(TeacherStudentsScene):
         这种结构真清晰
         """
         self.show_series()
+        # 对比视频和代码发现，这里使用了剪辑
+        # 在essence word下面剪进去了一段视频
+        # 使用好剪辑技巧，可以增强视频的表达力
+        # 就像电影的剪辑一样，可以拍摄很多片段，然后通过剪辑拼接成一部电影
+        # 在manim中可以在scene中预留出一块空间，方便后期剪辑进另一个视频
         self.show_many_facts()
         self.invent_calculus()
 
