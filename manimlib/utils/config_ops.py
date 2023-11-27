@@ -19,7 +19,33 @@ def filtered_locals(caller_locals):
         result.pop(arg, caller_locals)
     return result
 
+"""
+class BaseClass:
+    CONFIG = {'color': 'blue', 'size': 10}
 
+class SubClass(BaseClass):
+    CONFIG = {'size': 15, 'shape': 'circle'}
+
+class SubSubClass(SubClass):
+    CONFIG = {'color': 'red'}
+
+# Assume the definitions of digest_config and merge_dicts_recursively are available
+
+# Instantiate the object
+obj = SubSubClass()
+
+# Additional configuration provided at instantiation
+kwargs = {'size': 20, 'opacity': 0.5}
+caller_locals = {}  # In this example, there are no additional locals
+
+# Apply the configuration
+digest_config(obj, kwargs, caller_locals)
+
+# Print the final configuration of obj
+print(obj.__dict__)
+
+# {'color': 'red', 'size': 20, 'shape': 'circle', 'opacity': 0.5}
+"""
 def digest_config(obj, kwargs, caller_locals={}):
     """
     Sets init args and CONFIG values as local variables
