@@ -694,6 +694,10 @@ class ProductRuleDiagram(Scene):
         )
         self.wait()
 
+        """
+        deriv并没有在场景中显示
+        是为了给后面的动画做准备: 定位
+        """
         deriv = Tex(
             "d(", "fg", ")", "=", 
             "f", "\\cdot", "dg", "+", "g", "\\cdot", "df"
