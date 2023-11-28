@@ -33,10 +33,8 @@ for next_title in titles[1:]:
     self.wait(3)
 
 Transform这个类的作用是将mobject的属性变成target的属性
-所以
-一开始的时候, title是titles[0]
-执行了一次动画后
-title就变成了titles[2]
+所以,一开始的时候, title是titles[0]
+执行了一次动画后, title就变成了titles[2]
 """
 class Transform(Animation):
     CONFIG = {
