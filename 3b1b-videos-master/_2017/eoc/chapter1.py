@@ -821,7 +821,7 @@ class IntroduceCircle(CircleScene):
     def question_area(self):
         q_marks = Tex("???")
         q_marks.next_to(self.pi_creature, UP)
-        """
+        """geinus!
         rings和unwrapped_rings
         技术含量相当高！！！
         """
