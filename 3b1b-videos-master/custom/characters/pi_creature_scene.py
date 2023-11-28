@@ -52,6 +52,14 @@ InteractiveScene有很多未解决问题, 暂时用Scene代替
 和InteractiveScene关系不大
 """
 #class PiCreatureScene(InteractiveScene):
+"""
+对PiCreatureScene的进一步理解
+最基本的Scene是一个空白的场景, 什么都没有
+提供了self.add()方法, 可以添加mob
+提供了self.play()方法, 可以播放动画
+
+对于PiCreatureScene, 主要是默认添加了pi生物
+"""
 class PiCreatureScene(Scene):
     total_wait_time: float = 0
     seconds_to_blink: float = 3
