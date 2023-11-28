@@ -1,4 +1,30 @@
+import sys
+sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
+
+"""
+需要注意两点：
+
+1.当用vscode打开路径在/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1的项目的时候
+点击下面的`manim_imports_ext_new`是可以正常跳转的
+是因为在
+/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/.vscode/settings.json文件中进行了配置
+{
+    "python.analysis.extraPaths": [
+        "./3b1b-videos-master"
+    ]
+}
+
+2.当在/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master/_2017/eoc路径下执行
+manimgl chapter1.py
+为了不报错, 需要执行
+import sys
+sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
+
+两者缺一不可！！！
+"""
 from manim_imports_ext_new import *
+print("all is well")
+exit()
 
 """
 下面这一行应该注释掉
