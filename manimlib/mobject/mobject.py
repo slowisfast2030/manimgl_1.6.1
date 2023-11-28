@@ -770,7 +770,7 @@ class Mobject(object):
     """
     """
     manim中的深浅拷贝不符合常规认识
-    
+
     from manimlib import *
 
     class test(Scene):
@@ -807,6 +807,10 @@ class Mobject(object):
         """
         parents = self.parents
         self.parents = []
+        """
+        当copy.copy作用于嵌套数组的时候,我能理解
+        但copy.copy作用于mob对象的时候,我就不理解了
+        """
         copy_mobject = copy.copy(self)
         self.parents = parents
 
