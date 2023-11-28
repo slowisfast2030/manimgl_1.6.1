@@ -253,6 +253,15 @@ class IntroduceCircle(CircleScene):
         )
         self.wait()
 
+        """
+        一个debug的小技巧:
+        当一个复杂场景渲染报错的时候
+        可以从后往前将场景中的某些动画注释掉
+        这样就可以定位到是哪一行代码出错了
+
+        目前还不知道为何这行代码报错...
+        应该是版本问题
+        """
         self.play(
             rings.rotate, np.pi/2,
             rings.move_to, unwrapped_rings.get_top(),
