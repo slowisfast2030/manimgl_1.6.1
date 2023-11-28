@@ -143,7 +143,17 @@ class Transform(Animation):
         submob.interpolate(start, target_copy, alpha, self.path_func)
         return self
 
+"""
+for d_rect, corner_pair in zip(d_rects, corner_pairs):
+    line = Line(*[
+        rect.get_corner(corner)
+        for corner in corner_pair
+    ])
+    d_rect.line = d_rect.copy().replace(line, stretch = True)
+    d_rect.line.set_color(d_rect.get_color())
 
+ReplacementTransform(d_rect.line, d_rect)
+"""
 class ReplacementTransform(Transform):
     CONFIG = {
         "replace_mobject_with_target_in_scene": True,
