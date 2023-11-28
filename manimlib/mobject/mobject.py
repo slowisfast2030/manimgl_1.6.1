@@ -828,7 +828,7 @@ class Mobject(object):
         """
         self.data: dict[str, np.ndarray]
 
-        在 Python 的 NumPy 库中，copy 方法用于创建一个数组的副本。这意味着当你修改副本时，
+        在 Python 的 NumPy 库中, copy 方法用于创建一个数组的副本。这意味着当你修改副本时，
         原始数组不会受到影响。这与简单的赋值不同，因为赋值只是创建了一个新的引用指向同一个数组，
         所以在一个数组上的修改会影响到另一个。
 
