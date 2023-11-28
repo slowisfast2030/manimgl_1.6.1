@@ -100,6 +100,24 @@ class Transform(Animation):
                 f"{self.__class__.__name__}.create_target not properly implemented"
             )
 
+    """
+    def finish_animations(self, animations: Iterable[Animation]) -> None:
+        for animation in animations:
+            animation.finish()
+            animation.clean_up_from_scene(self)
+        if self.skip_animations:
+            self.update_mobjects(self.get_run_time(animations))
+        else:
+            self.update_mobjects(0)
+    
+    clean_up_from_scene方法是在动画结束的时候执行
+    不论是Transfrom还是ReplacementTransform
+    动画过程中, 都是mobject逐渐变为target
+    当动画结束的时候, mobject就变成了target
+    此时, 在屏幕上可以显示mobect
+    也可以显示target
+    作为观察者, 是看不出区别的
+    """
     def clean_up_from_scene(self, scene: Scene) -> None:
         super().clean_up_from_scene(scene)
         if self.replace_mobject_with_target_in_scene:
