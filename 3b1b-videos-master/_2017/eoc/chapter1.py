@@ -514,6 +514,14 @@ class Introduction(TeacherStudentsScene):
         invent_calculus.arrange(RIGHT, buff = MED_SMALL_BUFF)
         invent_calculus.next_to(student, UP, 1.5*LARGE_BUFF)
         invent_calculus.shift(RIGHT)
+        """
+        进一步思考:
+        1.生成target对象
+        2.对target对象执行操作。重点是可以和其他mob一起操作
+        3.执行MoveToTarget动画
+
+        这里的点睛之笔是target对象和其他mob一起操作
+        """
         arrow = Arrow(invent_calculus, student)
 
         # 原来是通过这种方式使得整个视频的背景变暗
