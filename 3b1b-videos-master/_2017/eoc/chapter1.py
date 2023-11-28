@@ -595,8 +595,10 @@ class PreviewFrame(Scene):
             self.wait(3)
 
 class ProductRuleDiagram(Scene):
-    """
+    """genius
     这个类难度不大
+    但细节太多了
+
     非常适合做中小学生的数学教学视频
     """
     def construct(self):
