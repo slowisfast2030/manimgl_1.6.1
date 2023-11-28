@@ -112,6 +112,11 @@ class CircleScene(PiCreatureScene):
         "circle_corner" : UP+LEFT,
     }
     def setup(self):
+        """
+        这个场景继承PiCreatureScene类
+        在屏幕上默认有了pi生物后
+        又默认添加了circle和radius_group
+        """
         PiCreatureScene.setup(self)
         self.circle = Circle(
             radius = self.radius,
