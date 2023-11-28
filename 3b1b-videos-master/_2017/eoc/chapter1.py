@@ -738,6 +738,7 @@ class IntroduceCircle(CircleScene):
         "unwrapped_tip" : 2*RIGHT
     }
     def construct(self):
+        # 执行了这个方法后，construct方法里的其他动画都会被跳过
         self.force_skipping()
 
         self.introduce_area()
