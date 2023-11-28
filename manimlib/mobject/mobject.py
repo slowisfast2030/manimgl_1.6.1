@@ -906,6 +906,10 @@ class Mobject(object):
     """
     def generate_target(self, use_deepcopy: bool = False):
         '''通过复制自身作为自己的 target, 生成一个 target 属性'''
+        """
+        深入研究self.copy(), 会发现这个方法混合了浅拷贝和深拷贝
+        比如self.data中的元素是np.ndarray, 就是深拷贝
+        """
         self.target = None  # Prevent exponential explosion
         if use_deepcopy:
             self.target = self.deepcopy()
