@@ -817,6 +817,10 @@ class Mobject(object):
         copy of the object. This means that a new object of the same class is created, 
         but the attributes of the original object are not copied. Instead, the new 
         object has references to the same attributes as the original object.
+
+        进一步思考:
+        执行copy.copy(self)之后, self.data已经被浅拷贝了
+        但是希望self.data被深拷贝,所以需要手动深拷贝
         """
         copy_mobject = copy.copy(self)
         self.parents = parents
@@ -843,6 +847,9 @@ class Mobject(object):
         """
         copy_mobject.uniforms = dict(self.uniforms)
         for key in self.uniforms:
+            # 这里很严谨，因为uniforms中的value主要是float
+            # float对象没有copy()方法
+            # 如果uniforms中的value都是float对象，那么在哪里执行拷贝操作呢？ 
             if isinstance(self.uniforms[key], np.ndarray):
                 copy_mobject.uniforms[key] = self.uniforms[key].copy()
 
