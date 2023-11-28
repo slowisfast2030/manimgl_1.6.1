@@ -337,6 +337,9 @@ class Scene(object):
     就像上面的代码, 对self.circle执行self.remove
     但是self.circle还在, 只是不会显示了
     所以pi_creature可以看到self.circle
+
+    To summarize, self.remove(mob) simply removes the visual representation of the
+    mob from the scene, but does not delete the object itself from the script's memory.
     """
     def remove(self, *mobjects_to_remove: Mobject):
         """
