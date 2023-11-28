@@ -595,6 +595,10 @@ class PreviewFrame(Scene):
             self.wait(3)
 
 class ProductRuleDiagram(Scene):
+    """
+    这个类难度不大
+    非常适合做中小学生的数学教学视频
+    """
     def construct(self):
         df = 0.4
         dg = 0.2
