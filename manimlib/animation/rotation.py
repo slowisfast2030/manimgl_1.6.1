@@ -63,8 +63,9 @@ self.play(
 """
 self.play(
         Rotate(
-            self.radius_line, 
-            2*np.pi-0.001, 
+            mobject = self.radius_line, 
+            angle = 2*np.pi-0.001,
+            axis = OUT, 
             about_point = self.circle.get_center(),
         ),
         ShowCreation(self.circle),
