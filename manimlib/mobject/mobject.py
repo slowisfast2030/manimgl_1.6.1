@@ -816,10 +816,26 @@ class Mobject(object):
         copy_mobject = copy.copy(self)
         self.parents = parents
 
+        """
+        self.data: dict[str, np.ndarray]
+        
+        在 Python 的 NumPy 库中，copy 方法用于创建一个数组的副本。这意味着当你修改副本时，
+        原始数组不会受到影响。这与简单的赋值不同，因为赋值只是创建了一个新的引用指向同一个数组，
+        所以在一个数组上的修改会影响到另一个。
+
+        import numpy as np
+        original_array = np.array([1, 2, 3, 4])
+        copied_array = original_array.copy()
+
+
+        """
         copy_mobject.data = dict(self.data)
         for key in self.data:
             copy_mobject.data[key] = self.data[key].copy()
 
+        """
+        self.uniforms: dict[str, float]
+        """
         copy_mobject.uniforms = dict(self.uniforms)
         for key in self.uniforms:
             if isinstance(self.uniforms[key], np.ndarray):
