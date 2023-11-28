@@ -867,6 +867,7 @@ class Mobject(object):
 
         # Make sure any mobject or numpy array attributes are copied
         family = self.get_family()
+        # self.__dict__是一个字典，存储了对象的所有属性
         for attr, value in list(self.__dict__.items()):
             if isinstance(value, Mobject) and value in family and value is not self:
                 setattr(copy_mobject, attr, value.copy())
