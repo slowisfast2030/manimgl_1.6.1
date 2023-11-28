@@ -41,7 +41,7 @@ class CircleScene(PiCreatureScene):
         """
         修改:
         $R$ --> R
-        get_text --> get_tex
+        get_text  --> get_tex
         """
         self.radius_label = self.radius_brace.get_tex("R", buff = SMALL_BUFF)
 
@@ -126,7 +126,14 @@ class CircleScene(PiCreatureScene):
         inner_ring.rotate(np.pi, RIGHT)
         ring.append_vectorized_mobject(inner_ring)
         ring.set_stroke(width = 0)
-        ring.set_fill(color)
+        """
+        一开始整个场景中没有任何ring的动画
+        怀疑ring没有添加进来
+
+        修改:
+        补充了参数: opacity = 1
+        """
+        ring.set_fill(color, opacity = 1)
         ring.move_to(self.circle)
         ring.R = radius 
         ring.dR = dR
