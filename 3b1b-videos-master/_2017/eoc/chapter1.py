@@ -40,13 +40,13 @@ class Eoc1Thumbnail(GraphScene):
     }
 
     def construct(self):
-        title = OldTexText(
+        title = TexText(
             "The Essence of\\\\Calculus",
             tex_to_color_map={
                 "\\emph{you}": YELLOW,
             },
         )
-        subtitle = OldTexText("Chapter 1")
+        subtitle = TexText("Chapter 1")
         subtitle.match_width(title)
         subtitle.scale(0.75)
         subtitle.next_to(title, DOWN)
