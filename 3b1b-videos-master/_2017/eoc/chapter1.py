@@ -790,6 +790,10 @@ class IntroduceCircle(CircleScene):
         area = Tex("\\text{Area}", "=", "\\pi", "R", "^2")
         area.next_to(self.pi_creature.get_corner(UP+RIGHT), UP+RIGHT)
 
+        """
+        在self.setup()中, 已经将circle和radius_group添加到了场景中
+        在这里又将其删除。那么, 现在场景中只有pi生物了
+        """
         self.remove(self.circle, self.radius_group)
         self.play(
             self.pi_creature.change_mode, "pondering",
