@@ -821,6 +821,10 @@ class IntroduceCircle(CircleScene):
     def question_area(self):
         q_marks = Tex("???")
         q_marks.next_to(self.pi_creature, UP)
+        """
+        rings和unwrapped_rings
+        技术含量相当高！！！
+        """
         rings = VGroup(*reversed(self.get_rings()))
         unwrapped_rings = VGroup(*[
             self.get_unwrapped(ring, to_edge = None)
