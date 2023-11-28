@@ -826,8 +826,6 @@ class Mobject(object):
         import numpy as np
         original_array = np.array([1, 2, 3, 4])
         copied_array = original_array.copy()
-
-
         """
         copy_mobject.data = dict(self.data)
         for key in self.data:
