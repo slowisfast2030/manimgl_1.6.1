@@ -860,6 +860,7 @@ class Mobject(object):
         递归调用
         """
         copy_mobject.add(*[sm.copy() for sm in self.submobjects])
+        # 神来之笔！
         copy_mobject.match_updaters(self)
 
         copy_mobject.needs_new_bounding_box = self.needs_new_bounding_box
