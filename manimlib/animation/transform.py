@@ -121,6 +121,8 @@ class Transform(Animation):
     def clean_up_from_scene(self, scene: Scene) -> None:
         super().clean_up_from_scene(scene)
         if self.replace_mobject_with_target_in_scene:
+            # 并没有删除mobject
+            # add和remove只是让mob可见或者不可见
             scene.remove(self.mobject)
             scene.add(self.target_mobject)
 
