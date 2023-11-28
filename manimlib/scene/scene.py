@@ -792,14 +792,14 @@ class Scene(object):
             # Display the scene
             self.wait(2)
     
-    Call self.force_skipping() to skip animations temporarily.
-    Use self.play(ShowCreation(square)) to create the square, but this animation 
+    1.Call self.force_skipping() to skip animations temporarily.
+    2.Use self.play(ShowCreation(square)) to create the square, but this animation 
     will be skipped because of the preceding force_skipping call.
-    self.revert_to_original_skipping_status() is used to resume normal animation 
+    3.self.revert_to_original_skipping_status() is used to resume normal animation 
     behavior. (Note: This method is assumed to revert the skip_animations flag to 
     its original status. If it's not part of your version of ManimGL, you may need 
     to manually set self.skip_animations back to False).
-    Then we create a Circle object and transform the square into the circle. This 
+    4.Then we create a Circle object and transform the square into the circle. This 
     animation will be shown.
     """
     def force_skipping(self):
