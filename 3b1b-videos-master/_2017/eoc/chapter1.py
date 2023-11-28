@@ -779,6 +779,7 @@ class IntroduceCircle(CircleScene):
     def construct(self):
         # 执行了这个方法后，construct方法里的其他动画都会被跳过
         # 在代码开发和调试的时候很有用
+        # 生成最终视频的时候需要删除
         self.force_skipping()
 
         self.introduce_area()
