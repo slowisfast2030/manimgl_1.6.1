@@ -540,6 +540,9 @@ class Introduction(TeacherStudentsScene):
         这种明暗的设计, 非常适合强调某个mob
 
         终于知道Animation的用法了
+
+        进一步思考:
+        设置了opacity, 堆叠在一起的mob就可以看见了
         """
         self.play(
             FadeIn(fader),
