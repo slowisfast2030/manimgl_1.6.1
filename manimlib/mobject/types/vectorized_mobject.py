@@ -151,6 +151,10 @@ class VMobject(Mobject):
             super().set_rgba_array(rgba_array, name, recurse)
         return self
 
+    """
+    填充色
+    透明度
+    """
     def set_fill(
         self,
         color: ManimColor | None = None,
