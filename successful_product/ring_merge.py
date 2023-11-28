@@ -30,6 +30,8 @@ class test(Scene):
         R = ring.R
         R_plus_dr = ring.R + ring.dR
         n_anchors = ring.get_num_curves()
+        # print(n_anchors)
+        # print(n_anchors//2)
         # 如果manim没有自己想要的形状，可以自己构造点集
         result = VMobject()
         result.set_points_as_corners([
