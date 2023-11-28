@@ -745,7 +745,7 @@ class IntroduceCircle(CircleScene):
         self.show_calculus_symbols()
 
     def introduce_area(self):
-        area = OldTex("\\text{Area}", "=", "\\pi", "R", "^2")
+        area = Tex("\\text{Area}", "=", "\\pi", "R", "^2")
         area.next_to(self.pi_creature.get_corner(UP+RIGHT), UP+RIGHT)
 
         self.remove(self.circle, self.radius_group)
@@ -768,7 +768,7 @@ class IntroduceCircle(CircleScene):
         self.area = area
 
     def question_area(self):
-        q_marks = OldTex("???")
+        q_marks = Tex("???")
         q_marks.next_to(self.pi_creature, UP)
         rings = VGroup(*reversed(self.get_rings()))
         unwrapped_rings = VGroup(*[
@@ -809,7 +809,7 @@ class IntroduceCircle(CircleScene):
         self.wait()
 
     def show_calculus_symbols(self):
-        ftc = OldTex(
+        ftc = Tex(
             "\\int_0^R", "\\frac{dA}{dr}", "\\,dr",
             "=", "A(R)"
         )
