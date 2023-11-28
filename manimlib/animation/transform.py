@@ -48,6 +48,12 @@ self.play(
 self.play(Write(area))
 self.remove(R_copy)
 
+应该将这种用法抽象成一个固有的模式
+当场景中有图和公式的时候
+图上有一些符号也会出现在公式中
+我们可以执行一次Transform
+将图上的符号变成公式中的符号
+然后再执行一次Write
 """
 class Transform(Animation):
     CONFIG = {
