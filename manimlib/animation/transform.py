@@ -36,6 +36,19 @@ Transform这个类的作用是将mobject的属性变成target的属性
 所以,一开始的时候, title是titles[0]
 执行了一次动画后, title就变成了titles[1]
 """
+"""
+area = Tex("\\text{Area}", "=", "\\pi", "R", "^2")
+area.next_to(self.pi_creature.get_corner(UP+RIGHT), UP+RIGHT)
+
+self.play(
+        self.pi_creature.change_mode, "raise_right_hand",
+        self.pi_creature.look_at, area,
+        Transform(R_copy, area.get_part_by_tex("R"))
+        )
+self.play(Write(area))
+self.remove(R_copy)
+
+"""
 class Transform(Animation):
     CONFIG = {
         "path_arc": 0,
