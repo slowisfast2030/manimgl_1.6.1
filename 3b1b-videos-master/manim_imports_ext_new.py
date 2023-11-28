@@ -14,5 +14,8 @@ from custom.filler import *
 from custom.logo import *
 from custom.opening_quote import *
 
-# 微积分的chapter1.py文件的第一个类需要GraphScene
+# 微积分的chapter1.py文件需要
+# GraphScene
+# ReconfigurableScene
 from once_useful_constructs.graph_scene import *
+from once_useful_constructs.reconfigurable_scene import *

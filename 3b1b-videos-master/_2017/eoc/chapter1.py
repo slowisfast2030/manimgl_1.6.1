@@ -176,9 +176,9 @@ class CircleScene(PiCreatureScene):
             tip_length = 0.2,
         )
         if numerical_dr:
-            nudge_label = OldTex("%.01f"%self.dR)
+            nudge_label = Tex("%.01f"%self.dR)
         else:
-            nudge_label = OldTex("dr")
+            nudge_label = Tex("dr")
         nudge_label.set_color(self.dR_color)
         nudge_label.scale(0.75)
         nudge_label.next_to(nudge_arrow.get_start(), DOWN)
@@ -898,7 +898,7 @@ class ApproximateOneRing(CircleScene, ReconfigurableScene):
         self.approximate_as_rectangle()
 
     def write_radius_three(self):
-        three = OldTex("3")
+        three = Tex("3")
         three.move_to(self.radius_label)
 
         self.look_at(self.circle)
@@ -980,9 +980,9 @@ class ApproximateOneRing(CircleScene, ReconfigurableScene):
 
         radius = Line(ORIGIN, ring.R*RIGHT, color = WHITE)
         radius.rotate(np.pi/4)
-        r_label = OldTex("r")
+        r_label = Tex("r")
         r_label.next_to(radius.get_center(), UP+LEFT, SMALL_BUFF)
-        area_q = OldTexText("Area", "?", arg_separator = "")
+        area_q = TexText("Area", "?", arg_separator = "")
         area_q.set_color(YELLOW)
 
 
@@ -1021,8 +1021,8 @@ class ApproximateOneRing(CircleScene, ReconfigurableScene):
 
     def straighten_ring_out(self):
         ring = self.ring.copy()
-        trapezoid = OldTexText("Trapezoid?")
-        rectangle_ish = OldTexText("Rectangle-ish")
+        trapezoid = TexText("Trapezoid?")
+        rectangle_ish = TexText("Rectangle-ish")
         for text in trapezoid, rectangle_ish:
             text.next_to(
                 self.pi_creature.get_corner(UP+RIGHT), 
@@ -1062,11 +1062,11 @@ class ApproximateOneRing(CircleScene, ReconfigurableScene):
         side_brace.set_stroke(WHITE, 0.5)
 
 
-        width_label = OldTex("2\\pi", "r")
+        width_label = Tex("2\\pi", "r")
         width_label.next_to(top_brace, UP, SMALL_BUFF)
-        dr_label = OldTex("dr")
-        q_marks = OldTex("???")
-        concrete_dr = OldTex("=0.1")
+        dr_label = Tex("dr")
+        q_marks = Tex("???")
+        concrete_dr = Tex("=0.1")
         concrete_dr.submobjects.reverse()
         for mob in dr_label, q_marks, concrete_dr:
             mob.next_to(side_brace, LEFT, SMALL_BUFF)
@@ -1081,7 +1081,7 @@ class ApproximateOneRing(CircleScene, ReconfigurableScene):
         alt_dr_label = dr_label.copy()
         alt_dr_label.next_to(alt_side_brace, UP, SMALL_BUFF)
 
-        approx = OldTex("\\approx")
+        approx = Tex("\\approx")
         approx.next_to(
             self.area_q.get_part_by_tex("Area"), 
             RIGHT,
@@ -1164,7 +1164,7 @@ class MoveForwardWithApproximation(TeacherStudentsScene):
         )
         self.play_student_changes("hesitant", "erm", "sassy")
         self.wait()
-        words = OldTexText(
+        words = TexText(
             "It gets better", 
             "\\\\ for smaller ",
             "$dr$"
@@ -1200,7 +1200,7 @@ class GraphRectangles(CircleScene, GraphScene):
         # self.pi_creature.look_at(self.circle)
         # self.add(self.pi_creature)
 
-        three = OldTex("3")
+        three = Tex("3")
         three.move_to(self.radius_label)
         self.radius_label.save_state()
         Transform(self.radius_label, three).update(1)
@@ -1219,7 +1219,7 @@ class GraphRectangles(CircleScene, GraphScene):
         rings = self.get_rings()
         rings.set_stroke(BLACK, 1)
         ring_sum, draw_ring_sum_anims = self.get_ring_sum(rings)
-        area_label = OldTex(
+        area_label = Tex(
             "\\text{Area}", "\\approx", 
             "2\\pi", "r", "\\,dr"
         )
@@ -1253,7 +1253,7 @@ class GraphRectangles(CircleScene, GraphScene):
         self.rings = rings
 
     def draw_r_values(self):
-        values_of_r = OldTexText("Values of ", "$r$")
+        values_of_r = TexText("Values of ", "$r$")
         values_of_r.set_color_by_tex("r", YELLOW)
         values_of_r.next_to(
             self.x_axis, UP, 
@@ -1287,7 +1287,7 @@ class GraphRectangles(CircleScene, GraphScene):
             VGroup(*r_ticks[index:index+2]), 
             DOWN, buff = SMALL_BUFF
         )
-        dr_label = OldTex("dr")
+        dr_label = Tex("dr")
         dr_label.next_to(
             dr_brace, DOWN, 
             buff = SMALL_BUFF, 
@@ -1484,7 +1484,7 @@ class GraphRectangles(CircleScene, GraphScene):
         rect = self.rects[10]
         rect.generate_target()
         rect.save_state()
-        approximation = OldTexText("= Approximation")
+        approximation = TexText("= Approximation")
         approximation.scale(0.8)
         group = VGroup(rect.target, approximation)
         group.arrange(RIGHT)
@@ -1634,12 +1634,12 @@ class GraphRectangles(CircleScene, GraphScene):
             ring.target.set_stroke(width = 0)
 
         for ring in rings[:self.num_rings_in_ring_sum_start]:
-            plus = OldTex("+")
+            plus = Tex("+")
             arranged_group.add(ring.target)
             arranged_group.add(plus)
             tex_mobs.add(plus)
-        dots = OldTex("\\vdots")
-        plus = OldTex("+")
+        dots = Tex("\\vdots")
+        plus = Tex("+")
         arranged_group.add(dots, plus)
         tex_mobs.add(dots, plus)
         last_ring = rings[-1]
@@ -1678,7 +1678,7 @@ class GraphRectangles(CircleScene, GraphScene):
         return ring_sum, draw_ring_sum_anims
 
     def get_area_formula(self, R):
-        formula = OldTex(
+        formula = Tex(
             "\\text{Area}", "&= \\frac{1}{2}", "b", "h",
             "\\\\ &=", "\\frac{1}{2}", "(%s)"%R, "(2\\pi \\cdot %s)"%R,
             "\\\\ &=", "\\pi ", "%s"%R, "^2"
@@ -1698,7 +1698,7 @@ class GraphRectangles(CircleScene, GraphScene):
 
 class ThinkLikeAMathematician(TeacherStudentsScene):
     def construct(self):
-        pi_R_squraed = OldTex("\\pi", "R", "^2")
+        pi_R_squraed = Tex("\\pi", "R", "^2")
         pi_R_squraed.set_color_by_tex("R", YELLOW)
         pi_R_squraed.move_to(self.get_students(), UP)
         pi_R_squraed.set_fill(opacity = 0)
@@ -1722,7 +1722,7 @@ class ThinkLikeAMathematician(TeacherStudentsScene):
 
 class TwoThingsToNotice(TeacherStudentsScene):
     def construct(self):
-        words = OldTexText(
+        words = TexText(
             "Two things to \\\\ note about",
             "$dr$",
         )
@@ -1750,9 +1750,9 @@ class RecapCircleSolution(GraphRectangles, ReconfigurableScene):
         rings.set_stroke(BLACK, 1)
         ring_sum, draw_ring_sum_anims = self.get_ring_sum(rings)
 
-        hard_problem = OldTexText("Hard problem")
-        down_arrow = OldTex("\\Downarrow")
-        sum_words = OldTexText("Sum of many \\\\ small values")
+        hard_problem = TexText("Hard problem")
+        down_arrow = Tex("\\Downarrow")
+        sum_words = TexText("Sum of many \\\\ small values")
         integral_condition = VGroup(hard_problem, down_arrow, sum_words)
         integral_condition.arrange(DOWN)
         integral_condition.scale(0.8)
@@ -1783,7 +1783,7 @@ class RecapCircleSolution(GraphRectangles, ReconfigurableScene):
 
         approximations = VGroup()
         for ring, radius in zip(visible_rings, radii):
-            label = OldTex(
+            label = Tex(
                 "\\approx", "2\\pi", 
                 "(%s)"%str(radius), "(%s)"%str(self.dR)
             )
@@ -1793,7 +1793,7 @@ class RecapCircleSolution(GraphRectangles, ReconfigurableScene):
             label.next_to(ring, RIGHT)
             approximations.add(label)
         approximations[-1].shift(UP+0.5*LEFT)
-        area_label = OldTex("2\\pi", "r", "\\, dr")
+        area_label = Tex("2\\pi", "r", "\\, dr")
         area_label.set_color_by_tex("r", YELLOW)
         area_label.set_color_by_tex("dr", GREEN)
         area_label.next_to(approximations, RIGHT, buff = 2*LARGE_BUFF)
@@ -1940,8 +1940,8 @@ class RecapCircleSolution(GraphRectangles, ReconfigurableScene):
             self.wait()
 
     def full_precision(self):
-        words = OldTexText("Area under \\\\ a graph")
-        group = VGroup(OldTex("\\Downarrow"), words)
+        words = TexText("Area under \\\\ a graph")
+        group = VGroup(Tex("\\Downarrow"), words)
         group.arrange(DOWN)
         group.set_color(YELLOW)
         group.scale(0.8)
@@ -1983,7 +1983,7 @@ class ExampleIntegralProblems(PiCreatureScene, GraphScene):
         self.show_confusion()
 
     def write_integral_condition(self):
-        words = OldTexText(
+        words = TexText(
             "Hard problem $\\Rightarrow$ Sum of many small values"
         )
         words.to_edge(UP)
@@ -2019,7 +2019,7 @@ class ExampleIntegralProblems(PiCreatureScene, GraphScene):
         index = int(len(ticks)/2)
         brace_ticks = VGroup(*ticks[index:index+2])
         brace = Brace(brace_ticks, UP)
-        v_dt = OldTex("v(t)", "dt")
+        v_dt = Tex("v(t)", "dt")
         v_dt.next_to(brace, UP, SMALL_BUFF)
         v_dt.set_color(YELLOW)
         v_dt_brace_group = VGroup(brace, v_dt)
@@ -2261,7 +2261,7 @@ class AreaUnderParabola(GraphScene):
 
     def ask_about_area(self):
         rects = self.rects
-        question = OldTexText("Area?")
+        question = TexText("Area?")
         question.move_to(rects.get_top(), DOWN)
         mid_rect = rects[2*len(rects)/3]
         arrow = Arrow(question.get_bottom(), mid_rect.get_center())
@@ -2313,11 +2313,11 @@ class AreaUnderParabola(GraphScene):
         )
         triangle.set_height(0.25)
         triangle.move_to(self.v_lines[1].get_bottom(), UP)
-        x_label = OldTex("x")
+        x_label = Tex("x")
         x_label.next_to(triangle, DOWN)
         self.right_point_slider = VGroup(triangle, x_label)
 
-        A_func = OldTex("A(x)")
+        A_func = Tex("A(x)")
         A_func.move_to(self.question, DOWN)
 
         self.play(FadeOut(self.x_axis.numbers))
@@ -2335,7 +2335,7 @@ class AreaUnderParabola(GraphScene):
 
     def name_integral(self):
         f_tex = "$%s$"%self.graph_label_tex
-        words = OldTexText("``Integral'' of ", f_tex)
+        words = TexText("``Integral'' of ", f_tex)
         words.set_color_by_tex(f_tex, self.graph_label.get_color())
         brace = Brace(self.A_func, UP)
         words.next_to(brace, UP)
@@ -2413,7 +2413,7 @@ class PlayWithThisIdea(TeacherStudentsScene):
         )
         self.play_student_changes(*["happy"]*3)
         self.wait()
-        equation = OldTex("A(x)", "\\leftrightarrow", "x^2")
+        equation = Tex("A(x)", "\\leftrightarrow", "x^2")
         equation.set_color_by_tex("x^2", BLUE)
         self.teacher_says(equation, target_mode = "sassy")
         self.play_student_changes(*["thinking"]*3)
@@ -2477,7 +2477,7 @@ class PlayingTowardsDADX(AreaUnderParabola, ReconfigurableScene):
             fill_color = YELLOW,
             fill_opacity = 0.5,
         ).move_to(self.right_v_lines, DOWN)
-        dA_label = OldTex("d", "A")
+        dA_label = Tex("d", "A")
         dA_label.next_to(dA_rect, RIGHT, MED_LARGE_BUFF, UP)
         dA_label.set_color(GREEN)
         dA_arrow = Arrow(
@@ -2487,7 +2487,7 @@ class PlayingTowardsDADX(AreaUnderParabola, ReconfigurableScene):
             color = WHITE
         )
 
-        difference_in_area = OldTexText(
+        difference_in_area = TexText(
             "d", "ifference in ", "A", "rea",
             arg_separator = ""
         )
@@ -2540,9 +2540,9 @@ class PlayingTowardsDADX(AreaUnderParabola, ReconfigurableScene):
 
     def write_dA_dx(self):
         f_tex = self.graph_label_tex
-        equation = OldTex("dA", "\\approx", f_tex, "dx")
+        equation = Tex("dA", "\\approx", f_tex, "dx")
         equation.to_edge(RIGHT).shift(3*UP)
-        deriv_equation = OldTex(
+        deriv_equation = Tex(
             "{dA", "\\over \\,", "dx}", "\\approx", f_tex
         )
         deriv_equation.move_to(equation, UP+LEFT)
@@ -2599,7 +2599,7 @@ class PlayingTowardsDADX(AreaUnderParabola, ReconfigurableScene):
             ).scale(1.5)
             for mob, color in [(self.A_func, RED), (self.deriv_equation, GREEN)]
         ]
-        q_marks = OldTex("???")
+        q_marks = Tex("???")
         q_marks.next_to(A_circle, UP)
 
         self.play(
@@ -2624,8 +2624,8 @@ class PlayingTowardsDADX(AreaUnderParabola, ReconfigurableScene):
 
     def write_example_inputs(self):
         d = self.default_right_x
-        three = OldTex("x =", "%d"%d)
-        three_plus_dx = OldTex("x = ", "%d.001"%d)
+        three = Tex("x =", "%d"%d)
+        three_plus_dx = Tex("x = ", "%d.001"%d)
         labels_lines_vects = list(zip(
             [three, three_plus_dx],
             self.right_v_lines,
@@ -2658,7 +2658,7 @@ class PlayingTowardsDADX(AreaUnderParabola, ReconfigurableScene):
 
     def show_dA_dx_in_detail(self):
         d = self.default_right_x
-        expression = OldTex(
+        expression = Tex(
             "{A(", "%d.001"%d, ") ", "-A(", "%d"%d, ")", 
             "\\over \\,", "0.001}", 
             "\\approx", "%d"%d, "^2"
@@ -2750,7 +2750,7 @@ class AlternateAreaUnderCurve(PlayingTowardsDADX):
     def approximation_improves_for_smaller_dx(self):
         color = YELLOW
         approx = self.deriv_equation.get_part_by_tex("approx")
-        dx_to_zero_words = OldTexText(
+        dx_to_zero_words = TexText(
             "Gets better \\\\ as", 
             "$dx \\to 0$"
         )
@@ -2773,7 +2773,7 @@ class AlternateAreaUnderCurve(PlayingTowardsDADX):
         self.dx_to_zero_words_arrow = arrow
 
     def name_derivative(self):
-        deriv_words = OldTexText("``Derivative'' of $A$")
+        deriv_words = TexText("``Derivative'' of $A$")
         deriv_words.scale(0.9)
         deriv_words.to_edge(UP+RIGHT)
         moving_group = VGroup(
@@ -2822,7 +2822,7 @@ class NextVideoWrapper(Scene):
         rect = Rectangle(height = 9, width = 16)
         rect.set_height(1.5*FRAME_Y_RADIUS)
         titles = [
-            OldTexText("Chapter %d:"%d, s)
+            TexText("Chapter %d:"%d, s)
             for d, s in [
                 (2, "The paradox of the derivative"),
                 (3, "Derivative formulas through geometry"),
@@ -2848,12 +2848,12 @@ class ProblemSolvingTool(TeacherStudentsScene):
 
 class FundamentalTheorem(Scene):
     def construct(self):
-        words = OldTexText("""
+        words = TexText("""
             Fundamental theorem of calculus
         """)
         words.to_edge(UP)
         arrow = DoubleArrow(LEFT, RIGHT).shift(2*RIGHT)
-        deriv = OldTex(
+        deriv = Tex(
             "{dA", "\\over \\,", "dx}", "=", "x^2"
         )
         deriv.set_color_by_tex("dA", GREEN)
@@ -2909,7 +2909,7 @@ class NextVideos(TeacherStudentsScene):
         self.remove(student)
         everything = VGroup(*self.get_top_level_mobjects())
         self.add(student)
-        words = OldTexText("""
+        words = TexText("""
             You could have
             invented this.
         """)
@@ -2958,7 +2958,7 @@ class EndScreen(PiCreatureScene):
         "seconds_to_blink" : 3,
     }
     def construct(self):
-        words = OldTexText("Clicky stuffs")
+        words = TexText("Clicky stuffs")
         words.scale(1.5)
         words.next_to(self.pi_creature, UP)
         words.to_edge(UP)
@@ -3010,7 +3010,7 @@ class Thumbnail(AlternateAreaUnderCurve):
             dx = 0.25,
             start_color = BLUE_E,
         )
-        words = OldTexText("""
+        words = TexText("""
             Could \\emph{you} invent
             calculus?
         """)
