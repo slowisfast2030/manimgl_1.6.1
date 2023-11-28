@@ -323,6 +323,21 @@ class Scene(object):
         ))
         return self
 
+    """
+    self.remove(self.circle, self.radius_group)
+    self.play(
+        self.pi_creature.change_mode, "pondering",
+        self.pi_creature.look_at, self.circle
+    )
+
+    self.remove并不是删除了mob
+    相当于将mob从self.mobjects中移除
+    形象的解释: 将mob移到了幕后, 但是mob还在
+
+    就像上面的代码, 对self.circle执行self.remove
+    但是self.circle还在, 只是不会显示了
+    所以pi_creature可以看到self.circle
+    """
     def remove(self, *mobjects_to_remove: Mobject):
         """
         从场景中移除所有给定的 mobject ，如果传入的 mobject 在一个 Group 中，那么这个物件会被移除，
