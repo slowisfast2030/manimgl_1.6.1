@@ -553,7 +553,7 @@ class Introduction(TeacherStudentsScene):
         这里执行多个动画并不神奇
         关键是将本来以为是一个mob的对象拆分成了两个mob
         为两个mob分别执行动画
-        
+
         invent calculus拆分成了invent和calculus
         """
         self.play(
@@ -572,7 +572,7 @@ class PreviewFrame(Scene):
 
         colors = iter(color_gradient([BLUE, YELLOW], 3))
         titles = [
-            OldTexText("Chapter %d:"%d, s).to_edge(UP).set_color(next(colors))
+            TexText("Chapter %d:"%d, s).to_edge(UP).set_color(next(colors))
             for d, s in [
                 (3, "Derivative formulas through geometry"),
                 (4, "Chain rule, product rule, etc."),
