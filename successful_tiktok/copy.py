@@ -2,25 +2,24 @@ from manimlib import *
 
 class test(Scene):
     def construct(self):
-        # Create a VGroup with a square and a circle
-        group = VGroup(Square(), Circle()).arrange(RIGHT)
+        # Create a group of circles
+        circle_group = VGroup(*[Circle(radius=0.5, color=WHITE) for _ in range(3)])
+        circle_group.arrange(RIGHT, buff=1)
 
-        # Shallow copy of the group
-        shallow_copy_group = group.copy()
+        # Position the original group on the screen
+        circle_group.to_edge(UP)
 
-        # Deep copy of the group
-        deep_copy_group = group.deepcopy()
+        # Create a shallow copy and a deep copy of the group
+        shallow_copy = circle_group.copy()
+        deep_copy = circle_group.deepcopy()
 
-        # Positioning the groups
-        group.to_edge(UP)
-        shallow_copy_group.to_edge(LEFT)
-        deep_copy_group.to_edge(RIGHT)
+        # Position the copies
+        shallow_copy.center()
+        deep_copy.to_edge(DOWN)
+        
+        circle_group[0].set_color(RED)
 
-        # Animate
-        self.play(ShowCreation(group), ShowCreation(shallow_copy_group), ShowCreation(deep_copy_group))
+        self.add(circle_group, shallow_copy, deep_copy)
 
-        # Change color of the circle in the original group
-        self.play(group[1].set_color, YELLOW)
-
-        # Notice how the shallow copy's circle changes color, but the deep copy's circle does not
-        self.wait(2)
+        # Display all the objects
+        self.wait()
