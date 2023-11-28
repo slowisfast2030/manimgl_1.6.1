@@ -571,7 +571,7 @@ class PreviewFrame(Scene):
         frame.set_height(1.5*FRAME_Y_RADIUS)
 
         colors = iter(color_gradient([BLUE, YELLOW], 3))
-        # 要善于写for循环
+        # 要善于写列表推导式
         titles = [
             TexText("Chapter %d:"%d, s).to_edge(UP).set_color(next(colors))
             for d, s in [
