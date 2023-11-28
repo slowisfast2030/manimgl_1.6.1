@@ -59,6 +59,7 @@ InteractiveScene有很多未解决问题, 暂时用Scene代替
 提供了self.play()方法, 可以播放动画
 
 对于PiCreatureScene, 主要是默认添加了pi生物
+以及一些和pi生物有关的方法
 """
 class PiCreatureScene(Scene):
     total_wait_time: float = 0
