@@ -815,6 +815,7 @@ class IntroduceCircle(CircleScene):
         self.remove(R_copy)
         self.wait()
 
+        # 是为了是area能够在下一个方法中继续使用
         self.area = area
 
     def question_area(self):
