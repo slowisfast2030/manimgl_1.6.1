@@ -812,13 +812,18 @@ class Mobject(object):
         但copy.copy作用于mob对象的时候,我就不理解了
 
         这里需要深入分析copy.copy的底层机制
+
+        When copy.copy is applied to a general class object, it returns a shallow
+        copy of the object. This means that a new object of the same class is created, 
+        but the attributes of the original object are not copied. Instead, the new 
+        object has references to the same attributes as the original object.
         """
         copy_mobject = copy.copy(self)
         self.parents = parents
 
         """
         self.data: dict[str, np.ndarray]
-        
+
         在 Python 的 NumPy 库中，copy 方法用于创建一个数组的副本。这意味着当你修改副本时，
         原始数组不会受到影响。这与简单的赋值不同，因为赋值只是创建了一个新的引用指向同一个数组，
         所以在一个数组上的修改会影响到另一个。
@@ -826,6 +831,8 @@ class Mobject(object):
         import numpy as np
         original_array = np.array([1, 2, 3, 4])
         copied_array = original_array.copy()
+
+        这里相当于对self.data进行深拷贝
         """
         copy_mobject.data = dict(self.data)
         for key in self.data:
@@ -840,6 +847,10 @@ class Mobject(object):
                 copy_mobject.uniforms[key] = self.uniforms[key].copy()
 
         copy_mobject.submobjects = []
+        """
+        调用submob的copy()方法
+        递归调用
+        """
         copy_mobject.add(*[sm.copy() for sm in self.submobjects])
         copy_mobject.match_updaters(self)
 
