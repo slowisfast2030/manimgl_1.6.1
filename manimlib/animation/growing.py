@@ -36,6 +36,9 @@ class GrowFromPoint(Transform):
 
     def create_starting_mobject(self) -> Mobject:
         start = super().create_starting_mobject()
+        """
+        下面这两行真是天才！！！
+        """
         start.scale(0)
         start.move_to(self.point)
         if self.point_color:
