@@ -72,7 +72,7 @@ class CircleScene(PiCreatureScene):
             run_time = 2
         )
         self.play(
-            self.circle.set_fill, self.fill_color, self.fill_opacity,
+            self.circle.animate.set_fill(self.fill_color, self.fill_opacity),
             Animation(self.radius_line),
             Animation(self.radius_brace),
             Animation(self.radius_label),
@@ -230,8 +230,90 @@ class IntroduceCircle(CircleScene):
         "unwrapped_tip" : 2*RIGHT
     }
     def construct(self):
+        self.force_skipping()
+        self.introduce_area()
+        self.revert_to_original_skipping_status()
+
         self.question_area()
     
+    def introduce_area(self):
+        #area = TexText("Area", "=", "\\pi", "R", "^2")
+        area = TexText("Area = R")
+        area.next_to(self.pi_creature.get_corner(UP+RIGHT), UP+RIGHT)
+
+        """
+        在self.setup()中, 已经将circle和radius_group添加到了场景中
+        在这里又将其删除。那么, 现在场景中只有pi生物了
+        """
+        self.remove(self.circle, self.radius_group)
+        self.play(
+            self.pi_creature.change_mode, "pondering",
+            self.pi_creature.look_at, self.circle
+        )
+        """
+        introduce_circle()是父类的方法
+        不得不说, 这种继承的方式使得整个代码结构非常清晰
+        """
+        self.introduce_circle()
+        self.wait()
+        R_copy = self.radius_label.copy()
+        self.play(
+            self.pi_creature.animate.change_mode("raise_right_hand"),
+            self.pi_creature.animate.look_at(area),
+            Transform(R_copy, area.get_part_by_tex("R"))
+        )
+        self.play(Write(area))
+        self.remove(R_copy)
+        self.wait()
+
+        # 是为了是area能够在下一个方法中继续使用
+        self.area = area
+
+    # def question_area(self):
+    #     q_marks = Tex("???")
+    #     q_marks.next_to(self.pi_creature, UP)
+    #     """geinus!
+    #     rings和unwrapped_rings
+    #     技术含量相当高！！！
+    #     """
+    #     rings = VGroup(*reversed(self.get_rings()))
+    #     unwrapped_rings = VGroup(*[
+    #         self.get_unwrapped(ring, to_edge = None)
+    #         for ring in rings
+    #     ])
+    #     unwrapped_rings.arrange(UP, buff = SMALL_BUFF)
+    #     unwrapped_rings.move_to(self.unwrapped_tip, UP)
+    #     ring_anim_kwargs = {
+    #         "run_time" : 3,
+    #         "lag_ratio" : 0.5
+    #     }
+
+    #     self.play(
+    #         Animation(self.area),
+    #         Write(q_marks),
+    #         self.pi_creature.change_mode, "confused",
+    #         self.pi_creature.look_at, self.area,
+    #     )
+    #     self.wait()
+    #     self.play(
+    #         FadeIn(rings, **ring_anim_kwargs),
+    #         Animation(self.radius_group),
+    #         FadeOut(q_marks),
+    #         self.pi_creature.change_mode, "thinking"
+    #     )
+    #     self.wait()
+    #     self.play(
+    #         rings.rotate, np.pi/2,
+    #         rings.move_to, unwrapped_rings.get_top(),
+    #         #Animation(self.radius_group),
+    #         path_arc = np.pi/2,
+    #         **ring_anim_kwargs
+    #     )
+    #     self.play(
+    #         Transform(rings, unwrapped_rings, **ring_anim_kwargs),
+    #     )
+    #     self.wait()
+
     def question_area(self):
         rings = VGroup(*reversed(self.get_rings()))
         unwrapped_rings = VGroup(*[
