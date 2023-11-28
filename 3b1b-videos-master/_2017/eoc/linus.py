@@ -23,15 +23,6 @@ sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-mas
 两者缺一不可！！！
 """
 from manim_imports_ext_new import *
-#print("all is well")
-#exit()
-
-"""
-下面这一行应该注释掉
-Car和MoveCar在custom/drawings.py中定义
-已经在manim_imports_ext_new.py中导入
-"""
-#from _2017.eoc.chapter2 import Car, MoveCar
 
 
 class Eoc1Thumbnail(GraphScene):
