@@ -799,6 +799,10 @@ class IntroduceCircle(CircleScene):
             self.pi_creature.change_mode, "pondering",
             self.pi_creature.look_at, self.circle
         )
+        """
+        introduce_circle()是父类的方法
+        
+        """
         self.introduce_circle()
         self.wait()
         R_copy = self.radius_label.copy()
