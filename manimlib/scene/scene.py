@@ -772,6 +772,36 @@ class Scene(object):
     ):
         self.wait(max_time, stop_condition=stop_condition)
 
+    """gpt4
+    from manimlib import *
+
+    class SkipAnimationDemo(Scene):
+        def construct(self):
+            # Create a square
+            square = Square()
+
+            # Force skipping the animation of the square's creation
+            self.force_skipping()
+            self.play(ShowCreation(square))
+            self.revert_to_original_skipping_status()
+
+            # Transform the square into a circle
+            circle = Circle()
+            self.play(Transform(square, circle))
+
+            # Display the scene
+            self.wait(2)
+    
+    Call self.force_skipping() to skip animations temporarily.
+    Use self.play(ShowCreation(square)) to create the square, but this animation 
+    will be skipped because of the preceding force_skipping call.
+    self.revert_to_original_skipping_status() is used to resume normal animation 
+    behavior. (Note: This method is assumed to revert the skip_animations flag to 
+    its original status. If it's not part of your version of ManimGL, you may need 
+    to manually set self.skip_animations back to False).
+    Then we create a Circle object and transform the square into the circle. This 
+    animation will be shown.
+    """
     def force_skipping(self):
         self.original_skipping_status = self.skip_animations
         self.skip_animations = True
