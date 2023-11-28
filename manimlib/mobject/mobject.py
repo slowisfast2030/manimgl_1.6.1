@@ -798,6 +798,8 @@ class Mobject(object):
             self.wait()
     """
 
+    # 深刻理解这里的copy不容易
+    # mob的copy()方法混合了浅拷贝和深拷贝
     def copy(self):
         # TODO, either justify reason for shallow copy, or
         # remove this redundancy everywhere
