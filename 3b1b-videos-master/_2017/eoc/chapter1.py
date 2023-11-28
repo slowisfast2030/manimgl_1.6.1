@@ -549,6 +549,13 @@ class Introduction(TeacherStudentsScene):
             Animation(student),
             Animation(calculus)
         )
+        """
+        这里执行多个动画并不神奇
+        关键是将本来以为是一个mob的对象拆分成了两个mob
+        为两个mob分别执行动画
+        
+        invent calculus拆分成了invent和calculus
+        """
         self.play(
             Write(invent),
             MoveToTarget(calculus),
