@@ -39,8 +39,8 @@ FRAME_SHIFT_KEY = 'f'
 RESET_FRAME_KEY = 'r'
 QUIT_KEY = 'q'
 
-"""
-一点小小的思考:
+"""一点小小的思考
+
 self.add()和self.remove()用于布置场景
 当我们有很多个mob的时候, 可以通过这两个方法将部分mob添加到场景中
 需要注意的是, 不在场景中的mob不是被删除了, 而是被隐藏了
