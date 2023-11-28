@@ -81,6 +81,13 @@ rotation_animation = Rotate(
                         #about_point=ORIGIN+RIGHT+UP
                         about_edge = RIGHT+UP
                         )
+about_point和about_edge都是为了确定旋转轴所经过的点
+about_point是直接给出旋转轴所经过的点
+about_edge是给出bounding box上的点
+
+当about_edge=ORIGIN, 旋转轴经过mob的中心
+当about_edge=RIGHT, 旋转轴经过bounding box右边界的中点
+当about_edge=RIGHT+UP, 旋转轴经过bounding box右上角的点
 """
 class Rotate(Rotating):
     CONFIG = {
