@@ -33,6 +33,8 @@ Car和MoveCar在custom/drawings.py中定义
 """
 #from _2017.eoc.chapter2 import Car, MoveCar
 
+# 增加了这一行
+from patreonthanks import *
 
 class Eoc1Thumbnail(GraphScene):
     CONFIG = {
@@ -2932,6 +2934,8 @@ class NextVideos(TeacherStudentsScene):
         self.play(student.change_mode, "thinking")
         self.wait(4)
 
+# 搜索PatreonThanks，发现3b1b的代码中很多这个类
+# 在当前文件夹下新增一份文件patreonthanks.py
 class Chapter1PatreonThanks(PatreonThanks):
     CONFIG = {
         "specific_patrons" : [
