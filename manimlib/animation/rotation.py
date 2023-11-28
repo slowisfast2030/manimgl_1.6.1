@@ -73,6 +73,15 @@ self.play(
         run_time = 2
         )
 """
+"""
+rotation_animation = Rotate(
+                        mobject=square, 
+                        angle=PI/2,
+                        axis=OUT,
+                        #about_point=ORIGIN+RIGHT+UP
+                        about_edge = RIGHT+UP
+                        )
+"""
 class Rotate(Rotating):
     CONFIG = {
         "run_time": 1,
