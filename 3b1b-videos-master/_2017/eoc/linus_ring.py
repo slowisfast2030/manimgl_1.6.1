@@ -41,8 +41,9 @@ class CircleScene(PiCreatureScene):
         """
         修改:
         $R$ --> R
+        get_text --> get_tex
         """
-        self.radius_label = self.radius_brace.get_text("R", buff = SMALL_BUFF)
+        self.radius_label = self.radius_brace.get_tex("R", buff = SMALL_BUFF)
 
         self.radius_group = VGroup(
             self.radius_line, self.radius_brace, self.radius_label
@@ -236,6 +237,7 @@ class IntroduceCircle(CircleScene):
             "run_time" : 3,
             "lag_ratio" : 0.5
         }
+        self.add(rings)
 
         self.play(
             FadeIn(rings, **ring_anim_kwargs),
