@@ -39,6 +39,25 @@ FRAME_SHIFT_KEY = 'f'
 RESET_FRAME_KEY = 'r'
 QUIT_KEY = 'q'
 
+"""
+一点小小的思考:
+self.add()和self.remove()用于布置场景
+当我们有很多个mob的时候, 可以通过这两个方法将部分mob添加到场景中
+需要注意的是, 不在场景中的mob不是被删除了, 而是被隐藏了
+比如一个经典的用法:
+有mob1和mob2
+self.add(mob1)
+这样mob1就会显示在场景中
+self.play(mob.move_to, mob2)
+将mob1移动到mob2的位置
+尽管mob2从没有被添加到场景中
+但mob2的位置是可以被mob1获取到的
+
+真正对整个动画的时长有贡献的是self.play()和self.wait()
+执行这两个方法的前提, 是确认场景中有什么(以及没有添加进场景的mob)
+如果是self.wait(), 就保持场景不变, 等待一段时间
+如果是self.play(), 就改变场景, 执行动画
+"""
 class Scene(object):
     CONFIG = {
         "window_config": {},
