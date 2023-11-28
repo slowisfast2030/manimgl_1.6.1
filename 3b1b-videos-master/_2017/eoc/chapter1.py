@@ -801,7 +801,7 @@ class IntroduceCircle(CircleScene):
         )
         """
         introduce_circle()是父类的方法
-        
+        不得不说, 这种继承的方式使得整个代码结构非常清晰
         """
         self.introduce_circle()
         self.wait()
