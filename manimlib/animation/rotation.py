@@ -60,6 +60,18 @@ self.play(
         run_time=8,
         )
 """
+"""
+self.play(
+        Rotate(
+            self.radius_line, 
+            2*np.pi-0.001, 
+            about_point = self.circle.get_center(),
+        ),
+        ShowCreation(self.circle),
+        *added_anims,
+        run_time = 2
+        )
+"""
 class Rotate(Rotating):
     CONFIG = {
         "run_time": 1,
