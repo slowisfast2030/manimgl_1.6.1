@@ -585,6 +585,11 @@ class PreviewFrame(Scene):
 
         self.add(frame, title)
         self.wait(3)
+        """
+        丝滑
+        当两段文字没有什么关系的时候
+        也执行了Transform动画
+        """
         for next_title in titles[1:]:
             self.play(Transform(title, next_title))
             self.wait(3)
