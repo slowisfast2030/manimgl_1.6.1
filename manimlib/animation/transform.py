@@ -25,7 +25,19 @@ if TYPE_CHECKING:
     from manimlib.scene.scene import Scene
     ManimColor = Union[str, colour.Color, Sequence[float]]
 
+"""
+title = titles[0]
+        
+for next_title in titles[1:]:
+    self.play(Transform(title, next_title))
+    self.wait(3)
 
+Transform这个类的作用是将mobject的属性变成target的属性
+所以
+一开始的时候, title是titles[0]
+执行了一次动画后
+title就变成了titles[2]
+"""
 class Transform(Animation):
     CONFIG = {
         "path_arc": 0,
