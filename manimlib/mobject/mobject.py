@@ -746,6 +746,8 @@ class Mobject(object):
 
     # Copying
     """
+    这里的深浅拷贝很容易理解
+
     import copy
 
     original = [[1, 2, 3], [4, 5, 6]]
@@ -767,6 +769,8 @@ class Mobject(object):
     print("Deep: ", deep)
     """
     """
+    manim中的深浅拷贝不符合常规认识
+    
     from manimlib import *
 
     class test(Scene):
