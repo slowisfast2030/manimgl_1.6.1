@@ -694,7 +694,7 @@ class ProductRuleDiagram(Scene):
         )
         self.wait()
 
-        deriv = OldTex(
+        deriv = Tex(
             "d(", "fg", ")", "=", 
             "f", "\\cdot", "dg", "+", "g", "\\cdot", "df"
         )
