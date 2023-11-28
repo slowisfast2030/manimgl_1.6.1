@@ -849,7 +849,8 @@ class Mobject(object):
         for key in self.uniforms:
             # 这里很严谨，因为uniforms中的value主要是float
             # float对象没有copy()方法
-            # 如果uniforms中的value都是float对象，那么在哪里执行拷贝操作呢？ 
+            # 如果uniforms中的value都是float对象，那么在哪里执行拷贝操作呢？
+            # 在上面的copy.copy(self)已经完成了float的拷贝操作 
             if isinstance(self.uniforms[key], np.ndarray):
                 copy_mobject.uniforms[key] = self.uniforms[key].copy()
 
