@@ -48,6 +48,38 @@ lag_ratio=0时, 每个submobject的动画时间是3
 alpha --> rate_func(alpha) --> get_sub_alpha(rate_func(alpha), lag_ratio)
           整个动画的执行比例              每一个submobject的执行比例
 """
+"""
+from manimlib import *
+
+class SimpleAnimationScene(Scene):
+    def construct(self):
+        # Create a circle and set its color
+        circle = Circle()
+        circle.set_fill(BLUE, opacity=0.5)
+
+        # Create a line
+        line = Line(ORIGIN, 2*RIGHT)
+        line.set_color(RED)
+
+        # Rotate the line around its center
+        rotate_line = Rotate(circle, angle=PI, about_edge=RIGHT)
+
+        # Animate
+        self.play(
+            Animation(line),   # Keep the line in the animation
+            rotate_line,
+            run_time=2
+        )
+        
+        # Keep the scene still for a short duration after animation
+        self.wait(1)
+
+这里的Animation(line)在整个动画期间播放line
+只不过line没有任何属性的变化
+不过有一点需要注意
+因为没有执行self.add(line)
+所以, 如果没有Animation(line), 那么line就不会被渲染
+"""
 class Animation(object):
     CONFIG = {
         "run_time": DEFAULT_ANIMATION_RUN_TIME,
