@@ -810,6 +810,8 @@ class Mobject(object):
         """
         当copy.copy作用于嵌套数组的时候,我能理解
         但copy.copy作用于mob对象的时候,我就不理解了
+
+        这里需要深入分析copy.copy的底层机制
         """
         copy_mobject = copy.copy(self)
         self.parents = parents
