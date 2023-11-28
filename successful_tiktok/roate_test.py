@@ -13,7 +13,8 @@ class RotationDemo(Scene):
                                 mobject=square, 
                                 angle=PI/2,
                                 axis=OUT,
-                                about_point=ORIGIN+RIGHT+UP
+                                #about_point=ORIGIN+RIGHT+UP
+                                about_edge = RIGHT+UP
                                 )
 
         dot = Dot(ORIGIN+RIGHT+UP)
