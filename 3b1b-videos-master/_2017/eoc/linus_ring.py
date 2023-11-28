@@ -38,7 +38,11 @@ class CircleScene(PiCreatureScene):
             color = self.radial_line_color
         )
         self.radius_brace = Brace(self.radius_line, buff = SMALL_BUFF)
-        self.radius_label = self.radius_brace.get_text("$R$", buff = SMALL_BUFF)
+        """
+        修改:
+        $R$ --> R
+        """
+        self.radius_label = self.radius_brace.get_text("R", buff = SMALL_BUFF)
 
         self.radius_group = VGroup(
             self.radius_line, self.radius_brace, self.radius_label
@@ -128,6 +132,7 @@ class CircleScene(PiCreatureScene):
         return ring
 
     def get_rings(self, **kwargs):
+        #print("entering get_rings")
         dR = kwargs.get("dR", self.dR)
         colors = kwargs.get("colors", self.ring_colors)
         radii = np.arange(0, self.radius, dR)
@@ -238,10 +243,11 @@ class IntroduceCircle(CircleScene):
             self.pi_creature.change_mode, "thinking"
         )
         self.wait()
+
         self.play(
             rings.rotate, np.pi/2,
             rings.move_to, unwrapped_rings.get_top(),
-            Animation(self.radius_group),
+            #Animation(self.radius_group), # 需要注释掉，否则会报错
             path_arc = np.pi/2,
             **ring_anim_kwargs
         )
