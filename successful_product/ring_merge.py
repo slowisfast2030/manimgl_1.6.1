@@ -7,10 +7,12 @@ from manimlib import *
 """
 class test(Scene):
     def construct(self):
-        #ring = self.get_ring(1, 0.2).rotate(PI/2).shift(UP).scale(2)
-        ring = self.get_ring(1, 0.2).rotate(0).shift(UP).scale(2)
-        #self.play(FadeIn(ring))
-        self.add(ring)
+        ring = self.get_ring(1, 0.2).rotate(PI/2).shift(UP).scale(2)
+        #ring = self.get_ring(1, 0.2).rotate(0).shift(UP).scale(2)
+        self.play(FadeIn(ring))
+        #self.add(ring)
+        #ring.needs_new_triangulation = True
+        print(ring.get_triangulation())
 
         unwrapped = self.get_unwrapped(ring).shift(DOWN*3) 
 
@@ -41,7 +43,7 @@ class test(Scene):
         # 点睛之笔。特别注意点集的顺序。
         inner_ring.rotate(PI, RIGHT)
         # 此时inner_ring的点集是顺时针的
-        inner_ring.rotate(PI/2)
+        #inner_ring.rotate(PI/2)
 
         ring.append_vectorized_mobject(inner_ring)
         ring.set_stroke(width = 0.5)

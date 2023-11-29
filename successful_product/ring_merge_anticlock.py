@@ -7,12 +7,15 @@ from manimlib import *
 """
 class test(Scene):
     def construct(self):
-        ring = Circle(radius = 2).center()
+        ring = Circle(radius = 2, n_components=4).center()
         ring.set_stroke(width = 0.5)
         ring.set_fill(RED,0.5)
 
         # 将ring的点集变为顺时针
         ring.rotate(PI, RIGHT)
+
+        #ring.needs_new_triangulation = True
+        #print(ring.get_triangulation())
 
         for index, point in enumerate(ring.get_points()):
             dot = Dot(point)
