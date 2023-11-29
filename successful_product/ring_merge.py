@@ -7,7 +7,7 @@ from manimlib import *
 """
 class test(Scene):
     def construct(self):
-        ring = self.get_ring(1, 0.2).rotate(PI/2).shift(UP).scale(2)
+        ring = self.get_ring(1, 0.18).rotate(PI/2).shift(UP).scale(2)
         #ring = self.get_ring(1, 0.2).rotate(0).shift(UP).scale(2)
         #self.play(FadeIn(ring))
         self.add(ring)
@@ -46,7 +46,7 @@ class test(Scene):
         #inner_ring.rotate(PI/2)
 
         ring.append_vectorized_mobject(inner_ring)
-        ring.set_stroke(width = 0.5)
+        ring.set_stroke(width = 0)
         ring.set_fill(color,1)
         ring.R = radius 
         ring.dR = dR

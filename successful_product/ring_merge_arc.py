@@ -92,7 +92,7 @@ class test_elegent(Scene):
         points_to_add = list(outer_circle) + line1 + list(inner_circle) + line2
         #points_to_add = list(outer_circle) + line1 + list(inner_circle)
         vm.append_points(points_to_add)
-        vm.set_fill(BLUE, 0.2)
+        vm.set_fill(GREEN, 1)
         vm.set_stroke(width=1)
         self.add(vm)
         print(vm.get_triangulation())
