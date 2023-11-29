@@ -20,7 +20,7 @@ class test(Scene):
         """
         vm = VMobject()
         vm.R = 3
-        vm.dR = 1
+        vm.dR = 3 - 2
         
         """
         分别取内外环的点集
@@ -56,7 +56,7 @@ class test(Scene):
         如果不加这一句, 着色会错误！
         但是对于cairo后端, 不需要这个
         """
-        vm.get_triangulation()
+        print(vm.get_triangulation())
         
         rec =  self.get_unwrapped(vm).scale(0.5).shift(DOWN*2.5)
         self.add(rec)
