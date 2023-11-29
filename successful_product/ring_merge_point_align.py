@@ -50,6 +50,7 @@ class test(Scene):
         vm.move_to(ORIGIN)
         vm.rotate(-PI/8).rotate(PI)
         self.add(vm)
+        vm.get_triangulation()
         
         rec =  self.get_unwrapped(vm).scale(0.5).shift(DOWN*2.5)
         self.add(rec)
