@@ -49,3 +49,20 @@ class test(Scene):
         )
 
         return result
+
+
+class CircleToSquare(Scene):
+    def construct(self):
+        # Create a circle
+        circle = Circle()
+        circle.set_fill(PINK, opacity=0.5)
+
+        # Create a square
+        square = Square()
+        square.set_fill(YELLOW, opacity=0.5)
+
+        # Transform the circle into the square
+        self.play(Transform(circle, square))
+
+        # Keep the final shape displayed
+        self.wait(2)
