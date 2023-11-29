@@ -5,6 +5,8 @@ from manimlib import *
 
 在manimgl中:
 如果内外环的半径相差很小, 会渲染错误
+研究下, 为什么会这样?
+个人猜想: 三角剖分
 
 在manimce中:
 可以完美解决这个问题
@@ -12,6 +14,8 @@ from manimlib import *
 根源:
 manimgl的渲染后端: opengl
 manimce的渲染后端: cairo(如果选opengl, 代码都会报错)
+
+
 """
 class test(Scene):
     def construct(self):
