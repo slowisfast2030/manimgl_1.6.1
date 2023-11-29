@@ -18,12 +18,17 @@ manimce的渲染后端: cairo(如果选opengl, 代码都会报错)
 执行:
 manimgl ring_merge_point_align.py test -o -s
 """
+
+class CustomVMobject(VMobject):
+    def __str__(self):
+        return "Custom ring"
+
 class test(Scene):
     def construct(self):
         """
         直接用两个圆的点集来构造
         """
-        vm = VMobject()
+        vm = CustomVMobject()
         """
         经过测试发现
         如果内外环的半径相差很小, 三角剖分返回的索引不一样
@@ -36,6 +41,7 @@ class test(Scene):
         inner_radius = 2
         vm.R = outer_radius
         vm.dR = outer_radius - inner_radius
+        
         
         """
         分别取内外环的点集

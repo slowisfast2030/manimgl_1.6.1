@@ -1385,7 +1385,18 @@ class VMobject(Mobject):
         back_stroke_shader_wrappers = []
         for submob in self.family_members_with_points():
             if submob.has_fill():
+
+                # if str(submob) == "Custom ring":
+                #     print("linus: ",submob)
+                #     indices = np.array([0,1,2,3,4,5,6,7,8,9,10,11,10,11,0,0,3,4,4,6,7,7,9,10,10,0,4,4,7,10])
+                #     fill_shader_wrapper = submob.get_fill_shader_wrapper()
+                #     fill_shader_wrapper.vert_indices = indices 
+                #     fill_shader_wrappers.append(fill_shader_wrapper)
+                # else:
+                #     fill_shader_wrappers.append(submob.get_fill_shader_wrapper())
+
                 fill_shader_wrappers.append(submob.get_fill_shader_wrapper())
+
             if submob.has_stroke():
                 ssw = submob.get_stroke_shader_wrapper()
                 if submob.draw_stroke_behind_fill:
