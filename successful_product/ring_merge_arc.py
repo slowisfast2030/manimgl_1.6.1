@@ -78,6 +78,11 @@ class test_elegent(Scene):
 
         看来是渲染后端的问题
         manimce支持cairo和opengl
+
+        参见:
+        /Users/linus/Desktop/less-is-more/manimce_source_code/manim-main/project_from_manimgl/ring_merge_arc_cairo.py
+        切换到manim_latest环境
+        可以正确执行
         """
         vm = VMobject()
         outer_circle = Circle(radius=3).rotate(PI/2).get_points()[:24]
