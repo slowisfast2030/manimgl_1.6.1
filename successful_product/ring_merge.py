@@ -35,7 +35,7 @@ class test(Scene):
 
 
         # 点集没有对齐。所以动画很难看
-        #self.play(Transform(ring, unwrapped))
+        self.play(Transform(ring, unwrapped))
     
     def get_ring(self, radius, dR, color = RED):
         ring = Circle(radius = radius + dR).center()

@@ -1,5 +1,8 @@
 from manimlib import *
 
+"""
+manimgl ring_merge_arc.py test_elegent -o -l
+"""
 class test(Scene):
     def construct(self):
         """
@@ -69,6 +72,9 @@ class test_elegent(Scene):
     def construct(self):
         """
         直接用两个圆的点集来构造
+
+        基本功能是实现了
+        但是，如果外圆和内圆的半径接近，就会出现渲染错误
         """
         vm = VMobject()
         outer_circle = Circle(radius=3).rotate(PI/2).get_points()[:24]
