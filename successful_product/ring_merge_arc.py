@@ -71,8 +71,8 @@ class test_elegent(Scene):
         直接用两个圆的点集来构造
         """
         vm = VMobject()
-        outer_circle = Circle(radius=3).rotate(PI/2).get_points()[:24]
-        inner_circle = Circle(radius=2).rotate(PI/2).get_points()[:24][::-1]
+        outer_circle = Circle(radius=3).rotate(PI/2).get_points()[:21]
+        inner_circle = Circle(radius=2).rotate(PI/2).get_points()[:21][::-1]
         # print(type(outer_circle))
         # print(type(inner_circle))
         # print(outer_circle)
@@ -90,6 +90,7 @@ class test_elegent(Scene):
                 outer_circle[0]]
         
         points_to_add = list(outer_circle) + line1 + list(inner_circle) + line2
+        #points_to_add = list(outer_circle) + line1 + list(inner_circle)
         vm.append_points(points_to_add)
         vm.set_fill(BLUE, 0.2)
         vm.set_stroke(width=1)
@@ -114,7 +115,7 @@ class test_elegent(Scene):
             self.add(dot, label)
         self.add(rec)   
 
-        #self.play(Transform(vm, rec))
+        self.play(Transform(vm, rec))
         self.wait()    
 
     def get_unwrapped(self, ring:VMobject, to_edge = LEFT, **kwargs):
