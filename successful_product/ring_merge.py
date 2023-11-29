@@ -7,10 +7,30 @@ from manimlib import *
 """
 class test(Scene):
     def construct(self):
-        ring = self.get_ring(1, 0.2).rotate(PI/2)
-        self.play(FadeIn(ring))
+        ring = self.get_ring(1, 0.2).rotate(PI/2).shift(UP).scale(2)
+        #self.play(FadeIn(ring))
+        self.add(ring)
 
-        unwrapped = self.get_unwrapped(ring).shift(DOWN*2) 
+        unwrapped = self.get_unwrapped(ring).shift(DOWN*3) 
+
+        for index, point in enumerate(ring.get_points()):
+            dot = Dot(point)
+            if index < 24:
+                label = Text(str(index), font_size=24).next_to(dot, point-ring.get_center(), buff=0.1)
+            else:
+                label = Text(str(index), font_size=24).next_to(dot, ring.get_center()-point, buff=0.1)
+                pass
+            self.add(dot, label)
+
+        for index, point in enumerate(unwrapped.get_points()):
+            dot = Dot(point)
+            if index < 21:
+                label = Text(str(index), font_size=24).next_to(dot, DOWN, buff=0.1)
+            else:
+                label = Text(str(index), font_size=24).next_to(dot, UP, buff=0.1)
+            self.add(dot, label)
+
+
         # 点集没有对齐。所以动画很难看
         self.play(Transform(ring, unwrapped))
     
