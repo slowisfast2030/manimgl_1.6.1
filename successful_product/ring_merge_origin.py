@@ -4,11 +4,12 @@ from manimlib import *
 圆环和长条都可以实现
 但是动画效果不好
 需要研究下怎样对齐点集
+
+manimgl ring_merge.py test -o -l
 """
 class test(Scene):
     def construct(self):
         ring = self.get_ring(1, 0.18).rotate(PI/2).shift(UP).scale(2)
-        #ring = self.get_ring(1, 0.2).rotate(0).shift(UP).scale(2)
         #self.play(FadeIn(ring))
         self.add(ring)
         #ring.needs_new_triangulation = True
@@ -43,7 +44,6 @@ class test(Scene):
         # 点睛之笔。特别注意点集的顺序。
         inner_ring.rotate(PI, RIGHT)
         # 此时inner_ring的点集是顺时针的
-        #inner_ring.rotate(PI/2)
 
         ring.append_vectorized_mobject(inner_ring)
         ring.set_stroke(width = 0)
@@ -56,8 +56,7 @@ class test(Scene):
         R = ring.R
         R_plus_dr = ring.R + ring.dR
         n_anchors = ring.get_num_curves()
-        # print(n_anchors)
-        # print(n_anchors//2)
+
         # 如果manim没有自己想要的形状，可以自己构造点集
         result = VMobject()
         result.set_points_as_corners([

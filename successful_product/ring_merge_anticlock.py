@@ -1,9 +1,8 @@
 from manimlib import *
 
 """
-圆环和长条都可以实现
-但是动画效果不好
-需要研究下怎样对齐点集
+将circle的点集设置为顺时针
+会出现奇怪的渲染效果
 """
 class test(Scene):
     def construct(self):
