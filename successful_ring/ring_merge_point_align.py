@@ -24,14 +24,16 @@ class test(Scene):
         直接用两个圆的点集来构造
         """
         vm = VMobject()
-        vm.R = 3
-        vm.dR = 3 - 2
+        outer_radius = 3
+        inner_radius = 2 
+        vm.R = outer_radius
+        vm.dR = outer_radius - inner_radius
         
         """
         分别取内外环的点集
         """
-        outer_circle = Circle(radius=3).rotate(PI/2).get_points()[:3]
-        inner_circle = Circle(radius=2).rotate(PI/2).get_points()[:3][::-1]
+        outer_circle = Circle(radius=outer_radius).rotate(PI/2).get_points()[:3]
+        inner_circle = Circle(radius=inner_radius).rotate(PI/2).get_points()[:3][::-1]
 
         """
         在两段圆弧的端点处进行插值
