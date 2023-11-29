@@ -71,8 +71,8 @@ class test_elegent(Scene):
         直接用两个圆的点集来构造
         """
         vm = VMobject()
-        outer_circle = Circle(radius=3).rotate(PI/2).get_points()[:21]
-        inner_circle = Circle(radius=2).rotate(PI/2).get_points()[:21][::-1]
+        outer_circle = Circle(radius=3).rotate(PI/2).get_points()[:24]
+        inner_circle = Circle(radius=2).rotate(PI/2).get_points()[:24][::-1]
         # print(type(outer_circle))
         # print(type(inner_circle))
         # print(outer_circle)
@@ -98,7 +98,7 @@ class test_elegent(Scene):
         print(vm.get_triangulation())
         vm.R = 3
         vm.dR = 1
-        vm.shift(UP).scale(0.8)
+        vm.shift(UP).scale(0.8).rotate(0)
 
         for index, point in enumerate(vm.get_points()):
             dot = Dot(point)
@@ -115,7 +115,7 @@ class test_elegent(Scene):
             self.add(dot, label)
         self.add(rec)   
 
-        #self.play(Transform(vm, rec))
+        self.play(Transform(vm, rec))
         self.wait()    
 
     def get_unwrapped(self, ring:VMobject, to_edge = LEFT, **kwargs):
@@ -133,6 +133,12 @@ class test_elegent(Scene):
             interpolate(np.pi*R*RIGHT+ring.dR*UP,  np.pi*R*LEFT+ring.dR*UP, a)
             for a in np.linspace(0, 1, n_anchors//2)
         ])
+
+        line = [result.get_points()[-1], 
+                interpolate(result.get_points()[-1], result.get_points()[0], 0.5),
+                result.get_points()[0]] 
+        result.append_points(line)
+
         result.set_style(
             stroke_color = ring.get_stroke_color(),
             stroke_width = ring.get_stroke_width(),
