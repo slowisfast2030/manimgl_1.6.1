@@ -5,7 +5,7 @@ from manimlib import *
 但是动画效果不好
 需要研究下怎样对齐点集
 
-manimgl ring_merge.py test -o -l
+manimgl ring_merge_origin.py test -o -l
 """
 class test(Scene):
     def construct(self):

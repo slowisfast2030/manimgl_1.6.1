@@ -95,7 +95,6 @@ class test_elegent(Scene):
                 outer_circle[0]]
         
         points_to_add = list(outer_circle) + line1 + list(inner_circle) + line2
-        #points_to_add = list(outer_circle) + line1 + list(inner_circle)
         vm.append_points(points_to_add)
         vm.set_fill(GREEN, 1)
         vm.set_stroke(width=1)
@@ -127,8 +126,7 @@ class test_elegent(Scene):
         R = ring.R
         R_plus_dr = ring.R + ring.dR
         n_anchors = ring.get_num_curves()
-        # print(n_anchors)
-        # print(n_anchors//2)
+        
         # 如果manim没有自己想要的形状，可以自己构造点集
         result = VMobject()
         result.set_points_as_corners([
