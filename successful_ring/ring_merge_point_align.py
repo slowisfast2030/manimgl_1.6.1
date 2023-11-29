@@ -25,7 +25,7 @@ class test(Scene):
         """
         vm = VMobject()
         outer_radius = 3
-        inner_radius = 2 
+        inner_radius = 2
         vm.R = outer_radius
         vm.dR = outer_radius - inner_radius
         
