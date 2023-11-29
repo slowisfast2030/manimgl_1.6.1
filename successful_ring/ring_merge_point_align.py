@@ -64,10 +64,10 @@ class test(Scene):
 
         """
         至关重要！
-        如果不加这一句, 着色会错误！
+        如果不加这一句, 着色会错误！即使内外环的半径相差很大
         但是对于cairo后端, 不需要这个
         """
-        #print(vm.get_triangulation())
+        print(vm.get_triangulation())
         
         rec =  self.get_unwrapped(vm).scale(0.5).shift(DOWN*2.5)
         self.add(rec)
