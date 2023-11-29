@@ -97,7 +97,12 @@ class Transform(Animation):
         它们的点集的数目是不一样的
         现在看来, 这个问题的关键在于, 如何对两个mobject进行对齐
         """
+        """
+        下面的对齐也可以注释掉, 然后在场景代码中添加
+        circle.align_data_and_family(square)
+        """
         self.mobject.align_data_and_family(self.target_copy)
+        
         super().begin()
         self.mobject.lock_matching_data(
             self.starting_mobject,
