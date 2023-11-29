@@ -3,10 +3,12 @@ from manimlib import *
 """
 将circle的点集设置为顺时针
 会出现奇怪的渲染效果
+
+manimgl ring_merge_anticlock.py test -o -s
 """
 class test(Scene):
     def construct(self):
-        ring = Circle(radius = 2, n_components=4).center()
+        ring = Circle(radius = 2, n_components=8).center()
         ring.set_stroke(width = 0.5)
         ring.set_fill(RED,0.5)
 
