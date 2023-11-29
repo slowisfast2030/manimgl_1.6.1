@@ -1459,6 +1459,7 @@ class VMobject(Mobject):
         得到新的索引:0, 1, 2, 1, 2, 3
         每3个订单组成一个三角形
         """
+        #print(self.get_triangulation())
         return self.get_triangulation()
 
 

@@ -24,6 +24,10 @@ class test(Scene):
         直接用两个圆的点集来构造
         """
         vm = VMobject()
+        """
+        经过测试发现
+        如果内外环的半径相差很小, 三角剖分返回的索引不一样
+        """
         outer_radius = 3
         inner_radius = 2
         vm.R = outer_radius
@@ -63,7 +67,7 @@ class test(Scene):
         如果不加这一句, 着色会错误！
         但是对于cairo后端, 不需要这个
         """
-        print(vm.get_triangulation())
+        #print(vm.get_triangulation())
         
         rec =  self.get_unwrapped(vm).scale(0.5).shift(DOWN*2.5)
         self.add(rec)
