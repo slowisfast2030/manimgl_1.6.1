@@ -15,7 +15,8 @@ from manimlib import *
 manimgl的渲染后端: opengl
 manimce的渲染后端: cairo(如果选opengl, 代码都会报错)
 
-
+执行:
+manimgl ring_merge_point_align.py test -o -s
 """
 class test(Scene):
     def construct(self):
