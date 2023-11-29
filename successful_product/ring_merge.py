@@ -54,15 +54,28 @@ class test(Scene):
 class CircleToSquare(Scene):
     def construct(self):
         # Create a circle
-        circle = Circle()
+        circle = Circle().scale(2)
         circle.set_fill(PINK, opacity=0.5).shift(LEFT*3)
 
+        # Iterate over the points of the circle and add dots with labels
+        for index, point in enumerate(circle.get_points()):
+            dot = Dot(point)
+            label = Text(str(index), font_size=24).next_to(dot, DOWN, buff=0.1)
+            self.add(dot, label)
+
         # Create a square
-        square = Square()
+        square = Square().scale(2).rotate(-PI/4)
         square.set_fill(YELLOW, opacity=0.5).shift(RIGHT*3)
+
+        # Iterate over the points of the square and add dots with labels
+        for index, point in enumerate(square.get_points()):
+            dot = Dot(point)
+            label = Text(str(index), font_size=24).next_to(dot, DOWN, buff=0.1)
+            self.add(dot, label)
 
         # Transform the circle into the square
         self.play(Transform(circle, square))
 
         # Keep the final shape displayed
         self.wait(2)
+
