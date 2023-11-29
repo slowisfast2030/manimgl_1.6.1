@@ -75,14 +75,13 @@ class test_elegent(Scene):
 
         基本功能是实现了
         但是，如果外圆和内圆的半径接近，就会出现渲染错误
+
+        看来是渲染后端的问题
+        manimce支持cairo和opengl
         """
         vm = VMobject()
         outer_circle = Circle(radius=3).rotate(PI/2).get_points()[:24]
         inner_circle = Circle(radius=2).rotate(PI/2).get_points()[:24][::-1]
-        # print(type(outer_circle))
-        # print(type(inner_circle))
-        # print(outer_circle)
-        # print(inner_circle)
 
         """
         在两段圆弧的端点处进行插值
