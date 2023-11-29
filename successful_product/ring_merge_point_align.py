@@ -50,6 +50,8 @@ class test(Scene):
         vm.move_to(ORIGIN)
         vm.rotate(-PI/8).rotate(PI)
         self.add(vm)
+
+        # 如果不加这一句, 着色会错误！！！
         vm.get_triangulation()
         
         rec =  self.get_unwrapped(vm).scale(0.5).shift(DOWN*2.5)
