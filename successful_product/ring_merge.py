@@ -7,7 +7,8 @@ from manimlib import *
 """
 class test(Scene):
     def construct(self):
-        ring = self.get_ring(1, 0.2).rotate(PI/2).shift(UP).scale(2)
+        #ring = self.get_ring(1, 0.2).rotate(PI/2).shift(UP).scale(2)
+        ring = self.get_ring(1, 0.2).rotate(0).shift(UP).scale(2)
         #self.play(FadeIn(ring))
         self.add(ring)
 
@@ -39,7 +40,9 @@ class test(Scene):
         inner_ring = Circle(radius = radius).center()
         # 点睛之笔。特别注意点集的顺序。
         inner_ring.rotate(PI, RIGHT)
-        #inner_ring.rotate(PI, UP)
+        # 此时inner_ring的点集是顺时针的
+        inner_ring.rotate(PI/2)
+
         ring.append_vectorized_mobject(inner_ring)
         ring.set_stroke(width = 0.5)
         ring.set_fill(color,1)
