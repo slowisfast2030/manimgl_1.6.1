@@ -4,6 +4,9 @@ from manimlib import *
 将circle的点集设置为顺时针
 会出现奇怪的渲染效果
 
+为了正常渲染
+需要执行: ring.get_triangulation() 
+
 manimgl ring_merge_anticlock.py test -o -s
 """
 class test(Scene):
@@ -15,8 +18,7 @@ class test(Scene):
         # 将ring的点集变为顺时针
         ring.rotate(PI, RIGHT)
 
-        #ring.needs_new_triangulation = True
-        #print(ring.get_triangulation())
+        print(ring.get_triangulation())
 
         for index, point in enumerate(ring.get_points()):
             dot = Dot(point)
