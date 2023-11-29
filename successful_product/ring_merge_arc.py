@@ -115,7 +115,7 @@ class test_elegent(Scene):
             self.add(dot, label)
         self.add(rec)   
 
-        self.play(Transform(vm, rec))
+        #self.play(Transform(vm, rec))
         self.wait()    
 
     def get_unwrapped(self, ring:VMobject, to_edge = LEFT, **kwargs):
