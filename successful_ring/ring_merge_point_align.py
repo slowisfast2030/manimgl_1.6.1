@@ -29,6 +29,8 @@ class test(Scene):
         直接用两个圆的点集来构造
         """
         vm = CustomVMobject()
+        if str(vm) == "Custom ring":
+            print("继承成功！")
         """
         经过测试发现
         如果内外环的半径相差很小, 三角剖分返回的索引不一样
