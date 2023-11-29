@@ -20,11 +20,8 @@ class test(Scene):
 
         for index, point in enumerate(ring.get_points()):
             dot = Dot(point)
-            if index < 24:
-                label = Text(str(index), font_size=24).next_to(dot, point-ring.get_center(), buff=0.1)
-            else:
-                label = Text(str(index), font_size=24).next_to(dot, ring.get_center()-point, buff=0.1)
-                pass
+            label = Text(str(index), font_size=24).next_to(dot, point-ring.get_center(), buff=0.1)
+            
             self.add(dot, label)
 
         self.add(ring)
