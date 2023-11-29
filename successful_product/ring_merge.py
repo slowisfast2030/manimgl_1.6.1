@@ -9,10 +9,10 @@ class test(Scene):
     def construct(self):
         ring = self.get_ring(1, 0.2).rotate(PI/2).shift(UP).scale(2)
         #ring = self.get_ring(1, 0.2).rotate(0).shift(UP).scale(2)
-        self.play(FadeIn(ring))
-        #self.add(ring)
+        #self.play(FadeIn(ring))
+        self.add(ring)
         #ring.needs_new_triangulation = True
-        print(ring.get_triangulation())
+        #print(ring.get_triangulation())
 
         unwrapped = self.get_unwrapped(ring).shift(DOWN*3) 
 
@@ -35,7 +35,7 @@ class test(Scene):
 
 
         # 点集没有对齐。所以动画很难看
-        self.play(Transform(ring, unwrapped))
+        #self.play(Transform(ring, unwrapped))
     
     def get_ring(self, radius, dR, color = RED):
         ring = Circle(radius = radius + dR).center()
