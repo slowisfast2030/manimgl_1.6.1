@@ -55,11 +55,11 @@ class CircleToSquare(Scene):
     def construct(self):
         # Create a circle
         circle = Circle()
-        circle.set_fill(PINK, opacity=0.5)
+        circle.set_fill(PINK, opacity=0.5).shift(LEFT*3)
 
         # Create a square
         square = Square()
-        square.set_fill(YELLOW, opacity=0.5)
+        square.set_fill(YELLOW, opacity=0.5).shift(RIGHT*3)
 
         # Transform the circle into the square
         self.play(Transform(circle, square))
