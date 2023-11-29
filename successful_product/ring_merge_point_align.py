@@ -53,7 +53,7 @@ class test(Scene):
 
         """
         至关重要！
-        如果不加这一句, 着色会错误！！！
+        如果不加这一句, 着色会错误！
         """
         vm.get_triangulation()
         
