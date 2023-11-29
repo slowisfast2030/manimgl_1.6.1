@@ -77,6 +77,9 @@ class test(Scene):
         return result
 
 
+"""
+测试align_data_and_family()方法
+"""
 class CircleToSquare(Scene):
     def construct(self):
         # Create a circle
