@@ -54,6 +54,7 @@ class test(Scene):
         """
         至关重要！
         如果不加这一句, 着色会错误！
+        但是对于cairo后端, 不需要这个
         """
         vm.get_triangulation()
         
