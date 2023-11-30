@@ -1412,6 +1412,17 @@ class Mobject(object):
         '''
         return self.align_on_border(edge, buff)
 
+    """
+    values_of_r.next_to(
+            self.x_axis, UP, 
+            buff = 2*LARGE_BUFF,
+            aligned_edge = LEFT
+        )
+    
+    注意这里的aligned_edge = LEFT
+
+    视频效果就是values_of_r在x轴的上方且左对齐
+    """
     def next_to(
         self,
         mobject_or_point: Mobject | np.ndarray,
