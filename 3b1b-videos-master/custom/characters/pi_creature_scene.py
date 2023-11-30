@@ -382,6 +382,26 @@ class TeacherStudentsScene(PiCreatureScene):
     def get_students(self):
         return self.students
 
+    """
+    class MoveForwardWithApproximation(TeacherStudentsScene):
+        def construct(self):
+            self.teacher_says(
+                "Move forward with \\\\",
+                "the", "approximation"
+            )
+            self.play_student_changes("hesitant", "erm", "sassy")
+            self.wait()
+            words = TexText(
+                "It gets better", 
+                "\\\\ for smaller ",
+                "$dr$"
+            )
+            words.set_color_by_tex("dr", BLUE)
+            self.teacher_says(words, target_mode = "shruggie")
+            self.wait(3)
+    
+    content参数可以是一个字符串, 也可以是一个mobject
+    """
     def teacher_says(self, content, **kwargs):
         return self.pi_creature_says(self.get_teacher(), content, **kwargs)
 
