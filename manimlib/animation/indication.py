@@ -36,6 +36,9 @@ if TYPE_CHECKING:
     from manimlib.mobject.mobject import Mobject
     ManimColor = Union[str, colour.Color, Sequence[float]]
 
+"""
+大大低估了这份文件的作用！
+"""
 
 class FocusOn(Transform):
     CONFIG = {
