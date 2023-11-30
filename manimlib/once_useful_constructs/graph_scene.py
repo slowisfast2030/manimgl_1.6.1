@@ -23,7 +23,25 @@ from manimlib.utils.space_ops import angle_of_vector
 # functionality moved to Axes and handled at the mobject
 # level rather than the scene level
 
+"""
+class GraphRectangles(CircleScene, GraphScene):
+    def setup(self):
+        # 不同的类渲染不同的场景
+        # 如果上一个类中的部分场景和下一个类中的场景相同
+        # 就需要在setup()方法中进行布置
+        CircleScene.setup(self)
+        GraphScene.setup(self)
+        
+        # 导入了self.x_axis
+        self.setup_axes()
+        self.remove(self.axes)
+    
+在微积分的第一个视频中
+GraphScene用作父类
+在setup()中调用了GraphScene的setup_axes()方法
+从而为GraphRectangles添加了坐标轴
 
+"""
 class GraphScene(Scene):
     CONFIG = {
         "x_min": -1,

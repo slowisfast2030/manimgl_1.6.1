@@ -1269,6 +1269,9 @@ class GraphRectangles(CircleScene, GraphScene):
         """
         CircleScene.setup(self)
         GraphScene.setup(self)
+        """
+        导入了self.x_axis
+        """
         self.setup_axes()
         self.remove(self.axes)
 
@@ -1338,6 +1341,9 @@ class GraphRectangles(CircleScene, GraphScene):
     def draw_r_values(self):
         values_of_r = TexText("Values of ", "$r$")
         values_of_r.set_color_by_tex("r", YELLOW)
+        """
+        在setup()方法中, 已经有了self.x_axis
+        """
         values_of_r.next_to(
             self.x_axis, UP, 
             buff = 2*LARGE_BUFF,
