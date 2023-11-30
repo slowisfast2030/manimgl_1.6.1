@@ -560,6 +560,15 @@ class Mobject(object):
     def family_members_with_points(self):
         return [m for m in self.get_family() if m.has_points()]
 
+    """
+    self.x_axis.add(r_ticks)
+
+    以前一直不明白为何存在submobject这个概念
+    这个例子就很好的说明了submobject的作用
+
+    self.x_axis和r_ticks都是vmobject
+    但是r_ticks是self.x_axis的子物件
+    """
     def add(self, *mobjects: Mobject):
         '''
         将 ``mobjects`` 添加到子物体中

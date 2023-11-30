@@ -1397,6 +1397,10 @@ class GraphRectangles(CircleScene, GraphScene):
         )
         self.play(Indicate(self.rings[0]))
         self.wait()
+        """
+        arrow在坐标轴上移动的动画
+        其实是通过transform类实现的
+        """
         self.play(
             Transform(moving_arrow, arrows[-1]),
             ShowCreation(r_ticks, lag_ratio = 0.5),
