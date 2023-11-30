@@ -206,6 +206,10 @@ self.play(
         width_label.get_part_by_tex("r")
     )
 )
+将ring_radius_group中的r变成width_label中的r
+动画结束后
+移除ring_radius_group中的r
+保留width_label中的r
 
 使用ReplacementTransform的完美场景
 """
