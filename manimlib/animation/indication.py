@@ -70,7 +70,12 @@ class FocusOn(Transform):
             fill_opacity=0,
         )
 
+"""
+self.play(Indicate(self.rings[-1]))
 
+尽管简单, 但是很有用
+如果我想强调某一局部, 可以用这个
+"""
 class Indicate(Transform):
     """
     self.play(Indicate(obj2), Indicate(obj1))
