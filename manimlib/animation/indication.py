@@ -428,7 +428,27 @@ class ShowCreationThenFadeAround(AnimationOnSurroundingRectangle):
         "rect_animation": ShowCreationThenFadeOut
     }
 
+"""genius!
+self.play(
+    ApplyWave(self.rings, amplitude = 0.1),
+    Animation(self.radius_group),
+    Animation(alt_side_brace),
+    Animation(alt_dr_label),
+    run_time = 3,
+    lag_ratio = 0.5
+)
+整个圆环长生了波纹的效果
 
+from manimlib import *
+class test(Scene):
+    def construct(self):
+        square = Square()
+
+        # Apply a wave animation to the square
+        self.play(ApplyWave(square, amplitude=0.5, direction=UP))
+
+        self.wait(2)
+"""
 class ApplyWave(Homotopy):
     CONFIG = {
         "direction": UP,
