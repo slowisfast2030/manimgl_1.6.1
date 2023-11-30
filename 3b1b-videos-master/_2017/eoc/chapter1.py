@@ -1289,6 +1289,10 @@ class GraphRectangles(CircleScene, GraphScene):
     def draw_ring_sum(self):
         rings = self.get_rings()
         rings.set_stroke(BLACK, 1)
+        """
+        将放在一起的圆环变成一个个圆环相加
+        竖直排列
+        """
         ring_sum, draw_ring_sum_anims = self.get_ring_sum(rings)
         area_label = Tex(
             "\\text{Area}", "\\approx", 
@@ -1313,6 +1317,9 @@ class GraphRectangles(CircleScene, GraphScene):
         self.add(rings, self.radius_group)
         self.remove(self.circle)
         self.wait()
+        """
+        圆环竖直排列动画
+        """
         self.play(*draw_ring_sum_anims)
         self.play(Write(area_label, run_time = 2))
         self.play(ShowCreation(arrows))
