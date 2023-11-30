@@ -1021,6 +1021,23 @@ class ApproximateOneRing(CircleScene, ReconfigurableScene):
         self.wait()
         self.play(Write(area_q))
         self.wait()
+        """
+        self.play(*[
+            ApplyMethod(
+                video.shift, 0.5*video.get_height()*DOWN,
+                run_time = 3,
+                rate_func = squish_rate_func(
+                    there_and_back, alpha, alpha+0.3
+                )
+            )
+            for video, alpha in zip(series, np.linspace(0, 0.7, len(series)))
+        ]+[
+            Animation(self.teacher.bubble),
+            Animation(self.teacher.bubble.content),
+        ])
+
+        这种技巧使用了多次
+        """
         self.play(*[
             ApplyMethod(
                 r.set_fill, YELLOW, 
