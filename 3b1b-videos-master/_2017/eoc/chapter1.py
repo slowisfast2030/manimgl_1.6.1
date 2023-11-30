@@ -1481,6 +1481,9 @@ class GraphRectangles(CircleScene, GraphScene):
             Animation(self.x_axis),
         )
         self.wait(2)
+        """
+        天才！
+        """
         self.play(*[
             MoveToTarget(
                 ring,

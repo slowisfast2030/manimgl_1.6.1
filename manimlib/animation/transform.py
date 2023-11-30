@@ -271,6 +271,34 @@ MoveToTarget这个类初始化需要一个mobject
 MoveToTarget这个类的作用是将mobject的属性变成target的属性
 是现在的自己和过去的自己之间的一次变化
 """
+"""
+self.play(
+    MoveToTarget(
+        example_ring,
+        path_arc = -np.pi/2,
+        run_time = 2
+    ),
+    Animation(self.x_axis),
+)
+self.wait(2)
+
+self.play(*[
+    MoveToTarget(
+        ring,
+        path_arc = -np.pi/2,
+        run_time = 4,
+        rate_func = squish_rate_func(smooth, alpha, alpha+0.25)
+    )
+    for ring, alpha in zip(
+        transformed_rings, 
+        np.linspace(0, 0.75, len(transformed_rings))
+    )
+] + foreground_animations)
+self.wait()
+
+简简单单的MoveToTarget
+竟然用到如此水平！！！
+"""
 class MoveToTarget(Transform):
     def __init__(self, mobject: Mobject, **kwargs):
         self.check_validity_of_input(mobject)
