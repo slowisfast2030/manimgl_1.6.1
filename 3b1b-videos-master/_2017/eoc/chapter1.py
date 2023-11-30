@@ -905,17 +905,26 @@ class ApproximateOneRing(CircleScene, ReconfigurableScene):
         ReconfigurableScene.setup(self)
 
     def construct(self):
-        self.force_skipping()
+        """
+        按照这种写法, 只有
+        self.straighten_ring_out()
+        得到执行
 
+        需要注意, 被跳过的是动画, 而不是函数
+        函数中的其他代码还是会执行的
+        只是遇到动画的时候, 会被跳过
+        """
+        # 跳过动画
+        self.force_skipping()
         self.write_radius_three()
         self.try_to_understand_area()
         self.slice_into_rings()
         self.isolate_one_ring()
-
+        # 恢复动画
         self.revert_to_original_skipping_status()
         self.straighten_ring_out()
+        # 跳过动画
         self.force_skipping()
-
         self.approximate_as_rectangle()
 
     def write_radius_three(self):
