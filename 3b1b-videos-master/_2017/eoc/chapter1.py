@@ -1467,6 +1467,11 @@ class GraphRectangles(CircleScene, GraphScene):
         foreground_animations = list(map(Animation, [self.x_axis, self.area_label]))
         example_ring = transformed_rings[2]
 
+        """
+        有一个细节
+        当ring移动到rect的位置时
+        原来ring的位置颜色变暗了
+        """
         self.play(
             MoveToTarget(
                 example_ring,
