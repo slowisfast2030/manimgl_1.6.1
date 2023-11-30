@@ -1076,6 +1076,11 @@ class ApproximateOneRing(CircleScene, ReconfigurableScene):
                 DOWN+RIGHT, buff = MED_LARGE_BUFF
             )
 
+        """
+        本来只有self.unwrap_rings()方法
+        这里复用了这个方法
+        优雅
+        """
         self.unwrap_ring(ring, to_edge = RIGHT)
         self.change_mode("pondering")
         self.wait()
