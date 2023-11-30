@@ -1923,6 +1923,16 @@ class Mobject(object):
         '''
         return self.get_bounding_box_point(direction)
 
+    """
+    trapezoid = TexText("Trapezoid?")
+    rectangle_ish = TexText("Rectangle-ish")
+    
+    for text in trapezoid, rectangle_ish:
+        text.next_to(
+            self.pi_creature.get_corner(UP+RIGHT), 
+            DOWN+RIGHT, buff = MED_LARGE_BUFF
+        )
+    """
     def get_corner(self, direction: np.ndarray) -> np.ndarray:
         '''
         获取某一个角落
