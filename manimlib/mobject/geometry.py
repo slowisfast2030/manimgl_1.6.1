@@ -645,6 +645,22 @@ class Elbow(VMobject):
         self.rotate(self.angle, about_point=ORIGIN)
 
 
+"""genius!
+
+arrows = VGroup(*[
+            Arrow(
+                values_of_r.get_part_by_tex("r").get_bottom(),
+                tick.get_top(),
+                buff = SMALL_BUFF,
+                color = YELLOW,
+                tip_length = 0.15
+            )
+            for tick in (r_ticks[0], r_ticks[-1])
+        ])
+
+3b1b可以将普通的小白菜炒得特别好吃
+或者将普通的太祖长拳发挥得淋漓尽致
+"""
 class Arrow(Line):
     CONFIG = {
         "color": GREY_A,
