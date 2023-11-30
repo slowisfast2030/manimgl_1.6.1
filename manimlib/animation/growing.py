@@ -45,7 +45,10 @@ class GrowFromPoint(Transform):
             start.set_color(self.point_color)
         return start
 
-
+"""
+括号特别适合GrowFromCenter动画
+self.play(GrowFromCenter(top_brace))
+"""
 class GrowFromCenter(GrowFromPoint):
     def __init__(self, mobject: Mobject, **kwargs):
         point = mobject.get_center()

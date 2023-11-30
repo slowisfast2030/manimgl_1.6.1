@@ -198,6 +198,17 @@ for d_rect, corner_pair in zip(d_rects, corner_pairs):
 
 ReplacementTransform(d_rect.line, d_rect)
 """
+"""
+self.play(
+    Write(width_label.get_part_by_tex("pi")),
+    ReplacementTransform(
+        self.ring_radius_group[1].copy(),
+        width_label.get_part_by_tex("r")
+    )
+)
+
+使用ReplacementTransform的完美场景
+"""
 class ReplacementTransform(Transform):
     CONFIG = {
         "replace_mobject_with_target_in_scene": True,

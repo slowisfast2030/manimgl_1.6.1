@@ -1159,7 +1159,13 @@ class ApproximateOneRing(CircleScene, ReconfigurableScene):
         )
         two_pi_r_dr.target.next_to(approx, RIGHT, aligned_edge = DOWN)
 
+        """
+        括号特别适合GrowFromCenter动画
+        """
         self.play(GrowFromCenter(top_brace))
+        """
+        终于找到了使用ReplacementTransform的完美场景
+        """
         self.play(
             Write(width_label.get_part_by_tex("pi")),
             ReplacementTransform(
