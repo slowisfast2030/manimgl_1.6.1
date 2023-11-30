@@ -1070,6 +1070,11 @@ class ApproximateOneRing(CircleScene, ReconfigurableScene):
         ring = self.ring.copy()
         trapezoid = TexText("Trapezoid?")
         rectangle_ish = TexText("Rectangle-ish")
+        """
+        还是没有深刻认识到
+        每一个mob都有一个bounding_box
+        可以方便定位mob周边的位置
+        """
         for text in trapezoid, rectangle_ish:
             text.next_to(
                 self.pi_creature.get_corner(UP+RIGHT), 
