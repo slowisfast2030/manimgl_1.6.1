@@ -119,6 +119,23 @@ class Scene(object):
             pass
         self.tear_down()
 
+    """
+    def setup(self):
+        # 不同的类渲染不同的场景
+        # 如果上一个类中的部分场景和下一个类中的场景相同
+        # 就需要在setup()方法中进行布置
+        # 或者就是单纯为了布置场景
+        
+        CircleScene.setup(self)
+        GraphScene.setup(self)
+        self.setup_axes()
+        self.remove(self.axes)
+
+        three = Tex("3")
+        three.move_to(self.radius_label)
+        self.radius_label.save_state()
+        Transform(self.radius_label, three).update(1)
+    """
     def setup(self) -> None:
         """
         This is meant to be implement by any scenes which
