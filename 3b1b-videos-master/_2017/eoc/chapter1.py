@@ -1092,6 +1092,11 @@ class ApproximateOneRing(CircleScene, ReconfigurableScene):
         self.play(Write(trapezoid))
         self.wait()
         self.play(trapezoid.shift, DOWN)
+        """
+        基于这种方法
+        画一个叉号
+        也很简单
+        """
         strike = Line(
             trapezoid.get_left(), trapezoid.get_right(),
             stroke_color = RED,
@@ -1103,6 +1108,9 @@ class ApproximateOneRing(CircleScene, ReconfigurableScene):
             self.pi_creature.change_mode, "happy"
         )
         self.wait()
+        """
+        优雅
+        """
         self.play(*list(map(FadeOut, [trapezoid, strike])))
 
         self.unwrapped_ring = ring
