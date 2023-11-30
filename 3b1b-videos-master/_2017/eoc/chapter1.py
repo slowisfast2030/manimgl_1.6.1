@@ -1350,6 +1350,9 @@ class GraphRectangles(CircleScene, GraphScene):
             aligned_edge = LEFT
         )
 
+        """
+        黄色的刻度是短直线
+        """
         r_ticks = VGroup(*[
             Line(
                 self.coords_to_point(r, -self.tick_height),

@@ -131,6 +131,16 @@ class GraphScene(Scene):
         self.x_axis, self.y_axis = self.axes = VGroup(x_axis, y_axis)
         self.default_graph_colors = it.cycle(self.default_graph_colors)
 
+    """
+    r_ticks = VGroup(*[
+            Line(
+                self.coords_to_point(r, -self.tick_height),
+                self.coords_to_point(r, self.tick_height),
+                color = YELLOW
+            )
+            for r in np.arange(0, 3, 0.1)
+        ])
+    """
     def coords_to_point(self, x, y):
         assert(hasattr(self, "x_axis") and hasattr(self, "y_axis"))
         result = self.x_axis.number_to_point(x)[0] * RIGHT
