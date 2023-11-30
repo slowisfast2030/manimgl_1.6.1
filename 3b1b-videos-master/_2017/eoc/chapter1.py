@@ -1262,6 +1262,11 @@ class GraphRectangles(CircleScene, GraphScene):
         "tick_height" : 0.2,
     }
     def setup(self):
+        """
+        不同的类渲染不同的场景
+        如果上一个类中的部分场景和下一个类中的场景相同
+        就需要在setup()方法中进行布置
+        """
         CircleScene.setup(self)
         GraphScene.setup(self)
         self.setup_axes()
