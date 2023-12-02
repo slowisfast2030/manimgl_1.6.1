@@ -235,6 +235,9 @@ class SphereExample(InteractiveScene):
             FadeOut(sphere, lag_ratio=0, scale=0.95),
             FadeOut(mesh, lag_ratio=0, scale=0.95),
         )
+        """
+        逐步显示slice_highlights
+        """
         self.play(LaggedStart(*(
             FadeIn(sh, rate_func=there_and_back)
             for sh in slice_highlights
