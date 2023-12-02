@@ -169,6 +169,8 @@ class VMobject(Mobject):
     circle.set_stroke(WHITE, width=stroke_widths)
 
     可以将stroke_width设置为一个数组
+
+    需要研究着色器代码
     """
     def set_stroke(
         self,
