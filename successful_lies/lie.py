@@ -25,7 +25,7 @@ def get_sphere_slices(radius=1.0, n_slices=20):
     equator.insert_n_curves(100)
     equator.match_width(north_slices)
     equator.move_to(ORIGIN)
-    equator.apply_depth_test()
+    #equator.apply_depth_test()
 
     return Group(north_slices, get_south_slices(north_slices, dim=2), equator)
 
