@@ -377,6 +377,9 @@ class Ellipse(Circle):
         self.set_height(self.height, stretch=True)
 
 
+"""
+不得不说, 这是之前困扰我很久的问题
+"""
 class AnnularSector(Arc):
     CONFIG = {
         "inner_radius": 1,
@@ -398,8 +401,10 @@ class AnnularSector(Arc):
             )
             for radius in (self.inner_radius, self.outer_radius)
         ]
+        # 需要将点集的顺序反过来
         outer_arc.reverse_points()
         self.append_points(inner_arc.get_points())
+        # 需要在两段弧线之间添加一条直线
         self.add_line_to(outer_arc.get_points()[0])
         self.append_points(outer_arc.get_points())
         self.add_line_to(inner_arc.get_points()[0])
