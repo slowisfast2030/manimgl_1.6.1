@@ -428,6 +428,8 @@ def get_sectors(self, circle, n_slices=20, fill_colors=[BLUE_D, BLUE_E]):
     sectors.set_stroke(WHITE, self.sector_stroke_width)
     sectors.replace(circle, stretch=True)
     return sectors
+
+简简单单的几行代码, 体现的是一个天才的手笔
 """
 class Sector(AnnularSector):
     CONFIG = {
@@ -436,6 +438,11 @@ class Sector(AnnularSector):
     }
 
 
+"""
+尽管图形渲染正确
+但是这里的圆环是无法经过动画变为长条
+根源在于外环和内环少了直线的连接
+"""
 class Annulus(Circle):
     CONFIG = {
         "inner_radius": 1,
