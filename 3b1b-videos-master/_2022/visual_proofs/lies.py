@@ -590,6 +590,9 @@ class CircleExample(InteractiveScene):
         self.wait()
 
         # Interslice
+        """
+        锯齿的合并
+        """
         lh, rh = laid_sectors[:N // 2], laid_sectors[N // 2:]
         lh.generate_target()
         rh.generate_target()
@@ -608,6 +611,9 @@ class CircleExample(InteractiveScene):
             rh.animate.shift(DOWN),
         )
         self.wait()
+        """genius
+        天才的做法
+        """
         self.play(*(
             LaggedStart(*(
                 VShowPassingFlash(piece, time_width=2)
