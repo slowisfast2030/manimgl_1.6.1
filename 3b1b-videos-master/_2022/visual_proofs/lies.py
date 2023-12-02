@@ -336,6 +336,9 @@ class SphereExample(InteractiveScene):
         circ_formula.set_stroke(WHITE, 0)
         equator = pre_slices[2]
 
+        """
+        赤道的动画
+        """
         vslices[2].set_stroke()
         self.play(
             Write(circ_label),
@@ -350,6 +353,9 @@ class SphereExample(InteractiveScene):
         self.wait()
         self.play(equator.animate.shift(1.5 * UP))
         self.wait()
+        """
+        将既有的文字挤到下方
+        """
         self.play(
             Write(circ_formula),
             circ_label.animate.next_to(circ_formula, DOWN)
