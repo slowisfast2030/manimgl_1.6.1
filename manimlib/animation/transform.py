@@ -227,6 +227,10 @@ while TransformFromCopy leaves the original object unchanged and uses a copy of
 it for the transformation. This difference is crucial depending on whether you 
 want to maintain the original object post-animation or not.
 """
+"""
+self.play(ShowCreation(width_line))
+self.play(TransformFromCopy(width_line, semi_circ, path_arc=-PI / 2, run_time=2))
+"""
 class TransformFromCopy(Transform):
     """
     Performs a reversed Transform
