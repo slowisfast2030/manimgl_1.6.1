@@ -221,6 +221,11 @@ class ReplacementTransform(Transform):
 
 """
 self.play(TransformFromCopy(sectors, laid_sectors, run_time=2))
+
+In simple terms, Transform directly changes the original object into the target, 
+while TransformFromCopy leaves the original object unchanged and uses a copy of 
+it for the transformation. This difference is crucial depending on whether you 
+want to maintain the original object post-animation or not.
 """
 class TransformFromCopy(Transform):
     """
