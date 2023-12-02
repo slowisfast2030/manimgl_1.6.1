@@ -164,6 +164,12 @@ class VMobject(Mobject):
         self.set_rgba_array_by_color(color, opacity, 'fill_rgba', recurse)
         return self
 
+    """
+    stroke_widths = [2, 6]
+    circle.set_stroke(WHITE, width=stroke_widths)
+
+    可以将stroke_width设置为一个数组
+    """
     def set_stroke(
         self,
         color: ManimColor | None = None,
