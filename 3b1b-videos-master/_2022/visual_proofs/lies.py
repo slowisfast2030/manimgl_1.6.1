@@ -394,6 +394,9 @@ class SphereExample(InteractiveScene):
         """
         self.play(WiggleOutThenIn(edge, run_time=1))
         self.wait()
+        """
+        将line转成arc
+        """
         self.play(TransformFromCopy(edge, arc))
         self.play(Write(arc_form))
         self.wait()
