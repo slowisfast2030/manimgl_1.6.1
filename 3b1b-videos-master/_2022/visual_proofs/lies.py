@@ -406,6 +406,10 @@ class SphereExample(InteractiveScene):
         )
         self.wait()
 
+        """
+        中间似乎缺少了一部分代码
+        """
+
         # Area
         arc_tex = "{\\pi \\over 2} R"
         circ_tex = "2\\pi R"
