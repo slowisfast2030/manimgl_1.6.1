@@ -349,6 +349,10 @@ class SphereExample(InteractiveScene):
             ),
             vslices[2].animate.set_color(YELLOW),
         )
+        """
+        如果是我做这个动画, 我不会想到赤道
+        我也不会想到为每一瓣设置间隔的颜色
+        """
         self.play(equator.animate.shift(1.5 * DOWN).set_color(YELLOW))
         self.wait()
         self.play(equator.animate.shift(1.5 * UP))
