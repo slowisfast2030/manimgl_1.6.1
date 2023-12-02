@@ -219,6 +219,9 @@ class ReplacementTransform(Transform):
     }
 
 
+"""
+self.play(TransformFromCopy(sectors, laid_sectors, run_time=2))
+"""
 class TransformFromCopy(Transform):
     """
     Performs a reversed Transform
