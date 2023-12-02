@@ -388,6 +388,10 @@ class SphereExample(InteractiveScene):
             ShowCreation(edge),
             Write(q_marks),
         )
+        """
+        这个动画的效果很好
+        line轻微抖动
+        """
         self.play(WiggleOutThenIn(edge, run_time=1))
         self.wait()
         self.play(TransformFromCopy(edge, arc))
