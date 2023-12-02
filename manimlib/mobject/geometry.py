@@ -385,6 +385,8 @@ class Ellipse(Circle):
 这样才是完整的圆环和长条
 
 特别注意, 点的逆时针和顺时针顺序会影响fill的效果
+在cairo作为后端的情况下, fill的实现会很简单
+但在opengl作为后端的情况下, fill的实现会很复杂
 """
 class AnnularSector(Arc):
     CONFIG = {
