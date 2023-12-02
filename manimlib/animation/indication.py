@@ -259,6 +259,15 @@ self.play(
     vslices[2].animate.set_color(YELLOW),
 )
 """
+"""
+self.play(*(
+    LaggedStart(*(
+        VShowPassingFlash(piece, time_width=2)
+        for piece in group.copy().set_fill(opacity=0).set_stroke(RED, 5)
+    ), lag_ratio=0.02, run_time=4)
+    for group in [laid_sectors, sectors]
+))
+"""
 class VShowPassingFlash(Animation):
     """
     这个animation用在了StreamLines上
