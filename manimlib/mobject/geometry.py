@@ -405,6 +405,17 @@ class AnnularSector(Arc):
         self.add_line_to(inner_arc.get_points()[0])
 
 
+"""
+def get_sectors(self, circle, n_slices=20, fill_colors=[BLUE_D, BLUE_E]):
+    angle = TAU / n_slices
+    sectors = VGroup(*(
+        Sector(angle=angle, start_angle=i * angle, fill_color=color, fill_opacity=1)
+        for i, color in zip(range(n_slices), it.cycle(fill_colors))
+    ))
+    sectors.set_stroke(WHITE, self.sector_stroke_width)
+    sectors.replace(circle, stretch=True)
+    return sectors
+"""
 class Sector(AnnularSector):
     CONFIG = {
         "outer_radius": 1,
