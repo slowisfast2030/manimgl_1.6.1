@@ -383,6 +383,8 @@ class Ellipse(Circle):
 
 原视频的代码有问题, 主要在于两段圆弧之间需要添加一些点
 这样才是完整的圆环和长条
+
+特别注意, 点的逆时针和顺时针顺序会影响fill的效果
 """
 class AnnularSector(Arc):
     CONFIG = {
