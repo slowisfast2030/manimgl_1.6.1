@@ -7,8 +7,10 @@ class test(Scene):
 
         for i, point in enumerate(annular_sector.get_points()):
             dot = Dot(point).scale(0.5).set_color(RED)
+            
             if i % 5 == 0:
-                label = Tex(str(i)).next_to(dot, UP)
+                dot.set_color(YELLOW)
+                label = Text(str(i)).next_to(dot, UP).scale(0.5)
             
             self.add(dot, label)
 
