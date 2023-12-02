@@ -16,7 +16,16 @@ class ScreenRectangle(Rectangle):
             stretch=True
         )
 
+"""
+self.add(FullScreenRectangle())
+        rects = Rectangle(3.5, 4.5).replicate(3)
+        rects.set_stroke(WHITE, 2)
+        rects.set_fill(BLACK, 1)
+        rects.arrange(RIGHT, buff=0.75)
+        rects.to_edge(DOWN, buff=0.25)
 
+
+"""
 class FullScreenRectangle(ScreenRectangle):
     CONFIG = {
         "height": FRAME_HEIGHT,
