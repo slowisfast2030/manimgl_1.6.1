@@ -380,6 +380,8 @@ class Ellipse(Circle):
 """
 不得不说, 这是之前困扰我很久的问题
 在3b1b的微积分视频中有一个圆环变成了长条
+
+原视频的代码有问题, 主要在于两段圆弧之间需要添加一些点
 """
 class AnnularSector(Arc):
     CONFIG = {
