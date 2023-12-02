@@ -379,6 +379,7 @@ class Ellipse(Circle):
 
 """
 不得不说, 这是之前困扰我很久的问题
+在3b1b的微积分视频中有一个圆环变成了长条
 """
 class AnnularSector(Arc):
     CONFIG = {
