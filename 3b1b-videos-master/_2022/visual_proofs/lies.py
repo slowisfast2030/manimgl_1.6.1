@@ -253,6 +253,11 @@ class SphereExample(InteractiveScene):
             for slc in slcs:
                 slc.set_color(interpolate_color(slc.get_color(), BLACK, 0.0))
         flat_slices[2].shift(0.01 * OUT)
+        """
+        slices和flat_slices都是Group
+        且slices和flat_slices的子元素是一一对应的
+        分别包括: north_slices, south_slices, equator
+        """
         self.play(
             Transform(slices[0], flat_slices[0]),
             Transform(slices[2], flat_slices[2]),
