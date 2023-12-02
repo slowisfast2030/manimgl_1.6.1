@@ -207,8 +207,12 @@ class SphereExample(InteractiveScene):
         banner.set_gloss(0)
         banner.set_reflectiveness(0)
         banner.set_shadow(0)
-
         self.add(banner)
+
+        """
+        不论是mob还是vmob, 本质上是点集
+        动画的本质就是点集的变换
+        """
         self.play(ReplacementTransform(banner, sphere, run_time=2))
         self.play(Write(mesh, run_time=1))
         self.wait()
