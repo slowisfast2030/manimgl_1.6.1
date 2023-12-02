@@ -7,7 +7,7 @@ class test(Scene):
 
         for i, point in enumerate(annular_sector.get_points()):
             dot = Dot(point).scale(0.5).set_color(RED)
-            label = Tex(str(i)).next_to(dot, UP)
+            #label = Tex(str(i)).next_to(dot, UP)
             
-            self.add(dot, label)
+            self.add(dot)
 
