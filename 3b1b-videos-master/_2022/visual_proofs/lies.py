@@ -558,10 +558,17 @@ class CircleExample(InteractiveScene):
             Write(question, stroke_color=WHITE)
         )
         self.wait()
+        """
+        这个效果挺不错
+        sectors会覆盖在circle上
+        """
         self.play(Write(sectors))
         self.remove(circle)
 
         # Lay out sectors
+        """
+        将sectors展开
+        """
         laid_sectors = sectors.copy()
         N = len(sectors)
         dtheta = TAU / N
@@ -576,6 +583,9 @@ class CircleExample(InteractiveScene):
             sectors.animate.scale(0.7).to_corner(UL),
             question.animate.to_corner(UR),
         )
+        """
+        深度思考
+        """
         self.play(TransformFromCopy(sectors, laid_sectors, run_time=2))
         self.wait()
 
