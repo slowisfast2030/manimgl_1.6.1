@@ -198,6 +198,8 @@ class SphereExample(InteractiveScene):
         rect.set_fill(GREY_E, 1)
         rect.set_width(FRAME_WIDTH)
         self.add(rect)
+
+        可以发现, 这里的banner的样式完全是为了和rect保持一样
         """
         banner.set_width(FRAME_WIDTH)
         banner.set_height(FRAME_WIDTH / 4, stretch=True)
