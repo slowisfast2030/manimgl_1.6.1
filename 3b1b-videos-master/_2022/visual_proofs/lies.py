@@ -218,6 +218,9 @@ class SphereExample(InteractiveScene):
         self.wait()
 
         # Slice sphere
+        """
+        将slices置于sphere之上
+        """
         slices = get_sphere_slices(n_slices=self.n_slices)
         slices.rotate(90 * DEGREES, OUT).rotate(80 * DEGREES, LEFT)
         slices.scale(radius)
