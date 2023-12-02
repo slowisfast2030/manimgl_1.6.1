@@ -185,6 +185,12 @@ class SphereExample(InteractiveScene):
         sphere.rotate(91 * DEGREES, OUT).rotate(80 * DEGREES, LEFT)
         mesh = SurfaceMesh(sphere)
         mesh.set_stroke(BLUE_B, 1, 0.5)
+
+        """
+        思考:
+        在manim中, 眼睛可见的对象，尽管在屏幕上看起来是一样的，但是实际上是不同的对象
+        比如这个banner, 他是一个TexturedSurface, 但是在屏幕上看起来和Rectangle是一样的
+        """
         banner = TexturedSurface(Surface(resolution=sphere.resolution), img_path)
         banner.set_width(FRAME_WIDTH)
         banner.set_height(FRAME_WIDTH / 4, stretch=True)
