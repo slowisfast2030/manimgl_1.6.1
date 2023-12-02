@@ -174,6 +174,10 @@ class SphereExample(InteractiveScene):
         light.move_to([-10, 2, 5])
 
         # Create the sphere
+        """
+        猜测:
+        这个图片是专门生成的, 和视频中的图片一样
+        """
         img_path = "/Users/grant/Dropbox/3Blue1Brown/videos/2022/visual_proofs/lies/images/SimpleSphereQuestion.png"
         radius = 2.5
         sphere = TexturedSurface(Sphere(radius=radius), img_path)
