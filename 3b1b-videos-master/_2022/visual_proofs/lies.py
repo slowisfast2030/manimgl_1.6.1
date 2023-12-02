@@ -625,7 +625,7 @@ class CircleExample(InteractiveScene):
         # Side lengths
         """
         我从未想过这个动画
-        将锯齿的边变为圆的周长
+        将锯齿的边变为圆的半周长
         """
         ulp = lh[0].get_top()
         width_line = Line(ulp, rh.get_corner(UR))
