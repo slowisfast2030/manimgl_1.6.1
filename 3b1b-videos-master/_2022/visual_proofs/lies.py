@@ -573,6 +573,10 @@ class CircleExample(InteractiveScene):
         N = len(sectors)
         dtheta = TAU / N
         angles = np.arange(0, TAU, dtheta)
+        """
+        为了使得circle中的扇形展开
+        需要计算出每一个扇形的旋转角度
+        """
         for sector, angle in zip(laid_sectors, angles):
             sector.rotate(-90 * DEGREES - angle - dtheta / 2)
 
