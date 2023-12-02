@@ -192,6 +192,13 @@ class SphereExample(InteractiveScene):
         比如这个banner, 他是一个TexturedSurface, 但是在屏幕上看起来和Rectangle是一样的
         """
         banner = TexturedSurface(Surface(resolution=sphere.resolution), img_path)
+        """
+        rect = Rectangle(width=TAU, height=TAU / 4)
+        rect.set_stroke(width=0)
+        rect.set_fill(GREY_E, 1)
+        rect.set_width(FRAME_WIDTH)
+        self.add(rect)
+        """
         banner.set_width(FRAME_WIDTH)
         banner.set_height(FRAME_WIDTH / 4, stretch=True)
         banner.center()
