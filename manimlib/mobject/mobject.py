@@ -290,6 +290,15 @@ class Mobject(object):
         self.refresh_bounding_box()
         return self
 
+    """
+    在最新版本的manimgl中, 已经对这个函数做了修改
+
+    @affects_family_data
+    def reverse_points(self) -> Self:
+        for mob in self.get_family():
+            mob.data = mob.data[::-1]
+        return self
+    """
     def reverse_points(self):
         '''
         反转锚点
@@ -304,7 +313,8 @@ class Mobject(object):
             for key in mob.data:
                 mob.data[key] = mob.data[key][::-1]
         # 这个函数是在Vmobject类中定义的
-        self.refresh_unit_normal()
+        # 下面这一行会报错，故注释掉
+        #self.refresh_unit_normal()
         return self
 
 
