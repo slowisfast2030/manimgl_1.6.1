@@ -532,7 +532,10 @@ class Proof2Slide(InteractiveScene):
         )
         self.wait()
 
-
+"""
+最需要的
+将一个圆分割成很多扇形
+"""
 class CircleExample(InteractiveScene):
     n_slices = 20
     sector_stroke_width = 1.0
