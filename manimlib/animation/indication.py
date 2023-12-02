@@ -489,6 +489,16 @@ class ApplyWave(Homotopy):
         super().__init__(homotopy, mobject, **kwargs)
 
 
+"""
+self.play(
+    ShowCreation(edge),
+    Write(q_marks),
+)
+self.play(WiggleOutThenIn(edge, run_time=1))
+
+先出现了一条line
+然后line轻微抖动
+"""
 class WiggleOutThenIn(Animation):
     CONFIG = {
         "scale_value": 1.1,
