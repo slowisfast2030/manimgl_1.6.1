@@ -248,7 +248,17 @@ class test(Scene):
 困惑:每一段衔接处有些不自然(width变化有点突兀), 需要进一步研究stroke部分的着色器代码
 解答:需要为每一段曲线需要3个width值, 且上一段width的末尾和后一段width的开始要相等
 """
-
+"""
+self.play(
+    Write(circ_label),
+    VShowPassingFlash(
+        vslices[2].copy().set_stroke(YELLOW, 5).insert_n_curves(20),
+        time_width=1.5,
+        run_time=1.5,
+    ),
+    vslices[2].animate.set_color(YELLOW),
+)
+"""
 class VShowPassingFlash(Animation):
     """
     这个animation用在了StreamLines上
