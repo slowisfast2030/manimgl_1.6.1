@@ -457,6 +457,9 @@ class Annulus(Circle):
         self.radius = self.outer_radius
         outer_circle = Circle(radius=self.outer_radius)
         inner_circle = Circle(radius=self.inner_radius)
+        """
+        外环点集逆时针, 内环点集顺时针
+        """
         inner_circle.reverse_points()
         self.append_points(outer_circle.get_points())
         self.append_points(inner_circle.get_points())
