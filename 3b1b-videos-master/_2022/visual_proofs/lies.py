@@ -596,6 +596,7 @@ class CircleExample(InteractiveScene):
         # Interslice
         """
         左右的锯齿的合并
+        细节拉满
         """
         lh, rh = laid_sectors[:N // 2], laid_sectors[N // 2:]
         lh.generate_target()
