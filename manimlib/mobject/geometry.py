@@ -414,6 +414,7 @@ class AnnularSector(Arc):
         不应该是内环的点集倒序吗？
         经过测试, 将内环的点集倒序后, fill的效果不变
         真是奇怪
+        和我的认知不符
         """
         # 需要将点集的顺序反过来
         outer_arc.reverse_points()
