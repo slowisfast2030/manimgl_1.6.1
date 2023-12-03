@@ -409,6 +409,10 @@ class AnnularSector(Arc):
             )
             for radius in (self.inner_radius, self.outer_radius)
         ]
+        """
+        一个巨大的疑问:
+        不应该是内环的点集倒序吗？
+        """
         # 需要将点集的顺序反过来
         outer_arc.reverse_points()
         self.append_points(inner_arc.get_points())
