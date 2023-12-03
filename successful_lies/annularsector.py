@@ -35,8 +35,8 @@ class LinusSector(Arc):
 
 class test(Scene):
     def construct(self):
-        # annular_sector = AnnularSector(inner_radius=1, outer_radius=2, start_angle=0, angle=TAU/4, color=BLUE, stroke_width=1) 
-        annular_sector = LinusSector(inner_radius=1, outer_radius=2, start_angle=0, angle=TAU/4, color=BLUE, stroke_width=1) 
+        annular_sector = AnnularSector(inner_radius=1, outer_radius=2, start_angle=0, angle=TAU/4, color=BLUE, stroke_width=1) 
+        # annular_sector = LinusSector(inner_radius=1, outer_radius=2, start_angle=0, angle=TAU/4, color=BLUE, stroke_width=1) 
         print(annular_sector.get_triangulation())
         self.add(annular_sector)
 
