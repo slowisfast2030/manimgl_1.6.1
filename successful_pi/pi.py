@@ -3,6 +3,9 @@ sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-mas
 
 from manim_imports_ext import *
 
+"""
+
+"""
 class TestScene(Scene):
     def construct(self):
         pi = PiCreature(color=BLUE_E)
