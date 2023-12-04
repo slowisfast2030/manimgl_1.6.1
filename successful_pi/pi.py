@@ -11,7 +11,7 @@ class TestScene(Scene):
         # Loop through each part of the PiCreature to add labels and arrows
         for index, part in enumerate(pi):
             # Create a label for each part
-            label = DecimalNumber(index).next_to(part, RIGHT*4)
+            label = Integer(index).next_to(part, RIGHT*4)
 
             # Create an arrow pointing to ealeftart
             arrow = Arrow(label.get_left(), part.get_center(), buff=0.1)
