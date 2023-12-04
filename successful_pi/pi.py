@@ -10,7 +10,7 @@ eyes和mouth的配合就可以模拟不同的表情
 class TestScene(Scene):
     def construct(self):
         pi = PiCreature(color=BLUE_E)
-        pi.change_mode("thinking")
+        pi.change_mode("maybe")
         self.add(pi)  # Add the entire PiCreature to the scene
 
         # Loop through each part of the PiCreature to add labels and arrows
