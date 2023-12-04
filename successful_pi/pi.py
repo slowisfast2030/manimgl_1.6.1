@@ -3,6 +3,25 @@ sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-mas
 
 from manim_imports_ext import *
 
+class TestScene(Scene):
+    def construct(self):
+        pi = PiCreature(color=BLUE_E)
+        self.add(pi)  # Add the entire PiCreature to the scene
+
+        # Loop through each part of the PiCreature to add labels and arrows
+        for index, part in enumerate(pi):
+            # Create a label for each part
+            label = DecimalNumber(index).next_to(part, RIGHT*2)
+
+            # Create an arrow pointing to ealeftart
+            arrow = Arrow(label.get_left(), part.get_center(), buff=0.1)
+
+            # Add the label and arrow to the scene
+            self.add(label, arrow)
+
+        self.wait()
+
+
 class test(Scene):
     def construct(self):
         pi = PiCreature(color=BLUE_E)
