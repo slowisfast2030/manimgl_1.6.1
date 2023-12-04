@@ -6,11 +6,13 @@ from manim_imports_ext import *
 class test(Scene):
     def construct(self):
         pi = PiCreature(color=BLUE_E)
-        for i in range(len(pi)):
-            self.add(pi[i])
-            pi[i].move_to(LEFT*3 + i * RIGHT)
-            self.add(DecimalNumber(i).next_to(pi[i], UP))
+        # Use a single loop to add all parts of the PiCreature and the corresponding DecimalNumber
+        for index, part in enumerate(pi):
+            part.move_to(LEFT * 3 + index * RIGHT)
+            number = DecimalNumber(index).next_to(part, UP)
+            self.add(part, number)  # Adding both simultaneously for efficiency
         self.wait()
+
 
         pi2 = PiCreature(color=BLUE)
         self.add(pi2)
