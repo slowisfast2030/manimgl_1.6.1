@@ -4,16 +4,21 @@ sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-mas
 from manim_imports_ext import *
 
 """
-
+如果想定制自己的pi生物, 可以借鉴当前pi生物的eyes和mouth
+eyes和mouth的配合就可以模拟不同的表情
 """
 class TestScene(Scene):
     def construct(self):
         pi = PiCreature(color=BLUE_E)
+        pi.change_mode("thinking")
         self.add(pi)  # Add the entire PiCreature to the scene
 
         # Loop through each part of the PiCreature to add labels and arrows
         for index, part in enumerate(pi):
             # Create a label for each part
+            if index == 0:
+                part.move_to(UP*3)
+            
             label = Integer(index).next_to(part, RIGHT*4)
 
             # Create an arrow pointing to ealeftart
