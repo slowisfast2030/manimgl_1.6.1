@@ -98,7 +98,7 @@ class s2(Scene):
         此时下方的pi生物老师说, 我们来看第二种方法
         """
 
-        text = Tex("It is already to know that $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
+        text = TexText("It is already to know that $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
         self.play(FadeIn(text), run_time=1)
         self.wait()
 
