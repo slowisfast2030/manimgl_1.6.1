@@ -116,7 +116,7 @@ class s2(Scene):
                     student_teacher[1].animate.change_mode("happy"),
                     run_time=1)
         
-        text = TexText("Given $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
+        text = TexText("Given $tan(\\alpha) = \\frac{AB}{AC}= \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
         self.play(FadeIn(text), run_time=1)
         self.wait(2)
 
