@@ -310,8 +310,13 @@ class s1(Scene):
         self.play(FadeIn(tri_gr), FadeIn(half_angle_gr), FadeIn(flip_gr))
         self.wait()
 
+        # 文本显示三角形CDA和CDE全等
+        text0 = TexText("\triangle CDA \cong \triangle CDE").next_to(tri_gr, DOWN, buff=2).scale(self.text_scale)
+        self.play(Write(text0), run_time=1)
+        self.wait()
+
         # 设DA=x，则DE=x, BD=4-x
-        text1 = TexText("Suppose DA=$x$, then DE=$x$, BD=$3-x$").next_to(tri_gr, DOWN, buff=2).scale(self.text_scale)
+        text1 = TexText("Suppose DA=$x$, then DE=$x$, BD=$3-x$").next_to(text0, DOWN, buff=2).scale(self.text_scale)
         line_ad = Line(self.coord_a_shift, self.coord_d_shift, color=self.line_color)
         line_de = Line(self.coord_d_shift, self.coord_e_shift, color=self.line_color)
         line_bd = Line(self.coord_b_shift, self.coord_d_shift, color=self.line_color)
