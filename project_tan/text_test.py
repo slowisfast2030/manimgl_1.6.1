@@ -25,8 +25,10 @@ class test(Scene):
         # self.play(Write(text5))
         # self.wait()
         #text = TexText("This is: $x^2 + y^2 = z^2$")
-        text = TexText("This is: $x^2 + y^2 = z^2$")
-        self.play(Write(text))
+        text = Text("假设")
+        tex = Tex("x^2 + y^2 = z^2").match_height(text) 
+        gr = VGroup(text, tex).arrange(RIGHT, buff=0.9)
+        self.play(Write(gr))
         self.wait()
 
 
