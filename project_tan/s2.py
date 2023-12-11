@@ -357,7 +357,7 @@ class s2(Scene):
         self.wait()
 
         # 设置遮挡矩形
-        rec_up = Rectangle(height=self.two_gr[0].get_height()+1.5, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(self.two_gr[0])
+        rec_up = Rectangle(height=self.two_gr[0].get_height()+1.0, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(self.two_gr[0])
         rec_down = Rectangle(height=self.two_gr[1].get_height()+1.5, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(self.two_gr[1])
 
         self.play(FadeIn(rec_down), run_time=1)
