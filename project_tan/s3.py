@@ -151,8 +151,8 @@ class s3(Scene):
         tri_gr = VGroup(triangle, ver_c, ver_a, ver_b)
         # 引入坐标平面
         # 将整个画面网上提一点，为下方的pi生物让出空间
-        plane = NumberPlane().shift(3*UP)
-        self.play(Write(plane), 
+        plane = NumberPlane().shift(3*UP).set_z(-1)
+        self.play(Write(plane),
                   run_time=1)
         self.wait()
         
