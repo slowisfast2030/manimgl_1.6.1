@@ -191,8 +191,7 @@ class s2(Scene):
     def diameter_angle(self):
         # 除了“辅助圆”，淡去所有元素
         self.play(
-            self.text3.animate.move_to(ORIGIN+UP*3.2),
-            self.text3.animate.scale(1.5),
+            self.text3.animate.move_to(ORIGIN+UP*3.2).scale(1.5),
             *[FadeOut(mobject) for mobject in self.mobjects_to_fade_out])
         self.wait()
 
