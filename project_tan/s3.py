@@ -257,8 +257,13 @@ class pr(s3):
         self.play(FadeIn(rec_up), FadeOut(rec_down),run_time=1)
         self.wait(2)
 
-        self.play(FadeOut(geo_gr), 
-                  FadeOut(rec_up))
+        self.play( 
+                  FadeIn(rec_down))
+        self.wait(1)
+
+        # 添加一个rect, 用来遮住所有的对象
+        rect = Rectangle(height=config.frame_height, width=config.frame_width, color=BLACK, fill_opacity=1)
+        self.play(FadeIn(rect), run_time=1)
         self.wait(1)
         pass
 
