@@ -24,6 +24,7 @@ def student_with_teacher():
 
     _, teacher = student_teacher
     teacher.scale(1.3)
+    teacher.flip()
 
     return student_teacher
 
@@ -111,7 +112,7 @@ class s0(Scene):
 
         self.play(Write(angle), 
                   Write(label_angle), 
-                    student_teacher[0].animate.change_mode("happy"),
+                    student_teacher[0].animate.change_mode("gracious"),
                     student_teacher[1].animate.change_mode("happy"),
                   run_time=1)
         self.wait()
