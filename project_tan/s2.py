@@ -130,6 +130,8 @@ class s2(Scene):
                   )
         self.play(student_teacher[0].animate.change_mode("hooray"))
 
+        self.wait()
+
         """
         淡出pi生物, 同时出现下方的动画
         """
