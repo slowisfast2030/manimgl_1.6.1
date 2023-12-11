@@ -1,18 +1,18 @@
-from manim import *
+from manimlib import *
 
 """
 开场
 """
 # 下面这几行设置竖屏
-config.frame_width = 9
-config.frame_height = 16
+# config.frame_width = 9
+# config.frame_height = 16
 
-config.pixel_width = 1080
-config.pixel_height = 1920
+# config.pixel_width = 1080
+# config.pixel_height = 1920
 
 # 一个很聪明的方案
-class ShowCreation(Create):
-    pass
+# class ShowCreation(Create):
+#     pass
 
 class s0(Scene):
     def setup(self):
