@@ -275,6 +275,12 @@ class s2(Scene):
         circle_point = Dot(point=circle_1.point_from_proportion((PI/3)/(2*PI)), color=RED)
         circle_point_lable = Tex("C").next_to(circle_point, UP) 
         line_diameter = Line(circle_1.get_left(), circle_1.get_right(), color=self.radial_line_color)
+        # 为直径的两端添加point和label
+        point_left = Dot(circle_1.get_left(), color=RED)
+        point_right = Dot(circle_1.get_right(), color=RED)
+        label_left = Tex("A").next_to(point_left, LEFT)
+        label_right = Tex("B").next_to(point_right, RIGHT)
+
         line_1 = Line(circle_point.get_center(), line_diameter.get_left(), color=self.radial_line_color)
         line_2 = Line(circle_point.get_center(), line_diameter.get_right(), color=self.radial_line_color)
         # 下圆
@@ -294,6 +300,10 @@ class s2(Scene):
         self.play(ShowCreation(circle_point),
                   Write(circle_point_lable),
                   GrowFromCenter(line_diameter),
+                    ShowCreation(point_left),
+                    ShowCreation(point_right),
+                    Write(label_left),
+                    Write(label_right),
                   ShowCreation(line_1),
                   ShowCreation(line_2),
                   ShowCreation(point_a),
