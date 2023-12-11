@@ -182,7 +182,7 @@ class s3(Scene):
         # 将整个画面网上提一点，为下方的pi生物让出空间
         plane = NumberPlane().shift(3*UP)
         self.play(Write(plane),
-                  run_time=1)
+                  run_time=2)
         self.wait()
 
         self.play(*ver_ani, 
