@@ -23,7 +23,6 @@ def student_with_teacher():
     student_teacher.arrange(RIGHT, buff=0.9).shift(DOWN*5.5).scale(0.8)
 
     student, teacher = student_teacher
-
     # 学生一开始设置为gracoius
     student.change_mode("gracious")
 

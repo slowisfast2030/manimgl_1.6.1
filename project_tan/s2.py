@@ -21,8 +21,12 @@ def student_with_teacher():
     student_teacher = VGroup(*student_teacher)
     student_teacher.arrange(RIGHT, buff=0.9).shift(DOWN*5.5).scale(0.8)
 
-    _, teacher = student_teacher
+    student, teacher = student_teacher
+    # 学生一开始设置为gracoius
+    student.change_mode("gracious")
+
     teacher.scale(1.3)
+    teacher.flip()
 
     return student_teacher
 
@@ -105,20 +109,26 @@ class s2(Scene):
                   ShowCreation(triangle),
                   FadeIn(student_teacher),
                   run_time=1)
+        # 这里没有self.wait()是为了加速回顾
         self.play(Write(angle),
-                  FadeIn(label_angle),)
+                  FadeIn(label_angle),
+                  student_teacher[0].animate.change_mode("connving"),
+                    student_teacher[1].animate.change_mode("happy"),
+                    run_time=1)
+        
+        text = TexText("It is already to know that $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
+        self.play(FadeIn(text), run_time=1)
+        self.wait()
+
         """
         此时下方的pi生物老师说, 我们来看第二种方法
+        因为是回顾，所以需要显示完题目后pi生物才会说话
         """
         pi_text = Text("我们来看第二种方法！").scale(0.7)
         self.play(
                   student_teacher[1].says(pi_text),
                   )
         self.play(student_teacher[0].animate.change_mode("happy"))
-
-        text = TexText("It is already to know that $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
-        self.play(FadeIn(text), run_time=1)
-        self.wait()
 
         """
         淡出pi生物, 同时出现下方的动画
