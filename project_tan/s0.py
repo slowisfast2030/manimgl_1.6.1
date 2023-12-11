@@ -60,7 +60,8 @@ class s0(Scene):
     def construct(self):
         self.opening()  
         self.introduce_three_methods()
-        self.clear()
+        rec = Rectangle(height=config.frame_height+0.5, width=config.frame_width+0.5, color=BLACK, fill_opacity=1)
+        self.play(FadeIn(rec))
         self.wait()
         pass
 
