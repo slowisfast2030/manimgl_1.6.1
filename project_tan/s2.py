@@ -116,7 +116,16 @@ class s2(Scene):
                     student_teacher[1].animate.change_mode("happy"),
                     run_time=1)
         
-        text = TexText("Given $tan(\\alpha) = \\frac{AB}{AC}= \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
+        #text = TexText("Given $tan(\\alpha) = \\frac{AB}{AC}= \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
+        # 用text和Tex的组合引入中文和公式
+        text_0 = Text("已知")
+        text_1 = Tex(r"tan(\alpha)=\frac{AB}{AC}=\frac{3}{4},")
+        text_2 = Text("那么，")
+        text_3 = Tex(r"tan(\frac{\alpha}{2})=?")
+        text_01 = VGroup(text_0, text_1).arrange(RIGHT, buff=0.5)
+        text_23 = VGroup(text_2, text_3).arrange(RIGHT, buff=0.5)
+        text = VGroup(text_01, text_23).arrange(DOWN, buff=0.5).scale(self.text_scale).next_to(triangle, DOWN, 1)
+
         self.play(FadeIn(text), run_time=1)
         self.wait(2)
 
