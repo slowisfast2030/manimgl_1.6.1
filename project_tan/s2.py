@@ -103,6 +103,7 @@ class s2(Scene):
 
         self.play(*ver_ani, 
                   ShowCreation(triangle),
+                  FadeIn(student_teacher),
                   run_time=1)
         self.play(Write(angle),
                   FadeIn(label_angle),)
@@ -113,7 +114,7 @@ class s2(Scene):
         self.play(
                   student_teacher[1].says(pi_text),
                   )
-
+        self.play(student_teacher[0].animate.change_mode("happy"))
 
         text = TexText("It is already to know that $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
         self.play(FadeIn(text), run_time=1)
