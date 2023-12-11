@@ -311,12 +311,30 @@ class s1(Scene):
         self.wait()
 
         # 文本显示三角形CDA和CDE全等
-        text0 = TexText("\triangle CDA \cong \triangle CDE").next_to(tri_gr, DOWN, buff=2).scale(self.text_scale)
-        self.play(Write(text0), run_time=1)
+        text0 = Tex(r"\triangle CDA \cong \triangle CDE").next_to(tri_gr, DOWN, buff=2).scale(self.text_scale)
+        text0_center = text0.get_center()
+        tri_cde = Polygon(self.coord_c_shift, self.coord_d_shift, self.coord_e_shift, color=self.line_color, stroke_width=3)
+        tri_cde.set_fill(color=BLUE, opacity=0.6)
+        tri_cda = Polygon(self.coord_c_shift, self.coord_d_shift, self.coord_a_shift, color=self.line_color, stroke_width=3)
+        tri_cda.set_fill(color=BLUE, opacity=0.6)
+        
+        self.play(Write(text0), 
+                  FadeIn(tri_cde),
+                  FadeIn(tri_cda),
+                  run_time=1)
         self.wait()
 
+        text_line_eq = Tex("\Rightarrow  DA = DE").scale(self.text_scale)
+        text_0_eq_gr = VGroup(text0, text_line_eq).arrange(RIGHT, buff=0.3).move_to(text0_center)
+        self.play(ReplacementTransform(text0, text_0_eq_gr),
+                  Write(text_line_eq),
+                  FadeOut(tri_cde),
+                    FadeOut(tri_cda),
+                  )
+
+
         # 设DA=x，则DE=x, BD=4-x
-        text1 = TexText("Suppose DA=$x$, then DE=$x$, BD=$3-x$").next_to(text0, DOWN, buff=2).scale(self.text_scale)
+        text1 = TexText("Suppose DA=$x$, then DE=$x$, BD=$3-x$").next_to(text0, DOWN).scale(self.text_scale)
         line_ad = Line(self.coord_a_shift, self.coord_d_shift, color=self.line_color)
         line_de = Line(self.coord_d_shift, self.coord_e_shift, color=self.line_color)
         line_bd = Line(self.coord_b_shift, self.coord_d_shift, color=self.line_color)
