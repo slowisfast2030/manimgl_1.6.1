@@ -208,7 +208,7 @@ class s0(Scene):
     # 第三种解法    
     def introduce_third_method(self):
         
-        tri_gr_down = self.all_gr[2]
+        tri_gr_down = self.all_gr[2].set_z(1)
         point_a = tri_gr_down[4]
         point_b = tri_gr_down[5]
         point_c = tri_gr_down[6]
