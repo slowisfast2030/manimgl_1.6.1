@@ -131,15 +131,21 @@ class s2(Scene):
         self.play(student_teacher[0].animate.change_mode("hooray"))
 
         self.wait(2)
-
+ 
         """
         淡出pi生物, 同时出现下方的动画
         """
         # 出现两行文字，第一行是“直角三角形”，第二行是“半角”
         text1 = Text("直角三角形").scale(self.text_scale)
         text2 = Text("半角").scale(self.text_scale)
-        text12_gr = VGroup(text1, text2).arrange(DOWN, buff=1).to_edge(LEFT, buff=1.5)
-        text12_gr.shift(3*DOWN)
+        text12_gr = VGroup(text1, text2).arrange(DOWN, buff=1)
+        # 在text_gr右侧出现一个括号
+        brace = Brace(text12_gr, direction=RIGHT, buff=0.5)
+        # 在括号右侧出现一行文字“辅助圆”
+        text3 = Text("辅助圆").scale(self.text_scale)   
+        text3.next_to(brace, RIGHT, 0.5)
+
+        text_gr = VGroup(text12_gr, brace, text3).arrange(RIGHT, buff=1).next_to(text, DOWN, buff=3)
 
         self.play(FadeIn(text1),
                   FadeIn(text2),
@@ -149,14 +155,11 @@ class s2(Scene):
                   run_time=1)
         self.wait()
 
-        # 在text_gr右侧出现一个括号
-        brace = Brace(text12_gr, direction=RIGHT, buff=0.5)
+        
         self.play(GrowFromCenter(brace), run_time=1)
         self.wait() 
 
-        # 在括号右侧出现一行文字“辅助圆”
-        text3 = Text("辅助圆").scale(self.text_scale)   
-        text3.next_to(brace, RIGHT, 0.5)
+        
         self.play(GrowFromCenter(text3), run_time=1)
         self.wait()
 
