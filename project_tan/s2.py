@@ -189,7 +189,10 @@ class s2(Scene):
     # 在屏幕中间显示一个圆
     # 分别向上和向下移动，作为接下来两个动画的基础
     def diameter_angle(self):
-        self.play(self.text3.animate.move_to(ORIGIN+UP*3.2),
+        # 除了“辅助圆”，淡去所有元素
+        self.play(
+            self.text3.animate.move_to(ORIGIN+UP*3.2),
+            self.text3.animate.scale(1.5),
             *[FadeOut(mobject) for mobject in self.mobjects_to_fade_out])
         self.wait()
 
