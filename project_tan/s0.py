@@ -5,7 +5,10 @@ from manimlib import *
 """
 # manimgl中没有config这个对象，代码中使用了config.frame_width
 # 这里为了兼容，引入了config
-config={}
+class C:
+    pass
+
+config = C()
 config.frame_width = 9
 config.frame_height = 16
 
@@ -35,25 +38,30 @@ class s0(Scene):
 
     def construct(self):
         self.opening()  
-        self.introduce_three_methods()
+        #self.introduce_three_methods()
         pass
 
-
-    
+    # 需要注意p1是角所在的位置
+    # 这个方法是为了计算p1p2和p1p3之间的夹角
+    def angle_of_points(self, p1, p2, p3):
+            v1 = np.array(p2) - np.array(p1)
+            v2 = np.array(p3) - np.array(p1)
+            angle = np.arccos(np.dot(v1, v2)/(np.linalg.norm(v1)*np.linalg.norm(v2)))
+            return angle
     # 在屏幕上方出现一个简单的三角形，下方位置留给pi生物
     # 在三角形下方显示tan(alpha) = 3/4，求解tan(alpha/2)
     def opening(self):
         triangle = Polygon(self.coord_c_shift, 
                            self.coord_a_shift, 
                            self.coord_b_shift, 
-                           color=self.line_color, stroke_width=3).set_z_index(1)
+                           color=self.line_color, stroke_width=3)
         point_c = Dot(self.coord_c_shift)
         point_a = Dot(self.coord_a_shift)
         point_b = Dot(self.coord_b_shift)
 
-        ver_c = Tex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN).set_z_index(1)
-        ver_a = Tex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN).set_z_index(1)
-        ver_b = Tex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT).set_z_index(1)
+        ver_c = Tex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN)
+        ver_a = Tex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN)
+        ver_b = Tex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT)
         ver_ani = list(map(FadeIn, [ver_c, ver_a, ver_b]))
 
         self.play(*ver_ani, 
@@ -63,13 +71,22 @@ class s0(Scene):
         
         line_ca = Line(self.coord_c_shift, self.coord_a_shift)
         line_cd = Line(self.coord_c_shift, self.coord_b_shift)
-        angle = Angle(line_ca, line_cd, radius=0.6, other_angle=False)
+        #angle = Angle(line_ca, line_cd, radius=0.6, other_angle=False)
+        """
+        gl中angle的实现有不同
+        """
+        angle_ca_cb = self.angle_of_points(self.coord_c_shift, 
+                                           self.coord_a_shift, 
+                                           self.coord_b_shift)
+        angle = Arc(start_angle=Line(self.coord_c_shift, self.coord_b_shift).get_angle(), angle=-angle_ca_cb, radius=0.6, color=WHITE)
+        angle.shift(self.coord_c_shift)
+
         label_angle = Tex(r"\alpha").next_to(angle, RIGHT).scale(0.8).shift(0.05*UP)
 
         self.play(Write(angle), Write(label_angle), run_time=1)
         self.wait()
 
-        text = Tex("It is already to know that $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
+        text = TexText("It is already to know that $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
         self.play(Write(text), run_time=1)
         self.wait()
 
@@ -121,9 +138,9 @@ class s0(Scene):
                   run_time=2)
         self.wait()
         
-        rec_up = Rectangle(height=self.all_gr[0].get_height()+0.5, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(self.all_gr[0]).set_z_index(2)
-        rec_mid = Rectangle(height=self.all_gr[1].get_height()+1.4, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(self.all_gr[1]).set_z_index(2)
-        rec_down = Rectangle(height=self.all_gr[2].get_height()+2, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(self.all_gr[2]).set_z_index(2)
+        rec_up = Rectangle(height=self.all_gr[0].get_height()+0.5, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(self.all_gr[0])
+        rec_mid = Rectangle(height=self.all_gr[1].get_height()+1.4, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(self.all_gr[1])
+        rec_down = Rectangle(height=self.all_gr[2].get_height()+2, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(self.all_gr[2])
 
         # 可视化1的长度
         # line = Line(ORIGIN, RIGHT).to_edge()
@@ -151,7 +168,13 @@ class s0(Scene):
 
         line_ca = Line(point_c.get_center(), point_a.get_center())
         line_cd = Line(point_c.get_center(), point_d.get_center())
-        angle_half = Angle(line_ca, line_cd, radius=0.6, other_angle=False)
+        #angle_half = Angle(line_ca, line_cd, radius=0.6, other_angle=False)
+        angle_ca_cd = self.angle_of_points(point_c.get_center(), 
+                                           point_a.get_center(), 
+                                           point_d.get_center())
+        angle_half = Arc(start_angle=Line(point_c.get_center(), point_d.get_center()).get_angle(), angle=-angle_ca_cd, radius=0.6, color=WHITE)
+        angle_half.shift(point_c.get_center())
+
         label_angle_half = Tex(r"\frac{\alpha}{2}").next_to(angle_half, RIGHT).scale(0.8).shift(0.05*UP)
         
         result = VGroup(half_line, 
