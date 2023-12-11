@@ -61,6 +61,7 @@ class s0(Scene):
         self.opening()  
         self.introduce_three_methods()
         self.clear()
+        self.wait()
         pass
 
     # 需要注意p1是角所在的位置
