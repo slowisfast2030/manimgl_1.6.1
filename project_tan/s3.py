@@ -1,18 +1,30 @@
-from manim import *
+import sys
+sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
+
+from manim_imports_ext import *
 
 """
-坐标系
+开场
 """
-# 下面这几行设置竖屏
+# manimgl中没有config这个对象，代码中使用了config.frame_width
+# 这里为了兼容，引入了config
+class C:
+    pass
+
+config = C()
 config.frame_width = 9
 config.frame_height = 16
 
-config.pixel_width = 1080
-config.pixel_height = 1920
+def student_with_teacher():
+    colors = [BLUE_E, GREY_BROWN]
+    student_teacher = [PiCreature(color=color) for color in colors]
+    student_teacher = VGroup(*student_teacher)
+    student_teacher.arrange(RIGHT, buff=0.9).shift(DOWN*5.5).scale(0.8)
 
-# 一个很聪明的方案
-class ShowCreation(Create):
-    pass
+    _, teacher = student_teacher
+    teacher.scale(1.3)
+
+    return student_teacher
 
 class s3(Scene):
     def setup(self):
@@ -45,6 +57,14 @@ class s3(Scene):
         self.introduce_vertical_line() 
         pass
         
+    # 需要注意p1是角所在的位置
+    # 这个方法是为了计算p1p2和p1p3之间的夹角
+    def angle_of_points(self, p1, p2, p3):
+            v1 = np.array(p2) - np.array(p1)
+            v2 = np.array(p3) - np.array(p1)
+            angle = np.arccos(np.dot(v1, v2)/(np.linalg.norm(v1)*np.linalg.norm(v2)))
+            return angle
+    
     # 快速回顾问题
     # 屏幕中间出现一个三角形，屏幕下方出现pi生物
     def review_problem(self):
@@ -56,17 +76,22 @@ class s3(Scene):
         point_a = Dot(self.coord_a_shift)
         point_b = Dot(self.coord_b_shift)
 
-        ver_c = MathTex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN).set_z_index(1)
-        ver_a = MathTex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN).set_z_index(1)
-        ver_b = MathTex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT).set_z_index(1)
+        ver_c = Tex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN).set_z_index(1)
+        ver_a = Tex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN).set_z_index(1)
+        ver_b = Tex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT).set_z_index(1)
         ver_ani = list(map(FadeIn, [ver_c, ver_a, ver_b]))
 
         
         
         line_ca = Line(self.coord_c_shift, self.coord_a_shift)
         line_cd = Line(self.coord_c_shift, self.coord_b_shift)
-        angle = Angle(line_ca, line_cd, radius=0.6, other_angle=False)
-        label_angle = MathTex(r"\alpha").next_to(angle, RIGHT).scale(0.8).shift(0.05*UP)
+        #angle = Angle(line_ca, line_cd, radius=0.6, other_angle=False)
+        angle_ca_cb = self.angle_of_points(self.coord_c_shift, 
+                                           self.coord_a_shift, 
+                                           self.coord_b_shift)
+        angle = Arc(start_angle=Line(self.coord_c_shift, self.coord_b_shift).get_angle(), angle=-angle_ca_cb, radius=0.6, color=WHITE)
+        angle.shift(self.coord_c_shift)
+        label_angle = Tex(r"\alpha").next_to(angle, RIGHT).scale(0.8).shift(0.05*UP)
 
         # 将所有的mob向上移动2个单位，为下方的pi生物让出空间
         tri_gr = VGroup(triangle, ver_c, ver_a, ver_b, angle, label_angle).shift(1*UP)
@@ -113,9 +138,9 @@ class s3(Scene):
                            self.coord_a_shift, 
                            self.coord_b_shift, 
                            color=self.line_color, stroke_width=3).set_z_index(1)
-        ver_c = MathTex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN).set_z_index(1)
-        ver_a = MathTex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN).set_z_index(1)
-        ver_b = MathTex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT).set_z_index(1)
+        ver_c = Tex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN).set_z_index(1)
+        ver_a = Tex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN).set_z_index(1)
+        ver_b = Tex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT).set_z_index(1)
         ver_ani = list(map(FadeIn, [ver_c, ver_a, ver_b]))
 
         self.play(*ver_ani, 
@@ -147,14 +172,14 @@ class s3(Scene):
 
         # 显示角平分线
         half_line = Line(self.coord_c, self.coord_d, color=self.line_color)
-        ver_d = MathTex("D", color=WHITE).next_to(self.coord_d, RIGHT)
+        ver_d = Tex("D", color=WHITE).next_to(self.coord_d, RIGHT)
         self.play(ShowCreation(half_line), run_time=1)
         self.play(Write(ver_d), run_time=1)
 
         # 显示直线CD的垂线
         line_ef = Line(self.coord_e, self.coord_f, color=self.line_color)
-        ver_e = MathTex("E", color=WHITE).next_to(self.coord_e, LEFT)
-        ver_f = MathTex("F", color=WHITE).next_to(self.coord_f, DOWN)
+        ver_e = Tex("E", color=WHITE).next_to(self.coord_e, LEFT)
+        ver_f = Tex("F", color=WHITE).next_to(self.coord_f, DOWN)
 
         self.play(GrowFromPoint(line_ef, self.coord_d), run_time=1)
         self.play(Write(ver_e), Write(ver_f), run_time=1)
@@ -208,8 +233,8 @@ class pr(s3):
         bank = Line([-4, 0, 0], [4, 0, 0], color=WHITE)
         point_a = Dot([-1, 1, 0], color=WHITE)
         point_b = Dot([2, 2, 0], color=WHITE)
-        label_a = MathTex("A", color=WHITE).next_to(point_a, UP)
-        label_b = MathTex("B", color=WHITE).next_to(point_b, UP)
+        label_a = Tex("A", color=WHITE).next_to(point_a, UP)
+        label_b = Tex("B", color=WHITE).next_to(point_b, UP)
         bank_gr = VGroup(bank, point_a, point_b, label_a, label_b)
 
         # 上
@@ -227,13 +252,13 @@ class pr(s3):
         point_a_sym_x = bank_up[1].get_center()[0]
         point_a_sym_y = bank_up[1].get_center()[1] - 2*ver_dis
         point_a_sym = Dot([point_a_sym_x, point_a_sym_y, 0], color=WHITE)
-        label_a_sym = MathTex("A'", color=WHITE).next_to(point_a_sym, DOWN)
+        label_a_sym = Tex("A'", color=WHITE).next_to(point_a_sym, DOWN)
 
         line_a_sym_b = Line(point_a_sym.get_center(), bank_up[2].get_center(), color=RED)   
         
         plane = NumberPlane().shift(bank_down[0].get_center()).scale(0.7).set_z_index(-1)
         point_c = Dot(plane.get_center() + RIGHT, color=WHITE)
-        label_c = MathTex("C(x,y)", color=RED).next_to(point_c, DOWN)
+        label_c = Tex("C(x,y)", color=RED).next_to(point_c, DOWN)
         self.play(Write(plane), 
                   Write(point_a_sym), 
                   Write(label_a_sym), 
@@ -256,20 +281,20 @@ class pr(s3):
         triangle = Polygon(c_a, c_b, c_c, color=self.line_color, stroke_width=3)
         self.play(Write(triangle), run_time=1)
 
-        ver_a = MathTex("A", color=WHITE).next_to(c_a, DOWN)
-        ver_b = MathTex("B", color=WHITE).next_to(c_b, DOWN)
-        ver_c = MathTex("C", color=WHITE).next_to(c_c, UP)
+        ver_a = Tex("A", color=WHITE).next_to(c_a, DOWN)
+        ver_b = Tex("B", color=WHITE).next_to(c_b, DOWN)
+        ver_c = Tex("C", color=WHITE).next_to(c_c, UP)
         ver_ani = list(map(FadeIn, [ver_a, ver_b, ver_c]))
         self.play(*ver_ani, run_time=1)
 
         tri_bc = self.get_equilateral_triangle(Line(c_b, c_c))
-        dot_e_label = MathTex("E", color=WHITE).next_to(tri_bc[2], RIGHT)
+        dot_e_label = Tex("E", color=WHITE).next_to(tri_bc[2], RIGHT)
 
         tri_ca = self.get_equilateral_triangle(Line(c_c, c_a))
-        dot_d_label = MathTex("D", color=WHITE).next_to(tri_ca[2], LEFT)
+        dot_d_label = Tex("D", color=WHITE).next_to(tri_ca[2], LEFT)
 
         tri_ab = self.get_equilateral_triangle(Line(c_a, c_b))
-        dot_f_label = MathTex("F", color=WHITE).next_to(tri_ab[2], DOWN)
+        dot_f_label = Tex("F", color=WHITE).next_to(tri_ab[2], DOWN)
 
         self.play(Write(dot_e_label), Write(dot_d_label), Write(dot_f_label), run_time=1)
 
