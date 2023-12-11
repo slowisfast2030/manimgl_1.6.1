@@ -75,9 +75,6 @@ class s0(Scene):
     def opening(self):
         # 画出学生和老师
         student_teacher = student_with_teacher()
-        #self.play(FadeIn(student_teacher))
-        #self.play(student_teacher[1].says("today, we will \nlearn abandon!"))
-        #self.wait(1) 
 
         triangle = Polygon(self.coord_c_shift, 
                            self.coord_a_shift, 
@@ -121,7 +118,8 @@ class s0(Scene):
                   run_time=1)
         self.wait()
 
-        text = TexText("It is already to know that $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
+        #text = TexText("It is already to know that $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
+        text = TexText("Given $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
         self.play(Write(text), run_time=1)
         self.wait()
 
