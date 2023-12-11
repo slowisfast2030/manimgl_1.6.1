@@ -1,4 +1,7 @@
-from manimlib import *
+import sys
+sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
+
+from manim_imports_ext import *
 
 """
 开场
@@ -11,6 +14,19 @@ class C:
 config = C()
 config.frame_width = 9
 config.frame_height = 16
+
+
+def student_with_teacher():
+    colors = [BLUE, RED]
+    student_teacher = [PiCreature(color=color) for color in colors]
+    student_teacher = VGroup(*student_teacher)
+    student_teacher.arrange(RIGHT, buff=0.9).shift(DOWN*5.5).scale(0.8)
+
+    _, teacher = student_teacher
+    teacher.scale(1.3)
+
+    return student_teacher
+
 
 class s0(Scene):
     def setup(self):
@@ -51,6 +67,12 @@ class s0(Scene):
     # 在屏幕上方出现一个简单的三角形，下方位置留给pi生物
     # 在三角形下方显示tan(alpha) = 3/4，求解tan(alpha/2)
     def opening(self):
+        # 画出学生和老师
+        student_teacher = student_with_teacher()
+        #self.play(FadeIn(student_teacher))
+        #self.play(student_teacher[1].says("today, we will \nlearn abandon!"))
+        #self.wait(1) 
+
         triangle = Polygon(self.coord_c_shift, 
                            self.coord_a_shift, 
                            self.coord_b_shift, 
@@ -83,7 +105,8 @@ class s0(Scene):
 
         label_angle = Tex(r"\alpha").next_to(angle, RIGHT, 0.1).scale(0.8).shift(0.05*UP)
 
-        self.play(Write(angle), Write(label_angle), run_time=1)
+        self.play(Write(angle), Write(label_angle), 
+                  FadeIn(student_teacher),run_time=1)
         self.wait()
 
         text = TexText("It is already to know that $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
@@ -97,10 +120,15 @@ class s0(Scene):
         tri_gr_down = tri_gr.copy()
         all_gr = VGroup(tri_gr_up, tri_gr_mid, tri_gr_down).arrange(DOWN, buff=2).scale(0.8)
 
+        pi_text = Text("已知全角的正切值，\n如何求解半角的正切值呢？").scale(0.5)
         self.play(FadeOut(angle),
                   FadeOut(label_angle),
-                  FadeOut(text))
+                  FadeOut(text),
+                  student_teacher[1].says(pi_text))
         self.play(FadeOut(tri_gr),
+                  student_teacher[1].debubble(),
+                  FadeOut(student_teacher[0]),
+                  FadeOut(student_teacher[1]),
                   TransformFromCopy(tri_gr, tri_gr_up),
                   TransformFromCopy(tri_gr, tri_gr_mid),
                   TransformFromCopy(tri_gr, tri_gr_down))
