@@ -222,15 +222,15 @@ class s2(Scene):
         circle_2, origin_2, origin_lable_2 = self.two_gr[1]
 
         # 上圆
-        circle_point = Dot(point=circle_1.point_at_angle(PI/3), color=RED)
+        circle_point = Dot(point=circle_1.point_from_proportion((PI/3)/(2*PI)), color=RED)
         circle_point_lable = Tex("C").next_to(circle_point, UP) 
         line_diameter = Line(circle_1.get_left(), circle_1.get_right(), color=self.radial_line_color)
         line_1 = Line(circle_point.get_center(), line_diameter.get_left(), color=self.radial_line_color)
         line_2 = Line(circle_point.get_center(), line_diameter.get_right(), color=self.radial_line_color)
         # 下圆
-        point_a = Dot(circle_2.point_at_angle(PI + PI/6), color=RED)
-        point_b = Dot(circle_2.point_at_angle(PI + 5*PI/6), color=RED)
-        point_c = Dot(circle_2.point_at_angle(PI/2), color=RED)
+        point_a = Dot(circle_2.point_from_proportion((PI + PI/6)/(2*PI)), color=RED)
+        point_b = Dot(circle_2.point_from_proportion((PI + 5*PI/6)/(2*PI)), color=RED)
+        point_c = Dot(circle_2.point_from_proportion((PI/2)/(2*PI)), color=RED)
         label_a = Tex("A").next_to(point_a, LEFT)
         label_b = Tex("B").next_to(point_b, RIGHT)
         label_c = Tex("C").next_to(point_c, UP)
