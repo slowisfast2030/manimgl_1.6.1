@@ -150,7 +150,7 @@ class s3(Scene):
 
         text_syn_gr = VGroup(text_syn_en, text_syn_ch).arrange(DOWN, 0.5)
         text_ana_gr = VGroup(text_ana_en, text_ana_ch).arrange(DOWN, 0.5)
-        text_gr = VGroup(text_syn_gr, text_ana_gr).arrange(RIGHT, 1).shift(DOWN*3)
+        text_gr = VGroup(text_syn_gr, text_ana_gr).arrange(RIGHT, 1.2).shift(DOWN*3)
         #self.play(FadeIn(text_gr))
         self.play(Write(text_syn_en),
                   student_teacher[1].debubble(),
