@@ -143,16 +143,18 @@ class s3(Scene):
         ver_b = Tex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT)
         ver_ani = list(map(FadeIn, [ver_c, ver_a, ver_b]))
 
-        self.play(*ver_ani, 
-                  ShowCreation(triangle),
-                  run_time=1)
-        self.wait()
+        
         
         tri_gr = VGroup(triangle, ver_c, ver_a, ver_b)
         # 引入坐标平面
         # 将整个画面网上提一点，为下方的pi生物让出空间
         plane = NumberPlane().shift(3*UP)
         self.play(Write(plane),
+                  run_time=1)
+        self.wait()
+        
+        self.play(*ver_ani, 
+                  ShowCreation(triangle),
                   run_time=1)
         self.wait()
         
