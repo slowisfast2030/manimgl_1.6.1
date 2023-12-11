@@ -3,12 +3,13 @@ from manimlib import *
 """
 开场
 """
-# 下面这几行设置竖屏
-# config.frame_width = 9
-# config.frame_height = 16
+# manimgl中没有config这个对象，这里为了兼容，引入了config
+config={}
+config.frame_width = 9
+config.frame_height = 16
 
-# config.pixel_width = 1080
-# config.pixel_height = 1920
+config.pixel_width = 1080
+config.pixel_height = 1920
 
 # 一个很聪明的方案
 # class ShowCreation(Create):
@@ -56,9 +57,9 @@ class s0(Scene):
         point_a = Dot(self.coord_a_shift)
         point_b = Dot(self.coord_b_shift)
 
-        ver_c = MathTex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN).set_z_index(1)
-        ver_a = MathTex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN).set_z_index(1)
-        ver_b = MathTex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT).set_z_index(1)
+        ver_c = Tex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN).set_z_index(1)
+        ver_a = Tex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN).set_z_index(1)
+        ver_b = Tex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT).set_z_index(1)
         ver_ani = list(map(FadeIn, [ver_c, ver_a, ver_b]))
 
         self.play(*ver_ani, 
@@ -69,7 +70,7 @@ class s0(Scene):
         line_ca = Line(self.coord_c_shift, self.coord_a_shift)
         line_cd = Line(self.coord_c_shift, self.coord_b_shift)
         angle = Angle(line_ca, line_cd, radius=0.6, other_angle=False)
-        label_angle = MathTex(r"\alpha").next_to(angle, RIGHT).scale(0.8).shift(0.05*UP)
+        label_angle = Tex(r"\alpha").next_to(angle, RIGHT).scale(0.8).shift(0.05*UP)
 
         self.play(Write(angle), Write(label_angle), run_time=1)
         self.wait()
@@ -152,12 +153,12 @@ class s0(Scene):
 
         half_line = Line(point_c.get_center(), point_d.get_center(), color=self.line_color)
 
-        ver_d = MathTex("D", color=self.label_color).next_to(point_d, RIGHT)
+        ver_d = Tex("D", color=self.label_color).next_to(point_d, RIGHT)
 
         line_ca = Line(point_c.get_center(), point_a.get_center())
         line_cd = Line(point_c.get_center(), point_d.get_center())
         angle_half = Angle(line_ca, line_cd, radius=0.6, other_angle=False)
-        label_angle_half = MathTex(r"\frac{\alpha}{2}").next_to(angle_half, RIGHT).scale(0.8).shift(0.05*UP)
+        label_angle_half = Tex(r"\frac{\alpha}{2}").next_to(angle_half, RIGHT).scale(0.8).shift(0.05*UP)
         
         result = VGroup(half_line, 
                         ver_d,
@@ -174,7 +175,7 @@ class s0(Scene):
 
         # 圆心是c和b的中点
         origin = Dot((point_c.get_center() + point_b.get_center())/2)
-        origin_lable = MathTex("O").next_to(origin, UP)
+        origin_lable = Tex("O").next_to(origin, UP)
 
         circle = Circle(
             radius = self.radius,
