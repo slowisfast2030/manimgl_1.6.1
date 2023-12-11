@@ -380,7 +380,7 @@ class s1(Scene):
         self.play(Write(text5))
         self.wait()
 
-        text6 = TexText(r"So, $tan(\frac{\alpha}{2}) = \frac{AD}{AC} = \frac{1}{3}$").next_to(text5, DOWN, buff=0.5).scale(self.text_scale)
+        text6 = Tex(r"tan(\frac{\alpha}{2}) = \frac{AD}{AC} = \frac{1}{3}").next_to(text5, DOWN, buff=0.5).scale(self.text_scale)
         self.play(Write(text6))
         self.wait()
 
