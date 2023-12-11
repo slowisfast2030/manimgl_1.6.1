@@ -3,17 +3,11 @@ from manimlib import *
 """
 开场
 """
-# manimgl中没有config这个对象，这里为了兼容，引入了config
+# manimgl中没有config这个对象，代码中使用了config.frame_width
+# 这里为了兼容，引入了config
 config={}
 config.frame_width = 9
 config.frame_height = 16
-
-config.pixel_width = 1080
-config.pixel_height = 1920
-
-# 一个很聪明的方案
-# class ShowCreation(Create):
-#     pass
 
 class s0(Scene):
     def setup(self):
