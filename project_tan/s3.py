@@ -113,10 +113,10 @@ class s3(Scene):
         淡出pi生物, 同时出现下方的动画
         """
         # 出现文字：systhetic geometry
-        text_syn_en = Tex("Synthetic Geometry").scale(self.text_scale)
+        text_syn_en = Text("Synthetic Geometry").scale(self.text_scale)
         text_syn_ch = Text("综合几何").scale(self.text_scale)
         # 出现文字：analytic geometry
-        text_ana_en = Tex("Analytic Geometry").scale(self.text_scale)
+        text_ana_en = Text("Analytic Geometry").scale(self.text_scale)
         text_ana_ch = Text("解析几何").scale(self.text_scale)
 
         text_syn_gr = VGroup(text_syn_en, text_syn_ch).arrange(DOWN, 0.5)
