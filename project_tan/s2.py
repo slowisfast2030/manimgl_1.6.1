@@ -116,7 +116,7 @@ class s2(Scene):
                     student_teacher[1].animate.change_mode("happy"),
                     run_time=1)
         
-        text = TexText("It is already to know that $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
+        text = TexText("Given $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
         self.play(FadeIn(text), run_time=1)
         self.wait(2)
 
@@ -153,15 +153,15 @@ class s2(Scene):
                   FadeOut(student_teacher[0]),
                   FadeOut(student_teacher[1]),
                   run_time=1)
-        self.wait()
+        self.wait(2)
 
         
         self.play(GrowFromCenter(brace), run_time=1)
-        self.wait() 
+        self.wait(2) 
 
         
         self.play(GrowFromCenter(text3), run_time=1)
-        self.wait()
+        self.wait(2)
 
         """
         多亏了gpt4, 实现了我一直想要的操作
