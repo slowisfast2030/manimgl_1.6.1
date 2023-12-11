@@ -71,14 +71,14 @@ class s3(Scene):
         triangle = Polygon(self.coord_c_shift, 
                            self.coord_a_shift, 
                            self.coord_b_shift, 
-                           color=self.line_color, stroke_width=3).set_z_index(1)
+                           color=self.line_color, stroke_width=3)
         point_c = Dot(self.coord_c_shift)
         point_a = Dot(self.coord_a_shift)
         point_b = Dot(self.coord_b_shift)
 
-        ver_c = Tex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN).set_z_index(1)
-        ver_a = Tex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN).set_z_index(1)
-        ver_b = Tex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT).set_z_index(1)
+        ver_c = Tex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN)
+        ver_a = Tex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN)
+        ver_b = Tex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT)
         ver_ani = list(map(FadeIn, [ver_c, ver_a, ver_b]))
 
         
@@ -105,7 +105,7 @@ class s3(Scene):
         此时下方的pi生物老师说, 我们来看第三种方法
         """
 
-        text = Tex("It is already to know that $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
+        text = TexText("It is already to know that $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
         self.play(FadeIn(text), run_time=1)
         self.wait()
 
@@ -137,10 +137,10 @@ class s3(Scene):
         triangle = Polygon(self.coord_c_shift, 
                            self.coord_a_shift, 
                            self.coord_b_shift, 
-                           color=self.line_color, stroke_width=3).set_z_index(1)
-        ver_c = Tex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN).set_z_index(1)
-        ver_a = Tex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN).set_z_index(1)
-        ver_b = Tex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT).set_z_index(1)
+                           color=self.line_color, stroke_width=3)
+        ver_c = Tex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN)
+        ver_a = Tex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN)
+        ver_b = Tex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT)
         ver_ani = list(map(FadeIn, [ver_c, ver_a, ver_b]))
 
         self.play(*ver_ani, 
@@ -213,8 +213,8 @@ class pr(s3):
         self.wait(1)
 
         # 为了分别讲解两个几何, 需要设置一个起到遮罩的作用的矩形
-        rec_up = Rectangle(height=geo_gr[0].get_height()+0.5, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(geo_gr[0]).set_z_index(2)
-        rec_down = Rectangle(height=geo_gr[1].get_height()+0.5, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(geo_gr[1]).set_z_index(2)
+        rec_up = Rectangle(height=geo_gr[0].get_height()+0.5, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(geo_gr[0])
+        rec_down = Rectangle(height=geo_gr[1].get_height()+0.5, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(geo_gr[1])
         
         # 淡入下面的矩形
         self.play(FadeIn(rec_down), run_time=1)
@@ -256,7 +256,7 @@ class pr(s3):
 
         line_a_sym_b = Line(point_a_sym.get_center(), bank_up[2].get_center(), color=RED)   
         
-        plane = NumberPlane().shift(bank_down[0].get_center()).scale(0.7).set_z_index(-1)
+        plane = NumberPlane().shift(bank_down[0].get_center()).scale(0.7)
         point_c = Dot(plane.get_center() + RIGHT, color=WHITE)
         label_c = Tex("C(x,y)", color=RED).next_to(point_c, DOWN)
         self.play(Write(plane), 
