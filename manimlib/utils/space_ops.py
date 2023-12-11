@@ -232,6 +232,7 @@ def angle_of_vector(vector: Sequence[float]) -> float:
     """
     Returns polar coordinate theta when vector is project on xy plane
     """
+    #print(vector)
     return np.angle(complex(*vector[:2]))
 
 
