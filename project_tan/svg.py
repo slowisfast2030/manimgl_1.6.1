@@ -1,11 +1,19 @@
-from manim import *
+import sys
+sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
 
-# 下面这几行设置竖屏
+from manim_imports_ext import *
+
+"""
+开场
+"""
+# manimgl中没有config这个对象，代码中使用了config.frame_width
+# 这里为了兼容，引入了config
+class C:
+    pass
+
+config = C()
 config.frame_width = 9
 config.frame_height = 16
-
-config.pixel_width = 1080
-config.pixel_height = 1920
 
 
 class svg(Scene):
