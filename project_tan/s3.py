@@ -293,10 +293,10 @@ class pr(s3):
         plane = NumberPlane().shift(bank_down[0].get_center()).scale(0.7)
         point_c = Dot(plane.get_center() + RIGHT, color=WHITE)
         label_c = Tex("C(x,y)", color=RED).next_to(point_c, DOWN)
-        self.play(Write(plane), 
+        self.play(FadeIn(plane), 
                   Write(point_a_sym), 
                   Write(label_a_sym), 
-                  run_time=2)
+                  run_time=1)
 
         self.wait()
 
