@@ -1,4 +1,4 @@
-from manim import *
+from manimlib import *
 
 class test(Scene):
     def construct(self):
@@ -24,7 +24,8 @@ class test(Scene):
         # text5 = MathTex(r"x=\frac{4}{3}").next_to(text4, DOWN, buff=0.5).scale(0.7)
         # self.play(Write(text5))
         # self.wait()
-        text = Tex("This is: $x^2 + y^2 = z^2$")
+        #text = TexText("This is: $x^2 + y^2 = z^2$")
+        text = TexText("This is: $x^2 + y^2 = z^2$")
         self.play(Write(text))
         self.wait()
 
