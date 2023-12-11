@@ -355,6 +355,18 @@ class s2(Scene):
                     Rotate(point_c, -1/2*PI-1/6*PI, about_point=circle_2.get_center(), rate_func=linear), 
                     run_time=3)
         self.wait()
+
+        # 设置遮挡矩形
+        rec_up = Rectangle(height=self.two_gr[0].get_height()+0.5, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(self.two_gr[0])
+        rec_down = Rectangle(height=self.two_gr[1].get_height()+0.5, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(self.two_gr[1])
+
+        self.play(FadeIn(rec_down), run_time=1)
+        self.wait(2)
+        self.play(FadeIn(rec_up), FadeOut(rec_down), run_time=1)
+        self.wait(2)
+        self.play(FadeIn(rec_down), run_time=1)
+        self.wait()
+
         pass
 
     # 解决问题
