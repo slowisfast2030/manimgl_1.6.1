@@ -54,7 +54,7 @@ class s0(Scene):
 
     def construct(self):
         self.opening()  
-        self.introduce_three_methods()
+        #self.introduce_three_methods()
         pass
 
     # 需要注意p1是角所在的位置
@@ -111,8 +111,8 @@ class s0(Scene):
 
         self.play(Write(angle), 
                   Write(label_angle), 
-                    student_teacher[0].animate.change_mode("guilty"),
-                    student_teacher[1].animate.change_mode("hooray"),
+                    student_teacher[0].animate.change_mode("happy"),
+                    student_teacher[1].animate.change_mode("happy"),
                   run_time=1)
         self.wait()
 
