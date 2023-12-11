@@ -334,16 +334,15 @@ class s1(Scene):
 
 
         # 设DA=x，则DE=x, BD=4-x
-        # text1 = TexText("Suppose DA=$x$, then DE=$x$, BD=$3-x$").next_to(text0_center, DOWN).scale(self.text_scale)
-        text1_0 = Text("不妨令")
-        text1_1 = Tex("DA=x, ")
-        text1_2 = Text("那么")
-        text1_3 = Tex("DE=x, BD=3-x")
-        text1 = VGroup(text1_0, text1_1, text1_2, text1_3).arrange(RIGHT, buff=0.1)
-        for text in text1:
-            text.match_height(text_line_eq)
-        
-        text1.next_to(text0_center, DOWN, buff=0.5)
+        text1 = TexText("Suppose DA=$x$, then DE=$x$, BD=$3-x$").next_to(text0_center, DOWN, 0.5).scale(self.text_scale)
+        # text1_0 = Text("不妨令")
+        # text1_1 = Tex("DA=x, ")
+        # text1_2 = Text("那么")
+        # text1_3 = Tex("DE=x, BD=3-x")
+        # text1 = VGroup(text1_0, text1_1, text1_2, text1_3).arrange(RIGHT, buff=0.1)
+        # for text in text1:
+        #     text.match_height(text_line_eq)
+        # text1.next_to(text0_center, DOWN, buff=0.5)
 
         line_ad = Line(self.coord_a_shift, self.coord_d_shift, color=self.line_color)
         line_de = Line(self.coord_d_shift, self.coord_e_shift, color=self.line_color)
@@ -360,18 +359,20 @@ class s1(Scene):
         self.wait()
 
         # 勾股定理
-        text2 = TexText("In the right-angled triangle DEB, \\\\ according to the Pythagorean theorem, \\\\ it can be derived that").next_to(text1, DOWN, buff=0.5).scale(self.text_scale)
+        #text2 = TexText("In the right-angled triangle DEB, \\\\ according to the Pythagorean theorem, \\\\ it can be derived that").next_to(text1, DOWN, buff=0.5).scale(self.text_scale)
+        text2 = TexText(r"In Rt$\triangle DEB$, $BD^2=DE^2+BE^2$").next_to(text1, DOWN, buff=0.5).scale(self.text_scale)
+
         tri_deb = Polygon(self.coord_d_shift, self.coord_e_shift, self.coord_b_shift, color=self.line_color, stroke_width=3)
         tri_deb.set_fill(color=BLUE, opacity=0.6)
         self.play(FadeIn(text2), FadeIn(tri_deb))
         self.wait()
 
-        text3 = Tex("BD^2=DE^2+BE^2").next_to(text2, DOWN, buff=0.5).scale(self.text_scale)
+        # text3 = Tex("BD^2=DE^2+BE^2").next_to(text2, DOWN, buff=0.5).scale(self.text_scale)
         
-        self.play(Write(text3))
-        self.wait()
+        # self.play(Write(text3))
+        # self.wait()
 
-        text4 = Tex(r"(3-x)^2=x^2+(4-3)^2").next_to(text3, DOWN, buff=0.5).scale(self.text_scale)
+        text4 = Tex(r"(3-x)^2=x^2+(4-3)^2").next_to(text2, DOWN, buff=0.5).scale(self.text_scale)
         self.play(Write(text4))
         self.wait()
 
