@@ -417,13 +417,13 @@ class s2(Scene):
                     Write(f_label),
                     run_time=1)
         
-        text1 = TexText("It is evident that \\\\ OF is the median line of triangle BCA").next_to(circle, DOWN, buff=1).scale(self.text_scale)
+        text1 = TexText(r"It is evident that \\ OF is the median line of Rt$\triangle BCA$").next_to(circle, DOWN, buff=1).scale(self.text_scale)
         self.play(Write(text1), run_time=1)
         self.wait()
         text2 = Tex(r"EF=EO+OF=\frac{CB}{2}+\frac{CA}{2}=\frac{9}{2}").next_to(text1, DOWN, buff=0.5).scale(self.text_scale)
         self.play(Write(text2), run_time=1)
         self.wait()
-        text3 = Tex(r"\tan(\frac{\theta}{2})=\frac{BF}{EF}=\frac{1}{3}").next_to(text2, DOWN, buff=0.5).scale(self.text_scale)
+        text3 = Tex(r"\tan(\frac{\alpha}{2})=\frac{BF}{EF}=\frac{1}{3}").next_to(text2, DOWN, buff=0.5).scale(self.text_scale)
         self.play(Write(text3), run_time=1)
         self.wait()
 
