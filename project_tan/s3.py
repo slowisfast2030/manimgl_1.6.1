@@ -304,6 +304,8 @@ class pr(s3):
                   Write(label_c),
                   ShowCreation(line_a_sym_b))
         self.wait()
+
+        self.play(FadeOut(self.mobjects))
         pass
 
     # 以费马点的例子介绍两种几何
