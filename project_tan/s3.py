@@ -305,7 +305,8 @@ class pr(s3):
                   ShowCreation(line_a_sym_b))
         self.wait()
 
-        self.play(FadeOut(self.mobjects))
+        ani = list(map(FadeOut, self.mobjects))
+        self.play(*ani)
         pass
 
     # 以费马点的例子介绍两种几何
