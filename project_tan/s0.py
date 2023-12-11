@@ -124,7 +124,10 @@ class s0(Scene):
         self.play(FadeOut(angle),
                   FadeOut(label_angle),
                   FadeOut(text),
-                  student_teacher[1].says(pi_text))
+                  student_teacher[1].says(pi_text),
+                  )
+        self.play(student_teacher[0].animate.change_mode("confused"))
+        self.wait()
         self.play(FadeOut(tri_gr),
                   student_teacher[1].debubble(),
                   FadeOut(student_teacher[0]),
@@ -236,7 +239,7 @@ class s0(Scene):
     # 第三种解法    
     def introduce_third_method(self):
         
-        tri_gr_down = self.all_gr[2].set_z(1)
+        tri_gr_down = self.all_gr[2]
         point_a = tri_gr_down[4]
         point_b = tri_gr_down[5]
         point_c = tri_gr_down[6]
