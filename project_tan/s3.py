@@ -152,7 +152,7 @@ class s3(Scene):
         self.play(Write(plane),
                   run_time=1)
         self.wait()
-        
+
         self.play(*ver_ani, 
                   ShowCreation(triangle),
                   run_time=1)
@@ -197,7 +197,7 @@ class pr(s3):
     # 引入两种几何
     def two_geometry(self):
         # 综合几何
-        svg_compass = SVGMobject("compass.svg").set_fill(GREEN_B, 0.7)
+        svg_compass = SVGMobject("c1.svg").set_fill(GREEN_B, 0.7)
         svg_ruler = SVGMobject("ruler.svg").set_fill(TEAL, 0.5).match_height(svg_compass)
         svg_gr = VGroup(svg_ruler, svg_compass).arrange(RIGHT, buff=0.5).scale(1.5)
 
