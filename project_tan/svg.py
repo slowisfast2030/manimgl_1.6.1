@@ -20,7 +20,7 @@ class svg(Scene):
     def construct(self):
         # 综合几何
         
-        svg_compass = SVGMobject("compass.svg").set_fill(GREEN_B, 0.7)
+        svg_compass = SVGMobject("c1.svg").set_fill(GREEN_B, 0.7)
         
 
         svg_ruler = SVGMobject("ruler.svg").set_fill(TEAL, 0.5).match_height(svg_compass)
@@ -32,16 +32,11 @@ class svg(Scene):
         # 整体
         geo_gr = VGroup(svg_gr, plane).arrange(DOWN, buff=3)
 
-        dot = Rectangle(0.3,0.3).set_fill(BLACK,1).set_stroke(RED,0.1).move_to(svg_compass.get_top()-0.189).set_z(1)
-        #self.add(dot)
-
-        self.play(FadeIn(dot))
         # Display the image
         self.play(
             #FadeIn(dot),
             Write(svg_gr[0]),
                 Write(svg_gr[1]),
-                
                 Write(plane),
                 run_time = 2)
         self.wait(2)  # Wait for 2 seconds
