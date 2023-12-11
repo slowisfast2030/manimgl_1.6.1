@@ -17,7 +17,7 @@ config.frame_height = 16
 
 
 def student_with_teacher():
-    colors = [BLUE, RED]
+    colors = [BLUE_E, GREY_BROWN]
     student_teacher = [PiCreature(color=color) for color in colors]
     student_teacher = VGroup(*student_teacher)
     student_teacher.arrange(RIGHT, buff=0.9).shift(DOWN*5.5).scale(0.8)
