@@ -68,6 +68,9 @@ class s3(Scene):
     # 快速回顾问题
     # 屏幕中间出现一个三角形，屏幕下方出现pi生物
     def review_problem(self):
+        # 画出学生和老师
+        student_teacher = student_with_teacher()
+
         triangle = Polygon(self.coord_c_shift, 
                            self.coord_a_shift, 
                            self.coord_b_shift, 
@@ -98,12 +101,18 @@ class s3(Scene):
 
         self.play(*ver_ani, 
                   ShowCreation(triangle),
+                  FadeIn(student_teacher),
                   run_time=1)
         self.play(Write(angle),
                   FadeIn(label_angle),)
         """
         此时下方的pi生物老师说, 我们来看第三种方法
         """
+        pi_text = Text("我们来看第三种方法！").scale(0.7)
+        self.play(
+                  student_teacher[1].says(pi_text),
+                  )
+        self.play(student_teacher[0].animate.change_mode("happy"))
 
         text = TexText("It is already to know that $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
         self.play(FadeIn(text), run_time=1)
@@ -123,7 +132,10 @@ class s3(Scene):
         text_ana_gr = VGroup(text_ana_en, text_ana_ch).arrange(DOWN, 0.5)
         text_gr = VGroup(text_syn_gr, text_ana_gr).arrange(RIGHT, 1).shift(DOWN*3)
         #self.play(FadeIn(text_gr))
-        self.play(Write(text_syn_en))
+        self.play(Write(text_syn_en),
+                  student_teacher[1].debubble(),
+                  FadeOut(student_teacher[0]),
+                  FadeOut(student_teacher[1]),)
         self.wait()
         self.play(Write(text_syn_ch))
         self.wait()
