@@ -15,7 +15,16 @@ config = C()
 config.frame_width = 9
 config.frame_height = 16
 
+def student_with_teacher():
+    colors = [BLUE_E, GREY_BROWN]
+    student_teacher = [PiCreature(color=color) for color in colors]
+    student_teacher = VGroup(*student_teacher)
+    student_teacher.arrange(RIGHT, buff=0.9).shift(DOWN*5.5).scale(0.8)
 
+    _, teacher = student_teacher
+    teacher.scale(1.3)
+
+    return student_teacher
 
 class s2(Scene):
     def setup(self):
@@ -59,6 +68,9 @@ class s2(Scene):
     
     # 在第二章开头，首先需要回顾题目！！！且快速
     def review_problem(self):
+        # 画出学生和老师
+        student_teacher = student_with_teacher()
+
         triangle = Polygon(self.coord_c_shift, 
                            self.coord_a_shift, 
                            self.coord_b_shift, 
@@ -97,6 +109,11 @@ class s2(Scene):
         """
         此时下方的pi生物老师说, 我们来看第二种方法
         """
+        pi_text = Text("我们来看第二种方法！").scale(0.7)
+        self.play(
+                  student_teacher[1].says(pi_text),
+                  )
+
 
         text = TexText("It is already to know that $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
         self.play(FadeIn(text), run_time=1)
@@ -113,6 +130,9 @@ class s2(Scene):
 
         self.play(FadeIn(text1),
                   FadeIn(text2),
+                  student_teacher[1].debubble(),
+                  FadeOut(student_teacher[0]),
+                  FadeOut(student_teacher[1]),
                   run_time=1)
         self.wait()
 
