@@ -352,7 +352,7 @@ class s2(Scene):
         self.wait()
 
         self.play(Rotate(circle_point, -PI, about_point=circle_1.get_center(), rate_func=linear),
-                    Rotate(point_c, 1/2*PI+1/5*PI, about_point=circle_2.get_center(), rate_func=linear), 
+                    Rotate(point_c, -1/2*PI-1/5*PI, about_point=circle_2.get_center(), rate_func=linear), 
                     run_time=3)
         self.wait()
         pass
