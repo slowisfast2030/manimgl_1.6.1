@@ -22,7 +22,9 @@ def student_with_teacher():
     student_teacher = VGroup(*student_teacher)
     student_teacher.arrange(RIGHT, buff=0.9).shift(DOWN*5.5).scale(0.8)
 
-    _, teacher = student_teacher
+    student, teacher = student_teacher
+    student.change_mode("gracious")
+
     teacher.scale(1.3)
     teacher.flip()
 
