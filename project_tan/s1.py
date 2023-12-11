@@ -112,7 +112,7 @@ class s1(Scene):
     def tri_flip(self):
         flip_axis = np.array(self.coord_c_shift) - np.array(self.coord_d_shift)
         flip_about_point = self.coord_c_shift
-        flip_tri = Polygon(np.array(self.coord_c_shift)+np.array([0.1, 0, 0]), self.coord_a_shift, self.coord_d_shift, color=self.flip_color)
+        flip_tri = Polygon(np.array(self.coord_c_shift)+np.array([0.02, 0, 0]), self.coord_a_shift, self.coord_d_shift, color=self.flip_color)
         self.play(flip_tri.animate.rotate(PI, axis=flip_axis, about_point=flip_about_point))
         
         ver_e = Tex("E", color=self.flip_color).next_to(self.coord_e_shift, 0.5*(LEFT+UP))
