@@ -1,18 +1,21 @@
-from manim import *
+import sys
+sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
+
+from manim_imports_ext import *
 
 """
-辅助圆
+开场
 """
-# 下面这几行设置竖屏
+# manimgl中没有config这个对象，代码中使用了config.frame_width
+# 这里为了兼容，引入了config
+class C:
+    pass
+
+config = C()
 config.frame_width = 9
 config.frame_height = 16
 
-config.pixel_width = 1080
-config.pixel_height = 1920
 
-# 一个很聪明的方案
-class ShowCreation(Create):
-    pass
 
 class s2(Scene):
     def setup(self):
@@ -45,28 +48,43 @@ class s2(Scene):
         self.clear()
         self.solve()
         pass
-
+    
+    # 需要注意p1是角所在的位置
+    # 这个方法是为了计算p1p2和p1p3之间的夹角
+    def angle_of_points(self, p1, p2, p3):
+            v1 = np.array(p2) - np.array(p1)
+            v2 = np.array(p3) - np.array(p1)
+            angle = np.arccos(np.dot(v1, v2)/(np.linalg.norm(v1)*np.linalg.norm(v2)))
+            return angle
+    
     # 在第二章开头，首先需要回顾题目！！！且快速
     def review_problem(self):
         triangle = Polygon(self.coord_c_shift, 
                            self.coord_a_shift, 
                            self.coord_b_shift, 
-                           color=self.line_color, stroke_width=3).set_z_index(1)
+                           color=self.line_color, stroke_width=3)
         point_c = Dot(self.coord_c_shift)
         point_a = Dot(self.coord_a_shift)
         point_b = Dot(self.coord_b_shift)
 
-        ver_c = MathTex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN).set_z_index(1)
-        ver_a = MathTex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN).set_z_index(1)
-        ver_b = MathTex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT).set_z_index(1)
+        ver_c = Tex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN)
+        ver_a = Tex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN)
+        ver_b = Tex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT)
         ver_ani = list(map(FadeIn, [ver_c, ver_a, ver_b]))
 
         
         
         line_ca = Line(self.coord_c_shift, self.coord_a_shift)
         line_cd = Line(self.coord_c_shift, self.coord_b_shift)
-        angle = Angle(line_ca, line_cd, radius=0.6, other_angle=False)
-        label_angle = MathTex(r"\alpha").next_to(angle, RIGHT).scale(0.8).shift(0.05*UP)
+        #angle = Angle(line_ca, line_cd, radius=0.6, other_angle=False)
+
+        angle_ca_cb = self.angle_of_points(self.coord_c_shift, 
+                                           self.coord_a_shift, 
+                                           self.coord_b_shift)
+        angle = Arc(start_angle=Line(self.coord_c_shift, self.coord_b_shift).get_angle(), angle=-angle_ca_cb, radius=0.6, color=WHITE)
+        angle.shift(self.coord_c_shift)
+
+        label_angle = Tex(r"\alpha").next_to(angle, RIGHT).scale(0.8).shift(0.05*UP)
 
         # 将所有的mob向上移动2个单位，为下方的pi生物让出空间
         tri_gr = VGroup(triangle, ver_c, ver_a, ver_b, angle, label_angle).shift(2*UP)
@@ -128,7 +146,7 @@ class s2(Scene):
         self.wait()
 
         self.origin = Dot(ORIGIN)
-        self.origin_lable = MathTex("O").next_to(self.origin, UP)
+        self.origin_lable = Tex("O").next_to(self.origin, UP)
 
         self.circle = Circle(
             radius = self.radius,
@@ -205,7 +223,7 @@ class s2(Scene):
 
         # 上圆
         circle_point = Dot(point=circle_1.point_at_angle(PI/3), color=RED)
-        circle_point_lable = MathTex("C").next_to(circle_point, UP) 
+        circle_point_lable = Tex("C").next_to(circle_point, UP) 
         line_diameter = Line(circle_1.get_left(), circle_1.get_right(), color=self.radial_line_color)
         line_1 = Line(circle_point.get_center(), line_diameter.get_left(), color=self.radial_line_color)
         line_2 = Line(circle_point.get_center(), line_diameter.get_right(), color=self.radial_line_color)
@@ -213,9 +231,9 @@ class s2(Scene):
         point_a = Dot(circle_2.point_at_angle(PI + PI/6), color=RED)
         point_b = Dot(circle_2.point_at_angle(PI + 5*PI/6), color=RED)
         point_c = Dot(circle_2.point_at_angle(PI/2), color=RED)
-        label_a = MathTex("A").next_to(point_a, LEFT)
-        label_b = MathTex("B").next_to(point_b, RIGHT)
-        label_c = MathTex("C").next_to(point_c, UP)
+        label_a = Tex("A").next_to(point_a, LEFT)
+        label_b = Tex("B").next_to(point_b, RIGHT)
+        label_c = Tex("C").next_to(point_c, UP)
 
         line_ao = Line(point_a.get_center(),origin_2, color=self.radial_line_color)
         line_bo = Line(point_b.get_center(),origin_2, color=self.radial_line_color)
@@ -256,7 +274,7 @@ class s2(Scene):
         def line_label_gr_updater(mob):
             new_line_ac = Line(point_a.get_center(),point_c.get_center(), color=self.radial_line_color)
             new_line_bc = Line(point_b.get_center(),point_c.get_center(), color=self.radial_line_color)
-            new_label_c = MathTex("C").next_to(point_c, UP)
+            new_label_c = Tex("C").next_to(point_c, UP)
             line_ac.become(new_line_ac)
             line_bc.become(new_line_bc)
             label_c.become(new_label_c)
@@ -287,9 +305,9 @@ class s2(Scene):
                            color=self.line_color,
                            stroke_width= 3)
         
-        ver_c = MathTex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN)
-        ver_a = MathTex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN)
-        ver_b = MathTex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT)
+        ver_c = Tex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN)
+        ver_a = Tex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN)
+        ver_b = Tex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT)
         ver_ani = list(map(FadeIn, [ver_c, ver_a, ver_b]))
 
         self.play(*ver_ani, 
@@ -298,7 +316,7 @@ class s2(Scene):
         self.wait()
 
         origin = Dot(triangle.get_center())
-        origin_lable = MathTex("O").next_to(origin, DOWN)
+        origin_lable = Tex("O").next_to(origin, DOWN)
         self.play(ShowCreation(origin),
                   Write(origin_lable),
                   run_time=1)
@@ -317,8 +335,8 @@ class s2(Scene):
         line_eb = Line(coord_e_shift, self.coord_b_shift, color=self.line_color_auxiliary)
         line_ea = Line(coord_e_shift, self.coord_a_shift, color=self.line_color_auxiliary)
         line_ef = Line(coord_e_shift, coord_f_shift, color=self.line_color_auxiliary)
-        e_label = MathTex("E", color=self.label_color_auxiliary).next_to(coord_e_shift, LEFT)
-        f_label = MathTex("F", color=self.label_color_auxiliary).next_to(coord_f_shift, LEFT)
+        e_label = Tex("E", color=self.label_color_auxiliary).next_to(coord_e_shift, LEFT)
+        f_label = Tex("F", color=self.label_color_auxiliary).next_to(coord_f_shift, LEFT)
 
         self.play(ShowCreation(line_eb),
                     ShowCreation(line_ea),
@@ -330,10 +348,10 @@ class s2(Scene):
         text1 = Tex("It is evident that \\\\ EF is the median line of triangle BCA").next_to(circle, DOWN, buff=1).scale(self.text_scale)
         self.play(Write(text1), run_time=1)
         self.wait()
-        text2 = MathTex(r"EF=ED+DF=\frac{5}{2}+2=\frac{9}{2}").next_to(text1, DOWN, buff=0.5).scale(self.text_scale)
+        text2 = Tex(r"EF=ED+DF=\frac{5}{2}+2=\frac{9}{2}").next_to(text1, DOWN, buff=0.5).scale(self.text_scale)
         self.play(Write(text2), run_time=1)
         self.wait()
-        text3 = MathTex(r"\tan(\frac{\theta}{2})=\frac{BF}{EF}=\frac{1}{3}").next_to(text2, DOWN, buff=0.5).scale(self.text_scale)
+        text3 = Tex(r"\tan(\frac{\theta}{2})=\frac{BF}{EF}=\frac{1}{3}").next_to(text2, DOWN, buff=0.5).scale(self.text_scale)
         self.play(Write(text3), run_time=1)
         self.wait()
 
@@ -352,7 +370,7 @@ class s2(Scene):
 
         # 创建一个圆周上的点
         circle_point = Dot(point=circle.point_at_angle(PI/3), color=RED)
-        circle_point_lable = MathTex("C").next_to(circle_point, UP)
+        circle_point_lable = Tex("C").next_to(circle_point, UP)
         self.play(ShowCreation(circle_point),
                   Write(circle_point_lable),
                   run_time=1)   
@@ -413,9 +431,9 @@ class s2(Scene):
         point_a = Dot(circle.point_at_angle(PI + PI/6), color=RED)
         point_b = Dot(circle.point_at_angle(PI + 5*PI/6), color=RED)
         point_c = Dot(circle.point_at_angle(PI/2), color=RED)
-        label_a = MathTex("A").next_to(point_a, LEFT)
-        label_b = MathTex("B").next_to(point_b, RIGHT)
-        label_c = MathTex("C").next_to(point_c, UP)
+        label_a = Tex("A").next_to(point_a, LEFT)
+        label_b = Tex("B").next_to(point_b, RIGHT)
+        label_c = Tex("C").next_to(point_c, UP)
 
         line_ao = Line(point_a.get_center(),origin, color=self.radial_line_color)
         line_bo = Line(point_b.get_center(),origin, color=self.radial_line_color)
@@ -445,7 +463,7 @@ class s2(Scene):
         def line_label_gr_updater(mob):
             new_line_ac = Line(point_a.get_center(),point_c.get_center(), color=self.radial_line_color)
             new_line_bc = Line(point_b.get_center(),point_c.get_center(), color=self.radial_line_color)
-            new_label_c = MathTex("C").next_to(point_c, UP)
+            new_label_c = Tex("C").next_to(point_c, UP)
             line_ac.become(new_line_ac)
             line_bc.become(new_line_bc)
             label_c.become(new_label_c)
