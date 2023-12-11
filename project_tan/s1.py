@@ -1,18 +1,15 @@
-from manim import *
+from manimlib import *
 
 """
 角平分线
 """
-# 下面这几行设置竖屏
+class C:
+    pass
+
+config = C()
 config.frame_width = 9
 config.frame_height = 16
 
-config.pixel_width = 1080
-config.pixel_height = 1920
-
-# 一个很聪明的方案
-class ShowCreation(Create):
-    pass
 
 class s1(Scene):
     def setup(self):
@@ -52,6 +49,14 @@ class s1(Scene):
         self.solve()
         pass
 
+    # 需要注意p1是角所在的位置
+    # 这个方法是为了计算p1p2和p1p3之间的夹角
+    def angle_of_points(self, p1, p2, p3):
+            v1 = np.array(p2) - np.array(p1)
+            v2 = np.array(p3) - np.array(p1)
+            angle = np.arccos(np.dot(v1, v2)/(np.linalg.norm(v1)*np.linalg.norm(v2)))
+            return angle
+
     # 引入三角形
     def introduce_triangle(self):
         triangle = Polygon(self.coord_c_shift, 
@@ -67,9 +72,9 @@ class s1(Scene):
 
         self.play(ShowCreation(triangle), run_time=1)
 
-        ver_c = MathTex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN)
-        ver_a = MathTex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN)
-        ver_b = MathTex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT)
+        ver_c = Tex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN)
+        ver_a = Tex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN)
+        ver_b = Tex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT)
         ver_ani = list(map(FadeIn, [ver_c, ver_a, ver_b]))
 
         self.play(*ver_ani, run_time=1)
@@ -83,13 +88,19 @@ class s1(Scene):
         half_line = Line(self.coord_c_shift, self.coord_d_shift, color=self.line_color)
         self.play(Write(half_line), run_time=1)
 
-        ver_d = MathTex("D", color=self.label_color).next_to(self.coord_d_shift, RIGHT)
+        ver_d = Tex("D", color=self.label_color).next_to(self.coord_d_shift, RIGHT)
         self.play(FadeIn(ver_d), run_time=1)
 
         line_ca = Line(self.coord_c_shift, self.coord_a_shift)
         line_cd = Line(self.coord_c_shift, self.coord_d_shift)
-        angle_half = Angle(line_ca, line_cd, radius=0.6, other_angle=False)
-        label_angle_half = MathTex(r"\frac{\alpha}{2}").next_to(angle_half, RIGHT).scale(0.8).shift(0.05*UP)
+        #angle_half = Angle(line_ca, line_cd, radius=0.6, other_angle=False)
+        angle_ca_cd = self.angle_of_points(self.coord_c_shift, 
+                                           self.coord_a_shift, 
+                                           self.coord_d_shift)
+        angle_half = Arc(start_angle=Line(self.coord_c_shift, self.coord_d_shift).get_angle(), angle=-angle_ca_cd, radius=0.6, color=WHITE)
+        angle_half.shift(self.coord_c_shift)
+
+        label_angle_half = Tex(r"\frac{\alpha}{2}").next_to(angle_half, RIGHT).scale(0.8).shift(0.05*UP)
 
         self.play(Write(angle_half), Write(label_angle_half), run_time=1)
         self.wait()
@@ -104,7 +115,7 @@ class s1(Scene):
         flip_tri = Polygon(np.array(self.coord_c_shift)+np.array([0.1, 0, 0]), self.coord_a_shift, self.coord_d_shift, color=self.flip_color)
         self.play(flip_tri.animate.rotate(PI, axis=flip_axis, about_point=flip_about_point))
         
-        ver_e = MathTex("E", color=self.flip_color).next_to(self.coord_e_shift, 0.5*(LEFT+UP))
+        ver_e = Tex("E", color=self.flip_color).next_to(self.coord_e_shift, 0.5*(LEFT+UP))
         self.play(FadeIn(ver_e), run_time=1)
         self.wait(2)
 
@@ -135,8 +146,8 @@ class s1(Scene):
         line_op = Line(coord_o, [1.5, 11/6, 0], color=self.line_color)
         dot_o = Dot(coord_o, color=RED)
         dot_p = Dot(coord_p, color=RED)
-        label_o = MathTex("o", color=self.label_color).next_to(dot_o, DOWN)
-        label_p = MathTex("p", color=self.label_color).next_to(dot_p, RIGHT)
+        label_o = Tex("o", color=self.label_color).next_to(dot_o, DOWN)
+        label_p = Tex("p", color=self.label_color).next_to(dot_p, RIGHT)
 
         self.line_gr = VGroup(line_om, 
                               line_on, 
@@ -185,8 +196,8 @@ class s1(Scene):
         
         line_pm = Line(self.coord_d, coord_m, color=self.line_color)
         line_pn = Line(self.coord_d, coord_n, color=self.line_color)
-        label_m = MathTex("m", color=self.label_color).next_to(coord_m, DOWN)
-        label_n = MathTex("n", color=self.label_color).next_to(coord_n, LEFT)
+        label_m = Tex("m", color=self.label_color).next_to(coord_m, DOWN)
+        label_n = Tex("n", color=self.label_color).next_to(coord_n, LEFT)
         
         return VGroup(self.line_gr.copy(), line_pm, line_pn, label_m, label_n)
     
@@ -197,8 +208,8 @@ class s1(Scene):
         
         line_pm = Line(self.coord_d, coord_m, color=self.line_color)
         line_pn = Line(self.coord_d, coord_n, color=self.line_color)
-        label_m = MathTex("m", color=self.label_color).next_to(coord_m, DOWN)
-        label_n = MathTex("n", color=self.label_color).next_to(coord_n, LEFT)
+        label_m = Tex("m", color=self.label_color).next_to(coord_m, DOWN)
+        label_n = Tex("n", color=self.label_color).next_to(coord_n, LEFT)
     
         return VGroup(self.line_gr.copy(), line_pm, line_pn, label_m, label_n)
 
@@ -211,8 +222,8 @@ class s1(Scene):
 
         line_pm = Line(self.coord_d, coord_m, color=self.line_color)
         line_pn = Line(self.coord_d, coord_n, color=self.line_color)
-        label_m = MathTex("m", color=self.label_color).next_to(coord_m, DOWN)
-        label_n = MathTex("n", color=self.label_color).next_to(coord_n, LEFT)
+        label_m = Tex("m", color=self.label_color).next_to(coord_m, DOWN)
+        label_n = Tex("n", color=self.label_color).next_to(coord_n, LEFT)
         
         return VGroup(self.line_gr.copy(), line_pm, line_pn, label_m, label_n)
 
@@ -221,7 +232,7 @@ class s1(Scene):
         coord_n = (-20/9, 4/3, 0)
 
         line_pn = Line(self.coord_d, coord_n, color=self.line_color) 
-        label_n = MathTex("n", color=self.label_color).next_to(coord_n, LEFT)
+        label_n = Tex("n", color=self.label_color).next_to(coord_n, LEFT)
         
         return VGroup(self.line_gr.copy(), line_pn, label_n)
     
@@ -300,13 +311,13 @@ class s1(Scene):
         self.wait()
 
         # 设DA=x，则DE=x, BD=4-x
-        text1 = Tex("Suppose DA=$x$, then DE=$x$, BD=$3-x$").next_to(tri_gr, DOWN, buff=2).scale(self.text_scale)
+        text1 = TexText("Suppose DA=$x$, then DE=$x$, BD=$3-x$").next_to(tri_gr, DOWN, buff=2).scale(self.text_scale)
         line_ad = Line(self.coord_a_shift, self.coord_d_shift, color=self.line_color)
         line_de = Line(self.coord_d_shift, self.coord_e_shift, color=self.line_color)
         line_bd = Line(self.coord_b_shift, self.coord_d_shift, color=self.line_color)
-        line_ad_label = MathTex("x", color=self.label_color).next_to(line_ad, RIGHT)
-        line_de_label = MathTex("x", color=self.label_color).next_to(line_de, LEFT, 0.02)
-        line_bd_label = MathTex("3-x", color=self.label_color).next_to(line_bd, RIGHT)
+        line_ad_label = Tex("x", color=self.label_color).next_to(line_ad, RIGHT)
+        line_de_label = Tex("x", color=self.label_color).next_to(line_de, LEFT, 0.02)
+        line_bd_label = Tex("3-x", color=self.label_color).next_to(line_bd, RIGHT)
 
         self.play(Write(text1),
                   Write(line_ad_label),
@@ -316,22 +327,22 @@ class s1(Scene):
         self.wait()
 
         # 勾股定理
-        text2 = Tex("In the right-angled triangle DEB, \\\\ according to the Pythagorean theorem, \\\\ it can be derived that").next_to(text1, DOWN, buff=0.5).scale(self.text_scale)
+        text2 = TexText("In the right-angled triangle DEB, \\\\ according to the Pythagorean theorem, \\\\ it can be derived that").next_to(text1, DOWN, buff=0.5).scale(self.text_scale)
         tri_deb = Polygon(self.coord_d_shift, self.coord_e_shift, self.coord_b_shift, color=self.line_color, stroke_width=3)
         tri_deb.set_fill(color=BLUE, opacity=0.6)
         self.play(FadeIn(text2), FadeIn(tri_deb))
         self.wait()
 
-        text3 = MathTex("BD^2=DE^2+BE^2").next_to(text2, DOWN, buff=0.5).scale(self.text_scale)
+        text3 = Tex("BD^2=DE^2+BE^2").next_to(text2, DOWN, buff=0.5).scale(self.text_scale)
         
         self.play(Write(text3))
         self.wait()
 
-        text4 = MathTex(r"(3-x)^2=x^2+(4-3)^2").next_to(text3, DOWN, buff=0.5).scale(self.text_scale)
+        text4 = Tex(r"(3-x)^2=x^2+(4-3)^2").next_to(text3, DOWN, buff=0.5).scale(self.text_scale)
         self.play(Write(text4))
         self.wait()
 
-        text5 = MathTex(r"x=\frac{4}{3}").next_to(text4, DOWN, buff=0.5).scale(self.text_scale)
+        text5 = Tex(r"x=\frac{4}{3}").next_to(text4, DOWN, buff=0.5).scale(self.text_scale)
         self.play(Write(text5))
         self.wait()
 
