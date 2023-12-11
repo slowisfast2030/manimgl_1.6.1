@@ -145,10 +145,10 @@ class s2(Scene):
         text3 = Text("辅助圆").scale(self.text_scale)   
         text3.next_to(brace, RIGHT, 0.5)
 
-        text_gr = VGroup(text12_gr, brace, text3).arrange(RIGHT, buff=1).next_to(text, DOWN, buff=3)
+        text_gr = VGroup(text12_gr, brace, text3).arrange(RIGHT, buff=0.5).next_to(text, DOWN, buff=3)
 
-        self.play(FadeIn(text1),
-                  FadeIn(text2),
+        self.play(Write(text1),
+                  Write(text2),
                   student_teacher[1].debubble(),
                   FadeOut(student_teacher[0]),
                   FadeOut(student_teacher[1]),
