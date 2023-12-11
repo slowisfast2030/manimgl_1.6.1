@@ -109,7 +109,10 @@ class s0(Scene):
 
         label_angle = Tex(r"\alpha").next_to(angle, RIGHT, 0.1).scale(0.8).shift(0.05*UP)
 
-        self.play(Write(angle), Write(label_angle), 
+        self.play(Write(angle), 
+                  Write(label_angle), 
+                    student_teacher[0].animate.change_mode("guilty"),
+                    student_teacher[1].animate.change_mode("hooray"),
                   run_time=1)
         self.wait()
 
