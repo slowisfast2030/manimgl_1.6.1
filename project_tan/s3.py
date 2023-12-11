@@ -296,7 +296,7 @@ class pr(s3):
         self.play(Write(plane), 
                   Write(point_a_sym), 
                   Write(label_a_sym), 
-                  run_time=1)
+                  run_time=2)
 
         self.wait()
 
