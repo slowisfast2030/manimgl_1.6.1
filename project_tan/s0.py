@@ -120,7 +120,7 @@ class s0(Scene):
         tri_gr_down = tri_gr.copy()
         all_gr = VGroup(tri_gr_up, tri_gr_mid, tri_gr_down).arrange(DOWN, buff=2).scale(0.8)
 
-        pi_text = Text("已知全角的正切值，\n如何求解半角的正切值呢？").scale(0.5)
+        pi_text = Text("已知全角的正切值，\n如何求解半角的正切值呢？").scale(0.7)
         self.play(FadeOut(angle),
                   FadeOut(label_angle),
                   FadeOut(text),
