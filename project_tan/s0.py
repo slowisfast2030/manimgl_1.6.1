@@ -57,7 +57,7 @@ class s0(Scene):
 
     def construct(self):
         self.opening()  
-        #self.introduce_three_methods()
+        self.introduce_three_methods()
         pass
 
     # 需要注意p1是角所在的位置
