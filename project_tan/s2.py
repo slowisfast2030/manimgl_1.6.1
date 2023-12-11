@@ -346,12 +346,12 @@ class s2(Scene):
 
 
         # 播放动画：点沿圆周运动
-        self.play(Rotate(circle_point, PI, about_point=circle_1.get_center(), rate_func=linear),
+        self.play(Rotate(circle_point, 3/4*PI, about_point=circle_1.get_center(), rate_func=linear),
                   Rotate(point_c, 2*PI/4, about_point=circle_2.get_center(), rate_func=linear), 
                   run_time=2) 
         self.wait()
 
-        self.play(Rotate(circle_point, -PI, about_point=circle_1.get_center(), rate_func=linear),
+        self.play(Rotate(circle_point, -3/4*PI, about_point=circle_1.get_center(), rate_func=linear),
                     Rotate(point_c, -1/2*PI-1/6*PI, about_point=circle_2.get_center(), rate_func=linear), 
                     run_time=3)
         self.wait()
