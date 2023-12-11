@@ -408,7 +408,7 @@ class s2(Scene):
         line_ea = Line(coord_e_shift, self.coord_a_shift, color=self.line_color_auxiliary)
         line_ef = Line(coord_e_shift, coord_f_shift, color=self.line_color_auxiliary)
         e_label = Tex("E", color=self.label_color_auxiliary).next_to(coord_e_shift, LEFT)
-        f_label = Tex("F", color=self.label_color_auxiliary).next_to(coord_f_shift, LEFT)
+        f_label = Tex("F", color=self.label_color_auxiliary).next_to(coord_f_shift, RIGHT)
 
         self.play(ShowCreation(line_eb),
                     ShowCreation(line_ea),
