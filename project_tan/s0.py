@@ -114,7 +114,7 @@ class s0(Scene):
 
         self.play(Write(angle), 
                   Write(label_angle), 
-                    student_teacher[0].animate.change_mode("gracious"),
+                    student_teacher[0].animate.change_mode("connviing"),
                     student_teacher[1].animate.change_mode("happy"),
                   run_time=1)
         self.wait()
