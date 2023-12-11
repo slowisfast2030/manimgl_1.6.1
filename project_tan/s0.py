@@ -38,7 +38,7 @@ class s0(Scene):
 
     def construct(self):
         self.opening()  
-        #self.introduce_three_methods()
+        self.introduce_three_methods()
         pass
 
     # 需要注意p1是角所在的位置
@@ -81,7 +81,7 @@ class s0(Scene):
         angle = Arc(start_angle=Line(self.coord_c_shift, self.coord_b_shift).get_angle(), angle=-angle_ca_cb, radius=0.6, color=WHITE)
         angle.shift(self.coord_c_shift)
 
-        label_angle = Tex(r"\alpha").next_to(angle, RIGHT).scale(0.8).shift(0.05*UP)
+        label_angle = Tex(r"\alpha").next_to(angle, RIGHT, 0.1).scale(0.8).shift(0.05*UP)
 
         self.play(Write(angle), Write(label_angle), run_time=1)
         self.wait()
