@@ -64,7 +64,7 @@ class s0(Scene):
             v2 = np.array(p3) - np.array(p1)
             angle = np.arccos(np.dot(v1, v2)/(np.linalg.norm(v1)*np.linalg.norm(v2)))
             return angle
-            
+
     # 在屏幕上方出现一个简单的三角形，下方位置留给pi生物
     # 在三角形下方显示tan(alpha) = 3/4，求解tan(alpha/2)
     def opening(self):
@@ -92,8 +92,8 @@ class s0(Scene):
                   FadeIn(student_teacher),
                   run_time=1)
         
-        self.play(student_teacher[0].animate.blink())
-        self.wait()
+        # 不起作用
+        #self.play(student_teacher[0].animate.blink())
         
         line_ca = Line(self.coord_c_shift, self.coord_a_shift)
         line_cd = Line(self.coord_c_shift, self.coord_b_shift)
