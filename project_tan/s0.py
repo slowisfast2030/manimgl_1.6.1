@@ -88,7 +88,10 @@ class s0(Scene):
 
         self.play(*ver_ani, 
                   ShowCreation(triangle),
+                  FadeIn(student_teacher),
                   run_time=1)
+        
+        self.play(student_teacher[0].animate.blink())
         self.wait()
         
         line_ca = Line(self.coord_c_shift, self.coord_a_shift)
@@ -106,7 +109,7 @@ class s0(Scene):
         label_angle = Tex(r"\alpha").next_to(angle, RIGHT, 0.1).scale(0.8).shift(0.05*UP)
 
         self.play(Write(angle), Write(label_angle), 
-                  FadeIn(student_teacher),run_time=1)
+                  run_time=1)
         self.wait()
 
         text = TexText("It is already to know that $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
