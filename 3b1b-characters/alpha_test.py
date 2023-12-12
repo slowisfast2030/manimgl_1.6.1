@@ -6,7 +6,7 @@ from alphabet_creature import AlphabetCreature
 
 class test_omega(Scene):
     def construct(self):
-        a = AlphabetCreature(r"\theta", flip_at_start=False, color=RED)
+        a = AlphabetCreature(r"B", flip_at_start=False, color=RED)
         aa = a.copy()
         self.add(a)
         self.wait()
