@@ -210,11 +210,11 @@ class s0(Scene):
         # self.add(line)
 
         self.play(FadeIn(rec_mid), FadeIn(rec_down), run_time=1)
-        self.wait(0.5)
+        self.wait(1)
         self.play(FadeIn(rec_up), FadeOut(rec_mid), run_time=1)
-        self.wait(0.5)
+        self.wait(1)
         self.play(FadeIn(rec_mid), FadeOut(rec_down),run_time=1)
-        self.wait(0.5)
+        self.wait(1)
         self.play(FadeIn(rec_down))
         self.wait(1)
 
