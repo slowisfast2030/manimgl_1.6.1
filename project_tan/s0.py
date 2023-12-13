@@ -167,7 +167,7 @@ class s0(Scene):
                   TransformFromCopy(tri_gr, tri_gr_mid),
                   TransformFromCopy(tri_gr, tri_gr_down),
                   run_time=1)
-        self.wait(1)
+        self.wait(0)
         self.all_gr = all_gr    
 
         pass
