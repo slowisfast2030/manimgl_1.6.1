@@ -113,11 +113,19 @@ class s0(Scene):
 
         label_angle = Tex(r"\alpha").next_to(angle, RIGHT, 0.1).scale(0.8).shift(0.05*UP)
 
+        """
+        这段动画要不要配音？
+        有的场景是不需要配音的。
+        """
         self.play(Write(angle), 
                   Write(label_angle), 
                     student_teacher[0].animate.change_mode("connving"),
                     student_teacher[1].animate.change_mode("happy"),
                   run_time=1)
+        """
+        这个self.wait()应该和下一段动画作为同一个组合
+        配音从这里开始
+        """
         self.wait()
 
         #text = TexText("It is already to know that $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
@@ -133,8 +141,8 @@ class s0(Scene):
         text = VGroup(text_01, text_23).arrange(DOWN, buff=0.5).scale(self.text_scale).next_to(triangle, DOWN, 1)
         # 有一个小问题: text_2和text_3的有点不对齐。手动调一下
         text_2.shift(0.05*UP)
-        self.play(Write(text), run_time=1)
-        self.wait()
+        self.play(Write(text), run_time=2)
+        self.wait(2.56)
 
         tri_gr = VGroup(triangle, ver_c, ver_a, ver_b, point_a, point_b, point_c)
 
@@ -157,8 +165,9 @@ class s0(Scene):
                   FadeOut(student_teacher[1]),
                   TransformFromCopy(tri_gr, tri_gr_up),
                   TransformFromCopy(tri_gr, tri_gr_mid),
-                  TransformFromCopy(tri_gr, tri_gr_down))
-        self.wait()
+                  TransformFromCopy(tri_gr, tri_gr_down),
+                  run_time=1)
+        self.wait(2)
         self.all_gr = all_gr    
 
         pass
