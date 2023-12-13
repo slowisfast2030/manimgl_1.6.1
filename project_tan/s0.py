@@ -199,7 +199,7 @@ class s0(Scene):
                     # Write(text_2),
                     # Write(text_3),
                   run_time=1)
-        #self.wait()
+        self.wait()
         
         rec_up = Rectangle(height=self.all_gr[0].get_height()+0.5, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(self.all_gr[0])
         rec_mid = Rectangle(height=self.all_gr[1].get_height()+1.4, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(self.all_gr[1])
