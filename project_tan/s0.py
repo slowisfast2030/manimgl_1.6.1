@@ -94,7 +94,7 @@ class s0(Scene):
         self.play(*ver_ani, 
                   ShowCreation(triangle),
                   FadeIn(student_teacher),
-                  run_time=1)
+                  run_time=1.54)
         
         # 不起作用
         #self.play(student_teacher[0].animate.blink())
