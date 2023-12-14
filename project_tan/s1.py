@@ -423,7 +423,7 @@ class s1(Scene):
         tri_deb.set_fill(color=BLUE, opacity=0.6)
         self.play(FadeIn(text2), FadeIn(tri_deb),
                   run_time=2)
-        self.wait()
+        self.wait(2)
 
         # text3 = Tex("BD^2=DE^2+BE^2").next_to(text2, DOWN, buff=0.5).scale(self.text_scale)
         
@@ -431,12 +431,12 @@ class s1(Scene):
         # self.wait()
 
         text4 = Tex(r"(3-x)^2=x^2+(4-3)^2").next_to(text2, DOWN, buff=0.5).scale(self.text_scale)
-        self.play(Write(text4))
+        self.play(Write(text4), run_time=2)
         self.wait()
 
         text5 = Tex(r"x=\frac{4}{3}").next_to(text4, DOWN, buff=0.5).scale(self.text_scale)
         self.play(Write(text5))
-        self.wait()
+        self.wait(2)
 
         text6 = Tex(r"tan(\frac{\alpha}{2}) = \frac{AD}{AC} = \frac{1}{3}").next_to(text5, DOWN, buff=0.5).scale(self.text_scale)
         self.play(Write(text6))
