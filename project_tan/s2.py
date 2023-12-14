@@ -382,7 +382,7 @@ class s2(Scene):
         rec_down = Rectangle(height=self.two_gr[1].get_height()+1.5, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(self.two_gr[1])
 
         self.play(FadeIn(rec_down), run_time=1)
-        self.wait(5)
+        self.wait(6)
         self.play(FadeIn(rec_up), FadeOut(rec_down), run_time=1)
         self.wait(3)
         self.play(FadeIn(rec_down), run_time=1)
