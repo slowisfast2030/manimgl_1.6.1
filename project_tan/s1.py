@@ -378,7 +378,7 @@ class s1(Scene):
                   FadeIn(tri_cde),
                   FadeIn(tri_cda),
                   run_time=1)
-        self.wait()
+        #self.wait()
 
         text_line_eq = Tex("\Rightarrow  DA=DE,CA=CE").scale(self.text_scale)
         text_0_eq_gr = VGroup(text0.copy(), text_line_eq).arrange(RIGHT, buff=0.3).move_to(text0_center)
@@ -387,7 +387,7 @@ class s1(Scene):
                   FadeOut(tri_cde),
                     FadeOut(tri_cda),
                   )
-        self.wait(2)
+        self.wait(3)
 
 
         # 设DA=x，则DE=x, BD=4-x
@@ -413,7 +413,7 @@ class s1(Scene):
                   Write(line_de_label),
                   Write(line_bd_label),
                   run_time=2)
-        self.wait(3)
+        self.wait(4)
 
         # 勾股定理
         #text2 = TexText("In the right-angled triangle DEB, \\\\ according to the Pythagorean theorem, \\\\ it can be derived that").next_to(text1, DOWN, buff=0.5).scale(self.text_scale)
