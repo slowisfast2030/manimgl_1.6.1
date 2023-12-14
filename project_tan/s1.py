@@ -349,6 +349,11 @@ class s1(Scene):
         pi_text = Text("显然，三角形CDA\n和三角形CDE全等！").scale(0.7)
         self.play(teacher.says(pi_text),
                   run_time=1)
+        self.wait()
+        self.play(
+            FadeOut(tri_cda),
+            teacher.debubble(),
+        )
 
         # 文本显示三角形CDA和CDE全等
         text0 = Tex(r"\triangle CDA \cong \triangle CDE").next_to(tri_gr, DOWN, buff=2).scale(self.text_scale)
@@ -369,8 +374,7 @@ class s1(Scene):
         self.play(ReplacementTransform(text0, text_0_eq_gr[0]),
                   Write(text_line_eq),
                   FadeOut(tri_cde),
-                    FadeOut(tri_cda),
-                    teacher.debubble(),
+                    
                     FadeOut(teacher),
                   )
 
