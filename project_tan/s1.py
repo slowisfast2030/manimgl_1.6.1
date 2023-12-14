@@ -14,6 +14,20 @@ config = C()
 config.frame_width = 9
 config.frame_height = 16
 
+def student_with_teacher():
+    colors = [BLUE_E, GREY_BROWN]
+    student_teacher = [PiCreature(color=color) for color in colors]
+    student_teacher = VGroup(*student_teacher)
+    student_teacher.arrange(RIGHT, buff=0.9).shift(DOWN*5.5).scale(0.8)
+
+    student, teacher = student_teacher
+    # 学生一开始设置为gracoius
+    student.change_mode("gracious")
+
+    teacher.scale(1.3)
+    teacher.flip()
+
+    return student_teacher
 
 class s1(Scene):
     def setup(self):
@@ -328,6 +342,14 @@ class s1(Scene):
         self.play(FadeIn(tri_gr), FadeIn(half_angle_gr), FadeIn(flip_gr))
         self.wait()
 
+        # 引入pi生物，并说：显然
+        student_teacher = student_with_teacher()
+        student, teacher = student_teacher
+        teacher.change_mode("hooray")
+        pi_text = Text("显然，三角形CDA\n和三角形CDE全等！").scale(0.7)
+        self.play(teacher.says(pi_text),
+                  run_time=1)
+
         # 文本显示三角形CDA和CDE全等
         text0 = Tex(r"\triangle CDA \cong \triangle CDE").next_to(tri_gr, DOWN, buff=2).scale(self.text_scale)
         text0_center = text0.get_center()
@@ -348,6 +370,8 @@ class s1(Scene):
                   Write(text_line_eq),
                   FadeOut(tri_cde),
                     FadeOut(tri_cda),
+                    teacher.debubble(),
+                    FadeOut(teacher),
                   )
 
 
