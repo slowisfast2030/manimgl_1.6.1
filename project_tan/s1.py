@@ -96,7 +96,7 @@ class s1(Scene):
 
         edge_ab = Tex("3", color=self.label_color).next_to(0.5*(self.coord_a_shift+self.coord_b_shift), RIGHT)
         edge_ca = Tex("4", color=self.label_color).next_to(0.5*(self.coord_c_shift+self.coord_a_shift), DOWN)
-        edge_bc = Tex("5", color=self.label_color).next_to(0.5*(self.coord_c_shift+self.coord_b_shift), LEFT, buff=0.2)
+        edge_bc = Tex("5", color=self.label_color).next_to(0.5*(self.coord_c_shift+self.coord_b_shift), LEFT, buff=0.4)
         
         ver_ani = list(map(FadeIn, [ver_c, ver_a, ver_b]))
         edge_ani = list(map(FadeIn, [edge_ab, edge_ca, edge_bc]))
