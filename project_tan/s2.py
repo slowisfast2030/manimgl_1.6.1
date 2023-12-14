@@ -103,7 +103,7 @@ class s2(Scene):
         label_angle = Tex(r"\alpha").next_to(angle, RIGHT).scale(0.8).shift(0.05*UP)
 
         # 将所有的mob向上移动2个单位，为下方的pi生物让出空间
-        tri_gr = VGroup(triangle, ver_c, ver_a, ver_b, angle, label_angle).shift(2*UP)
+        tri_gr = VGroup(triangle, ver_c, ver_a, ver_b, point_b, point_a, point_c, angle, label_angle).shift(2*UP)
 
         self.play(*ver_ani, 
                   ShowCreation(triangle),
