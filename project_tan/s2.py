@@ -458,9 +458,15 @@ class s2(Scene):
         self.play(Write(text_2_gr[0]), run_time=1)
         self.wait(3)
         self.play(Write(text_2_gr[1]), run_time=1)
-        self.wait(3)
+        self.wait(2)
 
-        text3 = Tex(r"\tan(\frac{\alpha}{2})=\tan(\angle BEF)=\frac{BF}{EF}=\frac{1}{3}").next_to(text_2_gr, DOWN, buff=0.5).scale(self.text_scale)
+        # 角AEB=1/2角C
+        text_temp = Tex(r"\angle AEB=\frac{1}{2}\angle C").scale(self.text_scale).next_to(text_2_gr, DOWN, buff=0.5)
+        self.play(Write(text_temp), run_time=1)
+        self.wait()
+
+
+        text3 = Tex(r"\tan(\frac{\alpha}{2})=\tan(\angle BEF)=\frac{BF}{EF}=\frac{1}{3}").next_to(text_temp, DOWN, buff=0.5).scale(self.text_scale)
         self.play(Write(text3), run_time=2)
         self.wait(4)
 
