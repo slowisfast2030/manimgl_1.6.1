@@ -430,17 +430,18 @@ class s2(Scene):
         line_ef = Line(coord_e_shift, coord_f_shift, color=self.line_color_auxiliary)
         e_label = Tex("E", color=self.label_color_auxiliary).next_to(coord_e_shift, LEFT)
         f_label = Tex("F", color=self.label_color_auxiliary).next_to(coord_f_shift, RIGHT)
-
+        
+        text0 = TexText(r"Auxiliary line: OF $\perp$ AB").next_to(circle, UP, buff=2).scale(self.text_scale)
+        
         self.play(ShowCreation(line_eb),
                     ShowCreation(line_ea),
                     ShowCreation(line_ef),
                     Write(e_label),
                     Write(f_label),
+                    Write(text0)
                     run_time=1)
-        
-        text0 = TexText(r"Auxiliary line: OF $\perp$ AB").next_to(circle, UP, buff=2).scale(self.text_scale)
-        self.play(Write(text0), run_time=1)
-        self.wait(4)
+                
+        self.wait(5)
 
         text1 = TexText(r"It is evident that \\ OF is the median line of Rt$\triangle BCA$").next_to(text0, DOWN, buff=0.5).scale(self.text_scale)
         self.play(Write(text1), run_time=1)
