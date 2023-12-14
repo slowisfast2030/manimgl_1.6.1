@@ -1,4 +1,8 @@
-from manimlib import *
+#from manimlib import *
+import sys
+sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
+
+from manim_imports_ext import *
 
 """
 角平分线
