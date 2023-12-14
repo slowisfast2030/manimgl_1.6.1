@@ -387,7 +387,7 @@ class s1(Scene):
                   FadeOut(tri_cde),
                     FadeOut(tri_cda),
                   )
-        self.wait(3)
+        self.wait(4)
 
 
         # 设DA=x，则DE=x, BD=4-x
@@ -440,7 +440,7 @@ class s1(Scene):
 
         text6 = Tex(r"tan(\frac{\alpha}{2}) = \frac{AD}{AC} = \frac{1}{3}").next_to(text5, DOWN, buff=0.5).scale(self.text_scale)
         self.play(Write(text6),run_time=2)
-        self.wait(2)
+        self.wait(5)
 
 
 
