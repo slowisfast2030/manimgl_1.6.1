@@ -108,12 +108,12 @@ class s2(Scene):
         self.play(*ver_ani, 
                   ShowCreation(triangle),
                   FadeIn(student_teacher),
-                  run_time=2)
-        self.wait()
+                  run_time=1)
+        self.wait(2)
         # 显示各个边的边长
-        edge_ab = Tex("3", color=self.label_color).next_to(0.5*(self.coord_a_shift+self.coord_b_shift), RIGHT)
-        edge_ca = Tex("4", color=self.label_color).next_to(0.5*(self.coord_c_shift+self.coord_a_shift), DOWN)
-        edge_bc = Tex("5", color=self.label_color).next_to(0.5*(self.coord_c_shift+self.coord_b_shift), LEFT, buff=0.5)
+        edge_ab = Tex("3", color=self.label_color).next_to(0.5*(point_a.get_center()+point_b.get_center()), RIGHT)
+        edge_ca = Tex("4", color=self.label_color).next_to(0.5*(point_c.get_center()+point_a.get_center()), DOWN)
+        edge_bc = Tex("5", color=self.label_color).next_to(0.5*(point_c.get_center()+point_b.get_center()), LEFT, buff=0.5)
         edge_ani = list(map(FadeIn, [edge_ab, edge_ca, edge_bc]))
 
 
@@ -151,7 +151,7 @@ class s2(Scene):
                   FadeOut(edge_ca),
                   FadeOut(edge_bc),  
                   run_time=3)
-        self.wait(2.5)
+        self.wait(3)
 
         """
         此时下方的pi生物老师说, 我们来看第二种方法
