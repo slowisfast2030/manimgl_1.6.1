@@ -438,7 +438,7 @@ class s2(Scene):
                     ShowCreation(line_ef),
                     Write(e_label),
                     Write(f_label),
-                    Write(text0)
+                    Write(text0),
                     run_time=1)
                 
         self.wait(5)
