@@ -75,12 +75,22 @@ class s1(Scene):
         ver_c = Tex("C", color=self.label_color).next_to(self.coord_c_shift, DOWN)
         ver_a = Tex("A", color=self.label_color).next_to(self.coord_a_shift, DOWN)
         ver_b = Tex("B", color=self.label_color).next_to(self.coord_b_shift, RIGHT)
-        ver_ani = list(map(FadeIn, [ver_c, ver_a, ver_b]))
 
-        self.play(*ver_ani, run_time=1)
+        edge_ab = Tex("3", color=self.label_color).next_to(0.5*(self.coord_a_shift+self.coord_b_shift), RIGHT)
+        edge_ca = Tex("4", color=self.label_color).next_to(0.5*(self.coord_c_shift+self.coord_a_shift), DOWN)
+        edge_bc = Tex("5", color=self.label_color).next_to(0.5*(self.coord_c_shift+self.coord_b_shift), LEFT)
+        
+        ver_ani = list(map(FadeIn, [ver_c, ver_a, ver_b]))
+        edge_ani = list(map(FadeIn, [edge_ab, edge_ca, edge_bc]))
+
+        self.play(*ver_ani, 
+                  run_time=1)
+        self.play(*edge_ani,
+                  run_time=1)
 
         # 需要保留一些mob供后面的方法使用
         self.tri_gr = VGroup(triangle, ver_c, ver_a, ver_b)
+        self.edge_gr = VGroup(edge_ab, edge_ca, edge_bc)
         
     # 引入半角
     def introduce_half_angle(self):
@@ -89,7 +99,11 @@ class s1(Scene):
         self.play(Write(half_line), run_time=1)
 
         ver_d = Tex("D", color=self.label_color).next_to(self.coord_d_shift, RIGHT)
-        self.play(FadeIn(ver_d), run_time=1)
+        # 显示D标签的时候，需要隐藏边长
+        #edge_ani = list(map(FadeOut, *list(self.edge_gr)))
+        self.play(FadeIn(ver_d), 
+                  FadeOut(self.edge_gr),
+                  run_time=1)
 
         line_ca = Line(self.coord_c_shift, self.coord_a_shift)
         line_cd = Line(self.coord_c_shift, self.coord_d_shift)
