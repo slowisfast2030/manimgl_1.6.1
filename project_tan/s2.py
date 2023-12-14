@@ -406,7 +406,7 @@ class s2(Scene):
         self.play(*ver_ani, 
                   ShowCreation(triangle),
                   run_time=1)
-        self.wait(7)
+        self.wait(1)
 
         origin = Dot(triangle.get_center())
         origin_lable = Tex("O").next_to(origin, DOWN)
@@ -420,7 +420,7 @@ class s2(Scene):
             stroke_color = self.stroke_color
         ).move_to(origin)   
         self.play(ShowCreation(circle), run_time=2)
-        self.wait()
+        self.wait(7)
 
         # 绘制三条辅助线,EB,EA,EF
         coord_e_shift = circle.get_left()
