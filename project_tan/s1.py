@@ -224,13 +224,13 @@ class s1(Scene):
         self.play(GrowFromCenter(line_up),
                   GrowFromCenter(line_down),
                   GrowFromCenter(line_mid))
-        self.wait()
+        #self.wait()
 
         self.remove(self.line_gr)
         self.play_model_12()
         self.wait()
         self.play_model_34()
-        self.wait(2)
+        self.wait()
 
     def get_model_1(self):                
         coord_m = self.coord_a
@@ -292,7 +292,7 @@ class s1(Scene):
                   ShowCreation(line_pn_2.set_color(self.line_show_color)),
                   Write(label_m_2),
                   Write(label_n_2),
-                  run_time=2)
+                  run_time=1)
 
     # 合并model_3和model_4的play
     def play_model_34(self):
@@ -306,7 +306,7 @@ class s1(Scene):
                   Write(label_n_3), 
                   ShowCreation(line_pn_4.set_color(self.line_show_color)),
                   Write(label_n_4),
-                  run_time=2)
+                  run_time=1)
         
     # def play_model_1(self):
     #     line_gr, line_pm, line_pn, label_m, label_n = self.model_1
