@@ -351,7 +351,7 @@ class s1(Scene):
                   run_time=1)
         self.wait()
         self.play(
-            FadeOut(tri_cda),
+            FadeOut(teacher),
             teacher.debubble(),
         )
 
@@ -374,8 +374,7 @@ class s1(Scene):
         self.play(ReplacementTransform(text0, text_0_eq_gr[0]),
                   Write(text_line_eq),
                   FadeOut(tri_cde),
-                    
-                    FadeOut(teacher),
+                    FadeOut(tri_cda),
                   )
 
 
