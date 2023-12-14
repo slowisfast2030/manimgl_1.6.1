@@ -100,15 +100,19 @@ class s1(Scene):
         
         ver_ani = list(map(FadeIn, [ver_c, ver_a, ver_b]))
         edge_ani = list(map(FadeIn, [edge_ab, edge_ca, edge_bc]))
+        tan_eq = Tex(r"tan(C) = \frac{AB}{AC} = \frac{3}{4}").next_to(edge_ca, DOWN, buff=1).scale(self.text_scale)
+
 
         self.play(*ver_ani, 
                   run_time=1)
         self.play(*edge_ani,
+                  Write(tan_eq),
                   run_time=1)
 
         # 需要保留一些mob供后面的方法使用
         self.tri_gr = VGroup(triangle, ver_c, ver_a, ver_b)
         self.edge_gr = VGroup(edge_ab, edge_ca, edge_bc)
+        self.tan_eq = tan_eq
         
     # 引入半角
     def introduce_half_angle(self):
@@ -121,6 +125,7 @@ class s1(Scene):
         #edge_ani = list(map(FadeOut, *list(self.edge_gr)))
         self.play(FadeIn(ver_d), 
                   FadeOut(self.edge_gr),
+                  FadeOut(self.tan_eq),
                   run_time=1)
 
         line_ca = Line(self.coord_c_shift, self.coord_a_shift)
