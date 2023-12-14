@@ -163,7 +163,7 @@ class s2(Scene):
                   )
         self.play(student_teacher[0].animate.change_mode("hooray"))
 
-        self.wait(1)
+        #self.wait(1)
  
         """
         淡出pi生物, 同时出现下方的动画
@@ -246,10 +246,10 @@ class s2(Scene):
                 about_point = self.circle.get_center(),
             ),
             ShowCreation(self.circle),
-            run_time = 2
+            run_time = 1
         )
 
-        self.wait(1)
+        #self.wait(0)
 
         # raidus_brace和radius_label的消失
         # 半径变成直径
@@ -266,7 +266,7 @@ class s2(Scene):
             self.origin_lable.animate.next_to(self.origin, DOWN),
             run_time = 1
         )
-        self.wait(1)
+        #self.wait(1)
 
         self.circle_gr = VGroup(self.circle, 
                                 #self.line_diameter,
