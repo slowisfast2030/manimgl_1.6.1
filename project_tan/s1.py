@@ -370,13 +370,14 @@ class s1(Scene):
                   run_time=1)
         self.wait()
 
-        text_line_eq = Tex("\Rightarrow  DA = DE").scale(self.text_scale)
+        text_line_eq = Tex("\Rightarrow  DA=DE,CA=CE").scale(self.text_scale)
         text_0_eq_gr = VGroup(text0.copy(), text_line_eq).arrange(RIGHT, buff=0.3).move_to(text0_center)
         self.play(ReplacementTransform(text0, text_0_eq_gr[0]),
                   Write(text_line_eq),
                   FadeOut(tri_cde),
                     FadeOut(tri_cda),
                   )
+        self.wait()
 
 
         # 设DA=x，则DE=x, BD=4-x
