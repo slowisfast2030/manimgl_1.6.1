@@ -351,8 +351,9 @@ class s1(Scene):
                   run_time=1)
         self.wait()
         self.play(
-            FadeOut(teacher),
+            
             teacher.debubble(),
+            FadeOut(teacher),
         )
 
         # 文本显示三角形CDA和CDE全等
