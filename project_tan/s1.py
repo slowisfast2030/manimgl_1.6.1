@@ -106,9 +106,11 @@ class s1(Scene):
         self.play(*ver_ani, 
                   run_time=2)
         self.play(*edge_ani,
-                  Write(tan_eq),
                   run_time=2)
-        self.wait(6)
+        self.wait(2)
+        self.play(Write(tan_eq),
+                  run_time=2)
+        self.wait(2.5)
 
         # 需要保留一些mob供后面的方法使用
         self.tri_gr = VGroup(triangle, ver_c, ver_a, ver_b)
