@@ -446,7 +446,7 @@ class s2(Scene):
         self.play(Write(text1), run_time=1)
         self.wait(4)
 
-        text2 = Tex(r"EF=EO+OF=\frac{CB}{2}+\frac{CA}{2}=\frac{9}{2}").next_to(circle, DOWN, buff=2).scale(self.text_scale)
+        text2 = Tex(r"EF=EO+OF=\frac{CB}{2}+\frac{CA}{2}=\frac{9}{2}").next_to(circle, DOWN, buff=1).scale(self.text_scale)
         self.play(Write(text2), run_time=1)
         self.wait(4)
         text3 = Tex(r"\tan(\frac{\alpha}{2})=\frac{BF}{EF}=\frac{1}{3}").next_to(text2, DOWN, buff=0.5).scale(self.text_scale)
