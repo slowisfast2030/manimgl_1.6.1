@@ -461,7 +461,7 @@ class s2(Scene):
         self.wait(2)
 
         # 角AEB=1/2角C
-        text_temp = Tex(r"\angle AEB=\frac{1}{2}\angle C").scale(self.text_scale).next_to(text_2_gr, DOWN, buff=0.5)
+        text_temp = Tex(r"\angle BEF=\frac{1}{2}\angle C").scale(self.text_scale).next_to(text_2_gr, DOWN, buff=0.5)
         self.play(Write(text_temp), run_time=1)
         self.wait()
 
