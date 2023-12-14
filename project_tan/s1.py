@@ -219,7 +219,7 @@ class s1(Scene):
 
         text = Text("角平分线4种模型").scale(0.7).next_to(line_up, UP, 0.8)
         self.play(FadeIn(text))
-        self.wait()
+        #self.wait()
 
         self.play(GrowFromCenter(line_up),
                   GrowFromCenter(line_down),
