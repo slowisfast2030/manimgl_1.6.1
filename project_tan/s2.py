@@ -386,7 +386,7 @@ class s2(Scene):
         self.play(FadeIn(rec_up), FadeOut(rec_down), run_time=1)
         self.wait(3)
         self.play(FadeIn(rec_down), run_time=1)
-        self.wait()
+        #self.wait()
 
         pass
 
@@ -406,7 +406,7 @@ class s2(Scene):
         self.play(*ver_ani, 
                   ShowCreation(triangle),
                   run_time=1)
-        self.wait()
+        self.wait(7)
 
         origin = Dot(triangle.get_center())
         origin_lable = Tex("O").next_to(origin, DOWN)
