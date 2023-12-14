@@ -108,13 +108,28 @@ class s2(Scene):
         self.play(*ver_ani, 
                   ShowCreation(triangle),
                   FadeIn(student_teacher),
-                  run_time=1)
-        # 这里没有self.wait()是为了加速回顾
-        self.play(Write(angle),
-                  FadeIn(label_angle),
+                  run_time=2)
+        self.wait()
+        # 显示各个边的边长
+        edge_ab = Tex("3", color=self.label_color).next_to(0.5*(self.coord_a_shift+self.coord_b_shift), RIGHT)
+        edge_ca = Tex("4", color=self.label_color).next_to(0.5*(self.coord_c_shift+self.coord_a_shift), DOWN)
+        edge_bc = Tex("5", color=self.label_color).next_to(0.5*(self.coord_c_shift+self.coord_b_shift), LEFT, buff=0.5)
+        edge_ani = list(map(FadeIn, [edge_ab, edge_ca, edge_bc]))
+
+
+        self.play(
+                 *edge_ani,
+                  #Write(angle),
+                  #FadeIn(label_angle),
                   student_teacher[0].animate.change_mode("connving"),
                     student_teacher[1].animate.change_mode("happy"),
-                    run_time=1)
+                    run_time=2)
+        self.wait(1.5)
+        
+
+        """
+        在下面动画开始之前，我们的动画需要持续7.5s
+        """
         
         #text = TexText("Given $tan(\\alpha) = \\frac{AB}{AC}= \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
         # 用text和Tex的组合引入中文和公式
@@ -129,8 +144,14 @@ class s2(Scene):
         # 有一个小问题: text_2和text_3的有点不对齐。手动调一下
         text_2.shift(0.05*UP)
 
-        self.play(FadeIn(text), run_time=1)
-        self.wait(2)
+        self.play(Write(text), 
+                  Write(angle),
+                  FadeIn(label_angle), 
+                  FadeOut(edge_ab),
+                  FadeOut(edge_ca),
+                  FadeOut(edge_bc),  
+                  run_time=3)
+        self.wait(2.5)
 
         """
         此时下方的pi生物老师说, 我们来看第二种方法
