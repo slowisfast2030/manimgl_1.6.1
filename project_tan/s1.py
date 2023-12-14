@@ -104,10 +104,11 @@ class s1(Scene):
 
 
         self.play(*ver_ani, 
-                  run_time=1)
+                  run_time=2)
         self.play(*edge_ani,
                   Write(tan_eq),
-                  run_time=1)
+                  run_time=2)
+        self.wait(6)
 
         # 需要保留一些mob供后面的方法使用
         self.tri_gr = VGroup(triangle, ver_c, ver_a, ver_b)
@@ -119,6 +120,7 @@ class s1(Scene):
         
         half_line = Line(self.coord_c_shift, self.coord_d_shift, color=self.line_color)
         self.play(Write(half_line), run_time=1)
+        self.wait()
 
         ver_d = Tex("D", color=self.label_color).next_to(self.coord_d_shift, RIGHT)
         # 显示D标签的时候，需要隐藏边长
@@ -126,7 +128,7 @@ class s1(Scene):
         self.play(FadeIn(ver_d), 
                   FadeOut(self.edge_gr),
                   FadeOut(self.tan_eq),
-                  run_time=1)
+                  run_time=2)
 
         line_ca = Line(self.coord_c_shift, self.coord_a_shift)
         line_cd = Line(self.coord_c_shift, self.coord_d_shift)
@@ -140,7 +142,7 @@ class s1(Scene):
         label_angle_half = Tex(r"\frac{\alpha}{2}").next_to(angle_half, RIGHT).scale(0.8).shift(0.05*UP)
 
         self.play(Write(angle_half), Write(label_angle_half), run_time=1)
-        self.wait()
+        self.wait(1.5)
 
         # 需要保留一些mob供后面的方法使用
         self.half_angle_gr = VGroup(half_line, ver_d, angle_half, label_angle_half)
@@ -150,11 +152,12 @@ class s1(Scene):
         flip_axis = np.array(self.coord_c_shift) - np.array(self.coord_d_shift)
         flip_about_point = self.coord_c_shift
         flip_tri = Polygon(np.array(self.coord_c_shift)+np.array([0.02, 0, 0]), self.coord_a_shift, self.coord_d_shift, color=self.flip_color)
-        self.play(flip_tri.animate.rotate(PI, axis=flip_axis, about_point=flip_about_point))
-        
+        self.play(flip_tri.animate.rotate(PI, axis=flip_axis, about_point=flip_about_point),
+                  run_time=2)
+        self.wait(3)
         ver_e = Tex("E", color=self.flip_color).next_to(self.coord_e_shift, 0.5*(LEFT+UP))
         self.play(FadeIn(ver_e), run_time=1)
-        self.wait(2)
+        self.wait(3)
 
         # 没有定义de直线
         line_de = Line(self.coord_d_shift, self.coord_e_shift, color=self.flip_color)
@@ -354,7 +357,7 @@ class s1(Scene):
         pi_text = Text("显然，三角形CDA\n和三角形CDE全等！").scale(0.7)
         self.play(teacher.says(pi_text),
                   run_time=1)
-        self.wait()
+        self.wait(2)
         self.play(
             
             teacher.debubble(),
@@ -382,7 +385,7 @@ class s1(Scene):
                   FadeOut(tri_cde),
                     FadeOut(tri_cda),
                   )
-        self.wait()
+        self.wait(2)
 
 
         # 设DA=x，则DE=x, BD=4-x
@@ -407,8 +410,8 @@ class s1(Scene):
                   Write(line_ad_label),
                   Write(line_de_label),
                   Write(line_bd_label),
-                  run_time=1)
-        self.wait()
+                  run_time=2)
+        self.wait(3)
 
         # 勾股定理
         #text2 = TexText("In the right-angled triangle DEB, \\\\ according to the Pythagorean theorem, \\\\ it can be derived that").next_to(text1, DOWN, buff=0.5).scale(self.text_scale)
@@ -416,7 +419,8 @@ class s1(Scene):
 
         tri_deb = Polygon(self.coord_d_shift, self.coord_e_shift, self.coord_b_shift, color=self.line_color, stroke_width=3)
         tri_deb.set_fill(color=BLUE, opacity=0.6)
-        self.play(FadeIn(text2), FadeIn(tri_deb))
+        self.play(FadeIn(text2), FadeIn(tri_deb),
+                  run_time=2)
         self.wait()
 
         # text3 = Tex("BD^2=DE^2+BE^2").next_to(text2, DOWN, buff=0.5).scale(self.text_scale)
