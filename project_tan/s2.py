@@ -214,7 +214,7 @@ class s2(Scene):
         self.play(
             self.text3.animate.move_to(ORIGIN+UP*3.2).scale(1.2),
             *[FadeOut(mobject) for mobject in self.mobjects_to_fade_out])
-        self.wait()
+        #self.wait()
 
         self.origin = Dot(ORIGIN)
         self.origin_lable = Tex("O").next_to(self.origin, UP)
@@ -369,22 +369,22 @@ class s2(Scene):
         # 播放动画：点沿圆周运动
         self.play(Rotate(circle_point, PI, about_point=circle_1.get_center(), rate_func=linear),
                   Rotate(point_c, 2*PI/4, about_point=circle_2.get_center(), rate_func=linear), 
-                  run_time=3) 
-        self.wait()
+                  run_time=2) 
+        self.wait(0.5)
 
         self.play(Rotate(circle_point, -PI, about_point=circle_1.get_center(), rate_func=linear),
                     Rotate(point_c, -1/2*PI-1/6*PI, about_point=circle_2.get_center(), rate_func=linear), 
-                    run_time=3)
-        self.wait()
+                    run_time=2)
+        self.wait(0.5)
 
         # 设置遮挡矩形
         rec_up = Rectangle(height=self.two_gr[0].get_height()+1.0, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(self.two_gr[0])
         rec_down = Rectangle(height=self.two_gr[1].get_height()+1.5, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(self.two_gr[1])
 
         self.play(FadeIn(rec_down), run_time=1)
-        self.wait(2)
+        self.wait(5)
         self.play(FadeIn(rec_up), FadeOut(rec_down), run_time=1)
-        self.wait(2)
+        self.wait(3)
         self.play(FadeIn(rec_down), run_time=1)
         self.wait()
 
