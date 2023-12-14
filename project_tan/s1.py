@@ -413,7 +413,7 @@ class s1(Scene):
                   Write(line_de_label),
                   Write(line_bd_label),
                   run_time=2)
-        self.wait(4)
+        self.wait(5)
 
         # 勾股定理
         #text2 = TexText("In the right-angled triangle DEB, \\\\ according to the Pythagorean theorem, \\\\ it can be derived that").next_to(text1, DOWN, buff=0.5).scale(self.text_scale)
