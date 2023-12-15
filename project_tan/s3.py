@@ -250,10 +250,16 @@ class s3(Scene):
                   )
         self.wait()
         # 显示垂直和斜率乘积为-1
+        line_ef = Line(self.coord_e, self.coord_f, color=RED)
+        line_cb = Line(self.coord_c, self.coord_b, color=RED)
+
         text1 = Tex(r"EF \perp CB").scale(self.text_scale)
         text1_res = Tex(r"\Rightarrow  k_{EF} \cdot k_{CB} = -1").scale(self.text_scale)
         text1_gr = VGroup(text1, text1_res).arrange(RIGHT, buff=0.3).next_to(text0_gr, DOWN, buff=0.5)
-        self.play(Write(text1), run_time=1)
+        self.play(Write(text1), 
+                  Indicate(line_ef),
+                    Indicate(line_cb),
+                  run_time=1)
         self.wait()
         self.play(Write(text1_res), run_time=1)
         # 显示直线BC的斜率
@@ -272,7 +278,7 @@ class s3(Scene):
         text3_res = Tex(r"\Rightarrow D(0, \frac{4}{3})").scale(self.text_scale)
         text3_gr = VGroup(text3.copy(), text3_res).arrange(RIGHT, buff=0.3).move_to(text3_center)
         self.play(Write(text3), 
-                  ShowPassingFlash(line_ef),
+                  Indicate(line_ef),
                   run_time=1)
         self.wait()
         self.play(
