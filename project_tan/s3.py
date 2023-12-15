@@ -255,7 +255,9 @@ class s3(Scene):
         text3_gr = VGroup(text3.copy(), text3_res).arrange(RIGHT, buff=0.3).move_to(text3_center)
         self.play(Write(text3), run_time=1)
         self.wait()
-        self.play(Write(text3_res), run_time=1)
+        self.play(
+            ReplacementTransform(text3, text3_gr[0]),
+            Write(text3_res), run_time=1)
         self.wait()
         # 显示最终结论
         text4 = Tex(r"tan(\frac{\alpha}{2}) = \frac{AD}{AC} = \frac{1}{3}").scale(self.text_scale).next_to(text3_gr, DOWN, buff=0.5)
