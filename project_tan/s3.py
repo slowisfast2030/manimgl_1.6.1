@@ -211,7 +211,9 @@ class s3(Scene):
         half_line = Line(self.coord_c, self.coord_d, color=self.line_color)
         ver_d = Tex("D", color=WHITE).next_to(self.coord_d, RIGHT)
         self.play(ShowCreation(half_line), run_time=1)
+        self.wait()
         self.play(Write(ver_d), run_time=1)
+        self.wait()
 
         # 显示直线CD的垂线
         line_ef = Line(self.coord_e, self.coord_f, color=self.line_color)
@@ -219,8 +221,9 @@ class s3(Scene):
         ver_f = Tex("F", color=WHITE).next_to(self.coord_f, DOWN)
 
         self.play(GrowFromPoint(line_ef, self.coord_d), run_time=1)
+        self.wait(2)
         self.play(Write(ver_e), Write(ver_f), run_time=1)
-        self.wait()
+        self.wait(3)
         # 给出剩余解法
         # 显示三角形全等
         tri_cdb = Polygon(self.plane.c2p(-4,0), 
@@ -243,14 +246,15 @@ class s3(Scene):
                   Write(tri_cdb),
                   Write(tri_cdf),
                   run_time=1)
+        self.wait(3)
         text0_res = Tex("\Rightarrow  F(1,0)").scale(self.text_scale)
         text0_gr = VGroup(text0.copy(), text0_res).arrange(RIGHT, buff=0.3).move_to(text0_center)
-        self.wait()
+        
         self.play(ReplacementTransform(text0, text0_gr[0]),
                   Write(text0_res),
                   Indicate(ver_f),
                   )
-        self.wait()
+        self.wait(3.5)
         # 显示垂直和斜率乘积为-1
         line_ef = Line(self.coord_e, self.coord_f, color=RED)
         line_cb = Line(self.coord_c, self.coord_b, color=RED)
@@ -262,16 +266,18 @@ class s3(Scene):
                   Indicate(line_ef),
                     Indicate(line_cb),
                   run_time=1)
-        self.wait()
+        self.wait(2)
         self.play(Write(text1_res), run_time=1)
+        self.wait()
+
         # 显示直线BC的斜率
         text2 = Tex(r"k_{CB} = \frac{3}{4}").scale(self.text_scale)
         text2_res = Tex(r"\Rightarrow  k_{EF} = -\frac{4}{3}").scale(self.text_scale)
         text2_gr = VGroup(text2, text2_res).arrange(RIGHT, buff=0.3).next_to(text1_gr, DOWN, buff=0.5)
         self.play(Write(text2), run_time=1)
-        self.wait()
+        self.wait(2)
         self.play(Write(text2_res), run_time=1)
-        self.wait()
+        self.wait(2.5)
 
         # 显示直线EF的方程和点D的坐标
         line_ef = Line(self.coord_e, self.coord_f, color=YELLOW)
@@ -282,17 +288,17 @@ class s3(Scene):
         self.play(Write(text3), 
                   Indicate(line_ef),
                   run_time=1)
-        self.wait()
+        self.wait(2)
         self.play(
             ReplacementTransform(text3, text3_gr[0]),
             Write(text3_res), 
             Indicate(ver_d),
             run_time=1)
-        self.wait()
+        self.wait(3.6)
         # 显示最终结论
         text4 = Tex(r"tan(\frac{\alpha}{2}) = \frac{AD}{AC} = \frac{1}{3}").scale(self.text_scale).next_to(text3_gr, DOWN, buff=0.5)
         self.play(Write(text4), run_time=1)
-        self.wait(3)
+        self.wait(7)
 
 
 
