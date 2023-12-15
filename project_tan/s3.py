@@ -249,9 +249,10 @@ class s3(Scene):
         self.wait()
 
         # 显示直线EF的方程和点D的坐标
-        text3 = Tex(r"EF: y = -\frac{4}{3}x + \frac{4}{3}").scale(self.text_scale)
+        text3 = Tex(r"EF: y = -\frac{4}{3}x + \frac{4}{3}").scale(self.text_scale).next_to(self.plane, DOWN, buff=-2.5)
+        text3_center = text3.get_center()
         text3_res = Tex(r"\Rightarrow D(0, \frac{4}{3})").scale(self.text_scale)
-        text3_gr = VGroup(text3, text3_res).arrange(RIGHT, buff=0.3).next_to(self.plane, DOWN, buff=-2.5)
+        text3_gr = VGroup(text3.copy(), text3_res).arrange(RIGHT, buff=0.3).move_to(text3_center)
         self.play(Write(text3), run_time=1)
         self.wait()
         self.play(Write(text3_res), run_time=1)
