@@ -107,11 +107,13 @@ class s3(Scene):
                   ShowCreation(triangle),
                   FadeIn(student_teacher),
                   run_time=1)
+        self.wait()
         self.play(Write(angle),
                   FadeIn(label_angle),
                   student_teacher[0].animate.change_mode("connving"),
                     student_teacher[1].animate.change_mode("happy"),
                     run_time=1)
+        self.wait()
         
         #text = TexText("It is already to know that $tan(\\alpha) = \\frac{3}{4}$, \\\\ then what is value of $tan(\\frac{\\alpha}{2})$?").scale(self.text_scale).next_to(triangle, DOWN, 1)
         # 用text和Tex的组合引入中文和公式
@@ -127,7 +129,7 @@ class s3(Scene):
         text_2.shift(0.05*UP)
 
         self.play(FadeIn(text), run_time=1)
-        self.wait(2)
+        self.wait(1.5)
 
         """
         此时下方的pi生物老师说, 我们来看第三种方法
