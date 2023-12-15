@@ -1,58 +1,21 @@
-from manim import *
+from manimlib import *
 
-# 下面这几行设置竖屏
-config.frame_width = 9
-config.frame_height = 16
-
-config.pixel_width = 1080
-config.pixel_height = 1920
-
-class test(Scene):
+class NumberedPlane(Scene):
     def construct(self):
+        # Create a number plane with numbered axes
         number_plane = NumberPlane(
-            background_line_style={
-                "stroke_color": TEAL,
-                "stroke_width": 4,
-                "stroke_opacity": 0.6
-            }
+            axis_config={
+                "include_ticks": True,  # Include ticks on the axis
+                "include_numbers": True,  # Include numbers on the axis
+                "number_scale_val": 0.5,  # Scale for the numbers on the axis
+                "tick_frequency": 1,  # Frequency of the ticks
+                "number_to_edge_buff": 0.1,  # Buffer space between the numbers and the edges
+                "label_direction": DOWN,  # Direction of the numbers on x-axis
+                "line_to_number_buff": 0.1  # Buffer space between the line and numbers
+            },
         )
-        self.play(Write(number_plane))
-        self.wait()
 
-class NumberPlaneScaled(Scene):
-    def construct(self):
-        number_plane = NumberPlane(
-            x_range=(-4, 11, 1),
-            y_range=(-3, 3, 1),
-            x_length=5,
-            y_length=2,
-        ).move_to(LEFT*3)
-
-        number_plane_scaled_y = NumberPlane(
-            x_range=(-4, 11, 1),
-            x_length=5,
-            y_length=4,
-        ).move_to(RIGHT*3)
-
+        # Add the number plane to the scene
         self.add(number_plane)
-        self.add(number_plane_scaled_y)
 
-
-class NumberPlaneExample(Scene):
-    def construct(self):
-        plane = NumberPlane(
-            x_range=[-10, 10, 1],
-            y_range=[-10, 10, 1],
-            axis_config={"color": WHITE},
-            x_axis_config={
-                "numbers_to_include": range(-10, 11, 2),
-                "numbers_with_elongated_ticks": range(-10, 11, 2),
-            },
-            y_axis_config={
-                "numbers_to_include": range(-10, 11, 2),
-                "numbers_with_elongated_ticks": range(-10, 11, 2),
-            },
-        )
-        #self.add(plane)
-        self.play(Write(plane))
-        self.wait()
+        # Additional animations or elements can be added here as needed
