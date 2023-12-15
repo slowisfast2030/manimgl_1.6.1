@@ -258,7 +258,7 @@ class pr(s3):
         self.wait(9.2)
         # 淡入上面的矩形
         self.play(FadeIn(rec_up), FadeOut(rec_down),run_time=1)
-        self.wait(8.5)
+        self.wait(6.5)
 
         self.play( 
                   FadeIn(rec_down))
@@ -266,7 +266,7 @@ class pr(s3):
 
         # 添加一个rect, 用来遮住所有的对象
         rect = Rectangle(height=config.frame_height, width=config.frame_width, color=BLACK, fill_opacity=1)
-        self.play(FadeIn(rect), run_time=1)
+        #self.play(FadeIn(rect), run_time=1)
         #self.wait(1)
         pass
 
@@ -314,7 +314,7 @@ class pr(s3):
         self.wait(6)
 
         ani = list(map(FadeOut, self.mobjects))
-        self.play(*ani)
+        #self.play(*ani)
         pass
 
     # 以费马点的例子介绍两种几何
