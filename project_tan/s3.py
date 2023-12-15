@@ -247,6 +247,7 @@ class s3(Scene):
         text0_gr = VGroup(text0.copy(), text0_res).arrange(RIGHT, buff=0.3).move_to(text0_center)
         self.play(ReplacementTransform(text0, text0_gr[0]),
                   Write(text0_res),
+                  Indicate(ver_f),
                   )
         self.wait()
         # 显示垂直和斜率乘积为-1
@@ -283,7 +284,9 @@ class s3(Scene):
         self.wait()
         self.play(
             ReplacementTransform(text3, text3_gr[0]),
-            Write(text3_res), run_time=1)
+            Write(text3_res), 
+            Indicate(ver_d),
+            run_time=1)
         self.wait()
         # 显示最终结论
         text4 = Tex(r"tan(\frac{\alpha}{2}) = \frac{AD}{AC} = \frac{1}{3}").scale(self.text_scale).next_to(text3_gr, DOWN, buff=0.5)
