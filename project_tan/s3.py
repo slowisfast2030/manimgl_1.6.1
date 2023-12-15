@@ -245,6 +245,7 @@ class s3(Scene):
                   run_time=1)
         text0_res = Tex("\Rightarrow  F(1,0)").scale(self.text_scale)
         text0_gr = VGroup(text0.copy(), text0_res).arrange(RIGHT, buff=0.3).move_to(text0_center)
+        self.wait()
         self.play(ReplacementTransform(text0, text0_gr[0]),
                   Write(text0_res),
                   Indicate(ver_f),
