@@ -223,9 +223,26 @@ class s3(Scene):
         self.wait()
         # 给出剩余解法
         # 显示三角形全等
+        tri_cdb = Polygon(self.plane.c2p(-4,0), 
+                          self.plane.c2p(0,4/3), 
+                          self.plane.c2p(0,3), 
+                          color=self.line_color, 
+                          stroke_width=3)
+        tri_cdb.set_fill(BLUE, 0.6)
+        tri_cdf = Polygon(self.plane.c2p(-4,0),
+                            self.plane.c2p(0,4/3),
+                            self.plane.c2p(1,0),
+                            color=self.line_color,
+                            stroke_width=3)
+        tri_cdf.set_fill(GREEN, 0.6)
+        
+
         text0 = Tex(r"\triangle CDB \cong \triangle CDF").next_to(self.plane, UP, buff=2.5).scale(self.text_scale)
         text0_center = text0.get_center()
-        self.play(Write(text0), run_time=1)
+        self.play(Write(text0), 
+                  FadeIn(tri_cdb),
+                  FadeIn(tri_cdf),
+                  run_time=1)
         text0_res = Tex("\Rightarrow  F(1,0)").scale(self.text_scale)
         text0_gr = VGroup(text0.copy(), text0_res).arrange(RIGHT, buff=0.3).move_to(text0_center)
         self.play(ReplacementTransform(text0, text0_gr[0]),
@@ -249,11 +266,14 @@ class s3(Scene):
         self.wait()
 
         # 显示直线EF的方程和点D的坐标
+        line_ef = Line(self.coord_e, self.coord_f, color=RED)
         text3 = Tex(r"EF: y = -\frac{4}{3}x + \frac{4}{3}").scale(self.text_scale).next_to(self.plane, DOWN, buff=-2.5)
         text3_center = text3.get_center()
         text3_res = Tex(r"\Rightarrow D(0, \frac{4}{3})").scale(self.text_scale)
         text3_gr = VGroup(text3.copy(), text3_res).arrange(RIGHT, buff=0.3).move_to(text3_center)
-        self.play(Write(text3), run_time=1)
+        self.play(Write(text3), 
+                  GrowFromCenter(line_ef),
+                  run_time=1)
         self.wait()
         self.play(
             ReplacementTransform(text3, text3_gr[0]),
