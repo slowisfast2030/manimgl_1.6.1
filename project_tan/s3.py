@@ -272,7 +272,7 @@ class s3(Scene):
         text3_res = Tex(r"\Rightarrow D(0, \frac{4}{3})").scale(self.text_scale)
         text3_gr = VGroup(text3.copy(), text3_res).arrange(RIGHT, buff=0.3).move_to(text3_center)
         self.play(Write(text3), 
-                  Indicate(line_ef),
+                  ShowPassingFlash(line_ef),
                   run_time=1)
         self.wait()
         self.play(
