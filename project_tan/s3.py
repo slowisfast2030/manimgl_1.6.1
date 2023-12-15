@@ -266,7 +266,7 @@ class pr(s3):
 
         # 添加一个rect, 用来遮住所有的对象
         rect = Rectangle(height=config.frame_height, width=config.frame_width, color=BLACK, fill_opacity=1)
-        #self.play(FadeIn(rect), run_time=1)
+        self.play(FadeIn(rect), run_time=1)
         #self.wait(1)
         pass
 
