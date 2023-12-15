@@ -248,6 +248,17 @@ class s3(Scene):
         self.play(Write(text2_res), run_time=1)
         self.wait()
 
+        # 显示直线EF的方程和点D的坐标
+        text3 = Tex(r"EF: y = -\frac{4}{3}x + \frac{4}{3}").scale(self.text_scale)
+        text3_res = Tex(r"D(0, \frac{4}{3})").scale(self.text_scale)
+        text3_gr = VGroup(text3, text3_res).arrange(RIGHT, buff=0.3).next_to(self.tri_gr, DOWN, buff=1)
+        self.play(Write(text3), run_time=1)
+        self.wait()
+        # 显示最终结论
+        text4 = Tex(r"tan(\frac{\alpha}{2}) = \frac{AD}{AC} = \frac{1}{3}").scale(self.text_scale).next_to(text3_gr, DOWN, buff=1)
+        self.play(Write(text4), run_time=1)
+        self.wait(3)
+
 
 
         pass  
