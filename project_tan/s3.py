@@ -247,7 +247,7 @@ class pr(s3):
                   Write(svg_gr[1]),
                   Write(plane),
                   run_time = 2)
-        self.wait(1)
+        self.wait(2)
 
         # 为了分别讲解两个几何, 需要设置一个起到遮罩的作用的矩形
         rec_up = Rectangle(height=geo_gr[0].get_height()+0.5, width=config.frame_width, color=BLACK, fill_opacity=0.6).move_to(geo_gr[0])
@@ -255,19 +255,19 @@ class pr(s3):
         
         # 淡入下面的矩形
         self.play(FadeIn(rec_down), run_time=1)
-        self.wait(2)
+        self.wait(9.2)
         # 淡入上面的矩形
         self.play(FadeIn(rec_up), FadeOut(rec_down),run_time=1)
-        self.wait(2)
+        self.wait(8.5)
 
         self.play( 
                   FadeIn(rec_down))
-        self.wait(1)
+        #self.wait(1)
 
         # 添加一个rect, 用来遮住所有的对象
         rect = Rectangle(height=config.frame_height, width=config.frame_width, color=BLACK, fill_opacity=1)
         self.play(FadeIn(rect), run_time=1)
-        self.wait(1)
+        #self.wait(1)
         pass
 
     # 以将军饮马问题介绍两种几何
@@ -287,7 +287,7 @@ class pr(s3):
         bank_up_down = VGroup(bank_up, bank_down).arrange(DOWN, buff=3)
         bank_up.shift(UP)
         self.play(Write(bank_up_down), run_time=1)
-        self.wait()
+        self.wait(1.76)
 
         # 求解A的对称点
         ver_dis = bank_up[1].get_center()[1] - bank_up[0].get_center()[1]
@@ -306,12 +306,12 @@ class pr(s3):
                   Write(label_a_sym), 
                   run_time=1)
 
-        self.wait()
+        self.wait(3)
 
         self.play(Write(point_c),
                   Write(label_c),
                   ShowCreation(line_a_sym_b))
-        self.wait()
+        self.wait(6)
 
         ani = list(map(FadeOut, self.mobjects))
         self.play(*ani)
