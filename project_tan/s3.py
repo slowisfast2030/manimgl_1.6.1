@@ -107,7 +107,7 @@ class s3(Scene):
                   ShowCreation(triangle),
                   FadeIn(student_teacher),
                   run_time=1)
-        self.wait()
+        #self.wait()
         self.play(Write(angle),
                   FadeIn(label_angle),
                   student_teacher[0].animate.change_mode("connving"),
@@ -129,7 +129,7 @@ class s3(Scene):
         text_2.shift(0.05*UP)
 
         self.play(FadeIn(text), run_time=1)
-        self.wait(1.5)
+        self.wait(2.5)
 
         """
         此时下方的pi生物老师说, 我们来看第三种方法
@@ -161,7 +161,7 @@ class s3(Scene):
                   FadeOut(student_teacher[1]),)
         self.wait()
         self.play(Write(text_syn_ch))
-        self.wait(6)
+        self.wait(4)
         self.play(GrowFromCenter(text_ana_gr))
         self.wait(4.5)
 
