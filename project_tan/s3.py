@@ -240,8 +240,8 @@ class s3(Scene):
         text0 = Tex(r"\triangle CDB \cong \triangle CDF").next_to(self.plane, UP, buff=2.5).scale(self.text_scale)
         text0_center = text0.get_center()
         self.play(Write(text0), 
-                  FadeIn(tri_cdb),
-                  FadeIn(tri_cdf),
+                  Write(tri_cdb),
+                  Write(tri_cdf),
                   run_time=1)
         text0_res = Tex("\Rightarrow  F(1,0)").scale(self.text_scale)
         text0_gr = VGroup(text0.copy(), text0_res).arrange(RIGHT, buff=0.3).move_to(text0_center)
@@ -272,7 +272,7 @@ class s3(Scene):
         text3_res = Tex(r"\Rightarrow D(0, \frac{4}{3})").scale(self.text_scale)
         text3_gr = VGroup(text3.copy(), text3_res).arrange(RIGHT, buff=0.3).move_to(text3_center)
         self.play(Write(text3), 
-                  GrowFromCenter(line_ef),
+                  Indicate(line_ef),
                   run_time=1)
         self.wait()
         self.play(
