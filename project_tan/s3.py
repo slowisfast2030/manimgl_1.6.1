@@ -138,8 +138,9 @@ class s3(Scene):
         self.play(
                   student_teacher[1].says(pi_text),
                   )
-        self.play(student_teacher[0].animate.change_mode("hooray"))
         self.wait(2)
+        self.play(student_teacher[0].animate.change_mode("hooray"))
+        self.wait(5.5)
         """
         淡出pi生物, 同时出现下方的动画
         """
@@ -160,9 +161,9 @@ class s3(Scene):
                   FadeOut(student_teacher[1]),)
         self.wait()
         self.play(Write(text_syn_ch))
-        self.wait()
+        self.wait(6)
         self.play(GrowFromCenter(text_ana_gr))
-        self.wait(2)
+        self.wait(4.5)
 
         pass
 
