@@ -272,7 +272,7 @@ class s3(Scene):
         self.wait()
 
         # 显示直线EF的方程和点D的坐标
-        line_ef = Line(self.coord_e, self.coord_f, color=RED)
+        line_ef = Line(self.coord_e, self.coord_f, color=YELLOW)
         text3 = Tex(r"EF: y = -\frac{4}{3}x + \frac{4}{3}").scale(self.text_scale).next_to(self.plane, DOWN, buff=-2.5)
         text3_center = text3.get_center()
         text3_res = Tex(r"\Rightarrow D(0, \frac{4}{3})").scale(self.text_scale)
