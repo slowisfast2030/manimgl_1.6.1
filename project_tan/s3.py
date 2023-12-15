@@ -167,7 +167,7 @@ class s3(Scene):
 
         pass
 
-    def introduce_triange_plane(self):
+    def  introduce_triange_plane(self):
         # 引入三角形
         triangle = Polygon(self.coord_c_shift, 
                            self.coord_a_shift, 
@@ -220,6 +220,39 @@ class s3(Scene):
 
         self.play(GrowFromPoint(line_ef, self.coord_d), run_time=1)
         self.play(Write(ver_e), Write(ver_f), run_time=1)
+        self.wait()
+        # 给出剩余解法
+        # 显示三角形全等
+        text0 = Tex(r"\triangle CDB \cong \triangle CDF").next_to(self.plane, UP, buff=2.5).scale(self.text_scale)
+        text0_center = text0.get_center()
+        self.play(Write(text0), run_time=1)
+        text0_res = Tex("\Rightarrow  F(1,0)").scale(self.text_scale)
+        text0_gr = VGroup(text0.copy(), text0_res).arrange(RIGHT, buff=0.3).move_to(text0_center)
+        self.play(ReplacementTransform(text0, text0_gr[0]),
+                  Write(text0_res),
+                  )
+        self.wait()
+        # 显示垂直和斜率乘积为-1
+        text1 = Tex(r"EF \perp CB").scale(self.text_scale)
+        text1_res = Tex(r"\Rightarrow  k_{EF} \cdot k_{CB} = -1").scale(self.text_scale)
+        text1_gr = VGroup(text1, text1_res).arrange(RIGHT, buff=0.3).next_to(text0_gr, DOWN, buff=0.5)
+        self.play(Write(text1), run_time=1)
+        self.wait()
+        self.play(Write(text1_res), run_time=1)
+        # 显示直线BC的斜率
+        text2 = Tex(r"k_{CB} = \frac{3}{4}").scale(self.text_scale)
+        text2_res = Tex(r"\Rightarrow  k_{EF} = -\frac{4}{3}").scale(self.text_scale)
+        text2_gr = VGroup(text2, text2_res).arrange(RIGHT, buff=0.3).next_to(text1_gr, DOWN, buff=0.5)
+        self.play(Write(text2), run_time=1)
+        self.wait()
+        self.play(Write(text2_res), run_time=1)
+        self.wait()
+
+
+
+        pass  
+
+
 
 
 class pr(s3):
