@@ -4,9 +4,16 @@ sys.path.append("/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-characters
 from manimlib import *
 from alphabet_creature import AlphabetCreature
 
+class test_body(Scene):
+    def construct(self):
+        a = AlphabetCreature(r"\pi", flip_at_start=False, color=RED)
+        body = a[0]
+        self.add(body)
+        self.wait()
+
 class test_omega(Scene):
     def construct(self):
-        a = AlphabetCreature(r"B", flip_at_start=False, color=RED)
+        a = AlphabetCreature(r"\pi", flip_at_start=False, color=RED)
         aa = a.copy()
         self.add(a)
         self.wait()
