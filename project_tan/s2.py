@@ -468,7 +468,7 @@ class s2(Scene):
 
         text3 = Tex(r"\tan(\frac{\alpha}{2})=\tan(\angle BEF)=\frac{BF}{EF}=\frac{1}{3}").next_to(text_temp, DOWN, buff=0.5).scale(self.text_scale)
         self.play(Write(text3), run_time=2)
-        self.wait(4)
+        self.wait(7)
 
 
         pass
