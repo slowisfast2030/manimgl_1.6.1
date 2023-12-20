@@ -36,6 +36,7 @@ class AlphabetCreature(SingleStringTex):
 
     """
     CONFIG = {
+        "math_mode": False,
         "color": BLUE_E,
         "height": 3,
         "start_corner": ORIGIN,
