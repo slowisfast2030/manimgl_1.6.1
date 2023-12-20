@@ -5,18 +5,19 @@ from manimlib import *
 from alphabet_creature import AlphabetCreature
 
 """
-因为将
+因为将AlphabetCreature的math_mode属性改为False
+要注意区分A和$A$
 """
 class test_body(Scene):
     def construct(self):
-        a = AlphabetCreature(r"$A$", flip_at_start=False, color=RED)
+        a = AlphabetCreature(r"$\Omega$", flip_at_start=False, color=RED)
         body = a[0]
         self.add(body)
         self.wait()
 
 class test_omega(Scene):
     def construct(self):
-        a = AlphabetCreature(r"\pi", flip_at_start=False, color=RED)
+        a = AlphabetCreature(r"$\pi$", flip_at_start=False, color=RED)
         aa = a.copy()
         self.add(a)
         self.wait()
@@ -29,7 +30,7 @@ class test_omega(Scene):
 
 class test(Scene):
     def construct(self):
-        a = AlphabetCreature("\pi", flip_at_start=False, color=RED)
+        a = AlphabetCreature("$\pi$", flip_at_start=False, color=RED)
         aa = a.copy()
         self.add(a)
         self.wait()
