@@ -4,6 +4,9 @@ sys.path.append("/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-characters
 from manimlib import *
 from alphabet_creature import AlphabetCreature
 
+"""
+因为将
+"""
 class test_body(Scene):
     def construct(self):
         a = AlphabetCreature(r"$A$", flip_at_start=False, color=RED)

@@ -35,6 +35,13 @@ class AlphabetCreature(SingleStringTex):
     当前类的同名属性会覆盖父类的同名属性(所有的父类的CONFIG字典会合并成一个字典)
 
     """
+    """
+    https://zavden.github.io/char-creature-docs/html/CHP_1.html
+    想自己实现这里的字符生物
+    发现里面的示例”A“是竖直的, 而我这里渲染的是倾斜的
+    经过对比发现, 是因为这里自己默认是math_mode: True
+    将其改为False就可以了
+    """
     CONFIG = {
         "math_mode": False,
         "color": BLUE_E,
