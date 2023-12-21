@@ -30,7 +30,7 @@ class test_omega(Scene):
         print(a.submobjects)
         a.look(LEFT)
         a.blink()
-        self.wait(0.2)
+        self.wait(0.3)
         self.add(aa)
         self.wait(1)
 
