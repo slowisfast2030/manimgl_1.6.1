@@ -367,7 +367,11 @@ class AlphabetCreature(SingleStringTex):
             bubble_type=SpeechBubble,
             **kwargs,
         )
-    
+
+    """
+    需要修复下
+    这里压根不需要mode参数
+    """ 
     def debubble(self, mode="plain", look_at=None, **kwargs):
         """
         从有bubble的状态回到没有bubble的状态
