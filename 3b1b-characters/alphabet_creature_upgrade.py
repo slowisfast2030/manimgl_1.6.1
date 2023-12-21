@@ -1,3 +1,5 @@
+import sys
+sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
 
 from manimlib.constants import *
 from manimlib.mobject.mobject import _AnimationBuilder
@@ -13,6 +15,10 @@ from manimlib.utils.space_ops import get_norm
 from manimlib.utils.space_ops import normalize
 
 from manimlib.animation.transform import Transform
+from manimlib.animation.animation import Animation
+from manimlib.mobject.svg.drawings import SpeechBubble
+from manimlib.mobject.svg.drawings import ThoughtBubble
+from manimlib.mobject.svg.text_mobject import Text
 
 from typing import TYPE_CHECKING, Union
 if TYPE_CHECKING:
@@ -325,3 +331,35 @@ class AlphabetCreature(SingleStringTex):
         if look_at is not None:
             animation = animation.look_at(look_at)
         return animation
+
+    def get_bubble(self, content, bubble_type=ThoughtBubble, **bubble_config):
+        """
+        单独调用这个函数不能正常显示content
+
+        在replace_bubble方法中可以被正常调用
+
+        疑惑
+        """
+        bubble = bubble_type(**bubble_config)
+        if len(content) > 0:
+            if isinstance(content[0], str):
+                content_mob = Text(content)
+            else:
+                content_mob = content
+            bubble.add_content(content_mob)
+            bubble.resize_to_content()
+        # 多了一个auto_flip参数
+        #bubble.pin_to(self, auto_flip=["direction" not in bubble_config])
+        bubble.pin_to(self)
+        self.bubble = bubble
+        return bubble
+
+    def says(self, content, mode="A", look_at=None, **kwargs) -> Animation:
+        from custom.characters.pi_creature_animations import PiCreatureBubbleIntroduction
+        return PiCreatureBubbleIntroduction(
+            self, content,
+            target_mode=mode,
+            look_at=look_at,
+            bubble_type=SpeechBubble,
+            **kwargs,
+        )
