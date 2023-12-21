@@ -108,7 +108,7 @@ class AlphabetCreature(SingleStringTex):
     def draw_eyes(self):
         # 眼白
         iris = Circle().scale(self.eye_scale).\
-                    set_stroke(BLACK, 1).\
+                    set_stroke(BLACK, 2).\
                     set_fill(WHITE, 1)
         
         # 瞳孔和瞳孔中的点
