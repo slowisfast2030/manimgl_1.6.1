@@ -359,7 +359,7 @@ class AlphabetCreature(SingleStringTex):
     这里压根不需要mode参数
     """
     def says(self, content, mode="A", look_at=None, **kwargs) -> Animation:
-        from custom.characters.pi_creature_animations import PiCreatureBubbleIntroduction
+        from alphabet_creature_animations import PiCreatureBubbleIntroduction
         return PiCreatureBubbleIntroduction(
             self, content,
             target_mode=self.letter,
@@ -367,3 +367,17 @@ class AlphabetCreature(SingleStringTex):
             bubble_type=SpeechBubble,
             **kwargs,
         )
+    
+    def debubble(self, mode="plain", look_at=None, **kwargs):
+        """
+        从有bubble的状态回到没有bubble的状态
+
+        注意: 一开始要有bubble
+        """
+        
+        from alphabet_creature_animations import RemovePiCreatureBubble
+        result = RemovePiCreatureBubble(
+            self, target_mode=self.letter, look_at=look_at, **kwargs
+        )
+        self.bubble = None
+        return result
