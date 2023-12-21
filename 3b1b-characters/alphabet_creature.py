@@ -20,7 +20,7 @@ class AlphabetCreature(SingleStringTex):
     """
     eye = iris + pupil + dot
     """
-    pupil_to_eye_width_ratio: float = 0.4
+    pupil_to_eye_width_ratio: float = 0.5
     pupil_dot_to_pupil_width_ratio: float = 0.3
 
     """
@@ -103,7 +103,7 @@ class AlphabetCreature(SingleStringTex):
         eyes = VGroup()
 
         # 眼白
-        iris = Circle().scale(0.22).\
+        iris = Circle().scale(0.25).\
                     shift(0.15*LEFT+1.6*UP).\
                     set_stroke(BLACK, 1).\
                     set_fill(WHITE, 1)
