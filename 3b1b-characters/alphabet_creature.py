@@ -142,7 +142,17 @@ class AlphabetCreature(SingleStringTex):
         eye_right.pupil = pupil_right
         
         eyes = VGroup(eye_left, eye_right).arrange(RIGHT, buff=self.eye_buffer)
-        eyes.move_to()
+        # body左上角
+        body_UL = self.body.get_corner(UL)
+        # body右上角
+        body_UR = self.body.get_corner(UR)
+        # body左下角
+        body_DL = self.body.get_corner(DL)
+
+        x_vector = (body_UR - body_UL) * self.eye_prop[0]
+        y_vector = (body_DL - body_UL) * self.eye_prop[1]
+
+        eyes.move_to(body_UL + x_vector + y_vector)
         return eyes
 
     def draw_eyes_bk(self):
