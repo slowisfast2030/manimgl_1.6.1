@@ -21,9 +21,9 @@ class test_omega(Scene):
         a = AlphabetCreature(r"$\Omega$", 
                              flip_at_start=False, 
                              color=RED,
-                             eye_scale=0.3,
-                             eye_buffer=0.4,
-                             eye_prop=[0.5, 0.05])
+                             eye_scale=0.35,
+                             eye_buffer=0,
+                             eye_prop=[0.2, 0.4])
         aa = a.copy()
         self.add(a)
         self.wait()
