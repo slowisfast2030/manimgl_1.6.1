@@ -32,8 +32,6 @@ class test_omega(Scene):
         self.wait(1)
         #a.blink()
         self.play(a.blink(), rate_func=there_and_back)
-        self.wait(0.3)
-        #self.add(aa)
         self.wait(1)
 
 class test(Scene):
