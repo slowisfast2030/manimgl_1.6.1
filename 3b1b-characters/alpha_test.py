@@ -18,7 +18,7 @@ class test_body(Scene):
 
 class test_omega(Scene):
     def construct(self):
-        a = AlphabetCreature(r"E", 
+        a = AlphabetCreature(r"$\mu$", 
                              flip_at_start=False, 
                              color=TEAL,
                              eye_scale=0.3,
