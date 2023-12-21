@@ -63,6 +63,7 @@ class AlphabetCreature(SingleStringTex):
                  letter: str = "A",
                  eye_scale = 0.25,
                  eye_buffer = 0.5,
+                 eye_prop = [0.5, 0.05],
                  **kwargs
                  ):
         
@@ -72,6 +73,7 @@ class AlphabetCreature(SingleStringTex):
         self.letter = letter
         self.eye_scale = eye_scale
         self.eye_buffer = eye_buffer
+        self.eye_prop = eye_prop
         self.bubble = None
         
         super().__init__(self.letter, **kwargs)
