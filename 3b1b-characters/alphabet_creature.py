@@ -62,6 +62,7 @@ class AlphabetCreature(SingleStringTex):
     def __init__(self, 
                  letter: str = "A",
                  eye_scale = 0.25,
+                 eye_buffer = 0.5,
                  **kwargs
                  ):
         
@@ -70,6 +71,7 @@ class AlphabetCreature(SingleStringTex):
         
         self.letter = letter
         self.eye_scale = eye_scale
+        self.eye_buffer = eye_buffer
         self.bubble = None
         
         super().__init__(self.letter, **kwargs)
@@ -103,11 +105,8 @@ class AlphabetCreature(SingleStringTex):
         return body
 
     def draw_eyes(self):
-        eyes = VGroup()
-
         # 眼白
         iris = Circle().scale(self.eye_scale).\
-                    shift(0.15*LEFT+1.6*UP).\
                     set_stroke(BLACK, 1).\
                     set_fill(WHITE, 1)
         
@@ -132,16 +131,16 @@ class AlphabetCreature(SingleStringTex):
         eye_left = VGroup(iris_left, pupil_left)
         eye_left.iris = iris
         eye_left.pupil = pupil
-        eyes.add(eye_left)
 
         # 右眼
-        iris_right = iris.copy().shift(RIGHT*0.8)
-        pupil_right = pupil.copy().shift(RIGHT*0.8)
+        iris_right = iris.copy()
+        pupil_right = pupil.copy()
         eye_right = VGroup(iris_right, pupil_right)
         eye_right.iris = iris_right
         eye_right.pupil = pupil_right
-        eyes.add(eye_right)
-
+        
+        eyes = VGroup(eye_left, eye_right).arrange(RIGHT, buff=self.eye_buffer)
+        eyes.move_to()
         return eyes
 
     def draw_eyes_bk(self):
