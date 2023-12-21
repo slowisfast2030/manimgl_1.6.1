@@ -61,6 +61,7 @@ class AlphabetCreature(SingleStringTex):
     """
     def __init__(self, 
                  letter: str = "A",
+                 eye_scale = 0.25,
                  **kwargs
                  ):
         
@@ -68,6 +69,7 @@ class AlphabetCreature(SingleStringTex):
         #digest_config(self, kwargs)
         
         self.letter = letter
+        self.eye_scale = eye_scale
         self.bubble = None
         
         super().__init__(self.letter, **kwargs)
@@ -97,13 +99,14 @@ class AlphabetCreature(SingleStringTex):
         submobjects = self.submobjects
         assert len(submobjects) == 1, "the length of the submobjects must be 1"
         body = submobjects[0]
+        self.body = body
         return body
 
     def draw_eyes(self):
         eyes = VGroup()
 
         # 眼白
-        iris = Circle().scale(0.25).\
+        iris = Circle().scale(self.eye_scale).\
                     shift(0.15*LEFT+1.6*UP).\
                     set_stroke(BLACK, 1).\
                     set_fill(WHITE, 1)
