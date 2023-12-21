@@ -354,11 +354,15 @@ class AlphabetCreature(SingleStringTex):
         self.bubble = bubble
         return bubble
 
+    """
+    需要修复下
+    这里压根不需要mode参数
+    """
     def says(self, content, mode="A", look_at=None, **kwargs) -> Animation:
         from custom.characters.pi_creature_animations import PiCreatureBubbleIntroduction
         return PiCreatureBubbleIntroduction(
             self, content,
-            target_mode=mode,
+            target_mode=self.letter,
             look_at=look_at,
             bubble_type=SpeechBubble,
             **kwargs,
