@@ -2,7 +2,8 @@ import sys
 sys.path.append("/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-characters")
 
 from manimlib import *
-from alphabet_creature import AlphabetCreature
+#from alphabet_creature import AlphabetCreature
+from alphabet_creature_upgrade import AlphabetCreature
 
 """
 因为将AlphabetCreature的math_mode属性改为False
