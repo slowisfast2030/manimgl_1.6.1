@@ -105,6 +105,7 @@ class AlphabetCreature(SingleStringTex):
                     set_stroke(BLACK, 1).\
                     set_fill(WHITE, 1)
         
+        # 瞳孔和瞳孔中的点
         pupil_r = iris.get_width() / 2
         pupil_r *= self.pupil_to_eye_width_ratio
         dot_r = pupil_r
