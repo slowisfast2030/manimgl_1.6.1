@@ -16,6 +16,9 @@ class test_body(Scene):
         self.add(body)
         self.wait()
 
+"""
+这个测试用例已经将blink和look方法的返回值修改为动画了
+"""
 class test_omega(Scene):
     def construct(self):
         a = AlphabetCreature(r"$\Omega$", 
@@ -30,7 +33,6 @@ class test_omega(Scene):
         print(a.submobjects)
         self.play(a.look(LEFT), rate_func=there_and_back)
         self.wait(1)
-        #a.blink()
         self.play(a.blink(), rate_func=there_and_back)
         self.wait(1)
 
