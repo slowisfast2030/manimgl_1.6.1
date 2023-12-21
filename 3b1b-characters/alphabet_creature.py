@@ -120,7 +120,8 @@ class AlphabetCreature(SingleStringTex):
         dot.shift(black.pfp(3 / 8) - dot.pfp(3 / 8))
         pupil = VGroup(black, dot)
         pupil.set_style(fill_opacity=1, stroke_width=0)
-        pupil.move_to(iris.get_center()+UR*0.08)
+        # 默认情况下，pupil的中心位于iris的中心
+        pupil.move_to(iris.get_center())
 
         # 左眼
         iris_left = iris.copy()
