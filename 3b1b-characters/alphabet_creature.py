@@ -110,7 +110,7 @@ class AlphabetCreature(SingleStringTex):
         dot_r = pupil_r
         dot_r *= self.pupil_dot_to_pupil_width_ratio
 
-        # 眼睛
+        # 瞳孔
         black = Circle(radius=pupil_r, color=BLACK)
         dot = Circle(radius=dot_r, color=WHITE)
         dot.shift(black.pfp(3 / 8) - dot.pfp(3 / 8))
