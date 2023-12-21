@@ -242,7 +242,8 @@ class AlphabetCreature(SingleStringTex):
         但不再睁开
         """
         eyes = self.eyes
-        eye_bottom_y = eyes.get_y(DOWN)
+        #eye_bottom_y = eyes.get_y(DOWN)
+        eye_bottom_y = eyes.get_y(UP)
 
         for eye_part in eyes.family_members_with_points():
             new_points = eye_part.get_points()
