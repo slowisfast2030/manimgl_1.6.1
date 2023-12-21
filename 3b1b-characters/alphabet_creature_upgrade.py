@@ -12,6 +12,8 @@ from manimlib.mobject.geometry import Rectangle
 from manimlib.utils.space_ops import get_norm
 from manimlib.utils.space_ops import normalize
 
+from manimlib.animation.transform import Transform
+
 from typing import TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from manimlib.typing import ManimColor, Vect3
@@ -230,8 +232,34 @@ class AlphabetCreature(SingleStringTex):
     def is_flipped(self):
         return self.eyes.submobjects[0].get_center()[0] > \
             self.eyes.submobjects[1].get_center()[0]
-    
+
+    """
+    blink应该是一个动画
+    """
     def blink(self):
+        """
+        将眼睛部分的点的y坐标设置为eye_bottom_y
+        从而实现闭眼的效果
+        """
+        """
+        blink的效果需要改进
+        眼睛会闭起来
+        但不再睁开
+        """
+        eyes = self.eyes.copy()
+        #eye_bottom_y = eyes.get_y(DOWN)
+        eye_bottom_y = eyes.get_y(ORIGIN)
+
+        for eye_part in eyes.family_members_with_points():
+            new_points = eye_part.get_points()
+            new_points[:, 1] = eye_bottom_y
+            eye_part.set_points(new_points)
+
+        #ani = self.eyes.animate.become(eyes)
+        ani = Transform(self.eyes, eyes)
+        return ani
+     
+    def blink_bk(self):
         """
         将眼睛部分的点的y坐标设置为eye_bottom_y
         从而实现闭眼的效果
