@@ -18,12 +18,12 @@ class test_body(Scene):
 
 class test_omega(Scene):
     def construct(self):
-        a = AlphabetCreature(r"$\Omega$", 
+        a = AlphabetCreature(r"A", 
                              flip_at_start=False, 
-                             color=RED,
+                             color=TEAL,
                              eye_scale=0.35,
-                             eye_buffer=0,
-                             eye_prop=[0.2, 0.4])
+                             eye_buffer=0.09,
+                             eye_prop=[0.5, 0.1])
         aa = a.copy()
         self.add(a)
         self.wait()
