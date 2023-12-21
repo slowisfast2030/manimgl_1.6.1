@@ -243,7 +243,7 @@ class AlphabetCreature(SingleStringTex):
         """
         eyes = self.eyes
         #eye_bottom_y = eyes.get_y(DOWN)
-        eye_bottom_y = eyes.get_y(UP)
+        eye_bottom_y = eyes.get_y(ORIGIN)
 
         for eye_part in eyes.family_members_with_points():
             new_points = eye_part.get_points()
