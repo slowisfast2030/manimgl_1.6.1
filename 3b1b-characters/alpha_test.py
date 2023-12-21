@@ -23,7 +23,7 @@ class test_omega(Scene):
                              color=TEAL,
                              eye_scale=0.3,
                              eye_buffer=0.2,
-                             eye_prop=[0.5, 0.0])
+                             eye_prop=[0.5, 0.04])
         aa = a.copy()
         self.add(a)
         self.wait()
