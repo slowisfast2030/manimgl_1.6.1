@@ -22,7 +22,7 @@ class test_omega(Scene):
                              flip_at_start=False, 
                              color=RED,
                              eye_scale=0.3,
-                             eye_buffer=0.2,
+                             eye_buffer=0.5,
                              eye_prop=[0.5, 0.05])
         aa = a.copy()
         self.add(a)
