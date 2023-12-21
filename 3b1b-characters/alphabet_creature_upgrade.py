@@ -193,7 +193,34 @@ class AlphabetCreature(SingleStringTex):
     def get_letter(self):
         return self.letter
 
+    """
+    look应该是一个动画
+    """
     def look(self, direction):
+        """
+        iris不变, 移动pupil
+        """
+        direction = normalize(direction)
+        self.purposeful_looking_direction = direction
+
+        eyes = self.eyes.copy()
+        for eye in eyes:
+            iris, pupil = eye
+            iris_center = iris.get_center()
+            right = iris.get_right() - iris_center
+            up = iris.get_top() - iris_center
+            vect = direction[0] * right + direction[1] * up
+            v_norm = get_norm(vect)
+            pupil_radius = 0.5 * pupil.get_width()
+            vect *= (v_norm - 0.75 * pupil_radius) / v_norm
+            pupil.move_to(iris_center + vect)
+        
+        # 这一行注释掉就正常了
+        #self.eyes[1].pupil.align_to(self.eyes[0].pupil, DOWN)
+        ani = Transform(self.eyes, eyes)    
+        return ani
+
+    def look_bk(self, direction):
         """
         iris不变, 移动pupil
         """

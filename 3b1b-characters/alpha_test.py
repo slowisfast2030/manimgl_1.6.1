@@ -28,7 +28,7 @@ class test_omega(Scene):
         self.add(a)
         self.wait()
         print(a.submobjects)
-        a.look(LEFT)
+        self.play(a.look(LEFT), rate_func=there_and_back)
         self.wait(1)
         #a.blink()
         self.play(a.blink(), rate_func=there_and_back)
