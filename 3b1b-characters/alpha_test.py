@@ -27,9 +27,7 @@ class test_omega(Scene):
                              eye_scale=0.3,
                              eye_buffer=0.2,
                              eye_prop=[0.5, 0.04])
-        aa = a.copy()
         self.add(a)
-        self.wait()
         print(a.submobjects)
         self.play(a.look(LEFT), rate_func=there_and_back)
         self.wait(1)
