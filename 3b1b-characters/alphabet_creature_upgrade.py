@@ -96,8 +96,7 @@ class AlphabetCreature(SingleStringTex):
         """
         self.body:VMobject = self.draw_body()
         self.eyes:VGroup = self.draw_eyes()
-        self.mouth:VMobject = self.draw_mouth()
-        self.set_submobjects([self.body, self.eyes, self.mouth]) 
+        self.set_submobjects([self.body, self.eyes]) 
 
     def draw_body(self):
         submobjects = self.submobjects
@@ -154,55 +153,6 @@ class AlphabetCreature(SingleStringTex):
 
         eyes.move_to(body_UL + x_vector + y_vector)
         return eyes
-
-    def draw_eyes_bk(self):
-        eyes = VGroup()
-
-        # 眼白
-        iris = Circle().scale(self.eye_scale).\
-                    shift(0.15*LEFT+1.6*UP).\
-                    set_stroke(BLACK, 1).\
-                    set_fill(WHITE, 1)
-        
-        # 瞳孔和瞳孔中的点
-        pupil_r = iris.get_width() / 2
-        pupil_r *= self.pupil_to_eye_width_ratio
-        dot_r = pupil_r
-        dot_r *= self.pupil_dot_to_pupil_width_ratio
-
-        # 瞳孔
-        black = Circle(radius=pupil_r, color=BLACK)
-        dot = Circle(radius=dot_r, color=WHITE)
-        dot.shift(black.pfp(3 / 8) - dot.pfp(3 / 8))
-        pupil = VGroup(black, dot)
-        pupil.set_style(fill_opacity=1, stroke_width=0)
-        # 默认情况下，pupil的中心位于iris的中心
-        pupil.move_to(iris.get_center())
-
-        # 左眼
-        iris_left = iris.copy()
-        pupil_left = pupil.copy()
-        eye_left = VGroup(iris_left, pupil_left)
-        eye_left.iris = iris
-        eye_left.pupil = pupil
-        eyes.add(eye_left)
-
-        # 右眼
-        iris_right = iris.copy().shift(RIGHT*0.8)
-        pupil_right = pupil.copy().shift(RIGHT*0.8)
-        eye_right = VGroup(iris_right, pupil_right)
-        eye_right.iris = iris_right
-        eye_right.pupil = pupil_right
-        eyes.add(eye_right)
-
-        return eyes
-
-    def draw_mouth(self):
-        mouth = Rectangle(color=BLACK,
-                          height=0.01,
-                          width=0.3)
-        mouth.shift(UP*1.22 + RIGHT*0.2)
-        return mouth
     
     def align_data_and_family(self, mobject):
         # This ensures that after a transform into a different letter,
