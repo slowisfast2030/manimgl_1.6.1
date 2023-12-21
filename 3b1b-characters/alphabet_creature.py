@@ -17,6 +17,9 @@ if TYPE_CHECKING:
     from manimlib.typing import ManimColor, Vect3
 
 class AlphabetCreature(SingleStringTex):
+    """
+    eye = iris + pupil + dot
+    """
     pupil_to_eye_width_ratio: float = 0.4
     pupil_dot_to_pupil_width_ratio: float = 0.3
 
