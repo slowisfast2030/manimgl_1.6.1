@@ -1,5 +1,5 @@
 import sys
-sys.path.append("/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-characters")
+sys.path.append("/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-linus-creatures")
 
 from manimlib import *
 from alphabet_creature_upgrade import AlphabetCreature
