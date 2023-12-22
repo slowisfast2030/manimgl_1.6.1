@@ -14,6 +14,7 @@ from manimlib.animation.animation import Animation
 from manimlib.mobject.svg.drawings import SpeechBubble
 from manimlib.mobject.svg.drawings import ThoughtBubble
 from manimlib.mobject.svg.text_mobject import Text
+from manimlib.utils.rate_functions import there_and_back
 
 
 class AlphabetCreature(SingleStringTex):
@@ -263,7 +264,7 @@ class AlphabetCreature(SingleStringTex):
             eye_part.set_points(new_points)
 
         #ani = self.eyes.animate.become(eyes)
-        ani = Transform(self.eyes, eyes)
+        ani = Transform(self.eyes, eyes, rate_func=there_and_back)
         return ani
     
     # Overrides
