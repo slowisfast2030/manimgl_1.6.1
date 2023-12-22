@@ -32,6 +32,7 @@ class test_omega(Scene):
                              eye_scale=0.3,
                              eye_buffer=0.09,
                              eye_prop=[0.5, 0.1])
+        a.scale(1)
         self.add(a)
         self.play(a.look(LEFT))
         self.wait(1)
