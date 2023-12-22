@@ -3,7 +3,7 @@ sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-mas
 sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/project_words/abandon')
 
 from manim_imports_ext import *
-from abandon_text import image_paths, meaning_sentence
+from abandon_text import image_paths, student_words, meaning_sentence
 
 # 三个小球在右上角的坐标
 Mob1_coord = [1.78, 6.7, 0.]
@@ -278,7 +278,7 @@ class test(Scene):
             *[Write(sent) for sent in sentence_gr])
 
         # 写完句子后，需要给出对话
-        self.play(student_teacher[0].thinks("what a lonely boy!"),
+        self.play(student_teacher[0].thinks(student_words[0]),
                   run_time=2,
                   )
         self.wait(1)
@@ -320,7 +320,7 @@ class test(Scene):
             *[Write(sent) for sent in sentence_gr])
 
         # 写完句子后，需要给出对话
-        self.play(student_teacher[0].thinks("hha..."),
+        self.play(student_teacher[0].thinks(student_words[1]),
                   run_time=2,
                   )
         # 删除对话 
@@ -363,7 +363,7 @@ class test(Scene):
             *[Write(sent) for sent in sentence_gr])
         
         # 写完句子后，需要给出对话
-        self.play(student_teacher[0].thinks("good choice!"),
+        self.play(student_teacher[0].thinks(student_words[2]),
                   run_time=2,
                   )
         # 删除对话 

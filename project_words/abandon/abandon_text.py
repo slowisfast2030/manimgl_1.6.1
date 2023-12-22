@@ -3,6 +3,10 @@ image_paths = ["dall-boy.png",
               "dall-house.png",
               "dall-path.png"]
 
+student_words = ["what a lonely boy!",
+                 "hha...",
+                 "good choice!"]
+
 meaning_sentence = {
     "word": "abandon",
     "attribute": "V-T",
