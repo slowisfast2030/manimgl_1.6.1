@@ -3,7 +3,7 @@ sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-mas
 sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/project_words/abandon')
 
 from manim_imports_ext import *
-from abandon_text import image_paths, student_words, meaning_sentence
+from abandon_text import image_paths, student_words, meaning_sentence_dict
 
 # 三个小球在右上角的坐标
 Mob1_coord = [1.78, 6.7, 0.]
@@ -240,7 +240,7 @@ class test(Scene):
         self.wait(1) 
 
         # 画出单词
-        word = Text(meaning_sentence["word"]).scale(2).move_to(Word_coord).set_color_by_gradient(RED, BLUE)
+        word = Text(meaning_sentence_dict["word"]).scale(2).move_to(Word_coord).set_color_by_gradient(RED, BLUE)
         mob1, mob2, mob3 = mob_gr  
         self.play(
             student_teacher[1].debubble(),
@@ -260,10 +260,10 @@ class test(Scene):
 
         # 单词的第一个释义出现
         # 给出中英文释义
-        parts = meaning_sentence["first_meaning"][0]
-        parts_ch = meaning_sentence["first_meaning"][1]
-        sents = meaning_sentence["first_sentence"][0]
-        sents_ch = meaning_sentence["first_sentence"][1]
+        parts = meaning_sentence_dict["first_meaning"][0]
+        parts_ch = meaning_sentence_dict["first_meaning"][1]
+        sents = meaning_sentence_dict["first_sentence"][0]
+        sents_ch = meaning_sentence_dict["first_sentence"][1]
 
         meaning_sentence = meaning(parts, parts_ch, sents, sents_ch)
         meaning_gr = meaning_sentence[0]
@@ -303,10 +303,10 @@ class test(Scene):
         self.wait()
 
         # 单词的第二个释义
-        parts = meaning_sentence["second_meaning"][0]   
-        parts_ch = meaning_sentence["second_meaning"][1]
-        sents = meaning_sentence["second_sentence"][0]
-        sents_ch = meaning_sentence["second_sentence"][1]
+        parts = meaning_sentence_dict["second_meaning"][0]   
+        parts_ch = meaning_sentence_dict["second_meaning"][1]
+        sents = meaning_sentence_dict["second_sentence"][0]
+        sents_ch = meaning_sentence_dict["second_sentence"][1]
 
         meaning_sentence = meaning(parts, parts_ch, sents, sents_ch)
         meaning_gr = meaning_sentence[0]
@@ -346,10 +346,10 @@ class test(Scene):
         self.wait()
 
         # 单词的第三个释义
-        parts = meaning_sentence["third_meaning"][0]
-        parts_ch = meaning_sentence["third_meaning"][1]
-        sents = meaning_sentence["third_sentence"][0]   
-        sents_ch = meaning_sentence["third_sentence"][1]
+        parts = meaning_sentence_dict["third_meaning"][0]
+        parts_ch = meaning_sentence_dict["third_meaning"][1]
+        sents = meaning_sentence_dict["third_sentence"][0]   
+        sents_ch = meaning_sentence_dict["third_sentence"][1]
 
         meaning_sentence = meaning(parts, parts_ch, sents, sents_ch)
         meaning_gr = meaning_sentence[0]

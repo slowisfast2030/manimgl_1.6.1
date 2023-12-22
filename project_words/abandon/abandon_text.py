@@ -7,7 +7,7 @@ student_words = ["what a lonely boy!",
                  "hha...",
                  "good choice!"]
 
-meaning_sentence = {
+meaning_sentence_dict = {
     "word": "abandon",
     "attribute": "V-T",
     "first_meaning": [
