@@ -221,27 +221,6 @@ class AlphabetCreature(SingleStringTex):
         ani = Transform(self.eyes, eyes)    
         return ani
 
-    def look_bk(self, direction):
-        """
-        iris不变, 移动pupil
-        """
-        direction = normalize(direction)
-        self.purposeful_looking_direction = direction
-        for eye in self.eyes:
-            iris, pupil = eye
-            iris_center = iris.get_center()
-            right = iris.get_right() - iris_center
-            up = iris.get_top() - iris_center
-            vect = direction[0] * right + direction[1] * up
-            v_norm = get_norm(vect)
-            pupil_radius = 0.5 * pupil.get_width()
-            vect *= (v_norm - 0.75 * pupil_radius) / v_norm
-            pupil.move_to(iris_center + vect)
-        
-        # 这一行注释掉就正常了
-        #self.eyes[1].pupil.align_to(self.eyes[0].pupil, DOWN)
-        return self
-
     def look_at(self, point_or_mobject):
         if isinstance(point_or_mobject, Mobject):
             point = point_or_mobject.get_center()
@@ -286,27 +265,6 @@ class AlphabetCreature(SingleStringTex):
         #ani = self.eyes.animate.become(eyes)
         ani = Transform(self.eyes, eyes)
         return ani
-     
-    def blink_bk(self):
-        """
-        将眼睛部分的点的y坐标设置为eye_bottom_y
-        从而实现闭眼的效果
-        """
-        """
-        blink的效果需要改进
-        眼睛会闭起来
-        但不再睁开
-        """
-        eyes = self.eyes
-        #eye_bottom_y = eyes.get_y(DOWN)
-        eye_bottom_y = eyes.get_y(ORIGIN)
-
-        for eye_part in eyes.family_members_with_points():
-            new_points = eye_part.get_points()
-            new_points[:, 1] = eye_bottom_y
-            eye_part.set_points(new_points)
-
-        return self
     
     # Overrides
 
