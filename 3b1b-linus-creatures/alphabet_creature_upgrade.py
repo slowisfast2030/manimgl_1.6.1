@@ -92,7 +92,7 @@ class AlphabetCreature(SingleStringTex):
         
     def init_structure(self):
         """
-        初始化卡通生物的body,eyes和mouth
+        初始化卡通生物的body和eyes
         """
         self.body:VMobject = self.draw_body()
         self.eyes:VGroup = self.draw_eyes()
