@@ -1,4 +1,8 @@
 
+image_path = ["dall-boy.png",
+              "dall-house.png",
+              "dall-path.png"]
+
 meaning_sentence = {
     "word": "abandon",
     "attribute": "V-T",
