@@ -239,14 +239,8 @@ class test(Scene):
         self.play(student_teacher[1].says("today, we will \nlearn abandon!"))
         self.wait(1) 
 
-        # mob_coords = [Mob1_coord, Mob2_coord, Mob3_coord]
-        # for mob, coord in zip(mob_gr, mob_coords):
-        #     mob.move_to(coord)
-        #     mob.scale(0.4)
-        #     self.add(mob)
-
         # 画出单词
-        word = Text("Abandon").scale(2).move_to(Word_coord).set_color_by_gradient(RED, BLUE)
+        word = Text(meaning_sentence["word"]).scale(2).move_to(Word_coord).set_color_by_gradient(RED, BLUE)
         mob1, mob2, mob3 = mob_gr  
         self.play(
             student_teacher[1].debubble(),
@@ -266,19 +260,10 @@ class test(Scene):
 
         # 单词的第一个释义出现
         # 给出中英文释义
-        parts = ["If you abandon a place, thing, or person, you", 
-                 "leave the place, thing, or person permanently", 
-                 "or for a long time, especially when you should", 
-                 "not do so."]
-        
-        parts_ch = ["如果你放弃一个地方、一件事或一个人，你",
-                    "就永久地离开了这个地方、一件事或人，尤",
-                    "其是当你不应该这样做的时候。"]
-
-        sents = ["He claimed that his parents had abandoned", 
-                 "him."]
-        
-        sents_ch = ["他声称他的父母抛弃了他。"] 
+        parts = meaning_sentence["first_meaning"][0]
+        parts_ch = meaning_sentence["first_meaning"][1]
+        sents = meaning_sentence["first_sentence"][0]
+        sents_ch = meaning_sentence["first_sentence"][1]
 
         meaning_sentence = meaning(parts, parts_ch, sents, sents_ch)
         meaning_gr = meaning_sentence[0]
@@ -318,18 +303,10 @@ class test(Scene):
         self.wait()
 
         # 单词的第二个释义
-        parts = ["you abandon an activity or piece of work, you", 
-                 "stop doing it before it is finished.", 
-                 ]
-        
-        parts_ch = ["如果你放弃一个活动或一项工作，意味着在",
-                    "它完成之前你就停止了进行。其是当你不应",
-                    "该这样做的时候。"]
-
-        sents = ["The authorities have abandoned any attempt to", 
-                 "distribute food in an orderly fashion."]
-        
-        sents_ch = ["当局已放弃以有序方式分发食物的任何尝试。"] 
+        parts = meaning_sentence["second_meaning"][0]   
+        parts_ch = meaning_sentence["second_meaning"][1]
+        sents = meaning_sentence["second_sentence"][0]
+        sents_ch = meaning_sentence["second_sentence"][1]
 
         meaning_sentence = meaning(parts, parts_ch, sents, sents_ch)
         meaning_gr = meaning_sentence[0]
@@ -369,17 +346,10 @@ class test(Scene):
         self.wait()
 
         # 单词的第三个释义
-        parts = ["If you abandon an idea or way of thinking, you", 
-                 "stop having that idea or thinking in that way.", 
-                 ]
-        
-        parts_ch = ["如果你放弃一个想法或思维方式，意味着你",
-                    "停止拥有那个想法或以那种方式思考。"]
-
-        sents = ["Logic had prevailed and he had abandoned the", 
-                 "idea."]
-        
-        sents_ch = ["逻辑占了上风，他放弃了那个想法。"] 
+        parts = meaning_sentence["third_meaning"][0]
+        parts_ch = meaning_sentence["third_meaning"][1]
+        sents = meaning_sentence["third_sentence"][0]   
+        sents_ch = meaning_sentence["third_sentence"][1]
 
         meaning_sentence = meaning(parts, parts_ch, sents, sents_ch)
         meaning_gr = meaning_sentence[0]
