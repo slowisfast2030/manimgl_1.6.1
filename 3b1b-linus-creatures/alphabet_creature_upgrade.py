@@ -219,7 +219,7 @@ class AlphabetCreature(SingleStringTex):
         
         # 这一行注释掉就正常了
         #self.eyes[1].pupil.align_to(self.eyes[0].pupil, DOWN)
-        ani = Transform(self.eyes, eyes)    
+        ani = Transform(self.eyes, eyes, rate_func=there_and_back)    
         return ani
 
     def look_at(self, point_or_mobject):

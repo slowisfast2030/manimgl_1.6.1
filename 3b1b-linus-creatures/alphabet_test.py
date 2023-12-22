@@ -25,15 +25,14 @@ class test_body(Scene):
 """
 class test_omega(Scene):
     def construct(self):
-        a = AlphabetCreature(r"a", flip_at_start=False, 
+        a = AlphabetCreature(r"A", flip_at_start=False, 
                              color=RED,
                              eye_scale=0.3,
                              eye_buffer=0.09,
                              eye_prop=[0.5, 0.1])
         self.add(a)
-        self.play(a.look(LEFT), rate_func=there_and_back)
+        self.play(a.look(LEFT))
         self.wait(1)
-        #self.play(a.blink(), rate_func=there_and_back)
         self.play(a.blink())
         self.wait(1)
         self.play(a.says("hello!"))
