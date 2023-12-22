@@ -1,7 +1,9 @@
 import sys
 sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
+sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/project_words/abandon')
 
 from manim_imports_ext import *
+from abandon_text import image_paths, meaning_sentence
 
 # 三个小球在右上角的坐标
 Mob1_coord = [1.78, 6.7, 0.]
@@ -223,7 +225,8 @@ def meaning(parts, parts_ch, sents, sents_ch):
 class test(Scene):
     def construct(self):
         # 画出3个小球
-        textures = ["dall-boy.png", "dall-house.png", "dall-path.png"]
+        #textures = ["dall-boy.png", "dall-house.png", "dall-path.png"]
+        textures = image_paths
         mob_gr = three_sphere_with_texture(*textures)
 
         # 先把3个球放中间
@@ -300,9 +303,8 @@ class test(Scene):
             FadeOut(student_teacher),
             )
 
-        # 出现图片
-        #image_boy = image_divide("dall-boy.png", 10, 10).shift(DOWN*3.5).space_out_submobjects(1.01).scale(1)
-        image_boy = image_divide("dall-boy.png", 10, 10).next_to(meaning_sentence, DOWN*2).space_out_submobjects(1.01).scale(1)
+        # 第一张图片
+        image_boy = image_divide(image_paths[0], 10, 10).next_to(meaning_sentence, DOWN*2).space_out_submobjects(1.01).scale(1)
         self.add(*image_boy)
 
         image_anims = get_image_anims(image_boy)
@@ -351,7 +353,8 @@ class test(Scene):
             )
         self.wait(1)
 
-        image_boy = image_divide("dall-house.png", 10, 10).shift(DOWN*3.5).space_out_submobjects(1.01).scale(1)
+        # 第二张图片
+        image_boy = image_divide(image_paths[1], 10, 10).shift(DOWN*3.5).space_out_submobjects(1.01).scale(1)
         #image_boy = image_divide("dall-house.png", 10, 10).next_to(meaning_sentence, DOWN*2).space_out_submobjects(1.01).scale(1)
         self.add(*image_boy)
 
@@ -400,7 +403,8 @@ class test(Scene):
             )
         self.wait(1)
 
-        image_boy = image_divide("dall-path.png", 10, 10).shift(DOWN*3.5).space_out_submobjects(1.01).scale(1)
+        # 第三张图片
+        image_boy = image_divide(image_paths[2], 10, 10).shift(DOWN*3.5).space_out_submobjects(1.01).scale(1)
         #image_boy = image_divide("dall-house.png", 10, 10).next_to(meaning_sentence, DOWN*2).space_out_submobjects(1.01).scale(1)
         self.add(*image_boy)
 

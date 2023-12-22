@@ -1,5 +1,5 @@
 
-image_path = ["dall-boy.png",
+image_paths = ["dall-boy.png",
               "dall-house.png",
               "dall-path.png"]
 
