@@ -134,21 +134,21 @@ def meaning(parts, parts_ch, sents, sents_ch):
         if index == 0:
             meaning_en = Text(part, 
                              font_size=40,
-                             t2c={meaning_sentence_dict["word"]: BLUE, 'V-T': RED}).set_width(7.3)
+                             t2c={meaning_sentence_dict["word"]: BLUE}).set_width(7.3)
             meaning_en.next_to(VT, RIGHT)
             meaning_gr.append(meaning_en)
 
         elif index == len(parts)-1:
             meaning_en = Text(part, 
                              font_size=40,
-                             t2c={meaning_sentence_dict["word"]: BLUE, 'V-T': RED})
+                             t2c={meaning_sentence_dict["word"]: BLUE})
             meaning_en.next_to(VT, RIGHT).shift(DOWN*0.5*index)
             meaning_gr.append(meaning_en)
 
         else:
             meaning_en = Text(part, 
                              font_size=40,
-                             t2c={meaning_sentence_dict["word"]: BLUE, 'V-T': RED}).set_width(7.3)
+                             t2c={meaning_sentence_dict["word"]: BLUE}).set_width(7.3)
             meaning_en.next_to(VT, RIGHT).shift(DOWN*0.5*index)
             meaning_gr.append(meaning_en)
     
@@ -160,7 +160,7 @@ def meaning(parts, parts_ch, sents, sents_ch):
 
             meaning_ch = Text(part, 
                              font_size=36,
-                             t2c={'放弃': BLUE, 'V-T': RED})
+                             t2c={'放弃': BLUE})
             meaning_ch.next_to(VT, RIGHT).shift(DOWN*0.5*index)
             meaning_gr.append(meaning_ch)
 
@@ -169,7 +169,7 @@ def meaning(parts, parts_ch, sents, sents_ch):
 
             meaning_ch = Text(part, 
                              font_size=36,
-                             t2c={'放弃': BLUE, 'V-T': RED}).set_width(7.3)
+                             t2c={'放弃': BLUE}).set_width(7.3)
             meaning_ch.next_to(VT, RIGHT).shift(DOWN*0.5*index)
             meaning_gr.append(meaning_ch)
 
