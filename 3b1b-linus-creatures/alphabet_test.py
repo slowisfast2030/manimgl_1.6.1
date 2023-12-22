@@ -38,6 +38,6 @@ class test_omega(Scene):
         self.wait(1)
         self.play(a.blink())
         self.wait(1)
-        self.play(a.says("hello!"))
+        self.play(a.says("hello world!"))
         self.play(a.debubble()) 
         self.wait(1)
