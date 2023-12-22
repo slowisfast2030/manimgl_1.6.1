@@ -1,3 +1,8 @@
+"""
+如果不添加这个路径
+from alphabet_creature_upgrade import AlphabetCreature
+会报错
+"""
 import sys
 sys.path.append("/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-linus-creatures")
 
