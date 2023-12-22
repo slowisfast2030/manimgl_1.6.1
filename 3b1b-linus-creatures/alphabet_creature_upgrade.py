@@ -100,6 +100,9 @@ class AlphabetCreature(SingleStringTex):
 
     def draw_body(self):
         submobjects = self.submobjects
+        """
+        输入的letter只能是一个字符
+        """
         assert len(submobjects) == 1, "the length of the submobjects must be 1"
         body = submobjects[0]
         self.body = body
