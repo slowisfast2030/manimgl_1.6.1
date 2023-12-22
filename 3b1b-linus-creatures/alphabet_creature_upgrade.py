@@ -19,9 +19,9 @@ from manimlib.mobject.svg.drawings import SpeechBubble
 from manimlib.mobject.svg.drawings import ThoughtBubble
 from manimlib.mobject.svg.text_mobject import Text
 
-from typing import TYPE_CHECKING, Union
-if TYPE_CHECKING:
-    from manimlib.typing import ManimColor, Vect3
+# from typing import TYPE_CHECKING, Union
+# if TYPE_CHECKING:
+#     from manimlib.typing import ManimColor, Vect3
 
 class AlphabetCreature(SingleStringTex):
     """
