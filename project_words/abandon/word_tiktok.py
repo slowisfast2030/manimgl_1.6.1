@@ -225,7 +225,6 @@ def meaning(parts, parts_ch, sents, sents_ch):
 class test(Scene):
     def construct(self):
         # 画出3个小球
-        #textures = ["dall-boy.png", "dall-house.png", "dall-path.png"]
         textures = image_paths
         mob_gr = three_sphere_with_texture(*textures)
 
