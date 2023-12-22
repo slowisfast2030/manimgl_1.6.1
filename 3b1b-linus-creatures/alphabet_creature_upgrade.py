@@ -1,5 +1,5 @@
-import sys
-sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
+#import sys
+#sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
 
 from manimlib.constants import *
 from manimlib.mobject.mobject import _AnimationBuilder
@@ -10,7 +10,6 @@ from manimlib.mobject.types.vectorized_mobject import VGroup
 from manimlib.mobject.types.vectorized_mobject import VMobject
 from manimlib.mobject.mobject import Mobject
 from manimlib.mobject.geometry import Circle
-from manimlib.mobject.geometry import Rectangle
 from manimlib.utils.space_ops import get_norm
 from manimlib.utils.space_ops import normalize
 
