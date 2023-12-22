@@ -27,7 +27,7 @@ class test_omega(Scene):
     def construct(self):
         a = AlphabetCreature(r"A", 
                              flip_at_start=False, 
-                             start_corner=DL,
+                             start_corner=ORIGIN,
                              color=RED,
                              eye_scale=0.3,
                              eye_buffer=0.09,
