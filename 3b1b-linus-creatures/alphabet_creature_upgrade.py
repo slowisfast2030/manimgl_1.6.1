@@ -1,11 +1,7 @@
-#import sys
-#sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
-
 from manimlib.constants import *
 from manimlib.mobject.mobject import _AnimationBuilder
 from manimlib.mobject.svg.tex_mobject import SingleStringTex
 from manimlib.mobject.svg.svg_mobject import SVGMobject
-from manimlib.utils.config_ops import digest_config
 from manimlib.mobject.types.vectorized_mobject import VGroup
 from manimlib.mobject.types.vectorized_mobject import VMobject
 from manimlib.mobject.mobject import Mobject
@@ -19,9 +15,6 @@ from manimlib.mobject.svg.drawings import SpeechBubble
 from manimlib.mobject.svg.drawings import ThoughtBubble
 from manimlib.mobject.svg.text_mobject import Text
 
-# from typing import TYPE_CHECKING, Union
-# if TYPE_CHECKING:
-#     from manimlib.typing import ManimColor, Vect3
 
 class AlphabetCreature(SingleStringTex):
     """
