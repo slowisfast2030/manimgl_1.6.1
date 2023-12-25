@@ -1,7 +1,7 @@
 
-image_paths = ["dall-boy.png",
-              "dall-house.png",
-              "dall-path.png"]
+image_paths = ["abandon_boy.png",
+              "abandon_food2.png",
+              "abandon_path2.png"]
 
 student_words = ["what a lonely boy!",
                  "hha...",
