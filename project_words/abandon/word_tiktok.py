@@ -278,9 +278,9 @@ class test(Scene):
         sents = meaning_sentence_dict["first_sentence"][0]
         sents_ch = meaning_sentence_dict["first_sentence"][1]
 
-        meaning_sentence = meaning(parts, parts_ch, sents, sents_ch)
-        meaning_gr = meaning_sentence[0]
-        sentence_gr = meaning_sentence[1]
+        meaning_sentence_1 = meaning(parts, parts_ch, sents, sents_ch)
+        meaning_gr = meaning_sentence_1[0]
+        sentence_gr = meaning_sentence_1[1]
 
         self.play(FadeIn(meaning_gr),
                   mob1.animate.set_opacity(1),
@@ -321,9 +321,9 @@ class test(Scene):
         sents = meaning_sentence_dict["second_sentence"][0]
         sents_ch = meaning_sentence_dict["second_sentence"][1]
 
-        meaning_sentence = meaning(parts, parts_ch, sents, sents_ch)
-        meaning_gr = meaning_sentence[0]
-        sentence_gr = meaning_sentence[1]
+        meaning_sentence_2 = meaning(parts, parts_ch, sents, sents_ch)
+        meaning_gr = meaning_sentence_2[0]
+        sentence_gr = meaning_sentence_2[1]
 
         self.play(FadeIn(meaning_gr),
                   mob1.animate.set_opacity(0.2),
@@ -364,9 +364,9 @@ class test(Scene):
         sents = meaning_sentence_dict["third_sentence"][0]   
         sents_ch = meaning_sentence_dict["third_sentence"][1]
 
-        meaning_sentence = meaning(parts, parts_ch, sents, sents_ch)
-        meaning_gr = meaning_sentence[0]
-        sentence_gr = meaning_sentence[1]
+        meaning_sentence_3 = meaning(parts, parts_ch, sents, sents_ch)
+        meaning_gr = meaning_sentence_3[0]
+        sentence_gr = meaning_sentence_3[1]
 
         self.play(FadeIn(meaning_gr),
                   mob1.animate.set_opacity(0.2),
@@ -408,9 +408,12 @@ class test(Scene):
         student_teacher.fix_in_frame()
 
         # 把所有单词的释义放在一起
-        self.add(meaning_sentence.shift(DOWN))
-        self.add(meaning_sentence.copy().shift(DOWN*4)) 
-        self.add(meaning_sentence.copy().shift(DOWN*8))  
+        all_meaning_sentence_gr = Group(meaning_sentence_1, meaning_sentence_2, meaning_sentence_3)
+        all_meaning_sentence_gr.arrange(DOWN, buff=1)
+        self.add(all_meaning_sentence_gr)
+        # self.add(meaning_sentence.shift(DOWN))
+        # self.add(meaning_sentence.copy().shift(DOWN*4)) 
+        # self.add(meaning_sentence.copy().shift(DOWN*8))  
 
         self.play(
             mob_gr[0].animate.scale(2.5).move_to(-2*LEFT+DOWN*1+OUT*3),
