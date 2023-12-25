@@ -1,9 +1,13 @@
 import sys
 sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
 sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/project_words/abandon')
+sys.path.append("/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-linus-creatures")
+
+from manimlib import *
 
 from manim_imports_ext import *
 from abandon_text import image_paths, student_words, meaning_sentence_dict
+from alphabet_creature_upgrade import AlphabetCreature
 
 # 三个小球在右上角的坐标
 Mob1_coord = [1.78, 6.7, 0.]
@@ -112,7 +116,13 @@ def three_sphere_with_texture(texture1, texture2, texture3):
 
 def student_with_teacher():
     colors = [BLUE, RED]
-    student_teacher = [PiCreature(color=color) for color in colors]
+    student_teacher = [AlphabetCreature(r"A", 
+                             flip_at_start=False, 
+                             start_corner=ORIGIN,
+                             color=color,
+                             eye_scale=0.3,
+                             eye_buffer=0.09,
+                             eye_prop=[0.5, 0.1]) for color in colors]
     student_teacher = VGroup(*student_teacher)
     student_teacher.arrange(RIGHT, buff=0.9).shift(DOWN*5.5).scale(0.8)
 
@@ -277,7 +287,7 @@ class test(Scene):
             *[Write(sent) for sent in sentence_gr])
 
         # 写完句子后，需要给出对话
-        self.play(student_teacher[0].thinks(student_words[0]),
+        self.play(student_teacher[0].says(student_words[0]),
                   run_time=2,
                   )
         self.wait(1)
@@ -296,7 +306,7 @@ class test(Scene):
         self.wait(1)
 
         # 清场，为第二个单词释义做准备
-        student_teacher[0].change_mode("plain")
+        #student_teacher[0].change_mode("plain")
         self.clear()
         self.add(mob_gr, word, student_teacher)
         self.wait()
@@ -319,7 +329,7 @@ class test(Scene):
             *[Write(sent) for sent in sentence_gr])
 
         # 写完句子后，需要给出对话
-        self.play(student_teacher[0].thinks(student_words[1]),
+        self.play(student_teacher[0].says(student_words[1]),
                   run_time=2,
                   )
         # 删除对话 
@@ -339,7 +349,7 @@ class test(Scene):
         self.wait(1)
 
         # 清场，为第三个单词释义做准备
-        student_teacher[0].change_mode("plain")
+        #student_teacher[0].change_mode("plain")
         self.clear()
         self.add(mob_gr, word, student_teacher)
         self.wait()
@@ -362,7 +372,7 @@ class test(Scene):
             *[Write(sent) for sent in sentence_gr])
         
         # 写完句子后，需要给出对话
-        self.play(student_teacher[0].thinks(student_words[2]),
+        self.play(student_teacher[0].says(student_words[2]),
                   run_time=2,
                   )
         # 删除对话 
