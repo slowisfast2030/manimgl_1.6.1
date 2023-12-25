@@ -250,7 +250,7 @@ class test(Scene):
         student_teacher = student_with_teacher()
         self.play(FadeIn(student_teacher))
         self.play(student_teacher[1].says("Today we will \nlearn " + meaning_sentence_dict["word"] + "!"),
-                  #student_teacher[0].look_at(student_teacher[1]),
+                  student_teacher[0].look(RIGHT),
                   student_teacher[1].blink(),
                   )
         self.wait(1) 
