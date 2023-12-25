@@ -9,17 +9,19 @@ from manim_imports_ext import *
 from abandon_text import image_paths, student_words, meaning_sentence_dict
 from alphabet_creature_upgrade import AlphabetCreature
 
-# 三个小球在右上角的坐标
+# 整体下移的距离
+down_shift = 0.5 * DOWN
 
-Mob1_coord = np.array([1.78, 6.7, 0.])
-Mob2_coord = np.array([2.7, 6.7, 0.])
-Mob3_coord = np.array([3.62, 6.7, 0.])
+# 三个小球在右上角的坐标
+Mob1_coord = np.array([1.78, 6.7, 0.]) - down_shift
+Mob2_coord = np.array([2.7, 6.7, 0.]) - down_shift
+Mob3_coord = np.array([3.62, 6.7, 0.]) - down_shift
 
 # 单词在左上角的坐标
-Word_coord = np.array([-2.3, 6.8, 0])
+Word_coord = np.array([-2.3, 6.8, 0]) - down_shift
 
 # VT的坐标
-VT_coord = np.array([-3.72, 5.81836484, 0.]) 
+VT_coord = np.array([-3.72, 5.81836484, 0.]) - down_shift
 
 # 输入图片的路径，小正方形在长宽上的个数，返回这一系列小正方的集合
 def image_divide(image_path, num_rows, num_cols):
