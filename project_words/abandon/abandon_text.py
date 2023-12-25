@@ -4,7 +4,7 @@ image_paths = ["abandon_boy.png",
               "abandon_path2.png"]
 
 student_words = ["What a lonely boy!",
-                 "The government should \nserve the people.",
+                 "Step down! Shame!",
                  "Good choice!"]
 
 meaning_sentence_dict = {
