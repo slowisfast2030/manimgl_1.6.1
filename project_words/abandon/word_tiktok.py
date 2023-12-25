@@ -26,7 +26,7 @@ VT_coord = np.array([-3.72, 5.81836484, 0.]) - down_shift
 # 输入图片的路径，小正方形在长宽上的个数，返回这一系列小正方的集合
 def image_divide(image_path, num_rows, num_cols):
 
-    full_image = ImageMobject(image_path).scale(2)
+    full_image = ImageMobject(image_path).scale(1.7)
     segments = []
 
     # Calculate the size of each segment
