@@ -424,7 +424,8 @@ class test(Scene):
         # self.add(meaning_sentence.shift(DOWN))
         # self.add(meaning_sentence.copy().shift(DOWN*4)) 
         # self.add(meaning_sentence.copy().shift(DOWN*8)) 
-          
+        
+        self.wait(2)
 
         self.play(
             mob_gr[0].animate.scale(2.5).move_to(-2*LEFT+DOWN*1+OUT*3),
