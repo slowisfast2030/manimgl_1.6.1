@@ -124,7 +124,8 @@ def student_with_teacher():
                              eye_buffer=0.12,
                              eye_prop=[0.5, 0.05]) for color in colors]
     student_teacher = VGroup(*student_teacher)
-    student_teacher.arrange(RIGHT, buff=0.9).shift(DOWN*5.5).scale(0.8)
+    student_teacher.arrange(RIGHT, buff=1.5).shift(DOWN*4.5).scale(0.8)
+    student_teacher[0].shift(DOWN*0.3)
 
     _, teacher = student_teacher
     teacher.scale(1.3)
