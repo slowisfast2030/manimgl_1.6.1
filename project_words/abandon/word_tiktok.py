@@ -116,7 +116,7 @@ def three_sphere_with_texture(texture1, texture2, texture3):
 
 def student_with_teacher():
     colors = [BLUE, RED]
-    student_teacher = [AlphabetCreature(r"A", 
+    student_teacher = [AlphabetCreature(r"$\Omega$", 
                              flip_at_start=False, 
                              start_corner=ORIGIN,
                              color=color,
