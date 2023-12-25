@@ -10,7 +10,7 @@ from abandon_text import image_paths, student_words, meaning_sentence_dict
 from alphabet_creature_upgrade import AlphabetCreature
 
 # 整体下移的距离
-down_shift = 0.5 * DOWN
+down_shift = 0.5 * UP
 
 # 三个小球在右上角的坐标
 Mob1_coord = np.array([1.78, 6.7, 0.]) - down_shift
