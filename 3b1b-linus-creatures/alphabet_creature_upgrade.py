@@ -323,7 +323,6 @@ class AlphabetCreature(SingleStringTex):
         )
 
     def thinks(self, content, mode="A", look_at=None, **kwargs) -> Animation:
-        #from custom.characters.pi_creature_animations import PiCreatureBubbleIntroduction
         from alphabet_creature_animations import PiCreatureBubbleIntroduction
         return PiCreatureBubbleIntroduction(
             self, content,
