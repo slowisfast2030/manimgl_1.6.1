@@ -198,7 +198,7 @@ def meaning(parts, parts_ch, sents, sents_ch):
     # 英文例句
     for index, sent in enumerate(sents):
         if index == 0:
-            sentence = Text(sent, font_size=40, t2c={meaning_sentence_dict["word"]: BLUE}).set_width(7.3)
+            sentence = Text(sent, font_size=40, t2c={meaning_sentence_dict["word"]: BLUE}).set_width(7)
             sentence.next_to(eg, RIGHT)
             sentence_gr.append(sentence)
         
@@ -208,7 +208,7 @@ def meaning(parts, parts_ch, sents, sents_ch):
             sentence_gr.append(sentence)
 
         else:
-            sentence = Text(sent, font_size=40, t2c={meaning_sentence_dict["word"]: BLUE}).set_width(7.3)
+            sentence = Text(sent, font_size=40, t2c={meaning_sentence_dict["word"]: BLUE}).set_width(7)
             sentence.next_to(eg, RIGHT).shift(DOWN*0.5*index)
             sentence_gr.append(sentence)
     
@@ -224,7 +224,7 @@ def meaning(parts, parts_ch, sents, sents_ch):
         else:
             index = index + len(sents)
 
-            sentence = Text(sent, font_size=36, t2c={'抛弃': BLUE, "放弃": BLUE}).set_width(7.3)
+            sentence = Text(sent, font_size=36, t2c={'抛弃': BLUE, "放弃": BLUE}).set_width(7)
             sentence.next_to(eg, RIGHT).shift(DOWN*0.5*index)
             sentence_gr.append(sentence)
 
