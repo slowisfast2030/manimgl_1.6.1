@@ -250,7 +250,7 @@ class test(Scene):
         student_teacher = student_with_teacher()
         self.play(FadeIn(student_teacher))
         self.play(student_teacher[1].says("Today we will \nlearn " + meaning_sentence_dict["word"] + "!"),
-                  student_teacher[0].look(RIGHT),
+                  #student_teacher[0].look(RIGHT),
                   student_teacher[1].blink(),
                   )
         self.wait(1) 
@@ -308,7 +308,8 @@ class test(Scene):
             )
 
         # 第一张图片
-        image_boy = image_divide(image_paths[0], 10, 10).next_to(meaning_sentence_1, DOWN*2).space_out_submobjects(1.01).scale(1)
+        image_boy = image_divide(image_paths[0], 10, 10).shift(DOWN*3.5).space_out_submobjects(1.01).scale(1)
+        #image_boy = image_divide(image_paths[0], 10, 10).next_to(meaning_sentence_1, DOWN*2).space_out_submobjects(1.01).scale(1)
         self.add(*image_boy)
 
         image_anims = get_image_anims(image_boy)
