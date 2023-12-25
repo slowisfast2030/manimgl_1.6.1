@@ -322,6 +322,17 @@ class AlphabetCreature(SingleStringTex):
             **kwargs,
         )
 
+    def thinks(self, content, mode="A", look_at=None, **kwargs) -> Animation:
+        #from custom.characters.pi_creature_animations import PiCreatureBubbleIntroduction
+        from alphabet_creature_animations import PiCreatureBubbleIntroduction
+        return PiCreatureBubbleIntroduction(
+            self, content,
+            target_mode=self.letter,
+            look_at=look_at,
+            bubble_type=ThoughtBubble,
+            **kwargs,
+        )
+
     """
     需要修复下
     这里压根不需要mode参数
