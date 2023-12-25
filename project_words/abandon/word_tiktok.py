@@ -409,11 +409,12 @@ class test(Scene):
 
         # 把所有单词的释义放在一起
         all_meaning_sentence_gr = Group(meaning_sentence_1[0], meaning_sentence_2[0], meaning_sentence_3[0])
-        all_meaning_sentence_gr.arrange(DOWN, buff=0.5).shift(UP*1)
+        all_meaning_sentence_gr.arrange(DOWN, buff=1).shift(UP*1)
         self.add(all_meaning_sentence_gr)
         # self.add(meaning_sentence.shift(DOWN))
         # self.add(meaning_sentence.copy().shift(DOWN*4)) 
-        # self.add(meaning_sentence.copy().shift(DOWN*8))  
+        # self.add(meaning_sentence.copy().shift(DOWN*8)) 
+          
 
         self.play(
             mob_gr[0].animate.scale(2.5).move_to(-2*LEFT+DOWN*1+OUT*3),
