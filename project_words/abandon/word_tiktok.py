@@ -235,7 +235,7 @@ class test(Scene):
         # 画出学生和老师
         student_teacher = student_with_teacher()
         self.play(FadeIn(student_teacher))
-        self.play(student_teacher[1].says("today, we will \nlearn " + meaning_sentence_dict["word"] + "!"))
+        self.play(student_teacher[1].says("Today we will \nlearn " + meaning_sentence_dict["word"] + "!"))
         self.wait(1) 
 
         # 画出单词
