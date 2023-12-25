@@ -302,7 +302,7 @@ class test(Scene):
             )
 
         # 第一张图片
-        image_boy = image_divide(image_paths[0], 10, 10).next_to(meaning_sentence, DOWN*2).space_out_submobjects(1.01).scale(1)
+        image_boy = image_divide(image_paths[0], 10, 10).next_to(meaning_sentence_1, DOWN*2).space_out_submobjects(1.01).scale(1)
         self.add(*image_boy)
 
         image_anims = get_image_anims(image_boy)
@@ -409,7 +409,7 @@ class test(Scene):
 
         # 把所有单词的释义放在一起
         all_meaning_sentence_gr = Group(meaning_sentence_1, meaning_sentence_2, meaning_sentence_3)
-        all_meaning_sentence_gr.arrange(DOWN, buff=1)
+        all_meaning_sentence_gr.arrange(DOWN, buff=0.2)
         self.add(all_meaning_sentence_gr)
         # self.add(meaning_sentence.shift(DOWN))
         # self.add(meaning_sentence.copy().shift(DOWN*4)) 
