@@ -249,7 +249,10 @@ class test(Scene):
         # 画出学生和老师
         student_teacher = student_with_teacher()
         self.play(FadeIn(student_teacher))
-        self.play(student_teacher[1].says("Today we will \nlearn " + meaning_sentence_dict["word"] + "!"))
+        self.play(student_teacher[1].says("Today we will \nlearn " + meaning_sentence_dict["word"] + "!"),
+                  #student_teacher[0].look_at(student_teacher[1]),
+                  student_teacher[1].blink(),
+                  )
         self.wait(1) 
 
         # 画出单词
@@ -288,7 +291,10 @@ class test(Scene):
                   mob3.animate.set_opacity(0.2))
         
         self.play(
-            *[Write(sent) for sent in sentence_gr])
+            *[Write(sent) for sent in sentence_gr],
+            student_teacher[0].blink(),
+            #student_teacher[1].look_at(student_teacher[0])
+            )
 
         # 写完句子后，需要给出对话
         self.play(student_teacher[0].thinks(student_words[0]),
