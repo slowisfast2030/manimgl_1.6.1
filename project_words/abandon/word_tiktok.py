@@ -408,8 +408,8 @@ class test(Scene):
         student_teacher.fix_in_frame()
 
         # 把所有单词的释义放在一起
-        all_meaning_sentence_gr = Group(meaning_sentence_1, meaning_sentence_2, meaning_sentence_3)
-        all_meaning_sentence_gr.arrange(DOWN, buff=0.2)
+        all_meaning_sentence_gr = Group(meaning_sentence_1[0], meaning_sentence_2[0], meaning_sentence_3[0])
+        all_meaning_sentence_gr.arrange(DOWN, buff=0.2).shift(DOWN*1)
         self.add(all_meaning_sentence_gr)
         # self.add(meaning_sentence.shift(DOWN))
         # self.add(meaning_sentence.copy().shift(DOWN*4)) 
