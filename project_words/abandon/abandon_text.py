@@ -3,9 +3,9 @@ image_paths = ["abandon_boy.png",
               "abandon_food2.png",
               "abandon_path2.png"]
 
-student_words = ["what a lonely boy!",
-                 "hha...",
-                 "good choice!"]
+student_words = ["What a lonely boy!",
+                 "The government should serve the people.",
+                 "Good choice!"]
 
 meaning_sentence_dict = {
     "word": "abandon",
@@ -20,9 +20,13 @@ meaning_sentence_dict = {
          "其是当你不应该这样做的时候。"]
     ],
     "first_sentence": [
-        ["He claimed that his parents had abandoned", 
-         "him."],
-        ["他声称他的父母已经抛弃了他。"]
+        #["He claimed that his parents had abandoned", 
+        # "him."],
+        #["他声称他的父母已经抛弃了他。"],
+        ["Due to the divorce, the little boy's mother",
+        "abandoned him."],
+        ["由于离婚，这个小男孩的母亲抛弃了他。"]
+
     ],
     "second_meaning": [
         ["If you abandon an activity or piece of work, you", 
@@ -44,7 +48,7 @@ meaning_sentence_dict = {
     ],
     "third_sentence": [
         ["Logic had prevailed and he had abandoned the", 
-         "idea."],
-        ["逻辑占了上风，他放弃了那个想法。"]
+         "idea of taking desolate path."],
+        ["逻辑占了上风，他放弃了走荒凉小路的想法。"]
     ],
 }
