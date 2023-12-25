@@ -287,7 +287,7 @@ class test(Scene):
             *[Write(sent) for sent in sentence_gr])
 
         # 写完句子后，需要给出对话
-        self.play(student_teacher[0].says(student_words[0]),
+        self.play(student_teacher[0].thinks(student_words[0]),
                   run_time=2,
                   )
         self.wait(1)
@@ -372,7 +372,7 @@ class test(Scene):
             *[Write(sent) for sent in sentence_gr])
         
         # 写完句子后，需要给出对话
-        self.play(student_teacher[0].says(student_words[2]),
+        self.play(student_teacher[0].thinks(student_words[2]),
                   run_time=2,
                   )
         # 删除对话 
