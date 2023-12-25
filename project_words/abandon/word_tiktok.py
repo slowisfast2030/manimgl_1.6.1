@@ -336,7 +336,9 @@ class test(Scene):
                   mob2.animate.set_opacity(1),
                   mob3.animate.set_opacity(0.2))
         self.play(
-            *[Write(sent) for sent in sentence_gr])
+            *[Write(sent) for sent in sentence_gr],
+            student_teacher[0].blink()
+            )
 
         # 写完句子后，需要给出对话
         self.play(student_teacher[0].thinks(student_words[1]),
@@ -379,7 +381,9 @@ class test(Scene):
                   mob2.animate.set_opacity(0.2),
                   mob3.animate.set_opacity(1))
         self.play(
-            *[Write(sent) for sent in sentence_gr])
+            *[Write(sent) for sent in sentence_gr],
+            student_teacher[0].blink()
+            )
         
         # 写完句子后，需要给出对话
         self.play(student_teacher[0].thinks(student_words[2]),
