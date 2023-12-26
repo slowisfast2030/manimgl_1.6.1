@@ -253,11 +253,12 @@ class test(Scene):
         """
         student_teacher = student_with_teacher()
         self.play(FadeIn(student_teacher))
+        # 很奇怪的点：下面这个动画持续时间2s
         self.play(student_teacher[1].says("Today we will \nlearn " + meaning_sentence_dict["word"] + "!"),
                   #student_teacher[0].look(RIGHT),
                   student_teacher[1].blink(),
                   )
-        self.wait(1.2) 
+        self.wait(0.2) 
 
         """
         abandon主要有3个释义【2:04】
@@ -301,7 +302,14 @@ class test(Scene):
                   mob1.animate.set_opacity(1),
                   mob2.animate.set_opacity(0.2),
                   mob3.animate.set_opacity(0.2))
-        self.wait(9)
+        
+        self.wait(2)
+        self.play(student_teacher[0].blink())
+        self.wait(2)
+        self.play(student_teacher[1].blink())
+        self.wait(3)
+        #self.wait(9)
+
         
         """
         Example sentence：Due to the divorce, the little boy’s mother abandoned him.【5:25】
@@ -357,7 +365,13 @@ class test(Scene):
                   mob1.animate.set_opacity(0.2),
                   mob2.animate.set_opacity(1),
                   mob3.animate.set_opacity(0.2))
-        self.wait(8.15)
+        
+        self.wait(2)
+        self.play(student_teacher[0].blink())
+        self.wait(2)
+        self.play(student_teacher[1].blink())
+        self.wait(2.15)
+        #self.wait(8.15)
 
         """
         Example Sentence：The authorities have abandoned any attempt to distribute food in any orderly fashion.【6:19】
@@ -411,7 +425,12 @@ class test(Scene):
                   mob1.animate.set_opacity(0.2),
                   mob2.animate.set_opacity(0.2),
                   mob3.animate.set_opacity(1))
-        self.wait(6.5)
+        self.wait(1)
+        self.play(student_teacher[0].blink())
+        self.wait(1)
+        self.play(student_teacher[1].blink())
+        self.wait(2.5)
+        #self.wait(6.5)
 
         """
         Example sentence：Logic had prevailed and he had abandoned the idea of taking desolate path.【5:25】
@@ -441,7 +460,7 @@ class test(Scene):
         self.play(*image_anims, run_time=1.5)
         self.wait(1) 
 
-        
+
         # 清场，为收尾准备
         self.clear()
         self.add(mob_gr, word)
