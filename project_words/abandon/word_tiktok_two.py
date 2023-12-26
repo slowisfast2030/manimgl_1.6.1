@@ -181,7 +181,6 @@ def meaning(parts, parts_ch, sents, sents_ch):
     
     # VT是释义的定位点，例句也需要一个定位点
     eg = Text("E.G.", font_size=40, t2c={'E.G.': BLUE})
-    #eg = SVGMobject("svg-water-cup.svg").scale(0.3)
     eg_coord = VT_coord + (len(parts)+len(parts_ch))*DOWN*0.5 + DOWN * 0.2 # 0.2是调整的参数
     eg.move_to(eg_coord)
     sentence_gr = [eg]
@@ -226,7 +225,6 @@ def meaning(parts, parts_ch, sents, sents_ch):
 
     
 
-
 class two(Scene):
     def construct(self):
         # 画出2个小球
@@ -246,7 +244,6 @@ class two(Scene):
         self.play(FadeIn(student_teacher))
         # 很奇怪的点：下面这个动画持续时间2s
         self.play(student_teacher[1].says("Today we will \nlearn " + meaning_sentence_dict["word"] + "!"),
-                  #student_teacher[0].look(RIGHT),
                   student_teacher[1].blink(),
                   )
         self.wait(0.2) 
@@ -324,7 +321,6 @@ class two(Scene):
 
         # 第一张图片
         image_boy = image_divide(image_paths[0], 10, 10).shift(DOWN*3.5).space_out_submobjects(1.01).scale(1)
-        #image_boy = image_divide(image_paths[0], 10, 10).next_to(meaning_sentence_1, DOWN*2).space_out_submobjects(1.01).scale(1)
         self.add(*image_boy)
 
         image_anims = get_image_anims(image_boy)
@@ -332,7 +328,6 @@ class two(Scene):
         self.wait(1)
 
         # 清场，为第二个单词释义做准备
-        #student_teacher[0].change_mode("plain")
         self.clear()
         self.add(mob_gr, word, student_teacher)
         self.wait()
@@ -384,7 +379,6 @@ class two(Scene):
 
         # 第二张图片
         image_boy = image_divide(image_paths[1], 10, 10).shift(DOWN*3.5).space_out_submobjects(1.01).scale(1)
-        #image_boy = image_divide("dall-house.png", 10, 10).next_to(meaning_sentence, DOWN*2).space_out_submobjects(1.01).scale(1)
         self.add(*image_boy)
 
         image_anims = get_image_anims(image_boy)
@@ -397,7 +391,6 @@ class two(Scene):
         self.wait()
 
         # 收尾
-        #self.play(word.animate.move_to(ORIGIN+UP*4))
         mob1.set_opacity(1)
         mob2.set_opacity(1)
         student_teacher.fix_in_frame()
