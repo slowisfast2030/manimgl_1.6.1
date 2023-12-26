@@ -405,7 +405,7 @@ class two(Scene):
 
         # 把所有单词的释义放在一起
         all_meaning_sentence_gr = Group(meaning_sentence_1[0], meaning_sentence_2[0])
-        all_meaning_sentence_gr.arrange(DOWN, buff=0.5).shift(UP*1)
+        all_meaning_sentence_gr.arrange(DOWN, buff=0.5).shift(UP*2)
         self.add(all_meaning_sentence_gr)
         
         self.wait(2)
