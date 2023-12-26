@@ -395,12 +395,12 @@ class two(Scene):
         mob2.set_opacity(1)
         student_teacher.fix_in_frame()
 
-        # 把所有单词的释义放在一起
+        # 把所有单词的释义和例句放在一起
         all_meaning_sentence_gr = Group(meaning_sentence_1, meaning_sentence_2)
         """
         这里需要优化。单词所有释义的位置需要调整 
         """
-        all_meaning_sentence_gr.arrange(DOWN, buff=0.5).shift(UP*1)
+        all_meaning_sentence_gr.arrange(DOWN, buff=0.5).shift(UP*0.5)
         #self.add(all_meaning_sentence_gr)
         self.play(FadeIn(all_meaning_sentence_gr))
         
