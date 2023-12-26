@@ -6,7 +6,7 @@ sys.path.append("/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-linus-crea
 from manimlib import *
 
 from manim_imports_ext import *
-from abdoment_text import image_paths, student_words, meaning_sentence_dict
+from abdomen_text import image_paths, student_words, meaning_sentence_dict
 from alphabet_creature_upgrade import AlphabetCreature
 
 # 整体下移的距离
