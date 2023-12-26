@@ -254,8 +254,8 @@ class two(Scene):
         """
         # 画出单词
         word = Text(meaning_sentence_dict["word"]).scale(2).move_to(Word_coord).set_color_by_gradient(RED, BLUE)
-        word.shift(LEFT*1)
-        
+        word.shift(LEFT*0)
+
         mob1, mob2 = mob_gr  
         self.play(
             student_teacher[1].debubble(),
