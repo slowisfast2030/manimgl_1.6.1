@@ -19,7 +19,7 @@ meaning_sentence_dict = {
     "first_meaning": [
         ["(abide by) accept or act in accordance with",
          "(a rule, decision, or recommendation)."],
-        ["(遵守)接受或按照（规则、决定或建议）行事。"]
+        ["(遵守)接受或按照(规则、决定或建议)行事。"]
     ],
     "first_sentence": [
         ["Tom and Jerry abide by each other's agreement",
