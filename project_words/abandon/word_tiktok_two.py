@@ -12,10 +12,9 @@ from alphabet_creature_upgrade import AlphabetCreature
 # 整体下移的距离
 down_shift = 0.5 * UP
 
-# 三个小球在右上角的坐标
-Mob1_coord = np.array([1.78, 6.7, 0.]) - down_shift
-Mob2_coord = np.array([2.7, 6.7, 0.]) - down_shift
-Mob3_coord = np.array([3.62, 6.7, 0.]) - down_shift
+# 两个小球在右上角的坐标
+Mob1_coord = np.array([2.7, 6.7, 0.]) - down_shift
+Mob2_coord = np.array([3.62, 6.7, 0.]) - down_shift
 
 # 单词在左上角的坐标
 Word_coord = np.array([-2.3, 6.8, 0]) - down_shift
@@ -87,11 +86,10 @@ def get_image_anims(image_segments):
 
     return anims
 
-# 传入三张图片的地址，返回3个小球
-def three_sphere_with_texture(texture1, texture2, texture3):
+# 传入2张图片的地址，返回2个小球
+def two_sphere_with_texture(texture1, texture2):
     sphere1 = Sphere(radius=3)
     sphere2 = Sphere(radius=3)
-    sphere3 = Sphere(radius=3)
 
     speed = 0.7
 
@@ -101,19 +99,13 @@ def three_sphere_with_texture(texture1, texture2, texture3):
     def update_sphere_up(sphere, dt):
         sphere.rotate(speed * dt, axis=UP)
 
-    def update_sphere(sphere, dt):
-        sphere.rotate(speed * dt)
-
     mob1 = TexturedSurface(sphere1, texture1).scale(0.3).rotate(PI/2, axis=RIGHT)
     mob1.add_updater(update_sphere_right)
 
     mob2 = TexturedSurface(sphere2, texture2).scale(0.3).rotate(PI/2, axis=RIGHT)
     mob2.add_updater(update_sphere_up)
 
-    mob3 = TexturedSurface(sphere3, texture3).scale(0.3).rotate(PI/2, axis=RIGHT)
-    mob3.add_updater(update_sphere)
-
-    mob_gr = Group(mob1, mob2, mob3).arrange(RIGHT, buff=1).shift(UP*2)
+    mob_gr = Group(mob1, mob2).arrange(RIGHT, buff=1).shift(UP*2)
 
     return mob_gr
 
@@ -236,13 +228,13 @@ def meaning(parts, parts_ch, sents, sents_ch):
     
 
 
-class test(Scene):
+class two(Scene):
     def construct(self):
-        # 画出3个小球
-        textures = image_paths
-        mob_gr = three_sphere_with_texture(*textures)
+        # 画出2个小球
+        textures = image_paths[:2]
+        mob_gr = two_sphere_with_texture(*textures)
 
-        # 先把3个球放中间
+        # 先把2个球放中间
         mob_gr = mob_gr.arrange(RIGHT, buff=1).shift(UP*2)
         self.add(mob_gr)
 
@@ -266,12 +258,11 @@ class test(Scene):
         """
         # 画出单词
         word = Text(meaning_sentence_dict["word"]).scale(2).move_to(Word_coord).set_color_by_gradient(RED, BLUE)
-        mob1, mob2, mob3 = mob_gr  
+        mob1, mob2 = mob_gr  
         self.play(
             student_teacher[1].debubble(),
             mob1.animate.scale(0.4).move_to(Mob1_coord),
             mob2.animate.scale(0.4).move_to(Mob2_coord),
-            mob3.animate.scale(0.4).move_to(Mob3_coord),
             Write(word),
             run_time=2
         )
@@ -300,8 +291,8 @@ class test(Scene):
 
         self.play(FadeIn(meaning_gr),
                   mob1.animate.set_opacity(1),
-                  mob2.animate.set_opacity(0.2),
-                  mob3.animate.set_opacity(0.2))
+                  mob2.animate.set_opacity(0.2)
+                )
         
         self.wait(2)
         self.play(student_teacher[0].blink())
@@ -363,8 +354,8 @@ class test(Scene):
 
         self.play(FadeIn(meaning_gr),
                   mob1.animate.set_opacity(0.2),
-                  mob2.animate.set_opacity(1),
-                  mob3.animate.set_opacity(0.2))
+                  mob2.animate.set_opacity(1)
+                )
         
         self.wait(2)
         self.play(student_teacher[0].blink())
@@ -401,66 +392,6 @@ class test(Scene):
         self.play(*image_anims, run_time=1.5)
         self.wait(1)
 
-        # 清场，为第三个单词释义做准备
-        #student_teacher[0].change_mode("plain")
-        self.clear()
-        self.add(mob_gr, word, student_teacher)
-        self.wait()
-
-        """
-        释义三：如果你放弃一个想法或思维方式，意味着你停止拥有那个想法或以那种思维方式思考。【7:10】
-        7.5s
-        """
-        # 单词的第三个释义
-        parts = meaning_sentence_dict["third_meaning"][0]
-        parts_ch = meaning_sentence_dict["third_meaning"][1]
-        sents = meaning_sentence_dict["third_sentence"][0]   
-        sents_ch = meaning_sentence_dict["third_sentence"][1]
-
-        meaning_sentence_3 = meaning(parts, parts_ch, sents, sents_ch)
-        meaning_gr = meaning_sentence_3[0]
-        sentence_gr = meaning_sentence_3[1]
-
-        self.play(FadeIn(meaning_gr),
-                  mob1.animate.set_opacity(0.2),
-                  mob2.animate.set_opacity(0.2),
-                  mob3.animate.set_opacity(1))
-        self.wait(1)
-        self.play(student_teacher[0].blink())
-        self.wait(1)
-        self.play(student_teacher[1].blink())
-        self.wait(2.5)
-        #self.wait(6.5)
-
-        """
-        Example sentence：Logic had prevailed and he had abandoned the idea of taking desolate path.【5:25】
-        """
-        self.play(
-            *[Write(sent) for sent in sentence_gr],
-            student_teacher[0].blink()
-            )
-        
-        # 写完句子后，需要给出对话
-        self.play(student_teacher[0].thinks(student_words[2]),
-                  run_time=2,
-                  )
-        # 删除对话 
-        self.play(
-            student_teacher[0].debubble(),
-            FadeOut(student_teacher),
-            )
-        self.wait(1)
-
-        # 第三张图片
-        image_boy = image_divide(image_paths[2], 10, 10).shift(DOWN*3.5).space_out_submobjects(1.01).scale(1)
-        #image_boy = image_divide("dall-house.png", 10, 10).next_to(meaning_sentence, DOWN*2).space_out_submobjects(1.01).scale(1)
-        self.add(*image_boy)
-
-        image_anims = get_image_anims(image_boy)
-        self.play(*image_anims, run_time=1.5)
-        self.wait(1) 
-
-
         # 清场，为收尾准备
         self.clear()
         self.add(mob_gr, word)
@@ -470,23 +401,18 @@ class test(Scene):
         #self.play(word.animate.move_to(ORIGIN+UP*4))
         mob1.set_opacity(1)
         mob2.set_opacity(1)
-        mob3.set_opacity(1)
         student_teacher.fix_in_frame()
 
         # 把所有单词的释义放在一起
-        all_meaning_sentence_gr = Group(meaning_sentence_1[0], meaning_sentence_2[0], meaning_sentence_3[0])
+        all_meaning_sentence_gr = Group(meaning_sentence_1[0], meaning_sentence_2[0])
         all_meaning_sentence_gr.arrange(DOWN, buff=0.5).shift(UP*1)
         self.add(all_meaning_sentence_gr)
-        # self.add(meaning_sentence.shift(DOWN))
-        # self.add(meaning_sentence.copy().shift(DOWN*4)) 
-        # self.add(meaning_sentence.copy().shift(DOWN*8)) 
         
         self.wait(2)
 
         self.play(
             mob_gr[0].animate.scale(2.5).move_to(-2*LEFT+DOWN*1+OUT*3),
             mob_gr[1].animate.scale(2.5).move_to(2*LEFT+DOWN*1+OUT*3),
-            mob_gr[2].animate.scale(2.5).move_to(UP*2+OUT*3),
             run_time=2
         )
 
