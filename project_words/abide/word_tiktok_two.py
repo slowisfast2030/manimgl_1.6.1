@@ -400,7 +400,7 @@ class two(Scene):
         """
         这里需要优化。单词所有释义的位置需要调整 
         """
-        all_meaning_sentence_gr.arrange(DOWN, buff=0.5).shift(UP*0.5)
+        all_meaning_sentence_gr.arrange(DOWN, buff=0.5).shift(UP*1.8)
         #self.add(all_meaning_sentence_gr)
         self.play(FadeIn(all_meaning_sentence_gr))
         
