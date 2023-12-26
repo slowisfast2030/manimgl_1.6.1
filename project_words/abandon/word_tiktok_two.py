@@ -228,7 +228,7 @@ def meaning(parts, parts_ch, sents, sents_ch):
 class two(Scene):
     def construct(self):
         # 画出2个小球
-        textures = image_paths[:2]
+        textures = image_paths[1:]
         mob_gr = two_sphere_with_texture(*textures)
 
         # 先把2个球放中间
