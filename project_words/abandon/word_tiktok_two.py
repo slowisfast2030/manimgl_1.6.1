@@ -130,7 +130,6 @@ def student_with_teacher():
 def meaning(parts, parts_ch, sents, sents_ch):
     # parts是单词含义的各个部分，每个部分都是一个str
     VT = Text("V-T", font_size=40, t2c={'V-T': RED})
-    #VT = SVGMobject("svg-teapot.svg").scale(0.25)
     VT.move_to(VT_coord) 
 
     meaning_gr = [VT]
