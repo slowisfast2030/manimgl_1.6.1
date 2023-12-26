@@ -17,8 +17,8 @@ meaning_sentence_dict = {
     "word": "abide",
     "attribute": "V-T",
     "first_meaning": [
-        ["(abide by)accept or act in accordance with (,",
-         "a rule decision, or recommendation)."],
+        ["(abide by) accept or act in accordance with",
+         "(a rule, decision, or recommendation)."],
         ["(遵守)接受或按照（规则、决定或建议）行事。"]
     ],
     "first_sentence": [
