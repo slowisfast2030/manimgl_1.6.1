@@ -405,26 +405,30 @@ class two(Scene):
 
         # 把所有单词的释义放在一起
         all_meaning_sentence_gr = Group(meaning_sentence_1[0], meaning_sentence_2[0])
+        """
+        这里需要优化。单词所有释义的位置需要调整 
+        """
         all_meaning_sentence_gr.arrange(DOWN, buff=0.5).shift(UP*2)
-        self.add(all_meaning_sentence_gr)
+        #self.add(all_meaning_sentence_gr)
+        self.play(Write(all_meaning_sentence_gr))
         
-        self.wait(2)
+        self.wait(5)
 
-        self.play(
-            mob_gr[0].animate.scale(2.5).move_to(-2*LEFT+DOWN*1+OUT*3),
-            mob_gr[1].animate.scale(2.5).move_to(2*LEFT+DOWN*1+OUT*3),
-            run_time=2
-        )
+        """
+        最后旋转的一幕暂且注释掉
+        """
+        # self.play(
+        #     mob_gr[0].animate.scale(2.5).move_to(-2*LEFT+DOWN*1+OUT*3),
+        #     mob_gr[1].animate.scale(2.5).move_to(2*LEFT+DOWN*1+OUT*3),
+        #     run_time=2
+        # )
 
-        word.fix_in_frame()
+        # word.fix_in_frame()
+        # frame = self.camera.frame
+        # def update_frame(frame, dt):
+        #     frame.increment_theta(-0.3 * dt)
+        # frame.add_updater(update_frame)
 
-        frame = self.camera.frame
-        
-        def update_frame(frame, dt):
-            frame.increment_theta(-0.3 * dt)
-        frame.add_updater(update_frame)
-
-        self.play(frame.animate.reorient(20, 70),
-                  #word.animate.shift(DOWN*2), 
-                  run_time=2)
-        self.wait(7)
+        # self.play(frame.animate.reorient(20, 70),
+        #           run_time=2)
+        # self.wait(7)
