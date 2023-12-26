@@ -1,12 +1,12 @@
 import sys
 sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-videos-master')
-sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/project_words/abandon')
+sys.path.append('/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/project_words/abdomen')
 sys.path.append("/Users/linus/Desktop/slow-is-fast/manimgl_1.6.1/3b1b-linus-creatures")
 
 from manimlib import *
 
 from manim_imports_ext import *
-from abandon_text import image_paths, student_words, meaning_sentence_dict
+from abdoment_text import image_paths, student_words, meaning_sentence_dict
 from alphabet_creature_upgrade import AlphabetCreature
 
 # 整体下移的距离
@@ -220,7 +220,7 @@ def meaning(parts, parts_ch, sents, sents_ch):
 class one(Scene):
     def construct(self):
         # 画出2个小球
-        textures = image_paths[2:]
+        textures = image_paths
         mob_gr = one_sphere_with_texture(*textures)
 
         # 先把1个球放中间
