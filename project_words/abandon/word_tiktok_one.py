@@ -12,9 +12,8 @@ from alphabet_creature_upgrade import AlphabetCreature
 # 整体下移的距离
 down_shift = 0.5 * UP
 
-# 两个小球在右上角的坐标
-Mob1_coord = np.array([2.7, 6.7, 0.]) - down_shift
-Mob2_coord = np.array([3.62, 6.7, 0.]) - down_shift
+# 1个小球在右上角的坐标
+Mob1_coord = np.array([3.62, 6.7, 0.]) - down_shift
 
 # 单词在左上角的坐标
 Word_coord = np.array([-2.3, 6.8, 0]) - down_shift
@@ -87,25 +86,18 @@ def get_image_anims(image_segments):
     return anims
 
 # 传入2张图片的地址，返回2个小球
-def two_sphere_with_texture(texture1, texture2):
+def one_sphere_with_texture(texture1):
     sphere1 = Sphere(radius=3)
-    sphere2 = Sphere(radius=3)
 
     speed = 0.7
 
-    def update_sphere_right(sphere, dt):
-        sphere.rotate(speed * dt, axis=RIGHT)
-    
     def update_sphere_up(sphere, dt):
         sphere.rotate(speed * dt, axis=UP)
 
     mob1 = TexturedSurface(sphere1, texture1).scale(0.3).rotate(PI/2, axis=RIGHT)
-    mob1.add_updater(update_sphere_right)
+    mob1.add_updater(update_sphere_up)
 
-    mob2 = TexturedSurface(sphere2, texture2).scale(0.3).rotate(PI/2, axis=RIGHT)
-    mob2.add_updater(update_sphere_up)
-
-    mob_gr = Group(mob1, mob2).arrange(RIGHT, buff=1).shift(UP*2)
+    mob_gr = Group(mob1).arrange(RIGHT, buff=1).shift(UP*2)
 
     return mob_gr
 
@@ -225,13 +217,13 @@ def meaning(parts, parts_ch, sents, sents_ch):
 
     
 
-class two(Scene):
+class one(Scene):
     def construct(self):
         # 画出2个小球
-        textures = image_paths[1:]
-        mob_gr = two_sphere_with_texture(*textures)
+        textures = image_paths[2:]
+        mob_gr = one_sphere_with_texture(*textures)
 
-        # 先把2个球放中间
+        # 先把1个球放中间
         mob_gr = mob_gr.arrange(RIGHT, buff=1).shift(UP*2)
         self.add(mob_gr)
 
@@ -254,11 +246,10 @@ class two(Scene):
         """
         # 画出单词
         word = Text(meaning_sentence_dict["word"]).scale(2).move_to(Word_coord).set_color_by_gradient(RED, BLUE)
-        mob1, mob2 = mob_gr  
+        mob1 = mob_gr  
         self.play(
             student_teacher[1].debubble(),
             mob1.animate.scale(0.4).move_to(Mob1_coord),
-            mob2.animate.scale(0.4).move_to(Mob2_coord),
             Write(word),
             run_time=2
         )
@@ -287,7 +278,6 @@ class two(Scene):
 
         self.play(FadeIn(meaning_gr),
                   mob1.animate.set_opacity(1),
-                  mob2.animate.set_opacity(0.2)
                 )
         
         self.wait(2)
@@ -325,102 +315,5 @@ class two(Scene):
 
         image_anims = get_image_anims(image_boy)
         self.play(*image_anims, run_time=1.5)
-        self.wait(1)
-
-        # 清场，为第二个单词释义做准备
-        self.clear()
-        self.add(mob_gr, word, student_teacher)
-        self.wait()
-
-        """
-        释义二：如果你放弃一个活动或一项工作，意味着在它完成之前你就停止了进行。尤其是当你不应该这样做的时候。【9:04】
-        9.15s
-        """
-        # 单词的第二个释义
-        parts = meaning_sentence_dict["second_meaning"][0]   
-        parts_ch = meaning_sentence_dict["second_meaning"][1]
-        sents = meaning_sentence_dict["second_sentence"][0]
-        sents_ch = meaning_sentence_dict["second_sentence"][1]
-
-        meaning_sentence_2 = meaning(parts, parts_ch, sents, sents_ch)
-        meaning_gr = meaning_sentence_2[0]
-        sentence_gr = meaning_sentence_2[1]
-
-        self.play(FadeIn(meaning_gr),
-                  mob1.animate.set_opacity(0.2),
-                  mob2.animate.set_opacity(1)
-                )
-        
-        self.wait(2)
-        self.play(student_teacher[0].blink())
-        self.wait(2)
-        self.play(student_teacher[1].blink())
-        self.wait(2.15)
-        #self.wait(8.15)
-
-        """
-        Example Sentence：The authorities have abandoned any attempt to distribute food in any orderly fashion.【6:19】
-        """
-        self.play(
-            *[Write(sent) for sent in sentence_gr],
-            student_teacher[0].blink()
-            )
-
-        # 写完句子后，需要给出对话
-        self.play(student_teacher[0].thinks(student_words[1]),
-                  run_time=2,
-                  )
-        # 删除对话 
-        self.play(
-            student_teacher[0].debubble(),
-            FadeOut(student_teacher),
-            )
-        self.wait(1)
-
-        # 第二张图片
-        image_boy = image_divide(image_paths[1], 10, 10).shift(DOWN*3.5).space_out_submobjects(1.01).scale(1)
-        self.add(*image_boy)
-
-        image_anims = get_image_anims(image_boy)
-        self.play(*image_anims, run_time=1.5)
-        self.wait(1)
-
-        # 清场，为收尾准备
-        self.clear()
-        self.add(mob_gr, word)
-        self.wait()
-
-        # 收尾
-        mob1.set_opacity(1)
-        mob2.set_opacity(1)
-        student_teacher.fix_in_frame()
-
-        # 把所有单词的释义和例句放在一起
-        all_meaning_sentence_gr = Group(meaning_sentence_1, meaning_sentence_2)
-        """
-        这里需要优化。单词所有释义的位置需要调整 
-        """
-        all_meaning_sentence_gr.arrange(DOWN, buff=0.5).shift(UP*0.5)
-        #self.add(all_meaning_sentence_gr)
-        self.play(FadeIn(all_meaning_sentence_gr))
-        
         self.wait(5)
 
-        """
-        最后旋转的一幕暂且注释掉
-        """
-        # self.play(
-        #     mob_gr[0].animate.scale(2.5).move_to(-2*LEFT+DOWN*1+OUT*3),
-        #     mob_gr[1].animate.scale(2.5).move_to(2*LEFT+DOWN*1+OUT*3),
-        #     run_time=2
-        # )
-
-        # word.fix_in_frame()
-        # frame = self.camera.frame
-        # def update_frame(frame, dt):
-        #     frame.increment_theta(-0.3 * dt)
-        # frame.add_updater(update_frame)
-
-        # self.play(frame.animate.reorient(20, 70),
-        #           run_time=2)
-        # self.wait(7)
