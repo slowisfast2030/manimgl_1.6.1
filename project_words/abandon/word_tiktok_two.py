@@ -404,7 +404,7 @@ class two(Scene):
         student_teacher.fix_in_frame()
 
         # 把所有单词的释义放在一起
-        all_meaning_sentence_gr = Group(meaning_sentence_1[0], meaning_sentence_2[0])
+        all_meaning_sentence_gr = VGroup(meaning_sentence_1[0], meaning_sentence_2[0])
         """
         这里需要优化。单词所有释义的位置需要调整 
         """
