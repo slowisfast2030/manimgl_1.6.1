@@ -127,6 +127,7 @@ def student_with_teacher():
 
     return student_teacher
 
+#          英文释义  中文释义  英文例句  中文例句
 def meaning(parts, parts_ch, sents, sents_ch, attr="V-T"):
     # parts是单词含义的各个部分，每个部分都是一个str
     VT = Text(attr, font_size=40, t2c={attr: RED})
