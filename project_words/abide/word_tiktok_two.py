@@ -127,9 +127,9 @@ def student_with_teacher():
 
     return student_teacher
 
-def meaning(parts, parts_ch, sents, sents_ch):
+def meaning(parts, parts_ch, sents, sents_ch, attr="V-T"):
     # parts是单词含义的各个部分，每个部分都是一个str
-    VT = Text("V-T", font_size=40, t2c={'V-T': RED})
+    VT = Text(attr, font_size=40, t2c={attr: RED})
     VT.move_to(VT_coord) 
 
     meaning_gr = [VT]
@@ -283,7 +283,7 @@ class two(Scene):
         sents = meaning_sentence_dict["first_sentence"][0]
         sents_ch = meaning_sentence_dict["first_sentence"][1]
 
-        meaning_sentence_1 = meaning(parts, parts_ch, sents, sents_ch)
+        meaning_sentence_1 = meaning(parts, parts_ch, sents, sents_ch, attr="V-I")
         meaning_gr = meaning_sentence_1[0]
         sentence_gr = meaning_sentence_1[1]
 
@@ -344,7 +344,7 @@ class two(Scene):
         sents = meaning_sentence_dict["second_sentence"][0]
         sents_ch = meaning_sentence_dict["second_sentence"][1]
 
-        meaning_sentence_2 = meaning(parts, parts_ch, sents, sents_ch)
+        meaning_sentence_2 = meaning(parts, parts_ch, sents, sents_ch, attr="V-T")
         meaning_gr = meaning_sentence_2[0]
         sentence_gr = meaning_sentence_2[1]
 
