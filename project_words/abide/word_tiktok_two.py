@@ -238,8 +238,7 @@ class two(Scene):
 
         # 画出学生和老师
         """
-        Abandon，今天我们来学习单词abandon【3:06】
-        3.2s
+        Abide，今天来学习单词abide。【2:28】
         """
         student_teacher = student_with_teacher()
         self.play(FadeIn(student_teacher))
@@ -247,11 +246,11 @@ class two(Scene):
         self.play(student_teacher[1].says("Today we will \nlearn " + meaning_sentence_dict["word"] + "!"),
                   student_teacher[1].blink(),
                   )
-        self.wait(0.2) 
+        #self.wait(0.2) 
 
         """
-        abandon主要有3个释义【2:04】
-        2.2s
+        abide主要有2个释义。【2:02】
+        2.1s
         """
         # 画出单词
         word = Text(meaning_sentence_dict["word"]).scale(2).move_to(Word_coord).set_color_by_gradient(RED, BLUE)
@@ -266,7 +265,7 @@ class two(Scene):
             run_time=2
         )
 
-        self.wait(0.5)
+        self.wait(0.3)
 
         # 清场，为第一个单词释义做准备
         self.clear()
@@ -274,8 +273,8 @@ class two(Scene):
         #self.wait()
 
         """
-        释义一：如果你放弃一个地方、一件事或一个人，你就永久地离开了这个地方、这件事或这个人，尤其是当你不应该这样做的时候。【9:21 】
-        9.7s
+        释义一：(遵守)接受或按照(规则、决定或建议)行事。【5:17】
+        5.6s
         """
         # 单词的第一个释义出现
         # 给出中英文释义
@@ -293,17 +292,17 @@ class two(Scene):
                   mob2.animate.set_opacity(0.2)
                 )
         
-        self.wait(2)
         self.play(student_teacher[0].blink())
-        self.wait(2)
+        self.wait(1)
         self.play(student_teacher[1].blink())
-        self.wait(3)
+        self.wait(1.6)
         #self.wait(9)
 
         
         """
-        Example sentence：Due to the divorce, the little boy’s mother abandoned him.【5:25】
-        5.85s
+        Example sentence:：Tom and Jerry abide by each other's 
+        agreement and have lived in peace ever since.【7:22】  
+        7.8s
         """
         self.play(
             *[Write(sent) for sent in sentence_gr],
@@ -336,8 +335,8 @@ class two(Scene):
         self.wait()
 
         """
-        释义二：如果你放弃一个活动或一项工作，意味着在它完成之前你就停止了进行。尤其是当你不应该这样做的时候。【9:04】
-        9.15s
+        释义二：如果你不能忍受某人或某事，你非常讨厌他们。【4:10】
+        4.4s
         """
         # 单词的第二个释义
         parts = meaning_sentence_dict["second_meaning"][0]   
@@ -354,15 +353,15 @@ class two(Scene):
                   mob2.animate.set_opacity(1)
                 )
         
-        self.wait(2)
         self.play(student_teacher[0].blink())
-        self.wait(2)
+        self.wait(1)
         self.play(student_teacher[1].blink())
-        self.wait(2.15)
-        #self.wait(8.15)
+        self.wait(0.4)
 
         """
-        Example Sentence：The authorities have abandoned any attempt to distribute food in any orderly fashion.【6:19】
+        Example sentence：Ronaldo cannot abide Messi having more Ballon 
+        d'Ors than him, so Ronaldo continues to strive.【7:15】
+        7.5s
         """
         self.play(
             *[Write(sent) for sent in sentence_gr],
