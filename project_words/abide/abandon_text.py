@@ -20,9 +20,6 @@ meaning_sentence_dict = {
          "尤其是当你不应该这样做的时候。"]
     ],
     "first_sentence": [
-        #["He claimed that his parents had abandoned", 
-        # "him."],
-        #["他声称他的父母已经抛弃了他。"],
         ["Due to the divorce, the little boy's mother",
         "abandoned him."],
         ["由于离婚，这个小男孩的母亲抛弃了他。"]
