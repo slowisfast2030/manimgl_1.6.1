@@ -11,7 +11,7 @@ from alphabet_creature_upgrade import AlphabetCreature
 """
 class test_body(Scene):
     def construct(self):
-        a = AlphabetCreature(r"$\Omega$", flip_at_start=False, color=RED)
+        a = AlphabetCreature(r"$\pi$", flip_at_start=False, color=RED)
         body = a[0]
         self.add(body)
         self.wait()
