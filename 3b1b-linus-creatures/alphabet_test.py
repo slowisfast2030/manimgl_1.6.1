@@ -41,3 +41,15 @@ class test_omega(Scene):
         self.play(a.says("hello world!"))
         self.play(a.debubble()) 
         self.wait(1)
+
+class test_logo(Scene):
+    def construct(self):
+        a = AlphabetCreature(r"$\Omega$", 
+                             flip_at_start=False, 
+                             start_corner=ORIGIN,
+                             color=RED,
+                             eye_scale=0.3,
+                             eye_buffer=0.12,
+                             eye_prop=[0.5, 0.05])
+        a.scale(1)
+        self.add(a)
