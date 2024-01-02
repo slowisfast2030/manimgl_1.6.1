@@ -1454,6 +1454,18 @@ class GraphRectangles(CircleScene, GraphScene):
 
             ring.rect = rect
 
+            """
+            n_anchor = 18
+            每段圆弧由8段贝塞尔曲线构成。内外环一共16段曲线。再加上两段直线。
+
+            在18个点上进行插值
+            一共得到: (18-1)*4=68个点
+
+            此时target并不是一个封闭的曲线
+            需要在RIGHT和ORIGIN之间再插入一段直线
+            这样一共68+4=72个点
+            和ring的点数一样多
+            """
             n_anchors = ring.get_num_curves()            
             target = VMobject()
             target.set_points_as_corners([
