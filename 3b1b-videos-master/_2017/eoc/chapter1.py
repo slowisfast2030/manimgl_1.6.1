@@ -1643,7 +1643,7 @@ class GraphRectangles(CircleScene, GraphScene):
         self.wait()
 
     """
-    geinus!!!
+    geinus!!! 
     """
     def let_dr_approah_zero(self):
         thinner_rects_list = [
@@ -1733,9 +1733,14 @@ class GraphRectangles(CircleScene, GraphScene):
 
         self.fresh_rings = fresh_rings
 
+    """
+    genius!!!
+    """
     def show_circle_unwrapping(self):
         rings = self.fresh_rings
+        # 将rings的缺口旋转到左侧
         rings.rotate(np.pi)
+        # 默认的rings是从小到大排列的，这里将其反转
         rings.submobjects.reverse()
         ghost_rings = rings.copy()
         ghost_rings.set_fill(opacity = 0.25)
