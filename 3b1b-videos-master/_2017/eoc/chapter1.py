@@ -1310,6 +1310,7 @@ class GraphRectangles(CircleScene, GraphScene):
         # 注意aligned_edge参数
         area_label.next_to(ring_sum, RIGHT, aligned_edge = UP)
         area = area_label.get_part_by_tex("Area")
+        # 注意get_corner函数的用法
         arrow_start = area.get_corner(DOWN+LEFT)
         arrows = VGroup(*[
             Arrow(
