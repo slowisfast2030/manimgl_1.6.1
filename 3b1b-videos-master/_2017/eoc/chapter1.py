@@ -1742,6 +1742,7 @@ class GraphRectangles(CircleScene, GraphScene):
         rings.rotate(np.pi)
         # 默认的rings是从小到大排列的，这里将其反转
         rings.submobjects.reverse()
+        # 所谓的ghost_rings就是rings的透明版本
         ghost_rings = rings.copy()
         ghost_rings.set_fill(opacity = 0.25)
         self.add(ghost_rings, rings, self.radius_group)
