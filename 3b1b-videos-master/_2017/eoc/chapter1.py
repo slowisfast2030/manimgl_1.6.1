@@ -1307,6 +1307,7 @@ class GraphRectangles(CircleScene, GraphScene):
             "2\\pi", "r", "\\,dr"
         )
         area_label.set_color_by_tex("r", YELLOW, substring = False)
+        # 注意aligned_edge参数
         area_label.next_to(ring_sum, RIGHT, aligned_edge = UP)
         area = area_label.get_part_by_tex("Area")
         arrow_start = area.get_corner(DOWN+LEFT)
