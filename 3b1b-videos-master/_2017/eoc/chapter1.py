@@ -1356,6 +1356,7 @@ class GraphRectangles(CircleScene, GraphScene):
         """
         黄色的刻度是短直线
         """
+        # 叹服
         r_ticks = VGroup(*[
             Line(
                 self.coords_to_point(r, -self.tick_height),
