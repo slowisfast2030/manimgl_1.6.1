@@ -1747,6 +1747,8 @@ class GraphRectangles(CircleScene, GraphScene):
         ghost_rings.set_fill(opacity = 0.25)
         self.add(ghost_rings, rings, self.radius_group)
 
+        # 实在没想到，这里竟然复用了之前的代码
+        # 一开始还以为是新定义的矩形
         unwrapped = VGroup(*[
             self.get_unwrapped(ring, to_edge = None)
             for ring in rings
@@ -1754,12 +1756,17 @@ class GraphRectangles(CircleScene, GraphScene):
         unwrapped.stretch_to_fit_height(1)
         unwrapped.stretch_to_fit_width(2)
         unwrapped.move_to(ORIGIN, DOWN)
+        """
+        这个函数的几何意义是什么？
+        个人猜测
+        """
         unwrapped.apply_function(
             lambda p : np.dot(p, 
                 np.array([[1, 0, 0], [-1, 1, 0], [0, 0, 1]])
             ),
             maintain_smoothness = False
         )
+        # 默认情况下长条是横向的，这里将其旋转90度
         unwrapped.rotate(np.pi/2)
         unwrapped.replace(self.rects, stretch = True)
 
