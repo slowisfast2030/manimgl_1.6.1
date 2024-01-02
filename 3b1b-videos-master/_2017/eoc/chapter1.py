@@ -1524,6 +1524,10 @@ class GraphRectangles(CircleScene, GraphScene):
         self.wait()
 
         ##Demonstrate height of one rect
+        """
+        需要注意, 执行完上述动画后
+        transformed_rings中的对象已经是长方形了
+        """
         highlighted_ring = transformed_rings[6].copy()
         original_ring = transformed_rings[6].original_ring
         original_ring.move_to(highlighted_ring, RIGHT)
