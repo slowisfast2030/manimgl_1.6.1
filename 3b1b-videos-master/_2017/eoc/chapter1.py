@@ -1439,6 +1439,9 @@ class GraphRectangles(CircleScene, GraphScene):
 
         transformed_rings = VGroup()
         self.ghost_rings = VGroup()        
+        """
+        好奇: 难道rings的数目和rects的数目不一样吗?
+        """
         for index, rect, r in zip(it.count(), rects, np.arange(0, 3, 0.1)):
             proportion = float(index)/len(rects)
             ring_index = int(len(rings)*proportion**0.6)
