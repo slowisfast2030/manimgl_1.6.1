@@ -1530,6 +1530,7 @@ class GraphRectangles(CircleScene, GraphScene):
         """
         highlighted_ring = transformed_rings[6].copy()
         original_ring = transformed_rings[6].original_ring
+        # 将ring移到rect的位置
         original_ring.move_to(highlighted_ring, RIGHT)
         original_ring.set_fill(opacity = 1)
         highlighted_ring.save_state()
@@ -1538,6 +1539,10 @@ class GraphRectangles(CircleScene, GraphScene):
         height_label = side_brace.get_text("2\\pi", "r")
         height_label.set_color_by_tex("r", YELLOW)
 
+        """
+        将所有的长方形变暗
+        除了highlighted_ring
+        """
         self.play(
             transformed_rings.set_fill, None, 0.2,
             Animation(highlighted_ring),
@@ -1558,6 +1563,9 @@ class GraphRectangles(CircleScene, GraphScene):
         self.wait()
         self.play(highlighted_ring.restore)
         self.wait()
+        """
+        恢复所有rect的透明度
+        """
         self.play(
             transformed_rings.set_fill, None, 1,
             FadeOut(side_brace),
@@ -1634,6 +1642,9 @@ class GraphRectangles(CircleScene, GraphScene):
         )
         self.wait()
 
+    """
+    geinus!!!
+    """
     def let_dr_approah_zero(self):
         thinner_rects_list = [
             self.get_riemann_rectangles(
