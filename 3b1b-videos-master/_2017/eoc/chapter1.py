@@ -1423,6 +1423,9 @@ class GraphRectangles(CircleScene, GraphScene):
     def unwrap_rings_onto_graph(self):
         rings = self.rings
         graph = self.get_graph(lambda r : 2*np.pi*r)
+        """
+        不太明白flat_graph的作用
+        """
         flat_graph = self.get_graph(lambda r : 0)
         rects, flat_rects = [
             self.get_riemann_rectangles(
