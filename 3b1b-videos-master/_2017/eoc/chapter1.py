@@ -1244,6 +1244,9 @@ class MoveForwardWithApproximation(TeacherStudentsScene):
         self.teacher_says(words, target_mode = "shruggie")
         self.wait(3)
 
+"""
+ring变为长方形的动画
+"""
 class GraphRectangles(CircleScene, GraphScene):
     CONFIG = {
         "graph_origin" : 3.25*LEFT+2.5*DOWN,
