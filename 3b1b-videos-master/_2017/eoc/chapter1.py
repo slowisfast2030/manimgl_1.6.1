@@ -1758,7 +1758,11 @@ class GraphRectangles(CircleScene, GraphScene):
         unwrapped.move_to(ORIGIN, DOWN)
         """
         这个函数的几何意义是什么？
-        个人猜测
+        个人猜测:
+        长条本身两头是尖的
+        通过这个变换,将左侧的尖变成了平的
+
+        可以测试一下,将这个变换去掉,看看效果
         """
         unwrapped.apply_function(
             lambda p : np.dot(p, 
